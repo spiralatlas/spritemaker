@@ -106,11 +106,11 @@ function getOffset(name){
     return 0;    
 }
 
-add_children("head", skin_list);
-add_children("wheelchair_front", ["wheelchair_back"]);
-add_children("hat", ["hat_back"]);
-add_children("hair_front", ["hair_back"]);
-add_children("coat", ["coat_back","wheelchair_coat"]);
-add_children("bottom", ["wheelchair_bottom"]);
-add_children("top", ["top_collar"]);
+add_colour_children("head", ["body","eyebrows","nose"]);
+add_colour_children("wheelchair_front", ["wheelchair_back"]);
+add_colour_children("hat", ["hat_back"]);
+add_colour_children("hair_front", ["hair_back"]);
+add_colour_children("coat", ["coat_back","wheelchair_coat"]);
+add_colour_children("bottom", ["wheelchair_bottom"]);
+add_colour_children("top", ["top_collar"]);
 

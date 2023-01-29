@@ -14,8 +14,9 @@ function setVariables(data_object){
         json_obj.value_list = alpine_obj.value_list
         json_obj.colour1 = alpine_obj.colour1
         json_obj.colour2 = alpine_obj.colour2
-        for (let i = 0; i < json_obj.children.length; i += 1){
-            image_objects[json_obj.children[i]].colour1 = json_obj.colour1;
+        image_objects[json_obj.image_index].item = json_obj.value_list[current_expression];
+        for (let i = 0; i < json_obj.colour_children.length; i += 1){
+            image_objects[json_obj.colour_children[i]].colour1 = json_obj.colour1;
         }
     }
 
@@ -143,62 +144,34 @@ document.addEventListener('alpine:init', () => {
 
     randomiseBodyColouring(){
         //randomise the skin/eye/hair colour
-        this.current_defining_objects[findDefiningIndex("head")].colour = randomElement(skin_colours);
-        this.current_defining_objects[findDefiningIndex("hair_front")].colour = randomElement(hair_colours);
-        this.current_defining_objects[findDefiningIndex("iris")].colour = randomElement(eye_colours);
+        this.current_defining_objects[findDefiningIndex("head")].colour1 = randomElement(skin_colours);
+        this.current_defining_objects[findDefiningIndex("hair_front")].colour1 = randomElement(hair_colours);
+        this.current_defining_objects[findDefiningIndex("iris")].colour1 = randomElement(eye_colours);
     },
     randomiseFeatures(gender){
         //randomise the nose/head/hairstyle etc
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
-        possible_hair = gendered_lists[menu_objects.length-1][gender];
-        this.current_hair =  randomElement(possible_hair);
-
-        switch(gender){
-            case 0: //androgynous
-                this.current_Facialhair = randomIndex(facial_hair_list_menu,0.75);
-                this.current_eyeType = randomElement([0,1,2]);
-                this.current_head = randomIndex(head_list,0);
-                break;
-            case 1: //man
-                this.current_head = randomElement([0,1,2,3,6]);
-                this.current_Facialhair = randomIndex(facial_hair_list_menu,0.75);
-                this.current_eyeType = randomElement([0,1]);
-                break;
-            case 2: //woman
-                this.current_head = randomElement([3,4,5,6]);
-                this.current_Facialhair = 0;
-                this.current_eyeType = randomElement([0,2]);
-                
+        for (let i = 0; i < defining_objects.length; i += 1){
+            if (["nose","head","mouth"].includes(defining_objects[i].name)){
+                this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0));
+            }
         }
-
-        if (Math.random()>0.9)//weirder eyes happen rarely
-            this.current_eyeType = randomElement([3,4]);
-            
-        this.current_head = randomIndex(head_list,0);
-        
-        this.current_nose = Math.max(1,randomIndex(nose_list,0));
-        this.current_lips = randomIndex(lip_list,0);
-        if (Math.random()< 0.9)
-            this.current_ears = 1;
-        else
-            this.current_ears = Math.max(1,randomIndex(ear_list,0));  
-        
-        this.current_complexion = randomIndex(complexion_list,0.3);
-        this.height = randomIndex([0,1],0);
     },
     randomiseClothingColour(){
         //randomise all clothing colours
-        for(let i = 0; i < menu_objects.length-1; i++){
-            this.current_menu_objects[i].colour1 = randomElement(outfit_colours);
-            this.current_menu_objects[i].colour2 = randomElement(outfit_colours);
+        for(let i = 0; i < defining_objects.length-1; i++){
+            if (outfit_list.includes(defining_objects[i].name)) {
+                this.current_defining_objects[i].colour1 = randomElement(outfit_colours);
+                this.current_defining_objects[i].colour2 = randomElement(outfit_colours);
+            }
         }
 
     },
     randomiseClothingValue(gender){
         //set all clothing values including sleeve length
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
-        for(let i = 0; i < menu_objects.length-1; i++){
-            let obj = menu_objects[i]
+        for(let i = 0; i < defining_objects-1; i++){
+            let obj = defining_objects[i]
             possible_values = gendered_lists[i][gender];
 
             if (["Shoes","Pants","Shirt"].includes(obj.name)) 
@@ -213,30 +186,13 @@ document.addEventListener('alpine:init', () => {
             this.current_menu_objects[i].item = possible_values[randomIndex(possible_values,bias)];   
             this.current_menu_objects[i].sleeves = randomIndex([0,1,2],0);
         }
-        switch(gender){
-            case 0: //androgynous
-                this.current_wedding_clothes= randomIndex([0,1,2],0);
-                if (this.current_wedding_clothes ==0)
-                    this.current_dance_clothes= randomIndex([0,1],0);
-                else    
-                    this.current_dance_clothes= this.current_wedding_clothes -1;
-                break;
-            case 1: //man
-                this.current_wedding_clothes= 2;
-                this.current_dance_clothes= 1;
-                break;
-            case 2: //woman
-                this.current_wedding_clothes= 1;
-                this.current_dance_clothes= 0;
-                
-        }
         
+            
     },
     randomiseAll(gender){
-        for (let i = 0; i < defining_objects.length; i += 1){
-            this.current_defining_objects[i].colour1 = randomElement(outfit_colours);
-        }
-        //randomiseBodyColouring();
+        this.randomiseBodyColouring();
+        this.randomiseClothingColour();
+        this.randomiseFeatures(gender);
         /*
         this.randomiseBodyColouring();
         this.randomiseFeatures(gender);
@@ -265,11 +221,11 @@ function drawCanvas() {
     //document.getElementById("closet").innerHTML = print_image_objects();
     //portrait preview
 
-    preview_width="314";
-    preview_height="712";
+    preview_width=full_width;
+    preview_height=full_height;
 
     ctx_preview.fillStyle = "#FF0000";
-    //ctx_preview.fillRect(0, 0, 256, 268);
+    //ctx_preview.fillRect(0, 0, preview_width, preview_height);
     //ctx_preview.drawImage(portrait_back, 0, 0);
     for (let i = 0; i < image_objects.length; i += 1){
         let b = image_objects[i];
@@ -351,10 +307,10 @@ function setup(){
 }
 let portrait_back = new Image();
 portrait_back.src = "images/bases/pattern/pix_pattern_argyle.png";
-const off_canvas = new OffscreenCanvas(256, 268);
+const off_canvas = new OffscreenCanvas(full_width, full_height);
 const off_ctx = off_canvas.getContext("2d");
 window.onload = setup;
-//var game = setInterval(drawCanvas, 500);//Update canvas every 100 miliseconds
+var game = setInterval(drawCanvas, 500);//Update canvas every 100 miliseconds
 
 //Some useful posts:
 //https://github.com/ninique/Dollmaker-Script

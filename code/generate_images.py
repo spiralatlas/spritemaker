@@ -94,7 +94,7 @@ defining_list = outfit_list+skin_list+["hair_front","iris","cheeks"]
 #extra info
 
 no_chest_list = [ "robe","robehood",  "mediumcloak", "mediumcloakhood", "longcloak", "longcloakhood","wrap"] #clothes where the chest doesn't show
-no_fill_list = ["mouth","eyebrows","eye_shape"] #lined items with no coloured fill
+no_fill_list = ["mouth","eye_shape"] #lined items with no coloured fill
 no_lines_list = ["iris","cheeks"] #coloured items with no lines
 
 hat_back_list = ["none","tophat","scarf","turban"]
@@ -417,8 +417,11 @@ def process_image(name, location,type):
 
         for y in range(img_base.size[1]):
             for x in range(img_base.size[0]):
+                uselines = False
                 if type!="nolines":
                     if line_data[x, y][3] !=0:
+                        uselines = True; 
+                if  uselines:
                         multiply_data[x, y] = (line_colour[0],line_colour[1],line_colour[2],line_data[x, y][3])
                 elif original_data[x, y][3] !=0:            
                     pixel = original_data[x, y]
@@ -519,15 +522,13 @@ def process_portrait_part(obj):
     else:       
         loc = obj.location + "/"+obj.name  
     for item in obj.item_list:
-        if not ((obj.name == "Eyes" and item.find("wink")>0)):     
+        if not (obj.name in no_fill_list):     
             if item!="none":
                 print(obj.name+" "+item)
                 if obj.name == "Nose_front":
                     process_image(item, loc,"noshadow")
                 elif (obj.name in no_fill_list):  
-                    process_image(item, loc,"nofill")    
-                elif (obj.name in no_iris_list):  
-                    process_image(item, loc,"noiris")          
+                    process_image(item, loc,"nofill")            
                 elif obj.name in no_lines_list:  
                     process_image(item, loc,"nolines")     
                 else:    

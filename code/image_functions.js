@@ -356,14 +356,18 @@ function fixSources(){
 
             } else
             {
-                if (b.name =="Nose_front")
-                    current_loc+="_noshadow";
-                loc_string = "images/render/"+b.location+"/"+current_loc 
-                   
-                b.base_image_list[j].src  = loc_string+"_base.png";
-                b.highlight_image_list[j].src  = loc_string+"_highlight.png";
-                b.shadow_image_list[j].src  = loc_string+"_multiply_"+colour_string(b.colour1)+".png";
-                
+                if (no_fill_list.includes(b.name)){
+                    b.base_image_list[j].src  = "images/bases/"+b.location+"/"+current_loc +".png";
+
+                }else{
+                    if (b.name =="nose_front")
+                        current_loc+="_noshadow";
+                    loc_string = "images/render/"+b.location+"/"+current_loc 
+                    
+                    b.base_image_list[j].src  = loc_string+"_base.png";
+                    b.highlight_image_list[j].src  = loc_string+"_highlight.png";
+                    b.shadow_image_list[j].src  = loc_string+"_multiply_"+colour_string(b.colour1)+".png";
+                }
             }
         }
     }
@@ -382,26 +386,26 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
     //ypos: Y value of top left corner of pasted image 
     
     /*if (!(obj.name =="Lips" && (current_lips==0))){
-    if (obj.name =="Blush")
-        off_ctx.fillStyle = blushcolour(colour);
+    */ 
+    if (no_fill_list.includes(obj.name)){
+        ctx.drawImage(obj.base_image_list[index],sourceX,sourceY,width,height, xpos, ypos,width,height);
+    }
     else{
-        if (obj.name == "Complexion"&& obj.item_list[obj.value_list[0]])
-            off_ctx.fillStyle = frecklecolour(colour);
-        else
+        if (obj.name =="cheeks")
+            off_ctx.fillStyle = blushcolour(colour);
+        else{
             off_ctx.fillStyle = colour;
-    }*/ 
-    if (true){
-    off_ctx.fillStyle = colour;
-    off_ctx.fillRect(0, 0, width, height);
+        }
+        off_ctx.fillRect(0, 0, width, height);
 
-    off_ctx.globalCompositeOperation = "destination-in";
-    off_ctx.drawImage(obj.base_image_list[index],0,0,width,height, 0, 0,width,height);
+        off_ctx.globalCompositeOperation = "destination-in";
+        off_ctx.drawImage(obj.base_image_list[index],0,0,width,height, 0, 0,width,height);
 
-    off_ctx.globalCompositeOperation = "multiply";
-    off_ctx.drawImage(obj.shadow_image_list[index],0,0,width,height, 0, 0,width,height);
-    off_ctx.globalCompositeOperation = "screen";
-    off_ctx.drawImage(obj.highlight_image_list[index],0,0,width,height, 0, 0,width,height);
-    off_ctx.globalCompositeOperation = "source-over"; 
-    ctx.drawImage(off_canvas,sourceX,sourceY,width,height, xpos, ypos,width,height);
+        off_ctx.globalCompositeOperation = "multiply";
+        off_ctx.drawImage(obj.shadow_image_list[index],0,0,width,height, 0, 0,width,height);
+        off_ctx.globalCompositeOperation = "screen";
+        off_ctx.drawImage(obj.highlight_image_list[index],0,0,width,height, 0, 0,width,height);
+        off_ctx.globalCompositeOperation = "source-over"; 
+        ctx.drawImage(off_canvas,sourceX,sourceY,width,height, xpos, ypos,width,height);
     }
 }

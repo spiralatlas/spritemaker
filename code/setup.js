@@ -15,6 +15,9 @@ let hairColour;
 let eye_type = 0;
 let eye_expressions = listOf(0);
 
+let full_width="314";
+let full_height="712";
+
 //internal
 
 const canvas_width = 512;
@@ -137,31 +140,48 @@ function add_image_object(name, double_list, location){
 //Setting up portrait data
 const defining_objects =[];
 
-//children: indices of elements of image_objects with the same colours
+//colour_children: indices of elements of image_objects with the same colours
 function add_defining_object(name, double_list){
     item_list = remove_dups(double_list[0].concat(double_list[1]));
     item_list_f = double_list[0];
     item_list_m = double_list[1];
-    defining_objects.push({name: name,item_list: item_list,item_list_f: item_list_f ,item_list_m: item_list_m, children:[image_objects.length-1], value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"});
+    defining_objects.push({name: name,item_list: item_list,item_list_f: item_list_f ,item_list_m: item_list_m, image_index: image_objects.length-1, colour_children:[image_objects.length-1], value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"});
 }
 
-function add_children(name, children){
+function add_colour_children(name, colour_children){
     d_obj = findNameMatch(defining_objects,name);
     if (d_obj==-1)
-        console.log("Unknown value: add_children "+name); 
+        console.log("Unknown value: add_colour_children "+name); 
     else{
         for (i = 0; i < image_objects.length; i += 1){
-            for (j = 0; j < children.length; j += 1){
+            for (j = 0; j < colour_children.length; j += 1){
                 for (k = 0; k < defining_objects.length; k += 1){
-                    if (defining_objects[k].name ==children[j])
-                        defining_objects[k].children = [];
-                    if (image_objects[i].name ==children[j] && !d_obj.children.includes(i))
-                        d_obj.children.push(i);
+                    if (defining_objects[k].name ==colour_children[j])
+                        defining_objects[k].colour_children = [];
+                    if (image_objects[i].name ==colour_children[j] && !d_obj.colour_children.includes(i))
+                        d_obj.colour_children.push(i);
                 }
             }
         }   
     }     
 
+}
+
+function randomGenderedItem(obj, gender, bias){
+    //obj is a member of defining_
+    switch(gender){
+        case 0:
+            return randomIndex(obj.item_list,bias);
+            break;
+        case 1:
+            return randomIndex(obj.item_list_m,bias);
+            break;
+        case 2:
+            return randomIndex(obj.item_list_f,bias);
+            break;     
+        default:
+            console.log("Unknown gender: "+gender);        
+    }
 }
 
 function print_image_objects(){
@@ -191,9 +211,9 @@ function print_defining_objects(){
         s+="  value_list: "+b.value_list.toString();
         s+=" colour: "+b.colour1;
         s+=" item: "+b.item_list[b.value_list[0]]
-        s+="Children ";
-        for (j = 0; j < b.children.length; j += 1){
-            s+=image_objects[b.children[j]].name+" "
+        s+="colour_children ";
+        for (j = 0; j < b.colour_children.length; j += 1){
+            s+=image_objects[b.colour_children[j]].name+" "
         }
         s+="<br>";
     }
