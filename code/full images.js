@@ -108,7 +108,9 @@ function getOffset(name){
 
 add_colour_children("head", ["body","eyebrows","nose"]);
 add_colour_children("wheelchair_front", ["wheelchair_back"]);
+add_value_children("wheelchair_front", ["wheelchair_back"]);
 add_colour_children("hat", ["hat_back"]);
+add_value_children("hat", ["hat_back"]);
 add_colour_children("hair_front", ["hair_back"]);
 add_colour_children("coat", ["coat_back","wheelchair_coat"]);
 add_colour_children("bottom", ["wheelchair_bottom"]);

@@ -14,7 +14,9 @@ function setVariables(data_object){
         json_obj.value_list = alpine_obj.value_list
         json_obj.colour1 = alpine_obj.colour1
         json_obj.colour2 = alpine_obj.colour2
-        image_objects[json_obj.image_index].item = json_obj.value_list[current_expression];
+        for (let i = 0; i < json_obj.value_children.length; i += 1){
+            image_objects[json_obj.value_children[i]].item = json_obj.value_list[current_expression];
+        }
         for (let i = 0; i < json_obj.colour_children.length; i += 1){
             image_objects[json_obj.colour_children[i]].colour1 = json_obj.colour1;
         }
@@ -152,7 +154,7 @@ document.addEventListener('alpine:init', () => {
         //randomise the nose/head/hairstyle etc
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
         for (let i = 0; i < defining_objects.length; i += 1){
-            if (["nose","head","mouth"].includes(defining_objects[i].name)){
+            if (["nose","head"].includes(defining_objects[i].name)){
                 this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0));
             }
         }
@@ -170,21 +172,10 @@ document.addEventListener('alpine:init', () => {
     randomiseClothingValue(gender){
         //set all clothing values including sleeve length
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
-        for(let i = 0; i < defining_objects-1; i++){
-            let obj = defining_objects[i]
-            possible_values = gendered_lists[i][gender];
-
-            if (["Shoes","Pants","Shirt"].includes(obj.name)) 
-                bias = 0;
-            else {
-                if (["Wheelchair"].includes(obj.name)){
-                    bias = 0.9
-                } else{
-                    bias = 0.6;
-                } 
-            }   
-            this.current_menu_objects[i].item = possible_values[randomIndex(possible_values,bias)];   
-            this.current_menu_objects[i].sleeves = randomIndex([0,1,2],0);
+        for (let i = 0; i < defining_objects.length; i += 1){
+            if (outfit_list.includes(defining_objects[i].name)) {
+                this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0));
+            }
         }
         
             
@@ -193,11 +184,7 @@ document.addEventListener('alpine:init', () => {
         this.randomiseBodyColouring();
         this.randomiseClothingColour();
         this.randomiseFeatures(gender);
-        /*
-        this.randomiseBodyColouring();
-        this.randomiseFeatures(gender);
-        this.randomiseClothingColour();
-        this.randomiseClothingValue(gender);*/
+        this.randomiseClothingValue(gender);
     },
 })
   })

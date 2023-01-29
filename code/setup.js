@@ -145,7 +145,7 @@ function add_defining_object(name, double_list){
     item_list = remove_dups(double_list[0].concat(double_list[1]));
     item_list_f = double_list[0];
     item_list_m = double_list[1];
-    defining_objects.push({name: name,item_list: item_list,item_list_f: item_list_f ,item_list_m: item_list_m, image_index: image_objects.length-1, colour_children:[image_objects.length-1], value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"});
+    defining_objects.push({name: name,item_list: item_list,item_list_f: item_list_f ,item_list_m: item_list_m, image_index: image_objects.length-1, colour_children:[image_objects.length-1],value_children:[image_objects.length-1],  value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"});
 }
 
 function add_colour_children(name, colour_children){
@@ -160,6 +160,24 @@ function add_colour_children(name, colour_children){
                         defining_objects[k].colour_children = [];
                     if (image_objects[i].name ==colour_children[j] && !d_obj.colour_children.includes(i))
                         d_obj.colour_children.push(i);
+                }
+            }
+        }   
+    }     
+}
+
+function add_value_children(name, children){
+    d_obj = findNameMatch(defining_objects,name);
+    if (d_obj==-1)
+        console.log("Unknown value: add_value_children "+name); 
+    else{
+        for (i = 0; i < image_objects.length; i += 1){
+            for (j = 0; j < children.length; j += 1){
+                for (k = 0; k < defining_objects.length; k += 1){
+                    if (defining_objects[k].name ==children[j])
+                        defining_objects[k].value_children = [];
+                    if (image_objects[i].name ==children[j] && !d_obj.value_children.includes(i))
+                        d_obj.value_children.push(i);
                 }
             }
         }   
