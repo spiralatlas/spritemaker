@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html x-data="{dark_theme: true}" :data-bs-theme="dark_theme ? 'light' : 'dark'">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Dollmaker</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <link href="style.css" rel="stylesheet" type = "text/css">
+            </head>
+<body x-init="setVariables(Alpine.store('alpineData'))">
+
+<script src="code/setup.js"></script>
+<script src="code/generated.js"></script>
+<script src="code/full images.js"></script>
+<script src="code/image_functions.js"></script>
+<script src="code/datastructures.js"></script>
+<script src="code/menus.js"></script>
+<h1>Stardew Valley Dollmaker</h1>
+<hr>
+<div class="container text-center">Warning: Images sometimes flicker while updating</div>
+<hr>
+<div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary" @click="dark_theme=!dark_theme" x-text="dark_theme ? 'Dark Theme' : 'Light Theme'"></button>
+    </div>
+      <div class="col">
+        <a href="credits.html">Credits</a>
+      </div>
+      <div class="col">
+        <a href="about.html">About</a>
+      </div>
+      <div class="col">
+        <button class="btn btn-primary" onclick="download()">Export Choices</button>
+      </div>
+      <div class="col">
+        <div>
+          <input type="file" @input='readText(Object.values($event.target.files)[0],$data)'  class="form-control me-2"/></div>
+      </div>
+    </div>
+  </div>
+<hr>
+<div id="closet"></div>
+  <div class="row">
+    <div class="col"><!-- column 1, canvases -->
+    <div class="container text-center"> 
+    <div><h3>Preview</h3></div> 
+    <canvas id="previewCanvas" width="314" height="712">
+        Your browser does not support HTML5 Canvas. Try downloading latest Chrome, Firefox, Safari, Opera or Internet explorer.
+    </canvas> 
+    <hr>
+    
+    <hr>
+
+    <div class="row">
+      <div class="col"><h3 id="canvasName">Right Click to Save</h3></div> 
+    <div class="col">
+      <button class="btn btn-primary" id="download">Export Canvas</button>
+    </div>
+  </div>
+    <canvas id="exportCanvas" width="512" height="768">
+    Your browser does not support HTML5 Canvas. Try downloading latest Chrome, Firefox, Safari, Opera or Internet explorer.
+    </canvas>
+    </div></div>
+    <div class="col">
+      <ul class="nav nav-tabs">
+        <template x-for="(edit_type, index) in editing_list">
+          <li class="nav-item">
+            <a x-bind:class="$store.alpineData.currently_editing==index ? 'nav-link active' : 'nav-link'" href="#" x-text="edit_type" x-on:click="$store.alpineData.currently_editing= index; setVariables(Alpine.store('alpineData'));"></a></li>
+        </template>  
+      </ul>
+      <!--
+      <div class="container text-left">
+        <div class="row">
+            <div class="row gy-2" x-show="$store.alpineData.currently_editing === 0" > 
+              <div class="row row-cols-2 gy-3">
+                <div class="col"><div x-data="dropdown('Skin Colour','','current_skinColour','skin_colours')" x-bind="colourbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Eye Colour','','current_eyeColour','eye_colours')" x-bind="colourbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Hair Colour','','current_hairColour','hair_colours')" x-bind="colourbtn" ></div></div>
+              </div>
+              <div class="row row-cols-2 gy-3">
+                <div class="col"><div x-data="dropdown('Hairstyle','','current_hair','findNameMatch(menu_objects, \'Hairstyle\').name_list')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Facial Hair','','current_Facialhair','facial_hair_list_menu')" x-bind="dropbtn" ></div></div>
+              </div>
+              <div class="row row-cols-2 gy-3">
+                <div class="col"><div x-data="dropdown('Head Shape','','current_head','head_list')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Nose Shape','','current_nose','nose_list')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Lip Shape','','current_lips','lip_list')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Ear Shape','','current_ears','ear_list')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Eye Type','','current_eyeType','eye_type_list_port')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Complexion','','current_complexion','complexion_list')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Height','','height','[\'Short\',\'Tall\']')" x-bind="dropbtn" ></div></div>
+              </div>
+              
+            </div>
+
+            <div class="row gy-3" x-show="$store.alpineData.currently_editing === 1" >
+              <div class="col"><div x-data="dropdown('Clothing Item','','current_clothing','menu_object_names.slice(0,menu_object_names.length-1)')" x-bind="dropbtn" ></div></div>
+              <div class="row row-cols-2 gy-3">
+                <div class="col"><div x-data="dropdown('Style','','current_menu_objects[$store.alpineData.current_clothing].item','menu_objects[$store.alpineData.current_clothing].name_list')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-show="sleeve_havers.includes(menu_object_names[$store.alpineData.current_clothing])" x-data="dropdown('Sleeves','','current_menu_objects[$store.alpineData.current_clothing].sleeves','sleeves_names')" x-bind="dropbtn" ></div></div>
+              </div>
+              <div class="row row-cols-2 gy-3">
+
+                <div class="col"><div x-data="dropdown('Main Colour','','current_menu_objects[$store.alpineData.current_clothing].colour1','outfit_colours')" x-bind="colourbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Highlight Colour','','current_menu_objects[$store.alpineData.current_clothing].colour2','outfit_colours')" x-bind="colourbtn" ></div></div>
+              </div>
+            </div>
+
+            <div class="row gy-3" x-show="$store.alpineData.currently_editing === 2" >
+              <div x-data="dropdown('Panel','','current_expression','panel_list.slice(0,$store.alpineData.panelNum)')" x-bind="dropbtn" ></div>
+              <div class="row row-cols-2 gy-3">
+                <div class="col"><div x-data="dropdown('Eyebrows','','eyebrow_expressions[$store.alpineData.current_expression]','eyebrow_list')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Eyes','','eye_expressions[$store.alpineData.current_expression]','eye_expression_list_port')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Mouth','','mouth_expressions[$store.alpineData.current_expression]','mouth_list')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Blush','','blush_expressions[$store.alpineData.current_expression]','blush_list')" x-bind="dropbtn" ></div></div>
+              </div>
+
+            </div>
+
+            </div>
+            <div x-show="$store.alpineData.currently_editing === 4" >
+              <h3>Body</h3>
+              <div class="row row-cols-2 gy-3">
+                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseBodyColouring();setVariables(Alpine.store('alpineData'));">Colouring</button></div>
+                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseFeatures(0);setVariables(Alpine.store('alpineData'));">Features</button></div>
+              </div>  
+              <h3>Clothing</h3>
+              <div class="row row-cols-2 gy-3">
+                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseClothingColour();setVariables(Alpine.store('alpineData'));">Colours</button></div>
+                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseClothingValue(0);setVariables(Alpine.store('alpineData'));">Styles</button></div>
+              </div> 
+              <h3>Gender Presentation</h3>
+              <div class="row row-cols-2 gy-3">
+                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseWoman();setVariables(Alpine.store('alpineData'));">Feminine</button></div>
+                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseMan();setVariables(Alpine.store('alpineData'));">Masculine</button></div>
+                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseAll();setVariables(Alpine.store('alpineData'));">Androgynous</button></div>
+              </div> 
+            </div>
+        </div> 
+        </div>-->
+    <hr>
+    <div id="test"></div>
+    
+</div> <!-- end of row -->   
+</div> <!-- end of whole column structure -->  
+      
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
+<!-- References:
+  https://w3collective.com/alpine-tab-component/
+  https://alpinejs.dev/globals/alpine-data
+  https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation
+  https://github.com/Phrogz/context-blender
+  https://stackoverflow.com/questions/22710627/tainted-canvases-may-not-be-exported
+-->
