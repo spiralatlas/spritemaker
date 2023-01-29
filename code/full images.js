@@ -34,6 +34,14 @@ function setColour(variablelist, colour){
     }
 }
 
+function findDefiningIndex(name){
+    for (let i = 0; i < defining_objects.length; i += 1) {
+        if (defining_objects[i].name ==name)
+            return i;
+    }
+    return -1;        
+}
+
 function getOffset(name){
     //how much the portrait image with name 'name' is shifted up or down to match the head shape
     let obj = findNameMatch(image_objects, "head");
@@ -100,6 +108,9 @@ function getOffset(name){
 
 add_children("head", skin_list);
 add_children("wheelchair_front", ["wheelchair_back"]);
-add_children("hat_front", ["hat_back"]);
+add_children("hat", ["hat_back"]);
 add_children("hair_front", ["hair_back"]);
+add_children("coat", ["coat_back","wheelchair_coat"]);
+add_children("bottom", ["wheelchair_bottom"]);
+add_children("top", ["top_collar"]);
 

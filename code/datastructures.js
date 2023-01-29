@@ -143,9 +143,9 @@ document.addEventListener('alpine:init', () => {
 
     randomiseBodyColouring(){
         //randomise the skin/eye/hair colour
-        this.current_skinColour = randomElement(skin_colours);
-        this.current_hairColour = randomElement(hair_colours);
-        this.current_eyeColour = randomElement(eye_colours);
+        this.current_defining_objects[findDefiningIndex("head")].colour = randomElement(skin_colours);
+        this.current_defining_objects[findDefiningIndex("hair_front")].colour = randomElement(hair_colours);
+        this.current_defining_objects[findDefiningIndex("iris")].colour = randomElement(eye_colours);
     },
     randomiseFeatures(gender){
         //randomise the nose/head/hairstyle etc
@@ -236,6 +236,7 @@ document.addEventListener('alpine:init', () => {
         for (let i = 0; i < defining_objects.length; i += 1){
             this.current_defining_objects[i].colour1 = randomElement(outfit_colours);
         }
+        //randomiseBodyColouring();
         /*
         this.randomiseBodyColouring();
         this.randomiseFeatures(gender);
@@ -273,8 +274,8 @@ function drawCanvas() {
     for (let i = 0; i < image_objects.length; i += 1){
         let b = image_objects[i];
         if (b.item_list[b.item] !="none"){ 
-            ctx_preview.fillStyle = "#000000";
-            ctx_preview.fillText(b.name, 10, 10*i); 
+            //ctx_preview.fillStyle = "#000000";
+            //ctx_preview.fillText(b.name, 10, 10*i); 
             //ctx_preview.drawImage(b.base_image_list[0],0,0);
             draw_object(b,current_expression,b.colour1,ctx_preview, 0,-getOffset(b.name)-b.heightOffset,0, 0,preview_width,preview_height);
         }
@@ -315,7 +316,6 @@ function drawCanvas() {
 }
 
 function setup(){
-    //Alpine.store('alpineData').initialiseAlpine();
     canvas = document.getElementById("exportCanvas");
     ctx = canvas.getContext("2d");
     canvas_preview = document.getElementById("previewCanvas");
@@ -345,7 +345,7 @@ function setup(){
     setVariables(Alpine.store('alpineData'));
     Alpine.store('alpineData').fixAlpine();
     
-    document.getElementById("closet").innerHTML = print_defining_objects();//+print_image_objects();
+    document.getElementById("closet").innerHTML = print_defining_objects()+print_image_objects();
     
     drawCanvas();
 }

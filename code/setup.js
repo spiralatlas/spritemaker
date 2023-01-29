@@ -1,5 +1,7 @@
 //player controlled
 
+let testing = true;
+
 let currently_editing = 0; //which element of editing list we are editing
 let current_expression = 0;
 let current_clothing = 0;
@@ -63,7 +65,9 @@ function findNameMatch(list, name){
             
         }
     }
-    document.getElementById("test").innerHTML = "Unknown value: "+name;
+    if (testing)
+        console.log("Unknown value: findNameMatch "+name); 
+    return -1;
 }
 
 function range(n){
@@ -143,14 +147,20 @@ function add_defining_object(name, double_list){
 
 function add_children(name, children){
     d_obj = findNameMatch(defining_objects,name);
-    for (i = 0; i < image_objects.length; i += 1){
-        for (j = 0; j < children.length; j += 1){
-            child_obj = findNameMatch(defining_objects,children[j]);
-            child_obj.children = [];
-            if (image_objects[i].name ==children[j] && !d_obj.children.includes(i))
-                d_obj.children.push(i);
-        }
-    }        
+    if (d_obj==-1)
+        console.log("Unknown value: add_children "+name); 
+    else{
+        for (i = 0; i < image_objects.length; i += 1){
+            for (j = 0; j < children.length; j += 1){
+                for (k = 0; k < defining_objects.length; k += 1){
+                    if (defining_objects[k].name ==children[j])
+                        defining_objects[k].children = [];
+                    if (image_objects[i].name ==children[j] && !d_obj.children.includes(i))
+                        d_obj.children.push(i);
+                }
+            }
+        }   
+    }     
 
 }
 
