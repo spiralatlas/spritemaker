@@ -173,11 +173,21 @@ function add_value_children(name, children){
     else{
         for (i = 0; i < image_objects.length; i += 1){
             for (j = 0; j < children.length; j += 1){
-                for (k = 0; k < defining_objects.length; k += 1){
+                for (k = 0; k < defining_objects.length; k += 1){ //d_obj's children have no children
                     if (defining_objects[k].name ==children[j])
                         defining_objects[k].value_children = [];
-                    if (image_objects[i].name ==children[j] && !d_obj.value_children.includes(i))
-                        d_obj.value_children.push(i);
+                }
+                if (image_objects[i].name ==children[j] && !d_obj.value_children.includes(i)){
+                    d_obj.value_children.push(i);
+                    temp_list = [];
+                    for (l = 0; l < d_obj.item_list.length; l += 1){//pad child's item_list with "none"s to have the same length as parent's
+                        if (image_objects[i].item_list.includes(d_obj.item_list[l]))
+                        temp_list.push(d_obj.item_list[l]);
+                        else
+                        temp_list.push("none");
+                    }
+                    image_objects[i].item_list = temp_list;    
+
                 }
             }
         }   

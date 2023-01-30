@@ -73,46 +73,46 @@
         <div class="row">
             <div class="row gy-2" x-show="$store.alpineData.currently_editing === 0" > 
               <div class="row row-cols-2 gy-3">
-                <div class="col"><div x-data="dropdown('Skin Colour','','head')" x-bind="colourbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Eye Colour','','iris')" x-bind="colourbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Hair Colour','','hair_front')" x-bind="colourbtn" ></div></div>
-              </div><!--
-              <div class="row row-cols-2 gy-3">
-                <div class="col"><div x-data="dropdown('Hairstyle','','current_hair','findNameMatch(menu_objects, \'Hairstyle\').name_list')" x-bind="dropbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Facial Hair','','current_Facialhair','facial_hair_list_menu')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Skin Colour','head')" x-bind="colourbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Eye Colour','iris')" x-bind="colourbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Hair Colour','hair_front')" x-bind="colourbtn" ></div></div>
               </div>
               <div class="row row-cols-2 gy-3">
-                <div class="col"><div x-data="dropdown('Head Shape','','current_head','head_list')" x-bind="dropbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Nose Shape','','current_nose','nose_list')" x-bind="dropbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Lip Shape','','current_lips','lip_list')" x-bind="dropbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Ear Shape','','current_ears','ear_list')" x-bind="dropbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Eye Type','','current_eyeType','eye_type_list_port')" x-bind="dropbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Complexion','','current_complexion','complexion_list')" x-bind="dropbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Height','','height','[\'Short\',\'Tall\']')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Hairstyle','hair_front','findNameMatch(menu_objects, \'Hairstyle\').name_list')" x-bind="dropbtn" ></div></div>
+                <!--<div class="col"><div x-data="dropdown('Facial Hair','current_Facialhair','facial_hair_list_menu')" x-bind="dropbtn" ></div></div>-->
+              </div>
+              <div class="row row-cols-2 gy-3">
+                <div class="col"><div x-data="dropdown('Head Shape','head','head_list')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Nose Shape','nose','nose_list')" x-bind="dropbtn" ></div></div>
+                <!--<div class="col"><div x-data="dropdown('Lip Shape','current_lips','lip_list')" x-bind="dropbtn" ></div></div>-->
+                <!--<div class="col"><div x-data="dropdown('Ear Shape','current_ears','ear_list')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Eye Type','current_eyeType','eye_type_list_port')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Complexion','current_complexion','complexion_list')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Height','height','[\'Short\',\'Tall\']')" x-bind="dropbtn" ></div></div>-->
               </div>
               
             </div>
 
-            <div class="row gy-3" x-show="$store.alpineData.currently_editing === 1" >
-              <div class="col"><div x-data="dropdown('Clothing Item','','current_clothing','menu_object_names.slice(0,menu_object_names.length-1)')" x-bind="dropbtn" ></div></div>
+            <!--<div class="row gy-3" x-show="$store.alpineData.currently_editing === 1" >
+              <div class="col"><div x-data="dropdown('Clothing Item','current_clothing','defining_object_names')" x-bind="dropbtn" ></div></div>
               <div class="row row-cols-2 gy-3">
-                <div class="col"><div x-data="dropdown('Style','','current_menu_objects[$store.alpineData.current_clothing].item','menu_objects[$store.alpineData.current_clothing].name_list')" x-bind="dropbtn" ></div></div>
-                <div class="col"><div x-show="sleeve_havers.includes(menu_object_names[$store.alpineData.current_clothing])" x-data="dropdown('Sleeves','','current_menu_objects[$store.alpineData.current_clothing].sleeves','sleeves_names')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Style','current_menu_objects[$store.alpineData.current_clothing].item','menu_objects[$store.alpineData.current_clothing].name_list')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-show="sleeve_havers.includes(menu_object_names[$store.alpineData.current_clothing])" x-data="dropdown('Sleeves','current_menu_objects[$store.alpineData.current_clothing].sleeves','sleeves_names')" x-bind="dropbtn" ></div></div>
               </div>
               <div class="row row-cols-2 gy-3">
 
-                <div class="col"><div x-data="dropdown('Main Colour','','current_menu_objects[$store.alpineData.current_clothing].colour1','outfit_colours')" x-bind="colourbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Highlight Colour','','current_menu_objects[$store.alpineData.current_clothing].colour2','outfit_colours')" x-bind="colourbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Main Colour','current_menu_objects[$store.alpineData.current_clothing].colour1','outfit_colours')" x-bind="colourbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Highlight Colour','current_menu_objects[$store.alpineData.current_clothing].colour2','outfit_colours')" x-bind="colourbtn" ></div></div>
               </div>
-            </div>
+            </div>-->
 
-            <div class="row gy-3" x-show="$store.alpineData.currently_editing === 2" >
-              <div x-data="dropdown('Panel','','current_expression','panel_list.slice(0,$store.alpineData.panelNum)')" x-bind="dropbtn" ></div>
+            <!--<div class="row gy-3" x-show="$store.alpineData.currently_editing === 2" >
+              <div x-data="dropdown('Expression','current_expression','panel_list.slice(0,$store.alpineData.panelNum)')" x-bind="dropbtn" ></div>
               <div class="row row-cols-2 gy-3">
-                <div class="col"><div x-data="dropdown('Eyebrows','','eyebrow_expressions[$store.alpineData.current_expression]','eyebrow_list')" x-bind="dropbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Eyes','','eye_expressions[$store.alpineData.current_expression]','eye_expression_list_port')" x-bind="dropbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Mouth','','mouth_expressions[$store.alpineData.current_expression]','mouth_list')" x-bind="dropbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Blush','','blush_expressions[$store.alpineData.current_expression]','blush_list')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Eyebrows','eyebrow_expressions[$store.alpineData.current_expression]','eyebrow_list')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Eyes','eye_expressions[$store.alpineData.current_expression]','eye_expression_list_port')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Mouth','mouth_expressions[$store.alpineData.current_expression]','mouth_list')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Blush','blush_expressions[$store.alpineData.current_expression]','blush_list')" x-bind="dropbtn" ></div></div>
               </div>-->
 
             </div>

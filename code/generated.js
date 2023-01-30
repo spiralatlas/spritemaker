@@ -6,7 +6,7 @@ const skin_colours = ["#FFE7D6","#FFECD6","#FFD3A6","#FFDFA5","#F1A065","#F1B265
 const hair_colours = ["#FCE374","#F0B50A","#FE7423","#FF5565","#DF433C","#D16132","#641D00","#923D1F","#8B4910","#BB742E","#A59A9D","#E9E9E9","#391E47","#48356E","#4B261E","#5B483C","#5A5A7F","#602372","#000000",];
 
 const no_lines_list = ["iris","cheeks",];
-const no_fill_list = ["mouth","eye_shape",];
+const no_fill_list = ["mouth","eyebrows","eye_shape",];
 const no_iris_list = ["sleepy","closed",];
 const pattern_list = ["none","crocodile","rose","snake","damask","crosshatch","fabric","diamonds","diamondssmall","tartan","polkadot","pinstripe","horizontalpinstripe",];
 const skin_list = ["body","head","nose","mouth","eyebrows","eye_shape",];

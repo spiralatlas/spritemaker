@@ -94,7 +94,7 @@ defining_list = outfit_list+skin_list+["hair_front","iris","cheeks"]
 #extra info
 
 no_chest_list = [ "robe","robehood",  "mediumcloak", "mediumcloakhood", "longcloak", "longcloakhood","wrap"] #clothes where the chest doesn't show
-no_fill_list = ["mouth","eye_shape"] #lined items with no coloured fill
+no_fill_list = ["mouth","eyebrows", "eye_shape"] #lined items with no coloured fill
 no_lines_list = ["iris","cheeks"] #coloured items with no lines
 
 hat_back_list = ["none","tophat","scarf","turban"]
