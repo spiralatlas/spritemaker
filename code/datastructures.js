@@ -65,18 +65,20 @@ function setVariables(data_object){
 document.addEventListener('alpine:init', () => {
     Alpine.data('dropdown', (titleInput = "",valueNameInput = "",listNameInput = "[]") => ({
       valueName: valueNameInput, //the value being set
-      listName: listNameInput,//the list iut's being chosen from
       title: titleInput, //the name for this choice used in the webpage
 
       dropbtn: {
         //Sets a variable in a list using a dropdown
           ['x-html']() {
             output = "";
+            obj_index = 7;//findDefiningIndex(this.valueName);
+            objName = objName = '$store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')]';
             if (this.title!="")
-                output += this.title+': ';   
-            output +='<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" x-text="'+'\''+this.buttonName+'\'+niceString('+this.listName+"[$store.alpineData."+this.valueName+"])"+'"></button>';
-            output +='<ul class="dropdown-menu"> <template x-for=" (preset, index) in '+ this.listName+'">'; 
-            output +='<li><button class="dropdown-item" x-on:click="$store.alpineData.current_defining_objects[findDefiningIndex(\''+
+                output += this.title+': ';  
+            output +='<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" x-text="niceString(\'Cheese\')"></button>';
+            //output +='<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" x-text="'+'+niceString('+objName+'.item_list['+objName+'.item])"></button>';
+            output +='<ul class="dropdown-menu"> <template x-for=" (preset, index) in '+objName+'.item_list">'; 
+            output +='<li><button class="dropdown-item" x-on:click="'+objName+'.value_list[current_expression]=index"';
             this.valueName+'=index;setVariables(Alpine.store(\'alpineData\'));" x-text="niceString(preset)"></a></li>'; 
             output +='</template></ul>'
             return output 
@@ -85,8 +87,10 @@ document.addEventListener('alpine:init', () => {
       colourbtn: {
         //Sets a colour using the colour picker
         ['x-html']() {
+            objName = '$store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')]';
             output = this.title+': ';
-            output += '<input type="color" :value ="$store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')].colour1"  @input="$store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')].colour1=$event.target.value;setVariables(Alpine.store(\'alpineData\'));" :aria-label="colour_desc($store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')].colour1)"/>'
+            output += '<input type="color" :value ="'+objName+'.colour1"  @input="$store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')].colour1=$event.target.value;setVariables(Alpine.store(\'alpineData\'));" :aria-label="colour_desc($store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')].colour1)"/>'
+            //output += '<input type="color" :value ="$store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')].colour1"  @input="$store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')].colour1=$event.target.value;setVariables(Alpine.store(\'alpineData\'));" :aria-label="colour_desc($store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')].colour1)"/>'
             return output 
             },
         },
