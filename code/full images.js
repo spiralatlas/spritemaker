@@ -116,3 +116,10 @@ add_colour_children("coat", ["coat_back","wheelchair_coat"]);
 add_colour_children("bottom", ["wheelchair_bottom"]);
 add_colour_children("top", ["top_collar"]);
 
+const clothes_names = [];
+
+for (i = 0; i < defining_objects.length; i += 1){
+    if (outfit_list.includes(defining_objects[i].name))
+        clothes_names.push(defining_objects[i].name);
+}
+

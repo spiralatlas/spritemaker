@@ -63,7 +63,7 @@ function setVariables(data_object){
 }
 
 document.addEventListener('alpine:init', () => {
-    Alpine.data('dropdown', (titleInput = "",valueNameInput = "",listNameInput = "[]") => ({
+    Alpine.data('dropdown', (titleInput = "",valueNameInput = "") => ({
       valueName: valueNameInput, //the value being set
       title: titleInput, //the name for this choice used in the webpage
 
@@ -71,16 +71,33 @@ document.addEventListener('alpine:init', () => {
         //Sets a variable in a list using a dropdown
           ['x-html']() {
             output = "";
+            if (this.title!="")
+                output += this.title+': ';  
             obj_index = findDefiningIndex(this.valueName);
             objName = '$store.alpineData.current_defining_objects['+obj_index+']';
             objList = 'defining_objects['+obj_index+'].item_list'
-            if (this.title!="")
-                output += this.title+': ';  
+            
             output +='<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" x-text="niceString('+objList+'['+objName+'.value_list[current_expression]])"></button>';
             output +='<ul class="dropdown-menu"> <template x-for=" (preset, index) in '+objList+'">'; 
             output +='<li><button class="dropdown-item" x-on:click="'+objName+'.value_list[current_expression]=index;setVariables(Alpine.store(\'alpineData\'));" x-text="niceString(preset)"></a></li>'; 
-            output +='</template></ul>'
-            return output 
+            output +='</template></ul>' 
+            
+            return output;
+          },
+      },
+      clothesbtn: {
+        //Sets a variable in a list using a dropdown
+          ['x-html']() {
+            output = "";
+            if (this.title!="")
+                output += this.title+': ';  
+            output +='<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" x-text="niceString(clothes_names[$store.alpineData.current_clothing])"></button>';
+            //output +='<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" x-text="niceString(clothes_names[current_clothing])"></button>';
+            output +='<ul class="dropdown-menu"> <template x-for=" (preset, index) in clothes_names">'; 
+            output +='<li><button class="dropdown-item" x-on:click="$store.alpineData.current_clothing=index;setVariables(Alpine.store(\'alpineData\'));" x-text="niceString(preset)"></a></li>'; 
+            output +='</template></ul>' 
+            
+            return output;
           },
       },
       colourbtn: {
