@@ -73,17 +73,17 @@
         <div class="row">
             <div class="row gy-2" x-show="$store.alpineData.currently_editing === 0" > 
               <div class="row row-cols-2 gy-3">
-                <div class="col"><div x-data="dropdown('Skin Colour','head')" x-bind="colourbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Eye Colour','iris')" x-bind="colourbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Hair Colour','hair_front')" x-bind="colourbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Skin Colour','head', 'body')" x-bind="colourbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Eye Colour','iris','body')" x-bind="colourbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Hair Colour','hair_front','body')" x-bind="colourbtn" ></div></div>
               </div>
               <div class="row row-cols-2 gy-3">
-                <div class="col"><div x-data="dropdown('Hairstyle','hair_front')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Hairstyle','hair_front','body')" x-bind="dropbtn" ></div></div>
                 <!--<div class="col"><div x-data="dropdown('Facial Hair','current_Facialhair','facial_hair_list_menu')" x-bind="dropbtn" ></div></div>-->
               </div>
               <div class="row row-cols-2 gy-3">
-                <div class="col"><div x-data="dropdown('Head Shape','head')" x-bind="dropbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Nose Shape','nose')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Head Shape','head','body')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Nose Shape','nose','body')" x-bind="dropbtn" ></div></div>
                 <!--<div class="col"><div x-data="dropdown('Lip Shape','current_lips','lip_list')" x-bind="dropbtn" ></div></div>-->
                 <!--<div class="col"><div x-data="dropdown('Ear Shape','current_ears','ear_list')" x-bind="dropbtn" ></div></div>-->
                 <!--<div class="col"><div x-data="dropdown('Complexion','current_complexion','complexion_list')" x-bind="dropbtn" ></div></div>
@@ -94,14 +94,14 @@
 
             <div class="row gy-3" x-show="$store.alpineData.currently_editing === 1" >
               <div class="col">
-                <div x-data="dropdown('Clothing','current_clothing')" x-bind="clothesbtn" ></div>
+                <div x-data="dropdown('Clothing','current_clothing','closet')" x-bind="closetbtn" ></div>
 
               <div class="row row-cols-2 gy-3">
-                <div class="col"><div x-data="dropdown('Style','clothes_names[$store.alpineData.current_clothing]')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Style','current_clothing','clothing')" x-bind="dropbtn" ></div></div>
               </div>
               <div class="row row-cols-2 gy-3">
 
-                <!--<div class="col"><div x-data="dropdown('Main Colour','defining_objects[current_clothing].name')" x-bind="colourbtn" ></div></div>-->
+                <div class="col"><div x-data="dropdown('Main Colour','','clothing')" x-bind="colourbtn" ></div></div>
                 <!--<div class="col"><div x-data="dropdown('Highlight Colour','current_menu_objects[$store.alpineData.current_clothing].colour2','outfit_colours')" x-bind="colourbtn" ></div></div>-->
               </div>
             </div>-->
