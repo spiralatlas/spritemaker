@@ -20,7 +20,7 @@
 <hr>
 <div class="container text-center">Warning: Images sometimes flicker while updating</div>
 <hr>
-<div class="container text-center">
+<div class="container text-center"><!--top bar-->
     <div class="row">
       <div class="col">
         <button class="btn btn-primary" @click="dark_theme=!dark_theme" x-text="dark_theme ? 'Dark Theme' : 'Light Theme'"></button>
@@ -58,11 +58,11 @@
       <button class="btn btn-primary" id="download">Export Canvas</button>
     </div>
   </div>
-    <canvas id="exportCanvas" width="512" height="768">
+    <canvas id="exportCanvas" width="0" height="0">
     Your browser does not support HTML5 Canvas. Try downloading latest Chrome, Firefox, Safari, Opera or Internet explorer.
     </canvas>
     </div></div>
-    <div class="col">
+    <div class="col"><!--column 2, choices-->
       <ul class="nav nav-tabs">
         <template x-for="(edit_type, index) in editing_list">
           <li class="nav-item">
@@ -104,16 +104,17 @@
                 <div class="col"><div x-data="dropdown('Main Colour','','clothing1')" x-bind="colourbtn" ></div></div>
                 <div class="col"><div x-data="dropdown('Highlight Colour','','clothing1')" x-bind="colourbtn" ></div></div>
               </div>
-            </div>-->
+            </div>
+          </div>
 
             <div class="row gy-3" x-show="$store.alpineData.currently_editing === 2" >
               <div x-data="dropdown('Expression','current_expression','simple')" x-bind="dropbtn" ></div>
-              <!--<div class="row row-cols-2 gy-3">
-                <div class="col"><div x-data="dropdown('Eyebrows','eyebrow_expressions[$store.alpineData.current_expression]','eyebrow_list')" x-bind="dropbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Eyes','eye_expressions[$store.alpineData.current_expression]','eye_expression_list_port')" x-bind="dropbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Mouth','mouth_expressions[$store.alpineData.current_expression]','mouth_list')" x-bind="dropbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Blush','blush_expressions[$store.alpineData.current_expression]','blush_list')" x-bind="dropbtn" ></div></div>
-              </div>-->
+              <div class="row row-cols-2 gy-3">
+                <div class="col"><div x-data="dropdown('Eyebrows','eyebrows','expression')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Eyes','eye_shape','expression')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Mouth','mouth','expression')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Blush','cheeks','expression')" x-bind="dropbtn" ></div></div>
+              </div>
 
             </div>
 
@@ -140,10 +141,10 @@
         </div>
     <hr>
     <div id="test"></div>
-    <div id="closet"></div>
     
 </div> <!-- end of row -->   
 </div> <!-- end of whole column structure -->  
+<div id="closet"></div>
       
 </div>
 </div>

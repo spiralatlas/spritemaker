@@ -85,6 +85,12 @@ document.addEventListener('alpine:init', () => {
                     objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list[current_expression]';
                     objList = 'defining_objects['+obj_index+'].item_list';
                     break;    
+                case 'expression':
+                    obj_index = findDefiningIndex(this.valueName);
+                    objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list[current_expression]';
+                    objList = 'defining_objects['+obj_index+'].item_list';
+                    break;    
+    
                 case 'closet':
                     objName = '$store.alpineData.current_clothing';
                     objList = 'clothes_names';
