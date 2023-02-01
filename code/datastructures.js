@@ -77,39 +77,34 @@ document.addEventListener('alpine:init', () => {
             switch(this.typeName){
                 case 'body':
                     obj_index = findDefiningIndex(this.valueName);
-                    objName = '$store.alpineData.current_defining_objects['+obj_index+']';
+                    objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list[current_expression]';
                     objList = 'defining_objects['+obj_index+'].item_list';
                     break;
                 case 'clothing':
                     obj_index = 'findDefiningIndex(clothes_names[$store.alpineData.current_clothing])';
-                    objName = '$store.alpineData.current_defining_objects['+obj_index+']';
-                    objList = 'defining_objects['+obj_index+'].item_list';
-                    break;  
-                case 'closet':  
-                    obj_index = 'findDefiningIndex(clothes_names[$store.alpineData.current_clothing])';
-                    objName = '$store.alpineData.current_defining_objects['+obj_index+']';
+                    objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list[current_expression]';
                     objList = 'defining_objects['+obj_index+'].item_list';
                     break;    
-            
+                case 'closet':
+                    objName = '$store.alpineData.current_clothing';
+                    objList = 'clothes_names';
+                    break; 
+                case 'simple':
+                    objName = '$store.alpineData.'+this.valueName;
+                    switch(this.valueName){
+                        case 'current_clothing':
+                            objList = 'clothes_names';
+                            break;
+                        case 'current_expression':
+                            objList = 'panel_list';
+                            break;
+                    }
+                    break;     
             }    
-
-            output +='<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" x-text="niceString('+objList+'['+objName+'.value_list[current_expression]])"></button>';
-            output +='<ul class="dropdown-menu"> <template x-for=" (preset, index) in '+objList+'">'; 
-            output +='<li><button class="dropdown-item" x-on:click="'+objName+'.value_list[current_expression]=index;setVariables(Alpine.store(\'alpineData\'));" x-text="niceString(preset)"></a></li>'; 
-            output +='</template></ul>' 
             
-            return output;
-          },
-      },
-      closetbtn: {
-        //Sets a variable in a list using a dropdown
-          ['x-html']() {
-            output = "";
-            if (this.title!="")
-                output += this.title+': ';  
-            output +='<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" x-text="niceString(clothes_names[$store.alpineData.current_clothing])"></button>';
-            output +='<ul class="dropdown-menu"> <template x-for=" (preset, index) in clothes_names">'; 
-            output +='<li><button class="dropdown-item" x-on:click="$store.alpineData.current_clothing=index;setVariables(Alpine.store(\'alpineData\'));" x-text="niceString(preset)"></a></li>'; 
+            output +='<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" x-text="niceString('+objList+'['+objName+'])"></button>';
+            output +='<ul class="dropdown-menu"> <template x-for=" (preset, index) in '+objList+'">'; 
+            output +='<li><button class="dropdown-item" x-on:click="'+objName+'=index;setVariables(Alpine.store(\'alpineData\'));" x-text="niceString(preset)"></a></li>'; 
             output +='</template></ul>' 
             
             return output;
@@ -120,15 +115,18 @@ document.addEventListener('alpine:init', () => {
         ['x-html']() {
             switch(this.typeName){
                 case 'body':
-                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')]';
+                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')].colour1';
                     break;
-                case 'clothing':
-                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex(clothes_names[$store.alpineData.current_clothing])]';
-                    break;    
+                case 'clothing1':
+                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex(clothes_names[$store.alpineData.current_clothing])].colour1';
+                    break; 
+                case 'clothing2':
+                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex(clothes_names[$store.alpineData.current_clothing])].colour2';
+                    break;        
             }    
             
             output = this.title+': ';
-            output += '<input type="color" :value ="'+objName+'.colour1"  @input="'+objName+'.colour1=$event.target.value;setVariables(Alpine.store(\'alpineData\'));" :aria-label="colour_desc('+objName+'.colour1)"/>'
+            output += '<input type="color" :value ="'+objName+'"  @input="'+objName+'=$event.target.value;setVariables(Alpine.store(\'alpineData\'));" :aria-label="colour_desc('+objName+')"/>'
             return output 
             },
         },

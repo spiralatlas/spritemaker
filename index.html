@@ -94,21 +94,21 @@
 
             <div class="row gy-3" x-show="$store.alpineData.currently_editing === 1" >
               <div class="col">
-                <div x-data="dropdown('Clothing','current_clothing','closet')" x-bind="closetbtn" ></div>
+                <div x-data="dropdown('Clothing','current_clothing','simple')" x-bind="dropbtn" ></div>
 
               <div class="row row-cols-2 gy-3">
                 <div class="col"><div x-data="dropdown('Style','current_clothing','clothing')" x-bind="dropbtn" ></div></div>
               </div>
               <div class="row row-cols-2 gy-3">
 
-                <div class="col"><div x-data="dropdown('Main Colour','','clothing')" x-bind="colourbtn" ></div></div>
-                <!--<div class="col"><div x-data="dropdown('Highlight Colour','current_menu_objects[$store.alpineData.current_clothing].colour2','outfit_colours')" x-bind="colourbtn" ></div></div>-->
+                <div class="col"><div x-data="dropdown('Main Colour','','clothing1')" x-bind="colourbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Highlight Colour','','clothing1')" x-bind="colourbtn" ></div></div>
               </div>
             </div>-->
 
-            <!--<div class="row gy-3" x-show="$store.alpineData.currently_editing === 2" >
-              <div x-data="dropdown('Expression','current_expression','panel_list.slice(0,$store.alpineData.panelNum)')" x-bind="dropbtn" ></div>
-              <div class="row row-cols-2 gy-3">
+            <div class="row gy-3" x-show="$store.alpineData.currently_editing === 2" >
+              <div x-data="dropdown('Expression','current_expression','simple')" x-bind="dropbtn" ></div>
+              <!--<div class="row row-cols-2 gy-3">
                 <div class="col"><div x-data="dropdown('Eyebrows','eyebrow_expressions[$store.alpineData.current_expression]','eyebrow_list')" x-bind="dropbtn" ></div></div>
                 <div class="col"><div x-data="dropdown('Eyes','eye_expressions[$store.alpineData.current_expression]','eye_expression_list_port')" x-bind="dropbtn" ></div></div>
                 <div class="col"><div x-data="dropdown('Mouth','mouth_expressions[$store.alpineData.current_expression]','mouth_list')" x-bind="dropbtn" ></div></div>
@@ -118,7 +118,7 @@
             </div>
 
             </div>
-            <div x-show="$store.alpineData.currently_editing === 4" >
+            <div x-show="$store.alpineData.currently_editing === 3" >
               <h3>Body</h3>
               <div class="row row-cols-2 gy-3">
                 <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseBodyColouring();setVariables(Alpine.store('alpineData'));">Colouring</button></div>
