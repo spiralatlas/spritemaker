@@ -29,7 +29,11 @@ wheelchair_list_d = double_list(wheelchair_list)
 
 head_list_u = ["pointy","regular","chin","round"]
 head_list_d = double_list(head_list_u)
-body_list = ["regular","regular"]
+skull_list = ["regular"]
+skull_list_d = double_list(skull_list)
+ear_list = ["regular"]
+ear_list_d = double_list(ear_list)
+body_list = ["regular"]
 body_list_d = double_list(body_list)
 no_iris_list = ["sleepy","closed"] #eyeshapes with no iris
 iris_list_u = ["wide","extrawide", "widecatty","sad", "gentle", "regular","vivid", "cool","catty","coolside", "narrowcool","narrowcoolside","narrowcatty","narrowcattyside", "halfclosed"]
@@ -46,10 +50,10 @@ nose_list_d = double_list(nose_list_u)
 cheeks_list_u = ["none","blush"]
 cheeks_list_d = double_list(cheeks_list_u)
 
-face_dec_list_u = ["none", "roundglasses"] #,"freckles",
-face_dec_list_f = face_dec_list_u + ["dropearrings", "stud","roundearrings"]
-face_dec_list_m = face_dec_list_u + ["beard"]
-face_dec_list_d =  [face_dec_list_f,face_dec_list_m]
+eyewear_list_u = ["none", "roundglasses"] #,"freckles",
+eyewear_list_f = eyewear_list_u + ["dropearrings", "stud","roundearrings"]
+eyewear_list_m = eyewear_list_u + ["beard"]
+eyewear_list_d =  [eyewear_list_f,eyewear_list_m]
 
 gloves_list_f = ["none", "shortgloves", "mediumgloves", "longgloves","bracelets"]
 gloves_list_m = ["none", "shortgloves"]
@@ -87,8 +91,8 @@ hat_list_m = ["none","tophat","turban"]
 hat_list_d = [hat_list_f, hat_list_m]
 
 # collections of parts that have the same colours and patterns
-skin_list = ["body","head","nose","mouth","eyebrows","eye_shape"]
-outfit_list = ["wheelchair_front", "bottom","top", "accessory", "face_dec","gloves", "hat", "coat"]
+skin_list = ["body","head","nose","mouth","eyebrows","eye_shape","skull"]
+outfit_list = ["wheelchair", "bottom","top", "accessory", "eyewear","gloves", "hat", "coat"]
 defining_list = outfit_list+skin_list+["hair_front","iris","cheeks"]
 
 #extra info
@@ -112,16 +116,24 @@ wheelchair_coat_list_d = double_list(wheelchair_coat_list)
 backs_list = [["hat_back","hat",hat_back_list], ["hair_back","hair",hair_back_list],["coat_back","coat",coat_back_list],
 ["wheelchair_bottom","bottom",wheelchair_bottom_list],["wheelchair_coat","coat",wheelchair_bottom_list],["wheelchair_back","wheelchair",wheelchair_list],]
 
-two_tone_list = [["none",[]],
-["wheelchair_bottom",["breeches","fancyskirt"]], ["wheelchair_back",["regular"]],  ["wheelchair_front",["regular"]], 
-["top",["bodiceplain", "bodicelong","bodicefancy","bodicepointy"]],
-["face_dec",["roundearrings"]],
-["accessory",["waistcoat","pendant","fancychoker"]],
-["bottom",["breeches","fancyskirt","plainskirt"]],
-["coat",["dressjacket","jama"]],
-["hat",["tophat","scarf"]],
-["hat_back",["scarf"]],
-]
+wheelchair_bottom_dec_list = ["breeches","fancyskirt"]
+wheelchair_bottom_dec_list_d = double_list(wheelchair_bottom_dec_list)
+top_dec_list = ["bodiceplain", "bodicelong","bodicefancy","bodicepointy"]
+top_dec_list_d = double_list(top_dec_list)
+eyewear_dec_list = ["roundearrings"]
+eyewear_dec_list_d = double_list(eyewear_dec_list)
+accessory_dec_list = ["waistcoat","pendant","fancychoker"]
+accessory_dec_list_d = double_list(accessory_dec_list)
+bottom_dec_list = ["breeches","fancyskirt","plainskirt"]
+bottom_dec_list_d = double_list(bottom_dec_list)
+coat_dec_list = ["dressjacket","jama"]
+coat_dec_list_d = double_list(coat_dec_list)
+hat_dec_list = ["tophat","scarf"]
+hat_dec_list_d = double_list(hat_dec_list)
+hat_back_dec_list = ["scarf"]
+hat_back_dec_list_d = double_list(hat_back_dec_list)
+
+two_tone_list = ["wheelchair_bottom","wheelchair_back","wheelchair","top","eyewear","accessory","bottom","hat","hat_back"]
 
 no_render_list = []
 
@@ -153,15 +165,17 @@ def add_item(name, listname, double_list,location):
 
 clothes_list = ["wheelchair_back","coat_back","hat_back","hair_back","body",
 "gloves","top","bottom","accessory","coat","chest","top_collar"
-"head", "eyebrows", "eye_shape", "nose","mouth","face_dec","hair_front",
-"hat", "wheelchair_front","wheelchair_bottom","wheelchair_coat"]
+"head", "eyebrows", "eye_shape", "nose","mouth","eyewear","hair_front",
+"hat", "wheelchair","wheelchair_bottom","wheelchair_coat"]
 
 # Behind face
 shown_start = len(closet) # where the visible items start
 
 add_item("wheelchair_back", "wheelchair_list_d", wheelchair_list_d,"wheelchair")
+add_item("wheelchair_back_dec", "wheelchair_list_d", wheelchair_list_d,"wheelchair")
 add_item("coat_back", "coat_back_list_d",coat_back_list_d, "clothes/coat")
 add_item("hat_back", "hat_back_list_d",hat_back_list_d, "clothes/hat")
+add_item("hat_back_dec", "hat_back_dec_list_d",hat_back_dec_list_d, "clothes/hat")
 add_item("hair_back", "hair_back_list_d",hair_back_list_d, "hair")
 add_item("body", "body_list_d", body_list_d, "anatomy")
 
@@ -177,17 +191,21 @@ add_item("coat", "coat_list_d", coat_list_d, "clothes")
 add_item("chest", "chest_list_d", chest_list_d, "anatomy")
 add_item("top_collar", "top_collar_list_d", top_collar_list_d, "clothes")
 
+add_item("skull", "skull_list_d", skull_list_d, "anatomy")
 add_item("head", "head_list_d", head_list_d, "anatomy")
+add_item("ears", "ear_list_d", ear_list_d, "anatomy")
 add_item("nose", "nose_list_d", nose_list_d, "face")
 add_item("mouth", "mouth_list_d", mouth_list_d, "face")
 add_item("eyebrows", "eyebrows_list_d", eyebrows_list_d, "face")
 add_item("iris", "iris_list_d", iris_list_d, "face/eyes")
 add_item("eye_shape", "eye_shape_list_d", eye_shape_list_d, "face/eyes")
-add_item("face_dec", "face_dec_list_d", face_dec_list_d, "clothes")
+add_item("eyewear", "eyewear_list_d", eyewear_list_d, "clothes")
 add_item("hair_front", "hair_front_list_d", hair_front_list_d, "hair")
 add_item("hat", "hat_list_d", hat_list_d, "clothes")
+add_item("hat_dec", "hat_dec_list_d", hat_dec_list_d, "clothes")
 
-add_item("wheelchair_front", "wheelchair_list_d", wheelchair_list_d, "wheelchair")
+add_item("wheelchair", "wheelchair_list_d", wheelchair_list_d, "wheelchair")
+add_item("wheelchair_dec", "wheelchair_list_d", wheelchair_list_d, "wheelchair")
 #add_item("wheelchair_bottom", "wheelchair_bottom_list_d", wheelchair_bottom_list, "wheelchair")
 add_item("wheelchair_coat", "wheelchair_coat_list_d", wheelchair_coat_list_d, "wheelchair")
 
@@ -375,22 +393,21 @@ def process_image(name, location,type):
     load_string = "../images/bases/"+location+"/"+name
     if type=="nofill":
         image_string = load_string+".png"
-        line_string = load_string+".png"
+    elif type =="twotone":
+        image_string = load_string+"_fill2.png"    
     else:    
         image_string = load_string+"_fill.png"
-        line_string = load_string+"_lines.png"
         
     if type == "noshadow":
-        save_string = "../images/render/"+location+"/"+name+"_noshadow"
+        save_string = "../images/render/"+location+"/"+name+"_noshadow"  
+    elif type =="twotone":
+        save_string = "../images/render/"+location+"/"+name+"2" 
     else:    
         save_string = "../images/render/"+location+"/"+name
 
     img_original = Image.open(image_string) 
     original_data = img_original.load() 
-
-    if type!="nolines":
-        img_line = Image.open(line_string) 
-        line_data = img_line.load() 
+    
     
     save_string_base = save_string +"_base.png"
     img_base = Image.new("RGBA", (img_original.size[0], img_original.size[1]))
@@ -406,8 +423,6 @@ def process_image(name, location,type):
     black_luminance = 100#13 #luminance level that's treated as black
     shadow_luminance = 190 
 
-    
-
     for colour in shadow_types:
         [shadow1,edge] = shadow_colours(colour)
 
@@ -417,18 +432,12 @@ def process_image(name, location,type):
 
         for y in range(img_base.size[1]):
             for x in range(img_base.size[0]):
-                uselines = False
-                if type!="nolines":
-                    if line_data[x, y][3] !=0:
-                        uselines = True; 
-                if  uselines:
-                        multiply_data[x, y] = (line_colour[0],line_colour[1],line_colour[2],line_data[x, y][3])
-                elif original_data[x, y][3] !=0:            
+
+                if original_data[x, y][3] !=0:            
                     pixel = original_data[x, y]
                     p = [pixel[0],pixel[1],pixel[2]]
-                    h = hue(p)
-                    if (255>h> 60) and type!="noshadow":  #shadow
-                        multiply_data[x, y] =red_shadow(pixel,shadow1,edge)
+                    if type!="noshadow":  #shadow
+                        multiply_data[x, y] =red_shadow(pixel,shadow1,line_colour)
         img_multiply.save(save_string_multiply) 
 
     for y in range(img_base.size[1]):
@@ -437,17 +446,8 @@ def process_image(name, location,type):
                 pixel = original_data[x, y]
                 p = [pixel[0],pixel[1],pixel[2]]
                 lum = luminance(p)
-                h = hue(p)
-
-                if h >230: #blue, so shadows
-                    if type!="noshadow":  #shadow
-                        base_data[x, y] = (100,100,100,pixel[3])           
-                elif h> 60:  #highlight
-                    base_data[x, y] = (100,100,100,pixel[3])       
-                    highlight_data[x, y] = (highlight[0],highlight[1],highlight[2],int(pixel[3]*0.5))     
-                else: #just base colour
-                    base_data[x, y] = (100,100,100,pixel[3])     
-
+                if lum>250 or type!="noshadow":  #shadow
+                        base_data[x, y] = (100,100,100,pixel[3])             
     img_base.save(save_string_base)   
     img_highlight.save(save_string_highlight)
                          
@@ -502,7 +502,7 @@ def write_variables():
     content.write(list_string("defining_list", defining_list)) 
     content.write("\n")   
     for c in closet:
-        if not (c.name in ["wheelchair_back"]):
+        if not (c.name in ["wheelchair_back","wheelchair_back_dec","wheelchair_dec",]):
             content.write(name_string(c))
     content.write("\n")
     for c in closet:
@@ -518,19 +518,21 @@ def write_variables():
 
 def process_portrait_part(obj):
     if obj.name == "Nose_front":
-        loc = obj.location + "/nose"    
-    else:       
+        loc = obj.location + "/nose" 
+    elif obj.name.endswith("_dec"): 
+        loc = obj.location + "/"+obj.name[0:-4]        
+    else: 
         loc = obj.location + "/"+obj.name  
     for item in obj.item_list:
         if not (obj.name in no_fill_list):     
             if item!="none":
                 print(obj.name+" "+item)
                 if obj.name == "Nose_front":
-                    process_image(item, loc,"noshadow")
-                elif (obj.name in no_fill_list):  
-                    process_image(item, loc,"nofill")            
+                    process_image(item, loc,"noshadow")          
                 elif obj.name in no_lines_list:  
-                    process_image(item, loc,"nolines")     
+                    process_image(item, loc,"nolines")  
+                elif obj.name.endswith("_dec"):
+                    process_image(item, loc,"twotone")       
                 else:    
                     process_image(item, loc,"portrait")
 
@@ -570,7 +572,7 @@ def process_all_portraits():
 write_variables()
 
 for c in closet:
-    if c.name in []:
+    if c.name in ["wheelchair_back","wheelchair_back_dec","wheelchair_dec","wheelchair"]:
         process_portrait_part(c)
 #makeWinks()
 #makeStubble() 

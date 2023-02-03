@@ -363,6 +363,10 @@ function fixSources(){
                     if (b.name =="nose_front")
                         current_loc+="_noshadow";
                     loc_string = "images/render/"+b.location+"/"+current_loc 
+
+                    if (b.name.includes("_dec"))
+                        loc_string +="2";
+
                     
                     b.base_image_list[j].src  = loc_string+"_base.png";
                     b.highlight_image_list[j].src  = loc_string+"_highlight.png";
@@ -387,6 +391,9 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
     
     /*if (!(obj.name =="Lips" && (current_lips==0))){
     */ 
+    if (!["body","skull","ears","head","wheelchair_back","wheelchair","wheelchair_back_dec","wheelchair_dec"].includes(obj.name))
+        return;
+
     if (no_fill_list.includes(obj.name)){
         ctx.drawImage(obj.base_image_list[index],sourceX,sourceY,width,height, xpos, ypos,width,height);
     }

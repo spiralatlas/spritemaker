@@ -106,9 +106,9 @@ function getOffset(name){
     return 0;    
 }
 
-add_colour_children("head", ["body","eyebrows","nose"]);
-add_colour_children("wheelchair_front", ["wheelchair_back"]);
-add_value_children("wheelchair_front", ["wheelchair_back"]);
+add_colour_children("head", ["body","eyebrows","nose","skull","ears"]);
+add_colour_children("wheelchair", ["wheelchair_back"]);
+add_value_children("wheelchair", ["wheelchair_back","wheelchair_dec","wheelchair_back_dec"]);
 add_colour_children("hat", ["hat_back"]);
 add_value_children("hat", ["hat_back"]);
 add_colour_children("hair_front", ["hair_back"]);
