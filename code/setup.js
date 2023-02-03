@@ -133,6 +133,8 @@ function add_image_object(name, double_list, location){
     loc=location+"/"+name.toLowerCase();
     if (name == "Nose_front")
         loc = "body/nose"; 
+    if (name.slice(-4)=="_dec")//remove "_dec"
+        loc = location+"/"+name.slice(0,-4);
     item_list = remove_dups(double_list[0].concat(double_list[1]));
     image_objects.push({name: name,location: loc, item_list: item_list, item: 0, heightOffset: 0, parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", base_image_list: newImageList(),shadow_image_list: newImageList(),highlight_image_list: newImageList()});
 }
@@ -145,7 +147,7 @@ function add_defining_object(name, double_list){
     item_list = remove_dups(double_list[0].concat(double_list[1]));
     item_list_f = double_list[0];
     item_list_m = double_list[1];
-    defining_objects.push({name: name,item_list: item_list,item_list_f: item_list_f ,item_list_m: item_list_m, image_index: image_objects.length-1, colour_children:[image_objects.length-1],value_children:[image_objects.length-1],  value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"});
+    defining_objects.push({name: name,item_list: item_list,item_list_f: item_list_f ,item_list_m: item_list_m, image_index: image_objects.length-1, colour_children:[image_objects.length-1],colour2_children:[],value_children:[image_objects.length-1],  value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"});
 }
 
 function add_colour_children(name, colour_children){
@@ -160,6 +162,24 @@ function add_colour_children(name, colour_children){
                         defining_objects[k].colour_children = [];
                     if (image_objects[i].name ==colour_children[j] && !d_obj.colour_children.includes(i))
                         d_obj.colour_children.push(i);
+                }
+            }
+        }   
+    }     
+}
+
+function add_colour2_children(name, colour_children){
+    d_obj = findNameMatch(defining_objects,name);
+    if (d_obj==-1)
+        console.log("Unknown value: add_colour2_children "+name); 
+    else{
+        for (i = 0; i < image_objects.length; i += 1){
+            for (j = 0; j < colour_children.length; j += 1){
+                for (k = 0; k < defining_objects.length; k += 1){
+                    if (defining_objects[k].name ==colour_children[j])
+                        defining_objects[k].colour2_children = [];
+                    if (image_objects[i].name ==colour_children[j] && !d_obj.colour2_children.includes(i))
+                        d_obj.colour2_children.push(i);
                 }
             }
         }   
@@ -217,14 +237,16 @@ function print_image_objects(){
     s = "";
     for (i = 0; i < image_objects.length; i += 1){
         b = image_objects[i];
-        s+="name: "+b.name;
-        s+=" location: "+b.location;
-        s+=" item_list: "+b.item_list.toString();
-        s+="  item: "+b.item;
-        s+=" colour: "+b.colour1;
-        s+=" item: "+b.item_list[b.item]
-        s+=" src: "+b.base_image_list[0].src;
-        s+="<br>";
+        if (["wheelchair_back","wheelchair","wheelchair_back_dec","wheelchair_dec"].includes(b.name)){
+            s+="name: "+b.name;
+            s+=" location: "+b.location;
+            s+=" item_list: "+b.item_list.toString();
+            s+="  item: "+b.item;
+            s+=" colour: "+b.colour1;
+            s+=" item: "+b.item_list[b.item]
+            s+=" src: "+b.base_image_list[0].src;
+            s+="<br>";
+        }
     }
     return s
 }
@@ -234,16 +256,26 @@ function print_defining_objects(){
     s = "";
     for (i = 0; i < defining_objects.length; i += 1){
         b = defining_objects[i];
-        s+="name: "+b.name;
-        s+=" item_list: "+b.item_list.toString();
-        s+="  value_list: "+b.value_list.toString();
-        s+=" colour: "+b.colour1;
-        s+=" item: "+b.item_list[b.value_list[0]]
-        s+="colour_children ";
-        for (j = 0; j < b.colour_children.length; j += 1){
-            s+=image_objects[b.colour_children[j]].name+" "
+            s+="name: "+b.name;
+            s+=" item_list: "+b.item_list.toString();
+            s+="  value_list: "+b.value_list.toString();
+            s+=" colour1: "+b.colour1;
+            s+=" colour2: "+b.colour2;
+            s+=" item: "+b.item_list[b.value_list[0]]
+            s+=" value_children ";
+            for (j = 0; j < b.value_children.length; j += 1){
+                s+=image_objects[b.value_children[j]].name+" "
+            }
+            s+=" colour_children ";
+            for (j = 0; j < b.colour_children.length; j += 1){
+                s+=image_objects[b.colour_children[j]].name+" "
+            }
+            s+=" colour2_children ";
+            for (j = 0; j < b.colour2_children.length; j += 1){
+                s+=image_objects[b.colour2_children[j]].name+" "
+            }
+            s+="<br>";
         }
-        s+="<br>";
-    }
-    return s
+        s+="--<br><br>"
+        return s
 }

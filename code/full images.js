@@ -106,9 +106,23 @@ function getOffset(name){
     return 0;    
 }
 
+const clothes_names = [];
+const two_tone_names = [];
+
+for (i = 0; i < defining_objects.length; i += 1){
+    if (outfit_list.includes(defining_objects[i].name))
+        clothes_names.push(defining_objects[i].name);
+}
+for (i = 0; i < image_objects.length; i += 1)
+    if (image_objects[i].name.slice(-4)=="_dec")
+        two_tone_names.push(image_objects[i].name);    
+
+console.log(two_tone_names.toString())
+
 add_colour_children("head", ["body","eyebrows","nose","skull","ears"]);
 add_colour_children("wheelchair", ["wheelchair_back"]);
-add_value_children("wheelchair", ["wheelchair_back","wheelchair_dec","wheelchair_back_dec"]);
+add_colour2_children("wheelchair", ["wheelchair_back_dec","wheelchair_dec"]);
+add_value_children("wheelchair", ["wheelchair_back","wheelchair_back_dec","wheelchair_dec"]);
 add_colour_children("hat", ["hat_back"]);
 add_value_children("hat", ["hat_back"]);
 add_colour_children("hair_front", ["hair_back"]);
@@ -116,10 +130,28 @@ add_colour_children("coat", ["coat_back","wheelchair_coat"]);
 add_colour_children("bottom", ["wheelchair_bottom"]);
 add_colour_children("top", ["top_collar"]);
 
-const clothes_names = [];
+/* Would make things easier but is broken >:(
+let current_name_dec;
+let current_name;
+for (i = 0; i < two_tone_names.length; i += 1){
+    current_name_dec = two_tone_names[i];
+    current_name = current_name_dec.slice(0,-4);
+    console.log(current_name+":"+current_name_dec)
+    if (clothes_names.includes(current_name)){
+        //add_value_children(current_name, [current_name_dec]);
+        console.log("adding "+current_name+":"+current_name_dec)
+        add_colour2_children(current_name, [current_name_dec]);
+    }
+    else{
+        console.log("NOT adding "+current_name+":"+current_name_dec)
+        current_name = current_name.slice(0,-5);
+        if (clothes_names.includes(current_name)){
+            //add_value_children(current_name, [current_name_dec]);
+            console.log("adding "+current_name+":"+current_name_dec)
+            add_colour2_children(current_name, [current_name_dec]);
+        }
+    }  
+}*/
 
-for (i = 0; i < defining_objects.length; i += 1){
-    if (outfit_list.includes(defining_objects[i].name))
-        clothes_names.push(defining_objects[i].name);
-}
+
 

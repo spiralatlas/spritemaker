@@ -20,6 +20,9 @@ function setVariables(data_object){
         for (let i = 0; i < json_obj.colour_children.length; i += 1){
             image_objects[json_obj.colour_children[i]].colour1 = json_obj.colour1;
         }
+        for (let i = 0; i < json_obj.colour2_children.length; i += 1){
+            image_objects[json_obj.colour2_children[i]].colour1 = json_obj.colour2;
+        }
     }
 
     //calculated from other variables
@@ -251,6 +254,8 @@ function drawCanvas() {
     //draw the preview and export canvases
     
     //preview canvas
+    document.getElementById("closet").innerHTML = print_defining_objects()+print_image_objects();
+
     canvas_preview = document.getElementById("previewCanvas");
     canvas_preview.width = canvas_preview.width; //clears
     ctx_preview = canvas_preview.getContext("2d");
@@ -337,8 +342,6 @@ function setup(){
     //fix variables
     setVariables(Alpine.store('alpineData'));
     Alpine.store('alpineData').fixAlpine();
-    
-    document.getElementById("closet").innerHTML = print_defining_objects()+print_image_objects();
     
     drawCanvas();
 }
