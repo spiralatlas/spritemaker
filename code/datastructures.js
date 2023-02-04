@@ -24,6 +24,9 @@ function setVariables(data_object){
             image_objects[json_obj.colour2_children[i]].colour1 = json_obj.colour2;
         }
     }
+    for (let i = 0; i < image_objects.length; i += 1){
+        image_objects[i].heightOffset = getOffset(image_objects[i].name);
+    }
 
     if (findNameMatch(defining_objects,"wheelchair").item !=0){ //there's a wheelchair
         sprite_height = full_height - (5-size)*25 -165;
@@ -287,7 +290,7 @@ function drawCanvas() {
             //ctx_preview.fillStyle = "#000000";
             //ctx_preview.fillText(b.name, 10, 10*i); 
             //ctx_preview.drawImage(b.base_image_list[0],0,0);
-            draw_object(b,current_expression,b.colour1,ctx_preview, 0,-getOffset(b.name)-b.heightOffset,0, 0,preview_width,preview_height);
+            draw_object(b,current_expression,b.colour1,ctx_preview, 0,0,0, -b.heightOffset,preview_width,preview_height);
         }
     }
     

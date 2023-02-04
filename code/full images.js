@@ -46,64 +46,63 @@ function getOffset(name){
     //how much the portrait image with name 'name' is shifted up or down to match the head shape
     let obj = findNameMatch(image_objects, "head");
     let head = obj.item_list[obj.item];
+    current_offset = 0;
+
     switch(head){
         case "round":
-            if (torso_offset_list.includes(name))   
-                return -9;
-            if (["Nose","Nose_front", "Facial_hair"].includes(name))  
-                return -3;
-            if (["Mouth"].includes(name))  
-                return -2;     
+            if (head_offset_list.includes(name))   
+                current_offset -=6;
+            if (["nose","nose_front", "facial_hair"].includes(name))  
+                current_offset -=0;
+            if (["mouth"].includes(name))  
+                current_offset +=1;     
             break;
         case "jowly": 
-        if (torso_offset_list.includes(name))   
-            return -9;
-        if (["Nose","Nose_front", "Facial_hair"].includes(name))  
-            return -2;
+        if (head_offset_list.includes(name))   
+           current_offset -=6;
+        if (["nose","nose_front", "facial_hair"].includes(name))  
+           current_offset +=1;
         if (["Mouth"].includes(name))  
-            return -1;     
+           current_offset +=2;     
     break;   
         case "oval":
-        
-            if (torso_offset_list.includes(name))   
-                return -6;
-            if (["Nose",,"Nose_front","Facial_hair"].includes(name))  
-                return -2;
+            if (head_offset_list.includes(name))   
+            current_offset -=3;
+            if (["nose","nose_front", "facial_hair"].includes(name))  
+            current_offset +=1;
             if (["Mouth"].includes(name))  
-                return -1;        
+            current_offset +=2;        
             break;
         case "medium":
-            if (torso_offset_list.includes(name))   
-                return -1;
-            if (["Nose",,"Nose_front","Facial_hair"].includes(name))  
-                return -1;
+            if (head_offset_list.includes(name))   
+                current_offset +=2;
+            if (["nose","nose_front", "facial_hair"].includes(name))  
+                current_offset +=2;
             break; 
         case "square":
-            if (torso_offset_list.includes(name))   
-                return -1;
-            if (["Nose",,"Nose_front","Facial_hair"].includes(name))  
-                return -1;
+            if (head_offset_list.includes(name))   
+                current_offset +=2;
+            if (["nose","nose_front", "facial_hair"].includes(name))  
+                current_offset +=2;
             break;     
         case "rectangular":  
-            if (torso_offset_list.includes(name))   
-                return 2;
-            if (["Facial_hair"].includes(name))  
-                return 4;
-            if (["Nose",,"Nose_front","Facial_hair"].includes(name))  
-                return -1;    
-            if (["Mouth"].includes(name))  
-                return 3;    
+            if (head_offset_list.includes(name))   
+                current_offset +=5;
+            if (["nose","nose_front", "facial_hair"].includes(name))  
+                current_offset +=2;    
+            if (["mouth"].includes(name))  
+                current_offset +=6;    
             break;     
         case "pointed":  
-            if (torso_offset_list.includes(name))   
-                return 2;
-            if (["Facial_hair"].includes(name))  
-                return 4;
-            if (["Mouth"].includes(name))  
-                return 3;    
+            if (head_offset_list.includes(name))   
+                current_offset +=5;
+            if (["facial_hair"].includes(name))  
+                current_offset +=4;
+            if (["mouth"].includes(name))  
+                current_offset +=6;    
             break;               
     }    
-    return 0;    
+    return current_offset;    
 }
 
 const clothes_names = [];
