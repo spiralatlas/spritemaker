@@ -5,7 +5,7 @@ function setVariables(data_object){
     current_expression = data_object.current_expression;
     current_clothing = data_object.current_clothing;
 
-    height = data_object.height;
+    size = data_object.size;
 
     for (let i = 0; i < defining_objects.length; i += 1){
         let json_obj = defining_objects[i];
@@ -24,6 +24,15 @@ function setVariables(data_object){
             image_objects[json_obj.colour2_children[i]].colour1 = json_obj.colour2;
         }
     }
+
+    if (findNameMatch(defining_objects,"wheelchair").item !=0){ //there's a wheelchair
+        sprite_height = full_height - (5-size)*25 -165;
+    } else{ //no wheelchair
+        sprite_height = full_height - (5-size)*30;
+        findNameMatch(defining_objects,"wheelchair_coat").item = 0;
+        findNameMatch(defining_objects,"wheelchair_bottom").item = 0;
+    }
+    
 
     //calculated from other variables
     /*let b;
@@ -110,6 +119,9 @@ document.addEventListener('alpine:init', () => {
                         case 'current_expression':
                             objList = 'panel_list';
                             break;
+                        case 'size':
+                            objList = '[\'Very Short\',\'Short\', \'Medium\',\'Tall\',\'Very Tall\',]';
+                            break;
                     }
                     break;     
             }    
@@ -152,7 +164,7 @@ document.addEventListener('alpine:init', () => {
     current_expression : 0,
     current_clothing : 0,
 
-    height : 0,
+    size : 0,
 
     current_defining_objects: [
         {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
@@ -186,7 +198,7 @@ document.addEventListener('alpine:init', () => {
 
     fixAlpine() { //make the alpine components match the variables used by the javascript
     
-        this.height= height;
+        this.size= size;
 
         for (let i = 0; i < defining_objects.length; i += 1){
             let json_obj = defining_objects[i];
@@ -264,7 +276,7 @@ function drawCanvas() {
     //portrait preview
 
     preview_width=full_width;
-    preview_height=full_height;
+    preview_height=sprite_height;
 
     ctx_preview.fillStyle = "#FF0000";
     //ctx_preview.fillRect(0, 0, preview_width, preview_height);

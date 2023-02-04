@@ -120,14 +120,23 @@ for (i = 0; i < image_objects.length; i += 1)
 console.log(two_tone_names.toString())
 
 add_colour_children("head", ["body","eyebrows","nose","skull","ears"]);
+
+add_value_children("wheelchair", ["wheelchair_back","wheelchair_back_dec","wheelchair_dec"]);
 add_colour_children("wheelchair", ["wheelchair_back"]);
 add_colour2_children("wheelchair", ["wheelchair_back_dec","wheelchair_dec"]);
-add_value_children("wheelchair", ["wheelchair_back","wheelchair_back_dec","wheelchair_dec"]);
-add_colour_children("hat", ["hat_back"]);
+
 add_value_children("hat", ["hat_back"]);
+add_colour_children("hat", ["hat_back"]);
+add_colour2_children("hat", ["hat_back_dec","hat_dec"]);
+
 add_colour_children("hair_front", ["hair_back"]);
+
+add_value_children("coat", ["coat_back","wheelchair_coat"]);
 add_colour_children("coat", ["coat_back","wheelchair_coat"]);
+
+add_value_children("bottom", ["wheelchair_bottom"]);
 add_colour_children("bottom", ["wheelchair_bottom"]);
+
 add_colour_children("top", ["top_collar"]);
 
 /* Would make things easier but is broken >:(

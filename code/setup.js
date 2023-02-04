@@ -16,7 +16,7 @@ let eye_type = 0;
 let eye_expressions = listOf(0);
 
 let full_width="314";
-let full_height="712";
+let full_height="768";
 
 //internal
 
