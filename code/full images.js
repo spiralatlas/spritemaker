@@ -55,16 +55,16 @@ function getOffset(name){
             if (["nose","nose_front", "facial_hair"].includes(name))  
                 current_offset -=0;
             if (["mouth"].includes(name))  
-                current_offset +=1;     
+                current_offset +=2;     
             break;
         case "jowly": 
-        if (head_offset_list.includes(name))   
-           current_offset -=6;
-        if (["nose","nose_front", "facial_hair"].includes(name))  
-           current_offset +=1;
-        if (["Mouth"].includes(name))  
-           current_offset +=2;     
-    break;   
+            if (head_offset_list.includes(name))   
+            current_offset -=6;
+            if (["nose","nose_front", "facial_hair"].includes(name))  
+            current_offset +=1;
+            if (["Mouth"].includes(name))  
+            current_offset +=2;     
+            break;   
         case "oval":
             if (head_offset_list.includes(name))   
             current_offset -=3;
@@ -77,29 +77,31 @@ function getOffset(name){
             if (head_offset_list.includes(name))   
                 current_offset +=2;
             if (["nose","nose_front", "facial_hair"].includes(name))  
-                current_offset +=2;
+                current_offset +=0;
+            if (["Mouth"].includes(name))  
+                current_offset +=4;        
             break; 
         case "square":
             if (head_offset_list.includes(name))   
                 current_offset +=2;
             if (["nose","nose_front", "facial_hair"].includes(name))  
-                current_offset +=2;
+                current_offset +=0;
             break;     
         case "rectangular":  
             if (head_offset_list.includes(name))   
                 current_offset +=5;
             if (["nose","nose_front", "facial_hair"].includes(name))  
-                current_offset +=2;    
+                current_offset -=1;    
             if (["mouth"].includes(name))  
-                current_offset +=6;    
+                current_offset +=0;    
             break;     
         case "pointed":  
             if (head_offset_list.includes(name))   
                 current_offset +=5;
             if (["facial_hair"].includes(name))  
-                current_offset +=4;
+                current_offset -=1;
             if (["mouth"].includes(name))  
-                current_offset +=6;    
+                current_offset +=0;    
             break;               
     }    
     return current_offset;    

@@ -36,15 +36,14 @@ ear_list_d = double_list(ear_list)
 body_list = ["regular"]
 body_list_d = double_list(body_list)
 no_iris_list = ["sleepy","closed"] #eyeshapes with no iris
-iris_list_u = ["wide","extrawide", "widecatty","sad", "gentle", "regular","vivid", "cool","catty","coolside", "narrowcool","narrowcoolside","narrowcatty","narrowcattyside", "halfclosed"]
-eye_shape_list_u = iris_list_u + no_iris_list
-eye_shape_list_d = double_list(eye_shape_list_u)
-iris_list_d = double_list(iris_list_u)
+eyes_list_u = ["neutral"]#["wide","extrawide", "widecatty","sad", "gentle", "regular","vivid", "cool","catty","coolside", "narrowcool","narrowcoolside","narrowcatty","narrowcattyside", "halfclosed"]
+eyetype_list = ["medium"]
+eyes_list_d = double_list(eyes_list_u)
 eyebrows_list_u = ["flat","flatsad","flatgrumpy","flatangry","sad","sadder", "sadsemi", "regular","archsemi","arched","archraised", "raised","raisedflat", "raisedsemiflat","raisedgrumpy","raisedsemi","angry", "angryarch","halfraised","halfsemi", "halfsad","halfsadraised","halfflat","halfarchraised"]
 eyebrows_list_d = double_list(eyebrows_list_u)
-mouth_list_u = ["grintall","grin","grinside","grinsmall","lah","lahsmall","lahtiny","smileside","smilebig","smilebigside","smilewideflat","p","sleaze","smileflat","smile","smilesmall","smiletiny","obig","o","osquare","osmall","dbig","d","dsmall","eww","ewwobble","nng","flatsmall","flat","t","tlow","wibble","frowntiny","frownsmall","frownnarrow","frown","pout","frownside","frownbig","frownopen",]
+mouth_list_u = ["big grin","grin","side grin","small grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","oh","square oh","small oh","shock","small flat","flat","wobbly frown","tiny frown","small frown","narrow frown","frown","pout","side frown","big frown",]
 mouth_list_d = double_list(mouth_list_u)
-nose_list_u = ["button", "round","medium","broad", "pointy","pointy2",] 
+nose_list_u = ["button", "round","medium","broad", "pointed","hooked",] 
 nose_list_d = double_list(nose_list_u)
 
 cheeks_list_u = ["none","blush"]
@@ -91,15 +90,15 @@ hat_list_m = ["none","tophat","turban"]
 hat_list_d = [hat_list_f, hat_list_m]
 
 # collections of parts that have the same colours and patterns
-skin_list = ["body","head","nose","mouth","eyebrows","eye_shape","skull"]
+skin_list = ["body","head","nose","mouth","eyebrows","eyes","skull"]
 outfit_list = ["wheelchair", "bottom","top", "accessory", "eyewear","gloves", "hat", "coat"]
-defining_list = outfit_list+skin_list+["hair_front","iris","cheeks"]
+defining_list = outfit_list+skin_list+["hair_front","cheeks"]
 
 #extra info
 
 no_chest_list = [ "robe","robehood",  "mediumcloak", "mediumcloakhood", "longcloak", "longcloakhood","wrap"] #clothes where the chest doesn't show
-no_fill_list = ["mouth","eyebrows", "eye_shape"] #lined items with no coloured fill
-no_lines_list = ["iris","cheeks"] #coloured items with no lines
+no_fill_list = ["mouth","eyebrows"] #lined items with no coloured fill
+no_lines_list = ["cheeks"] #coloured items with no lines
 
 hat_back_list = ["none","tophat","scarf","turban"]
 hat_back_list_d = double_list(hat_back_list)
@@ -165,7 +164,7 @@ def add_item(name, listname, double_list,location):
 
 clothes_list = ["wheelchair_back","coat_back","hat_back","hair_back","body",
 "gloves","top","bottom","accessory","coat","chest","top_collar"
-"head", "eyebrows", "eye_shape", "nose","mouth","eyewear","hair_front",
+"head", "eyebrows", "eyes", "nose","mouth","eyewear","hair_front",
 "hat", "wheelchair","wheelchair_bottom","wheelchair_coat"]
 
 # Behind face
@@ -197,8 +196,7 @@ add_item("ears", "ear_list_d", ear_list_d, "anatomy")
 add_item("nose", "nose_list_d", nose_list_d, "face")
 add_item("mouth", "mouth_list_d", mouth_list_d, "face")
 add_item("eyebrows", "eyebrows_list_d", eyebrows_list_d, "face")
-add_item("iris", "iris_list_d", iris_list_d, "face/eyes")
-add_item("eye_shape", "eye_shape_list_d", eye_shape_list_d, "face/eyes")
+add_item("eyes", "eyes_list_d", eyes_list_d, "face")
 add_item("eyewear", "eyewear_list_d", eyewear_list_d, "clothes")
 add_item("hair_front", "hair_front_list_d", hair_front_list_d, "hair")
 add_item("hat", "hat_list_d", hat_list_d, "clothes")
@@ -355,6 +353,20 @@ def hair_shadow(pixel,shadow1,edge):
         
     return (p[0],p[1],p[2], int(pixel[3]*(1-l/0.7)))
 
+def eye_shadow(pixel,edge):
+    p = [pixel[0],pixel[1],pixel[2]]
+    h = hue(p)
+    sat = saturation(p)
+    lum = luminance(p)
+    if (h <220): 
+        return pixel
+    elif (lum>50):
+        return (0,0,0,0) 
+    else:   
+        r=min(max(0,1-lum/125),1)
+        
+        return (edge[0]/2,edge[1]/2,edge[2]/2, int(pixel[3]*r))
+
 def red_shadow(pixel,shadow1,edge):
     p = [pixel[0],pixel[1],pixel[2]]
     l = luminance(p)/255
@@ -408,7 +420,6 @@ def process_image(name, location,type):
     img_original = Image.open(image_string) 
     original_data = img_original.load() 
     
-    
     save_string_base = save_string +"_base.png"
     img_base = Image.new("RGBA", (img_original.size[0], img_original.size[1]))
     base_data = img_base.load() 
@@ -423,22 +434,23 @@ def process_image(name, location,type):
     black_luminance = 100#13 #luminance level that's treated as black
     shadow_luminance = 190 
 
-    for colour in shadow_types:
-        [shadow1,edge] = shadow_colours(colour)
+    if type != "eyes":#multiply images
+        for colour in shadow_types:
+            [shadow1,edge] = shadow_colours(colour)
 
-        save_string_multiply = save_string+"_multiply_"+colour+".png"
-        img_multiply = Image.new("RGBA", (img_original.size[0], img_original.size[1]))
-        multiply_data = img_multiply.load()  
+            save_string_multiply = save_string+"_multiply_"+colour+".png"
+            img_multiply = Image.new("RGBA", (img_original.size[0], img_original.size[1]))
+            multiply_data = img_multiply.load()  
 
-        for y in range(img_base.size[1]):
-            for x in range(img_base.size[0]):
+            for y in range(img_base.size[1]):
+                for x in range(img_base.size[0]):
 
-                if original_data[x, y][3] !=0:            
-                    pixel = original_data[x, y]
-                    p = [pixel[0],pixel[1],pixel[2]]
-                    if type!="noshadow":  #shadow
-                        multiply_data[x, y] =red_shadow(pixel,shadow1,line_colour)
-        img_multiply.save(save_string_multiply) 
+                    if original_data[x, y][3] !=0:            
+                        pixel = original_data[x, y]
+                        p = [pixel[0],pixel[1],pixel[2]]
+                        if type!="noshadow":  #shadow
+                            multiply_data[x, y] =red_shadow(pixel,shadow1,line_colour)
+            img_multiply.save(save_string_multiply) 
 
     for y in range(img_base.size[1]):
         for x in range(img_base.size[0]):
@@ -447,7 +459,9 @@ def process_image(name, location,type):
                 p = [pixel[0],pixel[1],pixel[2]]
                 lum = luminance(p)
                 if lum>250 or type!="noshadow":  #shadow
-                        base_data[x, y] = (100,100,100,pixel[3])             
+                        base_data[x, y] = (100,100,100,pixel[3])    
+                if type =="eyes":
+                    highlight_data[x, y] =eye_shadow(pixel,line_colour)                
     img_base.save(save_string_base)   
     img_highlight.save(save_string_highlight)
                          
@@ -495,7 +509,7 @@ def write_variables():
     content.write("\n")
     content.write(list_string("no_lines_list",no_lines_list))   
     content.write(list_string("no_fill_list", no_fill_list, )) 
-    content.write(list_string("no_iris_list", no_iris_list ))   
+    content.write(list_string("eyetype_list", eyetype_list ))   
     content.write(list_string("pattern_list",pattern_list))    
     content.write(list_string("skin_list", skin_list))   
     content.write(list_string("outfit_list", outfit_list)) 
@@ -532,7 +546,10 @@ def process_portrait_part(obj):
                 elif obj.name in no_lines_list:  
                     process_image(item, loc,"nolines")  
                 elif obj.name.endswith("_dec"):
-                    process_image(item, loc,"twotone")       
+                    process_image(item, loc,"twotone")
+                elif obj.name=="eyes":
+                    for shape in eyetype_list:
+                        process_image(item, loc+"/"+shape,"eyes")           
                 else:    
                     process_image(item, loc,"portrait")
 
@@ -571,10 +588,10 @@ def process_all_portraits():
 
 write_variables()
 
-# "skull", "head","body","ears"
+# "skull", "head","body","ears","nose"
 # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
 for c in closet:
-    if c.name in ["ears", "skull", "head","body","wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"]:
+    if c.name in ["eyes"]:
         process_portrait_part(c)
 #makeWinks()
 #makeStubble() 

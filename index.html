@@ -74,7 +74,7 @@
             <div class="row gy-2" x-show="$store.alpineData.currently_editing === 0" > 
               <div class="row row-cols-2 gy-3">
                 <div class="col"><div x-data="dropdown('Skin Colour','head', 'body')" x-bind="colourbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Eye Colour','iris','body')" x-bind="colourbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Eye Colour','eyes','body')" x-bind="colourbtn" ></div></div>
                 <div class="col"><div x-data="dropdown('Hair Colour','hair_front','body')" x-bind="colourbtn" ></div></div>
               </div>
               <div class="row row-cols-2 gy-3">
@@ -85,7 +85,7 @@
                 <div class="col"><div x-data="dropdown('Head Shape','head','body')" x-bind="dropbtn" ></div></div>
                 <div class="col"><div x-data="dropdown('Nose Shape','nose','body')" x-bind="dropbtn" ></div></div>
                 <!--<div class="col"><div x-data="dropdown('Lip Shape','current_lips','lip_list')" x-bind="dropbtn" ></div></div>-->
-                <!--<div class="col"><div x-data="dropdown('Ear Shape','current_ears','ear_list')" x-bind="dropbtn" ></div></div>-->
+                <div class="col"><div x-data="dropdown('Eye Shape','current_eyetype','simple')" x-bind="dropbtn" ></div></div>
                 <!--<div class="col"><div x-data="dropdown('Complexion','current_complexion','complexion_list')" x-bind="dropbtn" ></div></div>-->
                 <div class="col"><div x-data="dropdown('Height','size','simple')" x-bind="dropbtn" ></div></div>
               </div>
@@ -111,7 +111,7 @@
               <div x-data="dropdown('Expression','current_expression','simple')" x-bind="dropbtn" ></div>
               <div class="row row-cols-2 gy-3">
                 <div class="col"><div x-data="dropdown('Eyebrows','eyebrows','expression')" x-bind="dropbtn" ></div></div>
-                <div class="col"><div x-data="dropdown('Eyes','eye_shape','expression')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Eyes','eyes','expression')" x-bind="dropbtn" ></div></div>
                 <div class="col"><div x-data="dropdown('Mouth','mouth','expression')" x-bind="dropbtn" ></div></div>
                 <div class="col"><div x-data="dropdown('Blush','cheeks','expression')" x-bind="dropbtn" ></div></div>
               </div>

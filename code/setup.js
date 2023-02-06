@@ -28,7 +28,7 @@ const imageType_list =["Portrait","Sprite"];
 
 const editing_list =["Body","Outfit", "Expressions","Randomise"];
 
-const head_offset_list = ["skull","head","nose","nose_front","eye_shape","hat","hat_dec","hat_back","hat_back_dec","eyebrows","cheeks","mouth","lips","ears","hair_front","hair_back"];
+const head_offset_list = ["skull","head","nose","nose_front","eyes","hat","hat_dec","hat_back","hat_back_dec","eyebrows","cheeks","mouth","lips","ears","hair_front","hair_back"];
 
 const panel_list = ["0: Neutral", "1: Happy", "2: Sad", "3: Unique", "4: Blushing", "5: Angry","6","7","8","9","10"];
 
@@ -237,7 +237,7 @@ function print_image_objects(){
     s = "";
     for (i = 0; i < image_objects.length; i += 1){
         b = image_objects[i];
-        if (["wheelchair_back","wheelchair","wheelchair_back_dec","wheelchair_dec"].includes(b.name)){
+        if (["eyes"].includes(b.name)){
             s+="name: "+b.name;
             s+=" location: "+b.location;
             s+=" item_list: "+b.item_list.toString();

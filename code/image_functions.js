@@ -362,15 +362,18 @@ function fixSources(){
                 }else{
                     if (b.name =="nose_front")
                         current_loc+="_noshadow";
-                    loc_string = "images/render/"+b.location+"/"+current_loc 
+                    if (b.name=="eyes") 
+                        loc_string = "images/render/"+b.location+"/"+eyetype_list[current_eyetype] +"/"+current_loc    
+                    else
+                        loc_string = "images/render/"+b.location+"/"+current_loc 
 
                     if (b.name.includes("_dec"))
                         loc_string +="2";
 
-                    
                     b.base_image_list[j].src  = loc_string+"_base.png";
                     b.highlight_image_list[j].src  = loc_string+"_highlight.png";
-                    b.shadow_image_list[j].src  = loc_string+"_multiply_"+colour_string(b.colour1)+".png";
+                    if (b.name!="eyes")
+                        b.shadow_image_list[j].src  = loc_string+"_multiply_"+colour_string(b.colour1)+".png";
                 }
             }
         }
@@ -391,7 +394,7 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
     
     /*if (!(obj.name =="Lips" && (current_lips==0))){
     */ 
-    if (!["body","skull","ears","head","wheelchair_back","wheelchair","wheelchair_dec","wheelchair_back_dec"].includes(obj.name))
+    if (!["body","skull","ears","head","wheelchair_back","wheelchair","wheelchair_dec","wheelchair_back_dec","nose","mouth","eyes"].includes(obj.name))
         return;
 
     if (no_fill_list.includes(obj.name)){
@@ -407,11 +410,17 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
 
         off_ctx.globalCompositeOperation = "destination-in";
         off_ctx.drawImage(obj.base_image_list[index],0,0,width,height, 0, 0,width,height);
-
-        off_ctx.globalCompositeOperation = "multiply";
-        off_ctx.drawImage(obj.shadow_image_list[index],0,0,width,height, 0, 0,width,height);
-        off_ctx.globalCompositeOperation = "screen";
-        off_ctx.drawImage(obj.highlight_image_list[index],0,0,width,height, 0, 0,width,height);
+        if (obj.shadow_image_list[index].src!=""){
+            off_ctx.globalCompositeOperation = "multiply";
+            off_ctx.drawImage(obj.shadow_image_list[index],0,0,width,height, 0, 0,width,height);
+        }
+        if (obj.highlight_image_list[index].src!=""){
+            if (obj.name =="eyes")
+                off_ctx.globalCompositeOperation = "source-over"; 
+            else
+                off_ctx.globalCompositeOperation = "screen";
+            off_ctx.drawImage(obj.highlight_image_list[index],0,0,width,height, 0, 0,width,height);
+        }
         off_ctx.globalCompositeOperation = "source-over"; 
         ctx.drawImage(off_canvas,sourceX,sourceY,width,height, xpos, ypos,width,height);
     }

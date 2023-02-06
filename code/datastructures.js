@@ -6,6 +6,8 @@ function setVariables(data_object){
     current_clothing = data_object.current_clothing;
 
     size = data_object.size;
+    current_hairstyle = data_object.current_hairstyle;
+    current_eyetype = data_object.current_eyetype;
 
     for (let i = 0; i < defining_objects.length; i += 1){
         let json_obj = defining_objects[i];
@@ -125,6 +127,13 @@ document.addEventListener('alpine:init', () => {
                         case 'size':
                             objList = '[\'Very Short\',\'Short\', \'Medium\',\'Tall\',\'Very Tall\',]';
                             break;
+                        case 'current_hairstyle': 
+                            objList = '[\'androgynous\',]';
+                            break; 
+                        case 'current_eyetype': 
+                            objList = 'eyetype_list';
+                            break;       
+
                     }
                     break;     
             }    
@@ -168,6 +177,8 @@ document.addEventListener('alpine:init', () => {
     current_clothing : 0,
 
     size : 0,
+    current_hairstyle: 0,
+    current_eyetype: 0,
 
     current_defining_objects: [
         {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
@@ -202,7 +213,9 @@ document.addEventListener('alpine:init', () => {
     fixAlpine() { //make the alpine components match the variables used by the javascript
     
         this.size= size;
-
+        this.current_hairstyle = current_hairstyle;
+        this.current_eyetype = current_eyetype;
+        
         for (let i = 0; i < defining_objects.length; i += 1){
             let json_obj = defining_objects[i];
             current_item = json_obj.name; 
@@ -216,7 +229,7 @@ document.addEventListener('alpine:init', () => {
         //randomise the skin/eye/hair colour
         this.current_defining_objects[findDefiningIndex("head")].colour1 = randomElement(skin_colours);
         this.current_defining_objects[findDefiningIndex("hair_front")].colour1 = randomElement(hair_colours);
-        this.current_defining_objects[findDefiningIndex("iris")].colour1 = randomElement(eye_colours);
+        this.current_defining_objects[findDefiningIndex("eyes")].colour1 = randomElement(eye_colours);
     },
     randomiseFeatures(gender){
         //randomise the nose/head/hairstyle etc

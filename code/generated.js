@@ -5,13 +5,13 @@ const outfit_colours = ["#F8EABC","#FFE201","#FFCC98","#F7BE4F","#FF9F02","#73D0
 const skin_colours = ["#FFE7D6","#FFECD6","#FFD3A6","#FFDFA5","#F1A065","#F1B265","#DA773F","#DA874A","#B05934","#B96A2E","#853F27","#783F1A",];
 const hair_colours = ["#FCE374","#F0B50A","#FE7423","#FF5565","#DF433C","#D16132","#641D00","#923D1F","#8B4910","#BB742E","#A59A9D","#E9E9E9","#391E47","#48356E","#4B261E","#5B483C","#5A5A7F","#602372","#000000",];
 
-const no_lines_list = ["iris","cheeks",];
-const no_fill_list = ["mouth","eyebrows","eye_shape",];
-const no_iris_list = ["sleepy","closed",];
+const no_lines_list = ["cheeks",];
+const no_fill_list = ["mouth","eyebrows",];
+const eyetype_list = ["medium",];
 const pattern_list = ["none","crocodile","rose","snake","damask","crosshatch","fabric","diamonds","diamondssmall","tartan","polkadot","pinstripe","horizontalpinstripe",];
-const skin_list = ["body","head","nose","mouth","eyebrows","eye_shape","skull",];
+const skin_list = ["body","head","nose","mouth","eyebrows","eyes","skull",];
 const outfit_list = ["wheelchair","bottom","top","accessory","eyewear","gloves","hat","coat",];
-const defining_list = ["wheelchair","bottom","top","accessory","eyewear","gloves","hat","coat","body","head","nose","mouth","eyebrows","eye_shape","skull","hair_front","iris","cheeks",];
+const defining_list = ["wheelchair","bottom","top","accessory","eyewear","gloves","hat","coat","body","head","nose","mouth","eyebrows","eyes","skull","hair_front","cheeks",];
 
 const coat_back_list_d = [["none","mediumcloak","wrap",],["none","mediumcloak","wrap",],];
 const hat_back_list_d = [["none","tophat","scarf","turban",],["none","tophat","scarf","turban",],];
@@ -29,11 +29,10 @@ const top_collar_list_d = [["none",],["shirtopen","shirtclosed","shirtcravat",],
 const skull_list_d = [["regular",],["regular",],];
 const head_list_d = [["pointed","medium","rectangular","round",],["pointed","medium","rectangular","round",],];
 const ear_list_d = [["regular",],["regular",],];
-const nose_list_d = [["button","round","medium","broad","pointy","pointy2",],["button","round","medium","broad","pointy","pointy2",],];
-const mouth_list_d = [["grintall","grin","grinside","grinsmall","lah","lahsmall","lahtiny","smileside","smilebig","smilebigside","smilewideflat","p","sleaze","smileflat","smile","smilesmall","smiletiny","obig","o","osquare","osmall","dbig","d","dsmall","eww","ewwobble","nng","flatsmall","flat","t","tlow","wibble","frowntiny","frownsmall","frownnarrow","frown","pout","frownside","frownbig","frownopen",],["grintall","grin","grinside","grinsmall","lah","lahsmall","lahtiny","smileside","smilebig","smilebigside","smilewideflat","p","sleaze","smileflat","smile","smilesmall","smiletiny","obig","o","osquare","osmall","dbig","d","dsmall","eww","ewwobble","nng","flatsmall","flat","t","tlow","wibble","frowntiny","frownsmall","frownnarrow","frown","pout","frownside","frownbig","frownopen",],];
+const nose_list_d = [["button","round","medium","broad","pointed","hooked",],["button","round","medium","broad","pointed","hooked",],];
+const mouth_list_d = [["big grin","grin","side grin","small grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","oh","square oh","small oh","shock","small flat","flat","wobbly frown","tiny frown","small frown","narrow frown","frown","pout","side frown","big frown",],["big grin","grin","side grin","small grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","oh","square oh","small oh","shock","small flat","flat","wobbly frown","tiny frown","small frown","narrow frown","frown","pout","side frown","big frown",],];
 const eyebrows_list_d = [["flat","flatsad","flatgrumpy","flatangry","sad","sadder","sadsemi","regular","archsemi","arched","archraised","raised","raisedflat","raisedsemiflat","raisedgrumpy","raisedsemi","angry","angryarch","halfraised","halfsemi","halfsad","halfsadraised","halfflat","halfarchraised",],["flat","flatsad","flatgrumpy","flatangry","sad","sadder","sadsemi","regular","archsemi","arched","archraised","raised","raisedflat","raisedsemiflat","raisedgrumpy","raisedsemi","angry","angryarch","halfraised","halfsemi","halfsad","halfsadraised","halfflat","halfarchraised",],];
-const iris_list_d = [["wide","extrawide","widecatty","sad","gentle","regular","vivid","cool","catty","coolside","narrowcool","narrowcoolside","narrowcatty","narrowcattyside","halfclosed",],["wide","extrawide","widecatty","sad","gentle","regular","vivid","cool","catty","coolside","narrowcool","narrowcoolside","narrowcatty","narrowcattyside","halfclosed",],];
-const eye_shape_list_d = [["wide","extrawide","widecatty","sad","gentle","regular","vivid","cool","catty","coolside","narrowcool","narrowcoolside","narrowcatty","narrowcattyside","halfclosed","sleepy","closed",],["wide","extrawide","widecatty","sad","gentle","regular","vivid","cool","catty","coolside","narrowcool","narrowcoolside","narrowcatty","narrowcattyside","halfclosed","sleepy","closed",],];
+const eyes_list_d = [["neutral",],["neutral",],];
 const eyewear_list_d = [["none","roundglasses","dropearrings","stud","roundearrings",],["none","roundglasses","beard",],];
 const hair_front_list_d = [["centrebun","curlybun","wavybun","straightbun","curlylong","flowing",],["centrebun","curlyshort","wavyshort","straightshort","supershort",],];
 const hat_list_d = [["none","beads",],["none","tophat","turban",],];
@@ -74,10 +73,8 @@ add_image_object("mouth",mouth_list_d,"face")
 add_defining_object("mouth",mouth_list_d)
 add_image_object("eyebrows",eyebrows_list_d,"face")
 add_defining_object("eyebrows",eyebrows_list_d)
-add_image_object("iris",iris_list_d,"face/eyes")
-add_defining_object("iris",iris_list_d)
-add_image_object("eye_shape",eye_shape_list_d,"face/eyes")
-add_defining_object("eye_shape",eye_shape_list_d)
+add_image_object("eyes",eyes_list_d,"face")
+add_defining_object("eyes",eyes_list_d)
 add_image_object("eyewear",eyewear_list_d,"clothes")
 add_defining_object("eyewear",eyewear_list_d)
 add_image_object("hair_front",hair_front_list_d,"hair")
