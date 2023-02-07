@@ -6,7 +6,8 @@ let currently_editing = 0; //which element of editing list we are editing
 let current_expression = 0;
 let current_clothing = 0;
 
-let height = 0;
+let size = 0;
+const size_list = ['Very Short','Short', 'Medium','Tall','Very Tall',];
 
 let skinColour;
 let eyeColour;
@@ -14,6 +15,7 @@ let hairColour;
 
 let eye_type = 0;
 let eye_expressions = listOf(0);
+
 
 let full_width="314";
 let full_height="768";

@@ -125,7 +125,7 @@ document.addEventListener('alpine:init', () => {
                             objList = 'panel_list';
                             break;
                         case 'size':
-                            objList = '[\'Very Short\',\'Short\', \'Medium\',\'Tall\',\'Very Tall\',]';
+                            objList = 'size_list';
                             break;
                         case 'current_hairstyle': 
                             objList = '[\'androgynous\',]';
@@ -239,6 +239,7 @@ document.addEventListener('alpine:init', () => {
                 this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0));
             }
         }
+        this.size = randomIndex(size_list,0);
     },
     randomiseClothingColour(){
         //randomise all clothing colours
