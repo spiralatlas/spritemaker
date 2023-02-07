@@ -39,9 +39,9 @@ no_iris_list = ["sleepy","closed"] #eyeshapes with no iris
 eyes_list_u = ["neutral"]#["wide","extrawide", "widecatty","sad", "gentle", "regular","vivid", "cool","catty","coolside", "narrowcool","narrowcoolside","narrowcatty","narrowcattyside", "halfclosed"]
 eyetype_list = ["medium"]
 eyes_list_d = double_list(eyes_list_u)
-eyebrows_list_u = ["flat","flatsad","flatgrumpy","flatangry","sad","sadder", "sadsemi", "regular","archsemi","arched","archraised", "raised","raisedflat", "raisedsemiflat","raisedgrumpy","raisedsemi","angry", "angryarch","halfraised","halfsemi", "halfsad","halfsadraised","halfflat","halfarchraised"]
+eyebrows_list_u = ["flat","flat sad","flat grumpy","flat angry","sad","sadder", "semi sad", "regular","semi arch","arched","raised arch", "raised","raised flat", "raised semi flat","raised grumpy","raised semi","angry", "angry arch","half raised","half semi", "half sad","half sad raised","half arch raised"]
 eyebrows_list_d = double_list(eyebrows_list_u)
-mouth_list_u = ["big grin","grin","side grin","small grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","oh","square oh","small oh","shock","small flat","flat","wobbly frown","tiny frown","small frown","narrow frown","frown","pout","side frown","big frown",]
+mouth_list_u = ["big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","oh","square oh","small oh","shock","small flat","flat","wobbly frown","tiny frown","small frown","narrow frown","frown","pout","side frown","big frown",]
 mouth_list_d = double_list(mouth_list_u)
 nose_list_u = ["button", "round","medium","broad", "pointed","hooked",] 
 nose_list_d = double_list(nose_list_u)
@@ -97,7 +97,7 @@ defining_list = outfit_list+skin_list+["hair_front","cheeks"]
 #extra info
 
 no_chest_list = [ "robe","robehood",  "mediumcloak", "mediumcloakhood", "longcloak", "longcloakhood","wrap"] #clothes where the chest doesn't show
-no_fill_list = ["mouth","eyebrows"] #lined items with no coloured fill
+no_fill_list = ["mouth"] #lined items with no coloured fill
 no_lines_list = ["cheeks"] #coloured items with no lines
 
 hat_back_list = ["none","tophat","scarf","turban"]
@@ -591,7 +591,7 @@ write_variables()
 # "skull", "head","body","ears","nose"
 # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
 for c in closet:
-    if c.name in ["eyes"]:
+    if c.name in ["eyebrows"]:
         process_portrait_part(c)
 #makeWinks()
 #makeStubble() 

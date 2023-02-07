@@ -394,7 +394,7 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
     
     /*if (!(obj.name =="Lips" && (current_lips==0))){
     */ 
-    if (!["body","skull","ears","head","wheelchair_back","wheelchair","wheelchair_dec","wheelchair_back_dec","nose","mouth","eyes"].includes(obj.name))
+    if (!["body","skull","ears","head","wheelchair_back","wheelchair","wheelchair_dec","wheelchair_back_dec","nose","mouth","eyes","eyebrows"].includes(obj.name))
         return;
 
     if (no_fill_list.includes(obj.name)){
