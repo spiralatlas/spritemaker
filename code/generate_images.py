@@ -61,8 +61,8 @@ earrings_list_f = ["none","drop earrings", "stud","round earrings"]
 earrings_list_m = ["none",]
 earrings_list_d =  [earrings_list_f,earrings_list_m]
 
-gloves_list_f = ["none", "shortgloves", "mediumgloves", "longgloves","bracelets"]
-gloves_list_m = ["none", "shortgloves"]
+gloves_list_f = ["none", "short gloves", "medium gloves", "long gloves","bracelets"]
+gloves_list_m = ["none", "short gloves"]
 gloves_list_d = [gloves_list_f,gloves_list_m]
 
 top_list_f = ["bodiceplain", "bodicelong","bodicefancy","bodicepointy"]
@@ -612,7 +612,7 @@ write_variables()
 # "skull", "head","body","ears","nose"
 # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
 for c in closet:
-    if c.name in ["hat_back"]:
+    if c.name in ["gloves"]:
         process_portrait_part(c)
 #makeWinks()
 #makeStubble() 
