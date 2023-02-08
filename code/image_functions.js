@@ -404,7 +404,7 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
         if (obj.name =="cheeks")
             off_ctx.fillStyle = blushcolour(colour);
         else{
-            if (obj.name =="complexion" && obj.item_list[obj.value_list[0]]=="freckles")
+            if (obj.name =="complexion")// && obj.item_list[obj.value_list[0]]=="freckles")
                 off_ctx.fillStyle = frecklecolour(colour);
             else    
                 off_ctx.fillStyle = colour;

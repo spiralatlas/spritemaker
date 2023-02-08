@@ -258,7 +258,7 @@ function print_defining_objects(){
     s = "";
     for (i = 0; i < defining_objects.length; i += 1){
         b = defining_objects[i];
-            s+="name: "+b.name;
+            s+=i+" "+b.name;
             s+=" item_list: "+b.item_list.toString();
             s+="  value_list: "+b.value_list.toString();
             s+=" colour1: "+b.colour1;
