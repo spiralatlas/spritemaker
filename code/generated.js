@@ -5,6 +5,7 @@ const outfit_colours = ["#F8EABC","#FFE201","#FFCC98","#F7BE4F","#FF9F02","#73D0
 const skin_colours = ["#FFE7D6","#FFECD6","#FFD3A6","#FFDFA5","#F1A065","#F1B265","#DA773F","#DA874A","#B05934","#B96A2E","#853F27","#783F1A",];
 const hair_colours = ["#FCE374","#F0B50A","#FE7423","#FF5565","#DF433C","#D16132","#641D00","#923D1F","#8B4910","#BB742E","#A59A9D","#E9E9E9","#391E47","#48356E","#4B261E","#5B483C","#5A5A7F","#602372","#000000",];
 
+const no_render_list = [["hat",["scarf",]],["hat_dec",["scarf",]],];
 const no_lines_list = ["cheeks",];
 const no_fill_list = ["mouth",];
 const eyetype_list = ["medium",];
@@ -39,8 +40,8 @@ const eyebrows_list_d = [["flat","flat sad","flat grumpy","flat angry","sad","sa
 const eyes_list_d = [["neutral",],["neutral",],];
 const eyewear_list_d = [["none","roundglasses",],["none","roundglasses",],];
 const hair_front_list_d = [["centre bun","curly bun","wavy bun","straight bun","curly long","straight long",],["centre bun","curly short","wavy short","straight short","super short",],];
-const hat_list_d = [["none","beads",],["none","tophat","turban",],];
-const hat_dec_list_d = [["tophat","scarf",],["tophat","scarf",],];
+const hat_list_d = [["none","beads","scarf",],["none","tophat","turban",],];
+const hat_dec_list_d = [["tophat",],["tophat",],];
 const wheelchair_list_d = [["none","regular",],["none","regular",],];
 const wheelchair_coat_list_d = [["none","mediumcloak","longjacketclosed","dressjacket","jama",],["none","mediumcloak","longjacketclosed","dressjacket","jama",],];
 

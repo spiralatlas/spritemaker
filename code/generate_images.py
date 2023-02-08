@@ -97,7 +97,7 @@ hair_back_list_f = hair_front_list_f
 hair_back_list_m = hair_front_list_m
 hair_back_list_d = hair_front_list_d
 
-hat_list_f = ["none","beads"]#,"scarf"
+hat_list_f = ["none","beads","scarf"]
 hat_list_m = ["none","tophat","turban"]
 hat_list_d = [hat_list_f, hat_list_m]
 
@@ -143,12 +143,12 @@ bottom_dec_list = ["breeches","fancyskirt","plainskirt"]
 bottom_dec_list_d = double_list(bottom_dec_list)
 coat_dec_list = ["dressjacket","jama"]
 coat_dec_list_d = double_list(coat_dec_list)
-hat_dec_list = ["tophat","scarf"]
+hat_dec_list = ["tophat"]
 hat_dec_list_d = double_list(hat_dec_list)
 hat_back_dec_list = ["scarf"]
 hat_back_dec_list_d = double_list(hat_back_dec_list)
 
-no_render_list = []
+no_render_list = [["hat",["scarf"]],["hat_dec",["scarf"]]]
 
 ###################### More technical stuff from here on
 
@@ -474,22 +474,22 @@ def process_image(name, location,type):
     img_base.save(save_string_base)   
     img_highlight.save(save_string_highlight)
                          
+def simple_list_string(list):
+    s = "["
+    for l in list:
+        s+="\""+l+"\","
+    s+="]"
+    return s
 
 def list_string(listname, list):
     # Creates a string to define a list for generated.js
-    s = "const "+listname + " = ["
-    for l in list:
-        s+="\""+l+"\","
-    s+="];\n"
-    return s
+    return "const "+listname + " = "+simple_list_string(list)+";\n"
 
 def name_string(obj):
     s = "const "+obj.listname + " = ["
     for i in [0,1]:
-        s+="["
-        for l in obj.double_list[i]:
-            s+="\""+l+"\","
-        s+="],"    
+        s+=simple_list_string(obj.double_list[i])
+        s+=","    
     s+="];\n"
     return s    
 
@@ -516,6 +516,12 @@ def write_variables():
     content.write(list_string("skin_colours", skin_colours))
     content.write(list_string("hair_colours",hair_colours))
     content.write("\n")
+    content.write("const no_render_list = [")
+    for i in range(len(no_render_list)):
+        content.write("[\""+no_render_list[i][0]+"\",")
+        content.write(simple_list_string(no_render_list[i][1]))
+        content.write("],")    
+    content.write("];\n")
     content.write(list_string("no_lines_list",no_lines_list))   
     content.write(list_string("no_fill_list", no_fill_list, )) 
     content.write(list_string("eyetype_list", eyetype_list ))   
@@ -536,10 +542,14 @@ def write_variables():
             content.write("add_defining_object(\""+c.name+"\","+ c.listname+")\n")
 
     content.write("\n")    
-    
-    
-    
     content.close()
+
+def checkRender(name, item):
+    for i in range(len(no_render_list)):
+        if name == no_render_list[i][0]:
+            if item in no_render_list[i][1]:
+                return False
+    return True            
 
 def process_portrait_part(obj):
     if obj.name == "Nose_front":
@@ -549,20 +559,21 @@ def process_portrait_part(obj):
     else: 
         loc = obj.location + "/"+obj.name  
     for item in obj.item_list:
-        if not (obj.name in no_fill_list):     
-            if item!="none":
-                print(obj.name+" "+item)
-                if obj.name == "Nose_front":
-                    process_image(item, loc,"noshadow")          
-                elif obj.name in no_lines_list:  
-                    process_image(item, loc,"nolines")  
-                elif obj.name.endswith("_dec"):
-                    process_image(item, loc,"twotone")
-                elif obj.name=="eyes":
-                    for shape in eyetype_list:
-                        process_image(item, loc+"/"+shape,"eyes")           
-                else:    
-                    process_image(item, loc,"portrait")
+        if checkRender(obj.name, item):
+            if not (obj.name in no_fill_list):     
+                if item!="none":
+                    print(obj.name+" "+item)
+                    if obj.name == "Nose_front":
+                        process_image(item, loc,"noshadow")          
+                    elif obj.name in no_lines_list:  
+                        process_image(item, loc,"nolines")  
+                    elif obj.name.endswith("_dec"):
+                        process_image(item, loc,"twotone")
+                    elif obj.name=="eyes":
+                        for shape in eyetype_list:
+                            process_image(item, loc+"/"+shape,"eyes")           
+                    else:    
+                        process_image(item, loc,"portrait")
 
 def makeWinks():
     layer_list = ["base","highlight"]
@@ -592,8 +603,7 @@ def makeStubble():
 
 def process_all_portraits():
     for c in closet:
-        if not (c.name in no_render_list):
-            process_portrait_part(c)
+        process_portrait_part(c)
     #makeWinks() 
     #makeStubble()    
 
@@ -602,7 +612,7 @@ write_variables()
 # "skull", "head","body","ears","nose"
 # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
 for c in closet:
-    if c.name in ["earrings_dec"]:
+    if c.name in ["hat_back"]:
         process_portrait_part(c)
 #makeWinks()
 #makeStubble() 

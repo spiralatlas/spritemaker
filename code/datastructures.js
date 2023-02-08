@@ -1,3 +1,13 @@
+function checkRender(obj){
+    for (let i = 0; i < no_render_list.length; i += 1){
+        if (obj.name == no_render_list[i][0]){
+            if (no_render_list[i][1].includes(obj.item_list[obj.item]))
+                return false
+        }
+    }         
+    return true  
+}
+
 function setVariables(data_object){
     //transfer data from webpage/load file to internal javascript
 
@@ -30,6 +40,8 @@ function setVariables(data_object){
     for (let i = 0; i < image_objects.length; i += 1){
         image_objects[i].heightOffset = getHeightOffset(image_objects[i].name);
         image_objects[i].widthOffset = getWidthOffset(image_objects[i].name);
+        if (!checkRender(image_objects[i]))
+            image_objects[i].item = 0
     }
 
     if (findNameMatch(defining_objects,"wheelchair").item !=0){ //there's a wheelchair
@@ -249,8 +261,11 @@ document.addEventListener('alpine:init', () => {
         //set all clothing values including sleeve length
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
         for (let i = 0; i < defining_objects.length; i += 1){
-            if (outfit_list.includes(defining_objects[i].name)||accessory_list.includes(defining_objects[i].name)) {
-                this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0));
+            if (outfit_list.includes(defining_objects[i].name)||accessory_list.includes(defining_objects[i].name)|| ["hair_front"].includes(defining_objects[i].name)) {
+                if (accessory_list.includes(defining_objects[i].name))//accessories less common
+                    this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0.5));
+                else
+                    this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0));    
             }
         }
         

@@ -246,6 +246,7 @@ function print_image_objects(){
         s+="  item: "+b.item;
         s+=" colour: "+b.colour1;
         s+=" item: "+b.item_list[b.item]
+        s+=" render? "+checkRender(b)
         s+=" src: "+b.base_image_list[0].src;
         s+="<br>";
     }
