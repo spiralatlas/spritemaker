@@ -65,8 +65,8 @@ gloves_list_f = ["none", "short gloves", "medium gloves", "long gloves","bracele
 gloves_list_m = ["none", "short gloves"]
 gloves_list_d = [gloves_list_f,gloves_list_m]
 
-top_list_f = ["bodiceplain", "bodicelong","bodicefancy","bodicepointy"]
-top_list_m= [ "shirtopen","shirtclosed","shirtcravat"] 
+top_list_f = ["none","plain bodice", "long bodice","fancy bodice","pointy bodice"]
+top_list_m= ["none", "open shirt","closed shirt","cravat shirt"] 
 top_list_d = [top_list_f,top_list_m]
 top_collar_list = top_list_m
 top_collar_list_d = [["none"],top_collar_list]
@@ -76,8 +76,8 @@ overshirt_list_f = overshirt_list_u
 overshirt_list_m = overshirt_list_u+ ["waistcoat"]
 overshirt_list_d = [overshirt_list_f, overshirt_list_m]
 
-bottom_list_f = ["plainskirt","fancyskirt","lowskirt"]
-bottom_list_m = ["breeches","trousers"]
+bottom_list_f = ["none","solid skirt","split skirt","low skirt"]
+bottom_list_m = ["none","breeches","trousers"]
 bottom_list_d = [bottom_list_f, bottom_list_m]
     
 neckwear_list_f = ["none", "beaded necklace","choker","jewelled necklace","beads"] 
@@ -88,7 +88,7 @@ coat_list_f = ["none","mediumcloak","dressjacket","wrap"]
 coat_list_m = ["none","shortjacket","longjacketclosed","jama"]  
 coat_list_d = [coat_list_f, coat_list_m]
 
-hair_front_list_u = ["centre bun"]
+hair_front_list_u = ["none","centre bun"]
 hair_front_list_f = hair_front_list_u+ ["curly bun","wavy bun", "straight bun","curly long","straight long"]
 hair_front_list_m = hair_front_list_u+ ["curly short","wavy short", "straight short","super short"]
 
@@ -98,7 +98,7 @@ hair_back_list_m = hair_front_list_m
 hair_back_list_d = hair_front_list_d
 
 hat_list_f = ["none","beads","scarf"]
-hat_list_m = ["none","tophat","turban"]
+hat_list_m = ["none","top hat","turban"]
 hat_list_d = [hat_list_f, hat_list_m]
 
 # collections of parts that have the same colours and patterns
@@ -114,24 +114,20 @@ no_chest_list = [ "robe","robehood",  "mediumcloak", "mediumcloakhood", "longclo
 no_fill_list = ["mouth"] #lined items with no coloured fill
 no_lines_list = ["cheeks"] #coloured items with no lines
 
-hat_back_list = ["none","tophat","scarf","turban"]
+hat_back_list = ["none","top hat","scarf","turban"]
 hat_back_list_d = double_list(hat_back_list)
 hair_back_list = remove_dups(hair_front_list_f+ hair_front_list_m)
 hair_back_list_d = double_list(hair_back_list) 
 coat_back_list = ["none","mediumcloak","wrap"] 
 coat_back_list_d = double_list(coat_back_list) 
 
-wheelchair_bottom_list = ["none", "fancyskirt", "plainskirt","lowskirt","breeches","trousers"] 
-wheelchair_bottom_list_d = double_list(wheelchair_bottom_list)
+wheelchair_bottom_list_d = bottom_list_d
 wheelchair_coat_list = ["none", "mediumcloak","longjacketclosed","dressjacket","jama"] 
 wheelchair_coat_list_d = double_list(wheelchair_coat_list)
 
-backs_list = [["hat_back","hat",hat_back_list], ["hair_back","hair",hair_back_list],["coat_back","coat",coat_back_list],
-["wheelchair_bottom","bottom",wheelchair_bottom_list],["wheelchair_coat","coat",wheelchair_bottom_list],["wheelchair_back","wheelchair",wheelchair_list],]
-
-wheelchair_bottom_dec_list = ["breeches","fancyskirt"]
+wheelchair_bottom_dec_list = ["breeches","split skirt"]
 wheelchair_bottom_dec_list_d = double_list(wheelchair_bottom_dec_list)
-top_dec_list = ["bodiceplain", "bodicelong","bodicefancy","bodicepointy"]
+top_dec_list = ["plain bodice", "long bodice","fancy bodice","pointy bodice"]
 top_dec_list_d = double_list(top_dec_list)
 earrings_dec_list = ["round earrings"]
 earrings_dec_list_d = double_list(earrings_dec_list)
@@ -139,11 +135,11 @@ overshirt_dec_list = ["waistcoat"]
 overshirt_dec_list_d = double_list(overshirt_dec_list)
 neckwear_dec_list = ["jewelled necklace","beaded necklace"]
 neckwear_dec_list_d = double_list(neckwear_dec_list)
-bottom_dec_list = ["breeches","fancyskirt","plainskirt"]
+bottom_dec_list = ["breeches","split skirt","solid skirt"]
 bottom_dec_list_d = double_list(bottom_dec_list)
 coat_dec_list = ["dressjacket","jama"]
 coat_dec_list_d = double_list(coat_dec_list)
-hat_dec_list = ["tophat"]
+hat_dec_list = ["top hat"]
 hat_dec_list_d = double_list(hat_dec_list)
 hat_back_dec_list = ["scarf"]
 hat_back_dec_list_d = double_list(hat_back_dec_list)
@@ -188,6 +184,7 @@ add_item("body", "body_list_d", body_list_d, "anatomy")
 add_item("gloves", "gloves_list_d", gloves_list_d, "clothes")
 add_item("top", "top_list_d", top_list_d, "clothes")
 add_item("bottom", "bottom_list_d", bottom_list_d, "clothes")
+add_item("bottom_dec", "bottom_dec_list_d", bottom_dec_list_d, "clothes")
 #add_item("overshirt", "overshirt_list_d", overshirt_list_d, "clothes")
 add_item("neckwear", "neckwear_list_d", neckwear_list_d, "clothes")
 add_item("neckwear_dec", "neckwear_dec_list_d", neckwear_dec_list_d, "clothes")
@@ -214,7 +211,8 @@ add_item("hat_dec", "hat_dec_list_d", hat_dec_list_d, "clothes")
 
 add_item("wheelchair", "wheelchair_list_d", wheelchair_list_d, "wheelchair")
 add_item("wheelchair_dec", "wheelchair_list_d", wheelchair_list_d, "wheelchair")
-add_item("wheelchair_bottom", "wheelchair_bottom_list_d", wheelchair_bottom_list, "wheelchair")
+add_item("wheelchair_bottom", "wheelchair_bottom_list_d", wheelchair_bottom_list_d, "wheelchair")
+add_item("wheelchair_bottom_dec", "wheelchair_bottom_dec_list_d", wheelchair_bottom_dec_list_d, "wheelchair")
 add_item("wheelchair_coat", "wheelchair_coat_list_d", wheelchair_coat_list_d, "wheelchair")
 
 #colours

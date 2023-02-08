@@ -1,10 +1,13 @@
 function checkRender(obj){
+    //return false if object should not be rendered
     for (let i = 0; i < no_render_list.length; i += 1){
         if (obj.name == no_render_list[i][0]){
             if (no_render_list[i][1].includes(obj.item_list[obj.item]))
                 return false
         }
-    }         
+        if (obj.name.includes("wheelchair") && findNameMatch(defining_objects,"wheelchair").value_list[0] ==0)
+            return false;
+    }        
     return true  
 }
 
@@ -37,6 +40,7 @@ function setVariables(data_object){
             image_objects[json_obj.colour2_children[i]].colour1 = json_obj.colour2;
         }
     }
+
     for (let i = 0; i < image_objects.length; i += 1){
         image_objects[i].heightOffset = getHeightOffset(image_objects[i].name);
         image_objects[i].widthOffset = getWidthOffset(image_objects[i].name);
@@ -44,12 +48,10 @@ function setVariables(data_object){
             image_objects[i].item = 0
     }
 
-    if (findNameMatch(defining_objects,"wheelchair").item !=0){ //there's a wheelchair
+    if (findNameMatch(defining_objects,"wheelchair").value_list[0] !=0){ //there's a wheelchair
         sprite_height = full_height - (5-size)*25 -165;
     } else{ //no wheelchair
         sprite_height = full_height - (5-size)*30;
-        findNameMatch(defining_objects,"wheelchair_coat").item = 0;
-        findNameMatch(defining_objects,"wheelchair_bottom").item = 0;
     }
     
     //calculated from other variables

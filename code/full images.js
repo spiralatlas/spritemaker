@@ -169,8 +169,9 @@ add_colour_children("hair_front", ["hair_back"]);
 add_value_children("coat", ["coat_back","wheelchair_coat"]);
 add_colour_children("coat", ["coat_back","wheelchair_coat"]);
 
-add_value_children("bottom", ["wheelchair_bottom"]);
+add_value_children("bottom", ["wheelchair_bottom","wheelchair_bottom_dec","bottom_dec",]);
 add_colour_children("bottom", ["wheelchair_bottom"]);
+add_colour2_children("bottom", ["bottom_dec","wheelchair_bottom_dec"]);
 
 add_colour_children("top", ["top_collar"]);
 
