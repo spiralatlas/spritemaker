@@ -42,7 +42,15 @@ function findDefiningIndex(name){
     return -1;        
 }
 
-function getOffset(name){
+function getWidthOffset(name){
+    //how much the portrait image with name 'name' is shifted up or down to match the head shape
+    current_offset = 0;
+    if (head_offset_list.includes(name))   
+            current_offset +=2;
+    return current_offset
+}
+
+function getHeightOffset(name){
     //how much the portrait image with name 'name' is shifted up or down to match the head shape
     let obj = findNameMatch(image_objects, "head");
     let head = obj.item_list[obj.item];
@@ -51,7 +59,7 @@ function getOffset(name){
     switch(head){
         case "round":
             if (head_offset_list.includes(name))   
-                current_offset -=6;
+                current_offset -=5;
             if (["nose","nose_front", "facial_hair"].includes(name))  
                 current_offset -=0;
             if (["mouth"].includes(name))  
@@ -62,7 +70,7 @@ function getOffset(name){
             current_offset -=6;
             if (["nose","nose_front", "facial_hair"].includes(name))  
             current_offset +=1;
-            if (["Mouth"].includes(name))  
+            if (["mouth"].includes(name))  
             current_offset +=2;     
             break;   
         case "oval":
@@ -70,7 +78,7 @@ function getOffset(name){
             current_offset -=3;
             if (["nose","nose_front", "facial_hair"].includes(name))  
             current_offset +=1;
-            if (["Mouth"].includes(name))  
+            if (["mouth"].includes(name))  
             current_offset +=2;        
             break;
         case "medium":
@@ -78,8 +86,8 @@ function getOffset(name){
                 current_offset +=2;
             if (["nose","nose_front", "facial_hair"].includes(name))  
                 current_offset +=0;
-            if (["Mouth"].includes(name))  
-                current_offset +=4;        
+            if (["mouth"].includes(name))  
+                current_offset +=2;        
             break; 
         case "square":
             if (head_offset_list.includes(name))   
@@ -103,7 +111,24 @@ function getOffset(name){
             if (["mouth"].includes(name))  
                 current_offset +=0;    
             break;               
-    }    
+    } 
+    /*b = findNameMatch(image_objects, "Lips");
+    switch (current_lips){
+        case 0:
+        case 1:
+            current_offset += 2;
+            break;
+        case 2:
+            current_offset += 3;
+            break;
+        case 3:
+            current_offset += 5;
+            break;
+        case 4:
+            current_offset += 7;
+            break;        
+
+    }  */ 
     return current_offset;    
 }
 
@@ -120,7 +145,7 @@ for (i = 0; i < image_objects.length; i += 1)
 
 console.log(two_tone_names.toString())
 
-add_colour_children("head", ["body","eyebrows","nose","skull","ears"]);
+add_colour_children("head", skin_list);
 
 add_value_children("wheelchair", ["wheelchair_back","wheelchair_back_dec","wheelchair_dec"]);
 add_colour_children("wheelchair", ["wheelchair_back"]);
@@ -130,6 +155,7 @@ add_value_children("hat", ["hat_back"]);
 add_colour_children("hat", ["hat_back"]);
 add_colour2_children("hat", ["hat_back_dec","hat_dec"]);
 
+add_value_children("hair_front", ["hair_back"]);
 add_colour_children("hair_front", ["hair_back"]);
 
 add_value_children("coat", ["coat_back","wheelchair_coat"]);

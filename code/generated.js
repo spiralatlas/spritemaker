@@ -9,16 +9,16 @@ const no_lines_list = ["cheeks",];
 const no_fill_list = ["mouth",];
 const eyetype_list = ["medium",];
 const pattern_list = ["none","crocodile","rose","snake","damask","crosshatch","fabric","diamonds","diamondssmall","tartan","polkadot","pinstripe","horizontalpinstripe",];
-const skin_list = ["body","head","nose","mouth","eyebrows","eyes","skull",];
+const skin_list = ["body","nose","mouth","eyebrows","skull","complexion","ears",];
+const expression_list = ["mouth","eyebrows","cheeks","eyes",];
 const outfit_list = ["wheelchair","bottom","top","accessory","eyewear","gloves","hat","coat",];
-const defining_list = ["wheelchair","bottom","top","accessory","eyewear","gloves","hat","coat","body","head","nose","mouth","eyebrows","eyes","skull","hair_front","cheeks",];
+const defining_list = ["body","eyebrows","eyes","complexion","skull","bottom","coat","wheelchair","eyewear","accessory","gloves","nose","hair_front","head","mouth","cheeks","hat","top","ears",];
 
 const coat_back_list_d = [["none","mediumcloak","wrap",],["none","mediumcloak","wrap",],];
 const hat_back_list_d = [["none","tophat","scarf","turban",],["none","tophat","scarf","turban",],];
 const hat_back_dec_list_d = [["scarf",],["scarf",],];
-const hair_back_list_d = [["supershort","curlylong","centrebun","wavybun","straightbun","curlyshort","flowing","curlybun","straightshort","wavyshort",],["supershort","curlylong","centrebun","wavybun","straightbun","curlyshort","flowing","curlybun","straightshort","wavyshort",],];
+const hair_back_list_d = [["straight bun","curly bun","wavy bun","super short","curly short","straight short","wavy short","centre bun","straight long","curly long",],["straight bun","curly bun","wavy bun","super short","curly short","straight short","wavy short","centre bun","straight long","curly long",],];
 const body_list_d = [["regular",],["regular",],];
-const cheeks_list_d = [["none","blush",],["none","blush",],];
 const gloves_list_d = [["none","shortgloves","mediumgloves","longgloves","bracelets",],["none","shortgloves",],];
 const top_list_d = [["bodiceplain","bodicelong","bodicefancy","bodicepointy",],["shirtopen","shirtclosed","shirtcravat",],];
 const bottom_list_d = [["plainskirt","fancyskirt","lowskirt",],["breeches","trousers",],];
@@ -30,11 +30,13 @@ const skull_list_d = [["regular",],["regular",],];
 const head_list_d = [["pointed","medium","rectangular","round",],["pointed","medium","rectangular","round",],];
 const ear_list_d = [["regular",],["regular",],];
 const nose_list_d = [["button","round","medium","broad","pointed","hooked",],["button","round","medium","broad","pointed","hooked",],];
+const complexion_list_d = [["none","slight lines","freckles",],["none","slight lines","freckles",],];
+const cheeks_list_d = [["none","blush",],["none","blush",],];
 const mouth_list_d = [["big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","oh","square oh","small oh","shock","small flat","flat","wobbly frown","tiny frown","small frown","narrow frown","frown","pout","side frown","big frown",],["big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","oh","square oh","small oh","shock","small flat","flat","wobbly frown","tiny frown","small frown","narrow frown","frown","pout","side frown","big frown",],];
-const eyebrows_list_d = [["flat","flat sad","flat grumpy","flat angry","sad","sadder","semi sad","regular","semi arch","arched","raised arch","raised","raised flat","raised semi flat","raised grumpy","raised semi","angry","angry arch","half raised","half semi","half sad","half sad raised","half arch raised",],["flat","flat sad","flat grumpy","flat angry","sad","sadder","semi sad","regular","semi arch","arched","raised arch","raised","raised flat","raised semi flat","raised grumpy","raised semi","angry","angry arch","half raised","half semi","half sad","half sad raised","half arch raised",],];
+const eyebrows_list_d = [["flat","flat sad","flat grumpy","flat angry","sad","sadder","semi sad","regular","semi arch","arched","raised arch","raised","raised flat","raised semi flat","raised grumpy","raised semi","angry","angry arch","half raised","half semi","half sad","half sad raised","half flat","half arch raised",],["flat","flat sad","flat grumpy","flat angry","sad","sadder","semi sad","regular","semi arch","arched","raised arch","raised","raised flat","raised semi flat","raised grumpy","raised semi","angry","angry arch","half raised","half semi","half sad","half sad raised","half flat","half arch raised",],];
 const eyes_list_d = [["neutral",],["neutral",],];
 const eyewear_list_d = [["none","roundglasses","dropearrings","stud","roundearrings",],["none","roundglasses","beard",],];
-const hair_front_list_d = [["centrebun","curlybun","wavybun","straightbun","curlylong","flowing",],["centrebun","curlyshort","wavyshort","straightshort","supershort",],];
+const hair_front_list_d = [["centre bun","curly bun","wavy bun","straight bun","curly long","straight long",],["centre bun","curly short","wavy short","straight short","super short",],];
 const hat_list_d = [["none","beads",],["none","tophat","turban",],];
 const hat_dec_list_d = [["tophat","scarf",],["tophat","scarf",],];
 const wheelchair_list_d = [["none","regular",],["none","regular",],];
@@ -48,8 +50,6 @@ add_image_object("hat_back_dec",hat_back_dec_list_d,"clothes/hat")
 add_image_object("hair_back",hair_back_list_d,"hair")
 add_image_object("body",body_list_d,"anatomy")
 add_defining_object("body",body_list_d)
-add_image_object("cheeks",cheeks_list_d,"face")
-add_defining_object("cheeks",cheeks_list_d)
 add_image_object("gloves",gloves_list_d,"clothes")
 add_defining_object("gloves",gloves_list_d)
 add_image_object("top",top_list_d,"clothes")
@@ -67,8 +67,13 @@ add_defining_object("skull",skull_list_d)
 add_image_object("head",head_list_d,"anatomy")
 add_defining_object("head",head_list_d)
 add_image_object("ears",ear_list_d,"anatomy")
+add_defining_object("ears",ear_list_d)
 add_image_object("nose",nose_list_d,"face")
 add_defining_object("nose",nose_list_d)
+add_image_object("complexion",complexion_list_d,"face")
+add_defining_object("complexion",complexion_list_d)
+add_image_object("cheeks",cheeks_list_d,"face")
+add_defining_object("cheeks",cheeks_list_d)
 add_image_object("mouth",mouth_list_d,"face")
 add_defining_object("mouth",mouth_list_d)
 add_image_object("eyebrows",eyebrows_list_d,"face")

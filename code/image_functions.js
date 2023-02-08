@@ -394,7 +394,7 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
     
     /*if (!(obj.name =="Lips" && (current_lips==0))){
     */ 
-    if (!["body","skull","ears","head","wheelchair_back","wheelchair","wheelchair_dec","wheelchair_back_dec","nose","mouth","eyes","eyebrows"].includes(obj.name))
+    if (!["body","skull","ears","head","wheelchair_back","wheelchair","wheelchair_dec","wheelchair_back_dec","nose","mouth","eyes","eyebrows","hair_front","hair_back","cheeks","complexion"].includes(obj.name))
         return;
 
     if (no_fill_list.includes(obj.name)){
@@ -404,7 +404,10 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
         if (obj.name =="cheeks")
             off_ctx.fillStyle = blushcolour(colour);
         else{
-            off_ctx.fillStyle = colour;
+            if (obj.name =="complexion" && obj.item_list[obj.value_list[0]]=="freckles")
+                off_ctx.fillStyle = frecklecolour(colour);
+            else    
+                off_ctx.fillStyle = colour;
         }
         off_ctx.fillRect(0, 0, width, height);
 

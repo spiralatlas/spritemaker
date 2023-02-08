@@ -18,7 +18,7 @@ let eye_expressions = listOf(0);
 
 
 let full_width="314";
-let full_height="768";
+let full_height="800";
 
 //internal
 
@@ -30,7 +30,7 @@ const imageType_list =["Portrait","Sprite"];
 
 const editing_list =["Body","Outfit", "Expressions","Randomise"];
 
-const head_offset_list = ["skull","head","nose","nose_front","eyes","hat","hat_dec","hat_back","hat_back_dec","eyebrows","cheeks","mouth","lips","ears","hair_front","hair_back"];
+const head_offset_list = ["skull","head","nose","nose_front","eyes","hat","hat_dec","hat_back","hat_back_dec","eyebrows","cheeks","mouth","lips","ears","complexion", "hair_front","hair_back"];
 
 const panel_list = ["0: Neutral", "1: Happy", "2: Sad", "3: Unique", "4: Blushing", "5: Angry","6","7","8","9","10"];
 
@@ -138,7 +138,7 @@ function add_image_object(name, double_list, location){
     if (name.slice(-4)=="_dec")//remove "_dec"
         loc = location+"/"+name.slice(0,-4);
     item_list = remove_dups(double_list[0].concat(double_list[1]));
-    image_objects.push({name: name,location: loc, item_list: item_list, item: 0, heightOffset: 0, parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", base_image_list: newImageList(),shadow_image_list: newImageList(),highlight_image_list: newImageList()});
+    image_objects.push({name: name,location: loc, item_list: item_list, item: 0, heightOffset: 0, widthOffset:0, parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", base_image_list: newImageList(),shadow_image_list: newImageList(),highlight_image_list: newImageList()});
 }
 
 //Setting up portrait data

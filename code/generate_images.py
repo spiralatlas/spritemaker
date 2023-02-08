@@ -49,6 +49,9 @@ nose_list_d = double_list(nose_list_u)
 cheeks_list_u = ["none","blush"]
 cheeks_list_d = double_list(cheeks_list_u)
 
+complexion_list_u = ["none","slight lines", "freckles"]
+complexion_list_d = double_list(complexion_list_u)
+
 eyewear_list_u = ["none", "roundglasses"] #,"freckles",
 eyewear_list_f = eyewear_list_u + ["dropearrings", "stud","roundearrings"]
 eyewear_list_m = eyewear_list_u + ["beard"]
@@ -76,9 +79,9 @@ coat_list_f = ["none","mediumcloak","dressjacket","wrap"]
 coat_list_m = ["none","shortjacket","longjacketclosed","jama"]  
 coat_list_d = [coat_list_f, coat_list_m]
 
-hair_front_list_u = ["centrebun"]
-hair_front_list_f = hair_front_list_u+ ["curlybun","wavybun", "straightbun","curlylong","flowing"]
-hair_front_list_m = hair_front_list_u+ ["curlyshort","wavyshort", "straightshort","supershort"]
+hair_front_list_u = ["centre bun"]
+hair_front_list_f = hair_front_list_u+ ["curly bun","wavy bun", "straight bun","curly long","straight long"]
+hair_front_list_m = hair_front_list_u+ ["curly short","wavy short", "straight short","super short"]
 
 hair_front_list_d = [hair_front_list_f, hair_front_list_m]
 hair_back_list_f = hair_front_list_f
@@ -90,9 +93,10 @@ hat_list_m = ["none","tophat","turban"]
 hat_list_d = [hat_list_f, hat_list_m]
 
 # collections of parts that have the same colours and patterns
-skin_list = ["body","head","nose","mouth","eyebrows","eyes","skull"]
+skin_list = ["body","nose","mouth","eyebrows","skull","complexion","ears"]#same colour as head
+expression_list = ["mouth","eyebrows","cheeks","eyes"]
 outfit_list = ["wheelchair", "bottom","top", "accessory", "eyewear","gloves", "hat", "coat"]
-defining_list = outfit_list+skin_list+["hair_front","cheeks"]
+defining_list = remove_dups(outfit_list+skin_list+expression_list+["hair_front","head"])
 
 #extra info
 
@@ -162,14 +166,6 @@ def add_item(name, listname, double_list,location):
 
 ## Adding all the data to closet
 
-clothes_list = ["wheelchair_back","coat_back","hat_back","hair_back","body",
-"gloves","top","bottom","accessory","coat","chest","top_collar"
-"head", "eyebrows", "eyes", "nose","mouth","eyewear","hair_front",
-"hat", "wheelchair","wheelchair_bottom","wheelchair_coat"]
-
-# Behind face
-shown_start = len(closet) # where the visible items start
-
 add_item("wheelchair_back", "wheelchair_list_d", wheelchair_list_d,"wheelchair")
 add_item("wheelchair_back_dec", "wheelchair_list_d", wheelchair_list_d,"wheelchair")
 add_item("coat_back", "coat_back_list_d",coat_back_list_d, "clothes/coat")
@@ -177,9 +173,6 @@ add_item("hat_back", "hat_back_list_d",hat_back_list_d, "clothes/hat")
 add_item("hat_back_dec", "hat_back_dec_list_d",hat_back_dec_list_d, "clothes/hat")
 add_item("hair_back", "hair_back_list_d",hair_back_list_d, "hair")
 add_item("body", "body_list_d", body_list_d, "anatomy")
-
-#cheeks go here in the final image
-add_item("cheeks", "cheeks_list_d", cheeks_list_d, "face")
 
 # In front of face
 add_item("gloves", "gloves_list_d", gloves_list_d, "clothes")
@@ -194,6 +187,9 @@ add_item("skull", "skull_list_d", skull_list_d, "anatomy")
 add_item("head", "head_list_d", head_list_d, "anatomy")
 add_item("ears", "ear_list_d", ear_list_d, "anatomy")
 add_item("nose", "nose_list_d", nose_list_d, "face")
+add_item("complexion", "complexion_list_d", complexion_list_d, "face")
+add_item("cheeks", "cheeks_list_d", cheeks_list_d, "face")
+
 add_item("mouth", "mouth_list_d", mouth_list_d, "face")
 add_item("eyebrows", "eyebrows_list_d", eyebrows_list_d, "face")
 add_item("eyes", "eyes_list_d", eyes_list_d, "face")
@@ -512,6 +508,7 @@ def write_variables():
     content.write(list_string("eyetype_list", eyetype_list ))   
     content.write(list_string("pattern_list",pattern_list))    
     content.write(list_string("skin_list", skin_list))   
+    content.write(list_string("expression_list", expression_list))   
     content.write(list_string("outfit_list", outfit_list)) 
     content.write(list_string("defining_list", defining_list)) 
     content.write("\n")   
@@ -591,7 +588,7 @@ write_variables()
 # "skull", "head","body","ears","nose"
 # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
 for c in closet:
-    if c.name in ["eyebrows"]:
+    if c.name in ["complexion","cheeks"]:
         process_portrait_part(c)
 #makeWinks()
 #makeStubble() 

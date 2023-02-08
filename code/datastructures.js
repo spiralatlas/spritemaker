@@ -27,7 +27,8 @@ function setVariables(data_object){
         }
     }
     for (let i = 0; i < image_objects.length; i += 1){
-        image_objects[i].heightOffset = getOffset(image_objects[i].name);
+        image_objects[i].heightOffset = getHeightOffset(image_objects[i].name);
+        image_objects[i].widthOffset = getWidthOffset(image_objects[i].name);
     }
 
     if (findNameMatch(defining_objects,"wheelchair").item !=0){ //there's a wheelchair
@@ -38,27 +39,8 @@ function setVariables(data_object){
         findNameMatch(defining_objects,"wheelchair_bottom").item = 0;
     }
     
-
     //calculated from other variables
     /*let b;
-    
-    b = findNameMatch(image_objects, "Lips");
-    switch (current_lips){
-        case 0:
-        case 1:
-            b.heightOffset = 2;
-            break;
-        case 2:
-            b.heightOffset = 3;
-            break;
-        case 3:
-            b.heightOffset = 5;
-            break;
-        case 4:
-            b.heightOffset = 7;
-            break;        
-
-    }
     
     if (current_Facialhair<facial_hair_list_port.length){
         setVariable(["Facial_hair"], current_Facialhair);
@@ -304,7 +286,7 @@ function drawCanvas() {
             //ctx_preview.fillStyle = "#000000";
             //ctx_preview.fillText(b.name, 10, 10*i); 
             //ctx_preview.drawImage(b.base_image_list[0],0,0);
-            draw_object(b,current_expression,b.colour1,ctx_preview, 0,0,0, -b.heightOffset,preview_width,preview_height);
+            draw_object(b,current_expression,b.colour1,ctx_preview, 0,0,b.widthOffset, -b.heightOffset,preview_width,preview_height);
         }
     }
     
@@ -334,7 +316,7 @@ function drawCanvas() {
                 for (let i = 0; i < image_objects.length; i += 1){
                     let b = image_objects[i];
                     if (b.item_list[b.value_list[row*2+column]] !="None"){ 
-                        draw_object(b,row*2+column,b.colour1,ctx, 0,-getOffset(b.name)-b.heightOffset, xpos, ypos);
+                        draw_object(b,row*2+column,b.colour1,ctx, 0,-getHeightOffset(b.name)-b.heightOffset, xpos, ypos);
                     }
                 }
             }
