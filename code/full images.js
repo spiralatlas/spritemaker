@@ -147,8 +147,6 @@ for (i = 0; i < image_objects.length; i += 1)
     if (image_objects[i].name.slice(-4)=="_dec")
         two_tone_names.push(image_objects[i].name);    
 
-console.log(two_tone_names.toString())
-
 add_colour_children("head", skin_list);
 
 add_value_children("wheelchair", ["wheelchair_back","wheelchair_back_dec","wheelchair_dec"]);
@@ -161,6 +159,9 @@ add_colour2_children("hat", ["hat_back_dec","hat_dec"]);
 
 add_value_children("earrings", ["earrings_dec"]);
 add_colour2_children("earrings", ["earrings_dec"]);
+
+add_value_children("neckwear", ["neckwear_dec"]);
+add_colour2_children("neckwear", ["neckwear_dec"]);
 
 add_value_children("hair_front", ["hair_back"]);
 add_colour_children("hair_front", ["hair_back"]);

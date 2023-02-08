@@ -206,6 +206,13 @@ document.addEventListener('alpine:init', () => {
         {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
         {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
         {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
+        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
+        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
+        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
+        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
+        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
+        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
+        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
     ],
     
     initialiseAlpine(){
@@ -229,6 +236,10 @@ document.addEventListener('alpine:init', () => {
             this.current_defining_objects[i].colour1 = json_obj.colour1;
             this.current_defining_objects[i].colour2 = json_obj.colour2;
         }        
+    },
+    setExpressions(){
+        this.current_defining_objects[findDefiningIndex("mouth")].value_list=listOf(8);
+
     },
 
     randomiseBodyColouring(){
@@ -376,6 +387,7 @@ function setup(){
     
     checkFileAPI();
     Alpine.store('alpineData').randomiseAll(0);
+    Alpine.store('alpineData').setExpressions();
 
     //fix variables
     setVariables(Alpine.store('alpineData'));

@@ -52,7 +52,7 @@ cheeks_list_d = double_list(cheeks_list_u)
 complexion_list_u = ["none","slight lines", "freckles"]
 complexion_list_d = double_list(complexion_list_u)
 
-eyewear_list_u = ["none", "roundglasses"] 
+eyewear_list_u = ["none", "round glasses"] 
 eyewear_list_f = eyewear_list_u
 eyewear_list_m = eyewear_list_u
 eyewear_list_d =  [eyewear_list_f,eyewear_list_m]
@@ -80,7 +80,7 @@ bottom_list_f = ["plainskirt","fancyskirt","lowskirt"]
 bottom_list_m = ["breeches","trousers"]
 bottom_list_d = [bottom_list_f, bottom_list_m]
     
-neckwear_list_f = ["none", "pendant","choker","fancychoker","beads"] 
+neckwear_list_f = ["none", "beaded necklace","choker","jewelled necklace","beads"] 
 neckwear_list_m = ["none"]
 neckwear_list_d = [neckwear_list_f, neckwear_list_m]
 
@@ -137,7 +137,7 @@ earrings_dec_list = ["round earrings"]
 earrings_dec_list_d = double_list(earrings_dec_list)
 overshirt_dec_list = ["waistcoat"]
 overshirt_dec_list_d = double_list(overshirt_dec_list)
-neckwear_dec_list = ["pendant","fancychoker"]
+neckwear_dec_list = ["jewelled necklace","beaded necklace"]
 neckwear_dec_list_d = double_list(neckwear_dec_list)
 bottom_dec_list = ["breeches","fancyskirt","plainskirt"]
 bottom_dec_list_d = double_list(bottom_dec_list)
@@ -189,7 +189,8 @@ add_item("gloves", "gloves_list_d", gloves_list_d, "clothes")
 add_item("top", "top_list_d", top_list_d, "clothes")
 add_item("bottom", "bottom_list_d", bottom_list_d, "clothes")
 #add_item("overshirt", "overshirt_list_d", overshirt_list_d, "clothes")
-#add_item("neckwear", "neckwear_list_d", neckwear_list_d, "clothes")
+add_item("neckwear", "neckwear_list_d", neckwear_list_d, "clothes")
+add_item("neckwear_dec", "neckwear_dec_list_d", neckwear_dec_list_d, "clothes")
 add_item("coat", "coat_list_d", coat_list_d, "clothes")
 add_item("chest", "chest_list_d", chest_list_d, "anatomy")
 add_item("top_collar", "top_collar_list_d", top_collar_list_d, "clothes")
@@ -213,7 +214,7 @@ add_item("hat_dec", "hat_dec_list_d", hat_dec_list_d, "clothes")
 
 add_item("wheelchair", "wheelchair_list_d", wheelchair_list_d, "wheelchair")
 add_item("wheelchair_dec", "wheelchair_list_d", wheelchair_list_d, "wheelchair")
-#add_item("wheelchair_bottom", "wheelchair_bottom_list_d", wheelchair_bottom_list, "wheelchair")
+add_item("wheelchair_bottom", "wheelchair_bottom_list_d", wheelchair_bottom_list, "wheelchair")
 add_item("wheelchair_coat", "wheelchair_coat_list_d", wheelchair_coat_list_d, "wheelchair")
 
 #colours
@@ -612,7 +613,7 @@ write_variables()
 # "skull", "head","body","ears","nose"
 # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
 for c in closet:
-    if c.name in ["gloves"]:
+    if c.name in []:
         process_portrait_part(c)
 #makeWinks()
 #makeStubble() 

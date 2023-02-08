@@ -394,7 +394,15 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
     
     /*if (!(obj.name =="Lips" && (current_lips==0))){
     */ 
-    if (!(["head","wheelchair_back","wheelchair","wheelchair_dec","wheelchair_back_dec","hair_front","hair_back","eyewear","earrings","earrings_dec","hat","hat_dec","hat_back","hat_back_dec","gloves"].includes(obj.name)||skin_list.includes(obj.name)||expression_list.includes(obj.name)))
+    var base_list = skin_list.concat(expression_list).concat(accessory_list).concat(["head","wheelchair"]);
+    var possible_list = [];
+    for (let i = 0; i < base_list.length; i += 1){
+        possible_list.push(base_list[i]);
+        possible_list.push(base_list[i]+"_dec");
+        possible_list.push(base_list[i]+"_back");
+        possible_list.push(base_list[i]+"_back_dec");
+    }
+    if (!(possible_list.includes(obj.name)))
         return;
 
     if (no_fill_list.includes(obj.name)){
