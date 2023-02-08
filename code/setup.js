@@ -5,6 +5,7 @@ let testing = true;
 let currently_editing = 0; //which element of editing list we are editing
 let current_expression = 0;
 let current_clothing = 0;
+let current_accessory = 0;
 
 let size = 0;
 const size_list = ['Very Short','Short', 'Medium','Tall','Very Tall',];
@@ -20,6 +21,8 @@ let eye_expressions = listOf(0);
 let full_width="314";
 let full_height="800";
 
+let sprite_height = full_height;
+
 //internal
 
 const canvas_width = 512;
@@ -28,9 +31,7 @@ let panel_width = 256; //width and height of panels in pixels
 
 const imageType_list =["Portrait","Sprite"];
 
-const editing_list =["Body","Outfit", "Expressions","Randomise"];
-
-const head_offset_list = ["skull","head","nose","nose_front","eyes","hat","hat_dec","hat_back","hat_back_dec","eyebrows","cheeks","mouth","lips","ears","complexion", "hair_front","hair_back"];
+const editing_list =["Body","Outfit", "Accessory", "Expression","Randomise"];
 
 const panel_list = ["0: Neutral", "1: Happy", "2: Sad", "3: Unique", "4: Blushing", "5: Angry","6","7","8","9","10"];
 
@@ -239,16 +240,14 @@ function print_image_objects(){
     s = "";
     for (i = 0; i < image_objects.length; i += 1){
         b = image_objects[i];
-        if (["eyes"].includes(b.name)){
-            s+="name: "+b.name;
-            s+=" location: "+b.location;
-            s+=" item_list: "+b.item_list.toString();
-            s+="  item: "+b.item;
-            s+=" colour: "+b.colour1;
-            s+=" item: "+b.item_list[b.item]
-            s+=" src: "+b.base_image_list[0].src;
-            s+="<br>";
-        }
+        s+=i+" "+b.name;
+        s+=" location: "+b.location;
+        s+=" item_list: "+b.item_list.toString();
+        s+="  item: "+b.item;
+        s+=" colour: "+b.colour1;
+        s+=" item: "+b.item_list[b.item]
+        s+=" src: "+b.base_image_list[0].src;
+        s+="<br>";
     }
     return s
 }

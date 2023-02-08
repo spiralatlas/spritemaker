@@ -131,13 +131,17 @@ function getHeightOffset(name){
     }  */ 
     return current_offset;    
 }
+const head_offset_list = expression_list.concat(["skull","head","nose","nose_front","hat","hat_dec","hat_back","hat_back_dec","ears","complexion", "hair_front","hair_back","eyewear","earrings","earrings_dec"]);
 
 const clothes_names = [];
+const accessory_names = [];
 const two_tone_names = [];
 
 for (i = 0; i < defining_objects.length; i += 1){
     if (outfit_list.includes(defining_objects[i].name))
         clothes_names.push(defining_objects[i].name);
+    if (accessory_list.includes(defining_objects[i].name))
+        accessory_names.push(defining_objects[i].name);
 }
 for (i = 0; i < image_objects.length; i += 1)
     if (image_objects[i].name.slice(-4)=="_dec")
@@ -151,9 +155,12 @@ add_value_children("wheelchair", ["wheelchair_back","wheelchair_back_dec","wheel
 add_colour_children("wheelchair", ["wheelchair_back"]);
 add_colour2_children("wheelchair", ["wheelchair_back_dec","wheelchair_dec"]);
 
-add_value_children("hat", ["hat_back"]);
+add_value_children("hat", ["hat_back","hat_back_dec","hat_dec"]);
 add_colour_children("hat", ["hat_back"]);
 add_colour2_children("hat", ["hat_back_dec","hat_dec"]);
+
+add_value_children("earrings", ["earrings_dec"]);
+add_colour2_children("earrings", ["earrings_dec"]);
 
 add_value_children("hair_front", ["hair_back"]);
 add_colour_children("hair_front", ["hair_back"]);

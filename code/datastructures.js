@@ -4,6 +4,7 @@ function setVariables(data_object){
     currently_editing = data_object.currently_editing; //which element of editing list we are editing
     current_expression = data_object.current_expression;
     current_clothing = data_object.current_clothing;
+    current_accessory = data_object.current_accessory;
 
     size = data_object.size;
     current_hairstyle = data_object.current_hairstyle;
@@ -87,7 +88,14 @@ document.addEventListener('alpine:init', () => {
                     objList = 'defining_objects['+obj_index+'].item_list';
                     buttonName = objName+"[0]";
                     value = "listOf(index)";
-                    break;    
+                    break;   
+                case 'accessory':
+                    obj_index = 'findDefiningIndex(accessory_names[$store.alpineData.current_accessory])';
+                    objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list';
+                    objList = 'defining_objects['+obj_index+'].item_list';
+                    buttonName = objName+"[0]";
+                    value = "listOf(index)";
+                    break;        
                 case 'expression':
                     obj_index = findDefiningIndex(this.valueName);
                     objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list[current_expression]';
@@ -103,6 +111,9 @@ document.addEventListener('alpine:init', () => {
                         case 'current_clothing':
                             objList = 'clothes_names';
                             break;
+                        case 'current_accessory':
+                            objList = 'accessory_names';
+                            break;    
                         case 'current_expression':
                             objList = 'panel_list';
                             break;
@@ -137,10 +148,10 @@ document.addEventListener('alpine:init', () => {
                     objName = '$store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')].colour1';
                     break;
                 case 'clothing1':
-                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex(clothes_names[$store.alpineData.current_clothing])].colour1';
+                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.current_clothing])].colour1';
                     break; 
                 case 'clothing2':
-                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex(clothes_names[$store.alpineData.current_clothing])].colour2';
+                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.current_clothing])].colour2';
                     break;        
             }    
             
@@ -157,6 +168,7 @@ document.addEventListener('alpine:init', () => {
     currently_editing : 0,
     current_expression : 0,
     current_clothing : 0,
+    current_accessory : 0,
 
     size : 0,
     current_hairstyle: 0,
@@ -226,7 +238,7 @@ document.addEventListener('alpine:init', () => {
     randomiseClothingColour(){
         //randomise all clothing colours
         for(let i = 0; i < defining_objects.length-1; i++){
-            if (outfit_list.includes(defining_objects[i].name)) {
+            if (outfit_list.includes(defining_objects[i].name)||accessory_list.includes(defining_objects[i].name)) {
                 this.current_defining_objects[i].colour1 = randomElement(outfit_colours);
                 this.current_defining_objects[i].colour2 = randomElement(outfit_colours);
             }
@@ -237,7 +249,7 @@ document.addEventListener('alpine:init', () => {
         //set all clothing values including sleeve length
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
         for (let i = 0; i < defining_objects.length; i += 1){
-            if (outfit_list.includes(defining_objects[i].name)) {
+            if (outfit_list.includes(defining_objects[i].name)||accessory_list.includes(defining_objects[i].name)) {
                 this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0));
             }
         }
