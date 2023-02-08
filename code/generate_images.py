@@ -65,7 +65,7 @@ gloves_list_f = ["none", "short gloves", "medium gloves", "long gloves","bracele
 gloves_list_m = ["none", "short gloves"]
 gloves_list_d = [gloves_list_f,gloves_list_m]
 
-top_list_f = ["none","plain bodice", "long bodice","fancy bodice","pointy bodice"]
+top_list_f = ["none","plain bodice", "long sleeve bodice","gathered bodice","v neck bodice"]
 top_list_m= ["none", "open shirt","closed shirt","cravat shirt"] 
 top_list_d = [top_list_f,top_list_m]
 top_collar_list = top_list_m
@@ -127,7 +127,7 @@ wheelchair_coat_list_d = double_list(wheelchair_coat_list)
 
 wheelchair_bottom_dec_list = ["breeches","split skirt"]
 wheelchair_bottom_dec_list_d = double_list(wheelchair_bottom_dec_list)
-top_dec_list = ["plain bodice", "long bodice","fancy bodice","pointy bodice"]
+top_dec_list = ["plain bodice", "long sleeve bodice","gathered bodice","v neck bodice"]
 top_dec_list_d = double_list(top_dec_list)
 earrings_dec_list = ["round earrings"]
 earrings_dec_list_d = double_list(earrings_dec_list)
@@ -183,9 +183,10 @@ add_item("body", "body_list_d", body_list_d, "anatomy")
 # In front of face
 add_item("gloves", "gloves_list_d", gloves_list_d, "clothes")
 add_item("top", "top_list_d", top_list_d, "clothes")
+add_item("top_dec", "top_dec_list_d", top_dec_list_d, "clothes")
 add_item("bottom", "bottom_list_d", bottom_list_d, "clothes")
 add_item("bottom_dec", "bottom_dec_list_d", bottom_dec_list_d, "clothes")
-#add_item("overshirt", "overshirt_list_d", overshirt_list_d, "clothes")
+add_item("overshirt", "overshirt_list_d", overshirt_list_d, "clothes")
 add_item("neckwear", "neckwear_list_d", neckwear_list_d, "clothes")
 add_item("neckwear_dec", "neckwear_dec_list_d", neckwear_dec_list_d, "clothes")
 add_item("coat", "coat_list_d", coat_list_d, "clothes")
@@ -611,7 +612,7 @@ write_variables()
 # "skull", "head","body","ears","nose"
 # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
 for c in closet:
-    if c.name in []:
+    if c.name in ["top_collar"]:
         process_portrait_part(c)
 #makeWinks()
 #makeStubble() 

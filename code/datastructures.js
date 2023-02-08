@@ -97,7 +97,7 @@ document.addEventListener('alpine:init', () => {
                     value = "listOf(index)";
                     break;
                 case 'clothing':
-                    obj_index = 'findDefiningIndex(clothes_names[$store.alpineData.current_clothing])';
+                    obj_index = 'findDefiningIndex(clothing_names[$store.alpineData.current_clothing])';
                     objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list';
                     objList = 'defining_objects['+obj_index+'].item_list';
                     buttonName = objName+"[0]";
@@ -123,7 +123,7 @@ document.addEventListener('alpine:init', () => {
                     buttonName = objName;
                     switch(this.valueName){
                         case 'current_clothing':
-                            objList = 'clothes_names';
+                            objList = 'clothing_names';
                             break;
                         case 'current_accessory':
                             objList = 'accessory_names';
@@ -162,10 +162,10 @@ document.addEventListener('alpine:init', () => {
                     objName = '$store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')].colour1';
                     break;
                 case 'clothing1':
-                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.current_clothing])].colour1';
+                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.current_'+this.valueName+'])].colour1';
                     break; 
                 case 'clothing2':
-                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.current_clothing])].colour2';
+                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.current_'+this.valueName+'])].colour2';
                     break;        
             }    
             
@@ -262,7 +262,7 @@ document.addEventListener('alpine:init', () => {
     },
     randomiseClothingColour(){
         //randomise all clothing colours
-        for(let i = 0; i < defining_objects.length-1; i++){
+        for(let i = 0; i < defining_objects.length; i++){
             if (outfit_list.includes(defining_objects[i].name)||accessory_list.includes(defining_objects[i].name)) {
                 this.current_defining_objects[i].colour1 = randomElement(outfit_colours);
                 this.current_defining_objects[i].colour2 = randomElement(outfit_colours);

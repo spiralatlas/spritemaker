@@ -133,13 +133,13 @@ function getHeightOffset(name){
 }
 const head_offset_list = expression_list.concat(["skull","head","nose","nose_front","hat","hat_dec","hat_back","hat_back_dec","ears","complexion", "hair_front","hair_back","eyewear","earrings","earrings_dec"]);
 
-const clothes_names = [];
+const clothing_names = [];
 const accessory_names = [];
 const two_tone_names = [];
 
 for (i = 0; i < defining_objects.length; i += 1){
     if (outfit_list.includes(defining_objects[i].name))
-        clothes_names.push(defining_objects[i].name);
+        clothing_names.push(defining_objects[i].name);
     if (accessory_list.includes(defining_objects[i].name))
         accessory_names.push(defining_objects[i].name);
 }
@@ -173,7 +173,9 @@ add_value_children("bottom", ["wheelchair_bottom","wheelchair_bottom_dec","botto
 add_colour_children("bottom", ["wheelchair_bottom"]);
 add_colour2_children("bottom", ["bottom_dec","wheelchair_bottom_dec"]);
 
+add_value_children("top", ["top_collar","top_dec"]);
 add_colour_children("top", ["top_collar"]);
+add_colour2_children("top", ["top_dec"]);
 
 /* Would make things easier but is broken >:(
 let current_name_dec;
@@ -182,7 +184,7 @@ for (i = 0; i < two_tone_names.length; i += 1){
     current_name_dec = two_tone_names[i];
     current_name = current_name_dec.slice(0,-4);
     console.log(current_name+":"+current_name_dec)
-    if (clothes_names.includes(current_name)){
+    if (clothing_names.includes(current_name)){
         //add_value_children(current_name, [current_name_dec]);
         console.log("adding "+current_name+":"+current_name_dec)
         add_colour2_children(current_name, [current_name_dec]);
@@ -190,7 +192,7 @@ for (i = 0; i < two_tone_names.length; i += 1){
     else{
         console.log("NOT adding "+current_name+":"+current_name_dec)
         current_name = current_name.slice(0,-5);
-        if (clothes_names.includes(current_name)){
+        if (clothing_names.includes(current_name)){
             //add_value_children(current_name, [current_name_dec]);
             console.log("adding "+current_name+":"+current_name_dec)
             add_colour2_children(current_name, [current_name_dec]);

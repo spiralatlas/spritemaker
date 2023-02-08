@@ -22,9 +22,11 @@ const hat_back_dec_list_d = [["scarf",],["scarf",],];
 const hair_back_list_d = [["none","straight bun","curly bun","wavy bun","super short","curly short","straight short","wavy short","centre bun","straight long","curly long",],["none","straight bun","curly bun","wavy bun","super short","curly short","straight short","wavy short","centre bun","straight long","curly long",],];
 const body_list_d = [["regular",],["regular",],];
 const gloves_list_d = [["none","short gloves","medium gloves","long gloves","bracelets",],["none","short gloves",],];
-const top_list_d = [["none","plain bodice","long bodice","fancy bodice","pointy bodice",],["none","open shirt","closed shirt","cravat shirt",],];
+const top_list_d = [["none","plain bodice","long sleeve bodice","gathered bodice","v neck bodice",],["none","open shirt","closed shirt","cravat shirt",],];
+const top_dec_list_d = [["plain bodice","long sleeve bodice","gathered bodice","v neck bodice",],["plain bodice","long sleeve bodice","gathered bodice","v neck bodice",],];
 const bottom_list_d = [["none","solid skirt","split skirt","low skirt",],["none","breeches","trousers",],];
 const bottom_dec_list_d = [["breeches","split skirt","solid skirt",],["breeches","split skirt","solid skirt",],];
+const overshirt_list_d = [["none",],["none","waistcoat",],];
 const neckwear_list_d = [["none","beaded necklace","choker","jewelled necklace","beads",],["none",],];
 const neckwear_dec_list_d = [["jewelled necklace","beaded necklace",],["jewelled necklace","beaded necklace",],];
 const coat_list_d = [["none","mediumcloak","dressjacket","wrap",],["none","shortjacket","longjacketclosed","jama",],];
@@ -62,9 +64,12 @@ add_image_object("gloves",gloves_list_d,"clothes")
 add_defining_object("gloves",gloves_list_d)
 add_image_object("top",top_list_d,"clothes")
 add_defining_object("top",top_list_d)
+add_image_object("top_dec",top_dec_list_d,"clothes")
 add_image_object("bottom",bottom_list_d,"clothes")
 add_defining_object("bottom",bottom_list_d)
 add_image_object("bottom_dec",bottom_dec_list_d,"clothes")
+add_image_object("overshirt",overshirt_list_d,"clothes")
+add_defining_object("overshirt",overshirt_list_d)
 add_image_object("neckwear",neckwear_list_d,"clothes")
 add_defining_object("neckwear",neckwear_list_d)
 add_image_object("neckwear_dec",neckwear_dec_list_d,"clothes")
