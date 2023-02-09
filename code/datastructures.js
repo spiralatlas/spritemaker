@@ -20,7 +20,6 @@ function setVariables(data_object){
     current_accessory = data_object.current_accessory;
 
     size = data_object.size;
-    current_hairstyle = data_object.current_hairstyle;
     current_eyetype = data_object.current_eyetype;
 
     for (let i = 0; i < defining_objects.length; i += 1){
@@ -188,9 +187,6 @@ document.addEventListener('alpine:init', () => {
                         case 'size':
                             objList = 'size_list';
                             break;
-                        case 'current_hairstyle': 
-                            objList = '[\'androgynous\',]';
-                            break; 
                         case 'current_eyetype': 
                             objList = 'eyetype_list';
                             break;       
@@ -239,7 +235,6 @@ document.addEventListener('alpine:init', () => {
     current_accessory : 0,
 
     size : 0,
-    current_hairstyle: 0,
     current_eyetype: 0,
 
     current_defining_objects: [
@@ -282,7 +277,6 @@ document.addEventListener('alpine:init', () => {
     fixAlpine() { //make the alpine components match the variables used by the javascript
     
         this.size= size;
-        this.current_hairstyle = current_hairstyle;
         this.current_eyetype = current_eyetype;
         
         for (let i = 0; i < defining_objects.length; i += 1){
@@ -345,10 +339,14 @@ document.addEventListener('alpine:init', () => {
         for (let i = 0; i < defining_objects.length; i += 1){
             if (outfit_list.includes(defining_objects[i].name)||accessory_list.includes(defining_objects[i].name)|| ["hair_front"].includes(defining_objects[i].name)) {
                 var prob;
-                if (accessory_list.includes(defining_objects[i].name))//accessories less common
+                if (accessory_list.includes(defining_objects[i].name)|| defining_objects[i].name=="wheelchair")//accessories less common
                     prob = 0.5;
-                else
-                    prob = -1;
+                else{
+                    if (["top","bottom"].includes(defining_objects[i].name))
+                        prob = -1;
+                    else
+                        prob = 0;    
+                }
                 switch(gender){
                     case 0:
                         this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,prob));  

@@ -5,28 +5,17 @@ function download() {
   var filename = "dollmaker_save.json";
   var type = "";
 
-  var current_menu_objects = [];
-  for(let i = 0; i < menu_objects.length-1; i++){
-    m = menu_objects[i];
-    var sleeves = 0;
-    var item = m.item;
-    if (m.name =="Shoes")
-      item=currentShoes;
-    if (m.name =="Gloves")
-      item=currentGloves;  
-    if (sleeve_havers.indexOf(m.name)>-1)//this item has sleeves
-      sleeves = sleeve_list[sleeve_havers.indexOf(m.name)] ; 
+  var current_defining_objects = [];
+  for(let i = 0; i < defining_objects.length; i++){
+    m = defining_objects[i];
 
-    current_menu_objects.push({name: m.name, item:item,colour1: m.colour1,colour2: m.colour2, sleeves: sleeves})
+    current_defining_objects.push({name: m.name, value_list:m.value_list,colour1: m.colour1,colour2: m.colour2})
   }
 
   var load_variables = {
-    panelNum: panelNum, current_imageType: current_imageType, current_expression: current_expression, height: height, current_eyeType: eye_type, current_wedding_clothes: current_wedding_clothes, current_dance_clothes: current_dance_clothes,
-    current_skinColour: findNameMatch(sprite_objects,"Head").colour1,current_eyeColour: findNameMatch(sprite_objects,"Eyes").colour1,current_hairColour: findNameMatch(sprite_objects,"Hairstyle").colour1,
-    current_complexion: findNameMatch(image_objects,"Complexion").value_list[0],current_head: findNameMatch(image_objects,"Head").value_list[0],current_ears: findNameMatch(image_objects,"Ears").value_list[0], current_lips: current_lips,current_nose: findNameMatch(image_objects,"Nose").value_list[0],
-    eye_expressions : eye_expressions, eyebrow_expressions : findNameMatch(image_objects,"Eyebrows").value_list,mouth_expressions : findNameMatch(image_objects,"Mouth").value_list,blush_expressions : findNameMatch(image_objects,"Blush").value_list,
-    current_hair: findNameMatch(menu_objects, "Hairstyle").item,current_Facialhair :current_Facialhair, 
-    current_menu_objects: current_menu_objects, 
+    currently_editing: currently_editing, current_expression:current_expression,current_clothing:current_clothing,current_accessory: current_accessory,
+    size: size, current_eyetype: current_eyetype,
+    current_defining_objects: current_defining_objects, 
   }    
   
   data = JSON.stringify(load_variables);
