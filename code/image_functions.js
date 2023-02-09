@@ -275,80 +275,7 @@ function fixSources(){
             if (b.name =="Lips"){
                 if (current_lips==0)
                     current_loc = "None"    
-            } 
-
-            //code to make backs of things match the fronts
-            for (let k = 0; k < back_list_port.length; k += 1){ 
-                let front_name = back_list_port[k][0];
-                if (b.name == front_name+"_back"){
-                    obj_front = findNameMatch(image_objects, front_name);
-                    if (front_name =="Coat" && coat_dec_back_list_port.includes(current_loc)){
-                        obj_dec = findNameMatch(image_objects, front_name+"_dec");
-                        b.colour1 = obj_dec.colour1;
-                    }else
-                        b.colour1 = obj_front.colour1;
-                    if (back_list_port[k][1].includes(obj_front.item_list[obj_front.value_list[j]]))
-                        current_loc = obj_front.item_list[obj_front.value_list[j]];    
-                }
-            }
-
-            //code for sleeves
-            for (let k = 0; k < sleeve_list_port.length; k += 1){ 
-                let front_name = sleeve_list_port[k].name; //eg "Shirt", "Coat" etc
-                if (b.name == front_name+"_sleeves"){ //this is "Shirt_sleeves" etc
-                    obj_front = findNameMatch(image_objects, front_name); //what shirt etc we are wearing
-                    b.colour1 = obj_front.colour1
-                    current_loc = "None";
-                    b.value_list[j] = 0;
-                    current_sleeves_list = sleeve_list_port[k].sleeves_list;
-                    current_item = obj_front.item_list[obj_front.value_list[j]];
-                    if (current_sleeves_list.includes(current_item)){ //the current shirt etc can have sleeves
-                            let current_sleeves = sleeve_list[k] //what current sleeve length is
-                            if (current_sleeves==0){
-                                b.value_list[j] = 1;
-                                current_loc = "zilch";
-                            }
-                            else{
-                                b.value_list[j] = 2;
-                                if (sleeve_list_port[k].sharp_sleeves.includes(current_item)){
-                                    current_loc = "sharp";   
-                                }else{
-                                    current_loc = "round";   
-                                }
-                                
-                            } 
-                    }
-                }
-                if (b.name == front_name+"_sleeves_dec"){ //this is "Shirt_sleeves_dec" etc
-                    obj_front = findNameMatch(image_objects, front_name); //what shirt etc we are wearing
-                    obj_dec = findNameMatch(image_objects, front_name+"_dec"); //what shirt decoration etc we are wearing
-                    b.colour1 = obj_dec.colour1
-                    current_loc = "None";
-                    b.value_list[j] = 0;
-                    if (obj_dec.value_list[j]!=0){ //item is decorated
-                        current_sleeves_list = sleeve_list_port[k].sleeves_list;
-                        current_item = obj_front.item_list[obj_front.value_list[j]];
-                        if (current_sleeves_list.includes(obj_front.item_list[obj_front.value_list[j]])){ //the current shirt etc can have sleeves
-                            let current_dec = sleeve_list_port[k].dec_list[obj_dec.value_list[j]]
-                            if (current_dec!="None"){
-                                let current_sleeves = sleeve_list[k]  //what current sleeve length is
-                                if (current_sleeves==0){
-                                    b.value_list[j] = obj_dec.value_list[j]*current_sleeves_list.length+1;
-                                    current_loc = current_dec+" zilch"
-                                }
-                                else{
-                                    b.value_list[j] = obj_dec.value_list[j]*current_sleeves_list.length+2;
-                                    if (sleeve_list_port[k].sharp_sleeves.includes(current_item)){
-                                        current_loc = current_dec+" sharp";   
-                                    }else{
-                                        current_loc = current_dec+" round";   
-                                    }
-                                } 
-                            }
-                        }
-                    }
-                }
-            }*/
+            } */
             if (current_loc.includes("None")||current_loc.includes("none")){
                 b.base_image_list[j].src  ="";
                 b.shadow_image_list[j].src  ="";
@@ -402,10 +329,10 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
         possible_list.push(base_list[i]+"_back");
         possible_list.push(base_list[i]+"_back_dec");
     }
-    if (!(possible_list.includes(obj.name)))
-        return;
+    //if (!(possible_list.includes(obj.name)))
+    //    return;
 
-    if (no_fill_list.includes(obj.name)){
+    if (no_fill_list.includes(obj.name)){//not coloured or anything just displayed straight
         ctx.drawImage(obj.base_image_list[index],sourceX,sourceY,width,height, xpos, ypos,width,height);
     }
     else{
@@ -432,7 +359,16 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
                 off_ctx.globalCompositeOperation = "screen";
             off_ctx.drawImage(obj.highlight_image_list[index],0,0,width,height, 0, 0,width,height);
         }
-        off_ctx.globalCompositeOperation = "source-over"; 
+        off_ctx.globalCompositeOperation = "source-over";
+
+        //cropping
+        if (obj.crop[0]>0)
+            off_ctx.clearRect(0, 0, obj.crop[0], height);
+        if (obj.crop[1]>0)
+            off_ctx.clearRect(0, 0, width, obj.crop[1]); 
+        if (width >obj.crop[0]+obj.crop[2])
+            off_ctx.clearRect(obj.crop[0]+obj.crop[2], 0, width-(obj.crop[0]+obj.crop[2]), height);       
+      
         ctx.drawImage(off_canvas,sourceX,sourceY,width,height, xpos, ypos,width,height);
     }
 }

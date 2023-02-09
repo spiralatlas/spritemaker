@@ -41,9 +41,16 @@ function setVariables(data_object){
         }
     }
 
-    let chest_obj = findNameMatch(image_objects,"chest")
+    let chest_obj = findNameMatch(image_objects,"chest");
+    let coat_obj = findNameMatch(image_objects,"coat");
+    let overshirt_obj = findNameMatch(image_objects,"overshirt");
+    let top_obj = findNameMatch(image_objects,"top");
+    let bottom_obj = findNameMatch(image_objects,"bottom");
+    let hair_front_obj = findNameMatch(image_objects,"hair_front");
+    let hair_back_obj = findNameMatch(image_objects,"hair_back");
+
+    //calculating chest
     if (chest_obj.item!=0){
-        let coat_obj = findNameMatch(image_objects,"coat")
         if (coat_obj.item !=0){
             if (no_chest_coat_list.includes(coat_obj.item_list[coat_obj.item]))
                 chest_obj.item =0
@@ -53,12 +60,10 @@ function setVariables(data_object){
             }
         }
         else{
-        let overshirt_obj = findNameMatch(image_objects,"overshirt")
         if (overshirt_obj.item !=0){
             chest_obj.colour1 = overshirt_obj.colour1
         }
         else{
-        let top_obj = findNameMatch(image_objects,"top")
         if (top_obj.item !=0){
                 chest_obj.colour1 = top_obj.colour1
                 if (chest_obj.item ==2 && ["breeches","trousers", "low skirt"].includes(findImageItem("bottom")))
@@ -69,20 +74,39 @@ function setVariables(data_object){
         }}    
     }
 
+    //update images and offsets
     for (let i = 0; i < image_objects.length; i += 1){
+        image_objects[i].crop = [0,0,full_width,full_height];
         image_objects[i].heightOffset = getHeightOffset(image_objects[i].name);
         image_objects[i].widthOffset = getWidthOffset(image_objects[i].name);
         if (!checkRender(image_objects[i]))
             image_objects[i].item = 0
     }
 
+    //sprite height
     if (findNameMatch(defining_objects,"wheelchair").value_list[0] !=0){ //there's a wheelchair
         sprite_height = full_height - (5-size)*25 -165;
     } else{ //no wheelchair
         sprite_height = full_height - (5-size)*30;
     }
 
-    
+    //calculating crops
+
+    if (!["none","wrap"].includes(findImageItem("coat")))
+        top_obj.crop = [100,0,120,800];
+    if (["dress jacket", "long jacket closed","jama"].includes(findImageItem("coat")))
+        bottom_obj.crop = [100,0,100,800];
+   
+    let hat_string = findImageItem("hat");
+    console.log(hat_string)
+    if (hat_string=="top hat"){
+        hair_front_obj.crop = [0,138,300,700];
+        hair_back_obj.crop = [0,138,300,700];
+    }
+    if (hat_string=="turban"){
+        hair_front_obj.crop = [0,134,300,700];
+        hair_back_obj.crop = [0,134,300,700]; 
+    }   
     
     //calculated from other variables
     /*let b;
@@ -276,16 +300,31 @@ document.addEventListener('alpine:init', () => {
 
     randomiseBodyColouring(){
         //randomise the skin/eye/hair colour
-        this.current_defining_objects[findDefiningIndex("head")].colour1 = randomElement(skin_colours);
-        this.current_defining_objects[findDefiningIndex("hair_front")].colour1 = randomElement(hair_colours);
-        this.current_defining_objects[findDefiningIndex("eyes")].colour1 = randomElement(eye_colours);
+        this.current_defining_objects[findDefiningIndex("head")].colour1 = randomElement(skin_colours,0);
+        this.current_defining_objects[findDefiningIndex("hair_front")].colour1 = randomElement(hair_colours,0);
+        this.current_defining_objects[findDefiningIndex("eyes")].colour1 = randomElement(eye_colours,0);
     },
     randomiseFeatures(gender){
         //randomise the nose/head/hairstyle etc
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
         for (let i = 0; i < defining_objects.length; i += 1){
-            if (["nose","head","chest"].includes(defining_objects[i].name)){
+            if (["nose","head"].includes(defining_objects[i].name)){
                 this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0));
+            }
+            if ("chest"==defining_objects[i].name){
+                switch(gender){
+                    case 0:
+                        this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0.5));
+                        break;
+                    case 1:
+                        this.current_defining_objects[i].value_list = listOf(0);
+                        break;
+                    case 2:
+                        this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0));
+                        break;    
+                }
+
+                
             }
         }
         this.size = randomIndex(size_list,0);
@@ -294,8 +333,8 @@ document.addEventListener('alpine:init', () => {
         //randomise all clothing colours
         for(let i = 0; i < defining_objects.length; i++){
             if (outfit_list.includes(defining_objects[i].name)||accessory_list.includes(defining_objects[i].name)) {
-                this.current_defining_objects[i].colour1 = randomElement(outfit_colours);
-                this.current_defining_objects[i].colour2 = randomElement(outfit_colours);
+                this.current_defining_objects[i].colour1 = randomElement(outfit_colours,0);
+                this.current_defining_objects[i].colour2 = randomElement(outfit_colours,0);
             }
         }
 
@@ -305,10 +344,22 @@ document.addEventListener('alpine:init', () => {
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
         for (let i = 0; i < defining_objects.length; i += 1){
             if (outfit_list.includes(defining_objects[i].name)||accessory_list.includes(defining_objects[i].name)|| ["hair_front"].includes(defining_objects[i].name)) {
+                var prob;
                 if (accessory_list.includes(defining_objects[i].name))//accessories less common
-                    this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0.5));
+                    prob = 0.5;
                 else
-                    this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0));    
+                    prob = -1;
+                switch(gender){
+                    case 0:
+                        this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,prob));  
+                        break;
+                    case 1:
+                        this.current_defining_objects[i].value_list = listOf(randomElement(defining_objects[i].item_list_m,prob));  
+                        break;
+                    case 2:
+                        this.current_defining_objects[i].value_list = listOf(randomElement(defining_objects[i].item_list_f,prob));  
+                        break;    
+                }   
             }
         }
         

@@ -48,18 +48,23 @@ function nameOf(obj){
     return obj.name;
 }
 
-function randomElement(items){
+function randomElement(items,bias){
     //random element of list items
-    return items[Math.floor(Math.random()*items.length)];
+    return items[randomIndex(items,bias)];
 }
 
 function randomIndex(items,bias){
     //random integer between 0 and items.length-1
     //has a bias towards returning zero
+    // if bias <0, function can never return 0
     if (Math.random()< bias)
         return 0;
-    else  
-        return Math.floor(Math.random()*items.length);
+    else{  
+        if (bias <0)
+            return 1+ Math.floor(Math.random()*(items.length-1));
+        else
+            return Math.floor(Math.random()*items.length);
+    }
 }
 
 function findNameMatch(list, name){
@@ -152,7 +157,7 @@ function add_image_object(name, double_list, location){
     if (name.slice(-4)=="_dec")//remove "_dec"
         loc = location+"/"+name.slice(0,-4);
     item_list = remove_dups(double_list[0].concat(double_list[1]));
-    image_objects.push({name: name,location: loc, item_list: item_list, item: 0, heightOffset: 0, widthOffset:0, parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", base_image_list: newImageList(),shadow_image_list: newImageList(),highlight_image_list: newImageList()});
+    image_objects.push({name: name,location: loc, item_list: item_list, item: 0, heightOffset: 0, widthOffset:0, crop : [0,0,full_width,full_height],parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", base_image_list: newImageList(),shadow_image_list: newImageList(),highlight_image_list: newImageList()});
 }
 
 //Setting up portrait data
@@ -161,8 +166,14 @@ const defining_objects =[];
 //colour_children: indices of elements of image_objects with the same colours
 function add_defining_object(name, double_list){
     item_list = remove_dups(double_list[0].concat(double_list[1]));
-    item_list_f = double_list[0];
-    item_list_m = double_list[1];
+    item_list_f = [];
+    item_list_m = [];
+    for (i = 0; i < item_list.length; i += 1){
+        if (double_list[0].includes(item_list[i]))
+            item_list_f.push(i);
+        if (double_list[1].includes(item_list[i]))
+            item_list_m.push(i);    
+    }
     defining_objects.push({name: name,item_list: item_list,item_list_f: item_list_f ,item_list_m: item_list_m, image_index: image_objects.length-1, colour_children:[image_objects.length-1],colour2_children:[],value_children:[image_objects.length-1],  value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"});
 }
 

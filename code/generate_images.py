@@ -72,9 +72,8 @@ top_list_d = [top_list_f,top_list_m]
 top_collar_list = top_list_m
 top_collar_list_d = [["none"],top_collar_list]
 
-overshirt_list_u = ["none"] 
-overshirt_list_f = overshirt_list_u
-overshirt_list_m = overshirt_list_u+ ["waistcoat"]
+overshirt_list_f = ["none", "short waistcoat"]
+overshirt_list_m = ["none", "waistcoat"]
 overshirt_list_d = [overshirt_list_f, overshirt_list_m]
 
 bottom_list_f = ["none","solid skirt","split skirt","low skirt"]
@@ -131,7 +130,7 @@ top_dec_list = ["plain bodice", "long sleeve bodice","gathered bodice","v neck b
 top_dec_list_d = double_list(top_dec_list)
 earrings_dec_list = ["round earrings"]
 earrings_dec_list_d = double_list(earrings_dec_list)
-overshirt_dec_list = ["waistcoat"]
+overshirt_dec_list = ["waistcoat","short waistcoat"]
 overshirt_dec_list_d = double_list(overshirt_dec_list)
 neckwear_dec_list = ["jewelled necklace","beaded necklace"]
 neckwear_dec_list_d = double_list(neckwear_dec_list)
@@ -187,6 +186,7 @@ add_item("top_dec", "top_dec_list_d", top_dec_list_d, "clothes")
 add_item("bottom", "bottom_list_d", bottom_list_d, "clothes")
 add_item("bottom_dec", "bottom_dec_list_d", bottom_dec_list_d, "clothes")
 add_item("overshirt", "overshirt_list_d", overshirt_list_d, "clothes")
+add_item("overshirt_dec", "overshirt_dec_list_d", overshirt_dec_list_d, "clothes")
 add_item("neckwear", "neckwear_list_d", neckwear_list_d, "clothes")
 add_item("neckwear_dec", "neckwear_dec_list_d", neckwear_dec_list_d, "clothes")
 add_item("coat", "coat_list_d", coat_list_d, "clothes")
@@ -616,7 +616,7 @@ write_variables()
 # "skull", "head","body","ears","nose"
 # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
 for c in closet:
-    if c.name in []:
+    if c.name in ["overshirt_dec"]:
         process_portrait_part(c)
 #makeWinks()
 #makeStubble() 
