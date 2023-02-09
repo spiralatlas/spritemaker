@@ -41,6 +41,34 @@ function setVariables(data_object){
         }
     }
 
+    let chest_obj = findNameMatch(image_objects,"chest")
+    if (chest_obj.item!=0){
+        let coat_obj = findNameMatch(image_objects,"coat")
+        if (coat_obj.item !=0){
+            if (no_chest_coat_list.includes(coat_obj.item_list[coat_obj.item]))
+                chest_obj.item =0
+            else{    
+                chest_obj.colour1 = coat_obj.colour1
+                chest_obj.item += 3
+            }
+        }
+        else{
+        let overshirt_obj = findNameMatch(image_objects,"overshirt")
+        if (overshirt_obj.item !=0){
+            chest_obj.colour1 = overshirt_obj.colour1
+        }
+        else{
+        let top_obj = findNameMatch(image_objects,"top")
+        if (top_obj.item !=0){
+                chest_obj.colour1 = top_obj.colour1
+                if (chest_obj.item ==2 && ["breeches","trousers", "low skirt"].includes(findImageItem("bottom")))
+                    chest_obj.item=3
+        }
+        else
+            chest_obj.colour1 = findNameMatch(image_objects,"head").colour1               
+        }}    
+    }
+
     for (let i = 0; i < image_objects.length; i += 1){
         image_objects[i].heightOffset = getHeightOffset(image_objects[i].name);
         image_objects[i].widthOffset = getWidthOffset(image_objects[i].name);
@@ -53,6 +81,8 @@ function setVariables(data_object){
     } else{ //no wheelchair
         sprite_height = full_height - (5-size)*30;
     }
+
+    
     
     //calculated from other variables
     /*let b;
@@ -254,7 +284,7 @@ document.addEventListener('alpine:init', () => {
         //randomise the nose/head/hairstyle etc
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
         for (let i = 0; i < defining_objects.length; i += 1){
-            if (["nose","head"].includes(defining_objects[i].name)){
+            if (["nose","head","chest"].includes(defining_objects[i].name)){
                 this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0));
             }
         }

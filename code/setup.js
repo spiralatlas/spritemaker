@@ -76,6 +76,19 @@ function findNameMatch(list, name){
     return -1;
 }
 
+function findImageItem(name){
+    //returns the string describing current value of first element of list whose name equals "name"
+    for (let i = 0; i < image_objects.length; i += 1) {
+        if (image_objects[i].name==name){
+            //document.getElementById("test").innerHTML = "value: "+name;
+            return image_objects[i].item_list[image_objects[i].item];
+        }
+    }
+    if (testing)
+        console.log("Unknown value: findImageItem "+name); 
+    return -1;
+}
+
 function range(n){
     // return [0...n-1]
     let x = [];

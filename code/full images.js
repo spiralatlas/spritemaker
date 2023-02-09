@@ -178,6 +178,8 @@ add_value_children("top", ["top_collar","top_dec"]);
 add_colour_children("top", ["top_collar"]);
 add_colour2_children("top", ["top_dec"]);
 
+findNameMatch(image_objects,"chest").item_list = chest_image_list
+
 /* Would make things easier but is broken >:(
 let current_name_dec;
 let current_name;

@@ -6,15 +6,16 @@ const skin_colours = ["#FFE7D6","#FFECD6","#FFD3A6","#FFDFA5","#F1A065","#F1B265
 const hair_colours = ["#FCE374","#F0B50A","#FE7423","#FF5565","#DF433C","#D16132","#641D00","#923D1F","#8B4910","#BB742E","#A59A9D","#E9E9E9","#391E47","#48356E","#4B261E","#5B483C","#5A5A7F","#602372","#000000",];
 
 const no_render_list = [["hat",["scarf",]],["hat_dec",["scarf",]],];
-const no_lines_list = ["cheeks",];
 const no_fill_list = ["mouth",];
 const eyetype_list = ["medium",];
 const pattern_list = ["none","crocodile","rose","snake","damask","crosshatch","fabric","diamonds","diamondssmall","tartan","polkadot","pinstripe","horizontalpinstripe",];
-const skin_list = ["body","nose","mouth","eyebrows","skull","complexion","ears",];
+const skin_list = ["body","nose","mouth","eyebrows","skull","complexion","ears","chest",];
+const chest_image_list = ["none","smooth","curvy","curvypants","smoothwide","curvywide",];
+const no_chest_coat_list = ["robe","robe hood","medium cloak","medium cloak hood","long cloak","long cloak hood","wrap",];
 const expression_list = ["mouth","eyebrows","cheeks","eyes",];
 const outfit_list = ["wheelchair","bottom","top","overshirt","coat",];
 const accessory_list = ["eyewear","neckwear","earrings","gloves","hat",];
-const defining_list = ["body","eyebrows","eyes","complexion","neckwear","skull","mouth","bottom","coat","wheelchair","overshirt","eyewear","gloves","nose","hair_front","head","earrings","cheeks","hat","top","ears",];
+const defining_list = ["eyebrows","neckwear","head","bottom","top","eyewear","chest","complexion","earrings","hat","cheeks","body","eyes","mouth","hair_front","skull","coat","wheelchair","overshirt","gloves","nose","ears",];
 
 const coat_back_list_d = [["none","medium cloak","wrap",],["none","medium cloak","wrap",],];
 const hat_back_list_d = [["none","top hat","scarf","turban",],["none","top hat","scarf","turban",],];
@@ -78,6 +79,7 @@ add_image_object("coat",coat_list_d,"clothes")
 add_defining_object("coat",coat_list_d)
 add_image_object("coat_dec",coat_dec_list_d,"clothes")
 add_image_object("chest",chest_list_d,"anatomy")
+add_defining_object("chest",chest_list_d)
 add_image_object("top_collar",top_collar_list_d,"clothes")
 add_image_object("skull",skull_list_d,"anatomy")
 add_defining_object("skull",skull_list_d)

@@ -23,6 +23,7 @@ pattern_list = ["none",
 
 chest_list = ["none", "smooth","curvy"]   
 chest_list_d = [chest_list,["none"]]
+chest_image_list = ["none", "smooth", "curvy","curvypants","smoothwide", "curvywide"]
 
 wheelchair_list = [ "none","regular"]
 wheelchair_list_d = double_list(wheelchair_list)
@@ -102,7 +103,7 @@ hat_list_m = ["none","top hat","turban"]
 hat_list_d = [hat_list_f, hat_list_m]
 
 # collections of parts that have the same colours and patterns
-skin_list = ["body","nose","mouth","eyebrows","skull","complexion","ears"]#same colour as head
+skin_list = ["body","nose","mouth","eyebrows","skull","complexion","ears","chest"]#same colour as head
 expression_list = ["mouth","eyebrows","cheeks","eyes"]
 accessory_list = ["eyewear","neckwear", "earrings", "gloves", "hat",]
 outfit_list = ["wheelchair", "bottom","top", "overshirt", "coat"]
@@ -110,9 +111,8 @@ defining_list = remove_dups(accessory_list+ outfit_list+skin_list+expression_lis
 
 #extra info
 
-no_chest_list = [ "robe","robehood",  "mediumcloak", "mediumcloakhood", "longcloak", "longcloakhood","wrap"] #clothes where the chest doesn't show
+no_chest_coat_list = [ "robe","robe hood",  "medium cloak", "medium cloak hood", "long cloak", "long cloak hood","wrap"] #clothes where the chest doesn't show
 no_fill_list = ["mouth"] #lined items with no coloured fill
-no_lines_list = ["cheeks"] #coloured items with no lines
 
 hat_back_list = ["none","top hat","scarf","turban"]
 hat_back_list_d = double_list(hat_back_list)
@@ -523,11 +523,12 @@ def write_variables():
         content.write(simple_list_string(no_render_list[i][1]))
         content.write("],")    
     content.write("];\n")
-    content.write(list_string("no_lines_list",no_lines_list))   
     content.write(list_string("no_fill_list", no_fill_list, )) 
     content.write(list_string("eyetype_list", eyetype_list ))   
     content.write(list_string("pattern_list",pattern_list))    
     content.write(list_string("skin_list", skin_list))   
+    content.write(list_string("chest_image_list", chest_image_list)) 
+    content.write(list_string("no_chest_coat_list", no_chest_coat_list)) 
     content.write(list_string("expression_list", expression_list))   
     content.write(list_string("outfit_list", outfit_list)) 
     content.write(list_string("accessory_list", accessory_list)) 
@@ -559,22 +560,24 @@ def process_portrait_part(obj):
         loc = obj.location + "/"+obj.name[0:-4]        
     else: 
         loc = obj.location + "/"+obj.name  
-    for item in obj.item_list:
-        if checkRender(obj.name, item):
-            if not (obj.name in no_fill_list):     
-                if item!="none":
-                    print(obj.name+" "+item)
-                    if obj.name == "Nose_front":
-                        process_image(item, loc,"noshadow")          
-                    elif obj.name in no_lines_list:  
-                        process_image(item, loc,"nolines")  
-                    elif obj.name.endswith("_dec"):
-                        process_image(item, loc,"twotone")
-                    elif obj.name=="eyes":
-                        for shape in eyetype_list:
-                            process_image(item, loc+"/"+shape,"eyes")           
-                    else:    
-                        process_image(item, loc,"portrait")
+
+    if obj.name == "chest":
+        render_list = chest_image_list
+    else:
+        render_list = obj.item_list
+    for item in render_list:
+        if checkRender(obj.name, item) and not (obj.name in no_fill_list):     
+            if item!="none":
+                print(obj.name+" "+item)
+                if obj.name == "Nose_front":
+                    process_image(item, loc,"noshadow")          
+                elif obj.name.endswith("_dec"):
+                    process_image(item, loc,"twotone")
+                elif obj.name=="eyes":
+                    for shape in eyetype_list:
+                        process_image(item, loc+"/"+shape,"eyes")           
+                else:    
+                    process_image(item, loc,"portrait")
 
 def makeWinks():
     layer_list = ["base","highlight"]
@@ -613,7 +616,7 @@ write_variables()
 # "skull", "head","body","ears","nose"
 # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
 for c in closet:
-    if c.name in ["coat","coat_back","coat_dec"]:
+    if c.name in []:
         process_portrait_part(c)
 #makeWinks()
 #makeStubble() 
