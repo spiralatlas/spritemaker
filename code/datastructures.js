@@ -99,12 +99,14 @@ function setVariables(data_object){
     let hat_string = findImageItem("hat");
     console.log(hat_string)
     if (hat_string=="top hat"){
-        hair_front_obj.crop = [0,138,300,700];
-        hair_back_obj.crop = [0,138,300,700];
+        crop_box = [0,141+getHeightOffset(hair_front_obj.name),300,700];
+        hair_front_obj.crop = crop_box;
+        hair_back_obj.crop = crop_box;
     }
     if (hat_string=="turban"){
-        hair_front_obj.crop = [0,134,300,700];
-        hair_back_obj.crop = [0,134,300,700]; 
+        crop_box =[0,137+getHeightOffset(hair_front_obj.name),300,700];
+        hair_front_obj.crop = crop_box;
+        hair_back_obj.crop = crop_box;
     }   
     
     //calculated from other variables

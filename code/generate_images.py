@@ -616,7 +616,7 @@ write_variables()
 # "skull", "head","body","ears","nose"
 # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
 for c in closet:
-    if c.name in ["overshirt_dec"]:
+    if c.name in ["hat_dec"]:
         process_portrait_part(c)
 #makeWinks()
 #makeStubble() 
