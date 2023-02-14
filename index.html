@@ -42,25 +42,23 @@
   </div>
 <hr>
   <div class="row">
-    <div class="col"><!-- column 1, canvases -->
+    <div class="col-md-auto"><!-- column 1, canvases -->
     <div class="container text-center"> 
-    <div><h3>Preview</h3></div> 
-    <canvas id="previewCanvas" width="314" height="712">
-        Your browser does not support HTML5 Canvas. Try downloading latest Chrome, Firefox, Safari, Opera or Internet explorer.
-    </canvas> 
-    <hr>
-    
-    <hr>
 
-    <div class="row">
-      <div class="col"><h3 id="canvasName">Right Click to Save</h3></div> 
-    <div class="col">
-      <button class="btn btn-primary" id="download">Export Canvas</button>
-    </div>
-  </div>
-    <canvas id="exportCanvas" width="0" height="0">
-    Your browser does not support HTML5 Canvas. Try downloading latest Chrome, Firefox, Safari, Opera or Internet explorer.
-    </canvas>
+      <div class="row">
+        <div class = "column"><h3>Preview</h3></div> 
+      </div>
+
+      <!-- canvases -->
+      <div class="row">
+          <canvas id="previewCanvas" width="314" height="712">
+            Your browser does not support HTML5 Canvas. Try downloading latest Chrome, Firefox, Safari, Opera or Internet explorer.
+          </canvas> 
+      </div>
+    
+      <!-- end canvases -->
+    
+    
     </div></div>
     <div class="col"><!--column 2, choices-->
       <ul class="nav nav-tabs">
@@ -154,10 +152,27 @@
             </div>
         </div> 
         </div>
+        <!-- end of column 2--> 
+
+    <div class="col-md-auto"><!-- column 3, export -->
+      <div class="container text-center"> 
+    
+        <div class="row">
+          <div class = "column"><button class="btn btn-primary" id="download">Export Canvas</button></div>
+        </div>
+        <div class="row">
+            <canvas id="exportCanvas" width="314" height="712">
+              Your browser does not support HTML5 Canvas. Try downloading latest Chrome, Firefox, Safari, Opera or Internet explorer.
+            </canvas>
+        </div>
+      </div></div>
+      <!-- end of column 3--> 
+
     <hr>
     <div id="test"></div>
-    
-</div> <!-- end of row -->   
+   
+
+</div> <!-- end of row -->  
 </div> <!-- end of whole column structure -->  
 <div id="closet"></div>
       

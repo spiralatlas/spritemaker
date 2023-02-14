@@ -99,7 +99,7 @@ function setVariables(data_object){
     let hat_string = findImageItem("hat");
     console.log(hat_string)
     if (hat_string=="top hat"){
-        crop_box = [0,141+getHeightOffset(hair_front_obj.name),300,700];
+        crop_box = [0,144+getHeightOffset(hair_front_obj.name),300,700];
         hair_front_obj.crop = crop_box;
         hair_back_obj.crop = crop_box;
     }
@@ -141,8 +141,9 @@ document.addEventListener('alpine:init', () => {
         //Sets a variable in a list using a dropdown
           ['x-html']() {
             output = "";
+            id = '"drop'+this.title+'"'
             if (this.title!="")
-                output += this.title+': ';  
+                output += '<label for='+id+'>'+this.title+'</label>: ';  
             switch(this.typeName){
                 case 'body':
                     obj_index = findDefiningIndex(this.valueName);
@@ -198,7 +199,7 @@ document.addEventListener('alpine:init', () => {
             }    
             
             
-            output +='<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" x-text="niceString('+objList+'['+buttonName+'])"></button>';
+            output +='<button id='+id+' class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" x-text="niceString('+objList+'['+buttonName+'])"></button>';
             output +='<ul class="dropdown-menu"> <template x-for=" (preset, index) in '+objList+'">'; 
             output +='<li><button class="dropdown-item" x-on:click="'+objName+'='+value+';setVariables(Alpine.store(\'alpineData\'));" x-text="niceString(preset)"></a></li>'; 
             output +='</template></ul>' 
@@ -209,6 +210,7 @@ document.addEventListener('alpine:init', () => {
       colourbtn: {
         //Sets a colour using the colour picker
         ['x-html']() {
+
             switch(this.typeName){
                 case 'body':
                     objName = '$store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')].colour1';
@@ -220,9 +222,9 @@ document.addEventListener('alpine:init', () => {
                     objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.current_'+this.valueName+'])].colour2';
                     break;        
             }    
-            
-            output = this.title+': ';
-            output += '<input type="color" :value ="'+objName+'"  @input="'+objName+'=$event.target.value;setVariables(Alpine.store(\'alpineData\'));" :aria-label="colour_desc('+objName+')"/>'
+            id = '"drop'+this.title+'"';
+            output = '<label for='+id+'>'+this.title+'</label>: ';   
+            output += '<input id='+id+' type="color" :value ="'+objName+'"  @input="'+objName+'=$event.target.value;setVariables(Alpine.store(\'alpineData\'));" :aria-label="colour_desc('+objName+')"/>'
             return output 
             },
         },
@@ -389,7 +391,7 @@ function drawCanvas() {
     document.getElementById("closet").innerHTML = print_defining_objects()+print_image_objects();
 
     canvas_preview = document.getElementById("previewCanvas");
-    canvas_preview.width = canvas_preview.width; //clears
+    canvas_preview.height = sprite_height; //clears
     ctx_preview = canvas_preview.getContext("2d");
 
     //document.getElementById("closet").innerHTML = print_image_objects();
