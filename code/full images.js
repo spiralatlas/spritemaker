@@ -183,6 +183,9 @@ add_colour2_children("overshirt", ["overshirt_dec"]);
 
 findNameMatch(image_objects,"chest").item_list = chest_image_list
 
+const body_list = (skin_list.filter(value => !expression_list.includes(value))).concat(["head"]);
+const all_clothes_list = (image_objects.map(nameOf)).filter(value => !expression_list.includes(value));
+
 /* Would make things easier but is broken >:(
 let current_name_dec;
 let current_name;

@@ -321,16 +321,6 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
     
     /*if (!(obj.name =="Lips" && (current_lips==0))){
     */ 
-    var base_list = skin_list.concat(expression_list).concat(accessory_list).concat(["head","wheelchair","bottom","wheelchair_bottom","hair_back","hair_front","top","top_collar","coat","wheelchair_coat"]);
-    var possible_list = [];
-    for (let i = 0; i < base_list.length; i += 1){
-        possible_list.push(base_list[i]);
-        possible_list.push(base_list[i]+"_dec");
-        possible_list.push(base_list[i]+"_back");
-        possible_list.push(base_list[i]+"_back_dec");
-    }
-    //if (!(possible_list.includes(obj.name)))
-    //    return;
 
     if (no_fill_list.includes(obj.name)){//not coloured or anything just displayed straight
         ctx.drawImage(obj.base_image_list[index],sourceX,sourceY,width,height, xpos, ypos,width,height);
@@ -372,3 +362,22 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
         ctx.drawImage(off_canvas,sourceX,sourceY,width,height, xpos, ypos,width,height);
     }
 }
+
+function undraw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width, height){
+    //draw image for portrait object
+    //obj: the object
+    //index: what panel we're drawing
+    //colour: current colour 
+    //ctx: 2Dcontext of relevant canvas
+    //sourceX: X value of top left corner of section we're cutting from source image 
+    //sourceY: Y value of top left corner of section we're cutting from source image 
+    //xpos: X value of top left corner of pasted image 
+    //ypos: Y value of top left corner of pasted image 
+    
+    /*if (!(obj.name =="Lips" && (current_lips==0))){
+    */ 
+
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.drawImage(obj.base_image_list[index],sourceX,sourceY,width,height, xpos, ypos,width,height);
+    ctx.globalCompositeOperation = "source-over";   
+    }

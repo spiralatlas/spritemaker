@@ -18,9 +18,11 @@ function setVariables(data_object){
     current_expression = data_object.current_expression;
     current_clothing = data_object.current_clothing;
     current_accessory = data_object.current_accessory;
+    current_imageType = data_object.current_imageType;
 
     size = data_object.size;
     current_eyetype = data_object.current_eyetype;
+    
 
     for (let i = 0; i < defining_objects.length; i += 1){
         let json_obj = defining_objects[i];
@@ -141,7 +143,7 @@ document.addEventListener('alpine:init', () => {
         //Sets a variable in a list using a dropdown
           ['x-html']() {
             output = "";
-            id = '"drop'+this.title+'"'
+            id = '"drop'+this.title+this.valueName+'"'
             if (this.title!="")
                 output += '<label for='+id+'>'+this.title+'</label>: ';  
             switch(this.typeName){
@@ -192,7 +194,10 @@ document.addEventListener('alpine:init', () => {
                             break;
                         case 'current_eyetype': 
                             objList = 'eyetype_list';
-                            break;       
+                            break;   
+                        case 'current_imageType': 
+                            objList = 'imageType_list';
+                            break;           
 
                     }
                     break;     
@@ -222,7 +227,7 @@ document.addEventListener('alpine:init', () => {
                     objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.current_'+this.valueName+'])].colour2';
                     break;        
             }    
-            id = '"drop'+this.title+'"';
+            id = '"drop'+this.title+this.valueName+'"';
             output = '<label for='+id+'>'+this.title+'</label>: ';   
             output += '<input id='+id+' type="color" :value ="'+objName+'"  @input="'+objName+'=$event.target.value;setVariables(Alpine.store(\'alpineData\'));" :aria-label="colour_desc('+objName+')"/>'
             return output 
@@ -237,6 +242,7 @@ document.addEventListener('alpine:init', () => {
     current_expression : 0,
     current_clothing : 0,
     current_accessory : 0,
+    current_imageType : 0,
 
     size : 0,
     current_eyetype: 0,
@@ -391,8 +397,13 @@ function drawCanvas() {
     document.getElementById("closet").innerHTML = print_defining_objects()+print_image_objects();
 
     canvas_preview = document.getElementById("previewCanvas");
-    canvas_preview.height = sprite_height; //clears
+    canvas = document.getElementById("exportCanvas");
+
     ctx_preview = canvas_preview.getContext("2d");
+    ctx_export = canvas.getContext("2d");
+
+    canvas_preview.height = sprite_height; //clears
+    canvas.height = sprite_height; //clears
 
     //document.getElementById("closet").innerHTML = print_image_objects();
     //portrait preview
@@ -400,7 +411,7 @@ function drawCanvas() {
     preview_width=full_width;
     preview_height=sprite_height;
 
-    ctx_preview.fillStyle = "#FF0000";
+    //ctx_preview.fillStyle = "#FF0000";
     //ctx_preview.fillRect(0, 0, preview_width, preview_height);
     //ctx_preview.drawImage(portrait_back, 0, 0);
     for (let i = 0; i < image_objects.length; i += 1){
@@ -414,42 +425,35 @@ function drawCanvas() {
     }
     
     //main canvas
-    /*
-    let numrows;
-    let numcols;
-    if (panelNum ==1){
-        numcols = 1;
-    }else{
-        numcols = 2;
+    let current_list = [];
+    switch (current_imageType){
+        case 0: 
+            current_list =  body_list;
+            break;
+        case 1: 
+            current_list =  expression_list;
+            break; 
+        case 2: 
+            current_list =  all_clothes_list;
+            break;        
     }
-    if (panelNum%2 == 1){
-        numrows = (panelNum+1)/2;
-    }else{
-        numrows = panelNum/2;
-    }
-    canvas.height = panel_width*numrows;
-    canvas.width =  panel_width*numcols;
-    let ctx = canvas.getContext("2d");
     
-    for (let row = 0; row < numrows; row += 1) {
-        for (let column = 0; column < numcols; column += 1) {
-            if (row*2+column < panelNum){
-                let xpos = panel_width*column;
-                let ypos = panel_width*row;
-                for (let i = 0; i < image_objects.length; i += 1){
-                    let b = image_objects[i];
-                    if (b.item_list[b.value_list[row*2+column]] !="None"){ 
-                        draw_object(b,row*2+column,b.colour1,ctx, 0,-getHeightOffset(b.name)-b.heightOffset, xpos, ypos);
-                    }
-                }
-            }
+    for (let i = 0; i < image_objects.length; i += 1){
+        let b = image_objects[i];
+        if (b.item_list[b.item] !="none"){ 
+            if (current_list.includes(b.name)) 
+                if (current_imageType ==2 && body_list.includes(b.name))
+                    undraw_object(b,current_expression,b.colour1,ctx_export, 0,0,b.widthOffset, -b.heightOffset,full_width,sprite_height);
+                else
+                    draw_object(b,current_expression,b.colour1,ctx_export, 0,0,b.widthOffset, -b.heightOffset,full_width,sprite_height);
         }
-    }*/
+    }
+    
 }
 
 function setup(){
     canvas = document.getElementById("exportCanvas");
-    ctx = canvas.getContext("2d");
+    ctx_export = canvas.getContext("2d");
     canvas_preview = document.getElementById("previewCanvas");
     ctx_preview = canvas_preview.getContext("2d");
 

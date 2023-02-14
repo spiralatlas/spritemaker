@@ -6,6 +6,7 @@ let currently_editing = 0; //which element of editing list we are editing
 let current_expression = 0;
 let current_clothing = 0;
 let current_accessory = 0;
+let current_imageType = 0;
 
 let size = 0;
 const size_list = ['Very Short','Short', 'Medium','Tall','Very Tall',];
@@ -29,7 +30,7 @@ const canvas_width = 512;
 const canvas_height = 768;
 let panel_width = 256; //width and height of panels in pixels
 
-const imageType_list =["Portrait","Sprite"];
+const imageType_list =["Body","Expression","Outfit"];
 
 const editing_list =["Body","Outfit", "Accessory", "Expression","Randomise"];
 

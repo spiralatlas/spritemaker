@@ -13,7 +13,7 @@ function download() {
   }
 
   var load_variables = {
-    currently_editing: currently_editing, current_expression:current_expression,current_clothing:current_clothing,current_accessory: current_accessory,
+    currently_editing: currently_editing,currently_imageType: currently_imageType, current_expression:current_expression,current_clothing:current_clothing,current_accessory: current_accessory,
     size: size, current_eyetype: current_eyetype,
     current_defining_objects: current_defining_objects, 
   }    
