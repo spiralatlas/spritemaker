@@ -27,8 +27,7 @@ let sprite_height = full_height;
 //internal
 
 const canvas_width = 512;
-const canvas_height = 768;
-let panel_width = 256; //width and height of panels in pixels
+const canvas_height = 800;
 
 const imageType_list =["Body","Expression","Outfit"];
 
