@@ -248,41 +248,28 @@ document.addEventListener('alpine:init', () => {
     current_eyetype: 0,
 
     current_defining_objects: [
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-        {name:"", value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"},
-    ],
-    
-    initialiseAlpine(){
-        this.current_defining_objects = [];
-        for (let i = 0; i < defining_objects.length; i += 1){
-            this.current_defining_objects.push({name:defining_objects[i].name, value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"});
-        }
-
-    },
+        {"name":"body","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00"},
+        {"name":"gloves","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#E3313C","colour2":"#901E3B"},
+        {"name":"top","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#901E3B","colour2":"#4C6BC2"},
+        {"name":"bottom","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#FAE181","colour2":"#FAF1CF"},
+        {"name":"overshirt","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#4C6BC2","colour2":"#FAE181"},
+        {"name":"neckwear","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#43A92D","colour2":"#43A92D"},
+        {"name":"coat","value_list":[4,4,4,4,4,4,4,4,4,4],"colour1":"#E3313C","colour2":"#7543BD"},
+        {"name":"chest","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#FF0000","colour2":"#00FF00"},
+        {"name":"skull","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00"},
+        {"name":"head","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#CA783C","colour2":"#00FF00"},
+        {"name":"ears","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00"},
+        {"name":"earrings","value_list":[3,3,3,3,3,3,3,3,3,3],"colour1":"#901E3B","colour2":"#91C639"},
+        {"name":"nose","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#FF0000","colour2":"#00FF00"},
+        {"name":"complexion","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00"},
+        {"name":"cheeks","value_list":[0,0,0,0,0,1,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00"},
+        {"name":"mouth","value_list":[15,12,28,30,18,14,22,28,6,8],"colour1":"#FF0000","colour2":"#00FF00"},
+        {"name":"eyebrows","value_list":[7,11,4,16,11,1,4,2,18,0],"colour1":"#FF0000","colour2":"#00FF00"},
+        {"name":"eyes","value_list":[0,2,5,7,5,4,6,8,3,0],"colour1":"#8334D8","colour2":"#00FF00"},
+        {"name":"eyewear","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#FAF6E9","colour2":"#FAF1CF"},
+        {"name":"hair_front","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#712A0D","colour2":"#00FF00"},
+        {"name":"hat","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#E1748A","colour2":"#FAF1CF"},
+        {"name":"wheelchair","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#4C6BC2","colour2":"#7543BD"}],
 
     fixAlpine() { //make the alpine components match the variables used by the javascript
     
@@ -460,6 +447,19 @@ function setup(){
     document.getElementById('download').addEventListener('click', function(e) {
         // from https://fjolt.com/article/html-canvas-save-as-image
 
+        let filename = "dollmaker_";
+        switch(current_imageType){
+            case 0:
+                filename += "body";
+                break;
+            case 01:
+                filename += "expression_"+panel_list[current_expression];
+                break;
+            case 2:
+                filename += "outfit";
+                break;   
+        }   
+        console.log(filename);              
         // Convert our canvas to a data URL
         let canvasUrl = canvas.toDataURL();
         // Create an anchor, and set the href value to our data URL
@@ -467,7 +467,7 @@ function setup(){
         createEl.href = canvasUrl;
     
         // This is the name of our downloaded file
-        createEl.download = "dollmaker image";
+        createEl.download = filename;
     
         // Click the download button, causing a download, and then remove it
         createEl.click();
@@ -476,7 +476,6 @@ function setup(){
     
     checkFileAPI();
     Alpine.store('alpineData').randomiseAll(0);
-    Alpine.store('alpineData').setExpressions();
 
     //fix variables
     setVariables(Alpine.store('alpineData'));

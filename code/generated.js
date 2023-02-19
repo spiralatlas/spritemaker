@@ -16,7 +16,7 @@ const no_chest_coat_list = ["robe","robe hood","medium cloak","medium cloak hood
 const expression_list = ["mouth","eyebrows","cheeks","eyes",];
 const outfit_list = ["wheelchair","bottom","top","overshirt","coat",];
 const accessory_list = ["eyewear","neckwear","earrings","gloves","hat",];
-const defining_list = ["body","eyebrows","eyes","complexion","neckwear","skull","mouth","bottom","coat","wheelchair","overshirt","eyewear","gloves","nose","hair_front","head","earrings","cheeks","hat","top","ears",];
+const defining_list = ["eyebrows","neckwear","head","bottom","top","eyewear","chest","complexion","earrings","hat","cheeks","body","eyes","mouth","hair_front","skull","coat","wheelchair","overshirt","gloves","nose","ears",];
 
 const coat_back_list_d = [["none","medium cloak","wrap",],["none","medium cloak","wrap",],];
 const hat_back_list_d = [["none","top hat","scarf","turban",],["none","top hat","scarf","turban",],];
@@ -44,7 +44,7 @@ const earrings_dec_list_d = [["round earrings",],["round earrings",],];
 const nose_list_d = [["button","round","medium","broad","pointed","hooked",],["button","round","medium","broad","pointed","hooked",],];
 const complexion_list_d = [["none","slight lines","freckles",],["none","slight lines","freckles",],];
 const cheeks_list_d = [["none","blush",],["none","blush",],];
-const mouth_list_d = [["big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","oh","square oh","small oh","shock","small flat","flat","wobbly frown","tiny frown","small frown","narrow frown","frown","pout","side frown","big frown",],["big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","oh","square oh","small oh","shock","small flat","flat","wobbly frown","tiny frown","small frown","narrow frown","frown","pout","side frown","big frown",],];
+const mouth_list_d = [["lah","small lah","tiny lah","big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","slight smile","side eww","eww","oh","square oh","big oh","small oh","shock","small flat","flat","small clenched","wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",],["lah","small lah","tiny lah","big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","slight smile","side eww","eww","oh","square oh","big oh","small oh","shock","small flat","flat","small clenched","wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",],];
 const eyebrows_list_d = [["flat","flat sad","flat grumpy","flat angry","sad","sadder","semi sad","regular","semi arch","arched","raised arch","raised","raised flat","raised semi flat","raised grumpy","raised semi","angry","angry arch","half raised","half semi","half sad","half sad raised","half flat","half arch raised",],["flat","flat sad","flat grumpy","flat angry","sad","sadder","semi sad","regular","semi arch","arched","raised arch","raised","raised flat","raised semi flat","raised grumpy","raised semi","angry","angry arch","half raised","half semi","half sad","half sad raised","half flat","half arch raised",],];
 const eyes_list_d = [["neutral","side","crescents","narrowed","happy","wide","shock","angry","angry side","sleepy","wink",],["neutral","side","crescents","narrowed","happy","wide","shock","angry","angry side","sleepy","wink",],];
 const eyewear_list_d = [["none","round glasses",],["none","round glasses",],];
@@ -82,6 +82,7 @@ add_image_object("coat",coat_list_d,"clothes")
 add_defining_object("coat",coat_list_d)
 add_image_object("coat_dec",coat_dec_list_d,"clothes")
 add_image_object("chest",chest_list_d,"anatomy")
+add_defining_object("chest",chest_list_d)
 add_image_object("top_collar",top_collar_list_d,"clothes")
 add_image_object("skull",skull_list_d,"anatomy")
 add_defining_object("skull",skull_list_d)

@@ -92,8 +92,7 @@
             </div>
 
             <div class="row gy-3" x-show="$store.alpineData.currently_editing === 1" >
-              <div class="col">
-                <div x-data="dropdown('Clothing','current_clothing','simple')" x-bind="dropbtn" ></div>
+              <div class="col"><div x-data="dropdown('Clothing','current_clothing','simple')" x-bind="dropbtn" ></div></div>
 
               <div class="row row-cols-2 gy-3">
                 <div class="col"><div x-data="dropdown('Style','current_clothing','clothing')" x-bind="dropbtn" ></div></div>
@@ -103,11 +102,9 @@
                 <div class="col"><div x-data="dropdown('Main Colour','clothing','clothing1')" x-bind="colourbtn" ></div></div>
                 <div class="col"><div x-data="dropdown('Highlight Colour','clothing','clothing2')" x-bind="colourbtn" ></div></div>
               </div>
-            </div>
           </div>
           <div class="row gy-3" x-show="$store.alpineData.currently_editing === 2" >
-            <div class="col">
-              <div x-data="dropdown('Clothing','current_accessory','simple')" x-bind="dropbtn" ></div>
+            <div class="col"><div x-data="dropdown('Clothing','current_accessory','simple')" x-bind="dropbtn" ></div></div>
 
             <div class="row row-cols-2 gy-3">
               <div class="col"><div x-data="dropdown('Style','current_accessory','accessory')" x-bind="dropbtn" ></div></div>
@@ -117,7 +114,6 @@
               <div class="col"><div x-data="dropdown('Main Colour','accessory','clothing1')" x-bind="colourbtn" ></div></div>
               <div class="col"><div x-data="dropdown('Highlight Colour','accessory','clothing2')" x-bind="colourbtn" ></div></div>
             </div>
-          </div>
         </div>
 
             <div class="row gy-3" x-show="$store.alpineData.currently_editing === 3" >

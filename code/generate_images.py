@@ -43,7 +43,7 @@ eyetype_list = ["medium"]
 eyes_list_d = double_list(eyes_list_u)
 eyebrows_list_u = ["flat","flat sad","flat grumpy","flat angry","sad","sadder", "semi sad", "regular","semi arch","arched","raised arch", "raised","raised flat", "raised semi flat","raised grumpy","raised semi","angry", "angry arch","half raised","half semi", "half sad","half sad raised","half flat","half arch raised"]
 eyebrows_list_d = double_list(eyebrows_list_u)
-mouth_list_u = ["big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","oh","square oh","small oh","shock","small flat","flat","wobbly frown","tiny frown","small frown","narrow frown","frown","pout","side frown","big frown",]
+mouth_list_u = ["lah", "small lah", "tiny lah", "big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","slight smile","side eww","eww",  "oh","square oh","big oh", "small oh","shock","small flat","flat","small clenched", "wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",]
 mouth_list_d = double_list(mouth_list_u)
 nose_list_u = ["button", "round","medium","broad", "pointed","hooked",] 
 nose_list_d = double_list(nose_list_u)
@@ -107,7 +107,7 @@ skin_list = ["body","nose","mouth","eyebrows","skull","complexion","ears"]#same 
 expression_list = ["mouth","eyebrows","cheeks","eyes"]
 accessory_list = ["eyewear","neckwear", "earrings", "gloves", "hat",]
 outfit_list = ["wheelchair", "bottom","top", "overshirt", "coat"]
-defining_list = remove_dups(accessory_list+ outfit_list+skin_list+expression_list+["hair_front","head"])
+defining_list = remove_dups(accessory_list+ outfit_list+skin_list+expression_list+["hair_front","head","chest"])
 
 #extra info
 
@@ -615,7 +615,7 @@ write_variables()
 # "skull", "head","body","ears","nose"
 # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
 for c in closet:
-    if c.name in []:
+    if c.name in ["complexion"]:
         process_portrait_part(c)
 makeWinks()
 #makeStubble() 

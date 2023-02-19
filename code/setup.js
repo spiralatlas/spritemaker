@@ -33,7 +33,7 @@ const imageType_list =["Body","Expression","Outfit"];
 
 const editing_list =["Body","Outfit", "Accessory", "Expression","Randomise"];
 
-const panel_list = ["0: Neutral", "1: Happy", "2: Sad", "3: Unique", "4: Blushing", "5: Angry","6","7","8","9","10"];
+const panel_list = ["Neutral", "Happy", "Sad", "Angry","Surprised","Embarassed","Scared",'Annoyed',"Wry"];
 
 const back_list = ["Hat","Coat"]; //have a back
 
