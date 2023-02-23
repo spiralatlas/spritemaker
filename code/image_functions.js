@@ -263,6 +263,13 @@ function fixSources(){
         let b = image_objects[i];
         for (let j = 0; j < 10; j += 1){ 
             let current_loc = b.item_list[b.item];
+            //fix waistcoat
+            if (b.name =="overshirt"|| b.name =="overshirt_dec"){
+                if (current_loc == "waistcoat"){
+                    if (["solid skirt","split skirt"].includes(findImageItem("bottom")))
+                        current_loc = "short waistcoat"
+                }
+            }    
             /*
 
             //stubble

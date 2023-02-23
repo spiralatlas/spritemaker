@@ -77,8 +77,7 @@ function setVariables(data_object){
 
     //hide collars when wearing a jama coat
     if (coat_obj.item_list[coat_obj.item]=="jama")
-        findNameMatch(image_objects,"top_collar").item=0; 
-
+        findNameMatch(image_objects,"top_collar").item=0;   
 
     //update images and offsets
     for (let i = 0; i < image_objects.length; i += 1){

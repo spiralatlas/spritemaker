@@ -73,8 +73,9 @@ top_list_d = [top_list_f,top_list_m]
 top_collar_list = top_list_m
 top_collar_list_d = [["none"],top_collar_list]
 
-overshirt_list_f = ["none", "short waistcoat"]
+overshirt_list_f = ["none"]
 overshirt_list_m = ["none", "waistcoat"]
+overshirt_list_render = remove_dups(overshirt_list_f+overshirt_list_m+["short waistcoat"])
 overshirt_list_d = [overshirt_list_f, overshirt_list_m]
 
 bottom_list_f = ["none","solid skirt","split skirt","low skirt"]
@@ -174,10 +175,10 @@ def add_item(name, listname, double_list,location):
 
 add_item("wheelchair_back", "wheelchair_list_d", wheelchair_list_d,"wheelchair")
 add_item("wheelchair_back_dec", "wheelchair_list_d", wheelchair_list_d,"wheelchair")
-add_item("coat_back", "coat_back_list_d",coat_back_list_d, "clothes/coat")
 add_item("hat_back", "hat_back_list_d",hat_back_list_d, "clothes/hat")
 add_item("hat_back_dec", "hat_back_dec_list_d",hat_back_dec_list_d, "clothes/hat")
 add_item("hair_back", "hair_back_list_d",hair_back_list_d, "hair")
+add_item("coat_back", "coat_back_list_d",coat_back_list_d, "clothes/coat")
 add_item("body", "body_list_d", body_list_d, "anatomy")
 
 # In front of face
@@ -563,6 +564,8 @@ def process_portrait_part(obj):
 
     if obj.name == "chest":
         render_list = chest_image_list
+    elif obj.name == "overshirt": 
+        render_list = overshirt_list_render   
     else:
         render_list = obj.item_list
     for item in render_list:
@@ -615,9 +618,9 @@ write_variables()
 # "skull", "head","body","ears","nose"
 # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
 for c in closet:
-    if c.name in ["eyewear",]:
+    if c.name in ["overshirt"]:
         process_portrait_part(c)
-makeWinks()
+#makeWinks()
 #makeStubble() 
        
 #process_all_portraits()
