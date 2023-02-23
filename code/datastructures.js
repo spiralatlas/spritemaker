@@ -288,10 +288,6 @@ document.addEventListener('alpine:init', () => {
             this.current_defining_objects[i].colour2 = json_obj.colour2;
         }        
     },
-    setExpressions(){
-        this.current_defining_objects[findDefiningIndex("mouth")].value_list=listOf(8);
-
-    },
 
     randomiseBodyColouring(){
         //randomise the skin/eye/hair colour
@@ -343,7 +339,7 @@ document.addEventListener('alpine:init', () => {
                 if (accessory_list.includes(defining_objects[i].name)|| defining_objects[i].name=="wheelchair")//accessories less common
                     prob = 0.5;
                 else{
-                    if (["top","bottom"].includes(defining_objects[i].name))
+                    if (["top","bottom","hair_front"].includes(defining_objects[i].name))
                         prob = -1;
                     else
                         prob = 0;    
