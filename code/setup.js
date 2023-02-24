@@ -1,6 +1,6 @@
 //player controlled
 
-let testing = true;
+let testing = false;
 
 let currently_editing = 0; //which element of editing list we are editing
 let current_expression = 0;

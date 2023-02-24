@@ -381,7 +381,8 @@ function drawCanvas() {
     //draw the preview and export canvases
     
     //preview canvas
-    document.getElementById("closet").innerHTML = print_defining_objects()+print_image_objects();
+    if (testing)
+        document.getElementById("closet").innerHTML = print_defining_objects()+print_image_objects();
 
     canvas_preview = document.getElementById("previewCanvas");
     canvas = document.getElementById("exportCanvas");
