@@ -22,6 +22,7 @@ function setVariables(data_object){
 
     size = data_object.size;
     current_eyetype = data_object.current_eyetype;
+    isWeird = data_object.isWeird;
     
 
     for (let i = 0; i < defining_objects.length; i += 1){
@@ -57,7 +58,7 @@ function setVariables(data_object){
                 chest_obj.item =0
             else{    
                 chest_obj.colour1 = coat_obj.colour1
-                chest_obj.item += 3
+                chest_obj.item += 4
             }
         }
         else{
@@ -67,8 +68,8 @@ function setVariables(data_object){
         else{
         if (top_obj.item !=0){
                 chest_obj.colour1 = top_obj.colour1
-                if (chest_obj.item ==2 && ["breeches","trousers", "low skirt"].includes(findImageItem("bottom")))
-                    chest_obj.item=3
+                if (chest_obj.item ==3 && ["breeches","trousers", "low skirt"].includes(findImageItem("bottom")))
+                    chest_obj.item=4
         }
         else
             chest_obj.colour1 = findNameMatch(image_objects,"head").colour1               
@@ -250,6 +251,7 @@ document.addEventListener('alpine:init', () => {
 
     size : 0,
     current_eyetype: 0,
+    isWeird: false,
 
     current_defining_objects: [
         {"name":"body","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00"},
@@ -279,6 +281,7 @@ document.addEventListener('alpine:init', () => {
     
         this.size= size;
         this.current_eyetype = current_eyetype;
+        this.isWeird = isWeird;
         
         for (let i = 0; i < defining_objects.length; i += 1){
             let json_obj = defining_objects[i];
@@ -291,9 +294,17 @@ document.addEventListener('alpine:init', () => {
 
     randomiseBodyColouring(){
         //randomise the skin/eye/hair colour
-        this.current_defining_objects[findDefiningIndex("head")].colour1 = randomElement(skin_colours,0);
-        this.current_defining_objects[findDefiningIndex("hair_front")].colour1 = randomElement(hair_colours,0);
-        this.current_defining_objects[findDefiningIndex("eyes")].colour1 = randomElement(eye_colours,0);
+        if (isWeird){
+            this.current_defining_objects[findDefiningIndex("head")].colour1 = randomElement(skin_colours.concat(skin_colours_weird),0);
+            this.current_defining_objects[findDefiningIndex("hair_front")].colour1 = randomElement(hair_colours.concat(hair_colours_weird),0);
+            this.current_defining_objects[findDefiningIndex("eyes")].colour1 = randomElement(eye_colours.concat(eye_colours_weird),0);
+
+        }else{
+            this.current_defining_objects[findDefiningIndex("head")].colour1 = randomElement(skin_colours,0);
+            this.current_defining_objects[findDefiningIndex("hair_front")].colour1 = randomElement(hair_colours,0);
+            this.current_defining_objects[findDefiningIndex("eyes")].colour1 = randomElement(eye_colours,0);
+            
+        }
     },
     randomiseFeatures(gender){
         //randomise the nose/head/hairstyle etc
@@ -305,7 +316,7 @@ document.addEventListener('alpine:init', () => {
             if ("chest"==defining_objects[i].name){
                 switch(gender){
                     case 0:
-                        this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0.5));
+                        this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0.3));
                         break;
                     case 1:
                         this.current_defining_objects[i].value_list = listOf(0);
@@ -314,21 +325,25 @@ document.addEventListener('alpine:init', () => {
                         this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0));
                         break;    
                 }
-
-                
             }
         }
         this.size = randomIndex(size_list,0);
     },
     randomiseClothingColour(){
         //randomise all clothing colours
+        let temp_list;
+        if (Math.random()>0.5)
+            temp_list = outfit_colours;
+        else{
+            temp_list = randomElement(scheme_list,0);
+        }
+            
         for(let i = 0; i < defining_objects.length; i++){
             if (outfit_list.includes(defining_objects[i].name)||accessory_list.includes(defining_objects[i].name)) {
-                this.current_defining_objects[i].colour1 = randomElement(outfit_colours,0);
-                this.current_defining_objects[i].colour2 = randomElement(outfit_colours,0);
+                this.current_defining_objects[i].colour1 = randomElement(temp_list,0);
+                this.current_defining_objects[i].colour2 = randomElement(temp_list,0);
             }
         }
-
     },
     randomiseClothingValue(gender){
         //set all clothing values including sleeve length
@@ -385,12 +400,15 @@ function drawCanvas() {
         document.getElementById("closet").innerHTML = print_defining_objects()+print_image_objects();
 
     canvas_preview = document.getElementById("previewCanvas");
+    canvas_sample = document.getElementById("sampleCanvas");
     canvas = document.getElementById("exportCanvas");
 
     ctx_preview = canvas_preview.getContext("2d");
+    ctx_sample = canvas_sample.getContext("2d");
     ctx_export = canvas.getContext("2d");
 
     canvas_preview.height = sprite_height; //clears
+    canvas_sample.height = canvas_sample.height;
     canvas.height = sprite_height; //clears
 
     //document.getElementById("closet").innerHTML = print_image_objects();
@@ -411,6 +429,18 @@ function drawCanvas() {
             draw_object(b,current_expression,b.colour1,ctx_preview, 0,0,b.widthOffset, -b.heightOffset,preview_width,preview_height);
         }
     }
+
+    if (currently_editing==0){
+        ctx_sample.drawImage(skin_image,0,0)
+        ctx_sample.drawImage(eyes_image,250,0)
+        ctx_sample.drawImage(hair_image,500,0)
+    } else{
+        if (currently_editing<3){
+            ctx_sample.drawImage(schemes_image,125,0)
+        }
+    }
+    
+
     
     //main canvas
     let current_list = [];
@@ -486,6 +516,18 @@ function setup(){
 }
 let portrait_back = new Image();
 portrait_back.src = "images/bases/pattern/pix_pattern_argyle.png";
+
+let hair_image = new Image();
+hair_image.src = "images/render/swatches/hair.png"
+let eyes_image = new Image();
+eyes_image.src = "images/render/swatches/eyes.png"
+let skin_image = new Image();
+skin_image.src = "images/render/swatches/skin.png"
+let outfit_image = new Image();
+outfit_image.src = "images/render/swatches/outfit.png"
+let schemes_image = new Image();
+schemes_image.src = "images/render/swatches/schemes.png"
+
 const off_canvas = new OffscreenCanvas(full_width, full_height);
 const off_ctx = off_canvas.getContext("2d");
 window.onload = setup;

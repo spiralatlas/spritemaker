@@ -24,6 +24,8 @@ let full_height="800";
 
 let sprite_height = full_height;
 
+let isWeird =  false;
+
 //internal
 
 const canvas_width = 512;
@@ -149,14 +151,14 @@ function remove_dups(arr){
 //Setting up portrait data
 const image_objects =[];
 
-function add_image_object(name, double_list, location){
+function add_image_object(name, triple_list, location){
     let loc;
     loc=location+"/"+name.toLowerCase();
     if (name == "Nose_front")
         loc = "body/nose"; 
     if (name.slice(-4)=="_dec")//remove "_dec"
         loc = location+"/"+name.slice(0,-4);
-    item_list = remove_dups(double_list[0].concat(double_list[1]));
+    item_list = remove_dups(triple_list[0].concat(triple_list[1]).concat(triple_list[2]));
     image_objects.push({name: name,location: loc, item_list: item_list, item: 0, heightOffset: 0, widthOffset:0, crop : [0,0,full_width,full_height],parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", base_image_list: newImageList(),shadow_image_list: newImageList(),highlight_image_list: newImageList()});
 }
 
@@ -164,17 +166,20 @@ function add_image_object(name, double_list, location){
 const defining_objects =[];
 
 //colour_children: indices of elements of image_objects with the same colours
-function add_defining_object(name, double_list){
-    item_list = remove_dups(double_list[0].concat(double_list[1]));
+function add_defining_object(name, triple_list){
+    item_list = remove_dups(triple_list[0].concat(triple_list[1]).concat(triple_list[2]));
     item_list_f = [];
     item_list_m = [];
+    item_list_w = [];
     for (i = 0; i < item_list.length; i += 1){
-        if (double_list[0].includes(item_list[i]))
+        if (triple_list[0].includes(item_list[i]))
             item_list_f.push(i);
-        if (double_list[1].includes(item_list[i]))
+        if (triple_list[1].includes(item_list[i]))
             item_list_m.push(i);    
+        if (triple_list[1].includes(item_list[i]))
+            item_list_w.push(i);        
     }
-    defining_objects.push({name: name,item_list: item_list,item_list_f: item_list_f ,item_list_m: item_list_m, image_index: image_objects.length-1, colour_children:[image_objects.length-1],colour2_children:[],value_children:[image_objects.length-1],  value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"});
+    defining_objects.push({name: name,item_list: item_list,item_list_f: item_list_f ,item_list_m: item_list_m,item_list_w: item_list_w, image_index: image_objects.length-1, colour_children:[image_objects.length-1],colour2_children:[],value_children:[image_objects.length-1],  value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"});
 }
 
 function add_colour_children(name, colour_children){
@@ -244,19 +249,24 @@ function add_value_children(name, children){
 
 function randomGenderedItem(obj, gender, bias){
     //obj is a member of defining_
+    let current_list = [];
     switch(gender){
         case 0:
-            return randomIndex(obj.item_list,bias);
+            current_list = obj.item_list;
             break;
         case 1:
-            return randomIndex(obj.item_list_m,bias);
+            current_list = obj.item_list_m;
             break;
         case 2:
-            return randomIndex(obj.item_list_f,bias);
-            break;     
+            current_list = obj.item_list_f;
+            break;           
         default:
-            console.log("Unknown gender: "+gender);        
+            console.log("Unknown gender: "+gender);          
     }
+    if (isWeird)
+        current_list = current_list.concat(obj.item_list_w)
+
+    return randomIndex(current_list,bias); 
 }
 
 function print_image_objects(){

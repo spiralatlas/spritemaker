@@ -1,7 +1,7 @@
 from __future__ import print_function
 import sys
 import math
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFilter
 from PIL import ImageEnhance
 import glob
 
@@ -12,234 +12,8 @@ def remove_dups(l):
         #removes duplicates from a list
         return list( dict.fromkeys(l) ) 
 
-def double_list(l):
-    return [l,l]            
-
-pattern_list = ["none",
-        "crocodile","rose", "snake","damask", #repeated fractal
-        "crosshatch","fabric",  #repeated naturalistic
-        "diamonds","diamondssmall","tartan",  "polkadot",#repeated pattern
-        "pinstripe","horizontalpinstripe",] #lines "verticalstripe", "horizontalstripe", "diagonal","net",
-
-chest_list = ["none", "smooth","curvy"]   
-chest_list_d = [chest_list,["none"]]
-chest_image_list = ["none", "smooth", "curvy","curvypants","smoothwide", "curvywide"]
-
-wheelchair_list = [ "none","regular"]
-wheelchair_list_d = double_list(wheelchair_list)
-
-head_list_u = ["pointed","medium","rectangular","round"]
-head_list_d = double_list(head_list_u)
-skull_list = ["regular"]
-skull_list_d = double_list(skull_list)
-ear_list = ["regular"]
-ear_list_d = double_list(ear_list)
-body_list = ["regular"]
-body_list_d = double_list(body_list)
-no_iris_list = ["sleepy","closed"] #eyeshapes with no iris
-eyes_list_u = ["neutral","side","crescents","narrowed","happy","wide","shock","angry","angry side","sleepy","wink"]
-#["wide","extrawide", "widecatty","sad", "gentle", "regular","vivid", "cool","catty","coolside", "narrowcool","narrowcoolside","narrowcatty","narrowcattyside", "halfclosed"]
-eyetype_list = ["medium"]
-eyes_list_d = double_list(eyes_list_u)
-eyebrows_list_u = ["flat","flat sad","flat grumpy","flat angry","sad","sadder", "semi sad", "regular","semi arch","arched","raised arch", "raised","raised flat", "raised semi flat","raised grumpy","raised semi","angry", "angry arch","half raised","half semi", "half sad","half sad raised","half flat","half arch raised"]
-eyebrows_list_d = double_list(eyebrows_list_u)
-mouth_list_u = ["lah", "small lah", "tiny lah", "big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","slight smile","side eww","eww",  "oh","square oh","big oh", "small oh","shock","small flat","flat","small clenched", "wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",]
-mouth_list_d = double_list(mouth_list_u)
-nose_list_u = ["button", "round","medium","broad", "pointed","hooked",] 
-nose_list_d = double_list(nose_list_u)
-
-cheeks_list_u = ["none","blush"]
-cheeks_list_d = double_list(cheeks_list_u)
-
-complexion_list_u = ["none","slight lines", "freckles"]
-complexion_list_d = double_list(complexion_list_u)
-
-eyewear_list_u = ["none", "round glasses"] 
-eyewear_list_f = eyewear_list_u
-eyewear_list_m = eyewear_list_u+["monocle"]
-eyewear_list_d =  [eyewear_list_f,eyewear_list_m]
-
-earrings_list_f = ["none","drop earrings", "stud","round earrings"]
-earrings_list_m = ["none",]
-earrings_list_d =  [earrings_list_f,earrings_list_m]
-
-gloves_list_f = ["none", "short gloves", "medium gloves", "long gloves","bracelets"]
-gloves_list_m = ["none", "short gloves"]
-gloves_list_d = [gloves_list_f,gloves_list_m]
-
-top_list_f = ["none","plain bodice", "long sleeve bodice","gathered bodice","v neck bodice"]
-top_list_m= ["none", "open shirt","closed shirt"] 
-top_list_d = [top_list_f,top_list_m]
-top_collar_list = top_list_m
-top_collar_list_d = [["none"],top_collar_list]
-
-overshirt_list_f = ["none"]
-overshirt_list_m = ["none", "waistcoat"]
-overshirt_list_render = remove_dups(overshirt_list_f+overshirt_list_m+["short waistcoat"])
-overshirt_list_d = [overshirt_list_f, overshirt_list_m]
-
-bottom_list_f = ["none","solid skirt","split skirt","low skirt"]
-bottom_list_m = ["none","breeches","trousers"]
-bottom_list_d = [bottom_list_f, bottom_list_m]
-    
-neckwear_list_f = ["none", "beaded necklace","choker","jewelled necklace","beads",] 
-neckwear_list_m = ["none","cravat","bow"]
-neckwear_list_d = [neckwear_list_f, neckwear_list_m]
-
-coat_list_f = ["none","medium cloak","dress jacket","wrap"]
-coat_list_m = ["none","short jacket","long jacket closed","jama"]  
-coat_list_d = [coat_list_f, coat_list_m]
-
-hair_front_list_u = ["none","centre bun"]
-hair_front_list_f = hair_front_list_u+ ["curly bun","wavy bun", "straight bun","curly long","straight long"]
-hair_front_list_m = hair_front_list_u+ ["curly short","wavy short", "straight short","super short"]
-
-hair_front_list_d = [hair_front_list_f, hair_front_list_m]
-hair_back_list_f = hair_front_list_f
-hair_back_list_m = hair_front_list_m
-hair_back_list_d = hair_front_list_d
-
-hat_list_f = ["none","beads","scarf"]
-hat_list_m = ["none","top hat","turban"]
-hat_list_d = [hat_list_f, hat_list_m]
-
-# collections of parts that have the same colours and patterns
-skin_list = ["body","nose","mouth","eyebrows","skull","complexion","ears"]#same colour as head
-expression_list = ["mouth","eyebrows","cheeks","eyes"]
-accessory_list = ["eyewear","neckwear", "earrings", "gloves", "hat",]
-outfit_list = ["wheelchair", "bottom","top", "overshirt", "coat"]
-defining_list = remove_dups(accessory_list+ outfit_list+skin_list+expression_list+["hair_front","head","chest"])
-
-#extra info
-
-no_chest_coat_list = [ "robe","robe hood",  "medium cloak", "medium cloak hood", "long cloak", "long cloak hood","wrap"] #clothes where the chest doesn't show
-no_fill_list = ["mouth"] #lined items with no coloured fill
-
-hat_back_list = ["none","top hat","scarf","turban"]
-hat_back_list_d = double_list(hat_back_list)
-hair_back_list = remove_dups(hair_front_list_f+ hair_front_list_m)
-hair_back_list_d = double_list(hair_back_list) 
-coat_back_list = ["none","medium cloak","wrap","long jacket closed","short jacket","dress jacket"] 
-coat_back_list_d = double_list(coat_back_list) 
-
-wheelchair_bottom_list_d = bottom_list_d
-wheelchair_coat_list = ["none", "medium cloak","long jacket closed","dress jacket","jama"] 
-wheelchair_coat_list_d = double_list(wheelchair_coat_list)
-
-wheelchair_bottom_dec_list = ["breeches","split skirt"]
-wheelchair_bottom_dec_list_d = double_list(wheelchair_bottom_dec_list)
-top_dec_list = ["plain bodice", "long sleeve bodice","gathered bodice","v neck bodice"]
-top_dec_list_d = double_list(top_dec_list)
-earrings_dec_list = ["round earrings"]
-earrings_dec_list_d = double_list(earrings_dec_list)
-overshirt_dec_list = ["waistcoat","short waistcoat"]
-overshirt_dec_list_d = double_list(overshirt_dec_list)
-neckwear_dec_list = ["jewelled necklace","beaded necklace"]
-neckwear_dec_list_d = double_list(neckwear_dec_list)
-bottom_dec_list = ["breeches","split skirt","solid skirt"]
-bottom_dec_list_d = double_list(bottom_dec_list)
-coat_dec_list = ["dress jacket","jama"]
-coat_dec_list_d = double_list(coat_dec_list)
-hat_dec_list = ["top hat"]
-hat_dec_list_d = double_list(hat_dec_list)
-hat_back_dec_list = ["scarf"]
-hat_back_dec_list_d = double_list(hat_back_dec_list)
-
-no_render_list = [["hat",["scarf"]],["hat_dec",["scarf"]]]
-
-###################### More technical stuff from here on
-
-closet = [] # list of lists of information about items of clothing etc
-
-class ClothingItem:
-
-    # name: string describing item type, eg "hat"
-    # item_list: list of strings with names of items, eg hat_list as defined elsewhere
-    # location: string describing where the image files are,
-    #           eg "clothes" because hat images are stored in the folder clothes/hat
-
-    def __init__(self,name,listname, double_list, location):
-        self.name =  name
-        self.listname = listname
-        self.double_list = double_list
-        self.item_list = remove_dups(double_list[0]+double_list[1])
-        self.location = location
-
-def add_item(name, listname, double_list,location):
-    # Add an item to the closet
-    global  closet
-
-    closet.append(ClothingItem(name, listname,double_list, location))
-
-## Adding all the data to closet
-
-add_item("wheelchair_back", "wheelchair_list_d", wheelchair_list_d,"wheelchair")
-add_item("wheelchair_back_dec", "wheelchair_list_d", wheelchair_list_d,"wheelchair")
-add_item("hat_back", "hat_back_list_d",hat_back_list_d, "clothes/hat")
-add_item("hat_back_dec", "hat_back_dec_list_d",hat_back_dec_list_d, "clothes/hat")
-add_item("hair_back", "hair_back_list_d",hair_back_list_d, "hair")
-add_item("coat_back", "coat_back_list_d",coat_back_list_d, "clothes/coat")
-add_item("body", "body_list_d", body_list_d, "anatomy")
-
-# In front of face
-add_item("gloves", "gloves_list_d", gloves_list_d, "clothes")
-add_item("top", "top_list_d", top_list_d, "clothes")
-add_item("top_dec", "top_dec_list_d", top_dec_list_d, "clothes")
-add_item("bottom", "bottom_list_d", bottom_list_d, "clothes")
-add_item("bottom_dec", "bottom_dec_list_d", bottom_dec_list_d, "clothes")
-add_item("neckwear", "neckwear_list_d", neckwear_list_d, "clothes")
-add_item("neckwear_dec", "neckwear_dec_list_d", neckwear_dec_list_d, "clothes")
-add_item("overshirt", "overshirt_list_d", overshirt_list_d, "clothes")
-add_item("overshirt_dec", "overshirt_dec_list_d", overshirt_dec_list_d, "clothes")
-add_item("top_collar", "top_collar_list_d", top_collar_list_d, "clothes")
-add_item("coat", "coat_list_d", coat_list_d, "clothes")
-add_item("coat_dec", "coat_dec_list_d", coat_dec_list_d, "clothes")
-add_item("chest", "chest_list_d", chest_list_d, "anatomy")
-
-add_item("skull", "skull_list_d", skull_list_d, "anatomy")
-add_item("head", "head_list_d", head_list_d, "anatomy")
-add_item("ears", "ear_list_d", ear_list_d, "anatomy")
-add_item("earrings", "earrings_list_d", earrings_list_d, "clothes")
-add_item("earrings_dec", "earrings_dec_list_d", earrings_dec_list_d, "clothes")
-add_item("nose", "nose_list_d", nose_list_d, "face")
-add_item("complexion", "complexion_list_d", complexion_list_d, "face")
-add_item("cheeks", "cheeks_list_d", cheeks_list_d, "face")
-
-add_item("mouth", "mouth_list_d", mouth_list_d, "face")
-add_item("eyebrows", "eyebrows_list_d", eyebrows_list_d, "face")
-add_item("eyes", "eyes_list_d", eyes_list_d, "face")
-add_item("eyewear", "eyewear_list_d", eyewear_list_d, "clothes")
-add_item("hair_front", "hair_front_list_d", hair_front_list_d, "hair")
-add_item("hat", "hat_list_d", hat_list_d, "clothes")
-add_item("hat_dec", "hat_dec_list_d", hat_dec_list_d, "clothes")
-
-add_item("wheelchair", "wheelchair_list_d", wheelchair_list_d, "wheelchair")
-add_item("wheelchair_dec", "wheelchair_list_d", wheelchair_list_d, "wheelchair")
-add_item("wheelchair_bottom", "wheelchair_bottom_list_d", wheelchair_bottom_list_d, "wheelchair")
-add_item("wheelchair_bottom_dec", "wheelchair_bottom_dec_list_d", wheelchair_bottom_dec_list_d, "wheelchair")
-add_item("wheelchair_coat", "wheelchair_coat_list_d", wheelchair_coat_list_d, "wheelchair")
-
-#colours
-skin_colours =["#FFE5C9","#FFE5C9","#FFE5C9","#F8C38D","#F1A065","#F3AE74","#EA8C59","#C26638","#CA783C","#8D4428","#A85E29","#6F3226","#723C1B"]
-
-outfit_yellow = ["#FAF6E9","#FAF1CF","#FAE181",]
-outfit_green = ["#91C639","#43A92D","#1B7C34",]
-outfit_blue = ["#5B8DDD", "#4C6BC2", "#9CD6F8"]
-outfit_purple = ["#C089E4","#7543BD", "#28137C"]
-outfit_red = ["#E3313C", "#901E3B", "#E1748A",]
-outfit_brown = ["#F6AC4F","#DA711F","#C49052","#A76C42","#83402C","#462231"]
-
-outfit_colours = outfit_yellow+outfit_green+outfit_blue+outfit_purple +outfit_red 
-
-eye_colours = ["#000000","#8334D8","#AD4C1F","#FFB02B","#D48A0B","#954213","#7F8723","#38AE2A","#146C24","#1ABACB","#83DFDF","#1E8990","#4C9EE8","#274CA4","#878E9E","#663D49"]
-
-hair_grey = ["#9E8F7E", "#C6C2BE",]
-hair_blonde = ["#D88F3F", "#F5D06D","#D19546"]
-hair_brown = ["#712A0D","#A44C17", "#8A3C25",]
-hair_black = ["#471E27", "#612230","#9C7256"]
-hair_red = ["#D14728","#D15E23"]
-
-hair_colours = hair_blonde + hair_red+ hair_brown+ hair_grey+ hair_black
+def triple_list(l):
+    return [l,l, []]   
 
 # colour functions
 
@@ -334,6 +108,286 @@ def HSL_to_RGB(h,s,l):
         B = X
     return [int(R+m), int(G+m), int(B+m)]
 
+def addColours(list):
+    #add extra colours halfway between each colour
+    newlist = [list[0]]
+    for i in range(len(list)-1):
+        newcol = []
+        for j in range(3):
+            newcol += [int((hex_to_rgba(list[i])[j]+hex_to_rgba(list[i+1])[j])/2)]
+        newlist += [rgb_to_hex(newcol[0],newcol[1],newcol[2])]     
+        newlist += [list[i+1]]
+    return newlist    
+
+
+
+pattern_list = ["none",
+        "crocodile","rose", "snake","damask", #repeated fractal
+        "crosshatch","fabric",  #repeated naturalistic
+        "diamonds","diamondssmall","tartan",  "polkadot",#repeated pattern
+        "pinstripe","horizontalpinstripe",] #lines "verticalstripe", "horizontalstripe", "diagonal","net",
+
+chest_list = ["none", "small","medium","big"]   
+chest_list_d = [chest_list,["none"], ["none"]]
+chest_image_list = ["none","small","medium","big","bigpants","smallwide","mediumwide", "bigwide"]
+
+wheelchair_list = [ "none","regular"]
+wheelchair_list_d = triple_list(wheelchair_list)
+
+head_list_u = ["pointed","medium","rectangular","round"]
+head_list_d = triple_list(head_list_u)
+skull_list = ["regular"]
+skull_list_d = triple_list(skull_list)
+ear_list = ["regular"]
+ear_list_d = triple_list(ear_list)
+body_list = ["regular"]
+body_list_d = triple_list(body_list)
+no_iris_list = ["sleepy","closed"] #eyeshapes with no iris
+eyes_list_u = ["neutral","side","crescents","narrowed","happy","wide","shock","angry","angry side","sleepy","wink"]
+#["wide","extrawide", "widecatty","sad", "gentle", "regular","vivid", "cool","catty","coolside", "narrowcool","narrowcoolside","narrowcatty","narrowcattyside", "halfclosed"]
+eyetype_list = ["medium"]
+eyes_list_d = triple_list(eyes_list_u)
+eyebrows_list_u = ["flat","flat sad","flat grumpy","flat angry","sad","sadder", "semi sad", "regular","semi arch","arched","raised arch", "raised","raised flat", "raised semi flat","raised grumpy","raised semi","angry", "angry arch","half raised","half semi", "half sad","half sad raised","half flat","half arch raised"]
+eyebrows_list_d = triple_list(eyebrows_list_u)
+mouth_list_u = ["lah", "small lah", "tiny lah", "big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","slight smile","side eww","eww",  "oh","square oh","big oh", "small oh","shock","small flat","flat","small clenched", "wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",]
+mouth_list_d = triple_list(mouth_list_u)
+nose_list_u = ["button", "round","medium","broad", "pointed","hooked",] 
+nose_list_d = triple_list(nose_list_u)
+
+cheeks_list_u = ["none","blush"]
+cheeks_list_d = triple_list(cheeks_list_u)
+
+complexion_list_u = ["none","slight lines", "freckles"]
+complexion_list_d = triple_list(complexion_list_u)
+
+eyewear_list_w = ["none",]
+eyewear_list_u = ["none", "round glasses"] 
+eyewear_list_f = eyewear_list_u
+eyewear_list_m = eyewear_list_u+["monocle"]
+eyewear_list_d =  [eyewear_list_f,eyewear_list_m, eyewear_list_w]
+
+earrings_list_f = ["none","drop earrings", "stud","round earrings"]
+earrings_list_m = ["none",]
+earrings_list_w = ["none",]
+earrings_list_d =  [earrings_list_f,earrings_list_m, earrings_list_w]
+
+gloves_list_f = ["none", "short gloves", "medium gloves", "long gloves","bracelets"]
+gloves_list_m = ["none", "short gloves"]
+gloves_list_w = ["none",]
+gloves_list_d = [gloves_list_f,gloves_list_m,gloves_list_w]
+
+top_list_f = ["none","plain bodice", "long sleeve bodice","gathered bodice","v neck bodice"]
+top_list_m= ["none", "open shirt","closed shirt"] 
+top_list_w = ["none",]
+top_list_d = [top_list_f,top_list_m,top_list_w]
+top_collar_list = top_list_m
+top_collar_list_d = [["none"],top_collar_list,["none"]]
+
+overshirt_list_f = ["none"]
+overshirt_list_m = ["none", "waistcoat"]
+overshirt_list_w = ["none"]
+overshirt_list_render = remove_dups(overshirt_list_f+overshirt_list_m+["short waistcoat"]+overshirt_list_w)
+overshirt_list_d = [overshirt_list_f, overshirt_list_m,overshirt_list_w]
+
+bottom_list_f = ["none","solid skirt","split skirt","low skirt"]
+bottom_list_m = ["none","breeches","trousers"]
+bottom_list_w = ["none"]
+bottom_list_d = [bottom_list_f, bottom_list_m, bottom_list_w]
+    
+neckwear_list_f = ["none", "beaded necklace","choker","jewelled necklace","beads",] 
+neckwear_list_m = ["none","cravat","bow"]
+neckwear_list_w = ["none"]
+neckwear_list_d = [neckwear_list_f, neckwear_list_m,neckwear_list_w]
+
+coat_list_f = ["none","medium cloak","dress jacket","wrap"]
+coat_list_m = ["none","short jacket","long jacket closed","jama"]  
+coat_list_w = ["none"]
+coat_list_d = [coat_list_f, coat_list_m, coat_list_w]
+
+hair_front_list_u = ["none","centre bun"]
+hair_front_list_f = hair_front_list_u+ ["curly bun","wavy bun", "straight bun","curly long","straight long"]
+hair_front_list_m = hair_front_list_u+ ["curly short","wavy short", "straight short","super short"]
+hair_front_list_w = ["none"]
+
+hair_front_list_d = [hair_front_list_f, hair_front_list_m,hair_front_list_w]
+hair_back_list_f = hair_front_list_f
+hair_back_list_m = hair_front_list_m
+hair_back_list_w = hair_front_list_w
+hair_back_list_d = hair_front_list_d
+
+hat_list_f = ["none","beads","scarf"]
+hat_list_m = ["none","top hat","turban"]
+hat_list_w = ["none"]
+hat_list_d = [hat_list_f, hat_list_m, hat_list_m]
+
+# collections of parts that have the same colours and patterns
+skin_list = ["body","nose","mouth","eyebrows","skull","complexion","ears"]#same colour as head
+expression_list = ["mouth","eyebrows","cheeks","eyes"]
+accessory_list = ["eyewear","neckwear", "earrings", "gloves", "hat",]
+outfit_list = ["wheelchair", "bottom","top", "overshirt", "coat"]
+defining_list = remove_dups(accessory_list+ outfit_list+skin_list+expression_list+["hair_front","head","chest"])
+
+#extra info
+
+no_chest_coat_list = [ "robe","robe hood",  "medium cloak", "medium cloak hood", "long cloak", "long cloak hood","wrap"] #clothes where the chest doesn't show
+no_fill_list = ["mouth"] #lined items with no coloured fill
+
+hat_back_list = ["none","top hat","scarf","turban"]
+hat_back_list_d = triple_list(hat_back_list)
+hair_back_list = remove_dups(hair_front_list_f+ hair_front_list_m)
+hair_back_list_d = triple_list(hair_back_list) 
+coat_back_list = ["none","medium cloak","wrap","long jacket closed","short jacket","dress jacket"] 
+coat_back_list_d = triple_list(coat_back_list) 
+
+wheelchair_bottom_list_d = bottom_list_d
+wheelchair_coat_list = ["none", "medium cloak","long jacket closed","dress jacket","jama"] 
+wheelchair_coat_list_d = triple_list(wheelchair_coat_list)
+
+wheelchair_bottom_dec_list = ["breeches","split skirt"]
+wheelchair_bottom_dec_list_d = triple_list(wheelchair_bottom_dec_list)
+top_dec_list = ["plain bodice", "long sleeve bodice","gathered bodice","v neck bodice"]
+top_dec_list_d = triple_list(top_dec_list)
+earrings_dec_list = ["round earrings"]
+earrings_dec_list_d = triple_list(earrings_dec_list)
+overshirt_dec_list = ["waistcoat","short waistcoat"]
+overshirt_dec_list_d = triple_list(overshirt_dec_list)
+neckwear_dec_list = ["jewelled necklace","beaded necklace"]
+neckwear_dec_list_d = triple_list(neckwear_dec_list)
+bottom_dec_list = ["breeches","split skirt","solid skirt"]
+bottom_dec_list_d = triple_list(bottom_dec_list)
+coat_dec_list = ["dress jacket","jama"]
+coat_dec_list_d = triple_list(coat_dec_list)
+hat_dec_list = ["top hat"]
+hat_dec_list_d = triple_list(hat_dec_list)
+hat_back_dec_list = ["scarf"]
+hat_back_dec_list_d = triple_list(hat_back_dec_list)
+
+no_render_list = [["hat",["scarf"]],["hat_dec",["scarf"]]]
+
+###################### More technical stuff from here on
+
+closet = [] # list of lists of information about items of clothing etc
+
+class ClothingItem:
+
+    # name: string describing item type, eg "hat"
+    # item_list: list of strings with names of items, eg hat_list as defined elsewhere
+    # location: string describing where the image files are,
+    #           eg "clothes" because hat images are stored in the folder clothes/hat
+
+    def __init__(self,name,listname, triple_list, location):
+        self.name =  name
+        self.listname = listname
+        self.triple_list = triple_list
+        self.item_list = remove_dups(triple_list[0]+triple_list[1])
+        self.location = location
+
+def add_item(name, listname, triple_list,location):
+    # Add an item to the closet
+    global  closet
+
+    closet.append(ClothingItem(name, listname,triple_list, location))
+
+## Adding all the data to closet
+
+add_item("wheelchair_back", "wheelchair_list_d", wheelchair_list_d,"wheelchair")
+add_item("wheelchair_back_dec", "wheelchair_list_d", wheelchair_list_d,"wheelchair")
+add_item("hat_back", "hat_back_list_d",hat_back_list_d, "clothes/hat")
+add_item("hat_back_dec", "hat_back_dec_list_d",hat_back_dec_list_d, "clothes/hat")
+add_item("hair_back", "hair_back_list_d",hair_back_list_d, "hair")
+add_item("coat_back", "coat_back_list_d",coat_back_list_d, "clothes/coat")
+add_item("body", "body_list_d", body_list_d, "anatomy")
+
+# In front of face
+add_item("gloves", "gloves_list_d", gloves_list_d, "clothes")
+add_item("top", "top_list_d", top_list_d, "clothes")
+add_item("top_dec", "top_dec_list_d", top_dec_list_d, "clothes")
+add_item("bottom", "bottom_list_d", bottom_list_d, "clothes")
+add_item("bottom_dec", "bottom_dec_list_d", bottom_dec_list_d, "clothes")
+add_item("neckwear", "neckwear_list_d", neckwear_list_d, "clothes")
+add_item("neckwear_dec", "neckwear_dec_list_d", neckwear_dec_list_d, "clothes")
+add_item("overshirt", "overshirt_list_d", overshirt_list_d, "clothes")
+add_item("overshirt_dec", "overshirt_dec_list_d", overshirt_dec_list_d, "clothes")
+add_item("top_collar", "top_collar_list_d", top_collar_list_d, "clothes")
+add_item("coat", "coat_list_d", coat_list_d, "clothes")
+add_item("coat_dec", "coat_dec_list_d", coat_dec_list_d, "clothes")
+add_item("chest", "chest_list_d", chest_list_d, "anatomy")
+
+add_item("skull", "skull_list_d", skull_list_d, "anatomy")
+add_item("head", "head_list_d", head_list_d, "anatomy")
+add_item("ears", "ear_list_d", ear_list_d, "anatomy")
+add_item("earrings", "earrings_list_d", earrings_list_d, "clothes")
+add_item("earrings_dec", "earrings_dec_list_d", earrings_dec_list_d, "clothes")
+add_item("nose", "nose_list_d", nose_list_d, "face")
+add_item("complexion", "complexion_list_d", complexion_list_d, "face")
+add_item("cheeks", "cheeks_list_d", cheeks_list_d, "face")
+
+add_item("mouth", "mouth_list_d", mouth_list_d, "face")
+add_item("eyebrows", "eyebrows_list_d", eyebrows_list_d, "face")
+add_item("eyes", "eyes_list_d", eyes_list_d, "face")
+add_item("eyewear", "eyewear_list_d", eyewear_list_d, "clothes")
+add_item("hair_front", "hair_front_list_d", hair_front_list_d, "hair")
+add_item("hat", "hat_list_d", hat_list_d, "clothes")
+add_item("hat_dec", "hat_dec_list_d", hat_dec_list_d, "clothes")
+
+add_item("wheelchair", "wheelchair_list_d", wheelchair_list_d, "wheelchair")
+add_item("wheelchair_dec", "wheelchair_list_d", wheelchair_list_d, "wheelchair")
+add_item("wheelchair_bottom", "wheelchair_bottom_list_d", wheelchair_bottom_list_d, "wheelchair")
+add_item("wheelchair_bottom_dec", "wheelchair_bottom_dec_list_d", wheelchair_bottom_dec_list_d, "wheelchair")
+add_item("wheelchair_coat", "wheelchair_coat_list_d", wheelchair_coat_list_d, "wheelchair")
+
+#colours
+
+
+skin_colours =addColours(["#FFE5C9","#FECFA4","#F8C38D","#F8C38D","#F1A065","#F3AE74","#EA8C59","#C26638","#CA783C","#8D4428","#A85E29","#6F3226","#723C1B"])
+skin_colours_weird = ["#FFFFFF","#BDADAF","#D1EFF8","#B7DAA3","#DF626A","#9C68BF","#4B4AA0"]
+
+outfit_yellow = ["#FAF6E9","#FAF1CF","#FAE181",]
+outfit_green = ["#91C639","#43A92D","#1B7C34",]
+outfit_blue = ["#5B8DDD", "#4C6BC2", "#9CD6F8"]
+outfit_purple = ["#C089E4","#7543BD", "#28137C"]
+outfit_red = ["#E3313C", "#901E3B", "#E1748A",]
+outfit_brown = ["#F6AC4F","#DA711F","#C49052","#A76C42","#83402C","#462231"]
+
+outfit_colours = outfit_yellow+outfit_green+outfit_blue+outfit_purple +outfit_red 
+
+eye_colours = ["#000000","#8334D8","#AD4C1F","#FFB02B","#D48A0B","#954213","#7F8723","#38AE2A","#146C24","#1ABACB","#83DFDF","#1E8990","#4C9EE8","#274CA4","#878E9E","#663D49"]
+eye_colours_weird = ["#DF3421","#F55783","#FFFFFF"]
+
+hair_grey = ["#9E8F7E", "#C6C2BE","#EFEBEB"]
+hair_blonde = ["#D88F3F", "#F5D06D","#D19546"]
+hair_brown = ["#712A0D","#A44C17", "#8A3C25",]
+hair_black = ["#471E27", "#612230","#9C7256"]
+hair_red = ["#D14728","#D15E23"]
+
+hair_colours = hair_blonde + hair_red+ hair_brown+ hair_grey+ hair_black
+hair_colours_weird =["#32B05C","#79D15E","#89E2E6","#FF8DB6","#BE6CDA","#6758A9"]
+
+scheme_list = [ #Various pretty colour schemes
+
+    ["#774F38","#E08E79","#F1D4AF","#ECE5CE","#C5E0DC"],
+    ["#1693A5","#45B5C4","#7ECECA","#A0DED6","#C7EDE8"],
+    ["#D24858","#EA8676","#EAB05E","#FDEECD","#493831"],
+    ["#165C8E","#28506D","#405961","#504C3D","#403D27"],
+    ["#30261C","#403831","#36544F","#1F5F61","#0B8185"],
+    ["#1C0113","#6B0103","#A30006","#C21A01","#F03C02"],
+    ["#EFE2C0","#93D7DB","#A26156","#ADD9D5","#FCECCA"],
+    ["#F8B195","#F67280","#C06C84","#6C5B7B","#355C7D"],
+    ["#2A044A","#0B2E59","#0D6759","#7AB317","#A0C55F"],
+    ["#300030","#480048","#601848","#C04848","#F07241"],
+    ["#ECD078","#D95B43","#C02942","#542437","#53777A"],
+    ["#A8E6CE","#DCEDC2","#FFD3B5","#FFAAA6","#FF8C94"],
+    ["#69D2E7","#A7DBD8","#E0E4CC","#F38630","#FA6900"],
+    ["#111625","#341931","#571B3C","#7A1E48","#9D2053"],
+    
+    ["#413E4A","#73626E","#B38184","#F0B49E","#F7E4BE"],
+    ["#E6EBA9","#ABBB9F","#6F8B94","#706482","#703D6F"],
+    ]
+
+outfit_colours = []
+for s in scheme_list:
+    outfit_colours+=s
+
 def hair_highlight(pixel, highlight):
     p = [pixel[0],pixel[1],pixel[2]]
     l = luminance(p)/255
@@ -409,6 +463,28 @@ def shadow_colours(colour_name):
         return [hex_to_rgba("#270096"),hex_to_rgba("#270096")]
     else: #purple
         return [hex_to_rgba("#1B0C7E"),hex_to_rgba("#1B0C7E")]
+
+def makeSwatch(list, name, width):
+    save_string = "../images/render/swatches/"+name +".png"
+    sq_width = 50
+    gutter_width = 1
+    height = len(list)/width + 1
+    img = Image.new("RGBA", (sq_width*width, sq_width*height))
+    draw = ImageDraw.Draw(img)
+    for i in range(width):
+        for j in range(height):
+            current = j*width+i
+            if current > len(list) - 1:
+                break
+            draw.rectangle((gutter_width*width+ (sq_width-gutter_width)*i,sq_width*j,gutter_width*width+(sq_width-gutter_width)*(i+1),sq_width*(j+1)),fill=hex_to_rgba(list[current])) 
+    img.save(save_string)   
+
+def makeSwatches():
+    makeSwatch(skin_colours+skin_colours_weird,"skin",5,)
+    makeSwatch(eye_colours+eye_colours_weird,"eyes",5)
+    makeSwatch(hair_colours+hair_colours_weird,"hair",5)
+    
+    makeSwatch(outfit_colours,"schemes",10)
 
 
 def process_image(name, location,type):
@@ -488,8 +564,8 @@ def list_string(listname, list):
 
 def name_string(obj):
     s = "const "+obj.listname + " = ["
-    for i in [0,1]:
-        s+=simple_list_string(obj.double_list[i])
+    for i in [0,1,2]:
+        s+=simple_list_string(obj.triple_list[i])
         s+=","    
     s+="];\n"
     return s    
@@ -513,16 +589,24 @@ def write_variables():
     content = open("generated.js","w")
     content.write("//generated by generate_images.py\n\n")
     content.write(list_string("eye_colours", eye_colours))
+    content.write(list_string("eye_colours_weird", eye_colours_weird))
     content.write(list_string("outfit_colours", outfit_colours))
     content.write(list_string("outfit_brown", outfit_brown))
     content.write(list_string("skin_colours", skin_colours))
+    content.write(list_string("skin_colours_weird", skin_colours_weird))
     content.write(list_string("hair_colours",hair_colours))
+    content.write(list_string("hair_colours_weird",hair_colours_weird))
     content.write("\n")
     content.write("const no_render_list = [")
     for i in range(len(no_render_list)):
         content.write("[\""+no_render_list[i][0]+"\",")
         content.write(simple_list_string(no_render_list[i][1]))
         content.write("],")    
+    content.write("];\n")
+    content.write("const scheme_list = [")
+    for i in range(len(scheme_list)):
+        content.write(simple_list_string(scheme_list[i]))
+        content.write(",")
     content.write("];\n")
     content.write(list_string("no_fill_list", no_fill_list, )) 
     content.write(list_string("eyetype_list", eyetype_list ))   
@@ -618,10 +702,12 @@ write_variables()
 # "skull", "head","body","ears","nose"
 # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
 for c in closet:
-    if c.name in ["overshirt"]:
+    if c.name in [""]:
         process_portrait_part(c)
 #makeWinks()
 #makeStubble() 
+
+makeSwatches()
        
 #process_all_portraits()
 #make_coat()
