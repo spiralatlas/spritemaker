@@ -438,6 +438,9 @@ function drawCanvas() {
         if (currently_editing<3){
             ctx_sample.drawImage(schemes_image,125,0)
         }
+        else{
+            ctx_sample.clearRect(0,0,canvas_sample.width,canvas_sample.height)
+        }
     }
     
 

@@ -468,6 +468,7 @@ def makeSwatch(list, name, width):
     save_string = "../images/render/swatches/"+name +".png"
     sq_width = 50
     gutter_width = 1
+    narrow_width = sq_width-gutter_width
     height = len(list)/width + 1
     img = Image.new("RGBA", (sq_width*width, sq_width*height))
     draw = ImageDraw.Draw(img)
@@ -476,7 +477,18 @@ def makeSwatch(list, name, width):
             current = j*width+i
             if current > len(list) - 1:
                 break
-            draw.rectangle((gutter_width*width+ (sq_width-gutter_width)*i,sq_width*j,gutter_width*width+(sq_width-gutter_width)*(i+1),sq_width*(j+1)),fill=hex_to_rgba(list[current])) 
+            if width ==10:
+                x = narrow_width*i
+                y = sq_width*j
+                if i<5:
+                    draw.rectangle((x,y,x+narrow_width,y+sq_width-gutter_width*5),fill=hex_to_rgba(list[current])) 
+                else:
+                    draw.rectangle((gutter_width*5+x,y,gutter_width*5+x+narrow_width,y+sq_width-gutter_width*5),fill=hex_to_rgba(list[current])) 
+
+            else:  
+                x = gutter_width*width+narrow_width*i
+                y = sq_width*j  
+                draw.rectangle((x,y,x+sq_width,y+sq_width),fill=hex_to_rgba(list[current])) 
     img.save(save_string)   
 
 def makeSwatches():
