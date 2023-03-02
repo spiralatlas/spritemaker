@@ -220,12 +220,17 @@ hat_list_m = ["none","top hat","turban"]
 hat_list_w = ["none"]
 hat_list_d = [hat_list_f, hat_list_m, hat_list_m]
 
+facial_hair_list_f = ["none"]
+facial_hair_list_m = ["none", "beard", "moustache", "big moustache", "goatee", "soul patch", "fluffy goatee", "stubble"]
+facial_hair_list_w = []
+facial_hair_list_d = [facial_hair_list_f,facial_hair_list_m,facial_hair_list_w]
+
 # collections of parts that have the same colours and patterns
 skin_list = ["body","nose","mouth","eyebrows","skull","complexion","ears"]#same colour as head
 expression_list = ["mouth","eyebrows","cheeks","eyes"]
 accessory_list = ["eyewear","neckwear", "earrings", "gloves", "hat",]
 outfit_list = ["wheelchair", "bottom","top", "overshirt", "coat"]
-defining_list = remove_dups(accessory_list+ outfit_list+skin_list+expression_list+["hair_front","head","chest"])
+defining_list = remove_dups(accessory_list+ outfit_list+skin_list+expression_list+["hair_front","facial_hair", "head","chest"])
 
 #extra info
 
@@ -262,7 +267,7 @@ hat_dec_list_d = triple_list(hat_dec_list)
 hat_back_dec_list = ["scarf"]
 hat_back_dec_list_d = triple_list(hat_back_dec_list)
 
-no_render_list = [["hat",["scarf"]],["hat_dec",["scarf"]]]
+no_render_list = [["hat",["scarf"]],["hat_dec",["scarf"]],["facial_hair",["stubble"]]]
 
 ###################### More technical stuff from here on
 
@@ -326,6 +331,8 @@ add_item("mouth", "mouth_list_d", mouth_list_d, "face")
 add_item("eyebrows", "eyebrows_list_d", eyebrows_list_d, "face")
 add_item("eyes", "eyes_list_d", eyes_list_d, "face")
 add_item("eyewear", "eyewear_list_d", eyewear_list_d, "clothes")
+
+add_item("facial_hair", "facial_hair_list_d", facial_hair_list_d, "hair")
 add_item("hair_front", "hair_front_list_d", hair_front_list_d, "hair")
 add_item("hat", "hat_list_d", hat_list_d, "clothes")
 add_item("hat_dec", "hat_dec_list_d", hat_dec_list_d, "clothes")
@@ -339,7 +346,7 @@ add_item("wheelchair_coat", "wheelchair_coat_list_d", wheelchair_coat_list_d, "w
 #colours
 
 
-skin_colours =addColours(["#FFE5C9","#FDDAB0","#FECFA4","#F8C38D","#F1A065","#F3AE74","#EA8C59","#C26638","#CA783C","#A85E29","#8D4428","#6D3716","#632418"])
+skin_colours =addColours(["#FFF1E2","#FDDAB0","#FECFA4","#F8C38D","#F1A065","#F3AE74","#EA8C59","#C26638","#CA783C","#A85E29","#8D4428","#6D3716","#632418"])
 skin_colours_weird = ["#FFFFFF","#BDADAF","#D1EFF8","#B7DAA3","#DF626A","#9C68BF","#4B4AA0"]
 
 outfit_yellow = ["#FAF6E9","#FAF1CF","#FAE181",]
@@ -719,7 +726,7 @@ write_variables()
 # "skull", "head","body","ears","nose"
 # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
 for c in closet:
-    if c.name in [""]:
+    if c.name in ["facial_hair"]:
         process_portrait_part(c)
 #makeWinks()
 #makeStubble() 

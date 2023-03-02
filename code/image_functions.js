@@ -366,7 +366,7 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
         if (width >obj.crop[0]+obj.crop[2])
             off_ctx.clearRect(obj.crop[0]+obj.crop[2], 0, width-(obj.crop[0]+obj.crop[2]), height);       
       
-        ctx.drawImage(off_canvas,sourceX,sourceY,width,height, xpos, ypos,width,height);
+        ctx.drawImage(off_canvas,sourceX,sourceY,width,height, parseInt(xpos*0.75), parseInt(ypos*0.75),parseInt(width*0.75),parseInt(height*0.75));
     }
 }
 

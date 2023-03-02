@@ -131,7 +131,7 @@ function getHeightOffset(name){
     }  */ 
     return current_offset;    
 }
-const head_offset_list = expression_list.concat(["skull","head","nose","nose_front","hat","hat_dec","hat_back","hat_back_dec","ears","complexion", "hair_front","hair_back","eyewear","earrings","earrings_dec"]);
+const head_offset_list = expression_list.concat(["skull","head","nose","nose_front","hat","hat_dec","hat_back","hat_back_dec","ears","complexion", "hair_front","hair_back","facial_hair", "eyewear","earrings","earrings_dec"]);
 
 const clothing_names = [];
 const accessory_names = [];
@@ -164,7 +164,7 @@ add_value_children("neckwear", ["neckwear_dec"]);
 add_colour2_children("neckwear", ["neckwear_dec"]);
 
 add_value_children("hair_front", ["hair_back"]);
-add_colour_children("hair_front", ["hair_back"]);
+add_colour_children("hair_front", ["hair_back","facial_hair"]);
 
 add_value_children("coat", ["coat_dec","coat_back","wheelchair_coat"]);
 add_colour_children("coat", ["coat_back","wheelchair_coat"]);

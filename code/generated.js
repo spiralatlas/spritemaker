@@ -4,12 +4,12 @@ const eye_colours = ["#8DD1E8","#4383D2","#295BA9","#1E3776","#607B9C","#8C929B"
 const eye_colours_weird = ["#F3999C","#DF3421","#F55783","#FFFFFF",];
 const outfit_colours = ["#774F38","#E08E79","#F1D4AF","#ECE5CE","#C5E0DC","#1693A5","#45B5C4","#7ECECA","#A0DED6","#C7EDE8","#D24858","#EA8676","#EAB05E","#FDEECD","#493831","#165C8E","#28506D","#405961","#504C3D","#403D27","#30261C","#403831","#36544F","#1F5F61","#0B8185","#1C0113","#6B0103","#A30006","#C21A01","#F03C02","#EFE2C0","#93D7DB","#A26156","#ADD9D5","#FCECCA","#F8B195","#F67280","#C06C84","#6C5B7B","#355C7D","#2A044A","#0B2E59","#0D6759","#7AB317","#A0C55F","#300030","#480048","#601848","#C04848","#F07241","#ECD078","#D95B43","#C02942","#542437","#53777A","#A8E6CE","#DCEDC2","#FFD3B5","#FFAAA6","#FF8C94","#69D2E7","#A7DBD8","#E0E4CC","#F38630","#FA6900","#111625","#341931","#571B3C","#7A1E48","#9D2053","#413E4A","#73626E","#B38184","#F0B49E","#F7E4BE","#E6EBA9","#ABBB9F","#6F8B94","#706482","#703D6F",];
 const outfit_brown = ["#F6AC4F","#DA711F","#C49052","#A76C42","#83402C","#462231",];
-const skin_colours = ["#FFE5C9","#fedfbc","#FDDAB0","#fdd4aa","#FECFA4","#fbc998","#F8C38D","#f4b179","#F1A065","#f2a76c","#F3AE74","#ee9d66","#EA8C59","#d67948","#C26638","#c66f3a","#CA783C","#b96b32","#A85E29","#9a5128","#8D4428","#7d3d1f","#6D3716","#682d17","#632418",];
+const skin_colours = ["#FFF1E2","#fee5c9","#FDDAB0","#fdd4aa","#FECFA4","#fbc998","#F8C38D","#f4b179","#F1A065","#f2a76c","#F3AE74","#ee9d66","#EA8C59","#d67948","#C26638","#c66f3a","#CA783C","#b96b32","#A85E29","#9a5128","#8D4428","#7d3d1f","#6D3716","#682d17","#632418",];
 const skin_colours_weird = ["#FFFFFF","#BDADAF","#D1EFF8","#B7DAA3","#DF626A","#9C68BF","#4B4AA0",];
 const hair_colours = ["#E6D1B1","#dfc5a2","#D8B994","#e6c480","#F5D06D","#e8b55c","#DB9A4C","#d08a46","#C67A40","#cb5934","#D13828","#d14b25","#D15E23","#ae3c21","#8B1B20","#93463b","#9C7256","#9c5d36","#9D4916","#93421d","#8A3C25","#7d3319","#712A0D","#69261e","#612230","#532039","#461E42","#705568","#9A8D8E","#cabbb3","#FAEAD9",];
 const hair_colours_weird = ["#32B05C","#79D15E","#89E2E6","#FF8DB6","#BE6CDA","#6758A9",];
 
-const no_render_list = [["hat",["scarf",]],["hat_dec",["scarf",]],];
+const no_render_list = [["hat",["scarf",]],["hat_dec",["scarf",]],["facial_hair",["stubble",]],];
 const scheme_list = [["#774F38","#E08E79","#F1D4AF","#ECE5CE","#C5E0DC",],["#1693A5","#45B5C4","#7ECECA","#A0DED6","#C7EDE8",],["#D24858","#EA8676","#EAB05E","#FDEECD","#493831",],["#165C8E","#28506D","#405961","#504C3D","#403D27",],["#30261C","#403831","#36544F","#1F5F61","#0B8185",],["#1C0113","#6B0103","#A30006","#C21A01","#F03C02",],["#EFE2C0","#93D7DB","#A26156","#ADD9D5","#FCECCA",],["#F8B195","#F67280","#C06C84","#6C5B7B","#355C7D",],["#2A044A","#0B2E59","#0D6759","#7AB317","#A0C55F",],["#300030","#480048","#601848","#C04848","#F07241",],["#ECD078","#D95B43","#C02942","#542437","#53777A",],["#A8E6CE","#DCEDC2","#FFD3B5","#FFAAA6","#FF8C94",],["#69D2E7","#A7DBD8","#E0E4CC","#F38630","#FA6900",],["#111625","#341931","#571B3C","#7A1E48","#9D2053",],["#413E4A","#73626E","#B38184","#F0B49E","#F7E4BE",],["#E6EBA9","#ABBB9F","#6F8B94","#706482","#703D6F",],];
 const no_fill_list = ["mouth",];
 const eyetype_list = ["medium",];
@@ -20,7 +20,7 @@ const no_chest_coat_list = ["robe","robe hood","medium cloak","medium cloak hood
 const expression_list = ["mouth","eyebrows","cheeks","eyes",];
 const outfit_list = ["wheelchair","bottom","top","overshirt","coat",];
 const accessory_list = ["eyewear","neckwear","earrings","gloves","hat",];
-const defining_list = ["eyebrows","neckwear","head","bottom","top","eyewear","chest","complexion","earrings","hat","cheeks","body","eyes","mouth","hair_front","skull","coat","wheelchair","overshirt","gloves","nose","ears",];
+const defining_list = ["eyebrows","neckwear","head","bottom","top","eyewear","facial_hair","chest","complexion","earrings","hat","cheeks","body","eyes","mouth","hair_front","skull","coat","wheelchair","overshirt","gloves","nose","ears",];
 
 const hat_back_list_d = [["none","top hat","scarf","turban",],["none","top hat","scarf","turban",],[],];
 const hat_back_dec_list_d = [["scarf",],["scarf",],[],];
@@ -52,6 +52,7 @@ const mouth_list_d = [["lah","small lah","tiny lah","big grin","grin","side grin
 const eyebrows_list_d = [["flat","flat sad","flat grumpy","flat angry","sad","sadder","semi sad","regular","semi arch","arched","raised arch","raised","raised flat","raised semi flat","raised grumpy","raised semi","angry","angry arch","half raised","half semi","half sad","half sad raised","half flat","half arch raised",],["flat","flat sad","flat grumpy","flat angry","sad","sadder","semi sad","regular","semi arch","arched","raised arch","raised","raised flat","raised semi flat","raised grumpy","raised semi","angry","angry arch","half raised","half semi","half sad","half sad raised","half flat","half arch raised",],[],];
 const eyes_list_d = [["neutral","side","crescents","narrowed","happy","wide","shock","angry","angry side","sleepy","wink",],["neutral","side","crescents","narrowed","happy","wide","shock","angry","angry side","sleepy","wink",],[],];
 const eyewear_list_d = [["none","round glasses",],["none","round glasses","monocle",],["none",],];
+const facial_hair_list_d = [["none",],["none","beard","moustache","big moustache","goatee","soul patch","fluffy goatee","stubble",],[],];
 const hair_front_list_d = [["none","centre bun","curly bun","wavy bun","straight bun","curly long","straight long",],["none","centre bun","curly short","wavy short","straight short","super short",],["none",],];
 const hat_list_d = [["none","beads","scarf",],["none","top hat","turban",],["none","top hat","turban",],];
 const hat_dec_list_d = [["top hat",],["top hat",],[],];
@@ -111,6 +112,8 @@ add_image_object("eyes",eyes_list_d,"face")
 add_defining_object("eyes",eyes_list_d)
 add_image_object("eyewear",eyewear_list_d,"clothes")
 add_defining_object("eyewear",eyewear_list_d)
+add_image_object("facial_hair",facial_hair_list_d,"hair")
+add_defining_object("facial_hair",facial_hair_list_d)
 add_image_object("hair_front",hair_front_list_d,"hair")
 add_defining_object("hair_front",hair_front_list_d)
 add_image_object("hat",hat_list_d,"clothes")
