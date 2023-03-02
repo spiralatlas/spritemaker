@@ -2,6 +2,8 @@
 
 let testing = false;
 
+let updated_frames = 0; //how long has it been since the data was updated 
+
 let currently_editing = 0; //which element of editing list we are editing
 let current_expression = 0;
 let current_clothing = 0;

@@ -339,7 +339,7 @@ add_item("wheelchair_coat", "wheelchair_coat_list_d", wheelchair_coat_list_d, "w
 #colours
 
 
-skin_colours =addColours(["#FFE5C9","#FECFA4","#F8C38D","#F8C38D","#F1A065","#F3AE74","#EA8C59","#C26638","#CA783C","#8D4428","#A85E29","#6F3226","#723C1B"])
+skin_colours =addColours(["#FFE5C9","#FDDAB0","#FECFA4","#F8C38D","#F1A065","#F3AE74","#EA8C59","#C26638","#CA783C","#A85E29","#8D4428","#6D3716","#632418"])
 skin_colours_weird = ["#FFFFFF","#BDADAF","#D1EFF8","#B7DAA3","#DF626A","#9C68BF","#4B4AA0"]
 
 outfit_yellow = ["#FAF6E9","#FAF1CF","#FAE181",]
@@ -351,16 +351,16 @@ outfit_brown = ["#F6AC4F","#DA711F","#C49052","#A76C42","#83402C","#462231"]
 
 outfit_colours = outfit_yellow+outfit_green+outfit_blue+outfit_purple +outfit_red 
 
-eye_colours = ["#000000","#8334D8","#AD4C1F","#FFB02B","#D48A0B","#954213","#7F8723","#38AE2A","#146C24","#1ABACB","#83DFDF","#1E8990","#4C9EE8","#274CA4","#878E9E","#663D49"]
-eye_colours_weird = ["#DF3421","#F55783","#FFFFFF"]
+eye_colours = ["#8DD1E8","#4383D2","#295BA9","#1E3776","#607B9C","#8C929B","#B9C2CD","#6E8785",]+["#6CB76E","#459953","#30854B","#2B6D4A","#95A27A","#99925F",]+["#E1A12E","#BF8A52","#7E4223","#975B35",]+["#733C2D","#4D1917","#190403"]
+eye_colours_weird = ["#F3999C","#DF3421","#F55783","#FFFFFF"]
 
-hair_grey = ["#9E8F7E", "#C6C2BE","#EFEBEB"]
-hair_blonde = ["#D88F3F", "#F5D06D","#D19546"]
-hair_brown = ["#712A0D","#A44C17", "#8A3C25",]
-hair_black = ["#471E27", "#612230","#9C7256"]
-hair_red = ["#D14728","#D15E23"]
+hair_grey = ["#9A8D8E","#FAEAD9"]
+hair_blonde = ["#E6D1B1","#D8B994","#F5D06D", "#DB9A4C","#C67A40"]
+hair_brown = ["#9C7256","#9D4916","#8A3C25", "#712A0D",]
+hair_black = ["#612230","#461E42",]
+hair_red = ["#D13828","#D15E23","#8B1B20"]
 
-hair_colours = hair_blonde + hair_red+ hair_brown+ hair_grey+ hair_black
+hair_colours = addColours(hair_blonde + hair_red+ hair_brown+ hair_black+ hair_grey)
 hair_colours_weird =["#32B05C","#79D15E","#89E2E6","#FF8DB6","#BE6CDA","#6758A9"]
 
 scheme_list = [ #Various pretty colour schemes
@@ -383,6 +383,11 @@ scheme_list = [ #Various pretty colour schemes
     ["#413E4A","#73626E","#B38184","#F0B49E","#F7E4BE"],
     ["#E6EBA9","#ABBB9F","#6F8B94","#706482","#703D6F"],
     ]
+
+colourings = [
+    ["#ffead2","#f06769","#fffaf8"], #albino
+    ["#83e07d", "#e14848","#c73d42"], #orc
+]
 
 outfit_colours = []
 for s in scheme_list:

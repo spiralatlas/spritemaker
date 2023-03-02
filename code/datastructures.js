@@ -135,6 +135,8 @@ function setVariables(data_object){
 
     fixSources();
 
+    updated_frames = 0;
+
     drawCanvas();
 }
 
@@ -399,6 +401,11 @@ function drawCanvas() {
     if (testing)
         document.getElementById("closet").innerHTML = print_defining_objects()+print_image_objects();
 
+    if (updated_frames>50) 
+        return; //it's been long enough since the last data update to stop refreshing the images
+    else
+        updated_frames+=1;    
+
     canvas_preview = document.getElementById("previewCanvas");
     canvas_sample = document.getElementById("sampleCanvas");
     canvas = document.getElementById("exportCanvas");
@@ -534,7 +541,7 @@ schemes_image.src = "images/render/swatches/schemes.png"
 const off_canvas = new OffscreenCanvas(full_width, full_height);
 const off_ctx = off_canvas.getContext("2d");
 window.onload = setup;
-var game = setInterval(drawCanvas, 500);//Update canvas every 100 miliseconds
+var game = setInterval(drawCanvas, 100);//Update canvas every 100 miliseconds
 
 //Some useful posts:
 //https://github.com/ninique/Dollmaker-Script
