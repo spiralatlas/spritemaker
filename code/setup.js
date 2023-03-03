@@ -24,9 +24,12 @@ let eye_expressions = listOf(0);
 let full_width="314";
 let full_height="800";
 
+let sprite_width =full_width; 
 let sprite_height = full_height;
 
 let isWeird =  false;
+
+const scaled_list = ["body", "head","ears","skull","chest","wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"]
 
 //internal
 
@@ -161,7 +164,7 @@ function add_image_object(name, triple_list, location){
     if (name.slice(-4)=="_dec")//remove "_dec"
         loc = location+"/"+name.slice(0,-4);
     item_list = remove_dups(triple_list[0].concat(triple_list[1]).concat(triple_list[2]));
-    image_objects.push({name: name,location: loc, item_list: item_list, item: 0, heightOffset: 0, widthOffset:0, crop : [0,0,full_width,full_height],parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", base_image_list: newImageList(),shadow_image_list: newImageList(),highlight_image_list: newImageList()});
+    image_objects.push({name: name,location: loc, item_list: item_list, item: 0, heightOffset: 0, widthOffset:0, scale: 1, crop : [0,0,full_width,full_height],parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", base_image_list: newImageList(),shadow_image_list: newImageList(),highlight_image_list: newImageList()});
 }
 
 //Setting up portrait data

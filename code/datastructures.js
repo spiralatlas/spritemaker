@@ -87,9 +87,13 @@ function setVariables(data_object){
         image_objects[i].widthOffset = getWidthOffset(image_objects[i].name);
         if (!checkRender(image_objects[i]))
             image_objects[i].item = 0
+        if (scaled_list.includes(image_objects[i].name)){
+            image_objects[i].scale = 0.8;
+        }    
     }
 
     //sprite height
+    sprite_width = full_width;
     if (findNameMatch(defining_objects,"wheelchair").value_list[0] !=0){ //there's a wheelchair
         sprite_height = full_height - (5-size)*25 -165;
     } else{ //no wheelchair
@@ -434,7 +438,12 @@ function drawCanvas() {
             //ctx_preview.fillStyle = "#000000";
             //ctx_preview.fillText(b.name, 10, 10*i); 
             //ctx_preview.drawImage(b.base_image_list[0],0,0);
-            draw_object(b,current_expression,b.colour1,ctx_preview, 0,0,b.widthOffset, -b.heightOffset,preview_width,preview_height);
+            {
+                if (scaled_list.includes(b.name))
+                    draw_object(b,current_expression,b.colour1,ctx_preview, 0,0,b.widthOffset, -b.heightOffset,parseInt(sprite_width/b.scale),parseInt(sprite_height/b.scale));
+                else  
+                    draw_object(b,current_expression,b.colour1,ctx_preview, 0,0,b.widthOffset, -b.heightOffset,sprite_width,sprite_height);
+            }
         }
     }
 
@@ -471,10 +480,16 @@ function drawCanvas() {
         let b = image_objects[i];
         if (b.item_list[b.item] !="none"){ 
             if (current_list.includes(b.name)) 
-                if (current_imageType ==2 && body_list.includes(b.name))
-                    undraw_object(b,current_expression,b.colour1,ctx_export, 0,0,b.widthOffset, -b.heightOffset,full_width,sprite_height);
-                else
-                    draw_object(b,current_expression,b.colour1,ctx_export, 0,0,b.widthOffset, -b.heightOffset,full_width,sprite_height);
+                if (current_imageType ==2 && body_list.includes(b.name)){
+                
+                    undraw_object(b,current_expression,b.colour1,ctx_export, 0,0,b.widthOffset, -b.heightOffset,sprite_width,sprite_height);}
+                else{
+                    if (scaled_list.includes(b.name))
+                        draw_object(b,current_expression,b.colour1,ctx_export, 0,0,b.widthOffset, -b.heightOffset,parseInt(sprite_width/b.scale),parseInt(sprite_height/b.scale));
+                    else  
+                        draw_object(b,current_expression,b.colour1,ctx_export, 0,0,b.widthOffset, -b.heightOffset,sprite_width,sprite_height);
+                }
+
         }
     }
     

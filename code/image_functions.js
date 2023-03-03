@@ -329,8 +329,13 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
     /*if (!(obj.name =="Lips" && (current_lips==0))){
     */ 
 
+    let new_height = parseInt(obj.scale*height);    
+    let new_width = parseInt(obj.scale*width);   
+    let new_xpos = xpos //parseInt(obj.scale*xpos);
+    let new_ypos = ypos //parseInt(obj.scale*ypos);   
+
     if (no_fill_list.includes(obj.name)){//not coloured or anything just displayed straight
-        ctx.drawImage(obj.base_image_list[index],sourceX,sourceY,width,height, xpos, ypos,width,height);
+        ctx.drawImage(obj.base_image_list[index],sourceX,sourceY,width,height, new_xpos, new_ypos,new_width,new_height);
     }
     else{
         if (obj.name =="cheeks")
@@ -341,32 +346,32 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
             else    
                 off_ctx.fillStyle = colour;
         }
-        off_ctx.fillRect(0, 0, width, height);
+        off_ctx.fillRect(0, 0, new_width, new_height);
 
         off_ctx.globalCompositeOperation = "destination-in";
-        off_ctx.drawImage(obj.base_image_list[index],0,0,width,height, 0, 0,width,height);
+        off_ctx.drawImage(obj.base_image_list[index],0,0,width,height, 0, 0,new_width,new_height);
         if (obj.shadow_image_list[index].src!=""){
             off_ctx.globalCompositeOperation = "multiply";
-            off_ctx.drawImage(obj.shadow_image_list[index],0,0,width,height, 0, 0,width,height);
+            off_ctx.drawImage(obj.shadow_image_list[index],0,0,width,height, 0, 0,new_width,new_height);
         }
         if (obj.highlight_image_list[index].src!=""){
             if (obj.name =="eyes")
                 off_ctx.globalCompositeOperation = "source-over"; 
             else
                 off_ctx.globalCompositeOperation = "screen";
-            off_ctx.drawImage(obj.highlight_image_list[index],0,0,width,height, 0, 0,width,height);
+            off_ctx.drawImage(obj.highlight_image_list[index],0,0,width,height, 0, 0,new_width,new_height);
         }
         off_ctx.globalCompositeOperation = "source-over";
 
         //cropping
         if (obj.crop[0]>0)
-            off_ctx.clearRect(0, 0, obj.crop[0], height);
+            off_ctx.clearRect(0, 0, parseInt(obj.scale*obj.crop[0]), new_height);
         if (obj.crop[1]>0)
-            off_ctx.clearRect(0, 0, width, obj.crop[1]); 
-        if (width >obj.crop[0]+obj.crop[2])
-            off_ctx.clearRect(obj.crop[0]+obj.crop[2], 0, width-(obj.crop[0]+obj.crop[2]), height);       
+            off_ctx.clearRect(0, 0, new_width, parseInt(obj.scale*obj.crop[1])); 
+        if (new_width >obj.crop[0]+obj.crop[2])
+            off_ctx.clearRect(obj.crop[0]+obj.crop[2], 0, parseInt(obj.scale*width-(obj.crop[0]+obj.crop[2])), new_height);       
       
-        ctx.drawImage(off_canvas,sourceX,sourceY,width,height, parseInt(xpos*0.75), parseInt(ypos*0.75),parseInt(width*0.75),parseInt(height*0.75));
+        ctx.drawImage(off_canvas,sourceX,sourceY,new_width,new_height, new_xpos, new_ypos,new_width,new_height);
     }
 }
 
@@ -385,6 +390,6 @@ function undraw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,wid
     */ 
 
     ctx.globalCompositeOperation = "destination-out";
-    ctx.drawImage(obj.base_image_list[index],sourceX,sourceY,width,height, xpos, ypos,width,height);
+    ctx.drawImage(obj.base_image_list[index],sourceX,sourceY,width,height, xpos, ypos,parseInt(obj.scale*width),parseInt(obj.scale*height));
     ctx.globalCompositeOperation = "source-over";   
     }

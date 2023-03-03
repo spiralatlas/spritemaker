@@ -131,7 +131,7 @@ chest_list = ["none", "small","medium","big"]
 chest_list_d = [chest_list,["none"], ["none"]]
 chest_image_list = ["none","small","medium","big","bigpants","smallwide","mediumwide", "bigwide"]
 
-wheelchair_list = [ "none","regular"]
+wheelchair_list = [ "none","manual"]
 wheelchair_list_d = triple_list(wheelchair_list)
 
 head_list_u = ["pointed","medium","rectangular","round"]
@@ -723,10 +723,10 @@ def process_all_portraits():
 
 write_variables()
 
-# "skull", "head","body","ears","nose"
+# "skull", "head","body","ears","nose", "chest"
 # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
 for c in closet:
-    if c.name in ["facial_hair"]:
+    if c.name in ["wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"]:
         process_portrait_part(c)
 #makeWinks()
 #makeStubble() 
