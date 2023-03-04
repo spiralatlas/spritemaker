@@ -87,9 +87,7 @@ function setVariables(data_object){
         image_objects[i].widthOffset = getWidthOffset(image_objects[i].name);
         if (!checkRender(image_objects[i]))
             image_objects[i].item = 0
-        if (scaled_list.includes(image_objects[i].name)){
-            image_objects[i].scale = 0.8;
-        }    
+        image_objects[i].scale = 0.8;   
     }
 
     //sprite height
@@ -439,10 +437,7 @@ function drawCanvas() {
             //ctx_preview.fillText(b.name, 10, 10*i); 
             //ctx_preview.drawImage(b.base_image_list[0],0,0);
             {
-                if (scaled_list.includes(b.name))
-                    draw_object(b,current_expression,b.colour1,ctx_preview, 0,0,b.widthOffset, -b.heightOffset,parseInt(sprite_width/b.scale),parseInt(sprite_height/b.scale));
-                else  
-                    draw_object(b,current_expression,b.colour1,ctx_preview, 0,0,b.widthOffset, -b.heightOffset,sprite_width,sprite_height);
+                draw_object(b,current_expression,b.colour1,ctx_preview, 0,0,b.widthOffset, -b.heightOffset,parseInt(sprite_width/b.scale),parseInt(sprite_height/b.scale));
             }
         }
     }
@@ -484,10 +479,7 @@ function drawCanvas() {
                 
                     undraw_object(b,current_expression,b.colour1,ctx_export, 0,0,b.widthOffset, -b.heightOffset,sprite_width,sprite_height);}
                 else{
-                    if (scaled_list.includes(b.name))
-                        draw_object(b,current_expression,b.colour1,ctx_export, 0,0,b.widthOffset, -b.heightOffset,parseInt(sprite_width/b.scale),parseInt(sprite_height/b.scale));
-                    else  
-                        draw_object(b,current_expression,b.colour1,ctx_export, 0,0,b.widthOffset, -b.heightOffset,sprite_width,sprite_height);
+                    draw_object(b,current_expression,b.colour1,ctx_export, 0,0,b.widthOffset, -b.heightOffset,parseInt(sprite_width/b.scale),parseInt(sprite_height/b.scale));
                 }
 
         }

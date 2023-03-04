@@ -528,6 +528,12 @@ def process_image(name, location,type):
         save_string = "../images/render/"+location+"/"+name
 
     img_original = Image.open(image_string) 
+
+    ##fixing height
+    img_temp = Image.new("RGBA", (393, 1280))
+    img_temp.paste(img_original.resize((393, 1000)))
+    img_original = img_temp
+
     original_data = img_original.load() 
     
     save_string_base = save_string +"_base.png"
@@ -721,17 +727,23 @@ def process_all_portraits():
     #makeWinks() 
     #makeStubble()    
 
-write_variables()
+def runStuff():
+    write_variables()
 
-# "skull", "head","body","ears","nose", "chest"
-# "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
-for c in closet:
-    if c.name in ["wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"]:
-        process_portrait_part(c)
-#makeWinks()
-#makeStubble() 
+    # "skull", "head","body","ears","nose", "chest"
+    # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
+    for c in closet:
+        if not c.name in ["body", "head","ears","skull","chest","wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec","eyewear"]:
+            process_portrait_part(c)
+    #makeWinks()
+    #makeStubble() 
 
-makeSwatches()
-       
-#process_all_portraits()
-#make_coat()
+    makeSwatches()
+        
+    #process_all_portraits()
+    #make_coat()
+
+runStuff()
+
+##### TEMP FUNCTIONS
+##########

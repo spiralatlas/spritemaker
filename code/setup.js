@@ -29,8 +29,6 @@ let sprite_height = full_height;
 
 let isWeird =  false;
 
-const scaled_list = ["body", "head","ears","skull","chest","wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"]
-
 //internal
 
 const canvas_width = 512;
