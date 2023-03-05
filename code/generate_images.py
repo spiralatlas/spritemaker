@@ -132,7 +132,8 @@ chest_list_d = [chest_list,["none"], ["none"]]
 chest_image_list = ["none","small","medium","big","bigpants","smallwide","mediumwide", "bigwide"]
 
 wheelchair_list = [ "none","manual"]
-wheelchair_list_d = triple_list(wheelchair_list)
+wheelchair_list_w = ["old fashioned"]
+wheelchair_list_d = [wheelchair_list,wheelchair_list,wheelchair_list_w]
 
 head_list_u = ["pointed","medium","rectangular","round"]
 head_list_d = triple_list(head_list_u)
@@ -284,7 +285,7 @@ class ClothingItem:
         self.name =  name
         self.listname = listname
         self.triple_list = triple_list
-        self.item_list = remove_dups(triple_list[0]+triple_list[1])
+        self.item_list = remove_dups(triple_list[0]+triple_list[1]+triple_list[2])
         self.location = location
 
 def add_item(name, listname, triple_list,location):
@@ -530,9 +531,9 @@ def process_image(name, location,type):
     img_original = Image.open(image_string) 
 
     ##fixing height
-    img_temp = Image.new("RGBA", (393, 1280))
-    img_temp.paste(img_original.resize((393, 1000)))
-    img_original = img_temp
+    # img_temp = Image.new("RGBA", (393, 1280))
+    # img_temp.paste(img_original.resize((393, 1000)))
+    # img_original = img_temp
 
     original_data = img_original.load() 
     
@@ -733,7 +734,7 @@ def runStuff():
     # "skull", "head","body","ears","nose", "chest"
     # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
     for c in closet:
-        if not c.name in ["body", "head","ears","skull","chest","wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec","eyewear"]:
+        if c.name in ["wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"]:
             process_portrait_part(c)
     #makeWinks()
     #makeStubble() 
