@@ -188,17 +188,20 @@ gloves_list_m = ["none", "short gloves"]
 gloves_list_w = ["none",]
 gloves_list_d = [gloves_list_f,gloves_list_m,gloves_list_w]
 
-top_list_u = ["none","chinese collar", ]
+top_list_u = ["none","chinese collar","vest" ]
 top_list_f = top_list_u+["boatneck","gathered","low vee"]
 top_list_m= top_list_u+["open shirt","high collar shirt"] 
 top_list_w = ["none",]
 top_list_d = [top_list_f,top_list_m,top_list_w]
+top_nosleeves_list = ["vest"]
+
 top_collar_list = ["open shirt","high collar shirt"] 
 top_collar_list_d = [["none"],top_collar_list,["none"]]
-top_sleeve_list_u = ["none", "short","long"]
+
+top_sleeve_list_u = ["sleeveless", "short","long"]
 top_sleeve_list_f = top_sleeve_list_u+["puffy"]
-top_sleeve_list_m = top_sleeve_list_u+["puffy shirt","long shirt"]
-top_sleeve_list_w = ["none",]
+top_sleeve_list_m = top_sleeve_list_u+["puffy shirt", "long shirt"]
+top_sleeve_list_w = []
 top_sleeve_list_d = [top_sleeve_list_f,top_sleeve_list_m,top_sleeve_list_w]
 
 overshirt_list_f = ["none"]
@@ -206,6 +209,13 @@ overshirt_list_m = ["none", "waistcoat"]
 overshirt_list_w = ["none"]
 overshirt_list_render = remove_dups(overshirt_list_f+overshirt_list_m+["short waistcoat"]+overshirt_list_w)
 overshirt_list_d = [overshirt_list_f, overshirt_list_m,overshirt_list_w]
+overshirt_nosleeves_list = []
+
+overshirt_sleeve_list_u = ["sleeveless",]
+overshirt_sleeve_list_f = overshirt_sleeve_list_u+[]
+overshirt_sleeve_list_m = overshirt_sleeve_list_u+[]
+overshirt_sleeve_list_w = []
+overshirt_sleeve_list_d = [overshirt_sleeve_list_f, overshirt_sleeve_list_m, overshirt_sleeve_list_w]
 
 bottom_list_f = ["none","empire skirt","split empire skirt","long skirt"]
 bottom_list_m = ["none","breeches","trousers"]
@@ -221,6 +231,13 @@ coat_list_f = ["none","medium cloak","dress jacket","wrap"]
 coat_list_m = ["none","short jacket","long jacket closed","jama"]  
 coat_list_w = ["none"]
 coat_list_d = [coat_list_f, coat_list_m, coat_list_w]
+coat_nosleeves_list = []
+
+coat_sleeve_list_u = ["sleeveless",]
+coat_sleeve_list_f = coat_sleeve_list_u+[]
+coat_sleeve_list_m = coat_sleeve_list_u+[]
+coat_sleeve_list_w = []
+coat_sleeve_list_d = [coat_sleeve_list_f, coat_sleeve_list_m, coat_sleeve_list_w]
 
 hair_front_list_u = ["none","centre bun"]
 hair_front_list_f = hair_front_list_u+ ["curly bun","wavy bun", "straight bun","curly long","straight long"]
@@ -239,17 +256,20 @@ hat_list_w = ["none","top hat","beads",]
 hat_list_d = [hat_list_f, hat_list_m, hat_list_m]
 
 facial_hair_list_f = ["none"]
-facial_hair_list_m = ["none", "beard", "moustache", "big moustache", "goatee", "soul patch", "fluffy goatee", "stubble"]
+facial_hair_list_m = ["none", "beard", "moustache", "goatee", "soul patch", "fluffy goatee", "stubble"]
 facial_hair_list_w = []
 facial_hair_list_d = [facial_hair_list_f,facial_hair_list_m,facial_hair_list_w]
+facial_hair_list_render = [f for f in facial_hair_list_m if f!="stubble"]
 
 # collections of parts that have the same colours and patterns
 skin_list_defining = ["body","nose","mouth","eyebrows","complexion","ears"]#same colour as head
 skin_list = skin_list_defining + ["skull","legs","wheelchair_legs"]
 expression_list = ["mouth","eyebrows","cheeks","eyes"]
 accessory_list = ["eyewear","neckwear", "earrings", "gloves", "hat",]
-outfit_list = ["wheelchair", "bottom","top", "top_sleeves", "overshirt", "coat"]
-defining_list = remove_dups(accessory_list+ outfit_list+skin_list_defining+expression_list+["hair_front","facial_hair", "head","chest"])
+outfit_list = ["wheelchair", "bottom","top", "overshirt", "coat"]
+has_sleeves_list = ["top"]
+sleeve_list = [x +"_sleeves" for x in has_sleeves_list]
+defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["hair_front","facial_hair", "head","chest"])
 
 #extra info
 
@@ -269,7 +289,7 @@ wheelchair_coat_list_d = triple_list(wheelchair_coat_list)
 
 wheelchair_bottom_dec_list = ["split empire skirt"]
 wheelchair_bottom_dec_list_d = triple_list(wheelchair_bottom_dec_list)
-top_dec_list = ["plain bodice", "long sleeve bodice","gathered bodice","v neck bodice"]
+top_dec_list = ["boatneck","gathered","low vee"]
 top_dec_list_d = triple_list(top_dec_list)
 earrings_dec_list = ["round earrings"]
 earrings_dec_list_d = triple_list(earrings_dec_list)
@@ -286,7 +306,7 @@ hat_dec_list_d = triple_list(hat_dec_list)
 hat_back_dec_list = ["scarf"]
 hat_back_dec_list_d = triple_list(hat_back_dec_list)
 
-no_render_list = [["hat",["scarf"]],["hat_dec",["scarf"]],["facial_hair",["stubble"]]]
+no_render_list = [["hat",["scarf"]],["hat_dec",["scarf"]],]
 
 ###################### More technical stuff from here on
 
@@ -665,9 +685,13 @@ def write_variables():
     content.write(list_string("pattern_list",pattern_list))    
     content.write(list_string("skin_list", skin_list))   
     content.write(list_string("chest_image_list", chest_image_list)) 
+    content.write(list_string("top_nosleeves_list", top_nosleeves_list))
+    content.write(list_string("overshirt_nosleeves_list", overshirt_nosleeves_list)) 
+    content.write(list_string("coat_nosleeves_list", coat_nosleeves_list)) 
     content.write(list_string("no_chest_coat_list", no_chest_coat_list)) 
     content.write(list_string("expression_list", expression_list))   
     content.write(list_string("outfit_list", outfit_list)) 
+    content.write(list_string("has_sleeves_list", has_sleeves_list)) 
     content.write(list_string("accessory_list", accessory_list)) 
     content.write(list_string("defining_list", defining_list)) 
     content.write("\n")   
@@ -702,6 +726,8 @@ def process_portrait_part(obj):
         render_list = chest_image_list
     elif obj.name == "overshirt": 
         render_list = overshirt_list_render   
+    elif obj.name == "facial_hair":
+        render_list = facial_hair_list_render    
     else:
         render_list = obj.item_list
     for item in render_list:
@@ -735,11 +761,12 @@ def makeWinks():
             im_wink.save(save_string)
 
 def makeStubble():
-    loc = "../images/bases/portraits/body/"
-    for head in head_list:
-        save_string = loc+"stubble/"+head+"_base.png"
-        img_mask = Image.open(loc+"head/"+head+"_base.png")
-        img_stubble = Image.open(loc+"hair/facial_hair/stubble_base.png")
+    loc = "../images/bases/"
+    for head in head_list_u:
+        save_string = "../images/render/hair/facial_hair/stubble/"+head+".png"
+        print(save_string)
+        img_mask = Image.open(loc+"anatomy/head/"+head+"_fill.png")
+        img_stubble = Image.open(loc+"hair/facial_hair/stubble_fill.png")
         img_stubble =Image.composite(img_stubble, img_mask, img_mask) 
         img_stubble.save(save_string)
 
@@ -755,12 +782,12 @@ def runStuff():
     # "skull", "head","body","ears","nose", "chest"
     # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
     for c in closet:
-        if c.name in ["top_sleeves"]:
+        if c.name in []:
             process_portrait_part(c)
     #makeWinks()
-    #makeStubble() 
+    makeStubble() 
 
-    makeSwatches()
+    #makeSwatches()
         
     #process_all_portraits()
     #make_coat()

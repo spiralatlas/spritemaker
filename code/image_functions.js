@@ -269,20 +269,16 @@ function fixSources(){
                     if (["split empire skirt","empire skirt"].includes(findImageItem("bottom")))
                         current_loc = "short waistcoat"
                 }
-            }    
-            /*
-
+            } 
             //stubble
-            if (b.name =="Stubble"){
-                let obj = findNameMatch(image_objects, "Head");
-                current_loc = head_list[obj.value_list[0]];
+
+            if (b.name =="facial_hair" && getImageItem(b)=="stubble") {
+                b.base_image_list[j].src  ="images/render/hair/facial_hair/stubble/" +findImageItem("head")+".png";
+                b.shadow_image_list[j].src  ="";
+                b.highlight_image_list[j].src  ="";
+                return
             }
 
-            //stubble
-            if (b.name =="Lips"){
-                if (current_lips==0)
-                    current_loc = "None"    
-            } */
             if (getImageItem(b)=="none"){
                 b.base_image_list[j].src  ="";
                 b.shadow_image_list[j].src  ="";

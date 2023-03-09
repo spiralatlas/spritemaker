@@ -51,6 +51,11 @@ function setVariables(data_object){
     let hair_front_obj = findNameMatch(image_objects,"hair_front");
     let hair_back_obj = findNameMatch(image_objects,"hair_back");
 
+    //sleeves
+
+    if (top_nosleeves_list.includes(getImageItem(top_obj)))
+        findNameMatch(image_objects,"top_sleeves").item = -1;
+
     //calculating chest
     if (chest_obj.item!=0){
         if (coat_obj.item !=0){
@@ -119,6 +124,8 @@ function setVariables(data_object){
         hair_back_obj.crop = crop_box;
     }   
     
+    
+
     //calculated from other variables
     /*let b;
     
@@ -170,7 +177,14 @@ document.addEventListener('alpine:init', () => {
                     objList = 'defining_objects['+obj_index+'].item_list';
                     buttonName = objName+"[0]";
                     value = "listOf(index)";
-                    break;   
+                    break; 
+                case 'sleeves':
+                    obj_index = 'findDefiningIndex(clothing_names[$store.alpineData.current_clothing]+\'_sleeves\')';
+                    objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list';
+                    objList = 'defining_objects['+obj_index+'].item_list';
+                    buttonName = objName+"[0]";
+                    value = "listOf(index)";
+                    break;       
                 case 'accessory':
                     obj_index = 'findDefiningIndex(accessory_names[$store.alpineData.current_accessory])';
                     objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list';
