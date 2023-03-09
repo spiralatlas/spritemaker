@@ -8,15 +8,6 @@ function setVariable(variablelist, number){
     for (let i = 0; i < variablelist.length; i += 1) {
         let b = findNameMatch(image_objects, variablelist[i]); //the eleemnt of image_objects with the right vriablename
         b.value_list=listOf(number);
-        /*if (back_list.includes(b.name)){
-            let b_back = findNameMatch(image_objects, b.name+"_back");//eg the object associated with "hat_back"
-            let list = b_back.item_list;
-            if (list.includes(b.item_list[number])){ //this is a valid type of back
-                b_back.value_list=listOf(list.indexOf(b.item_list[number])); //set to the correct index, may not match the original object   
-            } else{
-                b_back.value_list=listOf(0); //set to none
-            }
-        }*/
     }
 }
 
@@ -52,11 +43,9 @@ function getWidthOffset(name){
 
 function getHeightOffset(name){
     //how much the portrait image with name 'name' is shifted up or down to match the head shape
-    let obj = findNameMatch(image_objects, "head");
-    let head = obj.item_list[obj.item];
     current_offset = 0;
 
-    switch(head){
+    switch(findImageItem("head")){
         case "round":
             if (head_offset_list.includes(name))   
                 current_offset -=5;
@@ -149,6 +138,8 @@ for (i = 0; i < image_objects.length; i += 1)
 
 add_colour_children("head", skin_list);
 
+add_value_children("body", ["legs"]);
+
 add_value_children("wheelchair", ["wheelchair_back","wheelchair_back_dec","wheelchair_dec"]);
 add_colour_children("wheelchair", ["wheelchair_back"]);
 add_colour2_children("wheelchair", ["wheelchair_back_dec","wheelchair_dec"]);
@@ -175,7 +166,7 @@ add_colour_children("bottom", ["wheelchair_bottom"]);
 add_colour2_children("bottom", ["bottom_dec","wheelchair_bottom_dec"]);
 
 add_value_children("top", ["top_collar","top_dec"]);
-add_colour_children("top", ["top_collar"]);
+add_colour_children("top", ["top_collar","top_sleeves"]);
 add_colour2_children("top", ["top_dec"]);
 
 add_value_children("overshirt", ["overshirt_dec"]);

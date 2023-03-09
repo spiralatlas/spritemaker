@@ -262,11 +262,11 @@ function fixSources(){
     for (let i = 0; i < image_objects.length; i += 1){
         let b = image_objects[i];
         for (let j = 0; j < 10; j += 1){ 
-            let current_loc = b.item_list[b.item];
+            let current_loc = getImageItem(b);
             //fix waistcoat
             if (b.name =="overshirt"|| b.name =="overshirt_dec"){
                 if (current_loc == "waistcoat"){
-                    if (["solid skirt","split skirt"].includes(findImageItem("bottom")))
+                    if (["split empire skirt","empire skirt"].includes(findImageItem("bottom")))
                         current_loc = "short waistcoat"
                 }
             }    
@@ -283,7 +283,7 @@ function fixSources(){
                 if (current_lips==0)
                     current_loc = "None"    
             } */
-            if (current_loc.includes("None")||current_loc.includes("none")){
+            if (getImageItem(b)=="none"){
                 b.base_image_list[j].src  ="";
                 b.shadow_image_list[j].src  ="";
                 b.highlight_image_list[j].src  ="";
@@ -341,7 +341,7 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
         if (obj.name =="cheeks")
             off_ctx.fillStyle = blushcolour(colour);
         else{
-            if (obj.name =="complexion")// && obj.item_list[obj.value_list[0]]=="freckles")
+            if (obj.name =="complexion")// && getImageItem(obj)=="freckles")
                 off_ctx.fillStyle = frecklecolour(colour);
             else    
                 off_ctx.fillStyle = colour;

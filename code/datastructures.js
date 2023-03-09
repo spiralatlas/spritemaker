@@ -2,7 +2,7 @@ function checkRender(obj){
     //return false if object should not be rendered
     for (let i = 0; i < no_render_list.length; i += 1){
         if (obj.name == no_render_list[i][0]){
-            if (no_render_list[i][1].includes(obj.item_list[obj.item]))
+            if (no_render_list[i][1].includes(getImageItem(obj)))
                 return false
         }
         if (obj.name.includes("wheelchair") && findNameMatch(defining_objects,"wheelchair").value_list[0] ==0)
@@ -54,8 +54,8 @@ function setVariables(data_object){
     //calculating chest
     if (chest_obj.item!=0){
         if (coat_obj.item !=0){
-            if (no_chest_coat_list.includes(coat_obj.item_list[coat_obj.item]))
-                chest_obj.item =0
+            if (no_chest_coat_list.includes(getImageItem(coat_obj)))
+                chest_obj.item =-1;
             else{    
                 chest_obj.colour1 = coat_obj.colour1
                 chest_obj.item += 4
@@ -68,7 +68,7 @@ function setVariables(data_object){
         else{
         if (top_obj.item !=0){
                 chest_obj.colour1 = top_obj.colour1
-                if (chest_obj.item ==3 && ["breeches","trousers", "low skirt"].includes(findImageItem("bottom")))
+                if (chest_obj.item ==3 && ["breeches","trousers", "long skirt"].includes(findImageItem("bottom")))
                     chest_obj.item=4
         }
         else
@@ -77,8 +77,8 @@ function setVariables(data_object){
     }
 
     //hide collars when wearing a jama coat
-    if (coat_obj.item_list[coat_obj.item]=="jama")
-        findNameMatch(image_objects,"top_collar").item=0;   
+    if (getImageItem(coat_obj)=="jama")
+        findNameMatch(image_objects,"top_collar").item=-1;   
 
     //update images and offsets
     for (let i = 0; i < image_objects.length; i += 1){
@@ -86,17 +86,18 @@ function setVariables(data_object){
         image_objects[i].heightOffset = getHeightOffset(image_objects[i].name);
         image_objects[i].widthOffset = getWidthOffset(image_objects[i].name);
         if (!checkRender(image_objects[i]))
-            image_objects[i].item = 0
+            image_objects[i].item = -1
         image_objects[i].scale = 0.8;   
     }
 
     //sprite height
     sprite_width = full_width;
+    sprite_height = full_height ;
     if (findNameMatch(defining_objects,"wheelchair").value_list[0] !=0){ //there's a wheelchair
-        sprite_height = full_height - (5-size)*25 -165;
-    } else{ //no wheelchair
-        sprite_height = full_height - (5-size)*30;
-    }
+        sprite_height = full_height -165;
+    } 
+    if (!showFullSprite)
+            sprite_height = sprite_height - (5-size)*30;
 
     //calculating crops
 
@@ -251,7 +252,7 @@ document.addEventListener('alpine:init', () => {
     current_expression : 0,
     current_clothing : 0,
     current_accessory : 0,
-    current_imageType : 0,
+    current_imageType : 2,
 
     size : 0,
     current_eyetype: 0,
@@ -260,13 +261,13 @@ document.addEventListener('alpine:init', () => {
     current_defining_objects: [
         {"name":"body","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00"},
         {"name":"gloves","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#E3313C","colour2":"#901E3B"},
+        {"name":"top_sleeves","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#901E3B","colour2":"#4C6BC2"},
         {"name":"top","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#901E3B","colour2":"#4C6BC2"},
         {"name":"bottom","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#FAE181","colour2":"#FAF1CF"},
         {"name":"overshirt","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#4C6BC2","colour2":"#FAE181"},
         {"name":"neckwear","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#43A92D","colour2":"#43A92D"},
         {"name":"coat","value_list":[4,4,4,4,4,4,4,4,4,4],"colour1":"#E3313C","colour2":"#7543BD"},
         {"name":"chest","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#FF0000","colour2":"#00FF00"},
-        {"name":"skull","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00"},
         {"name":"head","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#CA783C","colour2":"#00FF00"},
         {"name":"ears","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00"},
         {"name":"earrings","value_list":[3,3,3,3,3,3,3,3,3,3],"colour1":"#901E3B","colour2":"#91C639"},
@@ -375,6 +376,8 @@ document.addEventListener('alpine:init', () => {
                         this.current_defining_objects[i].value_list = listOf(randomElement(defining_objects[i].item_list_f,prob));  
                         break;    
                 }   
+                if (["wheelchair","coat"].includes(defining_objects[i].name))//just while fixing clothes 
+                    this.current_defining_objects[i].value_list = listOf(0);  
             }
         }
         
@@ -432,7 +435,7 @@ function drawCanvas() {
     //ctx_preview.drawImage(portrait_back, 0, 0);
     for (let i = 0; i < image_objects.length; i += 1){
         let b = image_objects[i];
-        if (b.item_list[b.item] !="none"){ 
+        if (getImageItem(b) !="none"){ 
             //ctx_preview.fillStyle = "#000000";
             //ctx_preview.fillText(b.name, 10, 10*i); 
             //ctx_preview.drawImage(b.base_image_list[0],0,0);
@@ -473,7 +476,7 @@ function drawCanvas() {
     
     for (let i = 0; i < image_objects.length; i += 1){
         let b = image_objects[i];
-        if (b.item_list[b.item] !="none"){ 
+        if (getImageItem(b) !="none"){ 
             if (current_list.includes(b.name)) 
                 if (current_imageType ==2 && body_list.includes(b.name)){
                 

@@ -1,6 +1,6 @@
 //player controlled
 
-let testing = false;
+let testing = true;
 
 let updated_frames = 0; //how long has it been since the data was updated 
 
@@ -8,10 +8,11 @@ let currently_editing = 0; //which element of editing list we are editing
 let current_expression = 0;
 let current_clothing = 0;
 let current_accessory = 0;
-let current_imageType = 0;
+let current_imageType = 2;
 
 let size = 0;
 const size_list = ['Very Short','Short', 'Medium','Tall','Very Tall',];
+let showFullSprite = true;
 
 let skinColour;
 let eyeColour;
@@ -22,7 +23,7 @@ let eye_expressions = listOf(0);
 
 
 let full_width="314";
-let full_height="800";
+let full_height="1024";
 
 let sprite_width =full_width; 
 let sprite_height = full_height;
@@ -91,12 +92,23 @@ function findImageItem(name){
     for (let i = 0; i < image_objects.length; i += 1) {
         if (image_objects[i].name==name){
             //document.getElementById("test").innerHTML = "value: "+name;
-            return image_objects[i].item_list[image_objects[i].item];
+            return getImageItem(image_objects[i]);
         }
     }
     if (testing)
         console.log("Unknown value: findImageItem "+name); 
     return -1;
+}
+
+function getImageItem(obj){
+    // return the current item given the object
+    if (obj.item==0 && obj.item_list[0]=="none")
+        obj.item=-1;
+    if (obj.item==-1){
+        return "none";
+    } else{
+            return obj.item_list[obj.item];
+        }
 }
 
 function range(n){
@@ -282,8 +294,8 @@ function print_image_objects(){
         s+=" item_list: "+b.item_list.toString();
         s+="  item: "+b.item;
         s+=" colour: "+b.colour1;
-        s+=" item: "+b.item_list[b.item]
-        s+=" render? "+checkRender(b)
+        s+=" item: "+getImageItem(b)
+        //s+=" render? "+checkRender(b)
         s+=" src: "+b.base_image_list[0].src;
         s+="<br>";
     }

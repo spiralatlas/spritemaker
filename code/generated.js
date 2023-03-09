@@ -14,29 +14,31 @@ const scheme_list = [["#774F38","#E08E79","#F1D4AF","#ECE5CE","#C5E0DC",],["#169
 const no_fill_list = ["mouth",];
 const eyetype_list = ["medium",];
 const pattern_list = ["none","crocodile","rose","snake","damask","crosshatch","fabric","diamonds","diamondssmall","tartan","polkadot","pinstripe","horizontalpinstripe",];
-const skin_list = ["body","nose","mouth","eyebrows","skull","complexion","ears",];
+const skin_list = ["body","nose","mouth","eyebrows","complexion","ears","skull","legs","wheelchair_legs",];
 const chest_image_list = ["none","small","medium","big","bigpants","smallwide","mediumwide","bigwide",];
 const no_chest_coat_list = ["robe","robe hood","medium cloak","medium cloak hood","long cloak","long cloak hood","wrap",];
 const expression_list = ["mouth","eyebrows","cheeks","eyes",];
-const outfit_list = ["wheelchair","bottom","top","overshirt","coat",];
+const outfit_list = ["wheelchair","bottom","top","top_sleeves","overshirt","coat",];
 const accessory_list = ["eyewear","neckwear","earrings","gloves","hat",];
-const defining_list = ["eyebrows","neckwear","head","bottom","top","eyewear","facial_hair","chest","complexion","earrings","hat","cheeks","body","eyes","mouth","hair_front","skull","coat","wheelchair","overshirt","gloves","nose","ears",];
+const defining_list = ["eyebrows","neckwear","head","bottom","top","eyewear","facial_hair","chest","complexion","earrings","hat","cheeks","body","eyes","mouth","hair_front","top_sleeves","coat","wheelchair","overshirt","gloves","nose","ears",];
 
 const hat_back_list_d = [["none","top hat","scarf","turban",],["none","top hat","scarf","turban",],[],];
 const hat_back_dec_list_d = [["scarf",],["scarf",],[],];
 const hair_back_list_d = [["none","straight bun","curly bun","wavy bun","super short","curly short","straight short","wavy short","centre bun","straight long","curly long",],["none","straight bun","curly bun","wavy bun","super short","curly short","straight short","wavy short","centre bun","straight long","curly long",],[],];
 const coat_back_list_d = [["none","medium cloak","wrap","long jacket closed","short jacket","dress jacket",],["none","medium cloak","wrap","long jacket closed","short jacket","dress jacket",],[],];
 const body_list_d = [["regular",],["regular",],[],];
-const gloves_list_d = [["none","short gloves","medium gloves","long gloves","bracelets",],["none","short gloves",],["none",],];
-const top_list_d = [["none","plain bodice","long sleeve bodice","gathered bodice","v neck bodice",],["none","open shirt","closed shirt",],["none",],];
+const leg_list_d = [["none","regular",],["none","regular",],[],];
+const gloves_list_d = [["none","short gloves","medium gloves","bracelets",],["none","short gloves",],["none",],];
+const top_sleeve_list_d = [["none","short","long","puffy",],["none","short","long","puffy shirt","long shirt",],["none",],];
+const top_list_d = [["none","chinese collar","boatneck","gathered","low vee",],["none","chinese collar","open shirt","high collar shirt",],["none",],];
 const top_dec_list_d = [["plain bodice","long sleeve bodice","gathered bodice","v neck bodice",],["plain bodice","long sleeve bodice","gathered bodice","v neck bodice",],[],];
-const bottom_list_d = [["none","solid skirt","split skirt","low skirt",],["none","breeches","trousers",],["none",],];
-const bottom_dec_list_d = [["breeches","split skirt","solid skirt",],["breeches","split skirt","solid skirt",],[],];
-const neckwear_list_d = [["none","beaded necklace","choker","jewelled necklace","beads",],["none","cravat","bow",],["none",],];
+const bottom_list_d = [["none","empire skirt","split empire skirt","long skirt",],["none","breeches","trousers",],["none",],];
+const bottom_dec_list_d = [["split empire skirt","empire skirt",],["split empire skirt","empire skirt",],[],];
+const neckwear_list_d = [["none","beaded necklace","choker","jewelled necklace","beads",],["none","cravat","tie",],["none","bow",],];
 const neckwear_dec_list_d = [["jewelled necklace","beaded necklace",],["jewelled necklace","beaded necklace",],[],];
 const overshirt_list_d = [["none",],["none","waistcoat",],["none",],];
 const overshirt_dec_list_d = [["waistcoat","short waistcoat",],["waistcoat","short waistcoat",],[],];
-const top_collar_list_d = [["none",],["none","open shirt","closed shirt",],["none",],];
+const top_collar_list_d = [["none",],["open shirt","high collar shirt",],["none",],];
 const coat_list_d = [["none","medium cloak","dress jacket","wrap",],["none","short jacket","long jacket closed","jama",],["none",],];
 const coat_dec_list_d = [["dress jacket","jama",],["dress jacket","jama",],[],];
 const chest_list_d = [["none","small","medium","big",],["none",],["none",],];
@@ -51,14 +53,15 @@ const cheeks_list_d = [["none","blush",],["none","blush",],[],];
 const mouth_list_d = [["lah","small lah","tiny lah","big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","slight smile","side eww","eww","oh","square oh","big oh","small oh","shock","small flat","flat","small clenched","wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",],["lah","small lah","tiny lah","big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","slight smile","side eww","eww","oh","square oh","big oh","small oh","shock","small flat","flat","small clenched","wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",],[],];
 const eyebrows_list_d = [["flat","flat sad","flat grumpy","flat angry","sad","sadder","semi sad","regular","semi arch","arched","raised arch","raised","raised flat","raised semi flat","raised grumpy","raised semi","angry","angry arch","half raised","half semi","half sad","half sad raised","half flat","half arch raised",],["flat","flat sad","flat grumpy","flat angry","sad","sadder","semi sad","regular","semi arch","arched","raised arch","raised","raised flat","raised semi flat","raised grumpy","raised semi","angry","angry arch","half raised","half semi","half sad","half sad raised","half flat","half arch raised",],[],];
 const eyes_list_d = [["neutral","side","crescents","narrowed","happy","wide","shock","angry","angry side","sleepy","wink",],["neutral","side","crescents","narrowed","happy","wide","shock","angry","angry side","sleepy","wink",],[],];
-const eyewear_list_d = [["none","round glasses",],["none","round glasses","monocle",],["none",],];
 const facial_hair_list_d = [["none",],["none","beard","moustache","big moustache","goatee","soul patch","fluffy goatee","stubble",],[],];
 const hair_front_list_d = [["none","centre bun","curly bun","wavy bun","straight bun","curly long","straight long",],["none","centre bun","curly short","wavy short","straight short","super short",],["none",],];
-const hat_list_d = [["none","beads","scarf",],["none","top hat","turban",],["none","top hat","turban",],];
+const eyewear_list_d = [["none","round glasses",],["none","round glasses",],["none","monocle","spectacles",],];
+const hat_list_d = [["none","scarf",],["none","turban",],["none","turban",],];
 const hat_dec_list_d = [["top hat",],["top hat",],[],];
 const wheelchair_list_d = [["none","manual",],["none","manual",],["old fashioned",],];
-const wheelchair_bottom_list_d = [["none","solid skirt","split skirt","low skirt",],["none","breeches","trousers",],["none",],];
-const wheelchair_bottom_dec_list_d = [["breeches","split skirt",],["breeches","split skirt",],[],];
+const wheelchair_leg_list_d = [["none","regular",],["none","regular",],[],];
+const wheelchair_bottom_list_d = [["none","empire skirt","split empire skirt","long skirt",],["none","breeches","trousers",],["none",],];
+const wheelchair_bottom_dec_list_d = [["split empire skirt",],["split empire skirt",],[],];
 const wheelchair_coat_list_d = [["none","medium cloak","long jacket closed","dress jacket","jama",],["none","medium cloak","long jacket closed","dress jacket","jama",],[],];
 
 add_image_object("wheelchair_back",wheelchair_list_d,"wheelchair")
@@ -69,8 +72,11 @@ add_image_object("hair_back",hair_back_list_d,"hair")
 add_image_object("coat_back",coat_back_list_d,"clothes/coat")
 add_image_object("body",body_list_d,"anatomy")
 add_defining_object("body",body_list_d)
+add_image_object("legs",leg_list_d,"anatomy")
 add_image_object("gloves",gloves_list_d,"clothes")
 add_defining_object("gloves",gloves_list_d)
+add_image_object("top_sleeves",top_sleeve_list_d,"clothes/top")
+add_defining_object("top_sleeves",top_sleeve_list_d)
 add_image_object("top",top_list_d,"clothes")
 add_defining_object("top",top_list_d)
 add_image_object("top_dec",top_dec_list_d,"clothes")
@@ -83,14 +89,13 @@ add_image_object("neckwear_dec",neckwear_dec_list_d,"clothes")
 add_image_object("overshirt",overshirt_list_d,"clothes")
 add_defining_object("overshirt",overshirt_list_d)
 add_image_object("overshirt_dec",overshirt_dec_list_d,"clothes")
-add_image_object("top_collar",top_collar_list_d,"clothes")
+add_image_object("top_collar",top_collar_list_d,"clothes/top")
 add_image_object("coat",coat_list_d,"clothes")
 add_defining_object("coat",coat_list_d)
 add_image_object("coat_dec",coat_dec_list_d,"clothes")
 add_image_object("chest",chest_list_d,"anatomy")
 add_defining_object("chest",chest_list_d)
 add_image_object("skull",skull_list_d,"anatomy")
-add_defining_object("skull",skull_list_d)
 add_image_object("head",head_list_d,"anatomy")
 add_defining_object("head",head_list_d)
 add_image_object("ears",ear_list_d,"anatomy")
@@ -110,18 +115,19 @@ add_image_object("eyebrows",eyebrows_list_d,"face")
 add_defining_object("eyebrows",eyebrows_list_d)
 add_image_object("eyes",eyes_list_d,"face")
 add_defining_object("eyes",eyes_list_d)
-add_image_object("eyewear",eyewear_list_d,"clothes")
-add_defining_object("eyewear",eyewear_list_d)
 add_image_object("facial_hair",facial_hair_list_d,"hair")
 add_defining_object("facial_hair",facial_hair_list_d)
 add_image_object("hair_front",hair_front_list_d,"hair")
 add_defining_object("hair_front",hair_front_list_d)
+add_image_object("eyewear",eyewear_list_d,"clothes")
+add_defining_object("eyewear",eyewear_list_d)
 add_image_object("hat",hat_list_d,"clothes")
 add_defining_object("hat",hat_list_d)
 add_image_object("hat_dec",hat_dec_list_d,"clothes")
 add_image_object("wheelchair",wheelchair_list_d,"wheelchair")
 add_defining_object("wheelchair",wheelchair_list_d)
 add_image_object("wheelchair_dec",wheelchair_list_d,"wheelchair")
+add_image_object("wheelchair_legs",wheelchair_leg_list_d,"wheelchair")
 add_image_object("wheelchair_bottom",wheelchair_bottom_list_d,"wheelchair")
 add_image_object("wheelchair_bottom_dec",wheelchair_bottom_dec_list_d,"wheelchair")
 add_image_object("wheelchair_coat",wheelchair_coat_list_d,"wheelchair")
