@@ -120,7 +120,7 @@ function getHeightOffset(name){
     }  */ 
     return current_offset;    
 }
-const head_offset_list = expression_list.concat(["skull","head","nose","nose_front","hat","hat_dec","hat_back","hat_back_dec","ears","complexion", "hair_front","hair_back","facial_hair", "eyewear","earrings","earrings_dec"]);
+const head_offset_list = expression_list.concat(["skull","head","nose","nose_front","hat","hat_dec","hat_back","hat_back_dec","ears","complexion", "sideburns", "hair_front","hair_back","fringe","facial_hair", "eyewear","earrings","earrings_dec"]);
 
 const clothing_names = [];
 const accessory_names = [];
@@ -136,13 +136,15 @@ for (i = 0; i < image_objects.length; i += 1)
     if (image_objects[i].name.slice(-4)=="_dec")
         two_tone_names.push(image_objects[i].name);    
 
+//anatomy        
 add_colour_children("head", skin_list);
 
 add_value_children("body", ["legs"]);
+add_value_children("nose", ["nose_front"]);
 
-add_value_children("wheelchair", ["wheelchair_back","wheelchair_back_dec","wheelchair_dec"]);
-add_colour_children("wheelchair", ["wheelchair_back"]);
-add_colour2_children("wheelchair", ["wheelchair_back_dec","wheelchair_dec"]);
+add_colour_children("fringe", ["sideburns", "hair_front","hair_back","facial_hair"]);
+
+//accessories
 
 add_value_children("hat", ["hat_back","hat_back_dec","hat_dec"]);
 add_colour_children("hat", ["hat_back"]);
@@ -154,8 +156,7 @@ add_colour2_children("earrings", ["earrings_dec"]);
 add_value_children("neckwear", ["neckwear_dec"]);
 add_colour2_children("neckwear", ["neckwear_dec"]);
 
-add_value_children("hair_front", ["hair_back"]);
-add_colour_children("hair_front", ["hair_back","facial_hair"]);
+//outfit
 
 add_value_children("coat", ["coat_dec","coat_back","wheelchair_coat"]);
 add_colour_children("coat", ["coat_back","wheelchair_coat"]);
@@ -172,11 +173,22 @@ add_colour2_children("top", ["top_dec"]);
 add_value_children("overshirt", ["overshirt_dec"]);
 add_colour2_children("overshirt", ["overshirt_dec"]);
 
+//wheelchair
+add_value_children("wheelchair", ["wheelchair_back","wheelchair_back_dec","wheelchair_dec"]);
+add_colour_children("wheelchair", ["wheelchair_back"]);
+add_colour2_children("wheelchair", ["wheelchair_back_dec","wheelchair_dec"]);
+
+
 findNameMatch(image_objects,"chest").item_list = chest_image_list
 
 const body_list = (skin_list.filter(value => !expression_list.includes(value))).concat(["head"]);
 const all_clothes_list = (image_objects.map(nameOf)).filter(value => !expression_list.includes(value));
 
+const hairstyle_defining_list = [
+    ["none","none","none"], ["shaved","none","none"], ["curly long", "curly long", "curly long"]]
+
+const hairstyle_list = hairstyle_defining_list.filter(value => value[0])   
+const hair_front_numbers = hairstyle_defining_list.filter(value => value[1]) 
 /* Would make things easier but is broken >:(
 let current_name_dec;
 let current_name;

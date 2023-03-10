@@ -169,12 +169,10 @@ const image_objects =[];
 function add_image_object(name, triple_list, location){
     let loc;
     loc=location+"/"+name.toLowerCase();
-    if (name == "Nose_front")
-        loc = "body/nose"; 
     if (name.slice(-4)=="_dec")//remove "_dec"
         loc = location+"/"+name.slice(0,-4);
     item_list = remove_dups(triple_list[0].concat(triple_list[1]).concat(triple_list[2]));
-    image_objects.push({name: name,location: loc, item_list: item_list, item: 0, heightOffset: 0, widthOffset:0, scale: 1, crop : [0,0,full_width,full_height],parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", base_image_list: newImageList(),shadow_image_list: newImageList(),highlight_image_list: newImageList()});
+    image_objects.push({name: name,location: loc, item_list: item_list, item: 0, heightOffset: 0, widthOffset:0, scale: 1, crop : [0,0,full_width,full_height],parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", hasShading: true, underlay_image: new Image(), base_image: new Image(),shadow_image: new Image(),highlight_image: new Image(),overlay_image: new Image()});
 }
 
 //Setting up portrait data
@@ -296,7 +294,7 @@ function print_image_objects(){
         s+=" colour: "+b.colour1;
         s+=" item: "+getImageItem(b)
         //s+=" render? "+checkRender(b)
-        s+=" src: "+b.base_image_list[0].src;
+        s+=" src: "+b.base_image.src;
         s+="<br>";
     }
     return s

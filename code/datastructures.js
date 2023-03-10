@@ -293,7 +293,7 @@ document.addEventListener('alpine:init', () => {
         {"name":"eyes","value_list":[0,2,5,7,5,4,6,8,3,0],"colour1":"#8334D8","colour2":"#00FF00"},
         {"name":"eyewear","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#FAF6E9","colour2":"#FAF1CF"},
         {"name":"facial_hair","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#712A0D","colour2":"#00FF00"},
-        {"name":"hair_front","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#712A0D","colour2":"#00FF00"},
+        {"name":"fringe","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#712A0D","colour2":"#00FF00"},
         {"name":"hat","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#E1748A","colour2":"#FAF1CF"},
         {"name":"wheelchair","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#4C6BC2","colour2":"#7543BD"}],
 
@@ -316,12 +316,12 @@ document.addEventListener('alpine:init', () => {
         //randomise the skin/eye/hair colour
         if (isWeird){
             this.current_defining_objects[findDefiningIndex("head")].colour1 = randomElement(skin_colours.concat(skin_colours_weird),0);
-            this.current_defining_objects[findDefiningIndex("hair_front")].colour1 = randomElement(hair_colours.concat(hair_colours_weird),0);
+            this.current_defining_objects[findDefiningIndex("fringe")].colour1 = randomElement(hair_colours.concat(hair_colours_weird),0);
             this.current_defining_objects[findDefiningIndex("eyes")].colour1 = randomElement(eye_colours.concat(eye_colours_weird),0);
 
         }else{
             this.current_defining_objects[findDefiningIndex("head")].colour1 = randomElement(skin_colours,0);
-            this.current_defining_objects[findDefiningIndex("hair_front")].colour1 = randomElement(hair_colours,0);
+            this.current_defining_objects[findDefiningIndex("fringe")].colour1 = randomElement(hair_colours,0);
             this.current_defining_objects[findDefiningIndex("eyes")].colour1 = randomElement(eye_colours,0);
             
         }
@@ -330,7 +330,7 @@ document.addEventListener('alpine:init', () => {
         //randomise the nose/head/hairstyle etc
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
         for (let i = 0; i < defining_objects.length; i += 1){
-            if (["nose","head"].includes(defining_objects[i].name)){
+            if (["nose","head","ears","body"].includes(defining_objects[i].name)){
                 this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0));
             }
             if ("chest"==defining_objects[i].name){
@@ -369,12 +369,13 @@ document.addEventListener('alpine:init', () => {
         //set all clothing values including sleeve length
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
         for (let i = 0; i < defining_objects.length; i += 1){
-            if (outfit_list.includes(defining_objects[i].name)||accessory_list.includes(defining_objects[i].name)|| ["hair_front"].includes(defining_objects[i].name)) {
+            this_list = outfit_list.concat(accessory_list).concat(sleeve_list).concat(["fringe","facial_hair"])
+            if (this_list.includes(defining_objects[i].name)) {
                 var prob;
                 if (accessory_list.includes(defining_objects[i].name)|| defining_objects[i].name=="wheelchair")//accessories less common
                     prob = 0.5;
                 else{
-                    if (["top","bottom","hair_front"].includes(defining_objects[i].name))
+                    if (["top","bottom","fringe"].includes(defining_objects[i].name))
                         prob = -1;
                     else
                         prob = 0;    
@@ -450,9 +451,6 @@ function drawCanvas() {
     for (let i = 0; i < image_objects.length; i += 1){
         let b = image_objects[i];
         if (getImageItem(b) !="none"){ 
-            //ctx_preview.fillStyle = "#000000";
-            //ctx_preview.fillText(b.name, 10, 10*i); 
-            //ctx_preview.drawImage(b.base_image_list[0],0,0);
             {
                 draw_object(b,current_expression,b.colour1,ctx_preview, 0,0,b.widthOffset, -b.heightOffset,parseInt(sprite_width/b.scale),parseInt(sprite_height/b.scale));
             }

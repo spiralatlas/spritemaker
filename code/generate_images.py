@@ -239,6 +239,11 @@ coat_sleeve_list_m = coat_sleeve_list_u+[]
 coat_sleeve_list_w = []
 coat_sleeve_list_d = [coat_sleeve_list_f, coat_sleeve_list_m, coat_sleeve_list_w]
 
+hat_list_f = ["none","scarf"]
+hat_list_m = ["none","turban"]
+hat_list_w = ["none","top hat","beads",]
+hat_list_d = [hat_list_f, hat_list_m, hat_list_m]
+
 hair_front_list_u = ["none","centre bun"]
 hair_front_list_f = hair_front_list_u+ ["curly bun","wavy bun", "straight bun","curly long","straight long"]
 hair_front_list_m = hair_front_list_u+ ["curly short","wavy short", "straight short","super short"]
@@ -250,10 +255,14 @@ hair_back_list_m = hair_front_list_m
 hair_back_list_w = hair_front_list_w
 hair_back_list_d = hair_front_list_d
 
-hat_list_f = ["none","scarf"]
-hat_list_m = ["none","turban"]
-hat_list_w = ["none","top hat","beads",]
-hat_list_d = [hat_list_f, hat_list_m, hat_list_m]
+sideburns_list = ["none", "shaved", "regular"]
+sideburns_list_d = triple_list(sideburns_list)
+
+fringe_list_u = ["curly short","straight",]
+fringe_list_m = ["none"]+fringe_list_u+["wavy side"]
+fringe_list_f = fringe_list_u+["straight long","wavy centre","wavy long"]
+fringe_list_w =["none"]
+fringe_list_d = [fringe_list_f, fringe_list_m, fringe_list_m]
 
 facial_hair_list_f = ["none"]
 facial_hair_list_m = ["none", "beard", "moustache", "goatee", "soul patch", "fluffy goatee", "stubble"]
@@ -263,13 +272,13 @@ facial_hair_list_render = [f for f in facial_hair_list_m if f!="stubble"]
 
 # collections of parts that have the same colours and patterns
 skin_list_defining = ["body","nose","mouth","eyebrows","complexion","ears"]#same colour as head
-skin_list = skin_list_defining + ["skull","legs","wheelchair_legs"]
+skin_list = skin_list_defining + ["skull","legs","wheelchair_legs","nose_front"]
 expression_list = ["mouth","eyebrows","cheeks","eyes"]
 accessory_list = ["eyewear","neckwear", "earrings", "gloves", "hat",]
 outfit_list = ["wheelchair", "bottom","top", "overshirt", "coat"]
 has_sleeves_list = ["top"]
 sleeve_list = [x +"_sleeves" for x in has_sleeves_list]
-defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["hair_front","facial_hair", "head","chest"])
+defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","facial_hair", "head","chest"])
 
 #extra info
 
@@ -361,6 +370,7 @@ add_item("chest", "chest_list_d", chest_list_d, "anatomy")
 
 add_item("skull", "skull_list_d", skull_list_d, "anatomy")
 add_item("head", "head_list_d", head_list_d, "anatomy")
+add_item("sideburns", "sideburns_list_d", sideburns_list_d, "hair")
 add_item("ears", "ear_list_d", ear_list_d, "anatomy")
 add_item("earrings", "earrings_list_d", earrings_list_d, "clothes")
 add_item("earrings_dec", "earrings_dec_list_d", earrings_dec_list_d, "clothes")
@@ -373,8 +383,10 @@ add_item("eyebrows", "eyebrows_list_d", eyebrows_list_d, "face")
 add_item("eyes", "eyes_list_d", eyes_list_d, "face")
 
 add_item("facial_hair", "facial_hair_list_d", facial_hair_list_d, "hair")
+add_item("nose_front", "nose_front_list_d", nose_list_d, "face/nose")
 add_item("hair_front", "hair_front_list_d", hair_front_list_d, "hair")
 add_item("eyewear", "eyewear_list_d", eyewear_list_d, "clothes")
+add_item("fringe", "fringe_list_d", fringe_list_d, "hair")
 add_item("hat", "hat_list_d", hat_list_d, "clothes")
 add_item("hat_dec", "hat_dec_list_d", hat_dec_list_d, "clothes")
 
@@ -555,42 +567,35 @@ def makeSwatches():
 
 def process_image(name, location,type):
     load_string = "../images/bases/"+location+"/"+name
-    if type=="nofill":
-        image_string = load_string+".png"
-    elif type =="twotone":
+    if type =="twotone":
         image_string = load_string+"_fill2.png"    
     else:    
         image_string = load_string+"_fill.png"
         
-    if type == "noshadow":
-        save_string = "../images/render/"+location+"/"+name+"_noshadow"  
-    elif type =="twotone":
+    if type =="twotone":
         save_string = "../images/render/"+location+"/"+name+"2" 
     else:    
         save_string = "../images/render/"+location+"/"+name
 
     img_original = Image.open(image_string) 
-
-    ##fixing height
-    # img_temp = Image.new("RGBA", (393, 1280))
-    # img_temp.paste(img_original.resize((393, 1000)))
-    # img_original = img_temp
-
     original_data = img_original.load() 
     
     save_string_base = save_string +"_base.png"
     img_base = Image.new("RGBA", (img_original.size[0], img_original.size[1]))
     base_data = img_base.load() 
 
-    save_string_highlight = save_string+"_highlight.png"
-    img_highlight = Image.new("RGBA", (img_original.size[0], img_original.size[1]))
-    highlight_data = img_highlight.load() 
+    if type =="highlight":  
+        save_string_highlight = save_string+"_highlight.png"
+        img_highlight = Image.new("RGBA", (img_original.size[0], img_original.size[1]))
+        highlight_data = img_highlight.load() 
+
+    if type =="eyes":
+        save_string_overlay = save_string+"_overlay.png"
+        img_overlay = Image.new("RGBA", (img_original.size[0], img_original.size[1]))
+        overlay_data = img_overlay.load() 
 
     highlight = hex_to_rgba("#FFF7CA")
     line_colour = hex_to_rgba("#5B3D47")
-
-    black_luminance = 100#13 #luminance level that's treated as black
-    shadow_luminance = 190 
 
     if type != "eyes":#multiply images
         for colour in shadow_types:
@@ -606,8 +611,7 @@ def process_image(name, location,type):
                     if original_data[x, y][3] !=0:            
                         pixel = original_data[x, y]
                         p = [pixel[0],pixel[1],pixel[2]]
-                        if type!="noshadow":  #shadow
-                            multiply_data[x, y] =red_shadow(pixel,shadow1,line_colour)
+                        multiply_data[x, y] =red_shadow(pixel,shadow1,line_colour)
             img_multiply.save(save_string_multiply) 
 
     for y in range(img_base.size[1]):
@@ -616,12 +620,14 @@ def process_image(name, location,type):
                 pixel = original_data[x, y]
                 p = [pixel[0],pixel[1],pixel[2]]
                 lum = luminance(p)
-                if lum>250 or type!="noshadow":  #shadow
-                        base_data[x, y] = (100,100,100,pixel[3])    
+                base_data[x, y] = (100,100,100,pixel[3])    
                 if type =="eyes":
-                    highlight_data[x, y] =eye_shadow(pixel,line_colour)                
-    img_base.save(save_string_base)   
-    img_highlight.save(save_string_highlight)
+                    overlay_data[x, y] =eye_shadow(pixel,line_colour)                
+    img_base.save(save_string_base) 
+    if type =="highlight":  
+        img_highlight.save(save_string_highlight)
+    if type =="eyes":    
+        img_overlay.save(save_string_overlay)
                          
 def simple_list_string(list):
     s = "["
@@ -692,6 +698,7 @@ def write_variables():
     content.write(list_string("expression_list", expression_list))   
     content.write(list_string("outfit_list", outfit_list)) 
     content.write(list_string("has_sleeves_list", has_sleeves_list)) 
+    content.write(list_string("sleeve_list", sleeve_list)) 
     content.write(list_string("accessory_list", accessory_list)) 
     content.write(list_string("defining_list", defining_list)) 
     content.write("\n")   
@@ -715,9 +722,7 @@ def checkRender(name, item):
     return True            
 
 def process_portrait_part(obj):
-    if obj.name == "Nose_front":
-        loc = obj.location + "/nose" 
-    elif obj.name.endswith("_dec"): 
+    if obj.name.endswith("_dec"): 
         loc = obj.location + "/"+obj.name[0:-4]        
     else: 
         loc = obj.location + "/"+obj.name  
@@ -734,9 +739,7 @@ def process_portrait_part(obj):
         if checkRender(obj.name, item) and not (obj.name in no_fill_list):     
             if item!="none":
                 print(obj.name+" "+item)
-                if obj.name == "Nose_front":
-                    process_image(item, loc,"noshadow")          
-                elif obj.name.endswith("_dec"):
+                if obj.name.endswith("_dec"):
                     process_image(item, loc,"twotone")
                 elif (obj.name=="eyes"):
                     for shape in eyetype_list:
@@ -765,9 +768,11 @@ def makeStubble():
     for head in head_list_u:
         save_string = "../images/render/hair/facial_hair/stubble/"+head+".png"
         print(save_string)
-        img_mask = Image.open(loc+"anatomy/head/"+head+"_fill.png")
+        img_mask = Image.open(loc+"anatomy/skull/regular_fill.png")
+        img_mask.paste(Image.open(loc+"anatomy/head/"+head+"_fill.png"))
+        img_blank = Image.new("RGBA", (img_mask.width, img_mask.height))
         img_stubble = Image.open(loc+"hair/facial_hair/stubble_fill.png")
-        img_stubble =Image.composite(img_stubble, img_mask, img_mask) 
+        img_stubble =Image.composite(img_stubble, img_blank,img_mask) 
         img_stubble.save(save_string)
 
 def process_all_portraits():
@@ -782,10 +787,10 @@ def runStuff():
     # "skull", "head","body","ears","nose", "chest"
     # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
     for c in closet:
-        if c.name in []:
+        if c.name in ["sideburns"]:
             process_portrait_part(c)
-    #makeWinks()
-    makeStubble() 
+    makeWinks()
+    #makeStubble() 
 
     #makeSwatches()
         
