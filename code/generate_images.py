@@ -244,23 +244,18 @@ hat_list_m = ["none","turban"]
 hat_list_w = ["none","top hat","beads",]
 hat_list_d = [hat_list_f, hat_list_m, hat_list_m]
 
-hair_front_list_u = ["none","centre bun"]
-hair_front_list_f = hair_front_list_u+ ["curly bun","wavy bun", "straight bun","curly long","straight long"]
-hair_front_list_m = hair_front_list_u+ ["curly short","wavy short", "straight short","super short"]
-hair_front_list_w = ["none"]
+hair_front_list = ["none", "balding", "neat side", "swept back", "long locs","curly flowing","curly long","straight flowing","locs bun", ]
+hair_front_list_d = triple_list(hair_front_list)
 
-hair_front_list_d = [hair_front_list_f, hair_front_list_m,hair_front_list_w]
-hair_back_list_f = hair_front_list_f
-hair_back_list_m = hair_front_list_m
-hair_back_list_w = hair_front_list_w
-hair_back_list_d = hair_front_list_d
+hair_back_list = ["none","balding", "buzzcut","straight short","curly short","wavy short", "straight side", "swept back", "shaggy short", "tight curls short","tight curls medium", "shaggy medium", "wavy bob", "straight bob","bun","curly bun","wavy bun","curly long","straight long", "curly flowing", "straight flowing"]
+hair_back_list_d = triple_list(hair_back_list)
 
-sideburns_list = ["none", "shaved", "regular"]
-sideburns_list_d = triple_list(sideburns_list)
+hair_middle_list = ["none", "shaved", "balding","short","long","long shadowed"]
+hair_middle_list_d = triple_list(hair_middle_list)
 
-fringe_list_u = ["curly short","straight",]
-fringe_list_m = ["none"]+fringe_list_u+["wavy side"]
-fringe_list_f = fringe_list_u+["straight long","wavy centre","wavy long"]
+fringe_list_u = ["none", "straight short", "curly short","spiky","straight centre","straight swept","emo","long locs" ]
+fringe_list_m = fringe_list_u+["side flop", "princely","wavy side"]
+fringe_list_f = fringe_list_u+["wavy centre","curly wisps","curly long"]#"straight long","wavy long"
 fringe_list_w =["none"]
 fringe_list_d = [fringe_list_f, fringe_list_m, fringe_list_m]
 
@@ -287,8 +282,6 @@ no_fill_list = ["mouth"] #lined items with no coloured fill
 
 hat_back_list = ["none","top hat","scarf","turban"]
 hat_back_list_d = triple_list(hat_back_list)
-hair_back_list = remove_dups(hair_front_list_f+ hair_front_list_m)
-hair_back_list_d = triple_list(hair_back_list) 
 coat_back_list = ["none","medium cloak","wrap","long jacket closed","short jacket","dress jacket"] 
 coat_back_list_d = triple_list(coat_back_list) 
 
@@ -370,7 +363,7 @@ add_item("chest", "chest_list_d", chest_list_d, "anatomy")
 
 add_item("skull", "skull_list_d", skull_list_d, "anatomy")
 add_item("head", "head_list_d", head_list_d, "anatomy")
-add_item("sideburns", "sideburns_list_d", sideburns_list_d, "hair")
+add_item("hair_middle", "hair_middle_list_d", hair_middle_list_d, "hair")
 add_item("ears", "ear_list_d", ear_list_d, "anatomy")
 add_item("earrings", "earrings_list_d", earrings_list_d, "clothes")
 add_item("earrings_dec", "earrings_dec_list_d", earrings_dec_list_d, "clothes")
@@ -786,8 +779,9 @@ def runStuff():
 
     # "skull", "head","body","ears","nose", "chest"
     # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
+    # "fringe", "hair_front","hair_middle", "hair_back", "facial_hair"
     for c in closet:
-        if c.name in ["sideburns"]:
+        if c.name in ["fringe"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 

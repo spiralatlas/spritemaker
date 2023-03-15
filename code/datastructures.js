@@ -22,6 +22,7 @@ function setVariables(data_object){
 
     size = data_object.size;
     current_eyetype = data_object.current_eyetype;
+    current_hairstyle = data_object.current_hairstyle;
     isWeird = data_object.isWeird;
     
 
@@ -56,6 +57,11 @@ function setVariables(data_object){
     if (top_nosleeves_list.includes(getImageItem(top_obj)))
         findNameMatch(image_objects,"top_sleeves").item = -1;
 
+    //hair
+    
+    findNameMatch(image_objects,"hair_front").item = hair_front_numbers[current_hairstyle]
+    findNameMatch(image_objects,"hair_middle").item = hair_middle_numbers[current_hairstyle]
+    findNameMatch(image_objects,"hair_back").item = hair_back_numbers[current_hairstyle]
     //calculating chest
     if (chest_obj.item!=0){
         if (coat_obj.item !=0){
@@ -218,7 +224,10 @@ document.addEventListener('alpine:init', () => {
                             break;
                         case 'current_eyetype': 
                             objList = 'eyetype_list';
-                            break;   
+                            break;  
+                        case 'current_hairstyle': 
+                            objList = 'hairstyle_list';
+                            break;       
                         case 'current_imageType': 
                             objList = 'imageType_list';
                             break;           
@@ -270,6 +279,7 @@ document.addEventListener('alpine:init', () => {
 
     size : 0,
     current_eyetype: 0,
+    current_hairstyle: 0,
     isWeird: false,
 
     current_defining_objects: [
@@ -301,6 +311,7 @@ document.addEventListener('alpine:init', () => {
     
         this.size= size;
         this.current_eyetype = current_eyetype;
+        this.current_hairstyle = current_hairstyle;
         this.isWeird = isWeird;
         
         for (let i = 0; i < defining_objects.length; i += 1){

@@ -120,7 +120,7 @@ function getHeightOffset(name){
     }  */ 
     return current_offset;    
 }
-const head_offset_list = expression_list.concat(["skull","head","nose","nose_front","hat","hat_dec","hat_back","hat_back_dec","ears","complexion", "sideburns", "hair_front","hair_back","fringe","facial_hair", "eyewear","earrings","earrings_dec"]);
+const head_offset_list = expression_list.concat(["skull","head","nose","nose_front","hat","hat_dec","hat_back","hat_back_dec","ears","complexion", "hair_middle", "hair_front","hair_back","fringe","facial_hair", "eyewear","earrings","earrings_dec"]);
 
 const clothing_names = [];
 const accessory_names = [];
@@ -142,7 +142,7 @@ add_colour_children("head", skin_list);
 add_value_children("body", ["legs"]);
 add_value_children("nose", ["nose_front"]);
 
-add_colour_children("fringe", ["sideburns", "hair_front","hair_back","facial_hair"]);
+add_colour_children("fringe", ["hair_middle", "hair_front","hair_back","facial_hair"]);
 
 //accessories
 
@@ -184,11 +184,19 @@ findNameMatch(image_objects,"chest").item_list = chest_image_list
 const body_list = (skin_list.filter(value => !expression_list.includes(value))).concat(["head"]);
 const all_clothes_list = (image_objects.map(nameOf)).filter(value => !expression_list.includes(value));
 
-const hairstyle_defining_list = [
-    ["none","none","none"], ["shaved","none","none"], ["curly long", "curly long", "curly long"]]
+const hairstyle_defining_list = [ //name, hair_front, hair_middle, hair_back
+//["curly long","straight long",],
+    ["none","none","none","none"], ["balding","balding","none","balding"],["shaved","none","shaved","none"], ["buzzcut","none","short","buzzcut"],
+    ["straight short","none","long","straight short"],["curly short","none","short","curly short"],["wavy short","none","long","wavy short"],["side part","neat side","long shadowed","straight side"],
+    ["swept back","swept back","long shadowed","swept back"],["shaggy short","none","long","shaggy short"],["small tight curls","none","short","tight curls short"],
+    ["tight curls","none","short","tight curls medium"],["shaggy medium","none","long","shaggy medium"], ["wavy bob","none","long","wavy bob"],["straight bob","none","long","straight bob"],
+    ["curly bun","none","long","curly bun"],["wavy bun","none","long","wavy bun"],["bun","none","long","bun"],["curly flowing", "curly flowing", "long", "curly flowing"],["straight flowing", "straight flowing", "long", "straight flowing"]]
 
-const hairstyle_list = hairstyle_defining_list.filter(value => value[0])   
-const hair_front_numbers = hairstyle_defining_list.filter(value => value[1]) 
+const hairstyle_list = hairstyle_defining_list.map(value => value[0])   
+const hair_front_numbers = hairstyle_defining_list.map(value => findNameMatch(image_objects, "hair_front").item_list.indexOf(value[1]))
+const hair_middle_numbers = hairstyle_defining_list.map(value => findNameMatch(image_objects, "hair_middle").item_list.indexOf(value[2]))
+const hair_back_numbers = hairstyle_defining_list.map(value => findNameMatch(image_objects, "hair_back").item_list.indexOf(value[3]))
+
 /* Would make things easier but is broken >:(
 let current_name_dec;
 let current_name;
