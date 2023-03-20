@@ -308,6 +308,7 @@ hat_dec_list_d = triple_list(hat_dec_list)
 hat_back_dec_list = ["scarf"]
 hat_back_dec_list_d = triple_list(hat_back_dec_list)
 
+highlight_list = ["fringe"]
 no_render_list = [["hat",["scarf"]],["hat_dec",["scarf"]],]
 
 ###################### More technical stuff from here on
@@ -447,35 +448,6 @@ outfit_colours = []
 for s in scheme_list:
     outfit_colours+=s
 
-def hair_highlight(pixel, highlight):
-    p = [pixel[0],pixel[1],pixel[2]]
-    l = luminance(p)/255
-    if l <0.7:
-        r=0
-    else:
-        r = l-0.7 
-        
-    return (highlight[0],highlight[1],highlight[2], int(pixel[3]*r))
-
-def hair_shadow(pixel,shadow1,edge):
-    p = [pixel[0],pixel[1],pixel[2]]
-    l = luminance(p)/255
-    if l >0.7:
-        return (0,0,0,0)
-    elif l>0.6:
-        r=1
-    elif l>0.2:
-        r = 2.5*l -0.5 #creates smooth transition between darker edge and lighter shadow1
-    elif l>0.1:
-        r=0
-    else: #pure black
-        return (0,0,0,pixel[3])
-
-    for i in range(3):
-        p[i] = int(r*shadow1[i] + (1-r)*edge[i] )
-        
-    return (p[0],p[1],p[2], int(pixel[3]*(1-l/0.7)))
-
 def eye_shadow(pixel,edge):
     p = [pixel[0],pixel[1],pixel[2]]
     h = hue(p)
@@ -579,7 +551,8 @@ def process_image(name, location,type):
 
     if type =="highlight":  
         save_string_highlight = save_string+"_highlight.png"
-        img_highlight = Image.new("RGBA", (img_original.size[0], img_original.size[1]))
+        h_string = load_string+"_highlight.png"
+        img_highlight = Image.open(h_string)
         highlight_data = img_highlight.load() 
 
     if type =="eyes":
@@ -612,15 +585,19 @@ def process_image(name, location,type):
             if original_data[x, y][3] !=0:
                 pixel = original_data[x, y]
                 p = [pixel[0],pixel[1],pixel[2]]
-                lum = luminance(p)
                 base_data[x, y] = (100,100,100,pixel[3])    
                 if type =="eyes":
-                    overlay_data[x, y] =eye_shadow(pixel,line_colour)                
+                    overlay_data[x, y] =eye_shadow(pixel,line_colour) 
+            
     img_base.save(save_string_base) 
-    if type =="highlight":  
-        img_highlight.save(save_string_highlight)
     if type =="eyes":    
         img_overlay.save(save_string_overlay)
+
+    if type =="highlight":  
+        for y in range(img_highlight.size[1]):
+            for x in range(img_highlight.size[0]): 
+                highlight_data[x, y] = (highlight[0],highlight[1],highlight[2],int(0.3*highlight_data[x, y][len(highlight_data[x, y])-1]))                
+        img_highlight.save(save_string_highlight)    
                          
 def simple_list_string(list):
     s = "["
@@ -668,6 +645,7 @@ def write_variables():
     content.write(list_string("hair_colours",hair_colours))
     content.write(list_string("hair_colours_weird",hair_colours_weird))
     content.write("\n")
+    content.write(list_string("highlight_list",highlight_list))
     content.write("const no_render_list = [")
     for i in range(len(no_render_list)):
         content.write("[\""+no_render_list[i][0]+"\",")
@@ -737,9 +715,13 @@ def process_portrait_part(obj):
                 elif (obj.name=="eyes"):
                     for shape in eyetype_list:
                         if item!="wink":
-                            process_image(item, loc+"/"+shape,"eyes")           
+                            process_image(item, loc+"/"+shape,"eyes") 
+                elif obj.name in highlight_list:     
+                    process_image(item, loc,"highlight")                 
                 else:    
                     process_image(item, loc,"portrait")
+                
+
 
 def makeWinks():
     layer_list = ["base","highlight"]

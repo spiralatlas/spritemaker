@@ -33,6 +33,12 @@ function findDefiningIndex(name){
     return -1;        
 }
 
+// Dumbass functions to get sleeves to stop breaking
+
+function sleeveIndex(){
+    return Math.max(0,findDefiningIndex(Alpine.store('alpineData').current_clothing+'_sleeves'))   
+}
+
 function getWidthOffset(name){
     //how much the portrait image with name 'name' is shifted up or down to match the head shape
     current_offset = 0;

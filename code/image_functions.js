@@ -306,6 +306,8 @@ function fixSources(){
                 b.base_image.src  = loc_string+"_base.png";
                 if (b.name!="eyes")
                     b.shadow_image.src  = loc_string+"_multiply_"+colour_string(b.colour1)+".png";
+                if (highlight_list.includes(b.name))
+                    b.highlight_image.src  = loc_string+"_highlight.png";    
             }
         }
     }

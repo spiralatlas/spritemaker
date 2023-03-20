@@ -169,6 +169,7 @@ document.addEventListener('alpine:init', () => {
             id = '"drop'+this.title+this.valueName+'"'
             if (this.title!="")
                 output += '<label for='+id+'>'+this.title+'</label>: ';  
+            
             switch(this.typeName){
                 case 'body':
                     obj_index = findDefiningIndex(this.valueName);
@@ -185,11 +186,15 @@ document.addEventListener('alpine:init', () => {
                     value = "listOf(index)";
                     break; 
                 case 'sleeves':
-                    obj_index = 'findDefiningIndex(clothing_names[$store.alpineData.current_clothing]+\'_sleeves\')';
-                    objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list';
-                    objList = 'defining_objects['+obj_index+'].item_list';
-                    buttonName = objName+"[0]";
-                    value = "listOf(index)";
+                    if (!has_sleeves_list.includes(clothing_names[Alpine.store('alpineData').current_clothing])){
+                        return "";
+                    } else{
+                        obj_index = sleeveIndex(); 
+                        objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list';
+                        objList = 'defining_objects['+obj_index+'].item_list';
+                        buttonName = objName+"[0]";
+                        value = "listOf(index)";
+                }
                     break;       
                 case 'accessory':
                     obj_index = 'findDefiningIndex(accessory_names[$store.alpineData.current_accessory])';
@@ -379,6 +384,7 @@ document.addEventListener('alpine:init', () => {
     randomiseClothingValue(gender){
         //set all clothing values including sleeve length
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
+        this.current_hairstyle = randomIndex(hairstyle_list);
         for (let i = 0; i < defining_objects.length; i += 1){
             this_list = outfit_list.concat(accessory_list).concat(sleeve_list).concat(["fringe","facial_hair"])
             if (this_list.includes(defining_objects[i].name)) {
