@@ -43,7 +43,7 @@ function getWidthOffset(name){
     //how much the portrait image with name 'name' is shifted up or down to match the head shape
     current_offset = 0;
     if (head_offset_list.includes(name))   
-            current_offset +=2;
+            current_offset +=1;
     return current_offset
 }
 

@@ -244,6 +244,19 @@ hat_list_m = ["none","turban"]
 hat_list_w = ["none","top hat","beads",]
 hat_list_d = [hat_list_f, hat_list_m, hat_list_m]
 
+socks_list_u = ["none","ankle high","mid calf"]
+socks_list_m = socks_list_u  
+socks_list_f = socks_list_u +["knee high","thigh high","tights"] 
+socks_list_w = []
+socks_list_d = [socks_list_f, socks_list_m, socks_list_m]
+
+shoes_list_u = ["none","sandals","slip ons","sneakers"]
+shoes_list_m = shoes_list_u +["boots"]
+shoes_list_f = shoes_list_u +["high boots","pumps"] 
+shoes_list_w = []
+shoes_list_d = [shoes_list_f, shoes_list_m, shoes_list_m]
+
+
 hair_front_list = ["none", "balding", "neat side", "swept back", "long locs","curly flowing","curly long","straight flowing","locs bun", ]
 hair_front_list_d = triple_list(hair_front_list)
 
@@ -269,8 +282,8 @@ facial_hair_list_render = [f for f in facial_hair_list_m if f!="stubble"]
 skin_list_defining = ["body","nose","mouth","eyebrows","complexion","ears"]#same colour as head
 skin_list = skin_list_defining + ["skull","legs","wheelchair_legs","nose_front"]
 expression_list = ["mouth","eyebrows","cheeks","eyes"]
-accessory_list = ["eyewear","neckwear", "earrings", "gloves", "hat",]
-outfit_list = ["wheelchair", "bottom","top", "overshirt", "coat"]
+accessory_list = ["eyewear","neckwear", "earrings", "gloves","hat",]
+outfit_list = ["wheelchair", "bottom","top", "overshirt", "coat", "socks","shoes"]
 has_sleeves_list = ["top"]
 sleeve_list = [x +"_sleeves" for x in has_sleeves_list]
 defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","facial_hair", "head","chest"])
@@ -346,7 +359,8 @@ add_item("coat_back", "coat_back_list_d",coat_back_list_d, "clothes/coat")
 add_item("body", "body_list_d", body_list_d, "anatomy")
 add_item("legs", "leg_list_d", leg_list_d, "anatomy")
 
-
+add_item("socks", "socks_list_d", socks_list_d, "clothes")
+add_item("shoes", "shoes_list_d", shoes_list_d, "clothes")
 add_item("gloves", "gloves_list_d", gloves_list_d, "clothes")
 add_item("top_sleeves", "top_sleeve_list_d", top_sleeve_list_d, "clothes/top")
 add_item("top", "top_list_d", top_list_d, "clothes")
@@ -763,7 +777,7 @@ def runStuff():
     # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
     # "fringe", "hair_front","hair_middle", "hair_back", "facial_hair"
     for c in closet:
-        if c.name in ["fringe"]:
+        if c.name in ["shoes"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
