@@ -56,15 +56,18 @@ function setVariables(data_object){
 
     if (top_nosleeves_list.includes(getImageItem(top_obj)))
         findNameMatch(image_objects,"top_sleeves").item = -1;
+    if (overshirt_nosleeves_list.includes(getImageItem(overshirt_obj)))
+        findNameMatch(image_objects,"overshirt_sleeves").item = -1;
 
     //hair
     
     findNameMatch(image_objects,"hair_front").item = hair_front_numbers[current_hairstyle]
     findNameMatch(image_objects,"hair_middle").item = hair_middle_numbers[current_hairstyle]
     findNameMatch(image_objects,"hair_back").item = hair_back_numbers[current_hairstyle]
+    
     //calculating chest
-    if (chest_obj.item!=0){
-        if (coat_obj.item !=0){
+    if (chest_obj.item>0){
+        if (coat_obj.item >0){
             if (no_chest_coat_list.includes(getImageItem(coat_obj)))
                 chest_obj.item =-1;
             else{    
@@ -73,11 +76,11 @@ function setVariables(data_object){
             }
         }
         else{
-        if (overshirt_obj.item !=0){
+        if (overshirt_obj.item >0){
             chest_obj.colour1 = overshirt_obj.colour1
         }
         else{
-        if (top_obj.item !=0){
+        if (top_obj.item >0){
                 chest_obj.colour1 = top_obj.colour1
                 if (chest_obj.item ==3 && ["breeches","trousers", "long skirt"].includes(findImageItem("bottom")))
                     chest_obj.item=4
@@ -295,6 +298,7 @@ document.addEventListener('alpine:init', () => {
         {"name":"top_sleeves","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#901E3B","colour2":"#4C6BC2"},
         {"name":"top","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#901E3B","colour2":"#4C6BC2"},
         {"name":"bottom","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#FAE181","colour2":"#FAF1CF"},
+        {"name":"overshirt_sleeves","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#901E3B","colour2":"#4C6BC2"},
         {"name":"overshirt","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#4C6BC2","colour2":"#FAE181"},
         {"name":"neckwear","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#43A92D","colour2":"#43A92D"},
         {"name":"coat","value_list":[4,4,4,4,4,4,4,4,4,4],"colour1":"#E3313C","colour2":"#7543BD"},

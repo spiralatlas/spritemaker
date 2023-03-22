@@ -268,13 +268,6 @@ function fixSources(){
         b.highlight_image.src  ="";
 
         let current_loc = getImageItem(b);
-        //fix waistcoat
-        if (b.name =="overshirt"|| b.name =="overshirt_dec"){
-            if (current_loc == "waistcoat"){
-                if (["split empire skirt","empire skirt"].includes(findImageItem("bottom")))
-                    current_loc = "short waistcoat"
-            }
-        } 
         //stubble
 
         if (b.name =="facial_hair"){

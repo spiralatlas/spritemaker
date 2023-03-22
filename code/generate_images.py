@@ -193,7 +193,7 @@ top_list_f = top_list_u+["boatneck","gathered","low vee"]
 top_list_m= top_list_u+["open shirt","high collar shirt"] 
 top_list_w = ["none",]
 top_list_d = [top_list_f,top_list_m,top_list_w]
-top_nosleeves_list = ["vest"]
+top_nosleeves_list = ["none", "vest"]
 
 top_collar_list = ["open shirt","high collar shirt"] 
 top_collar_list_d = [["none"],top_collar_list,["none"]]
@@ -204,14 +204,14 @@ top_sleeve_list_m = top_sleeve_list_u+["puffy shirt", "long shirt"]
 top_sleeve_list_w = []
 top_sleeve_list_d = [top_sleeve_list_f,top_sleeve_list_m,top_sleeve_list_w]
 
-overshirt_list_f = ["none"]
-overshirt_list_m = ["none", "waistcoat"]
-overshirt_list_w = ["none"]
-overshirt_list_render = remove_dups(overshirt_list_f+overshirt_list_m+["short waistcoat"]+overshirt_list_w)
+overshirt_list_u = ["none","button up vee"]
+overshirt_list_f = overshirt_list_u + []
+overshirt_list_m = overshirt_list_u + []
+overshirt_list_w = []
 overshirt_list_d = [overshirt_list_f, overshirt_list_m,overshirt_list_w]
-overshirt_nosleeves_list = []
+overshirt_nosleeves_list = ["none"]
 
-overshirt_sleeve_list_u = ["sleeveless",]
+overshirt_sleeve_list_u = ["sleeveless","long","short"]
 overshirt_sleeve_list_f = overshirt_sleeve_list_u+[]
 overshirt_sleeve_list_m = overshirt_sleeve_list_u+[]
 overshirt_sleeve_list_w = []
@@ -284,7 +284,7 @@ skin_list = skin_list_defining + ["skull","legs","wheelchair_legs","nose_front"]
 expression_list = ["mouth","eyebrows","cheeks","eyes"]
 accessory_list = ["eyewear","neckwear", "earrings", "gloves","hat",]
 outfit_list = ["wheelchair", "bottom","top", "overshirt", "coat", "socks","shoes"]
-has_sleeves_list = ["top"]
+has_sleeves_list = ["top","overshirt"]
 sleeve_list = [x +"_sleeves" for x in has_sleeves_list]
 defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","facial_hair", "head","chest"])
 
@@ -308,7 +308,7 @@ top_dec_list = ["boatneck","gathered","low vee"]
 top_dec_list_d = triple_list(top_dec_list)
 earrings_dec_list = ["round earrings"]
 earrings_dec_list_d = triple_list(earrings_dec_list)
-overshirt_dec_list = ["waistcoat","short waistcoat"]
+overshirt_dec_list = ["button up vee"]
 overshirt_dec_list_d = triple_list(overshirt_dec_list)
 neckwear_dec_list = ["jewelled necklace","beaded necklace"]
 neckwear_dec_list_d = triple_list(neckwear_dec_list)
@@ -369,6 +369,7 @@ add_item("bottom", "bottom_list_d", bottom_list_d, "clothes")
 add_item("bottom_dec", "bottom_dec_list_d", bottom_dec_list_d, "clothes")
 add_item("neckwear", "neckwear_list_d", neckwear_list_d, "clothes")
 add_item("neckwear_dec", "neckwear_dec_list_d", neckwear_dec_list_d, "clothes")
+add_item("overshirt_sleeves", "overshirt_sleeve_list_d", overshirt_sleeve_list_d, "clothes/overshirt")
 add_item("overshirt", "overshirt_list_d", overshirt_list_d, "clothes")
 add_item("overshirt_dec", "overshirt_dec_list_d", overshirt_dec_list_d, "clothes")
 add_item("top_collar", "top_collar_list_d", top_collar_list_d, "clothes/top")
@@ -713,9 +714,7 @@ def process_portrait_part(obj):
         loc = obj.location + "/"+obj.name  
 
     if obj.name == "chest":
-        render_list = chest_image_list
-    elif obj.name == "overshirt": 
-        render_list = overshirt_list_render   
+        render_list = chest_image_list  
     elif obj.name == "facial_hair":
         render_list = facial_hair_list_render    
     else:
@@ -776,8 +775,9 @@ def runStuff():
     # "skull", "head","body","ears","nose", "chest"
     # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
     # "fringe", "hair_front","hair_middle", "hair_back", "facial_hair"
+    #"overshirt","overshirt_sleeves","overshirt_dec"
     for c in closet:
-        if c.name in ["shoes"]:
+        if c.name in []:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 

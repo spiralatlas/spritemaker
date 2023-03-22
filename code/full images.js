@@ -36,7 +36,8 @@ function findDefiningIndex(name){
 // Dumbass functions to get sleeves to stop breaking
 
 function sleeveIndex(){
-    return Math.max(0,findDefiningIndex(Alpine.store('alpineData').current_clothing+'_sleeves'))   
+    console.log("sleeve index "+findDefiningIndex(clothing_names[Alpine.store('alpineData').current_clothing]+'_sleeves'))  
+    return Math.max(0,findDefiningIndex(clothing_names[Alpine.store('alpineData').current_clothing]+'_sleeves')) 
 }
 
 function getWidthOffset(name){
@@ -178,6 +179,7 @@ add_colour2_children("top", ["top_dec"]);
 
 add_value_children("overshirt", ["overshirt_dec"]);
 add_colour2_children("overshirt", ["overshirt_dec"]);
+add_colour_children("overshirt", ["overshirt_sleeves"]);
 
 //wheelchair
 add_value_children("wheelchair", ["wheelchair_back","wheelchair_back_dec","wheelchair_dec"]);
