@@ -19,14 +19,14 @@ const skin_list = ["body","nose","mouth","eyebrows","complexion","ears","skull",
 const chest_image_list = ["none","small","medium","big","bigpants","smallwide","mediumwide","bigwide",];
 const top_nosleeves_list = ["none","vest",];
 const overshirt_nosleeves_list = ["none",];
-const coat_nosleeves_list = [];
+const coat_nosleeves_list = ["none","wrap","medium cloak",];
 const no_chest_coat_list = ["robe","robe hood","medium cloak","medium cloak hood","long cloak","long cloak hood","wrap",];
 const expression_list = ["mouth","eyebrows","cheeks","eyes",];
 const outfit_list = ["wheelchair","bottom","top","overshirt","coat","socks","shoes",];
-const has_sleeves_list = ["top","overshirt",];
-const sleeve_list = ["top_sleeves","overshirt_sleeves",];
+const has_sleeves_list = ["top","overshirt","coat",];
+const sleeve_list = ["top_sleeves","overshirt_sleeves","coat_sleeves",];
 const accessory_list = ["eyewear","neckwear","earrings","gloves","hat",];
-const defining_list = ["eyewear","neckwear","earrings","gloves","hat","wheelchair","bottom","top","overshirt","coat","socks","shoes","top_sleeves","overshirt_sleeves","body","nose","mouth","eyebrows","complexion","ears","cheeks","eyes","fringe","facial_hair","head","chest",];
+const defining_list = ["eyewear","neckwear","earrings","gloves","hat","wheelchair","bottom","top","overshirt","coat","socks","shoes","top_sleeves","overshirt_sleeves","coat_sleeves","body","nose","mouth","eyebrows","complexion","ears","cheeks","eyes","fringe","facial_hair","head","chest",];
 
 const hat_back_list_d = [["none","top hat","scarf","turban",],["none","top hat","scarf","turban",],[],];
 const hat_back_dec_list_d = [["scarf",],["scarf",],[],];
@@ -48,6 +48,7 @@ const overshirt_sleeve_list_d = [["sleeveless","long","short",],["sleeveless","l
 const overshirt_list_d = [["none","button up vee",],["none","button up vee",],[],];
 const overshirt_dec_list_d = [["button up vee",],["button up vee",],[],];
 const top_collar_list_d = [["none",],["open shirt","high collar shirt",],["none",],];
+const coat_sleeve_list_d = [["sleeveless",],["sleeveless",],[],];
 const coat_list_d = [["none","medium cloak","dress jacket","wrap",],["none","short jacket","long jacket closed","jama",],["none",],];
 const coat_dec_list_d = [["dress jacket","jama",],["dress jacket","jama",],[],];
 const chest_list_d = [["none","small","medium","big",],["none",],["none",],];
@@ -108,6 +109,8 @@ add_image_object("overshirt",overshirt_list_d,"clothes")
 add_defining_object("overshirt",overshirt_list_d)
 add_image_object("overshirt_dec",overshirt_dec_list_d,"clothes")
 add_image_object("top_collar",top_collar_list_d,"clothes/top")
+add_image_object("coat_sleeves",coat_sleeve_list_d,"clothes/coat")
+add_defining_object("coat_sleeves",coat_sleeve_list_d)
 add_image_object("coat",coat_list_d,"clothes")
 add_defining_object("coat",coat_list_d)
 add_image_object("coat_dec",coat_dec_list_d,"clothes")

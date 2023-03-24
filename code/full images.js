@@ -166,7 +166,7 @@ add_colour2_children("neckwear", ["neckwear_dec"]);
 //outfit
 
 add_value_children("coat", ["coat_dec","coat_back","wheelchair_coat"]);
-add_colour_children("coat", ["coat_back","wheelchair_coat"]);
+add_colour_children("coat", ["coat_back","wheelchair_coat","coat_sleeves"]);
 add_colour2_children("coat", ["coat_dec"]);
 
 add_value_children("bottom", ["wheelchair_bottom","wheelchair_bottom_dec","bottom_dec",]);

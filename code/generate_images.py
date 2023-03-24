@@ -3,9 +3,8 @@ import sys
 import math
 from PIL import Image, ImageDraw, ImageFilter
 from PIL import ImageEnhance
-import glob
 
-# python generate_images.py
+# python3 generate_images.py
 # Python scripts to create images for dollmaker from the images in images/bases
 
 def remove_dups(l):
@@ -231,7 +230,7 @@ coat_list_f = ["none","medium cloak","dress jacket","wrap"]
 coat_list_m = ["none","short jacket","long jacket closed","jama"]  
 coat_list_w = ["none"]
 coat_list_d = [coat_list_f, coat_list_m, coat_list_w]
-coat_nosleeves_list = []
+coat_nosleeves_list = ["none", "wrap", "medium cloak"]
 
 coat_sleeve_list_u = ["sleeveless",]
 coat_sleeve_list_f = coat_sleeve_list_u+[]
@@ -284,7 +283,7 @@ skin_list = skin_list_defining + ["skull","legs","wheelchair_legs","nose_front"]
 expression_list = ["mouth","eyebrows","cheeks","eyes"]
 accessory_list = ["eyewear","neckwear", "earrings", "gloves","hat",]
 outfit_list = ["wheelchair", "bottom","top", "overshirt", "coat", "socks","shoes"]
-has_sleeves_list = ["top","overshirt"]
+has_sleeves_list = ["top","overshirt","coat"]
 sleeve_list = [x +"_sleeves" for x in has_sleeves_list]
 defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","facial_hair", "head","chest"])
 
@@ -365,6 +364,7 @@ add_item("gloves", "gloves_list_d", gloves_list_d, "clothes")
 add_item("top_sleeves", "top_sleeve_list_d", top_sleeve_list_d, "clothes/top")
 add_item("top", "top_list_d", top_list_d, "clothes")
 add_item("top_dec", "top_dec_list_d", top_dec_list_d, "clothes")
+
 add_item("bottom", "bottom_list_d", bottom_list_d, "clothes")
 add_item("bottom_dec", "bottom_dec_list_d", bottom_dec_list_d, "clothes")
 add_item("neckwear", "neckwear_list_d", neckwear_list_d, "clothes")
@@ -373,6 +373,7 @@ add_item("overshirt_sleeves", "overshirt_sleeve_list_d", overshirt_sleeve_list_d
 add_item("overshirt", "overshirt_list_d", overshirt_list_d, "clothes")
 add_item("overshirt_dec", "overshirt_dec_list_d", overshirt_dec_list_d, "clothes")
 add_item("top_collar", "top_collar_list_d", top_collar_list_d, "clothes/top")
+add_item("coat_sleeves", "coat_sleeve_list_d", coat_sleeve_list_d, "clothes/coat")
 add_item("coat", "coat_list_d", coat_list_d, "clothes")
 add_item("coat_dec", "coat_dec_list_d", coat_dec_list_d, "clothes")
 add_item("chest", "chest_list_d", chest_list_d, "anatomy")
@@ -776,8 +777,10 @@ def runStuff():
     # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
     # "fringe", "hair_front","hair_middle", "hair_back", "facial_hair"
     #"overshirt","overshirt_sleeves","overshirt_dec"
+    # "coat","coat_sleeves","coat_dec","coat_back"
+    #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in []:
+        if c.name in ["coat","coat_sleeves","coat_dec","coat_back"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 

@@ -58,6 +58,8 @@ function setVariables(data_object){
         findNameMatch(image_objects,"top_sleeves").item = -1;
     if (overshirt_nosleeves_list.includes(getImageItem(overshirt_obj)))
         findNameMatch(image_objects,"overshirt_sleeves").item = -1;
+    if (coat_nosleeves_list.includes(getImageItem(coat_obj)))
+        findNameMatch(image_objects,"coat_sleeves").item = -1;    
 
     //hair
     
@@ -301,6 +303,7 @@ document.addEventListener('alpine:init', () => {
         {"name":"overshirt_sleeves","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#901E3B","colour2":"#4C6BC2"},
         {"name":"overshirt","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#4C6BC2","colour2":"#FAE181"},
         {"name":"neckwear","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#43A92D","colour2":"#43A92D"},
+        {"name":"coat_sleeves","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#901E3B","colour2":"#4C6BC2"},
         {"name":"coat","value_list":[4,4,4,4,4,4,4,4,4,4],"colour1":"#E3313C","colour2":"#7543BD"},
         {"name":"chest","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#FF0000","colour2":"#00FF00"},
         {"name":"head","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#CA783C","colour2":"#00FF00"},
