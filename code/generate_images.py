@@ -227,12 +227,12 @@ neckwear_list_w = ["none","bow"]
 neckwear_list_d = [neckwear_list_f, neckwear_list_m,neckwear_list_w]
 
 coat_list_f = ["none","medium cloak","dress jacket","wrap"]
-coat_list_m = ["none","short jacket","long jacket closed","jama"]  
+coat_list_m = ["none","short jacket","overcoat","jama"]  
 coat_list_w = ["none"]
 coat_list_d = [coat_list_f, coat_list_m, coat_list_w]
 coat_nosleeves_list = ["none", "wrap", "medium cloak"]
 
-coat_sleeve_list_u = ["sleeveless",]
+coat_sleeve_list_u = ["sleeveless","short","scrunched", "long", "long blocky"]
 coat_sleeve_list_f = coat_sleeve_list_u+[]
 coat_sleeve_list_m = coat_sleeve_list_u+[]
 coat_sleeve_list_w = []
@@ -294,7 +294,7 @@ no_fill_list = ["mouth"] #lined items with no coloured fill
 
 hat_back_list = ["none","top hat","scarf","turban"]
 hat_back_list_d = triple_list(hat_back_list)
-coat_back_list = ["none","medium cloak","wrap","long jacket closed","short jacket","dress jacket"] 
+coat_back_list = ["none","medium cloak","wrap","overcoat","short jacket","dress jacket"] 
 coat_back_list_d = triple_list(coat_back_list) 
 
 wheelchair_bottom_list_d = bottom_list_d
@@ -365,15 +365,18 @@ add_item("top_sleeves", "top_sleeve_list_d", top_sleeve_list_d, "clothes/top")
 add_item("top", "top_list_d", top_list_d, "clothes")
 add_item("top_dec", "top_dec_list_d", top_dec_list_d, "clothes")
 
+add_item("overshirt_sleeves", "overshirt_sleeve_list_d", overshirt_sleeve_list_d, "clothes/overshirt")
+add_item("coat_sleeves", "coat_sleeve_list_d", coat_sleeve_list_d, "clothes/coat")
+
 add_item("bottom", "bottom_list_d", bottom_list_d, "clothes")
 add_item("bottom_dec", "bottom_dec_list_d", bottom_dec_list_d, "clothes")
 add_item("neckwear", "neckwear_list_d", neckwear_list_d, "clothes")
 add_item("neckwear_dec", "neckwear_dec_list_d", neckwear_dec_list_d, "clothes")
-add_item("overshirt_sleeves", "overshirt_sleeve_list_d", overshirt_sleeve_list_d, "clothes/overshirt")
+
 add_item("overshirt", "overshirt_list_d", overshirt_list_d, "clothes")
 add_item("overshirt_dec", "overshirt_dec_list_d", overshirt_dec_list_d, "clothes")
 add_item("top_collar", "top_collar_list_d", top_collar_list_d, "clothes/top")
-add_item("coat_sleeves", "coat_sleeve_list_d", coat_sleeve_list_d, "clothes/coat")
+
 add_item("coat", "coat_list_d", coat_list_d, "clothes")
 add_item("coat_dec", "coat_dec_list_d", coat_dec_list_d, "clothes")
 add_item("chest", "chest_list_d", chest_list_d, "anatomy")
@@ -773,14 +776,14 @@ def process_all_portraits():
 def runStuff():
     write_variables()
 
-    # "skull", "head","body","ears","nose", "chest"
+    # "skull", "head","body","legs", "ears","nose", "chest"
     # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
     # "fringe", "hair_front","hair_middle", "hair_back", "facial_hair"
     #"overshirt","overshirt_sleeves","overshirt_dec"
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["coat","coat_sleeves","coat_dec","coat_back"]:
+        if c.name in ["neckwear",]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 

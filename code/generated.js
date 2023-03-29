@@ -31,7 +31,7 @@ const defining_list = ["eyewear","neckwear","earrings","gloves","hat","wheelchai
 const hat_back_list_d = [["none","top hat","scarf","turban",],["none","top hat","scarf","turban",],[],];
 const hat_back_dec_list_d = [["scarf",],["scarf",],[],];
 const hair_back_list_d = [["none","balding","buzzcut","straight short","curly short","wavy short","straight side","swept back","shaggy short","tight curls short","tight curls medium","shaggy medium","wavy bob","straight bob","bun","curly bun","wavy bun","curly long","straight long","curly flowing","straight flowing",],["none","balding","buzzcut","straight short","curly short","wavy short","straight side","swept back","shaggy short","tight curls short","tight curls medium","shaggy medium","wavy bob","straight bob","bun","curly bun","wavy bun","curly long","straight long","curly flowing","straight flowing",],[],];
-const coat_back_list_d = [["none","medium cloak","wrap","long jacket closed","short jacket","dress jacket",],["none","medium cloak","wrap","long jacket closed","short jacket","dress jacket",],[],];
+const coat_back_list_d = [["none","medium cloak","wrap","overcoat","short jacket","dress jacket",],["none","medium cloak","wrap","overcoat","short jacket","dress jacket",],[],];
 const body_list_d = [["regular",],["regular",],[],];
 const leg_list_d = [["none","regular",],["none","regular",],[],];
 const socks_list_d = [["none","ankle high","mid calf","knee high","thigh high","tights",],["none","ankle high","mid calf",],["none","ankle high","mid calf",],];
@@ -40,16 +40,16 @@ const gloves_list_d = [["none","short gloves","medium gloves","bracelets",],["no
 const top_sleeve_list_d = [["sleeveless","short","long","puffy",],["sleeveless","short","long","puffy shirt","long shirt",],[],];
 const top_list_d = [["none","chinese collar","vest","boatneck","gathered","low vee",],["none","chinese collar","vest","open shirt","high collar shirt",],["none",],];
 const top_dec_list_d = [["boatneck","gathered","low vee",],["boatneck","gathered","low vee",],[],];
+const overshirt_sleeve_list_d = [["sleeveless","long","short",],["sleeveless","long","short",],[],];
+const coat_sleeve_list_d = [["sleeveless","short","scrunched","long","long blocky",],["sleeveless","short","scrunched","long","long blocky",],[],];
 const bottom_list_d = [["none","empire skirt","split empire skirt","long skirt",],["none","breeches","trousers",],["none",],];
 const bottom_dec_list_d = [["split empire skirt","empire skirt",],["split empire skirt","empire skirt",],[],];
 const neckwear_list_d = [["none","beaded necklace","choker","jewelled necklace","beads",],["none","cravat","tie",],["none","bow",],];
 const neckwear_dec_list_d = [["jewelled necklace","beaded necklace",],["jewelled necklace","beaded necklace",],[],];
-const overshirt_sleeve_list_d = [["sleeveless","long","short",],["sleeveless","long","short",],[],];
 const overshirt_list_d = [["none","button up vee",],["none","button up vee",],[],];
 const overshirt_dec_list_d = [["button up vee",],["button up vee",],[],];
 const top_collar_list_d = [["none",],["open shirt","high collar shirt",],["none",],];
-const coat_sleeve_list_d = [["sleeveless",],["sleeveless",],[],];
-const coat_list_d = [["none","medium cloak","dress jacket","wrap",],["none","short jacket","long jacket closed","jama",],["none",],];
+const coat_list_d = [["none","medium cloak","dress jacket","wrap",],["none","short jacket","overcoat","jama",],["none",],];
 const coat_dec_list_d = [["dress jacket","jama",],["dress jacket","jama",],[],];
 const chest_list_d = [["none","small","medium","big",],["none",],["none",],];
 const skull_list_d = [["regular",],["regular",],[],];
@@ -97,20 +97,20 @@ add_defining_object("top_sleeves",top_sleeve_list_d)
 add_image_object("top",top_list_d,"clothes")
 add_defining_object("top",top_list_d)
 add_image_object("top_dec",top_dec_list_d,"clothes")
+add_image_object("overshirt_sleeves",overshirt_sleeve_list_d,"clothes/overshirt")
+add_defining_object("overshirt_sleeves",overshirt_sleeve_list_d)
+add_image_object("coat_sleeves",coat_sleeve_list_d,"clothes/coat")
+add_defining_object("coat_sleeves",coat_sleeve_list_d)
 add_image_object("bottom",bottom_list_d,"clothes")
 add_defining_object("bottom",bottom_list_d)
 add_image_object("bottom_dec",bottom_dec_list_d,"clothes")
 add_image_object("neckwear",neckwear_list_d,"clothes")
 add_defining_object("neckwear",neckwear_list_d)
 add_image_object("neckwear_dec",neckwear_dec_list_d,"clothes")
-add_image_object("overshirt_sleeves",overshirt_sleeve_list_d,"clothes/overshirt")
-add_defining_object("overshirt_sleeves",overshirt_sleeve_list_d)
 add_image_object("overshirt",overshirt_list_d,"clothes")
 add_defining_object("overshirt",overshirt_list_d)
 add_image_object("overshirt_dec",overshirt_dec_list_d,"clothes")
 add_image_object("top_collar",top_collar_list_d,"clothes/top")
-add_image_object("coat_sleeves",coat_sleeve_list_d,"clothes/coat")
-add_defining_object("coat_sleeves",coat_sleeve_list_d)
 add_image_object("coat",coat_list_d,"clothes")
 add_defining_object("coat",coat_list_d)
 add_image_object("coat_dec",coat_dec_list_d,"clothes")

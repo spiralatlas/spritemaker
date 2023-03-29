@@ -48,6 +48,9 @@ function setVariables(data_object){
     let coat_obj = findNameMatch(image_objects,"coat");
     let overshirt_obj = findNameMatch(image_objects,"overshirt");
     let top_obj = findNameMatch(image_objects,"top");
+    let coat_sleeves_obj = findNameMatch(image_objects,"coat_sleeves");
+    let overshirt_sleeves_obj = findNameMatch(image_objects,"overshirt_sleeves");
+    let top_sleeves_obj = findNameMatch(image_objects,"top_sleeves");
     let bottom_obj = findNameMatch(image_objects,"bottom");
     let hair_front_obj = findNameMatch(image_objects,"hair_front");
     let hair_back_obj = findNameMatch(image_objects,"hair_back");
@@ -117,11 +120,11 @@ function setVariables(data_object){
 
     //calculating crops
 
-    if (!["none","wrap"].includes(findImageItem("coat")))
-        top_obj.crop = [100,0,120,800];
-    if (["dress jacket", "long jacket closed","jama"].includes(findImageItem("coat")))
-        bottom_obj.crop = [100,0,100,800];
-   
+    if (coat_sleeves_obj.item>0||overshirt_sleeves_obj.item>0){//coat or overshirt have sleeves
+        top_sleeves_obj.crop = [0,462,full_width,full_height]; //crop top off puffy sleeves
+        if (!["none", "short"].includes(findImageItem("coat_sleeves"))||!["none", "short"].includes(findImageItem("overshirt_sleeves")))  
+            top_sleeves_obj.crop = [0,654,full_width,full_height];}
+
     let hat_string = findImageItem("hat");
     console.log(hat_string)
     if (hat_string=="top hat"){
@@ -137,17 +140,7 @@ function setVariables(data_object){
     
     
 
-    //calculated from other variables
-    /*let b;
-    
-    if (current_Facialhair<facial_hair_list_port.length){
-        setVariable(["Facial_hair"], current_Facialhair);
-        setVariable(["Stubble"], 0);
-        } 
-    else{ //stubble
-        setVariable(["Facial_hair"], 0);
-        setVariable(["Stubble"],1);
-    }
+    /*
 
     b = findNameMatch(image_objects, "Eyes");
     for (let i = 0; i < 10; i += 1) {
@@ -401,8 +394,9 @@ document.addEventListener('alpine:init', () => {
                 if (accessory_list.includes(defining_objects[i].name)|| defining_objects[i].name=="wheelchair")//accessories less common
                     prob = 0.5;
                 else{
-                    if (["top","bottom","fringe"].includes(defining_objects[i].name))
+                    if (["top","bottom","fringe"].includes(defining_objects[i].name)){
                         prob = -1;
+                    }
                     else
                         prob = 0;    
                 }
@@ -415,13 +409,15 @@ document.addEventListener('alpine:init', () => {
                         break;
                     case 2:
                         this.current_defining_objects[i].value_list = listOf(randomElement(defining_objects[i].item_list_f,prob));  
-                        break;    
+                        break;          
                 }   
-                if (["wheelchair","coat"].includes(defining_objects[i].name))//just while fixing clothes 
+                if (defining_objects[i].name=="fringe"&& this.current_hairstyle<3){// bald/balding/shaved
+                    this.current_defining_objects[i].value_list = listOf(0);
+                } 
+                if (["wheelchair"].includes(defining_objects[i].name))//just while fixing clothes 
                     this.current_defining_objects[i].value_list = listOf(0);  
             }
         }
-        
             
     },
     randomiseAll(gender){
