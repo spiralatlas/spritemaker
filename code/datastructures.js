@@ -386,7 +386,17 @@ document.addEventListener('alpine:init', () => {
     randomiseClothingValue(gender){
         //set all clothing values including sleeve length
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
-        this.current_hairstyle = randomIndex(hairstyle_list);
+        switch(gender){
+            case 0:
+                this.current_hairstyle = randomIndex(hairstyle_list);
+                break;
+            case 1:
+                this.current_hairstyle = randomElement(hairstyle_list_m.map(value => hairstyle_list.indexOf(value)));
+                break;
+            case 2:
+                this.current_hairstyle = randomElement(hairstyle_list_f.map(value => hairstyle_list.indexOf(value)));
+                break;          
+        }   
         for (let i = 0; i < defining_objects.length; i += 1){
             this_list = outfit_list.concat(accessory_list).concat(sleeve_list).concat(["fringe","facial_hair"])
             if (this_list.includes(defining_objects[i].name)) {
@@ -479,16 +489,14 @@ function drawCanvas() {
         }
     }
 
+    ctx_sample.clearRect(0,0,canvas_sample.width,canvas_sample.height)
     if (currently_editing==0){
         ctx_sample.drawImage(skin_image,0,0)
         ctx_sample.drawImage(eyes_image,250,0)
         ctx_sample.drawImage(hair_image,500,0)
     } else{
-        if (currently_editing<3){
+        if ([2,3].includes(currently_editing)){
             ctx_sample.drawImage(schemes_image,125,0)
-        }
-        else{
-            ctx_sample.clearRect(0,0,canvas_sample.width,canvas_sample.height)
         }
     }
     

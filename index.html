@@ -75,6 +75,10 @@
                 <div class="col"><div x-data="dropdown('Eye Colour','eyes','body')" x-bind="colourbtn" ></div></div>
                 <div class="col"><div x-data="dropdown('Hair Colour','fringe','body')" x-bind="colourbtn" ></div></div>
               </div>
+              
+              
+            </div>
+            <div class="row gy-3" x-show="$store.alpineData.currently_editing === 1" >
               <div class="row row-cols-2 gy-3">
                 <div class="col"><div x-data="dropdown('Hairstyle','current_hairstyle','simple')" x-bind="dropbtn" ></div></div>
                 <div class="col"><div x-data="dropdown('Fringe','fringe','body')" x-bind="dropbtn" ></div></div>
@@ -89,10 +93,9 @@
                 <div class="col"><div x-data="dropdown('Complexion','complexion','body')" x-bind="dropbtn" ></div></div>
                 <div class="col"><div x-data="dropdown('Height','size','simple')" x-bind="dropbtn" ></div></div>
               </div>
-              
-            </div>
 
-            <div class="row gy-3" x-show="$store.alpineData.currently_editing === 1" >
+            </div>
+            <div class="row gy-3" x-show="$store.alpineData.currently_editing === 2" >
               <div class="col"><div x-data="dropdown('Clothing','current_clothing','simple')" x-bind="dropbtn" ></div></div>
 
               <div class="row row-cols-2 gy-3">
@@ -105,7 +108,7 @@
                 <div class="col"><div x-data="dropdown('Highlight Colour','clothing','clothing2')" x-bind="colourbtn" ></div></div>
               </div>
           </div>
-          <div class="row gy-3" x-show="$store.alpineData.currently_editing === 2" >
+          <div class="row gy-3" x-show="$store.alpineData.currently_editing === 3" >
             <div class="col"><div x-data="dropdown('Clothing','current_accessory','simple')" x-bind="dropbtn" ></div></div>
 
             <div class="row row-cols-2 gy-3">
@@ -118,7 +121,7 @@
             </div>
         </div>
 
-            <div class="row gy-3" x-show="$store.alpineData.currently_editing === 3" >
+            <div class="row gy-3" x-show="$store.alpineData.currently_editing === 4" >
               <div x-data="dropdown('Expression','current_expression','simple')" x-bind="dropbtn" ></div>
               <div class="row row-cols-2 gy-3">
                 <div class="col"><div x-data="dropdown('Eyebrows','eyebrows','expression')" x-bind="dropbtn" ></div></div>
@@ -130,7 +133,7 @@
             </div>
 
             </div>
-            <div x-show="$store.alpineData.currently_editing === 4" >
+            <div x-show="$store.alpineData.currently_editing === 5" >
               <div class="row row-cols-2 gy-3">
               <div class="col"><input type="checkbox" id="weird" name="weird" :value ="$store.alpineData.isWeird" @input="$store.alpineData.isWeird=true;setVariables(Alpine.store('alpineData'));">
                 <label for="weird">Fantasy Options</label></div></div>
@@ -164,7 +167,7 @@
               <div class = "col"><h4>Eyes</h4></div>
               <div class = "col"><h4>Hair</h4></div>
             </div>
-            <div class="row" x-show="$store.alpineData.currently_editing === 1 || $store.alpineData.currently_editing === 2">
+            <div class="row" x-show="$store.alpineData.currently_editing === 2 || $store.alpineData.currently_editing === 3">
               <h3 >Example Colour Schemes</h3>
             </div>
 

@@ -35,9 +35,9 @@ let isWeird =  false;
 const canvas_width = 512;
 const canvas_height = 800;
 
-const imageType_list =["Body","Expression","Outfit"];
+const imageType_list =["Head","Expression","Outfit"];
 
-const editing_list =["Body","Outfit", "Accessory", "Expression","Randomise"];
+const editing_list =["Colouring","Body","Outfit", "Accessory", "Expression","Randomise"];
 
 const panel_list = ["Neutral", "Happy", "Sad", "Angry","Surprised","Embarassed","Scared",'Annoyed',"Wry"];
 
@@ -328,3 +328,17 @@ function print_defining_objects(){
         s+="--<br><br>"
         return s
 }
+
+
+const hairstyle_defining_list = [ //name, hair_front, hair_middle, hair_back
+//["curly long","straight long",],
+    ["none","none","none","none"], ["balding","balding","none","balding"],["shaved","none","shaved","none"], ["buzzcut","none","short","buzzcut"],
+    ["straight short","none","long","straight short"],["curly short","none","short","curly short"],["wavy short","none","long","wavy short"],["side part","neat side","long shadowed","straight side"],
+    ["swept back","swept back","long shadowed","swept back"],["shaggy short","none","long","shaggy short"],["small tight curls","none","short","tight curls short"],
+    ["tight curls","none","short","tight curls medium"],["shaggy medium","none","long","shaggy medium"], ["wavy bob","none","long","wavy bob"],["straight bob","none","long","straight bob"],
+    ["curly bun","none","long","curly bun"],["wavy bun","none","long","wavy bun"],["bun","none","long","bun"],["curly flowing", "curly flowing", "long", "curly flowing"],["straight flowing", "straight flowing", "long", "straight flowing"]]
+
+const hairstyle_list = hairstyle_defining_list.map(value => value[0])  
+const hairstyle_list_u = ["buzzcut","straight short","curly short","wavy short","swept back","shaggy short","tight curls","shaggy medium","wavy bob","straight bob"]
+const hairstyle_list_m = hairstyle_list_u.concat(["none", "balding", "shaved","side part","small tight curls"])
+const hairstyle_list_f = hairstyle_list_u.concat(["curly bun","wavy bun","bun","curly flowing","straight flowing"])
