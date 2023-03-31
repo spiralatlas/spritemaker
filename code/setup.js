@@ -28,7 +28,8 @@ let full_height="1024";
 let sprite_width =full_width; 
 let sprite_height = full_height;
 
-let isWeird =  false;
+let isWeirdOutfit =  false;
+let isWeirdBody = false;
 
 //internal
 
@@ -37,7 +38,7 @@ const canvas_height = 800;
 
 const imageType_list =["Head","Expression","Outfit"];
 
-const editing_list =["Colouring","Body","Outfit", "Accessory", "Expression","Randomise"];
+const editing_list =["Colouring","Body/Hair","Clothes", "Accessory", "Expression","Randomise"];
 
 const panel_list = ["Neutral", "Happy", "Sad", "Angry","Surprised","Embarassed","Scared",'Annoyed',"Wry"];
 
@@ -130,6 +131,16 @@ function listOf(n){
 
 }
 
+function filteredItems(base_list,removed_list, prob){
+    // list of a random element of base_list that is not in removed_list
+    temp_list = base_list.filter(value => !(removed_list.includes(value)))
+    if (temp_list.length==0 || !Array.isArray(temp_list)){
+        console.log("Error: filteredItems empty list")
+        return listOf(0)
+    }
+    return listOf(randomElement(temp_list,prob))
+}
+
 function newImageList(){
     //list of ten images
     let x = [];
@@ -166,12 +177,12 @@ function remove_dups(arr){
 //Setting up portrait data
 const image_objects =[];
 
-function add_image_object(name, triple_list, location){
+function add_image_object(name, list_list, location){
     let loc;
     loc=location+"/"+name.toLowerCase();
     if (name.slice(-4)=="_dec")//remove "_dec"
         loc = location+"/"+name.slice(0,-4);
-    item_list = remove_dups(triple_list[0].concat(triple_list[1]).concat(triple_list[2]));
+    item_list = remove_dups(list_list[0].concat(list_list[1]).concat(list_list[2]));
     image_objects.push({name: name,location: loc, item_list: item_list, item: 0, heightOffset: 0, widthOffset:0, scale: 1, crop : [0,0,full_width,full_height],parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", hasShading: true, underlay_image: new Image(), base_image: new Image(),shadow_image: new Image(),highlight_image: new Image(),overlay_image: new Image()});
 }
 
@@ -179,17 +190,17 @@ function add_image_object(name, triple_list, location){
 const defining_objects =[];
 
 //colour_children: indices of elements of image_objects with the same colours
-function add_defining_object(name, triple_list){
-    item_list = remove_dups(triple_list[0].concat(triple_list[1]).concat(triple_list[2]));
+function add_defining_object(name, list_list){
+    item_list = remove_dups(list_list[0].concat(list_list[1]).concat(list_list[2]));
     item_list_f = [];
     item_list_m = [];
     item_list_w = [];
     for (i = 0; i < item_list.length; i += 1){
-        if (triple_list[0].includes(item_list[i]))
+        if (list_list[0].includes(item_list[i]))
             item_list_f.push(i);
-        if (triple_list[1].includes(item_list[i]))
+        if (list_list[1].includes(item_list[i]))
             item_list_m.push(i);    
-        if (triple_list[1].includes(item_list[i]))
+        if (list_list[2].includes(item_list[i]))
             item_list_w.push(i);        
     }
     defining_objects.push({name: name,item_list: item_list,item_list_f: item_list_f ,item_list_m: item_list_m,item_list_w: item_list_w, image_index: image_objects.length-1, colour_children:[image_objects.length-1],colour2_children:[],value_children:[image_objects.length-1],  value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"});
@@ -260,28 +271,6 @@ function add_value_children(name, children){
 
 }
 
-function randomGenderedItem(obj, gender, bias){
-    //obj is a member of defining_
-    let current_list = [];
-    switch(gender){
-        case 0:
-            current_list = obj.item_list;
-            break;
-        case 1:
-            current_list = obj.item_list_m;
-            break;
-        case 2:
-            current_list = obj.item_list_f;
-            break;           
-        default:
-            console.log("Unknown gender: "+gender);          
-    }
-    if (isWeird)
-        current_list = current_list.concat(obj.item_list_w)
-
-    return randomIndex(current_list,bias); 
-}
-
 function print_image_objects(){
     //String summarising image_objects. For bug fixing. 
     s = "";
@@ -340,5 +329,6 @@ const hairstyle_defining_list = [ //name, hair_front, hair_middle, hair_back
 
 const hairstyle_list = hairstyle_defining_list.map(value => value[0])  
 const hairstyle_list_u = ["buzzcut","straight short","curly short","wavy short","swept back","shaggy short","tight curls","shaggy medium","wavy bob","straight bob"]
-const hairstyle_list_m = hairstyle_list_u.concat(["none", "balding", "shaved","side part","small tight curls"])
-const hairstyle_list_f = hairstyle_list_u.concat(["curly bun","wavy bun","bun","curly flowing","straight flowing"])
+const hairstyle_list_m = (hairstyle_list_u.concat(["none", "balding", "shaved","side part","small tight curls"])).map(value => hairstyle_list.indexOf(value))
+const hairstyle_list_f = (hairstyle_list_u.concat(["curly bun","wavy bun","bun","curly flowing","straight flowing"])).map(value => hairstyle_list.indexOf(value))
+const hairstyle_list_w = ["wavy bun"].map(value => hairstyle_list.indexOf(value))

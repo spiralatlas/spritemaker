@@ -326,6 +326,8 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
     let new_xpos = xpos //parseInt(obj.scale*xpos);
     let new_ypos = ypos //parseInt(obj.scale*ypos);   
 
+    off_ctx.clearRect(0, 0, new_width, new_height);
+
     if (obj.underlay_image.src!=""){//not coloured or anything just displayed straight
         ctx.drawImage(obj.underlay_image,sourceX,sourceY,width,height, xpos, ypos,new_width,new_height);
     }

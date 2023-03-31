@@ -23,7 +23,8 @@ function setVariables(data_object){
     size = data_object.size;
     current_eyetype = data_object.current_eyetype;
     current_hairstyle = data_object.current_hairstyle;
-    isWeird = data_object.isWeird;
+    isWeirdOutfit = data_object.isWeirdOutfit;
+    isWeirdBody = data_object.isWeirdBody;
     
 
     for (let i = 0; i < defining_objects.length; i += 1){
@@ -126,7 +127,6 @@ function setVariables(data_object){
             top_sleeves_obj.crop = [0,654,full_width,full_height];}
 
     let hat_string = findImageItem("hat");
-    console.log(hat_string)
     if (hat_string=="top hat"){
         crop_box = [0,144+getHeightOffset(hair_front_obj.name),300,700];
         hair_front_obj.crop = crop_box;
@@ -283,7 +283,8 @@ document.addEventListener('alpine:init', () => {
     size : 0,
     current_eyetype: 0,
     current_hairstyle: 0,
-    isWeird: false,
+    isWeirdOutfit: false,
+    isWeirdBody: false, 
 
     current_defining_objects: [
         {"name":"body","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00"},
@@ -319,7 +320,8 @@ document.addEventListener('alpine:init', () => {
         this.size= size;
         this.current_eyetype = current_eyetype;
         this.current_hairstyle = current_hairstyle;
-        this.isWeird = isWeird;
+        this.isWeirdOutfit = isWeirdOutfit;
+        this.isWeirdBody = isWeirdBody;
         
         for (let i = 0; i < defining_objects.length; i += 1){
             let json_obj = defining_objects[i];
@@ -332,7 +334,7 @@ document.addEventListener('alpine:init', () => {
 
     randomiseBodyColouring(){
         //randomise the skin/eye/hair colour
-        if (isWeird){
+        if (this.isWeirdBody){
             this.current_defining_objects[findDefiningIndex("head")].colour1 = randomElement(skin_colours.concat(skin_colours_weird),0);
             this.current_defining_objects[findDefiningIndex("fringe")].colour1 = randomElement(hair_colours.concat(hair_colours_weird),0);
             this.current_defining_objects[findDefiningIndex("eyes")].colour1 = randomElement(eye_colours.concat(eye_colours_weird),0);
@@ -348,8 +350,11 @@ document.addEventListener('alpine:init', () => {
         //randomise the nose/head/hairstyle etc
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
         for (let i = 0; i < defining_objects.length; i += 1){
+            remove_list = []
+            if (!isWeirdBody)
+                remove_list = defining_objects[i].item_list_w
             if (["nose","head","ears","body"].includes(defining_objects[i].name)){
-                this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0));
+                this.current_defining_objects[i].value_list = filteredItems(range(defining_objects[i].item_list.length),remove_list,0);
             }
             if ("chest"==defining_objects[i].name){
                 switch(gender){
@@ -386,22 +391,25 @@ document.addEventListener('alpine:init', () => {
     randomiseClothingValue(gender){
         //set all clothing values including sleeve length
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
+        let remove_list = []
+        if (!isWeirdOutfit)
+            remove_list = hairstyle_list_w
         switch(gender){
             case 0:
-                this.current_hairstyle = randomIndex(hairstyle_list);
+                this.current_hairstyle =filteredItems(range(hairstyle_list.length),remove_list,0)[0];  
                 break;
             case 1:
-                this.current_hairstyle = randomElement(hairstyle_list_m.map(value => hairstyle_list.indexOf(value)));
+                this.current_hairstyle = filteredItems(hairstyle_list_m,remove_list,0)[0];
                 break;
             case 2:
-                this.current_hairstyle = randomElement(hairstyle_list_f.map(value => hairstyle_list.indexOf(value)));
+                this.current_hairstyle = filteredItems(hairstyle_list_f,remove_list,0)[0];
                 break;          
-        }   
+        }  
         for (let i = 0; i < defining_objects.length; i += 1){
             this_list = outfit_list.concat(accessory_list).concat(sleeve_list).concat(["fringe","facial_hair"])
             if (this_list.includes(defining_objects[i].name)) {
                 var prob;
-                if (accessory_list.includes(defining_objects[i].name)|| defining_objects[i].name=="wheelchair")//accessories less common
+                if (accessory_list.includes(defining_objects[i].name)|| defining_objects[i].name=="wheelchair"|| defining_objects[i].name=="facial_hair")//accessories less common
                     prob = 0.5;
                 else{
                     if (["top","bottom","fringe"].includes(defining_objects[i].name)){
@@ -410,15 +418,18 @@ document.addEventListener('alpine:init', () => {
                     else
                         prob = 0;    
                 }
+                remove_list = []
+                if (!isWeirdOutfit)
+                    remove_list = defining_objects[i].item_list_w
                 switch(gender){
                     case 0:
-                        this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,prob));  
+                        this.current_defining_objects[i].value_list = filteredItems(range(defining_objects[i].item_list.length),remove_list,prob);  
                         break;
                     case 1:
-                        this.current_defining_objects[i].value_list = listOf(randomElement(defining_objects[i].item_list_m,prob));  
+                        this.current_defining_objects[i].value_list = filteredItems(defining_objects[i].item_list_m,remove_list,prob);  
                         break;
                     case 2:
-                        this.current_defining_objects[i].value_list = listOf(randomElement(defining_objects[i].item_list_f,prob));  
+                        this.current_defining_objects[i].value_list = filteredItems(defining_objects[i].item_list_f,remove_list,prob);  
                         break;          
                 }   
                 if (defining_objects[i].name=="fringe"&& this.current_hairstyle<3){// bald/balding/shaved
@@ -553,7 +564,7 @@ function setup(){
                 filename += "outfit";
                 break;   
         }   
-        console.log(filename);              
+        console.log("saving "+filename);              
         // Convert our canvas to a data URL
         let canvasUrl = canvas.toDataURL();
         // Create an anchor, and set the href value to our data URL
