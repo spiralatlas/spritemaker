@@ -741,7 +741,7 @@ def process_portrait_part(obj):
 
 
 def makeWinks():
-    layer_list = ["base","highlight"]
+    layer_list = ["base"]
     for eye_type in eyetype_list:
         for layer in layer_list:
             loc = "../images/render/face/eyes/"+eye_type+"/"
@@ -783,7 +783,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["hair_back"]:
+        if c.name in []:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
