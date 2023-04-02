@@ -301,7 +301,7 @@ wheelchair_bottom_list_d = bottom_list_d
 wheelchair_coat_list = ["none", "medium cloak","long jacket closed","dress jacket","jama"] 
 wheelchair_coat_list_d = default_list(wheelchair_coat_list)
 
-wheelchair_bottom_dec_list = ["split empire skirt"]
+wheelchair_bottom_dec_list = []#["split empire skirt"]
 wheelchair_bottom_dec_list_d = default_list(wheelchair_bottom_dec_list)
 top_dec_list = ["boatneck","gathered","low vee"]
 top_dec_list_d = default_list(top_dec_list)
@@ -479,7 +479,7 @@ def eye_shadow(pixel,edge):
     else:   
         r=min(max(0,1-lum/125),1)
         
-        return (edge[0]/2,edge[1]/2,edge[2]/2, int(pixel[3]*r))
+        return (int(edge[0]/2),int(edge[1]/2),int(edge[2]/2), int(pixel[3]*r))
 
 def red_shadow(pixel,shadow1,edge):
     p = [pixel[0],pixel[1],pixel[2]]
@@ -783,7 +783,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in []:
+        if c.name in ["wheelchair_coat"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 

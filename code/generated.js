@@ -74,7 +74,7 @@ const hat_dec_list_d = [["top hat",],["top hat",],[],];
 const wheelchair_list_d = [["none","manual","old fashioned",],["none","manual","old fashioned",],["old fashioned",],];
 const wheelchair_leg_list_d = [["none","regular",],["none","regular",],[],];
 const wheelchair_bottom_list_d = [["none","empire skirt","split empire skirt","long skirt",],["none","breeches","trousers",],["empire skirt","split empire skirt","breeches",],];
-const wheelchair_bottom_dec_list_d = [["split empire skirt",],["split empire skirt",],[],];
+const wheelchair_bottom_dec_list_d = [[],[],[],];
 const wheelchair_coat_list_d = [["none","medium cloak","long jacket closed","dress jacket","jama",],["none","medium cloak","long jacket closed","dress jacket","jama",],[],];
 
 add_image_object("wheelchair_back",wheelchair_list_d,"wheelchair")
