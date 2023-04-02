@@ -259,7 +259,7 @@ shoes_list_d = [shoes_list_f, shoes_list_m, shoes_list_w]
 hair_front_list = ["none", "balding", "neat side", "swept back", "long locs","curly flowing","curly long","straight flowing","locs bun", ]
 hair_front_list_d = default_list(hair_front_list)
 
-hair_back_list = ["none","balding", "buzzcut","straight short","curly short","wavy short", "straight side", "swept back", "shaggy short", "tight curls short","tight curls medium", "shaggy medium", "wavy bob", "straight bob","bun","curly bun","wavy bun","curly long","straight long", "curly flowing", "straight flowing"]
+hair_back_list = ["none","balding", "buzzcut","straight short","curly short","wavy short", "straight side", "swept back", "shaggy short", "tight curls short","tight curls medium", "shaggy medium", "curly bob","wavy bob", "straight bob","locs bob", "half up medium wavy","straight high pony","straight low pony", "curly pony", "bun","curly bun","wavy bun","locs bun","twin braids","straight long","wavy long","curly long", "long locs",  "curly flowing", "straight flowing","straight up","curly up","locs up"]
 hair_back_list_d = default_list(hair_back_list)
 
 hair_middle_list = ["none", "shaved", "balding","short","long","long shadowed"]
@@ -783,12 +783,12 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in []:
+        if c.name in ["hair_back"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
 
-    makeSwatches()
+    #makeSwatches()
         
     #process_all_portraits()
     #make_coat()

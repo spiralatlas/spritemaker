@@ -196,29 +196,3 @@ const hair_front_numbers = hairstyle_defining_list.map(value => findNameMatch(im
 const hair_middle_numbers = hairstyle_defining_list.map(value => findNameMatch(image_objects, "hair_middle").item_list.indexOf(value[2]))
 const hair_back_numbers = hairstyle_defining_list.map(value => findNameMatch(image_objects, "hair_back").item_list.indexOf(value[3]))
 
-
-/* Would make things easier but is broken >:(
-let current_name_dec;
-let current_name;
-for (i = 0; i < two_tone_names.length; i += 1){
-    current_name_dec = two_tone_names[i];
-    current_name = current_name_dec.slice(0,-4);
-    console.log(current_name+":"+current_name_dec)
-    if (clothing_names.includes(current_name)){
-        //add_value_children(current_name, [current_name_dec]);
-        console.log("adding "+current_name+":"+current_name_dec)
-        add_colour2_children(current_name, [current_name_dec]);
-    }
-    else{
-        console.log("NOT adding "+current_name+":"+current_name_dec)
-        current_name = current_name.slice(0,-5);
-        if (clothing_names.includes(current_name)){
-            //add_value_children(current_name, [current_name_dec]);
-            console.log("adding "+current_name+":"+current_name_dec)
-            add_colour2_children(current_name, [current_name_dec]);
-        }
-    }  
-}*/
-
-
-
