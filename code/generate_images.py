@@ -5,7 +5,8 @@ from PIL import Image, ImageDraw, ImageFilter
 from PIL import ImageEnhance
 
 # python3 generate_images.py
-# Python scripts to create images for dollmaker from the images in images/bases
+# Python scripts to create images for dollmaker from the images in ../spritemaker_bases
+# Which I have not uploaded because it's a lot of files!
 
 def remove_dups(l):
         #removes duplicates from a list
@@ -550,8 +551,11 @@ def makeSwatches():
 
 
 def process_image(name, location,type):
-    load_string = "../images/bases/"+location+"/"+name
-    if type =="twotone":
+    load_string = "../../spritemaker_bases/"+location+"/"+name
+
+    if type =="no_fill":
+        image_string = load_string+".png"
+    elif type =="twotone":
         image_string = load_string+"_fill2.png"    
     else:    
         image_string = load_string+"_fill.png"
@@ -566,8 +570,12 @@ def process_image(name, location,type):
     
     save_string_base = save_string +"_base.png"
     img_base = Image.new("RGBA", (img_original.size[0], img_original.size[1]))
-    base_data = img_base.load() 
+    base_data = img_base.load()  
 
+    if type =="no_fill":
+        img_original.save(save_string_base)
+        return
+    
     if type =="highlight":  
         save_string_highlight = save_string+"_highlight.png"
         h_string = load_string+"_highlight.png"
@@ -724,11 +732,13 @@ def process_portrait_part(obj):
     else:
         render_list = obj.item_list
     for item in render_list:
-        if checkRender(obj.name, item) and not (obj.name in no_fill_list):     
+        if checkRender(obj.name, item):     
             if item!="none":
                 print(obj.name+" "+item)
                 if obj.name.endswith("_dec"):
                     process_image(item, loc,"twotone")
+                elif obj.name in no_fill_list:
+                    process_image(item, loc,"no_fill")  
                 elif (obj.name=="eyes"):
                     for shape in eyetype_list:
                         if item!="wink":
@@ -756,7 +766,7 @@ def makeWinks():
             im_wink.save(save_string)
 
 def makeStubble():
-    loc = "../images/bases/"
+    loc = "../../spritemaker_bases/"
     for head in head_list_u:
         save_string = "../images/render/hair/facial_hair/stubble/"+head+".png"
         print(save_string)
@@ -783,7 +793,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["wheelchair_coat"]:
+        if c.name in ["mouth"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 

@@ -589,7 +589,7 @@ function setup(){
     drawCanvas();
 }
 let portrait_back = new Image();
-portrait_back.src = "images/bases/pattern/pix_pattern_argyle.png";
+portrait_back.src = "";
 
 let hair_image = new Image();
 hair_image.src = "images/render/swatches/hair.png"

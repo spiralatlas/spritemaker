@@ -283,7 +283,7 @@ function fixSources(){
         if (getImageItem(b)!="none"){
             if (no_fill_list.includes(b.name)){
                 b.hasShading = false;
-                b.underlay_image.src  = "images/bases/"+b.location+"/"+current_loc +".png";
+                b.underlay_image.src  = "images/render/"+b.location+"/"+current_loc +"_base.png";
 
             }else{
                 if (b.name=="eyes"){ 
