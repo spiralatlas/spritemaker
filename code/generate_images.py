@@ -583,7 +583,7 @@ def process_image(name, location,type):
     line_colour = hex_to_rgba("#5B3D47")
 
     if type != "eyes":#multiply images
-        for colour in shadow_types:
+        for colour in ["blue"]:#shadow_types:
             [shadow1,edge] = shadow_colours(colour)
 
             save_string_multiply = save_string+"_multiply_"+colour+".png"
