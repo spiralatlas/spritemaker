@@ -59,7 +59,7 @@ function getHeightOffset(name){
             if (["nose","nose_front", "facial_hair"].includes(name))  
                 current_offset -=0;
             if (["mouth"].includes(name))  
-                current_offset +=2;     
+                current_offset +=0;     
             break;
         case "jowly": 
             if (head_offset_list.includes(name))   
@@ -67,7 +67,7 @@ function getHeightOffset(name){
             if (["nose","nose_front", "facial_hair"].includes(name))  
             current_offset +=1;
             if (["mouth"].includes(name))  
-            current_offset +=2;     
+            current_offset +=0;     
             break;   
         case "oval":
             if (head_offset_list.includes(name))   
@@ -75,7 +75,7 @@ function getHeightOffset(name){
             if (["nose","nose_front", "facial_hair"].includes(name))  
             current_offset +=1;
             if (["mouth"].includes(name))  
-            current_offset +=2;        
+            current_offset +=0;        
             break;
         case "medium":
             if (head_offset_list.includes(name))   
@@ -83,13 +83,15 @@ function getHeightOffset(name){
             if (["nose","nose_front", "facial_hair"].includes(name))  
                 current_offset +=0;
             if (["mouth"].includes(name))  
-                current_offset +=2;        
+                current_offset +=0;        
             break; 
         case "square":
             if (head_offset_list.includes(name))   
                 current_offset +=2;
             if (["nose","nose_front", "facial_hair"].includes(name))  
                 current_offset +=0;
+            if (["mouth"].includes(name))  
+                current_offset +=-2;       
             break;     
         case "rectangular":  
             if (head_offset_list.includes(name))   
@@ -97,7 +99,7 @@ function getHeightOffset(name){
             if (["nose","nose_front", "facial_hair"].includes(name))  
                 current_offset -=1;    
             if (["mouth"].includes(name))  
-                current_offset +=0;    
+                current_offset +=-2;    
             break;     
         case "pointed":  
             if (head_offset_list.includes(name))   
@@ -105,7 +107,7 @@ function getHeightOffset(name){
             if (["facial_hair"].includes(name))  
                 current_offset -=1;
             if (["mouth"].includes(name))  
-                current_offset +=0;    
+                current_offset +=-1;    
             break;               
     } 
     /*b = findNameMatch(image_objects, "Lips");

@@ -165,7 +165,7 @@ eyetype_list_d = [eyetype_list_f,eyetype_list_m,eyetype_list_w]
 eyes_list_d = default_list(eyeshape_list)
 eyebrows_list_u = ["flat","flat sad","flat grumpy","flat angry","sad","sadder", "semi sad", "regular","semi arch","arched","raised arch", "raised","raised flat", "raised semi flat","raised grumpy","raised semi","angry", "angry arch","half raised","half semi", "half sad","half sad raised","half flat","half arch raised"]
 eyebrows_list_d = default_list(eyebrows_list_u)
-mouth_list_u = ["lah", "small lah", "tiny lah", "big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","slight smile","side eww","eww",  "oh","square oh","big oh", "small oh","shock","small flat","flat","small clenched", "wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",]
+mouth_list_u = ["lah", "small lah", "tiny lah", "big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","wobbly smile", "flat smile","smile","small smile","tiny smile","slight smile","side eww","eww",  "oh","square oh","big oh", "small oh","shock","small flat","flat","small clenched", "wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",]
 mouth_list_d = default_list(mouth_list_u)
 nose_list_u = ["button", "round","medium","broad", "pointed","hooked",] 
 nose_list_d = default_list(nose_list_u)
@@ -761,6 +761,7 @@ def process_portrait_part(obj):
 
 def makeWinks():
     layer_list = ["base","overlay"]
+    print("Making winks")
     for eye_type in remove_dups(eyetype_list_f+eyetype_list_m):
         for layer in layer_list:
             loc = "../images/render/face/eyes/"+eye_type+"/"
@@ -800,7 +801,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in []:
+        if c.name in ["mouth"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
