@@ -155,10 +155,14 @@ wheelchair_leg_list_d = default_list(["none"]+body_list)
 
 
 no_iris_list = ["sleepy","closed"] #eyeshapes with no iris
-eyes_list_u = ["neutral","side","crescents","narrowed","happy","wide","shock","angry","angry side","sleepy","wink"]
+eyeshape_list = ["neutral","side","crescents","flat", "narrowed","happy","wide","shock","angry","angry side","sleepy","wink"]
 #["wide","extrawide", "widecatty","sad", "gentle", "regular","vivid", "cool","catty","coolside", "narrowcool","narrowcoolside","narrowcatty","narrowcattyside", "halfclosed"]
-eyetype_list = ["medium"]
-eyes_list_d = default_list(eyes_list_u)
+eyetype_list_u = ["medium eyelashes"]
+eyetype_list_m = eyetype_list_u+["short eyelashes"]
+eyetype_list_f = eyetype_list_u+["long eyelashes"]
+eyetype_list_w = []
+eyetype_list_d = [eyetype_list_f,eyetype_list_m,eyetype_list_w]
+eyes_list_d = default_list(eyeshape_list)
 eyebrows_list_u = ["flat","flat sad","flat grumpy","flat angry","sad","sadder", "semi sad", "regular","semi arch","arched","raised arch", "raised","raised flat", "raised semi flat","raised grumpy","raised semi","angry", "angry arch","half raised","half semi", "half sad","half sad raised","half flat","half arch raised"]
 eyebrows_list_d = default_list(eyebrows_list_u)
 mouth_list_u = ["lah", "small lah", "tiny lah", "big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","flat smile","smile","small smile","tiny smile","slight smile","side eww","eww",  "oh","square oh","big oh", "small oh","shock","small flat","flat","small clenched", "wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",]
@@ -686,10 +690,12 @@ def write_variables():
         content.write(simple_list_string(scheme_list[i]))
         content.write(",")
     content.write("];\n")
-    content.write(list_string("no_fill_list", no_fill_list, )) 
-    content.write(list_string("eyetype_list", eyetype_list ))   
+    content.write(list_string("no_fill_list", no_fill_list, ))  
     content.write(list_string("pattern_list",pattern_list))    
-    content.write(list_string("skin_list", skin_list))   
+    content.write(list_string("skin_list", skin_list))  
+    content.write(list_string("eyetype_list_f", eyetype_list_f))   
+    content.write(list_string("eyetype_list_m", eyetype_list_m))  
+    content.write(list_string("eyetype_list_w", eyetype_list_w))   
     content.write(list_string("chest_image_list", chest_image_list)) 
     content.write(list_string("top_nosleeves_list", top_nosleeves_list))
     content.write(list_string("overshirt_nosleeves_list", overshirt_nosleeves_list)) 
@@ -742,9 +748,10 @@ def process_portrait_part(obj):
                 elif obj.name in no_fill_list:
                     process_image(item, loc,"no_fill")  
                 elif (obj.name=="eyes"):
-                    for shape in eyetype_list:
-                        if item!="wink":
-                            process_image(item, loc+"/"+shape,"eyes") 
+                        for type in remove_dups(eyetype_list_f+eyetype_list_m):
+                            if item!="wink":
+                                print(type)
+                                process_image(item, loc+"/"+type,"eyes") 
                 elif obj.name in highlight_list:     
                     process_image(item, loc,"highlight")                 
                 else:    
@@ -754,7 +761,7 @@ def process_portrait_part(obj):
 
 def makeWinks():
     layer_list = ["base"]
-    for eye_type in eyetype_list:
+    for eye_type in remove_dups(eyetype_list_f+eyetype_list_m):
         for layer in layer_list:
             loc = "../images/render/face/eyes/"+eye_type+"/"
             save_string = loc+"wink_"+layer+".png"
@@ -795,7 +802,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["head"]:
+        if c.name in ["eyes"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 

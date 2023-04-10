@@ -371,6 +371,20 @@ document.addEventListener('alpine:init', () => {
             }
         }
         this.size = randomIndex(size_list,0);
+        remove_list = [];
+        if (!isWeirdBody)
+            remove_list = eyetype_list_w
+        switch(gender){
+            case 0:
+                this.current_eyetype =filteredItems(range(eyetype_list.length),remove_list,0);  
+                break;
+            case 1:
+                this.current_eyetype = filteredItems(eyetype_list_m,remove_list,0);
+                break;
+            case 2:
+                this.current_eyetype = filteredItems(eyetype_list_f,remove_list,0);
+                break;          
+        }  
     },
     randomiseClothingColour(){
         //randomise all clothing colours
