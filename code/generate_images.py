@@ -760,19 +760,17 @@ def process_portrait_part(obj):
 
 
 def makeWinks():
-    layer_list = ["base"]
+    layer_list = ["base","overlay"]
     for eye_type in remove_dups(eyetype_list_f+eyetype_list_m):
         for layer in layer_list:
             loc = "../images/render/face/eyes/"+eye_type+"/"
             save_string = loc+"wink_"+layer+".png"
             im_happy = Image.open(loc+"happy_"+layer+".png") 
-            im_wink = Image.new("RGBA", (256, 268))
-            region = im_happy.crop((0,0,159,205))
-            im_wink.paste(region,(0,0,159,205))
-            im_happy = Image.open(loc+"crescents_"+layer+".png") 
-            region = im_happy.crop((159,0,314,800))
-            im_wink.paste(region,(159,0,314,800))
-            im_wink.save(save_string)
+            im_crescents = Image.open(loc+"crescents_"+layer+".png") 
+            box = (206,200,300,300)
+            region = im_crescents.crop(box)
+            im_happy.paste(region,box)
+            im_happy.save(save_string)
 
 def makeStubble():
     loc = "../../spritemaker_bases/"
@@ -802,7 +800,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["eyes"]:
+        if c.name in []:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
