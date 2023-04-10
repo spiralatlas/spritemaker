@@ -192,14 +192,14 @@ gloves_list_m = ["none", "short gloves"]
 gloves_list_w = ["none",]
 gloves_list_d = [gloves_list_f,gloves_list_m,gloves_list_w]
 
-top_list_u = ["none","chinese collar","vest" ]
-top_list_f = top_list_u+["boatneck","gathered","low vee"]
-top_list_m= top_list_u+["open shirt","high collar shirt"] 
+top_list_u = ["none","vest","tee", "chinese collar","turtleneck" ]
+top_list_f = top_list_u+["bikini","square", "boatneck","gathered","low vee"]
+top_list_m= top_list_u+["open shirt","button up", "high collar shirt"] 
 top_list_w = ["high collar shirt"]
 top_list_d = [top_list_f,top_list_m,top_list_w]
-top_nosleeves_list = ["none", "vest"]
+top_nosleeves_list = ["none", "bikini", "vest"]
 
-top_collar_list = ["open shirt","high collar shirt"] 
+top_collar_list = ["open shirt","button up","high collar shirt"] 
 top_collar_list_d = [["none"],top_collar_list,["none"]]
 
 top_sleeve_list_u = ["sleeveless", "short","long"]
@@ -208,7 +208,7 @@ top_sleeve_list_m = top_sleeve_list_u+["puffy shirt", "long shirt"]
 top_sleeve_list_w = ["puffy", "puffy shirt"]
 top_sleeve_list_d = [top_sleeve_list_f,top_sleeve_list_m,top_sleeve_list_w]
 
-overshirt_list_u = ["none","button up vee"]
+overshirt_list_u = ["none","button up vee", "open shirt", "vee","sweater"]
 overshirt_list_f = overshirt_list_u + []
 overshirt_list_m = overshirt_list_u + []
 overshirt_list_w = []
@@ -308,7 +308,7 @@ wheelchair_coat_list_d = default_list(wheelchair_coat_list)
 
 wheelchair_bottom_dec_list = []#["split empire skirt"]
 wheelchair_bottom_dec_list_d = default_list(wheelchair_bottom_dec_list)
-top_dec_list = ["boatneck","gathered","low vee"]
+top_dec_list = ["square","gathered","low vee"]
 top_dec_list_d = default_list(top_dec_list)
 earrings_dec_list = ["round earrings"]
 earrings_dec_list_d = default_list(earrings_dec_list)
@@ -801,7 +801,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["mouth"]:
+        if c.name in ["overshirt"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
