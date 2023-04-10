@@ -192,18 +192,18 @@ const defining_objects =[];
 //colour_children: indices of elements of image_objects with the same colours
 function add_defining_object(name, list_list){
     item_list = remove_dups(list_list[0].concat(list_list[1]).concat(list_list[2]));
-    item_list_f = [];
-    item_list_m = [];
-    item_list_w = [];
+    item_indices_f = [];
+    item_indices_m = [];
+    item_indices_w = [];
     for (i = 0; i < item_list.length; i += 1){
         if (list_list[0].includes(item_list[i]))
-            item_list_f.push(i);
+            item_indices_f.push(i);
         if (list_list[1].includes(item_list[i]))
-            item_list_m.push(i);    
+            item_indices_m.push(i);    
         if (list_list[2].includes(item_list[i]))
-            item_list_w.push(i);        
+            item_indices_w.push(i);        
     }
-    defining_objects.push({name: name,item_list: item_list,item_list_f: item_list_f ,item_list_m: item_list_m,item_list_w: item_list_w, image_index: image_objects.length-1, colour_children:[image_objects.length-1],colour2_children:[],value_children:[image_objects.length-1],  value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"});
+    defining_objects.push({name: name,item_list: item_list,item_indices_f: item_indices_f ,item_indices_m: item_indices_m,item_indices_w: item_indices_w, image_index: image_objects.length-1, colour_children:[image_objects.length-1],colour2_children:[],value_children:[image_objects.length-1],  value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00"});
 }
 
 function add_colour_children(name, colour_children){
@@ -335,6 +335,6 @@ const hairstyle_defining_list = [ //name, hair_front, hair_middle, hair_back
     
 const hairstyle_list = hairstyle_defining_list.map(value => value[0])  
 const hairstyle_list_u = ["buzzcut","straight short","curly short","wavy short","swept back","shaggy short","tight curls","shaggy medium","wavy bob","straight bob","curly bob","straight high pony","straight low pony","curly pony","straight long","wavy long","curly long","locs long", "locs half up"]
-const hairstyle_list_m = (hairstyle_list_u.concat(["none", "balding", "shaved","side part","small tight curls"])).map(value => hairstyle_list.indexOf(value))
-const hairstyle_list_f = (hairstyle_list_u.concat(["twin braids", "curly bun","wavy bun","straight bun","locs bun", "locs up", "straight up", "curly up", "curly flowing","straight flowing"])).map(value => hairstyle_list.indexOf(value))
-const hairstyle_list_w = ["wavy bun"].map(value => hairstyle_list.indexOf(value))
+const hairstyle_indices_m = (hairstyle_list_u.concat(["none", "balding", "shaved","side part","small tight curls"])).map(value => hairstyle_list.indexOf(value))
+const hairstyle_indices_f = (hairstyle_list_u.concat(["twin braids", "curly bun","wavy bun","straight bun","locs bun", "locs up", "straight up", "curly up", "curly flowing","straight flowing"])).map(value => hairstyle_list.indexOf(value))
+const hairstyle_indices_w = ["wavy bun"].map(value => hairstyle_list.indexOf(value))

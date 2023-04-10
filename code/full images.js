@@ -197,3 +197,6 @@ const hair_middle_numbers = hairstyle_defining_list.map(value => findNameMatch(i
 const hair_back_numbers = hairstyle_defining_list.map(value => findNameMatch(image_objects, "hair_back").item_list.indexOf(value[3]))
 
 const eyetype_list = remove_dups(eyetype_list_f.concat(eyetype_list_m))
+const eyetype_indices_m = eyetype_list_m.map(value => eyetype_list.indexOf(value))
+const eyetype_indices_f = eyetype_list_f.map(value => eyetype_list.indexOf(value))
+const eyetype_indices_w = eyetype_list_w.map(value => eyetype_list.indexOf(value))

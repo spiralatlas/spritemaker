@@ -352,7 +352,7 @@ document.addEventListener('alpine:init', () => {
         for (let i = 0; i < defining_objects.length; i += 1){
             remove_list = []
             if (!isWeirdBody)
-                remove_list = defining_objects[i].item_list_w
+                remove_list = defining_objects[i].item_indices_w
             if (["nose","head","ears","body"].includes(defining_objects[i].name)){
                 this.current_defining_objects[i].value_list = filteredItems(range(defining_objects[i].item_list.length),remove_list,0);
             }
@@ -373,16 +373,16 @@ document.addEventListener('alpine:init', () => {
         this.size = randomIndex(size_list,0);
         remove_list = [];
         if (!isWeirdBody)
-            remove_list = eyetype_list_w
+            remove_list = eyetype_indices_w
         switch(gender){
             case 0:
-                this.current_eyetype =filteredItems(range(eyetype_list.length),remove_list,0);  
+                this.current_eyetype =filteredItems(range(eyetype_list.length),remove_list,0)[0];  
                 break;
             case 1:
-                this.current_eyetype = filteredItems(eyetype_list_m,remove_list,0);
+                this.current_eyetype = filteredItems(eyetype_indices_m,remove_list,0)[0];
                 break;
             case 2:
-                this.current_eyetype = filteredItems(eyetype_list_f,remove_list,0);
+                this.current_eyetype = filteredItems(eyetype_indices_f,remove_list,0)[0];
                 break;          
         }  
     },
@@ -407,16 +407,16 @@ document.addEventListener('alpine:init', () => {
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
         let remove_list = []
         if (!isWeirdOutfit)
-            remove_list = hairstyle_list_w
+            remove_list = hairstyle_indices_w
         switch(gender){
             case 0:
                 this.current_hairstyle =filteredItems(range(hairstyle_list.length),remove_list,0)[0];  
                 break;
             case 1:
-                this.current_hairstyle = filteredItems(hairstyle_list_m,remove_list,0)[0];
+                this.current_hairstyle = filteredItems(hairstyle_indices_m,remove_list,0)[0];
                 break;
             case 2:
-                this.current_hairstyle = filteredItems(hairstyle_list_f,remove_list,0)[0];
+                this.current_hairstyle = filteredItems(hairstyle_indices_f,remove_list,0)[0];
                 break;          
         }  
         for (let i = 0; i < defining_objects.length; i += 1){
@@ -434,16 +434,16 @@ document.addEventListener('alpine:init', () => {
                 }
                 remove_list = []
                 if (!isWeirdOutfit)
-                    remove_list = defining_objects[i].item_list_w
+                    remove_list = defining_objects[i].item_indices_w
                 switch(gender){
                     case 0:
                         this.current_defining_objects[i].value_list = filteredItems(range(defining_objects[i].item_list.length),remove_list,prob);  
                         break;
                     case 1:
-                        this.current_defining_objects[i].value_list = filteredItems(defining_objects[i].item_list_m,remove_list,prob);  
+                        this.current_defining_objects[i].value_list = filteredItems(defining_objects[i].item_indices_m,remove_list,prob);  
                         break;
                     case 2:
-                        this.current_defining_objects[i].value_list = filteredItems(defining_objects[i].item_list_f,remove_list,prob);  
+                        this.current_defining_objects[i].value_list = filteredItems(defining_objects[i].item_indices_f,remove_list,prob);  
                         break;          
                 }   
                 if (defining_objects[i].name=="fringe"&& this.current_hairstyle<3){// bald/balding/shaved
