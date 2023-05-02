@@ -300,7 +300,10 @@ function fixSources(){
                 if (b.name!="eyes")
                     b.shadow_image.src  = loc_string+"_multiply_blue.png";//+colour_string(b.colour1)+".png";
                 if (highlight_list.includes(b.name))
-                    b.highlight_image.src  = loc_string+"_highlight.png";    
+                    b.highlight_image.src  = loc_string+"_highlight.png"; 
+                if (underlay_list.includes(b.name))
+                    if (current_loc!="eye patch")
+                        b.underlay_image.src  = loc_string+"_underlay.png";        
             }
         }
     }

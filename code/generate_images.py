@@ -176,14 +176,15 @@ cheeks_list_d = default_list(cheeks_list_u)
 complexion_list_u = ["none","slight lines", "freckles"]
 complexion_list_d = default_list(complexion_list_u)
 
-eyewear_list_u = ["none", "round glasses","spectacles"] 
+eyewear_list_u = ["none", "oblong glasses","square glasses","round glasses","spectacles","eye patch","sunglasses","coloured glasses"] 
 eyewear_list_f = eyewear_list_u
 eyewear_list_m = eyewear_list_u+["monocle"]
-eyewear_list_w = ["monocle","spectacles"]
+eyewear_list_w = ["monocle","spectacles","eye patch"]
 eyewear_list_d =  [eyewear_list_f,eyewear_list_m, eyewear_list_w]
 
-earrings_list_f = ["none","drop earrings", "stud","round earrings"]
-earrings_list_m = ["none",]
+earrings_list_u = ["none","small hoops","punk"]
+earrings_list_f = earrings_list_u+["stud","hoops", "drop earrings", "round earrings"]
+earrings_list_m = earrings_list_u+[]
 earrings_list_w = []
 earrings_list_d =  [earrings_list_f,earrings_list_m, earrings_list_w]
 
@@ -334,6 +335,7 @@ hat_back_dec_list = ["scarf"]
 hat_back_dec_list_d = default_list(hat_back_dec_list)
 
 highlight_list = ["fringe"]
+underlay_list = ["eyewear"]
 no_render_list = [["hat",["scarf"]],["hat_dec",["scarf"]],]
 
 default_box = "[0,0,314,1024]"
@@ -602,7 +604,10 @@ def process_image(name, location,type):
     if type =="eyes":
         save_string_overlay = save_string+"_overlay.png"
         img_overlay = Image.new("RGBA", (img_original.size[0], img_original.size[1]))
-        overlay_data = img_overlay.load() 
+        overlay_data = img_overlay.load()  
+    if type =="underlay":  
+        save_string_underlay = save_string+"_underlay.png"
+        img_underlay = Image.open(load_string+"_underlay.png")      
 
     highlight = hex_to_rgba("#FFF7CA")
     line_colour = hex_to_rgba("#5B3D47")
@@ -636,6 +641,8 @@ def process_image(name, location,type):
     img_base.save(save_string_base) 
     if type =="eyes":    
         img_overlay.save(save_string_overlay)
+    if type =="underlay":    
+        img_underlay.save(save_string_underlay)    
 
     if type =="highlight":  
         for y in range(img_highlight.size[1]):
@@ -690,6 +697,7 @@ def write_variables():
     content.write(list_string("hair_colours_weird",hair_colours_weird))
     content.write("\n")
     content.write(list_string("highlight_list",highlight_list))
+    content.write(list_string("underlay_list",underlay_list))
     content.write("const no_render_list = [")
     for i in range(len(no_render_list)):
         content.write("[\""+no_render_list[i][0]+"\",")
@@ -764,7 +772,9 @@ def process_portrait_part(obj):
                                 print(type)
                                 process_image(item, loc+"/"+type,"eyes") 
                 elif obj.name in highlight_list:     
-                    process_image(item, loc,"highlight")                 
+                    process_image(item, loc,"highlight")     
+                elif obj.name in underlay_list:     
+                    process_image(item, loc,"underlay")                     
                 else:    
                     process_image(item, loc,"portrait")
                 
@@ -812,7 +822,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["neckwear", "neckwear_front","neckwear_front2"]:
+        if c.name in ["eyewear"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
