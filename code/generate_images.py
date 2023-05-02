@@ -215,7 +215,7 @@ overshirt_list_w = []
 overshirt_list_d = [overshirt_list_f, overshirt_list_m,overshirt_list_w]
 overshirt_nosleeves_list = ["none"]
 
-overshirt_sleeve_list_u = ["sleeveless","long","short"]
+overshirt_sleeve_list_u = ["sleeveless","short","long"]
 overshirt_sleeve_list_f = overshirt_sleeve_list_u+[]
 overshirt_sleeve_list_m = overshirt_sleeve_list_u+[]
 overshirt_sleeve_list_w = []
@@ -225,14 +225,16 @@ bottom_list_f = ["none","empire skirt","split empire skirt","long skirt"]
 bottom_list_m = ["none","breeches","trousers"]
 bottom_list_w = ["empire skirt","split empire skirt","breeches"]
 bottom_list_d = [bottom_list_f, bottom_list_m, bottom_list_w]
-    
-neckwear_list_f = ["none", "beaded necklace","choker","jewelled necklace","beads",] 
-neckwear_list_m = ["none","cravat","tie","bow"]
-neckwear_list_w = ["bow"]
+
+neckwear_list_u = ["none", "bow", "bandanna", "scarf"]  
+neckwear_list_f = neckwear_list_u+[ "beaded necklace","choker","pendant","jewelled necklace","beads",] 
+neckwear_list_m = neckwear_list_u+["cravat","tie","bow tie"]
+neckwear_list_w = ["bow","bandanna"]
 neckwear_list_d = [neckwear_list_f, neckwear_list_m,neckwear_list_w]
 
-coat_list_f = ["none","medium cloak","dress jacket","wrap"]
-coat_list_m = ["none","short jacket","overcoat","jama"]  
+coat_list_u = ["none","medium cloak", "short jacket"]
+coat_list_f = coat_list_u+["dress jacket","wrap"]
+coat_list_m = coat_list_u+["business jacket","buttoned jacket","cool jacket", "overcoat","jama"]  
 coat_list_w = ["medium cloak","jama"]
 coat_list_d = [coat_list_f, coat_list_m, coat_list_w]
 coat_nosleeves_list = ["none", "wrap", "medium cloak"]
@@ -299,8 +301,14 @@ no_fill_list = ["mouth"] #lined items with no coloured fill
 
 hat_back_list = ["none","top hat","scarf","turban"]
 hat_back_list_d = default_list(hat_back_list)
-coat_back_list = ["none","medium cloak","wrap","overcoat","short jacket","dress jacket"] 
+coat_back_list = ["none","medium cloak","wrap","overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket"] 
 coat_back_list_d = default_list(coat_back_list) 
+
+neckwear_front_list = ["bow","bow tie", "bandanna"]
+neckwear_front_list_d = default_list(neckwear_front_list)
+
+neckwear_front2_list = [ "scarf"]
+neckwear_front2_list_d = default_list(neckwear_front2_list)
 
 wheelchair_bottom_list_d = bottom_list_d
 wheelchair_coat_list = ["none", "medium cloak","long jacket closed","dress jacket","jama"] 
@@ -383,10 +391,13 @@ add_item("neckwear_dec", "neckwear_dec_list_d", neckwear_dec_list_d, "clothes", 
 add_item("overshirt", "overshirt_list_d", overshirt_list_d, "clothes", default_box)
 add_item("overshirt_dec", "overshirt_dec_list_d", overshirt_dec_list_d, "clothes", default_box)
 add_item("top_collar", "top_collar_list_d", top_collar_list_d, "clothes/top", default_box)
+add_item("neckwear_front", "neckwear_front_list_d", neckwear_front_list_d, "clothes/neckwear", default_box)
 
 add_item("coat", "coat_list_d", coat_list_d, "clothes", default_box)
 add_item("coat_dec", "coat_dec_list_d", coat_dec_list_d, "clothes", default_box)
 add_item("chest", "chest_list_d", chest_list_d, "anatomy", default_box)
+add_item("neckwear_front2", "neckwear_front2_list_d", neckwear_front2_list_d, "clothes/neckwear", default_box)
+
 
 add_item("skull", "skull_list_d", skull_list_d, "anatomy", default_box)
 add_item("head", "head_list_d", head_list_d, "anatomy", default_box)
@@ -801,7 +812,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["overshirt"]:
+        if c.name in ["neckwear", "neckwear_front","neckwear_front2"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 

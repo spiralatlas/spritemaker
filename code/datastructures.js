@@ -123,7 +123,7 @@ function setVariables(data_object){
 
     if (coat_sleeves_obj.item>0||overshirt_sleeves_obj.item>0){//coat or overshirt have sleeves
         top_sleeves_obj.crop = [0,462,full_width,full_height]; //crop top off puffy sleeves
-        if (!["none", "short"].includes(findImageItem("coat_sleeves"))||!["none", "short"].includes(findImageItem("overshirt_sleeves")))  
+        if (coat_sleeves_obj.item>1||overshirt_sleeves_obj.item>1) //long sleeves
             top_sleeves_obj.crop = [0,654,full_width,full_height];}
 
     let hat_string = findImageItem("hat");

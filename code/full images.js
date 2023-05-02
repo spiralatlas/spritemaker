@@ -183,6 +183,8 @@ add_value_children("overshirt", ["overshirt_dec"]);
 add_colour2_children("overshirt", ["overshirt_dec"]);
 add_colour_children("overshirt", ["overshirt_sleeves"]);
 
+add_value_children("neckwear",["neckwear_front","neckwear_front2"])
+add_colour_children("neckwear",["neckwear_front","neckwear_front2"])
 //wheelchair
 add_value_children("wheelchair", ["wheelchair_back","wheelchair_back_dec","wheelchair_dec"]);
 add_colour_children("wheelchair", ["wheelchair_back"]);

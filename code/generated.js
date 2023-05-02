@@ -33,7 +33,7 @@ const defining_list = ["eyewear","neckwear","earrings","gloves","hat","wheelchai
 const hat_back_list_d = [["none","top hat","scarf","turban",],["none","top hat","scarf","turban",],[],];
 const hat_back_dec_list_d = [["scarf",],["scarf",],[],];
 const hair_back_list_d = [["none","balding","buzzcut","straight short","curly short","wavy short","straight side","swept back","shaggy short","tight curls short","tight curls medium","shaggy medium","curly bob","wavy bob","straight bob","locs bob","half up medium wavy","straight high pony","straight low pony","curly pony","bun","curly bun","wavy bun","locs bun","twin braids","straight long","wavy long","curly long","long locs","curly flowing","straight flowing","straight up","curly up","locs up",],["none","balding","buzzcut","straight short","curly short","wavy short","straight side","swept back","shaggy short","tight curls short","tight curls medium","shaggy medium","curly bob","wavy bob","straight bob","locs bob","half up medium wavy","straight high pony","straight low pony","curly pony","bun","curly bun","wavy bun","locs bun","twin braids","straight long","wavy long","curly long","long locs","curly flowing","straight flowing","straight up","curly up","locs up",],[],];
-const coat_back_list_d = [["none","medium cloak","wrap","overcoat","short jacket","dress jacket",],["none","medium cloak","wrap","overcoat","short jacket","dress jacket",],[],];
+const coat_back_list_d = [["none","medium cloak","wrap","overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket",],["none","medium cloak","wrap","overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket",],[],];
 const body_list_d = [["regular",],["regular",],[],];
 const leg_list_d = [["none","regular",],["none","regular",],[],];
 const socks_list_d = [["none","ankle high","mid calf","knee high","thigh high","tights",],["none","ankle high","mid calf",],[],];
@@ -42,18 +42,20 @@ const gloves_list_d = [["none","short gloves","medium gloves","bracelets",],["no
 const top_sleeve_list_d = [["sleeveless","short","long","puffy",],["sleeveless","short","long","puffy shirt","long shirt",],["puffy","puffy shirt",],];
 const top_list_d = [["none","vest","tee","chinese collar","turtleneck","bikini","square","boatneck","gathered","low vee",],["none","vest","tee","chinese collar","turtleneck","open shirt","button up","high collar shirt",],["high collar shirt",],];
 const top_dec_list_d = [["square","gathered","low vee",],["square","gathered","low vee",],[],];
-const overshirt_sleeve_list_d = [["sleeveless","long","short",],["sleeveless","long","short",],[],];
+const overshirt_sleeve_list_d = [["sleeveless","short","long",],["sleeveless","short","long",],[],];
 const coat_sleeve_list_d = [["sleeveless","short","scrunched","long","long blocky",],["sleeveless","short","scrunched","long","long blocky",],[],];
 const bottom_list_d = [["none","empire skirt","split empire skirt","long skirt",],["none","breeches","trousers",],["empire skirt","split empire skirt","breeches",],];
 const bottom_dec_list_d = [["split empire skirt","empire skirt",],["split empire skirt","empire skirt",],[],];
-const neckwear_list_d = [["none","beaded necklace","choker","jewelled necklace","beads",],["none","cravat","tie","bow",],["bow",],];
+const neckwear_list_d = [["none","bow","bandanna","scarf","beaded necklace","choker","pendant","jewelled necklace","beads",],["none","bow","bandanna","scarf","cravat","tie","bow tie",],["bow","bandanna",],];
 const neckwear_dec_list_d = [["jewelled necklace","beaded necklace",],["jewelled necklace","beaded necklace",],[],];
 const overshirt_list_d = [["none","button up vee","open shirt","vee","sweater",],["none","button up vee","open shirt","vee","sweater",],[],];
 const overshirt_dec_list_d = [["button up vee",],["button up vee",],[],];
 const top_collar_list_d = [["none",],["open shirt","button up","high collar shirt",],["none",],];
-const coat_list_d = [["none","medium cloak","dress jacket","wrap",],["none","short jacket","overcoat","jama",],["medium cloak","jama",],];
+const neckwear_front_list_d = [["bow","bow tie","bandanna",],["bow","bow tie","bandanna",],[],];
+const coat_list_d = [["none","medium cloak","short jacket","dress jacket","wrap",],["none","medium cloak","short jacket","business jacket","buttoned jacket","cool jacket","overcoat","jama",],["medium cloak","jama",],];
 const coat_dec_list_d = [["dress jacket","jama",],["dress jacket","jama",],[],];
 const chest_list_d = [["none","small","medium","big",],["none",],["none",],];
+const neckwear_front2_list_d = [["scarf",],["scarf",],[],];
 const skull_list_d = [["regular",],["regular",],[],];
 const head_list_d = [["pointed","medium","rectangular","round",],["pointed","medium","rectangular","round",],[],];
 const hair_middle_list_d = [["none","shaved","balding","short","long","long shadowed",],["none","shaved","balding","short","long","long shadowed",],[],];
@@ -113,11 +115,13 @@ add_image_object("overshirt",overshirt_list_d,"clothes",[0,0,314,1024])
 add_defining_object("overshirt",overshirt_list_d)
 add_image_object("overshirt_dec",overshirt_dec_list_d,"clothes",[0,0,314,1024])
 add_image_object("top_collar",top_collar_list_d,"clothes/top",[0,0,314,1024])
+add_image_object("neckwear_front",neckwear_front_list_d,"clothes/neckwear",[0,0,314,1024])
 add_image_object("coat",coat_list_d,"clothes",[0,0,314,1024])
 add_defining_object("coat",coat_list_d)
 add_image_object("coat_dec",coat_dec_list_d,"clothes",[0,0,314,1024])
 add_image_object("chest",chest_list_d,"anatomy",[0,0,314,1024])
 add_defining_object("chest",chest_list_d)
+add_image_object("neckwear_front2",neckwear_front2_list_d,"clothes/neckwear",[0,0,314,1024])
 add_image_object("skull",skull_list_d,"anatomy",[0,0,314,1024])
 add_image_object("head",head_list_d,"anatomy",[0,0,314,1024])
 add_defining_object("head",head_list_d)
