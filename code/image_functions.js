@@ -368,6 +368,8 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
         if (new_width >obj.crop[0]+obj.crop[2])
             off_ctx.clearRect(obj.crop[0]+obj.crop[2], 0, parseInt(obj.scale*width-(obj.crop[0]+obj.crop[2])), new_height);       
       
+        //removing masks
+        
         ctx.drawImage(off_canvas,sourceX,sourceY,new_width,new_height, new_xpos, new_ypos,new_width,new_height);
     }
     if (obj.overlay_image.src!=""){//not coloured or anything just displayed straight
