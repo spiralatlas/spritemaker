@@ -129,7 +129,7 @@ function getHeightOffset(name){
     }  */ 
     return current_offset;    
 }
-const head_offset_list = expression_list.concat(["skull","head","nose","nose_front","hat","hat_dec","hat_back","hat_back_dec","ears","complexion", "hair_middle", "hair_front","hair_back","fringe","facial_hair", "eyewear","earrings","earrings_dec"]);
+const head_offset_list = expression_list.concat(["skull","head","nose","nose_front","hat_front","hat_middle","hat_front_dec","hat_back","hat_back_dec","ears","complexion", "hair_middle", "hair_front","hair_back","fringe","facial_hair", "eyewear","earrings","earrings_dec"]);
 
 const clothing_names = [];
 const accessory_names = [];
@@ -155,9 +155,9 @@ add_colour_children("fringe", ["hair_middle", "hair_front","hair_back","facial_h
 
 //accessories
 
-add_value_children("hat", ["hat_back","hat_back_dec","hat_dec"]);
-add_colour_children("hat", ["hat_back"]);
-add_colour2_children("hat", ["hat_back_dec","hat_dec"]);
+add_value_children("hat", ["hat_back","hat_back_dec","hat_front_dec", "hat_front","hat_middle"]);
+add_colour_children("hat", ["hat_back","hat_middle","hat_front"]);
+add_colour2_children("hat", ["hat_back_dec","hat_front_dec"]);
 
 add_value_children("earrings", ["earrings_dec"]);
 add_colour2_children("earrings", ["earrings_dec"]);

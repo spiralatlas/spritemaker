@@ -246,10 +246,19 @@ coat_sleeve_list_m = coat_sleeve_list_u+[]
 coat_sleeve_list_w = []
 coat_sleeve_list_d = [coat_sleeve_list_f, coat_sleeve_list_m, coat_sleeve_list_w]
 
-hat_list_f = ["none","scarf","beads"]
-hat_list_m = ["none","turban","top hat"]
-hat_list_w = ["top hat","beads",]
-hat_list_d = [hat_list_f, hat_list_m, hat_list_w]
+hat_middle_list_u =["none","cat ears","bandanna",]
+hat_middle_list_f = hat_middle_list_u+["scarf","beads","head band","side bow","bow",]
+hat_middle_list_m = hat_middle_list_u+[]
+hat_middle_list_w = ["beads","cat ears",]
+hat_middle_list_d = [hat_middle_list_f, hat_middle_list_m, hat_middle_list_w]
+
+hat_front_list_u =["none","witch hat","broad hat","beanie"]
+hat_front_list_f = hat_front_list_u+["bonnet","hijab","flower","flower crown"]
+hat_front_list_m = hat_front_list_u+["top hat","cap","bowler","fedora","turban"]
+hat_front_list_w = ["top hat","witch hat","bowler","flower crown"]
+hat_front_list_d = [hat_front_list_f, hat_front_list_m, hat_front_list_w]
+
+hat_list_d = [remove_dups(hat_middle_list_f+hat_front_list_f),remove_dups(hat_middle_list_m+hat_front_list_m),remove_dups(hat_middle_list_w+hat_front_list_w)]
 
 socks_list_u = ["none","ankle high","mid calf"]
 socks_list_m = socks_list_u  
@@ -289,7 +298,7 @@ facial_hair_list_render = [f for f in facial_hair_list_m if f!="stubble"]
 skin_list_defining = ["body","nose","mouth","eyebrows","complexion","ears"]#same colour as head
 skin_list = skin_list_defining + ["skull","legs","wheelchair_legs","nose_front"]
 expression_list = ["mouth","eyebrows","cheeks","eyes"]
-accessory_list = ["eyewear","neckwear", "earrings", "gloves","hat",]
+accessory_list = ["eyewear","neckwear", "earrings", "gloves",]
 outfit_list = ["wheelchair", "bottom","top", "overshirt", "coat", "socks","shoes"]
 has_sleeves_list = ["top","overshirt","coat"]
 sleeve_list = [x +"_sleeves" for x in has_sleeves_list]
@@ -300,7 +309,7 @@ defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_de
 no_chest_coat_list = [ "robe","robe hood",  "medium cloak", "medium cloak hood", "long cloak", "long cloak hood","wrap"] #clothes where the chest doesn't show
 no_fill_list = ["mouth"] #lined items with no coloured fill
 
-hat_back_list = ["none","top hat","scarf","turban"]
+hat_back_list = ["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban"]
 hat_back_list_d = default_list(hat_back_list)
 coat_back_list = ["none","medium cloak","wrap","overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket"] 
 coat_back_list_d = default_list(coat_back_list) 
@@ -329,14 +338,14 @@ bottom_dec_list = ["split empire skirt","empire skirt"]
 bottom_dec_list_d = default_list(bottom_dec_list)
 coat_dec_list = ["dress jacket","jama"]
 coat_dec_list_d = default_list(coat_dec_list)
-hat_dec_list = ["top hat"]
-hat_dec_list_d = default_list(hat_dec_list)
+hat_front_dec_list = ["bowler","broad hat","fedora","witch hat","top hat"]
+hat_front_dec_list_d = default_list(hat_front_dec_list)
 hat_back_dec_list = ["scarf"]
 hat_back_dec_list_d = default_list(hat_back_dec_list)
 
 highlight_list = ["fringe"]
 underlay_list = ["eyewear"]
-no_render_list = [["hat",["scarf"]],["hat_dec",["scarf"]],]
+no_render_list = [["hat_middle",["scarf"]],["hat_front_dec",["scarf"]],]
 
 default_box = "[0,0,314,1024]"
 ###################### More technical stuff from here on
@@ -419,9 +428,10 @@ add_item("facial_hair", "facial_hair_list_d", facial_hair_list_d, "hair", defaul
 add_item("nose_front", "nose_front_list_d", nose_list_d, "face/nose", default_box)
 add_item("hair_front", "hair_front_list_d", hair_front_list_d, "hair", default_box)
 add_item("eyewear", "eyewear_list_d", eyewear_list_d, "clothes", default_box)
+add_item("hat_middle", "hat_middle_list_d", hat_middle_list_d, "clothes/hat", default_box)
 add_item("fringe", "fringe_list_d", fringe_list_d, "hair", default_box)
-add_item("hat", "hat_list_d", hat_list_d, "clothes", default_box)
-add_item("hat_dec", "hat_dec_list_d", hat_dec_list_d, "clothes", default_box)
+add_item("hat_front", "hat_front_list_d", hat_front_list_d, "clothes/hat", default_box)
+add_item("hat_front_dec", "hat_front_dec_list_d", hat_front_dec_list_d, "clothes/hat", default_box)
 
 add_item("wheelchair", "wheelchair_list_d", wheelchair_list_d, "wheelchair", default_box)
 add_item("wheelchair_dec", "wheelchair_list_d", wheelchair_list_d, "wheelchair", default_box)
@@ -661,13 +671,14 @@ def list_string(listname, list):
     # Creates a string to define a list for generated.js
     return "const "+listname + " = "+simple_list_string(list)+";\n"
 
-def name_string(obj):
-    s = "const "+obj.listname + " = ["
-    for i in [0,1,2]:
-        s+=simple_list_string(obj.list_list[i])
+def name_string(name, list_list):
+    #create a line of javascript code defining this list of lists
+    s = "const "+name + " = ["
+    for i in range(len(list_list)):
+        s+=simple_list_string(list_list[i])
         s+=","    
     s+="];\n"
-    return s    
+    return s 
 
 colourlist_list_string = "const colourlist_list = ["
 
@@ -704,11 +715,7 @@ def write_variables():
         content.write(simple_list_string(no_render_list[i][1]))
         content.write("],")    
     content.write("];\n")
-    content.write("const scheme_list = [")
-    for i in range(len(scheme_list)):
-        content.write(simple_list_string(scheme_list[i]))
-        content.write(",")
-    content.write("];\n")
+    content.write(name_string("scheme_list",scheme_list))
     content.write(list_string("no_fill_list", no_fill_list, ))  
     content.write(list_string("pattern_list",pattern_list))    
     content.write(list_string("skin_list", skin_list))  
@@ -720,22 +727,23 @@ def write_variables():
     content.write(list_string("overshirt_nosleeves_list", overshirt_nosleeves_list)) 
     content.write(list_string("coat_nosleeves_list", coat_nosleeves_list)) 
     content.write(list_string("no_chest_coat_list", no_chest_coat_list)) 
+    content.write(name_string("hat_list",hat_list_d))
     content.write(list_string("expression_list", expression_list))   
     content.write(list_string("outfit_list", outfit_list)) 
     content.write(list_string("has_sleeves_list", has_sleeves_list)) 
     content.write(list_string("sleeve_list", sleeve_list)) 
-    content.write(list_string("accessory_list", accessory_list)) 
+    content.write(list_string("accessory_list", accessory_list+["hat"])) 
     content.write(list_string("defining_list", defining_list)) 
     content.write("\n")   
     for c in closet:
         if not (c.name in ["wheelchair_back","wheelchair_back_dec","wheelchair_dec",]):
-            content.write(name_string(c))
+            content.write(name_string(c.listname, c.list_list))
     content.write("\n")
     for c in closet:
         content.write("add_image_object(\""+c.name+"\","+ c.listname+",\""+c.location+"\","+c.box+")\n")
         if c.name in defining_list:
             content.write("add_defining_object(\""+c.name+"\","+ c.listname+")\n")
-
+    content.write("add_defining_object(\"hat\",hat_list)\n")
     content.write("\n")    
     content.close()
 
@@ -822,7 +830,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["eyewear"]:
+        if c.name in ["hat_middle", "hat_hijab","hat_back","hat_front","hat_front_dec"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 

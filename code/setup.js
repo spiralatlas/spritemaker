@@ -42,8 +42,6 @@ const editing_list =["Colouring","Body/Hair","Clothes", "Accessory", "Expression
 
 const panel_list = ["Neutral", "Happy", "Sad", "Angry","Surprised","Embarassed","Scared",'Annoyed',"Wry"];
 
-const back_list = ["Hat","Coat"]; //have a back
-
 let canvas;
 let canvas_preview;
 let ctx_preview;
@@ -338,3 +336,4 @@ const hairstyle_list_u = ["buzzcut","straight short","curly short","wavy short",
 const hairstyle_indices_m = (hairstyle_list_u.concat(["none", "balding", "shaved","side part","small tight curls"])).map(value => hairstyle_list.indexOf(value))
 const hairstyle_indices_f = (hairstyle_list_u.concat(["twin braids", "curly bun","wavy bun","straight bun","locs bun", "locs up", "straight up", "curly up", "curly flowing","straight flowing"])).map(value => hairstyle_list.indexOf(value))
 const hairstyle_indices_w = ["wavy bun"].map(value => hairstyle_list.indexOf(value))
+
