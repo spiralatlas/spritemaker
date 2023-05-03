@@ -127,7 +127,8 @@ function setVariables(data_object){
             top_sleeves_obj.crop = [0,654,full_width,full_height];}
 
     let hat_string = findImageItem("hat");
-    if (hat_string=="top hat"){
+    //
+    if (["top hat","broad hat","bowler","fedora","witch hat",].includes(hat_string)){
         crop_box = [0,144+getHeightOffset(hair_front_obj.name),300,700];
         hair_front_obj.crop = crop_box;
         hair_back_obj.crop = crop_box;
