@@ -172,7 +172,7 @@ add_colour_children("coat", ["coat_back","wheelchair_coat","coat_sleeves"]);
 add_colour2_children("coat", ["coat_dec"]);
 
 add_value_children("bottom", ["wheelchair_bottom","wheelchair_bottom_dec","bottom_dec",]);
-add_colour_children("bottom", ["wheelchair_bottom"]);
+add_colour_children("bottom", ["wheelchair_bottom","waistline"]);
 add_colour2_children("bottom", ["bottom_dec","wheelchair_bottom_dec"]);
 
 add_value_children("top", ["top_collar","top_dec"]);

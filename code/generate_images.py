@@ -227,6 +227,12 @@ bottom_list_m = ["none","breeches","trousers"]
 bottom_list_w = ["empire skirt","split empire skirt","breeches"]
 bottom_list_d = [bottom_list_f, bottom_list_m, bottom_list_w]
 
+waistline_list_u=["none","low","high"]
+waistline_list_f = waistline_list_u+[]
+waistline_list_m = waistline_list_u+[]
+waistline_list_w = []
+waistline_list_d = [waistline_list_f,waistline_list_m,waistline_list_w]
+
 neckwear_list_u = ["none", "bow", "bandanna", "scarf"]  
 neckwear_list_f = neckwear_list_u+[ "beaded necklace","choker","pendant","jewelled necklace","beads",] 
 neckwear_list_m = neckwear_list_u+["cravat","tie","bow tie"]
@@ -302,7 +308,7 @@ accessory_list = ["eyewear","neckwear", "earrings", "gloves",]
 outfit_list = ["wheelchair", "bottom","top", "overshirt", "coat", "socks","shoes"]
 has_sleeves_list = ["top","overshirt","coat"]
 sleeve_list = [x +"_sleeves" for x in has_sleeves_list]
-defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","facial_hair", "head","chest"])
+defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","facial_hair", "head","chest","waistline"])
 
 #extra info
 
@@ -396,6 +402,7 @@ add_item("coat_sleeves", "coat_sleeve_list_d", coat_sleeve_list_d, "clothes/coat
 
 add_item("bottom", "bottom_list_d", bottom_list_d, "clothes", default_box)
 add_item("bottom_dec", "bottom_dec_list_d", bottom_dec_list_d, "clothes", default_box)
+add_item("waistline", "waistline_list_d", waistline_list_d, "clothes", default_box)
 add_item("neckwear", "neckwear_list_d", neckwear_list_d, "clothes", default_box)
 add_item("neckwear_dec", "neckwear_dec_list_d", neckwear_dec_list_d, "clothes", default_box)
 
@@ -830,7 +837,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["hat_middle", "hat_hijab","hat_back","hat_front","hat_front_dec"]:
+        if c.name in ["waistline"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
@@ -841,6 +848,3 @@ def runStuff():
     #make_coat()
 
 runStuff()
-
-##### TEMP FUNCTIONS
-##########

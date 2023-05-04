@@ -101,6 +101,7 @@
               <div class="row row-cols-2 gy-3">
                 <div class="col"><div x-data="dropdown('Style','current_clothing','clothing')" x-bind="dropbtn" ></div></div>
                 <div class="col" x-show="has_sleeves_list.includes(clothing_names[$store.alpineData.current_clothing])"><div x-data="dropdown('Sleeves','current_clothing','sleeves')" x-bind="dropbtn" ></div></div>
+                <div class="col" x-show="['bottom'].includes(clothing_names[$store.alpineData.current_clothing])"><div x-data="dropdown('Waistline','waistline','body')" x-bind="dropbtn" ></div></div>
               </div>
               <div class="row row-cols-2 gy-3">
 

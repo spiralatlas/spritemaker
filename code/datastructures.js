@@ -194,7 +194,7 @@ document.addEventListener('alpine:init', () => {
                         buttonName = objName+"[0]";
                         value = "listOf(index)";
                 }
-                    break;       
+                    break;          
                 case 'accessory':
                     obj_index = 'findDefiningIndex(accessory_names[$store.alpineData.current_accessory])';
                     objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list';
@@ -295,6 +295,7 @@ document.addEventListener('alpine:init', () => {
         {"name":"top_sleeves","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#901E3B","colour2":"#4C6BC2"},
         {"name":"top","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#901E3B","colour2":"#4C6BC2"},
         {"name":"bottom","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#FAE181","colour2":"#FAF1CF"},
+        {"name":"waistline","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#FAE181","colour2":"#FAF1CF"},
         {"name":"overshirt_sleeves","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#901E3B","colour2":"#4C6BC2"},
         {"name":"overshirt","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#4C6BC2","colour2":"#FAE181"},
         {"name":"neckwear","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#43A92D","colour2":"#43A92D"},
