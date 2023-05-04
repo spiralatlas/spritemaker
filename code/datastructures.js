@@ -428,7 +428,9 @@ document.addEventListener('alpine:init', () => {
                 if (accessory_list.includes(defining_objects[i].name)|| defining_objects[i].name=="wheelchair"|| defining_objects[i].name=="facial_hair")//accessories less common
                     prob = 0.5;
                 else{
-                    if (["top","bottom","fringe"].includes(defining_objects[i].name)){
+                    if (["top","bottom","fringe","waistline"].includes(defining_objects[i].name)){
+                        if (testing)
+                            console.log("name "+defining_objects[i].name)
                         prob = -1;
                     }
                     else

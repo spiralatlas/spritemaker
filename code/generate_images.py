@@ -222,15 +222,15 @@ overshirt_sleeve_list_m = overshirt_sleeve_list_u+[]
 overshirt_sleeve_list_w = []
 overshirt_sleeve_list_d = [overshirt_sleeve_list_f, overshirt_sleeve_list_m, overshirt_sleeve_list_w]
 
-bottom_list_f = ["none","empire skirt","split empire skirt","long skirt"]
-bottom_list_m = ["none","breeches","trousers"]
-bottom_list_w = ["empire skirt","split empire skirt","breeches"]
+bottom_list_f = ["none","briefs","short skirt","medium skirt","long skirt","kilt","short kilt","tube skirt","briefs"]
+bottom_list_m = ["none","breeches","trousers","shorts"]
+bottom_list_w = ["breeches","tube skirt"]
 bottom_list_d = [bottom_list_f, bottom_list_m, bottom_list_w]
 
-waistline_list_u=["none","low","high"]
-waistline_list_f = waistline_list_u+[]
-waistline_list_m = waistline_list_u+[]
-waistline_list_w = []
+waistline_list_u=["none","gathered","button fly"]
+waistline_list_f = waistline_list_u+["low","high","empire"]
+waistline_list_m = waistline_list_u+["fall front","overalls"]
+waistline_list_w = ["fall front","empire"]
 waistline_list_d = [waistline_list_f,waistline_list_m,waistline_list_w]
 
 neckwear_list_u = ["none", "bow", "bandanna", "scarf"]  
@@ -252,8 +252,8 @@ coat_sleeve_list_m = coat_sleeve_list_u+[]
 coat_sleeve_list_w = []
 coat_sleeve_list_d = [coat_sleeve_list_f, coat_sleeve_list_m, coat_sleeve_list_w]
 
-hat_middle_list_u =["none","cat ears","bandanna",]
-hat_middle_list_f = hat_middle_list_u+["scarf","beads","head band","side bow","bow",]
+hat_middle_list_u =["none","cat ears",]
+hat_middle_list_f = hat_middle_list_u+["scarf","beads","head band","side bow","bow","bandanna",]
 hat_middle_list_m = hat_middle_list_u+[]
 hat_middle_list_w = ["beads","cat ears",]
 hat_middle_list_d = [hat_middle_list_f, hat_middle_list_m, hat_middle_list_w]
@@ -837,7 +837,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["waistline"]:
+        if c.name in ["waistline","bottom"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
