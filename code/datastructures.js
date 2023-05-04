@@ -126,8 +126,8 @@ function setVariables(data_object){
         if (coat_sleeves_obj.item>1||overshirt_sleeves_obj.item>1) //long sleeves
             top_sleeves_obj.crop = [0,654,full_width,full_height];}
 
-    let hat_string = findImageItem("hat");
-    //
+    let hat_string = findImageItem("hat_front");
+    /* cropping broken
     if (["top hat","broad hat","bowler","fedora","witch hat",].includes(hat_string)){
         crop_box = [0,144+getHeightOffset(hair_front_obj.name),300,700];
         hair_front_obj.crop = crop_box;
@@ -137,7 +137,7 @@ function setVariables(data_object){
         crop_box =[0,137+getHeightOffset(hair_front_obj.name),300,700];
         hair_front_obj.crop = crop_box;
         hair_back_obj.crop = crop_box;
-    }   
+    }  */ 
     
     
 
@@ -422,11 +422,15 @@ document.addEventListener('alpine:init', () => {
                 break;          
         }  
         for (let i = 0; i < defining_objects.length; i += 1){
-            this_list = outfit_list.concat(accessory_list).concat(sleeve_list).concat(["fringe","facial_hair"])
+            this_list = outfit_list.concat(accessory_list).concat(sleeve_list).concat(["fringe","facial_hair","waistline"])
             if (this_list.includes(defining_objects[i].name)) {
                 var prob;
-                if (accessory_list.includes(defining_objects[i].name)|| defining_objects[i].name=="wheelchair"|| defining_objects[i].name=="facial_hair")//accessories less common
-                    prob = 0.5;
+                if (accessory_list.includes(defining_objects[i].name)|| defining_objects[i].name=="wheelchair"|| defining_objects[i].name=="facial_hair"){//accessories less common
+                    if (defining_objects[i].name=="gloves") //gloves super rare
+                        prob = 0.9
+                    else
+                        prob = 0.5;
+                }
                 else{
                     if (["top","bottom","fringe","waistline"].includes(defining_objects[i].name)){
                         if (testing)
