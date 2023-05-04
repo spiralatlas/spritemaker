@@ -190,7 +190,7 @@ earrings_list_d =  [earrings_list_f,earrings_list_m, earrings_list_w]
 
 gloves_list_f = ["none", "short gloves", "medium gloves", "bracelets"]
 gloves_list_m = ["none", "short gloves"]
-gloves_list_w = ["none",]
+gloves_list_w = []
 gloves_list_d = [gloves_list_f,gloves_list_m,gloves_list_w]
 
 top_list_u = ["none","vest","tee", "chinese collar","turtleneck" ]
@@ -222,9 +222,10 @@ overshirt_sleeve_list_m = overshirt_sleeve_list_u+[]
 overshirt_sleeve_list_w = []
 overshirt_sleeve_list_d = [overshirt_sleeve_list_f, overshirt_sleeve_list_m, overshirt_sleeve_list_w]
 
-bottom_list_f = ["none","briefs","short skirt","medium skirt","long skirt","kilt","short kilt","tube skirt","briefs"]
-bottom_list_m = ["none","breeches","trousers","shorts"]
-bottom_list_w = ["breeches","tube skirt"]
+bottom_list_u = ["none","briefs",]
+bottom_list_f = bottom_list_u+["short skirt","medium skirt","long skirt","kilt","short kilt","tube skirt","briefs"]
+bottom_list_m = bottom_list_u+["breeches","trousers","shorts"]
+bottom_list_w = ["breeches","tube skirt","briefs"]
 bottom_list_d = [bottom_list_f, bottom_list_m, bottom_list_w]
 
 waistline_list_u=["none","gathered","button fly"]

@@ -426,15 +426,10 @@ document.addEventListener('alpine:init', () => {
             if (this_list.includes(defining_objects[i].name)) {
                 var prob;
                 if (accessory_list.includes(defining_objects[i].name)|| defining_objects[i].name=="wheelchair"|| defining_objects[i].name=="facial_hair"){//accessories less common
-                    if (defining_objects[i].name=="gloves") //gloves super rare
-                        prob = 0.9
-                    else
-                        prob = 0.5;
+                    prob = 0.5;
                 }
                 else{
                     if (["top","bottom","fringe","waistline"].includes(defining_objects[i].name)){
-                        if (testing)
-                            console.log("name "+defining_objects[i].name)
                         prob = -1;
                     }
                     else
@@ -457,6 +452,9 @@ document.addEventListener('alpine:init', () => {
                 if (defining_objects[i].name=="fringe"&& this.current_hairstyle<3){// bald/balding/shaved
                     this.current_defining_objects[i].value_list = listOf(0);
                 } 
+                /*if (defining_objects[i].name=="neckwear"&& this.current_hairstyle<3){// bald/balding/shaved
+                    this.current_defining_objects[i].value_list = listOf(0);
+                } Want to remove ugly ties but it's troublesome */ 
                 if (["wheelchair"].includes(defining_objects[i].name))//just while fixing clothes 
                     this.current_defining_objects[i].value_list = listOf(0);  
             }
