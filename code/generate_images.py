@@ -190,7 +190,7 @@ earrings_list_w = []
 earrings_list_d =  [earrings_list_f,earrings_list_m, earrings_list_w]
 
 gloves_list_f = ["none", "short gloves", "medium gloves", "bracelets"]
-gloves_list_m = ["none", "short gloves"]
+gloves_list_m = ["none", "short gloves","fingerless"]
 gloves_list_w = []
 gloves_list_d = [gloves_list_f,gloves_list_m,gloves_list_w]
 
@@ -839,7 +839,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["shoes"]:
+        if c.name in ["gloves"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
