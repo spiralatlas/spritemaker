@@ -146,8 +146,9 @@ head_list_u = ["pointed","medium","rectangular","round"]
 head_list_d = default_list(head_list_u)
 skull_list = ["regular"]
 skull_list_d = default_list(skull_list)
-ear_list = ["regular"]
-ear_list_d = default_list(ear_list)
+ear_list_u = ["none","regular","pointed","very pointed"]
+ear_list_w = ["none","pointed","very pointed"]
+ear_list_d = [ear_list_u,ear_list_u,ear_list_w]
 body_list = ["regular"]
 body_list_d = default_list(body_list)
 leg_list_d = default_list(["none"]+body_list)
@@ -838,7 +839,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in []:
+        if c.name in ["ears"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
