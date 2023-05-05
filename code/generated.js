@@ -26,11 +26,11 @@ const coat_nosleeves_list = ["none","wrap","medium cloak",];
 const no_chest_coat_list = ["robe","robe hood","medium cloak","medium cloak hood","long cloak","long cloak hood","wrap",];
 const hat_list = [["none","cat ears","scarf","beads","head band","side bow","bow","bandanna","witch hat","broad hat","beanie","bonnet","hijab","flower","flower crown",],["none","cat ears","witch hat","broad hat","beanie","top hat","cap","bowler","fedora","turban",],["beads","cat ears","top hat","witch hat","bowler","flower crown",],];
 const expression_list = ["mouth","eyebrows","cheeks","eyes",];
-const outfit_list = ["wheelchair","bottom","top","overshirt","coat","socks","shoes",];
+const outfit_list = ["bottom","top","overshirt","coat","socks","shoes",];
 const has_sleeves_list = ["top","overshirt","coat",];
 const sleeve_list = ["top_sleeves","overshirt_sleeves","coat_sleeves",];
 const accessory_list = ["eyewear","neckwear","earrings","gloves","hat",];
-const defining_list = ["eyewear","neckwear","earrings","gloves","wheelchair","bottom","top","overshirt","coat","socks","shoes","top_sleeves","overshirt_sleeves","coat_sleeves","body","nose","mouth","eyebrows","complexion","ears","cheeks","eyes","fringe","facial_hair","head","chest","waistline",];
+const defining_list = ["eyewear","neckwear","earrings","gloves","bottom","top","overshirt","coat","socks","shoes","top_sleeves","overshirt_sleeves","coat_sleeves","body","nose","mouth","eyebrows","complexion","ears","cheeks","eyes","fringe","facial_hair","head","chest","waistline","wheelchair",];
 
 const hat_back_list_d = [["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hijab",],["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hijab",],[],];
 const hat_back_dec_list_d = [["scarf",],["scarf",],[],];

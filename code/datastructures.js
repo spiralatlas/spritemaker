@@ -355,7 +355,7 @@ document.addEventListener('alpine:init', () => {
             remove_list = []
             if (!isWeirdBody)
                 remove_list = defining_objects[i].item_indices_w
-            if (["nose","head","ears","body"].includes(defining_objects[i].name)){
+            if (["nose","head","ears","body","complexion"].includes(defining_objects[i].name)){
                 this.current_defining_objects[i].value_list = filteredItems(range(defining_objects[i].item_list.length),remove_list,0);
             }
             if ("chest"==defining_objects[i].name){

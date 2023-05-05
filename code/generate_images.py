@@ -306,10 +306,10 @@ skin_list_defining = ["body","nose","mouth","eyebrows","complexion","ears"]#same
 skin_list = skin_list_defining + ["skull","legs","wheelchair_legs","nose_front"]
 expression_list = ["mouth","eyebrows","cheeks","eyes"]
 accessory_list = ["eyewear","neckwear", "earrings", "gloves",]
-outfit_list = ["wheelchair", "bottom","top", "overshirt", "coat", "socks","shoes"]
+outfit_list = [ "bottom","top", "overshirt", "coat", "socks","shoes"]#"wheelchair",
 has_sleeves_list = ["top","overshirt","coat"]
 sleeve_list = [x +"_sleeves" for x in has_sleeves_list]
-defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","facial_hair", "head","chest","waistline"])
+defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","facial_hair", "head","chest","waistline","wheelchair"])
 
 #extra info
 
