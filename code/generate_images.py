@@ -254,16 +254,16 @@ coat_sleeve_list_m = coat_sleeve_list_u+[]
 coat_sleeve_list_w = []
 coat_sleeve_list_d = [coat_sleeve_list_f, coat_sleeve_list_m, coat_sleeve_list_w]
 
-hat_middle_list_u =["none","cat ears",]
-hat_middle_list_f = hat_middle_list_u+["scarf","beads","head band","side bow","bow","bandanna",]
-hat_middle_list_m = hat_middle_list_u+[]
-hat_middle_list_w = ["beads","cat ears",]
+hat_middle_list_u =["none","cat ears","curled horns","pointed horns",]
+hat_middle_list_f = hat_middle_list_u+["scarf","beads","head band","side bow","bow","tiara"]
+hat_middle_list_m = hat_middle_list_u+["sweat band"]
+hat_middle_list_w = ["beads","cat ears","curled horns","pointed horns","tiara"]
 hat_middle_list_d = [hat_middle_list_f, hat_middle_list_m, hat_middle_list_w]
 
-hat_front_list_u =["none","witch hat","broad hat","beanie"]
-hat_front_list_f = hat_front_list_u+["bonnet","hijab","flower","flower crown"]
+hat_front_list_u =["none","witch hat","broad hat","beanie","hood","crown"]
+hat_front_list_f = hat_front_list_u+["bonnet","hijab","flower","flower crown","bandanna",]
 hat_front_list_m = hat_front_list_u+["top hat","cap","bowler","fedora","turban"]
-hat_front_list_w = ["top hat","witch hat","bowler","flower crown"]
+hat_front_list_w = ["top hat","witch hat","bowler","flower crown","crown"]
 hat_front_list_d = [hat_front_list_f, hat_front_list_m, hat_front_list_w]
 
 hat_list_d = [remove_dups(hat_middle_list_f+hat_front_list_f),remove_dups(hat_middle_list_m+hat_front_list_m),remove_dups(hat_middle_list_w+hat_front_list_w)]
@@ -317,7 +317,7 @@ defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_de
 no_chest_coat_list = [ "robe","robe hood",  "medium cloak", "medium cloak hood", "long cloak", "long cloak hood","wrap"] #clothes where the chest doesn't show
 no_fill_list = ["mouth"] #lined items with no coloured fill
 
-hat_back_list = ["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hijab"]
+hat_back_list = ["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hijab","hood"]
 hat_back_list_d = default_list(hat_back_list)
 coat_back_list = ["none","medium cloak","wrap","overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket"] 
 coat_back_list_d = default_list(coat_back_list) 
@@ -346,7 +346,7 @@ bottom_dec_list = ["split empire skirt","empire skirt"]
 bottom_dec_list_d = default_list(bottom_dec_list)
 coat_dec_list = ["dress jacket","jama"]
 coat_dec_list_d = default_list(coat_dec_list)
-hat_front_dec_list = ["bowler","broad hat","fedora","witch hat","top hat"]
+hat_front_dec_list = ["bowler","broad hat","fedora","witch hat","top hat","crown"]
 hat_front_dec_list_d = default_list(hat_front_dec_list)
 hat_back_dec_list = ["scarf"]
 hat_back_dec_list_d = default_list(hat_back_dec_list)
@@ -839,7 +839,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["gloves"]:
+        if c.name in ["hat_middle","hat_front","hat_front_dec","hat_back"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
