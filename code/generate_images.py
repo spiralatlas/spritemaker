@@ -276,7 +276,7 @@ socks_list_d = [socks_list_f, socks_list_m, socks_list_w]
 
 shoes_list_u = ["none","sandals","slip ons","sneakers"]
 shoes_list_m = shoes_list_u +["boots"]
-shoes_list_f = shoes_list_u +["high boots","pumps"] 
+shoes_list_f = shoes_list_u +["high boots","pumps","mary janes"] 
 shoes_list_w = []
 shoes_list_d = [shoes_list_f, shoes_list_m, shoes_list_w]
 
