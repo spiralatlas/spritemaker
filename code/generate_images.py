@@ -211,7 +211,7 @@ top_sleeve_list_w = ["puffy", "puffy shirt"]
 top_sleeve_list_d = [top_sleeve_list_f,top_sleeve_list_m,top_sleeve_list_w]
 
 overshirt_list_u = ["none","button up vee", "open shirt", "vee","sweater"]
-overshirt_list_f = overshirt_list_u + []
+overshirt_list_f = overshirt_list_u + ["square"]
 overshirt_list_m = overshirt_list_u + []
 overshirt_list_w = []
 overshirt_list_d = [overshirt_list_f, overshirt_list_m,overshirt_list_w]
@@ -839,7 +839,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["neckwear","neckwear_front","neckwear_front2"]:
+        if c.name in ["overshirt"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
