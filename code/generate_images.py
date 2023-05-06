@@ -248,10 +248,10 @@ coat_list_w = ["medium cloak","jama"]
 coat_list_d = [coat_list_f, coat_list_m, coat_list_w]
 coat_nosleeves_list = ["none", "wrap", "medium cloak"]
 
-coat_sleeve_list_u = ["sleeveless","short","scrunched", "long", "long blocky"]
+coat_sleeve_list_u = ["sleeveless","short","scrunched", "long", "long blocky","broad","trailing"]
 coat_sleeve_list_f = coat_sleeve_list_u+[]
 coat_sleeve_list_m = coat_sleeve_list_u+[]
-coat_sleeve_list_w = []
+coat_sleeve_list_w = ["broad","trailing"]
 coat_sleeve_list_d = [coat_sleeve_list_f, coat_sleeve_list_m, coat_sleeve_list_w]
 
 hat_middle_list_u =["none","cat ears","curled horns","pointed horns",]
@@ -839,7 +839,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["top_sleeves"]:
+        if c.name in ["coat_sleeves"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
