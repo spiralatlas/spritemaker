@@ -195,14 +195,14 @@ gloves_list_w = []
 gloves_list_d = [gloves_list_f,gloves_list_m,gloves_list_w]
 
 top_list_u = ["none","vest","tee", "chinese collar","turtleneck" ]
-top_list_f = top_list_u+["bikini","square", "boatneck","gathered","low vee"]
+top_list_f = top_list_u+["bikini","square", "boatneck","gathered","low vee","sailor shirt"]
 top_list_m= top_list_u+["open shirt","button up", "high collar shirt"] 
 top_list_w = ["high collar shirt"]
 top_list_d = [top_list_f,top_list_m,top_list_w]
 top_nosleeves_list = ["none", "bikini", "vest"]
 
-top_collar_list = ["open shirt","button up","high collar shirt"] 
-top_collar_list_d = [["none"],top_collar_list,["none"]]
+top_collar_list = ["open shirt","button up","high collar shirt","sailor shirt"] 
+top_collar_list_d = default_list(top_collar_list)
 
 top_sleeve_list_u = ["sleeveless", "short","long"]
 top_sleeve_list_f = top_sleeve_list_u+["puffy"]
@@ -235,10 +235,10 @@ waistline_list_m = waistline_list_u+["fall front","overalls"]
 waistline_list_w = ["fall front","empire"]
 waistline_list_d = [waistline_list_f,waistline_list_m,waistline_list_w]
 
-neckwear_list_u = ["none", "bow", "bandanna", "scarf"]  
-neckwear_list_f = neckwear_list_u+[ "beaded necklace","choker","pendant","jewelled necklace","beads",] 
+neckwear_list_u = ["none", "cravat bow", "bandanna", "scarf","kerchief","long scarf"]  
+neckwear_list_f = neckwear_list_u+[ "beaded necklace","choker","pendant","jewelled necklace","beads","bow"] 
 neckwear_list_m = neckwear_list_u+["cravat","tie","bow tie"]
-neckwear_list_w = ["bow","bandanna"]
+neckwear_list_w = ["cravat bow","bandanna"]
 neckwear_list_d = [neckwear_list_f, neckwear_list_m,neckwear_list_w]
 
 coat_list_u = ["none","medium cloak", "short jacket"]
@@ -322,10 +322,10 @@ hat_back_list_d = default_list(hat_back_list)
 coat_back_list = ["none","medium cloak","wrap","overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket"] 
 coat_back_list_d = default_list(coat_back_list) 
 
-neckwear_front_list = ["bow","bow tie", "bandanna"]
+neckwear_front_list = ["bow", "cravat bow","bow tie", "bandanna"]
 neckwear_front_list_d = default_list(neckwear_front_list)
 
-neckwear_front2_list = [ "scarf"]
+neckwear_front2_list = [ "scarf","long scarf"]
 neckwear_front2_list_d = default_list(neckwear_front2_list)
 
 wheelchair_bottom_list_d = bottom_list_d
@@ -839,7 +839,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["hat_middle","hat_front","hat_front_dec","hat_back"]:
+        if c.name in ["neckwear","neckwear_front","neckwear_front2"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
