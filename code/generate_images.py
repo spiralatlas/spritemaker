@@ -230,9 +230,9 @@ bottom_list_w = ["breeches","tube skirt","briefs"]
 bottom_list_d = [bottom_list_f, bottom_list_m, bottom_list_w]
 
 waistline_list_u=["none","gathered","button fly"]
-waistline_list_f = waistline_list_u+["low","high","empire"]
+waistline_list_f = waistline_list_u+["low","high","empire","band","pointed"]
 waistline_list_m = waistline_list_u+["fall front","overalls"]
-waistline_list_w = ["fall front","empire"]
+waistline_list_w = ["fall front","empire","pointed"]
 waistline_list_d = [waistline_list_f,waistline_list_m,waistline_list_w]
 
 neckwear_list_u = ["none", "cravat bow", "bandanna", "scarf","kerchief","long scarf"]  
@@ -839,7 +839,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["coat_sleeves"]:
+        if c.name in ["bottom", "waistline"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
