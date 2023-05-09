@@ -241,10 +241,10 @@ neckwear_list_m = neckwear_list_u+["cravat","tie","bow tie"]
 neckwear_list_w = ["cravat bow","bandanna"]
 neckwear_list_d = [neckwear_list_f, neckwear_list_m,neckwear_list_w]
 
-coat_list_u = ["none","medium cloak", "short jacket"]
+coat_list_u = ["none","medium cloak", "short jacket", "open robe","closed robe", "open sweater", "long open jacket"]
 coat_list_f = coat_list_u+["dress jacket","wrap"]
-coat_list_m = coat_list_u+["business jacket","buttoned jacket","cool jacket", "overcoat","jama"]  
-coat_list_w = ["medium cloak","jama"]
+coat_list_m = coat_list_u+["business jacket","buttoned jacket","cool jacket", "overcoat","jama","hoodie"]  
+coat_list_w = ["medium cloak","jama","open robe","closed robe",]
 coat_list_d = [coat_list_f, coat_list_m, coat_list_w]
 coat_nosleeves_list = ["none", "wrap", "medium cloak"]
 
@@ -319,7 +319,7 @@ no_fill_list = ["mouth"] #lined items with no coloured fill
 
 hat_back_list = ["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hijab","hood"]
 hat_back_list_d = default_list(hat_back_list)
-coat_back_list = ["none","medium cloak","wrap","overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket"] 
+coat_back_list = ["none","medium cloak","wrap","overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket", "open robe","closed robe", "open sweater", "long open jacket", "hoodie"] 
 coat_back_list_d = default_list(coat_back_list) 
 
 neckwear_front_list = ["bow", "cravat bow","bow tie", "bandanna"]
@@ -839,7 +839,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["bottom", "waistline"]:
+        if c.name in ["coat", "coat_back"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
