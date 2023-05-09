@@ -165,9 +165,10 @@ add_value_children("neckwear", ["neckwear_dec"]);
 add_colour2_children("neckwear", ["neckwear_dec"]);
 
 //outfit
+add_value_children("body_chest", ["coat_chest","overshirt_chest","top_chest"]);
 
 add_value_children("coat", ["coat_dec","coat_back","wheelchair_coat"]);
-add_colour_children("coat", ["coat_back","wheelchair_coat","coat_sleeves"]);
+add_colour_children("coat", ["coat_back","wheelchair_coat","coat_sleeves", "coat_chest"]);
 add_colour2_children("coat", ["coat_dec"]);
 
 add_value_children("waistline",["waistline_dec"])
@@ -176,12 +177,13 @@ add_colour_children("bottom", ["wheelchair_bottom","waistline"]);
 add_colour2_children("bottom", ["bottom_dec","wheelchair_bottom_dec","waistline_dec"]);
 
 add_value_children("top", ["top_collar","top_dec","top_collar_dec"]);
-add_colour_children("top", ["top_collar","top_sleeves"]);
+add_colour_children("top", ["top_collar","top_sleeves","top_chest"]);
 add_colour2_children("top", ["top_dec","top_collar_dec"]);
 
 add_value_children("overshirt", ["overshirt_dec"]);
-add_colour2_children("overshirt", ["overshirt_dec"]);
-add_colour_children("overshirt", ["overshirt_sleeves"]);
+add_colour_children("overshirt", ["overshirt_sleeves","overshirt_chest"]);
+add_colour2_children("overshirt", ["overshirt_dec", ]);
+
 
 add_value_children("neckwear",["neckwear_front","neckwear_front2"])
 add_colour_children("neckwear",["neckwear_front","neckwear_front2"])
@@ -189,9 +191,6 @@ add_colour_children("neckwear",["neckwear_front","neckwear_front2"])
 add_value_children("wheelchair", ["wheelchair_back","wheelchair_back_dec","wheelchair_dec"]);
 add_colour_children("wheelchair", ["wheelchair_back"]);
 add_colour2_children("wheelchair", ["wheelchair_back_dec","wheelchair_dec"]);
-
-
-findNameMatch(image_objects,"chest").item_list = chest_image_list
 
 const body_list =["head","skull","ears","nose","nose_front"];
 const all_clothes_list = (image_objects.map(nameOf)).filter(value => !(expression_list.includes(value)));

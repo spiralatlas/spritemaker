@@ -45,8 +45,8 @@ function setVariables(data_object){
         }
     }
 
-    let chest_obj = findNameMatch(image_objects,"chest");
     let coat_obj = findNameMatch(image_objects,"coat");
+    let chest_obj = findNameMatch(image_objects,"body_chest");
     let overshirt_obj = findNameMatch(image_objects,"overshirt");
     let top_obj = findNameMatch(image_objects,"top");
     let coat_sleeves_obj = findNameMatch(image_objects,"coat_sleeves");
@@ -56,6 +56,9 @@ function setVariables(data_object){
     let hair_front_obj = findNameMatch(image_objects,"hair_front");
     let hair_back_obj = findNameMatch(image_objects,"hair_back");
 
+    //waist
+    if (bottom_obj.item ==0)
+        findNameMatch(image_objects,"waistline").item = -1;
     //sleeves
 
     if (top_nosleeves_list.includes(getImageItem(top_obj)))
@@ -75,24 +78,19 @@ function setVariables(data_object){
     if (chest_obj.item>0){
         if (coat_obj.item >0){
             if (no_chest_coat_list.includes(getImageItem(coat_obj)))
-                chest_obj.item =-1;
-            else{    
-                chest_obj.colour1 = coat_obj.colour1
-                chest_obj.item += 4
+                findNameMatch(image_objects,"coat_chest").item = -1;
+        }
+        else{
+            findNameMatch(image_objects,"coat_chest").item = -1;
+            if (overshirt_obj.item >0){
+                if (no_chest_overshirt_list.includes(getImageItem(overshirt_obj)))
+                    findNameMatch(image_objects,"overshirt_chest").item = -1;
             }
-        }
         else{
-        if (overshirt_obj.item >0){
-            chest_obj.colour1 = overshirt_obj.colour1
-        }
-        else{
-        if (top_obj.item >0){
-                chest_obj.colour1 = top_obj.colour1
-                if (chest_obj.item ==3 && ["breeches","trousers", "long skirt"].includes(findImageItem("bottom")))
-                    chest_obj.item=4
-        }
-        else
-            chest_obj.colour1 = findNameMatch(image_objects,"head").colour1               
+            findNameMatch(image_objects,"overshirt_chest").item = -1;
+            if (top_obj.item ==0){
+                findNameMatch(image_objects,"top_chest").item = -1;
+            }           
         }}    
     }
 
@@ -289,6 +287,7 @@ document.addEventListener('alpine:init', () => {
 
     current_defining_objects: [
         {"name":"body","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00"},
+        {"name":"body_chest","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00"},
         {"name":"socks","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#E3313C","colour2":"#901E3B"},
         {"name":"shoes","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#E3313C","colour2":"#901E3B"},
         {"name":"gloves","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#E3313C","colour2":"#901E3B"},
@@ -301,7 +300,6 @@ document.addEventListener('alpine:init', () => {
         {"name":"neckwear","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#43A92D","colour2":"#43A92D"},
         {"name":"coat_sleeves","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#901E3B","colour2":"#4C6BC2"},
         {"name":"coat","value_list":[4,4,4,4,4,4,4,4,4,4],"colour1":"#E3313C","colour2":"#7543BD"},
-        {"name":"chest","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#FF0000","colour2":"#00FF00"},
         {"name":"head","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#CA783C","colour2":"#00FF00"},
         {"name":"ears","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00"},
         {"name":"earrings","value_list":[3,3,3,3,3,3,3,3,3,3],"colour1":"#901E3B","colour2":"#91C639"},
@@ -355,10 +353,10 @@ document.addEventListener('alpine:init', () => {
             remove_list = []
             if (!isWeirdBody)
                 remove_list = defining_objects[i].item_indices_w
-            if (["nose","head","ears","body","complexion"].includes(defining_objects[i].name)){
+            if (["nose","head","ears","body","complexion", ].includes(defining_objects[i].name)){
                 this.current_defining_objects[i].value_list = filteredItems(range(defining_objects[i].item_list.length),remove_list,0);
             }
-            if ("chest"==defining_objects[i].name){
+            if ("body_chest"==defining_objects[i].name){
                 switch(gender){
                     case 0:
                         this.current_defining_objects[i].value_list = listOf(randomIndex(defining_objects[i].item_list,0.3));

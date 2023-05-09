@@ -134,9 +134,12 @@ pattern_list = ["none",
         "diamonds","diamondssmall","tartan",  "polkadot",#repeated pattern
         "pinstripe","horizontalpinstripe",] #lines "verticalstripe", "horizontalstripe", "diagonal","net",
 
-chest_list = ["none", "small","medium","big"]   
-chest_list_d = [chest_list,["none"], ["none"]]
-chest_image_list = ["none","small","medium","big","bigpants","smallwide","mediumwide", "bigwide"]
+basic_chest_list = ["none", "small","medium","big"]   
+body_chest_list = basic_chest_list
+body_chest_list_d = [body_chest_list,["none"], []]
+top_chest_list_d = [basic_chest_list,["none"], []]  
+overshirt_chest_list_d = [basic_chest_list,["none"], []]  
+coat_chest_list_d = [basic_chest_list,["none"], []]  
 
 wheelchair_list = [ "none","manual","old fashioned"]
 wheelchair_list_w = ["old fashioned"]
@@ -310,7 +313,7 @@ accessory_list = ["eyewear","neckwear", "earrings", "gloves",]
 outfit_list = [ "bottom","top", "overshirt", "coat", "socks","shoes"]#"wheelchair",
 has_sleeves_list = ["top","overshirt","coat"]
 sleeve_list = [x +"_sleeves" for x in has_sleeves_list]
-defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","facial_hair", "head","chest","waistline","wheelchair"])
+defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","facial_hair", "head","waistline","wheelchair","body_chest"])
 
 #extra info
 
@@ -395,6 +398,7 @@ add_item("hat_back_dec", "hat_back_dec_list_d",hat_back_dec_list_d, "clothes/hat
 add_item("hair_back", "hair_back_list_d",hair_back_list_d, "hair", default_box)
 add_item("coat_back", "coat_back_list_d",coat_back_list_d, "clothes/coat", default_box)
 add_item("body", "body_list_d", body_list_d, "anatomy", default_box)
+add_item("body_chest", "body_chest_list_d", body_chest_list_d, "anatomy/chest", default_box)
 add_item("legs", "leg_list_d", leg_list_d, "anatomy", default_box)
 
 add_item("socks", "socks_list_d", socks_list_d, "clothes", default_box)
@@ -403,6 +407,7 @@ add_item("gloves", "gloves_list_d", gloves_list_d, "clothes", default_box)
 add_item("top_sleeves", "top_sleeve_list_d", top_sleeve_list_d, "clothes/top", default_box)
 add_item("top", "top_list_d", top_list_d, "clothes", default_box)
 add_item("top_dec", "top_dec_list_d", top_dec_list_d, "clothes", default_box)
+add_item("top_chest", "top_chest_list_d", top_chest_list_d, "anatomy/chest", default_box)
 
 add_item("overshirt_sleeves", "overshirt_sleeve_list_d", overshirt_sleeve_list_d, "clothes/overshirt", default_box)
 add_item("coat_sleeves", "coat_sleeve_list_d", coat_sleeve_list_d, "clothes/coat", default_box)
@@ -416,13 +421,14 @@ add_item("neckwear_dec", "neckwear_dec_list_d", neckwear_dec_list_d, "clothes", 
 
 add_item("overshirt", "overshirt_list_d", overshirt_list_d, "clothes", default_box)
 add_item("overshirt_dec", "overshirt_dec_list_d", overshirt_dec_list_d, "clothes", default_box)
+add_item("overshirt_chest", "overshirt_chest_list_d", overshirt_chest_list_d, "anatomy/chest", default_box)
 add_item("top_collar", "top_collar_list_d", top_collar_list_d, "clothes/top", default_box)
 add_item("top_collar_dec", "top_collar_dec_list_d", top_collar_dec_list_d, "clothes/top", default_box)
 add_item("neckwear_front", "neckwear_front_list_d", neckwear_front_list_d, "clothes/neckwear", default_box)
 
 add_item("coat", "coat_list_d", coat_list_d, "clothes", default_box)
 add_item("coat_dec", "coat_dec_list_d", coat_dec_list_d, "clothes", default_box)
-add_item("chest", "chest_list_d", chest_list_d, "anatomy", default_box)
+add_item("coat_chest", "coat_chest_list_d", coat_chest_list_d, "anatomy/chest", default_box)
 add_item("neckwear_front2", "neckwear_front2_list_d", neckwear_front2_list_d, "clothes/neckwear", default_box)
 
 
@@ -738,11 +744,11 @@ def write_variables():
     content.write(list_string("eyetype_list_f", eyetype_list_f))   
     content.write(list_string("eyetype_list_m", eyetype_list_m))  
     content.write(list_string("eyetype_list_w", eyetype_list_w))   
-    content.write(list_string("chest_image_list", chest_image_list)) 
     content.write(list_string("top_nosleeves_list", top_nosleeves_list))
     content.write(list_string("overshirt_nosleeves_list", overshirt_nosleeves_list)) 
     content.write(list_string("coat_nosleeves_list", coat_nosleeves_list)) 
     content.write(list_string("no_chest_coat_list", no_chest_coat_list)) 
+    content.write(list_string("no_chest_overshirt_list", no_chest_overshirt_list)) 
     content.write(name_string("hat_list",hat_list_d))
     content.write(list_string("expression_list", expression_list))   
     content.write(list_string("outfit_list", outfit_list)) 
@@ -846,7 +852,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["waistline","waistline_dec"]:
+        if c.name in ["coat_chest","body_chest","top_chest","overshirt_chest"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
