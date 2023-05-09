@@ -88,7 +88,7 @@ function setVariables(data_object){
             }
         else{
             findNameMatch(image_objects,"overshirt_chest").item = -1;
-            if (top_obj.item ==0){
+            if (top_obj.item <=0){
                 findNameMatch(image_objects,"top_chest").item = -1;
             }           
         }}    
