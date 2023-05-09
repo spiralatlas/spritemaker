@@ -1,6 +1,6 @@
 //player controlled
 
-let testing = false;
+let testing = true;
 
 let updated_frames = 0; //how long has it been since the data was updated 
 

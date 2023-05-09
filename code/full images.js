@@ -170,9 +170,10 @@ add_value_children("coat", ["coat_dec","coat_back","wheelchair_coat"]);
 add_colour_children("coat", ["coat_back","wheelchair_coat","coat_sleeves"]);
 add_colour2_children("coat", ["coat_dec"]);
 
+add_value_children("waistline",["waistline_dec"])
 add_value_children("bottom", ["wheelchair_bottom","wheelchair_bottom_dec","bottom_dec",]);
 add_colour_children("bottom", ["wheelchair_bottom","waistline"]);
-add_colour2_children("bottom", ["bottom_dec","wheelchair_bottom_dec"]);
+add_colour2_children("bottom", ["bottom_dec","wheelchair_bottom_dec","waistline_dec"]);
 
 add_value_children("top", ["top_collar","top_dec","top_collar_dec"]);
 add_colour_children("top", ["top_collar","top_sleeves"]);

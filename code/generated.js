@@ -47,8 +47,9 @@ const top_dec_list_d = [["square","gathered","low vee",],["square","gathered","l
 const overshirt_sleeve_list_d = [["sleeveless","short","long",],["sleeveless","short","long",],[],];
 const coat_sleeve_list_d = [["sleeveless","short","scrunched","long","long blocky","broad","trailing",],["sleeveless","short","scrunched","long","long blocky","broad","trailing",],["broad","trailing",],];
 const bottom_list_d = [["none","briefs","short skirt","medium skirt","long skirt","kilt","short kilt","tube skirt","briefs",],["none","briefs","breeches","trousers","shorts",],["breeches","tube skirt","briefs",],];
-const bottom_dec_list_d = [["split empire skirt","empire skirt",],["split empire skirt","empire skirt",],[],];
-const waistline_list_d = [["none","gathered","button fly","low","high","empire","band","pointed",],["none","gathered","button fly","fall front","overalls","suspenders",],["fall front","empire","pointed",],];
+const bottom_dec_list_d = [["",],["",],[],];
+const waistline_list_d = [["none","gathered","button fly","low","high","empire","band","pointed",],["none","gathered","button fly","fall front","overalls","suspenders","belt",],["fall front","empire","pointed",],];
+const waistline_dec_list_d = [["suspenders","belt",],["suspenders","belt",],[],];
 const neckwear_list_d = [["none","cravat bow","bandanna","scarf","kerchief","long scarf","beaded necklace","choker","pendant","jewelled necklace","beads","bow",],["none","cravat bow","bandanna","scarf","kerchief","long scarf","cravat","tie","bow tie",],["cravat bow","bandanna",],];
 const neckwear_dec_list_d = [["jewelled necklace","beaded necklace",],["jewelled necklace","beaded necklace",],[],];
 const overshirt_list_d = [["none","button up vee","open shirt","vee","sweater","band","square","obi",],["none","button up vee","open shirt","vee","sweater","band",],["obi","band",],];
@@ -115,6 +116,7 @@ add_defining_object("bottom",bottom_list_d)
 add_image_object("bottom_dec",bottom_dec_list_d,"clothes",[0,0,314,1024])
 add_image_object("waistline",waistline_list_d,"clothes",[0,0,314,1024])
 add_defining_object("waistline",waistline_list_d)
+add_image_object("waistline_dec",waistline_dec_list_d,"clothes",[0,0,314,1024])
 add_image_object("neckwear",neckwear_list_d,"clothes",[0,0,314,1024])
 add_defining_object("neckwear",neckwear_list_d)
 add_image_object("neckwear_dec",neckwear_dec_list_d,"clothes",[0,0,314,1024])

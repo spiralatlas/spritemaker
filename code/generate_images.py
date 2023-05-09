@@ -231,7 +231,7 @@ bottom_list_d = [bottom_list_f, bottom_list_m, bottom_list_w]
 
 waistline_list_u=["none","gathered","button fly"]
 waistline_list_f = waistline_list_u+["low","high","empire","band","pointed"]
-waistline_list_m = waistline_list_u+["fall front","overalls","suspenders"]
+waistline_list_m = waistline_list_u+["fall front","overalls","suspenders","belt"]
 waistline_list_w = ["fall front","empire","pointed"]
 waistline_list_d = [waistline_list_f,waistline_list_m,waistline_list_w]
 
@@ -345,8 +345,10 @@ overshirt_dec_list = ["button up vee", "band"]
 overshirt_dec_list_d = default_list(overshirt_dec_list)
 neckwear_dec_list = ["jewelled necklace","beaded necklace"]
 neckwear_dec_list_d = default_list(neckwear_dec_list)
-bottom_dec_list = ["split empire skirt","empire skirt"]
+bottom_dec_list = [""]
 bottom_dec_list_d = default_list(bottom_dec_list)
+waistline_dec_list = ["suspenders","belt"]
+waistline_dec_list_d = default_list(waistline_dec_list)
 coat_dec_list = ["dress jacket","jama"]
 coat_dec_list_d = default_list(coat_dec_list)
 hat_front_dec_list = ["bowler","broad hat","fedora","witch hat","top hat","crown"]
@@ -408,6 +410,7 @@ add_item("coat_sleeves", "coat_sleeve_list_d", coat_sleeve_list_d, "clothes/coat
 add_item("bottom", "bottom_list_d", bottom_list_d, "clothes", default_box)
 add_item("bottom_dec", "bottom_dec_list_d", bottom_dec_list_d, "clothes", default_box)
 add_item("waistline", "waistline_list_d", waistline_list_d, "clothes", default_box)
+add_item("waistline_dec", "waistline_dec_list_d", waistline_dec_list_d, "clothes", default_box)
 add_item("neckwear", "neckwear_list_d", neckwear_list_d, "clothes", default_box)
 add_item("neckwear_dec", "neckwear_dec_list_d", neckwear_dec_list_d, "clothes", default_box)
 
@@ -843,7 +846,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["top_collar_dec"]:
+        if c.name in ["waistline","waistline_dec"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
