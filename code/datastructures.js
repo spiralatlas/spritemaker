@@ -137,14 +137,6 @@ function setVariables(data_object){
         hair_back_obj.crop = crop_box;
     }  */ 
     
-    
-
-    /*
-
-    b = findNameMatch(image_objects, "Eyes");
-    for (let i = 0; i < 10; i += 1) {
-        b.value_list[i] = eye_type*eye_expression_list_port.length + eye_expressions[i];
-    }*/
 
     fixSources();
 
