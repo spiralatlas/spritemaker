@@ -174,9 +174,9 @@ add_value_children("bottom", ["wheelchair_bottom","wheelchair_bottom_dec","botto
 add_colour_children("bottom", ["wheelchair_bottom","waistline"]);
 add_colour2_children("bottom", ["bottom_dec","wheelchair_bottom_dec"]);
 
-add_value_children("top", ["top_collar","top_dec"]);
+add_value_children("top", ["top_collar","top_dec","top_collar_dec"]);
 add_colour_children("top", ["top_collar","top_sleeves"]);
-add_colour2_children("top", ["top_dec"]);
+add_colour2_children("top", ["top_dec","top_collar_dec"]);
 
 add_value_children("overshirt", ["overshirt_dec"]);
 add_colour2_children("overshirt", ["overshirt_dec"]);

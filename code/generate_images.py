@@ -337,6 +337,8 @@ wheelchair_bottom_dec_list = []#["split empire skirt"]
 wheelchair_bottom_dec_list_d = default_list(wheelchair_bottom_dec_list)
 top_dec_list = ["square","gathered","low vee"]
 top_dec_list_d = default_list(top_dec_list)
+top_collar_dec_list = ["sailor shirt"]
+top_collar_dec_list_d = default_list(top_collar_dec_list)
 earrings_dec_list = ["round earrings"]
 earrings_dec_list_d = default_list(earrings_dec_list)
 overshirt_dec_list = ["button up vee", "band"]
@@ -412,6 +414,7 @@ add_item("neckwear_dec", "neckwear_dec_list_d", neckwear_dec_list_d, "clothes", 
 add_item("overshirt", "overshirt_list_d", overshirt_list_d, "clothes", default_box)
 add_item("overshirt_dec", "overshirt_dec_list_d", overshirt_dec_list_d, "clothes", default_box)
 add_item("top_collar", "top_collar_list_d", top_collar_list_d, "clothes/top", default_box)
+add_item("top_collar_dec", "top_collar_dec_list_d", top_collar_dec_list_d, "clothes/top", default_box)
 add_item("neckwear_front", "neckwear_front_list_d", neckwear_front_list_d, "clothes/neckwear", default_box)
 
 add_item("coat", "coat_list_d", coat_list_d, "clothes", default_box)
@@ -840,7 +843,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["overshirt","overshirt_dec","waistline"]:
+        if c.name in ["top_collar_dec"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 

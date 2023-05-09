@@ -54,6 +54,7 @@ const neckwear_dec_list_d = [["jewelled necklace","beaded necklace",],["jewelled
 const overshirt_list_d = [["none","button up vee","open shirt","vee","sweater","band","square","obi",],["none","button up vee","open shirt","vee","sweater","band",],["obi","band",],];
 const overshirt_dec_list_d = [["button up vee","band",],["button up vee","band",],[],];
 const top_collar_list_d = [["open shirt","button up","high collar shirt","sailor shirt",],["open shirt","button up","high collar shirt","sailor shirt",],[],];
+const top_collar_dec_list_d = [["sailor shirt",],["sailor shirt",],[],];
 const neckwear_front_list_d = [["bow","cravat bow","bow tie","bandanna",],["bow","cravat bow","bow tie","bandanna",],[],];
 const coat_list_d = [["none","medium cloak","short jacket","open robe","closed robe","open sweater","long open jacket","dress jacket","wrap",],["none","medium cloak","short jacket","open robe","closed robe","open sweater","long open jacket","business jacket","buttoned jacket","cool jacket","overcoat","jama","hoodie",],["medium cloak","jama","open robe","closed robe",],];
 const coat_dec_list_d = [["dress jacket","jama",],["dress jacket","jama",],[],];
@@ -121,6 +122,7 @@ add_image_object("overshirt",overshirt_list_d,"clothes",[0,0,314,1024])
 add_defining_object("overshirt",overshirt_list_d)
 add_image_object("overshirt_dec",overshirt_dec_list_d,"clothes",[0,0,314,1024])
 add_image_object("top_collar",top_collar_list_d,"clothes/top",[0,0,314,1024])
+add_image_object("top_collar_dec",top_collar_dec_list_d,"clothes/top",[0,0,314,1024])
 add_image_object("neckwear_front",neckwear_front_list_d,"clothes/neckwear",[0,0,314,1024])
 add_image_object("coat",coat_list_d,"clothes",[0,0,314,1024])
 add_defining_object("coat",coat_list_d)
