@@ -9,7 +9,7 @@ function download() {
   for(let i = 0; i < defining_objects.length; i++){
     m = defining_objects[i];
 
-    current_defining_objects.push({name: m.name, value_list:m.value_list,colour1: m.colour1,colour2: m.colour2})
+    current_defining_objects.push({name: m.name, value_list:m.value_list,colour1: m.colour1,colour2: m.colour2,patterncolour: m.patterncolour,pattern: m.pattern})
   }
 
   var load_variables = {
