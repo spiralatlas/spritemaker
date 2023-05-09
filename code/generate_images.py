@@ -194,7 +194,7 @@ gloves_list_m = ["none", "short gloves","fingerless"]
 gloves_list_w = []
 gloves_list_d = [gloves_list_f,gloves_list_m,gloves_list_w]
 
-top_list_u = ["none","vest","tee", "chinese collar","turtleneck" ]
+top_list_u = ["none","vest","tee", "chinese collar","turtleneck","kimono" ]
 top_list_f = top_list_u+["bikini","square", "boatneck","gathered","low vee","sailor shirt"]
 top_list_m= top_list_u+["open shirt","button up", "high collar shirt"] 
 top_list_w = ["high collar shirt"]
@@ -204,18 +204,18 @@ top_nosleeves_list = ["none", "bikini", "vest"]
 top_collar_list = ["open shirt","button up","high collar shirt","sailor shirt"] 
 top_collar_list_d = default_list(top_collar_list)
 
-top_sleeve_list_u = ["sleeveless", "short","long"]
+top_sleeve_list_u = ["sleeveless", "short","long", "broad"]
 top_sleeve_list_f = top_sleeve_list_u+["puffy","bell"]
 top_sleeve_list_m = top_sleeve_list_u+["puffy shirt", "long shirt","rolled"]
 top_sleeve_list_w = ["puffy", "puffy shirt","bell"]
 top_sleeve_list_d = [top_sleeve_list_f,top_sleeve_list_m,top_sleeve_list_w]
 
-overshirt_list_u = ["none","button up vee", "open shirt", "vee","sweater"]
-overshirt_list_f = overshirt_list_u + ["square"]
+overshirt_list_u = ["none","button up vee", "open shirt", "vee","sweater", "band"]
+overshirt_list_f = overshirt_list_u + ["square","obi"]
 overshirt_list_m = overshirt_list_u + []
-overshirt_list_w = []
+overshirt_list_w = ["obi", "band"]
 overshirt_list_d = [overshirt_list_f, overshirt_list_m,overshirt_list_w]
-overshirt_nosleeves_list = ["none"]
+overshirt_nosleeves_list = ["none","obi", "band"]
 
 overshirt_sleeve_list_u = ["sleeveless","short","long"]
 overshirt_sleeve_list_f = overshirt_sleeve_list_u+[]
@@ -231,7 +231,7 @@ bottom_list_d = [bottom_list_f, bottom_list_m, bottom_list_w]
 
 waistline_list_u=["none","gathered","button fly"]
 waistline_list_f = waistline_list_u+["low","high","empire","band","pointed"]
-waistline_list_m = waistline_list_u+["fall front","overalls"]
+waistline_list_m = waistline_list_u+["fall front","overalls","suspenders"]
 waistline_list_w = ["fall front","empire","pointed"]
 waistline_list_d = [waistline_list_f,waistline_list_m,waistline_list_w]
 
@@ -315,6 +315,7 @@ defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_de
 #extra info
 
 no_chest_coat_list = [ "robe","robe hood",  "medium cloak", "medium cloak hood", "long cloak", "long cloak hood","wrap"] #clothes where the chest doesn't show
+no_chest_overshirt_list = overshirt_nosleeves_list
 no_fill_list = ["mouth"] #lined items with no coloured fill
 
 hat_back_list = ["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hijab","hood"]
@@ -338,7 +339,7 @@ top_dec_list = ["square","gathered","low vee"]
 top_dec_list_d = default_list(top_dec_list)
 earrings_dec_list = ["round earrings"]
 earrings_dec_list_d = default_list(earrings_dec_list)
-overshirt_dec_list = ["button up vee"]
+overshirt_dec_list = ["button up vee", "band"]
 overshirt_dec_list_d = default_list(overshirt_dec_list)
 neckwear_dec_list = ["jewelled necklace","beaded necklace"]
 neckwear_dec_list_d = default_list(neckwear_dec_list)
@@ -839,7 +840,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["coat", "coat_back"]:
+        if c.name in ["overshirt","overshirt_dec","waistline"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
