@@ -29,9 +29,10 @@ const expression_list = ["mouth","eyebrows","cheeks","eyes",];
 const outfit_list = ["bottom","top","overshirt","coat","socks","shoes",];
 const has_sleeves_list = ["top","overshirt","coat",];
 const sleeve_list = ["top_sleeves","overshirt_sleeves","coat_sleeves",];
-const accessory_list = ["eyewear","neckwear","earrings","gloves","hat",];
-const defining_list = ["eyewear","neckwear","earrings","gloves","bottom","top","overshirt","coat","socks","shoes","top_sleeves","overshirt_sleeves","coat_sleeves","body","nose","mouth","eyebrows","complexion","ears","body_chest","cheeks","eyes","fringe","facial_hair","head","waistline","wheelchair",];
+const accessory_list = ["eyewear","neckwear","earrings","gloves","back","hat",];
+const defining_list = ["eyewear","neckwear","earrings","gloves","back","bottom","top","overshirt","coat","socks","shoes","top_sleeves","overshirt_sleeves","coat_sleeves","body","nose","mouth","eyebrows","complexion","ears","body_chest","cheeks","eyes","fringe","facial_hair","head","waistline","wheelchair",];
 
+const back_list_d = [["none","fluffy tail","thin tail",],["none","fluffy tail","thin tail",],["fluffy tail","thin tail",],];
 const hat_back_list_d = [["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hijab","hood",],["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hijab","hood",],[],];
 const hat_back_dec_list_d = [["scarf",],["scarf",],[],];
 const hair_back_list_d = [["none","balding","buzzcut","straight short","curly short","wavy short","straight side","swept back","shaggy short","tight curls short","tight curls medium","shaggy medium","curly bob","wavy bob","straight bob","locs bob","half up medium wavy","straight high pony","straight low pony","curly pony","bun","curly bun","wavy bun","locs bun","twin braids","straight long","wavy long","curly long","long locs","curly flowing","straight flowing","straight up","curly up","locs up",],["none","balding","buzzcut","straight short","curly short","wavy short","straight side","swept back","shaggy short","tight curls short","tight curls medium","shaggy medium","curly bob","wavy bob","straight bob","locs bob","half up medium wavy","straight high pony","straight low pony","curly pony","bun","curly bun","wavy bun","locs bun","twin braids","straight long","wavy long","curly long","long locs","curly flowing","straight flowing","straight up","curly up","locs up",],[],];
@@ -92,6 +93,8 @@ const wheelchair_coat_list_d = [["none","medium cloak","long jacket closed","dre
 
 add_image_object("wheelchair_back",wheelchair_list_d,"wheelchair",[0,0,314,1024])
 add_image_object("wheelchair_back_dec",wheelchair_list_d,"wheelchair",[0,0,314,1024])
+add_image_object("back",back_list_d,"clothes",[0,0,314,1024])
+add_defining_object("back",back_list_d)
 add_image_object("hat_back",hat_back_list_d,"clothes/hat",[0,0,314,1024])
 add_image_object("hat_back_dec",hat_back_dec_list_d,"clothes/hat",[0,0,314,1024])
 add_image_object("hair_back",hair_back_list_d,"hair",[0,0,314,1024])

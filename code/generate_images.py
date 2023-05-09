@@ -197,6 +197,12 @@ gloves_list_m = ["none", "short gloves","fingerless"]
 gloves_list_w = []
 gloves_list_d = [gloves_list_f,gloves_list_m,gloves_list_w]
 
+back_list_u = ["none","fluffy tail","thin tail" ]
+back_list_f = back_list_u+[]
+back_list_m= back_list_u+[] 
+back_list_w = ["fluffy tail","thin tail"]
+back_list_d = [back_list_f,back_list_m,back_list_w]
+
 top_list_u = ["none","vest","tee", "chinese collar","turtleneck","kimono" ]
 top_list_f = top_list_u+["bikini","square", "boatneck","gathered","low vee","sailor shirt"]
 top_list_m= top_list_u+["open shirt","button up", "high collar shirt"] 
@@ -309,7 +315,7 @@ facial_hair_list_render = [f for f in facial_hair_list_m if f!="stubble"]
 skin_list_defining = ["body","nose","mouth","eyebrows","complexion","ears","body_chest"]#same colour as head
 skin_list = skin_list_defining + ["skull","legs","wheelchair_legs","nose_front"]
 expression_list = ["mouth","eyebrows","cheeks","eyes"]
-accessory_list = ["eyewear","neckwear", "earrings", "gloves",]
+accessory_list = ["eyewear","neckwear", "earrings", "gloves","back"]
 outfit_list = [ "bottom","top", "overshirt", "coat", "socks","shoes"]#"wheelchair",
 has_sleeves_list = ["top","overshirt","coat"]
 sleeve_list = [x +"_sleeves" for x in has_sleeves_list]
@@ -393,6 +399,7 @@ def add_item(name, listname, list_list,location, box):
 
 add_item("wheelchair_back", "wheelchair_list_d", wheelchair_list_d,"wheelchair", default_box)
 add_item("wheelchair_back_dec", "wheelchair_list_d", wheelchair_list_d,"wheelchair", default_box)
+add_item("back", "back_list_d",back_list_d, "clothes", default_box)
 add_item("hat_back", "hat_back_list_d",hat_back_list_d, "clothes/hat", default_box)
 add_item("hat_back_dec", "hat_back_dec_list_d",hat_back_dec_list_d, "clothes/hat", default_box)
 add_item("hair_back", "hair_back_list_d",hair_back_list_d, "hair", default_box)
@@ -852,7 +859,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["neckwear","neckwear_front2"]:
+        if c.name in ["back"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
