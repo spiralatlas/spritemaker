@@ -375,13 +375,11 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
         off_ctx.globalCompositeOperation = "source-over";
 
         //cropping
-        if (obj.crop[0]>0)
-            off_ctx.clearRect(0, 0, parseInt(obj.scale*obj.crop[0]), new_height);
-        if (obj.crop[1]>0)
-            off_ctx.clearRect(0, 0, new_width, parseInt(obj.scale*obj.crop[1])); 
-        if (new_width >obj.crop[0]+obj.crop[2])
-            off_ctx.clearRect(obj.crop[0]+obj.crop[2], 0, parseInt(obj.scale*width-(obj.crop[0]+obj.crop[2])), new_height);       
-      
+        for (i = 0; i < obj.crop.length; i += 1){
+            box = obj.crop[i].map(value => parseInt(value*obj.scale))
+            off_ctx.clearRect(box[0], box[1], box[2], box[3]);
+        }
+              
         //removing masks
         
         ctx.drawImage(off_canvas,sourceX,sourceY,new_width,new_height, new_xpos, new_ypos,new_width,new_height);

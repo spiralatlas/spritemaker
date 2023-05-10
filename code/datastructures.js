@@ -104,7 +104,7 @@ function setVariables(data_object){
 
     //update images and offsets
     for (let i = 0; i < image_objects.length; i += 1){
-        image_objects[i].crop = [0,0,full_width,full_height];
+        image_objects[i].crop = [];
         image_objects[i].heightOffset = getHeightOffset(image_objects[i].name);
         image_objects[i].widthOffset = getWidthOffset(image_objects[i].name);
         if (!checkRender(image_objects[i]))
@@ -124,19 +124,19 @@ function setVariables(data_object){
     //calculating crops
 
     if (coat_sleeves_obj.item>0||overshirt_sleeves_obj.item>0){//coat or overshirt have sleeves
-        top_sleeves_obj.crop = [0,462,full_width,full_height]; //crop top off puffy sleeves
+        top_sleeves_obj.crop = [[0,0,full_width,462]]; //crop top off puffy sleeves
         if (coat_sleeves_obj.item>1||overshirt_sleeves_obj.item>1) //long sleeves
-            top_sleeves_obj.crop = [0,654,full_width,full_height];}
+            top_sleeves_obj.crop = [[0,0,full_width,654]];}
 
     let hat_string = findImageItem("hat_front");
     /* cropping broken
     if (["top hat","broad hat","bowler","fedora","witch hat",].includes(hat_string)){
-        crop_box = [0,144+getHeightOffset(hair_front_obj.name),300,700];
+        crop_box = [[0,0, full_width, 144+getHeightOffset(hair_front_obj.name)]];
         hair_front_obj.crop = crop_box;
         hair_back_obj.crop = crop_box;
     }
     if (hat_string=="turban"){
-        crop_box =[0,137+getHeightOffset(hair_front_obj.name),300,700];
+        crop_box =[[0,0, full_width, 137+getHeightOffset(hair_front_obj.name)]];
         hair_front_obj.crop = crop_box;
         hair_back_obj.crop = crop_box;
     }  */ 
