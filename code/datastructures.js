@@ -178,6 +178,13 @@ document.addEventListener('alpine:init', () => {
                     buttonName = objName+"[0]";
                     value = "listOf(index)";
                     break; 
+                case 'pattern':
+                    obj_index = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.current_'+this.valueName+'])].pattern';
+                    objName = obj_index;
+                    objList = 'pattern_list';
+                    buttonName = objName;
+                    value = "index";
+                    break;     
                 case 'sleeves':
                     if (!has_sleeves_list.includes(clothing_names[Alpine.store('alpineData').current_clothing])){
                         return "";
@@ -257,7 +264,7 @@ document.addEventListener('alpine:init', () => {
                 case 'clothing2':
                     objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.current_'+this.valueName+'])].colour2';
                     break;  
-                case 'clothingpatterncolour':
+                case 'pattern':
                     objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.current_'+this.valueName+'])].patterncolour';
                     break;            
             }    
@@ -402,10 +409,7 @@ document.addEventListener('alpine:init', () => {
                 this.current_defining_objects[i].colour1 = randomElement(temp_list,0);
                 this.current_defining_objects[i].colour2 = randomElement(temp_list,0);
                 this.current_defining_objects[i].patterncolour = randomElement(temp_list,0);
-                if (this.current_defining_objects[i].name=="coat")
-                    this.current_defining_objects[i].pattern = 1 //randomIndex(pattern_list,0);
-                else    
-                    this.current_defining_objects[i].pattern = 0
+                this.current_defining_objects[i].pattern = randomIndex(pattern_list,0);
             }
         }
     },

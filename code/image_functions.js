@@ -350,27 +350,19 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
         }
         if (obj.base_image.src!=""){
             off_ctx.fillRect(0, 0, new_width, new_height);
+            if (obj.pattern>0){
+                pattern_ctx.globalCompositeOperation = "source-over";
+                pattern_ctx.clearRect(0, 0, new_width, new_height);    
+        
+                pattern_ctx.fillStyle = obj.patterncolour;
+                pattern_ctx.fillRect(0, 0, new_width, new_height);
+                pattern_ctx.globalCompositeOperation = "destination-in";
+                pattern_ctx.drawImage(obj.pattern_image,0,0,width,height, 0, 0,new_width,new_height);
+                off_ctx.drawImage(pattern_canvas,sourceX,sourceY,new_width,new_height, new_xpos, new_ypos,new_width,new_height);
+            }
 
             off_ctx.globalCompositeOperation = "destination-in";
             off_ctx.drawImage(obj.base_image,0,0,width,height, 0, 0,new_width,new_height);
-            if (obj.pattern>0){
-                console.log("pattern!"+ obj.name)
-                off_ctx.clearRect(0, 0, new_width, new_height);    
-                off_ctx.globalCompositeOperation = "source-over";
-        
-                off_ctx.fillStyle = obj.patterncolour;
-                off_ctx.fillRect(0, 0, new_width, new_height);
-                if (obj.shadow_image.src!=""){
-                    off_ctx.globalCompositeOperation = "multiply";
-                    off_ctx.drawImage(obj.shadow_image,0,0,width,height, 0, 0,new_width,new_height);
-                }
-                off_ctx.globalCompositeOperation = "destination-in";
-                off_ctx.drawImage(obj.pattern_image,0,0,width,height, 0, 0,new_width,new_height);
-                off_ctx.drawImage(obj.base_image,0,0,width,height, 0, 0,new_width,new_height);
-                //add crops
-                ctx.drawImage(off_canvas,sourceX,sourceY,new_width,new_height, new_xpos, new_ypos,new_width,new_height);
-                off_ctx.globalCompositeOperation = "source-over";
-            }
         }
         if (obj.shadow_image.src!=""){
             off_ctx.globalCompositeOperation = "multiply";
