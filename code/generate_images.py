@@ -305,6 +305,13 @@ fringe_list_f = fringe_list_u+["wavy centre","curly wisps","curly long"]#"straig
 fringe_list_w =[]
 fringe_list_d = [fringe_list_f, fringe_list_m, fringe_list_w]
 
+
+sidelocks_list_u = ["none", "short straight"]
+sidelocks_list_m = sidelocks_list_u+[]
+sidelocks_list_f = sidelocks_list_u+[]
+sidelocks_list_w =[]
+sidelocks_list_d = [sidelocks_list_f, sidelocks_list_m, sidelocks_list_w]
+
 facial_hair_list_f = ["none"]
 facial_hair_list_m = ["none", "beard", "moustache", "goatee", "soul patch", "fluffy goatee", "stubble"]
 facial_hair_list_w = []
@@ -319,7 +326,7 @@ accessory_list = ["eyewear","neckwear", "earrings", "gloves","back"]
 outfit_list = [ "bottom","top", "overshirt", "coat", "socks","shoes"]#"wheelchair",
 has_sleeves_list = ["top","overshirt","coat"]
 sleeve_list = [x +"_sleeves" for x in has_sleeves_list]
-defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","facial_hair", "head","waistline","wheelchair"])
+defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","sidelocks", "facial_hair", "head","waistline","wheelchair"])
 
 #extra info
 
@@ -458,6 +465,7 @@ add_item("nose_front", "nose_front_list_d", nose_list_d, "face/nose", default_bo
 add_item("hair_front", "hair_front_list_d", hair_front_list_d, "hair", default_box)
 add_item("eyewear", "eyewear_list_d", eyewear_list_d, "clothes", default_box)
 add_item("hat_middle", "hat_middle_list_d", hat_middle_list_d, "clothes/hat", default_box)
+add_item("sidelocks", "sidelocks_list_d", sidelocks_list_d, "hair", default_box)
 add_item("fringe", "fringe_list_d", fringe_list_d, "hair", default_box)
 add_item("hat_front", "hat_front_list_d", hat_front_list_d, "clothes/hat", default_box)
 add_item("hat_front_dec", "hat_front_dec_list_d", hat_front_dec_list_d, "clothes/hat", default_box)
@@ -852,12 +860,12 @@ def runStuff():
 
     # "skull", "head","body","legs", "ears","nose", "chest"
     # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
-    # "fringe", "hair_front","hair_middle", "hair_back", "facial_hair"
+    # "sidelocks", "fringe", "hair_front","hair_middle", "hair_back", "facial_hair"
     #"overshirt","overshirt_sleeves","overshirt_dec"
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["back"]:
+        if c.name in ["sidelocks"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 

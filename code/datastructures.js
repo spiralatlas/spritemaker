@@ -318,6 +318,7 @@ document.addEventListener('alpine:init', () => {
         {"name":"eyes","value_list":[0,2,5,7,5,4,6,8,3,0],"colour1":"#8334D8","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
         {"name":"eyewear","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#FAF6E9","colour2":"#FAF1CF",patterncolour: "#0000FF", pattern: 0},
         {"name":"facial_hair","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#712A0D","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
+        {"name":"sidelocks","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#712A0D","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
         {"name":"fringe","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#712A0D","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
         {"name":"hat","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#E1748A","colour2":"#FAF1CF",patterncolour: "#0000FF", pattern: 0},
         {"name":"wheelchair","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#4C6BC2","colour2":"#7543BD"}],
@@ -431,14 +432,14 @@ document.addEventListener('alpine:init', () => {
                 break;          
         }  
         for (let i = 0; i < defining_objects.length; i += 1){
-            this_list = outfit_list.concat(accessory_list).concat(sleeve_list).concat(["fringe","facial_hair","waistline"])
+            this_list = outfit_list.concat(accessory_list).concat(sleeve_list).concat(["fringe","sidelocks","facial_hair","waistline"])
             if (this_list.includes(defining_objects[i].name)) {
                 var prob;
                 if (accessory_list.includes(defining_objects[i].name)|| defining_objects[i].name=="wheelchair"|| defining_objects[i].name=="facial_hair"){//accessories less common
                     prob = 0.5;
                 }
                 else{
-                    if (["top","bottom","fringe","waistline"].includes(defining_objects[i].name)){
+                    if (["top","bottom","fringe","sidelocks","waistline"].includes(defining_objects[i].name)){
                         prob = -1;
                     }
                     else
@@ -458,9 +459,10 @@ document.addEventListener('alpine:init', () => {
                         this.current_defining_objects[i].value_list = filteredItems(defining_objects[i].item_indices_f,remove_list,prob);  
                         break;          
                 }   
-                if (defining_objects[i].name=="fringe"&& this.current_hairstyle<3){// bald/balding/shaved
+                if (["fringe", "sidelocks"].includes(defining_objects[i].name)&& this.current_hairstyle<3){// bald/balding/shaved
                     this.current_defining_objects[i].value_list = listOf(0);
                 } 
+                
                 /*if (defining_objects[i].name=="neckwear"&& this.current_hairstyle<3){// bald/balding/shaved
                     this.current_defining_objects[i].value_list = listOf(0);
                 } Want to remove ugly ties but it's troublesome */ 
