@@ -789,9 +789,7 @@ def process_portrait_part(obj):
     else: 
         loc = obj.location + "/"+obj.name  
 
-    if obj.name == "chest":
-        render_list = chest_image_list  
-    elif obj.name == "facial_hair":
+    if obj.name == "facial_hair":
         render_list = facial_hair_list_render    
     else:
         render_list = obj.item_list

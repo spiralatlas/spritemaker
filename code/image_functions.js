@@ -266,6 +266,7 @@ function fixSources(){
         b.base_image.src  ="";
         b.shadow_image.src  ="";
         b.highlight_image.src  ="";
+        b.pattern_image.src  ="";
 
         let current_loc = getImageItem(b);
         //stubble
@@ -303,7 +304,10 @@ function fixSources(){
                     b.highlight_image.src  = loc_string+"_highlight.png"; 
                 if (underlay_list.includes(b.name))
                     if (current_loc!="eye patch")
-                        b.underlay_image.src  = loc_string+"_underlay.png";        
+                        b.underlay_image.src  = loc_string+"_underlay.png";   
+                if (b.pattern>0){
+                    b.pattern_image.src  = "images/pattern/"+pattern_list[b.pattern]+".png"; 
+                }             
             }
         }
     }
@@ -349,6 +353,24 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
 
             off_ctx.globalCompositeOperation = "destination-in";
             off_ctx.drawImage(obj.base_image,0,0,width,height, 0, 0,new_width,new_height);
+            if (obj.pattern>0){
+                console.log("pattern!"+ obj.name)
+                off_ctx.clearRect(0, 0, new_width, new_height);    
+                off_ctx.globalCompositeOperation = "source-over";
+        
+                off_ctx.fillStyle = obj.patterncolour;
+                off_ctx.fillRect(0, 0, new_width, new_height);
+                if (obj.shadow_image.src!=""){
+                    off_ctx.globalCompositeOperation = "multiply";
+                    off_ctx.drawImage(obj.shadow_image,0,0,width,height, 0, 0,new_width,new_height);
+                }
+                off_ctx.globalCompositeOperation = "destination-in";
+                off_ctx.drawImage(obj.pattern_image,0,0,width,height, 0, 0,new_width,new_height);
+                off_ctx.drawImage(obj.base_image,0,0,width,height, 0, 0,new_width,new_height);
+                //add crops
+                ctx.drawImage(off_canvas,sourceX,sourceY,new_width,new_height, new_xpos, new_ypos,new_width,new_height);
+                off_ctx.globalCompositeOperation = "source-over";
+            }
         }
         if (obj.shadow_image.src!=""){
             off_ctx.globalCompositeOperation = "multiply";

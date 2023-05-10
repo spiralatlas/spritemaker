@@ -402,7 +402,10 @@ document.addEventListener('alpine:init', () => {
                 this.current_defining_objects[i].colour1 = randomElement(temp_list,0);
                 this.current_defining_objects[i].colour2 = randomElement(temp_list,0);
                 this.current_defining_objects[i].patterncolour = randomElement(temp_list,0);
-                this.current_defining_objects[i].pattern = randomIndex(pattern_list,0);
+                if (this.current_defining_objects[i].name=="coat")
+                    this.current_defining_objects[i].pattern = 1 //randomIndex(pattern_list,0);
+                else    
+                    this.current_defining_objects[i].pattern = 0
             }
         }
     },
@@ -624,6 +627,8 @@ outfit_image.src = "images/render/swatches/outfit.png"
 let schemes_image = new Image();
 schemes_image.src = "images/render/swatches/schemes.png"
 
+const pattern_canvas = new OffscreenCanvas(full_width, full_height);
+const pattern_ctx = pattern_canvas.getContext("2d");
 const off_canvas = new OffscreenCanvas(full_width, full_height);
 const off_ctx = off_canvas.getContext("2d");
 window.onload = setup;

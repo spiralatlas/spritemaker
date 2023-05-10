@@ -1,6 +1,6 @@
 //player controlled
 
-let testing = false;
+let testing = true;
 
 let updated_frames = 0; //how long has it been since the data was updated 
 
@@ -181,7 +181,7 @@ function add_image_object(name, list_list, location,box){
     if (name.slice(-4)=="_dec")//remove "_dec"
         loc = location+"/"+name.slice(0,-4);
     item_list = remove_dups(list_list[0].concat(list_list[1]).concat(list_list[2]));
-    image_objects.push({name: name,location: loc, box: box, item_list: item_list, item: 0, heightOffset: 0, widthOffset:0, scale: 1, crop : [0,0,full_width,full_height],parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", patterncolour: "#0000FF", pattern: 0,hasShading: true, underlay_image: new Image(), base_image: new Image(),shadow_image: new Image(),highlight_image: new Image(),overlay_image: new Image()});
+    image_objects.push({name: name,location: loc, box: box, item_list: item_list, item: 0, heightOffset: 0, widthOffset:0, scale: 1, crop : [0,0,full_width,full_height],parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", patterncolour: "#0000FF", pattern: 0,hasShading: true, underlay_image: new Image(), base_image: new Image(),shadow_image: new Image(),highlight_image: new Image(),overlay_image: new Image(),pattern_image: new Image()});
 }
 
 //Setting up portrait data
@@ -281,6 +281,7 @@ function print_image_objects(){
         s+=" colour: "+b.colour1;
         s+=" item: "+getImageItem(b)
         //s+=" render? "+checkRender(b)
+        s+=" pattern: "+b.pattern_image.src;
         s+=" src: "+b.base_image.src;
         s+="<br>";
     }
