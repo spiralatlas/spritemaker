@@ -123,6 +123,9 @@ function setVariables(data_object){
 
     //calculating crops
 
+    findNameMatch(image_objects,"sidelocks_repeat").crop = [[195,125, 185,367]];
+
+
     if (coat_sleeves_obj.item>0||overshirt_sleeves_obj.item>0){//coat or overshirt have sleeves
         top_sleeves_obj.crop = [[0,0,full_width,462]]; //crop top off puffy sleeves
         if (coat_sleeves_obj.item>1||overshirt_sleeves_obj.item>1) //long sleeves
@@ -307,6 +310,7 @@ document.addEventListener('alpine:init', () => {
         {"name":"neckwear","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#43A92D","colour2":"#43A92D",patterncolour: "#0000FF", pattern: 0},
         {"name":"coat_sleeves","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#901E3B","colour2":"#4C6BC2",patterncolour: "#0000FF", pattern: 0},
         {"name":"coat","value_list":[4,4,4,4,4,4,4,4,4,4],"colour1":"#E3313C","colour2":"#7543BD",patterncolour: "#0000FF", pattern: 0},
+        {"name":"sidelocks","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#712A0D","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
         {"name":"head","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#CA783C","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
         {"name":"ears","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
         {"name":"earrings","value_list":[3,3,3,3,3,3,3,3,3,3],"colour1":"#901E3B","colour2":"#91C639",patterncolour: "#0000FF", pattern: 0},
@@ -318,7 +322,6 @@ document.addEventListener('alpine:init', () => {
         {"name":"eyes","value_list":[0,2,5,7,5,4,6,8,3,0],"colour1":"#8334D8","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
         {"name":"eyewear","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#FAF6E9","colour2":"#FAF1CF",patterncolour: "#0000FF", pattern: 0},
         {"name":"facial_hair","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#712A0D","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
-        {"name":"sidelocks","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#712A0D","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
         {"name":"fringe","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#712A0D","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
         {"name":"hat","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#E1748A","colour2":"#FAF1CF",patterncolour: "#0000FF", pattern: 0},
         {"name":"wheelchair","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#4C6BC2","colour2":"#7543BD"}],
@@ -462,7 +465,7 @@ document.addEventListener('alpine:init', () => {
                 if (["fringe", "sidelocks"].includes(defining_objects[i].name)&& this.current_hairstyle<3){// bald/balding/shaved
                     this.current_defining_objects[i].value_list = listOf(0);
                 } 
-                
+
                 /*if (defining_objects[i].name=="neckwear"&& this.current_hairstyle<3){// bald/balding/shaved
                     this.current_defining_objects[i].value_list = listOf(0);
                 } Want to remove ugly ties but it's troublesome */ 

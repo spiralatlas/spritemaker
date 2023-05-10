@@ -65,6 +65,7 @@ const coat_list_d = [["none","medium cloak","short jacket","open robe","closed r
 const coat_dec_list_d = [["dress jacket","jama",],["dress jacket","jama",],[],];
 const coat_chest_list_d = [["none","small","medium","big",],["none",],[],];
 const neckwear_front2_list_d = [["scarf","long scarf","fur collar",],["scarf","long scarf","fur collar",],[],];
+const sidelocks_list_d = [["none","medium shaggy","short straight","short hime","short wavy","tiny",],["none","medium shaggy","short straight","short hime","short wavy","long straight","long wavy","medium hime","short hime","medium straight","medium wavy","medium straight tendril",],[],];
 const skull_list_d = [["regular",],["regular",],[],];
 const head_list_d = [["pointed","medium","rectangular","round",],["pointed","medium","rectangular","round",],[],];
 const hair_middle_list_d = [["none","shaved","balding","short","long","long shadowed",],["none","shaved","balding","short","long","long shadowed",],[],];
@@ -82,7 +83,7 @@ const nose_front_list_d = [["button","round","medium","broad","pointed","hooked"
 const hair_front_list_d = [["none","balding","neat side","swept back","long locs","curly flowing","curly long","straight flowing","locs bun",],["none","balding","neat side","swept back","long locs","curly flowing","curly long","straight flowing","locs bun",],[],];
 const eyewear_list_d = [["none","oblong glasses","square glasses","round glasses","spectacles","eye patch","sunglasses","coloured glasses",],["none","oblong glasses","square glasses","round glasses","spectacles","eye patch","sunglasses","coloured glasses","monocle",],["monocle","spectacles","eye patch",],];
 const hat_middle_list_d = [["none","cat ears","curled horns","pointed horns","scarf","beads","head band","side bow","bow","tiara",],["none","cat ears","curled horns","pointed horns","sweat band",],["beads","cat ears","curled horns","pointed horns","tiara",],];
-const sidelocks_list_d = [["none","short straight",],["none","short straight",],[],];
+const sidelocks_repeat_list_d = [["none","medium shaggy","short straight","short hime","short wavy","tiny",],["none","medium shaggy","short straight","short hime","short wavy","long straight","long wavy","medium hime","short hime","medium straight","medium wavy","medium straight tendril",],[],];
 const fringe_list_d = [["none","straight short","curly short","spiky","straight centre","straight swept","emo","long locs","wavy centre","curly wisps","curly long",],["none","straight short","curly short","spiky","straight centre","straight swept","emo","long locs","side flop","princely","wavy side",],[],];
 const hat_front_list_d = [["none","witch hat","broad hat","beanie","hood","crown","bonnet","hijab","flower","flower crown","bandanna",],["none","witch hat","broad hat","beanie","hood","crown","top hat","cap","bowler","fedora","turban",],["top hat","witch hat","bowler","flower crown","crown",],];
 const hat_front_dec_list_d = [["bowler","broad hat","fedora","witch hat","top hat","crown",],["bowler","broad hat","fedora","witch hat","top hat","crown",],[],];
@@ -142,6 +143,8 @@ add_defining_object("coat",coat_list_d)
 add_image_object("coat_dec",coat_dec_list_d,"clothes",[0,0,314,1024])
 add_image_object("coat_chest",coat_chest_list_d,"anatomy/chest",[0,0,314,1024])
 add_image_object("neckwear_front2",neckwear_front2_list_d,"clothes/neckwear",[0,0,314,1024])
+add_image_object("sidelocks",sidelocks_list_d,"hair",[0,0,314,1024])
+add_defining_object("sidelocks",sidelocks_list_d)
 add_image_object("skull",skull_list_d,"anatomy",[0,0,314,1024])
 add_image_object("head",head_list_d,"anatomy",[0,0,314,1024])
 add_defining_object("head",head_list_d)
@@ -170,8 +173,7 @@ add_image_object("hair_front",hair_front_list_d,"hair",[0,0,314,1024])
 add_image_object("eyewear",eyewear_list_d,"clothes",[0,0,314,1024])
 add_defining_object("eyewear",eyewear_list_d)
 add_image_object("hat_middle",hat_middle_list_d,"clothes/hat",[0,0,314,1024])
-add_image_object("sidelocks",sidelocks_list_d,"hair",[0,0,314,1024])
-add_defining_object("sidelocks",sidelocks_list_d)
+add_image_object("sidelocks_repeat",sidelocks_repeat_list_d,"hair",[0,0,314,1024])
 add_image_object("fringe",fringe_list_d,"hair",[0,0,314,1024])
 add_defining_object("fringe",fringe_list_d)
 add_image_object("hat_front",hat_front_list_d,"clothes/hat",[0,0,314,1024])

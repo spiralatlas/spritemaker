@@ -291,9 +291,9 @@ function fixSources(){
                     loc_string = "images/render/"+b.location+"/"+eyetype_list[current_eyetype] +"/"+current_loc 
                     b.overlay_image.src  = loc_string+"_overlay.png";
                 }
-                else
+                else{
                     loc_string = "images/render/"+b.location+"/"+current_loc 
-
+                }    
                 if (b.name.includes("_dec"))
                     loc_string +="2";
 

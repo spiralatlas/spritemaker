@@ -306,9 +306,9 @@ fringe_list_w =[]
 fringe_list_d = [fringe_list_f, fringe_list_m, fringe_list_w]
 
 
-sidelocks_list_u = ["none", "short straight"]
-sidelocks_list_m = sidelocks_list_u+[]
-sidelocks_list_f = sidelocks_list_u+[]
+sidelocks_list_u = ["none", "medium shaggy", "short straight", "short hime","short wavy"]
+sidelocks_list_m = sidelocks_list_u+["long straight", "long wavy", "medium hime", "short hime", "medium straight","medium wavy", "medium straight tendril",]
+sidelocks_list_f = sidelocks_list_u+["tiny", ]
 sidelocks_list_w =[]
 sidelocks_list_d = [sidelocks_list_f, sidelocks_list_m, sidelocks_list_w]
 
@@ -445,7 +445,7 @@ add_item("coat_dec", "coat_dec_list_d", coat_dec_list_d, "clothes", default_box)
 add_item("coat_chest", "coat_chest_list_d", coat_chest_list_d, "anatomy/chest", default_box)
 add_item("neckwear_front2", "neckwear_front2_list_d", neckwear_front2_list_d, "clothes/neckwear", default_box)
 
-
+add_item("sidelocks", "sidelocks_list_d", sidelocks_list_d, "hair", default_box)
 add_item("skull", "skull_list_d", skull_list_d, "anatomy", default_box)
 add_item("head", "head_list_d", head_list_d, "anatomy", default_box)
 add_item("hair_middle", "hair_middle_list_d", hair_middle_list_d, "hair", default_box)
@@ -465,7 +465,7 @@ add_item("nose_front", "nose_front_list_d", nose_list_d, "face/nose", default_bo
 add_item("hair_front", "hair_front_list_d", hair_front_list_d, "hair", default_box)
 add_item("eyewear", "eyewear_list_d", eyewear_list_d, "clothes", default_box)
 add_item("hat_middle", "hat_middle_list_d", hat_middle_list_d, "clothes/hat", default_box)
-add_item("sidelocks", "sidelocks_list_d", sidelocks_list_d, "hair", default_box)
+add_item("sidelocks_repeat", "sidelocks_repeat_list_d", sidelocks_list_d, "hair", default_box)
 add_item("fringe", "fringe_list_d", fringe_list_d, "hair", default_box)
 add_item("hat_front", "hat_front_list_d", hat_front_list_d, "clothes/hat", default_box)
 add_item("hat_front_dec", "hat_front_dec_list_d", hat_front_dec_list_d, "clothes/hat", default_box)
@@ -793,7 +793,9 @@ def checkRender(name, item):
 
 def process_portrait_part(obj):
     if obj.name.endswith("_dec"): 
-        loc = obj.location + "/"+obj.name[0:-4]        
+        loc = obj.location + "/"+obj.name[0:-4]   
+    elif obj.name.endswith("_repeat"): 
+        loc = obj.location + "/"+obj.name[0:-6]          
     else: 
         loc = obj.location + "/"+obj.name  
 
