@@ -409,7 +409,7 @@ document.addEventListener('alpine:init', () => {
                 this.current_defining_objects[i].colour1 = randomElement(temp_list,0);
                 this.current_defining_objects[i].colour2 = randomElement(temp_list,0);
                 this.current_defining_objects[i].patterncolour = randomElement(temp_list,0);
-                this.current_defining_objects[i].pattern = randomIndex(pattern_list,0);
+                this.current_defining_objects[i].pattern = randomIndex(pattern_list,0.8);
             }
         }
     },

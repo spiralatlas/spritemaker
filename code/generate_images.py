@@ -129,10 +129,10 @@ def addColours(list):
 
 
 pattern_list = ["none",
-        "crocodile","rose", "snake","damask", #repeated fractal
-        "crosshatch","fabric",  #repeated naturalistic
-        "diamonds","diamondssmall","tartan",  "polkadot",#repeated pattern
-        "pinstripe","horizontalpinstripe",] #lines "verticalstripe", "horizontalstripe", "diagonal","net",
+        "crocodile","rose", "snake","damask", "camoflage", #repeated fractal
+        "crosshatch","fabric","dirty","spots",  #repeated naturalistic
+        "diamonds","small diamonds","tartan",  "polkadot","kimono", #repeated pattern
+        "horizontal stripe","vertical stripe","pinstripe","horizontal pinstripe","net","diagonal",] #lines "verticalstripe", "horizontalstripe", "diagonal","net",
 
 basic_chest_list = ["none", "small","medium","big"]   
 body_chest_list = basic_chest_list
