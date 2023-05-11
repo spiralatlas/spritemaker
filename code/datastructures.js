@@ -434,6 +434,8 @@ document.addEventListener('alpine:init', () => {
                 this.current_hairstyle = filteredItems(hairstyle_indices_f,remove_list,0)[0];
                 break;          
         }  
+        hair_remove_list= hairExcludeIndices(this.current_hairstyle);
+
         for (let i = 0; i < defining_objects.length; i += 1){
             this_list = outfit_list.concat(accessory_list).concat(sleeve_list).concat(["fringe","sidelocks","facial_hair","waistline"])
             if (this_list.includes(defining_objects[i].name)) {
@@ -451,20 +453,31 @@ document.addEventListener('alpine:init', () => {
                 remove_list = []
                 if (!isWeirdOutfit)
                     remove_list = defining_objects[i].item_indices_w
-                switch(gender){
-                    case 0:
-                        this.current_defining_objects[i].value_list = filteredItems(range(defining_objects[i].item_list.length),remove_list,prob);  
-                        break;
-                    case 1:
-                        this.current_defining_objects[i].value_list = filteredItems(defining_objects[i].item_indices_m,remove_list,prob);  
-                        break;
-                    case 2:
-                        this.current_defining_objects[i].value_list = filteredItems(defining_objects[i].item_indices_f,remove_list,prob);  
-                        break;          
-                }   
+
                 if (["fringe", "sidelocks"].includes(defining_objects[i].name)&& this.current_hairstyle<3){// bald/balding/shaved
-                    this.current_defining_objects[i].value_list = listOf(0);
-                } 
+                        this.current_defining_objects[i].value_list = listOf(0);
+                    }   
+                else{
+                    if (defining_objects[i].name=="fringe")
+                        remove_list = remove_list.concat(hair_remove_list[0]);
+                    else{
+                        if (defining_objects[i].name=="sidelocks")
+                        remove_list = remove_list.concat(hair_remove_list[1]);
+                    }
+    
+                    switch(gender){
+                        case 0:
+                            this.current_defining_objects[i].value_list = filteredItems(range(defining_objects[i].item_list.length),remove_list,prob);  
+                            break;
+                        case 1:
+                            this.current_defining_objects[i].value_list = filteredItems(defining_objects[i].item_indices_m,remove_list,prob);  
+                            break;
+                        case 2:
+                            this.current_defining_objects[i].value_list = filteredItems(defining_objects[i].item_indices_f,remove_list,prob);  
+                            break;          
+                    }   
+                }
+                
 
                 /*if (defining_objects[i].name=="neckwear"&& this.current_hairstyle<3){// bald/balding/shaved
                     this.current_defining_objects[i].value_list = listOf(0);

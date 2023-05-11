@@ -199,7 +199,84 @@ const hair_front_numbers = hairstyle_defining_list.map(value => findNameMatch(im
 const hair_middle_numbers = hairstyle_defining_list.map(value => findNameMatch(image_objects, "hair_middle").item_list.indexOf(value[2]))
 const hair_back_numbers = hairstyle_defining_list.map(value => findNameMatch(image_objects, "hair_back").item_list.indexOf(value[3]))
 
+const fringe_list = findNameMatch(image_objects, "fringe").item_list
+const sidelocks_list = findNameMatch(image_objects, "sidelocks").item_list
+const fringe_not_straight = stringIndices(fringe_list, ["curly", "locs"])
+const sidelocks_not_straight = stringIndices(sidelocks_list, ["curly", "locs"])
+const fringe_not_wavy = stringIndices(fringe_list, ["locs","hime"])
+const sidelocks_not_wavy = stringIndices(sidelocks_list, ["locs","hime"])
+const fringe_not_curly = stringIndices(fringe_list, ["straight","locs","hime"])
+const sidelocks_not_curly = stringIndices(sidelocks_list, ["straight","locs","hime"])
+const fringe_not_locs = (fringe_list.filter(value => !value.includes("locs"))).map(value=>fringe_list.indexOf(value))
+const sidelocks_not_locs = (sidelocks_list.filter(value => !value.includes("locs"))).map(value=>sidelocks_list.indexOf(value))
+
 const eyetype_list = remove_dups(eyetype_list_f.concat(eyetype_list_m))
 const eyetype_indices_m = eyetype_list_m.map(value => eyetype_list.indexOf(value))
 const eyetype_indices_f = eyetype_list_f.map(value => eyetype_list.indexOf(value))
 const eyetype_indices_w = eyetype_list_w.map(value => eyetype_list.indexOf(value))
+
+function includesAny(test_string, string_list){
+    //returns true if the string test_string includes any of the elements of string_list
+    for (i = 0; i < string_list.length; i += 1){
+        if (test_string.includes(string_list[i]))
+            return true
+    }
+    return false
+}
+
+function stringIndices(base_list, defining_list){
+    // baselist, defining_list both lists of strings
+    //all indices of elements of base_list that do not contain any elements of defining_list
+    let output = [];
+    for (i = 0; i < base_list.length; i += 1){
+        for (j = 0; j < defining_list.length; j += 1){
+            if (base_list[i].includes(defining_list[j]))
+                output.push(i); 
+        }
+    }
+    return output
+}
+
+function hairExcludeIndices(index){
+    //given the index of the curent hairstyle, return what indices of hairstyle_list to exclude for fringe and sidelocks indices
+    //if (index<3) //bald
+    //    return 0//exclude everything
+
+    hair_string = hairstyle_list[index]
+    type = -1; 
+    
+    if (includesAny(hair_string, ["straight","side part","swept back"])) //straight
+        type = 0;
+    else{
+        if (includesAny(hair_string, ["wavy", "shaggy"])) //wavy
+            type = 1;
+    else{
+        if (includesAny(hair_string, ["curl"])) //curly
+            type = 2;
+    else{
+        if (includesAny(hair_string, ["locs"])) //locs
+            type = 3;
+        else{
+            type = randomElement([0,1,2,3],0);
+        }
+    }    
+        }    
+    }     
+    switch(type){
+        case 0://straight
+            console.log("straight")
+            return[fringe_not_straight, sidelocks_not_straight]
+        case 1://wavy
+            console.log("wavy")
+            return[fringe_not_wavy, sidelocks_not_wavy]  
+        case 2://curly
+            console.log("curly")
+            return[fringe_not_curly, sidelocks_not_curly] 
+        case 3://locs
+            console.log("locs")
+            return[fringe_not_locs, sidelocks_not_locs]                 
+    } 
+    console.log("oops")
+    return [[],[]]
+}
+
