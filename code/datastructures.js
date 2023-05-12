@@ -69,8 +69,7 @@ function setVariables(data_object){
     if (top_nosleeves_list.includes(getImageItem(top_obj)))
         top_sleeves_obj.item = -1;
     if (overshirt_nosleeves_list.includes(getImageItem(overshirt_obj)))
-    overshirt_sleeves_obj = findNameMatch(image_objects,"overshirt_sleeves");
-        top_sleeves_obj.item = -1;
+        overshirt_sleeves_obj.item = -1;
     if (coat_nosleeves_list.includes(getImageItem(coat_obj)))
         coat_sleeves_obj.item = -1;    
 

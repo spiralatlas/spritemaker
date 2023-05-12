@@ -204,7 +204,7 @@ back_list_w = ["fluffy tail","thin tail"]
 back_list_d = [back_list_f,back_list_m,back_list_w]
 
 top_list_u = ["none","vest","tee", "chinese collar","turtleneck","kimono" ]
-top_list_f = top_list_u+["bikini","square", "boatneck","gathered","low vee","sailor shirt"]
+top_list_f = top_list_u+["bikini","crop top","square", "boatneck","gathered","low vee","sailor shirt"]
 top_list_m= top_list_u+["open shirt","button up", "high collar shirt"] 
 top_list_w = ["high collar shirt"]
 top_list_d = [top_list_f,top_list_m,top_list_w]
@@ -867,7 +867,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["coat"]:
+        if c.name in ["top","top_dec"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
