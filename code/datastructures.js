@@ -56,6 +56,7 @@ function setVariables(data_object){
     let coat_sleeves_obj = findNameMatch(image_objects,"coat_sleeves");
     let overshirt_sleeves_obj = findNameMatch(image_objects,"overshirt_sleeves");
     let top_sleeves_obj = findNameMatch(image_objects,"top_sleeves");
+    let top_collar_obj = findNameMatch(image_objects,"top_collar");
     let bottom_obj = findNameMatch(image_objects,"bottom");
     let hair_front_obj = findNameMatch(image_objects,"hair_front");
     let hair_back_obj = findNameMatch(image_objects,"hair_back");
@@ -66,17 +67,18 @@ function setVariables(data_object){
     //sleeves
 
     if (top_nosleeves_list.includes(getImageItem(top_obj)))
-        findNameMatch(image_objects,"top_sleeves").item = -1;
+        top_sleeves_obj.item = -1;
     if (overshirt_nosleeves_list.includes(getImageItem(overshirt_obj)))
-        findNameMatch(image_objects,"overshirt_sleeves").item = -1;
+    overshirt_sleeves_obj = findNameMatch(image_objects,"overshirt_sleeves");
+        top_sleeves_obj.item = -1;
     if (coat_nosleeves_list.includes(getImageItem(coat_obj)))
-        findNameMatch(image_objects,"coat_sleeves").item = -1;    
+        coat_sleeves_obj.item = -1;    
 
     //hair
     
-    findNameMatch(image_objects,"hair_front").item = hair_front_numbers[current_hairstyle]
+    hair_front_obj.item = hair_front_numbers[current_hairstyle]
     findNameMatch(image_objects,"hair_middle").item = hair_middle_numbers[current_hairstyle]
-    findNameMatch(image_objects,"hair_back").item = hair_back_numbers[current_hairstyle]
+    hair_back_obj.item = hair_back_numbers[current_hairstyle]
     
     //calculating chest
     if (chest_obj.item>0){
@@ -100,7 +102,7 @@ function setVariables(data_object){
 
     //hide collars when wearing a jama coat
     if (getImageItem(coat_obj)=="jama")
-        findNameMatch(image_objects,"top_collar").item=-1;   
+        top_collar_obj.item=-1;   
 
     //update images and offsets
     for (let i = 0; i < image_objects.length; i += 1){
@@ -129,7 +131,13 @@ function setVariables(data_object){
     if (coat_sleeves_obj.item>0||overshirt_sleeves_obj.item>0){//coat or overshirt have sleeves
         top_sleeves_obj.crop = [[0,0,full_width,462]]; //crop top off puffy sleeves
         if (coat_sleeves_obj.item>1||overshirt_sleeves_obj.item>1) //long sleeves
-            top_sleeves_obj.crop = [[0,0,full_width,654]];}
+            top_sleeves_obj.crop = [[0,0,full_width,654]];
+        if (coat_sleeves_obj.item>=0){ //crop top collar under sleeved coats
+            crop_box = [[0,0,124,467],[264,312,50,200]];
+            top_collar_obj.crop = crop_box
+            findNameMatch(image_objects,"top_collar_dec").crop = crop_box;
+        }   
+    }
 
     //cropping hair to fit under hat
     let hat_string = findImageItem("hat_front");
