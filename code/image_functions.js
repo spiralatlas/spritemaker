@@ -100,6 +100,20 @@ function blushcolour(skincolour){
         return rgb_to_hex(colour) 
 }
 
+function complexioncolour(skincolour){
+    //Given a colour string, returns the appropriate blush colour
+    //Not very reliable
+    if (skincolour=="#000000")
+        skincolour="#525252";    
+    new_colour = hex_to_rgb(skincolour);
+    shadow = hex_to_rgb("#C81141");
+    colour = [0,0,0];
+    r = 0.3 //opacity of shadow
+    for (let i = 0; i < 3; i += 1) // #multiply
+       colour[i] = parseInt((1-r)*new_colour[i] + r*new_colour[i]*shadow[i]/255);   
+    return rgb_to_hex(colour) 
+}
+
 function frecklecolour(skincolour){
     //Given a colour string, returns the appropriate freckle colour
     //Not very reliable
@@ -281,7 +295,7 @@ function fixSources(){
         }
 
         //setting images
-        if (getImageItem(b)!="none"){
+        if (current_loc!="none"){
             if (no_fill_list.includes(b.name)){
                 b.hasShading = false;
                 b.underlay_image.src  = "images/render/"+b.location+"/"+current_loc +"_base.png";
@@ -343,8 +357,12 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
         if (obj.name =="cheeks")
             off_ctx.fillStyle = blushcolour(colour);
         else{
-            if (obj.name =="complexion")// && getImageItem(obj)=="freckles")
-                off_ctx.fillStyle = frecklecolour(colour);
+            if (obj.name =="complexion"){
+             if (getImageItem(obj)=="freckles")
+                    off_ctx.fillStyle = frecklecolour(colour);
+             else     
+                off_ctx.fillStyle = blushcolour(colour);
+            }
             else    
                 off_ctx.fillStyle = colour;
         }

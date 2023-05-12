@@ -177,7 +177,7 @@ nose_list_d = default_list(nose_list_u)
 cheeks_list_u = ["none","blush"]
 cheeks_list_d = default_list(cheeks_list_u)
 
-complexion_list_u = ["none","slight lines", "freckles"]
+complexion_list_u = ["none","slight lines", "freckles","wrinkles","eye mole","mouth moles","eye scar", "cheek scar", "burn"]
 complexion_list_d = default_list(complexion_list_u)
 
 eyewear_list_u = ["none", "oblong glasses","square glasses","round glasses","spectacles","eye patch","sunglasses","coloured glasses"] 
@@ -334,7 +334,7 @@ no_chest_coat_list = [ "robe","robe hood",  "medium cloak", "medium cloak hood",
 no_chest_overshirt_list = overshirt_nosleeves_list
 no_fill_list = ["mouth"] #lined items with no coloured fill
 
-hat_back_list = ["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hijab","hood"]
+hat_back_list = ["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hood"]
 hat_back_list_d = default_list(hat_back_list)
 coat_back_list = ["none","medium cloak","wrap","overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket", "open robe","closed robe", "open sweater", "long open jacket", "hoodie"] 
 coat_back_list_d = default_list(coat_back_list) 
@@ -446,6 +446,8 @@ add_item("coat_chest", "coat_chest_list_d", coat_chest_list_d, "anatomy/chest", 
 add_item("neckwear_front2", "neckwear_front2_list_d", neckwear_front2_list_d, "clothes/neckwear", default_box)
 
 add_item("sidelocks", "sidelocks_list_d", sidelocks_list_d, "hair", default_box)
+add_item("hijab_front", "hijab_front_list_d", default_list(["none","hijab"]), "clothes/hat", default_box)
+
 add_item("skull", "skull_list_d", skull_list_d, "anatomy", default_box)
 add_item("head", "head_list_d", head_list_d, "anatomy", default_box)
 add_item("hair_middle", "hair_middle_list_d", hair_middle_list_d, "hair", default_box)
@@ -867,7 +869,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["top","top_dec"]:
+        if c.name in ["hijab_front"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 

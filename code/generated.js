@@ -33,7 +33,7 @@ const accessory_list = ["eyewear","neckwear","earrings","gloves","back","hat",];
 const defining_list = ["eyewear","neckwear","earrings","gloves","back","bottom","top","overshirt","coat","socks","shoes","top_sleeves","overshirt_sleeves","coat_sleeves","body","nose","mouth","eyebrows","complexion","ears","body_chest","cheeks","eyes","fringe","sidelocks","facial_hair","head","waistline","wheelchair",];
 
 const back_list_d = [["none","fluffy tail","thin tail",],["none","fluffy tail","thin tail",],["fluffy tail","thin tail",],];
-const hat_back_list_d = [["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hijab","hood",],["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hijab","hood",],[],];
+const hat_back_list_d = [["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hood",],["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hood",],[],];
 const hat_back_dec_list_d = [["scarf",],["scarf",],[],];
 const hair_back_list_d = [["none","balding","buzzcut","straight short","curly short","wavy short","straight side","swept back","shaggy short","tight curls short","tight curls medium","shaggy medium","curly bob","wavy bob","straight bob","locs bob","half up medium wavy","straight high pony","straight low pony","curly pony","bun","curly bun","wavy bun","locs bun","twin braids","straight long","wavy long","curly long","long locs","curly flowing","straight flowing","straight up","curly up","locs up",],["none","balding","buzzcut","straight short","curly short","wavy short","straight side","swept back","shaggy short","tight curls short","tight curls medium","shaggy medium","curly bob","wavy bob","straight bob","locs bob","half up medium wavy","straight high pony","straight low pony","curly pony","bun","curly bun","wavy bun","locs bun","twin braids","straight long","wavy long","curly long","long locs","curly flowing","straight flowing","straight up","curly up","locs up",],[],];
 const coat_back_list_d = [["none","medium cloak","wrap","overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket","open robe","closed robe","open sweater","long open jacket","hoodie",],["none","medium cloak","wrap","overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket","open robe","closed robe","open sweater","long open jacket","hoodie",],[],];
@@ -66,6 +66,7 @@ const coat_dec_list_d = [["dress jacket","jama",],["dress jacket","jama",],[],];
 const coat_chest_list_d = [["none","small","medium","big",],["none",],[],];
 const neckwear_front2_list_d = [["scarf","long scarf","fur collar",],["scarf","long scarf","fur collar",],[],];
 const sidelocks_list_d = [["none","short straight","short hime","short wavy","short locs","short hime","medium hime","medium locs","medium wavy","medium straight","medium straight tendril","long straight","long wavy","long curly","long locs",],["none","short straight","short hime","short wavy","short locs","tiny curls","tiny straight","tiny locs","medium shaggy",],[],];
+const hijab_front_list_d = [["none","hijab",],["none","hijab",],[],];
 const skull_list_d = [["regular",],["regular",],[],];
 const head_list_d = [["pointed","medium","rectangular","round",],["pointed","medium","rectangular","round",],[],];
 const hair_middle_list_d = [["none","shaved","balding","short","long","long shadowed",],["none","shaved","balding","short","long","long shadowed",],[],];
@@ -73,7 +74,7 @@ const ear_list_d = [["none","regular","pointed","very pointed",],["none","regula
 const earrings_list_d = [["none","small hoops","punk","earpiece","stud","hoops","drop earrings","round earrings",],["none","small hoops","punk","earpiece",],[],];
 const earrings_dec_list_d = [["round earrings",],["round earrings",],[],];
 const nose_list_d = [["button","round","medium","broad","pointed","hooked",],["button","round","medium","broad","pointed","hooked",],[],];
-const complexion_list_d = [["none","slight lines","freckles",],["none","slight lines","freckles",],[],];
+const complexion_list_d = [["none","slight lines","freckles","wrinkles","eye mole","mouth moles","eye scar","cheek scar","burn",],["none","slight lines","freckles","wrinkles","eye mole","mouth moles","eye scar","cheek scar","burn",],[],];
 const cheeks_list_d = [["none","blush",],["none","blush",],[],];
 const mouth_list_d = [["lah","small lah","tiny lah","big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","wobbly smile","flat smile","smile","small smile","tiny smile","slight smile","side eww","eww","oh","square oh","big oh","small oh","shock","small flat","flat","small clenched","wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",],["lah","small lah","tiny lah","big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","wobbly smile","flat smile","smile","small smile","tiny smile","slight smile","side eww","eww","oh","square oh","big oh","small oh","shock","small flat","flat","small clenched","wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",],[],];
 const eyebrows_list_d = [["flat","flat sad","flat grumpy","flat angry","sad","sadder","semi sad","regular","semi arch","arched","raised arch","raised","raised flat","raised semi flat","raised grumpy","raised semi","angry","angry arch","half raised","half semi","half sad","half sad raised","half flat","half arch raised",],["flat","flat sad","flat grumpy","flat angry","sad","sadder","semi sad","regular","semi arch","arched","raised arch","raised","raised flat","raised semi flat","raised grumpy","raised semi","angry","angry arch","half raised","half semi","half sad","half sad raised","half flat","half arch raised",],[],];
@@ -145,6 +146,7 @@ add_image_object("coat_chest",coat_chest_list_d,"anatomy/chest",[0,0,314,1024])
 add_image_object("neckwear_front2",neckwear_front2_list_d,"clothes/neckwear",[0,0,314,1024])
 add_image_object("sidelocks",sidelocks_list_d,"hair",[0,0,314,1024])
 add_defining_object("sidelocks",sidelocks_list_d)
+add_image_object("hijab_front",hijab_front_list_d,"clothes/hat",[0,0,314,1024])
 add_image_object("skull",skull_list_d,"anatomy",[0,0,314,1024])
 add_image_object("head",head_list_d,"anatomy",[0,0,314,1024])
 add_defining_object("head",head_list_d)

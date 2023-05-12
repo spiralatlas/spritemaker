@@ -154,8 +154,8 @@ add_colour_children("fringe", ["hair_middle", "hair_front","hair_back","facial_h
 add_value_children("sidelocks", ["sidelocks_repeat"]);
 //accessories
 
-add_value_children("hat", ["hat_back","hat_back_dec","hat_front_dec", "hat_front","hat_middle"]);
-add_colour_children("hat", ["hat_back","hat_middle","hat_front"]);
+add_value_children("hat", ["hat_back","hat_back_dec","hat_front_dec", "hat_front","hat_middle","hijab_front"]);
+add_colour_children("hat", ["hat_back","hat_middle","hat_front","hijab_front"]);
 add_colour2_children("hat", ["hat_back_dec","hat_front_dec"]);
 
 add_value_children("earrings", ["earrings_dec"]);
@@ -192,7 +192,7 @@ add_value_children("wheelchair", ["wheelchair_back","wheelchair_back_dec","wheel
 add_colour_children("wheelchair", ["wheelchair_back"]);
 add_colour2_children("wheelchair", ["wheelchair_back_dec","wheelchair_dec"]);
 
-const body_list =["head","skull","ears","nose","nose_front"];
+const body_list =["head","skull","ears","nose","nose_front","complexion"];
 const all_clothes_list = (image_objects.map(nameOf)).filter(value => !(expression_list.includes(value)));
 
 const hair_front_numbers = hairstyle_defining_list.map(value => findNameMatch(image_objects, "hair_front").item_list.indexOf(value[1]))
