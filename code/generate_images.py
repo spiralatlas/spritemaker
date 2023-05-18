@@ -290,7 +290,7 @@ shoes_list_w = []
 shoes_list_d = [shoes_list_f, shoes_list_m, shoes_list_w]
 
 
-hair_front_list = ["none", "balding", "neat side", "swept back", "long locs","curly flowing","curly long","straight flowing","locs bun", ]
+hair_front_list = ["none", "balding", "neat side", "swept back", "long locs","curly flowing","curly long","straight flowing","locs bun", "locs bob","short locs"]
 hair_front_list_d = default_list(hair_front_list)
 
 hair_back_list = ["none","balding", "buzzcut","straight short","curly short","wavy short", "straight side", "swept back", "shaggy short", "tight curls short","tight curls medium", "shaggy medium", "curly bob","wavy bob", "straight bob","locs bob", "half up medium wavy","straight high pony","straight low pony", "curly pony", "bun","curly bun","wavy bun","locs bun","twin braids","straight long","wavy long","curly long", "long locs",  "curly flowing", "straight flowing","straight up","curly up","locs up"]
@@ -299,7 +299,7 @@ hair_back_list_d = default_list(hair_back_list)
 hair_middle_list = ["none", "shaved", "balding","short","long","long shadowed"]
 hair_middle_list_d = default_list(hair_middle_list)
 
-fringe_list_u = ["none", "straight short", "curly short","spiky","straight centre","straight swept","emo","long locs" ]
+fringe_list_u = ["none", "straight short", "curly short","spiky","straight centre","straight swept","emo","short locs","medium locs","long locs", ]
 fringe_list_m = fringe_list_u+["side flop", "princely","wavy side"]
 fringe_list_f = fringe_list_u+["wavy centre","curly wisps","curly long"]#"straight long","wavy long"
 fringe_list_w =[]

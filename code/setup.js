@@ -323,13 +323,12 @@ function print_defining_objects(){
 
 
 const hairstyle_defining_list = [ //name, hair_front, hair_middle, hair_back
-//["curly long","straight long",],
     ["none","none","none","none"], ["balding","balding","none","balding"],["shaved","none","shaved","none"], ["buzzcut","none","short","buzzcut"],
-    ["straight short","none","long","straight short"],["curly short","none","short","curly short"],["wavy short","none","long","wavy short"],["side part","neat side","long shadowed","straight side"],
+    ["straight short","none","long","straight short"],["curly short","none","short","curly short"],["wavy short","none","long","wavy short"],["side part","neat side","long shadowed","straight side"],["locs short","short locs","long","none"],
     ["swept back","swept back","long shadowed","swept back"],["shaggy short","none","long","shaggy short"],["small tight curls","none","short","tight curls short"],
     ["tight curls","none","short","tight curls medium"],["shaggy medium","none","long","shaggy medium"], ["wavy bob","none","long","wavy bob"],["curly bob","none","long","curly bob"],["straight bob","none","long","straight bob"],
     ["straight high pony", "none", "long", "straight high pony"],["straight low pony", "none", "long", "straight low pony"],["curly pony", "none", "long", "curly pony"],["twin braids", "none", "long", "twin braids"],
-    ["locs half up", "locs bun", "long", "locs bob"],
+    ["locs half up", "locs bun", "long", "locs bob"],["locs bob", "locs bob", "long", "locs bob"],
     ["curly flowing", "curly flowing", "long", "curly flowing"],["straight flowing", "straight flowing", "long", "straight flowing"],
     ["straight long", "none", "long", "straight long"],["wavy long", "none", "long", "wavy long"],["curly long", "none", "long", "curly long"],["locs long", "long locs", "long", "long locs"],
     ["curly bun","none","long","curly bun"],["locs bun","locs bun","long","locs bun"],["wavy bun","none","long","wavy bun"],["straight bun","none","long","bun"],
