@@ -38,7 +38,7 @@ const canvas_height = 800;
 
 const imageType_list =["Head","Expression","Outfit"];
 
-const editing_list =["Colouring","Body/Hair","Clothes", "Accessory", "Expression","Randomise"];
+const editing_list =["Colouring","Body/Hair","Clothes", "Accessory", "Expression","Randomise","Display"];
 
 const panel_list = ["Neutral", "Happy", "Sad", "Angry","Surprised","Embarassed","Scared",'Annoyed',"Wry"];
 

@@ -93,7 +93,6 @@
                 <div class="col"><div x-data="dropdown('Eye Shape','current_eyetype','simple')" x-bind="dropbtn" ></div></div>
                 <div class="col"><div x-data="dropdown('Ears','ears','body')" x-bind="dropbtn" ></div></div>
                 <div class="col"><div x-data="dropdown('Complexion','complexion','body')" x-bind="dropbtn" ></div></div>
-                <!--<div class="col"><div x-data="dropdown('Height','size','simple')" x-bind="dropbtn" ></div></div>-->
               </div>
 
             </div>
@@ -169,6 +168,12 @@
                 <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseAll(0);setVariables(Alpine.store('alpineData'));">Androgynous</button></div>
             
               </div> 
+            </div>
+            <div x-show="$store.alpineData.currently_editing === 6" >
+              <h4>Display</h4>
+              <div class="row row-cols-2 gy-3">
+            <div class="col"><div x-data="dropdown('Height','size','simple')" x-bind="dropbtn" ></div></div>
+          </div>
             </div>
         </div> 
     
