@@ -289,28 +289,32 @@ shoes_list_f = shoes_list_u +["high boots","pumps","mary janes"]
 shoes_list_w = []
 shoes_list_d = [shoes_list_f, shoes_list_m, shoes_list_w]
 
+hair_extra_list_u = ["none","topknot"]
+hair_extra_list_f = hair_extra_list_u+ ["straight high pony","straight low pony", "curly pony", "small curly pony","low curly pony","bun","fancy bun","locs bun","twin braids","twintails","locs pony"]
+hair_extra_list_m = hair_extra_list_u
+hair_extra_list_w = [] 
+hair_extra_list_d = [hair_extra_list_f, hair_extra_list_m, hair_extra_list_w]
 
-hair_front_list = ["none", "balding", "neat side", "swept back", "long locs","curly flowing","curly long","straight flowing","locs bun", "locs bob","short locs"]
-hair_front_list_d = default_list(hair_front_list)
-
-hair_back_list = ["none","balding", "buzzcut","straight short","curly short","wavy short", "straight side", "swept back", "shaggy short", "tight curls short","tight curls medium", "shaggy medium", "curly bob","wavy bob", "straight bob","locs bob", "half up medium wavy","straight high pony","straight low pony", "curly pony", "bun","curly bun","wavy bun","locs bun","twin braids","straight long","wavy long","curly long", "long locs",  "curly flowing", "straight flowing","straight up","curly up","locs up"]
+hair_back_list = ["none","balding", "buzzcut","straight short","curly short","wavy short", "straight side", "swept back", "shaggy short", "tight curls short","tight curls medium", "shaggy medium", "curly bob","wavy bob", "straight bob","locs bob", "half up medium wavy","straight long","wavy long","curly long", "long locs",  "curly flowing", "straight flowing","straight up","curly up","locs up"]
 hair_back_list_d = default_list(hair_back_list)
 
 hair_middle_list = ["none", "shaved", "balding","short","long","long shadowed"]
 hair_middle_list_d = default_list(hair_middle_list)
 
-fringe_list_u = ["none", "wisps","straight short", "curly short","short locs","straight blunt", "wavy blunt","curly blunt", "soft curls", "spiky","straight centre","straight swept","spiky side","medium locs", "straight curtains","wavy curtains","curly curtains"]
-fringe_list_m = fringe_list_u+["side flop", "princely","wavy side","straight smooth", "long locs",]
-fringe_list_f = fringe_list_u+["wavy centre","curly tendrils","curly long", "long side flop"]#"straight long","wavy long"
-fringe_list_w =[]
-fringe_list_d = [fringe_list_f, fringe_list_m, fringe_list_w]
-
+hair_front_list = ["none", "balding", "neat side", "swept back", "long locs","curly flowing","curly long","straight flowing","locs bun", "locs bob","short locs"]
+hair_front_list_d = default_list(hair_front_list)
 
 sidelocks_list_u = ["none","short straight", "short hime","short wavy", "short curls","short locs"]
 sidelocks_list_f = sidelocks_list_u+["short hime", "medium hime",  "medium locs","medium wavy", "medium straight","medium straight tendril","long straight", "long wavy","long curly","long locs",]
 sidelocks_list_m = sidelocks_list_u+["tiny curls", "tiny straight", "tiny locs", "medium shaggy", ]
 sidelocks_list_w =[]
 sidelocks_list_d = [sidelocks_list_f, sidelocks_list_m, sidelocks_list_w]
+
+fringe_list_u = ["none", "wisps","straight short", "curly short","short locs","straight blunt", "wavy blunt","curly blunt", "soft curls", "spiky","straight centre","straight swept","spiky side","medium locs", "straight curtains","wavy curtains","curly curtains"]
+fringe_list_m = fringe_list_u+["side flop", "princely","wavy side","straight smooth", "long locs",]
+fringe_list_f = fringe_list_u+["wavy centre","curly tendrils","curly long", "long side flop"]#"straight long","wavy long"
+fringe_list_w =[]
+fringe_list_d = [fringe_list_f, fringe_list_m, fringe_list_w]
 
 facial_hair_list_f = ["none"]
 facial_hair_list_m = ["none", "beard", "moustache", "goatee", "soul patch", "fluffy goatee", "stubble"]
@@ -326,7 +330,7 @@ accessory_list = ["eyewear","neckwear", "earrings", "gloves","back"]
 outfit_list = [ "bottom","top", "overshirt", "coat", "socks","shoes"]#"wheelchair",
 has_sleeves_list = ["top","overshirt","coat"]
 sleeve_list = [x +"_sleeves" for x in has_sleeves_list]
-defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","sidelocks", "facial_hair", "head","waistline","wheelchair"])
+defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","hair_extra", "sidelocks", "facial_hair", "head","waistline","wheelchair"])
 
 #extra info
 
@@ -409,6 +413,7 @@ add_item("wheelchair_back_dec", "wheelchair_list_d", wheelchair_list_d,"wheelcha
 add_item("back", "back_list_d",back_list_d, "clothes", default_box)
 add_item("hat_back", "hat_back_list_d",hat_back_list_d, "clothes/hat", default_box)
 add_item("hat_back_dec", "hat_back_dec_list_d",hat_back_dec_list_d, "clothes/hat", default_box)
+add_item("hair_extra", "hair_extra_list_d",hair_extra_list_d, "hair", default_box)
 add_item("hair_back", "hair_back_list_d",hair_back_list_d, "hair", default_box)
 add_item("coat_back", "coat_back_list_d",coat_back_list_d, "clothes/coat", default_box)
 add_item("body", "body_list_d", body_list_d, "anatomy", default_box)
@@ -864,12 +869,12 @@ def runStuff():
 
     # "skull", "head","body","legs", "ears","nose", "chest"
     # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
-    # "sidelocks", "fringe", "hair_front","hair_middle", "hair_back", "facial_hair"
+    # "sidelocks", "fringe", "hair_front","hair_middle", "hair_back","hair_extra", "facial_hair"
     #"overshirt","overshirt_sleeves","overshirt_dec"
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["sidelocks", "fringe", "hair_front","hair_middle", "hair_back",]:
+        if c.name in ["hair_extra",]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 

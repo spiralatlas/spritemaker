@@ -313,6 +313,7 @@ document.addEventListener('alpine:init', () => {
     isWeirdBody: false, 
 
     current_defining_objects: [
+        {"name":"hair_extra","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#712A0D","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
         {"name":"back","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
         {"name":"body","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
         {"name":"body_chest","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
@@ -455,7 +456,7 @@ document.addEventListener('alpine:init', () => {
         hair_remove_list= hairExcludeIndices(this.current_hairstyle);
 
         for (let i = 0; i < defining_objects.length; i += 1){
-            this_list = outfit_list.concat(accessory_list).concat(sleeve_list).concat(["fringe","sidelocks","facial_hair","waistline"])
+            this_list = outfit_list.concat(accessory_list).concat(sleeve_list).concat(["fringe","sidelocks","hair_extra", "facial_hair","waistline"])
             if (this_list.includes(defining_objects[i].name)) {
                 var prob;
                 if (accessory_list.includes(defining_objects[i].name)|| defining_objects[i].name=="wheelchair"|| defining_objects[i].name=="facial_hair"){//accessories less common
@@ -472,7 +473,7 @@ document.addEventListener('alpine:init', () => {
                 if (!isWeirdOutfit)
                     remove_list = defining_objects[i].item_indices_w
 
-                if (["fringe", "sidelocks"].includes(defining_objects[i].name)&& this.current_hairstyle<3){// bald/balding/shaved
+                if (["fringe", "sidelocks","hair_extra"].includes(defining_objects[i].name)&& this.current_hairstyle<3){// bald/balding/shaved
                         this.current_defining_objects[i].value_list = listOf(0);
                     }   
                 else{
@@ -480,7 +481,11 @@ document.addEventListener('alpine:init', () => {
                         remove_list = remove_list.concat(hair_remove_list[0]);
                     else{
                         if (defining_objects[i].name=="sidelocks")
-                        remove_list = remove_list.concat(hair_remove_list[1]);
+                            remove_list = remove_list.concat(hair_remove_list[1]);
+                        else{
+                            if (defining_objects[i].name=="hair_extra")
+                            remove_list = remove_list.concat(hair_remove_list[2]);
+                        }
                     }
     
                     switch(gender){

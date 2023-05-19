@@ -30,12 +30,13 @@ const outfit_list = ["bottom","top","overshirt","coat","socks","shoes",];
 const has_sleeves_list = ["top","overshirt","coat",];
 const sleeve_list = ["top_sleeves","overshirt_sleeves","coat_sleeves",];
 const accessory_list = ["eyewear","neckwear","earrings","gloves","back","hat",];
-const defining_list = ["eyewear","neckwear","earrings","gloves","back","bottom","top","overshirt","coat","socks","shoes","top_sleeves","overshirt_sleeves","coat_sleeves","body","nose","mouth","eyebrows","complexion","ears","body_chest","cheeks","eyes","fringe","sidelocks","facial_hair","head","waistline","wheelchair",];
+const defining_list = ["eyewear","neckwear","earrings","gloves","back","bottom","top","overshirt","coat","socks","shoes","top_sleeves","overshirt_sleeves","coat_sleeves","body","nose","mouth","eyebrows","complexion","ears","body_chest","cheeks","eyes","fringe","hair_extra","sidelocks","facial_hair","head","waistline","wheelchair",];
 
 const back_list_d = [["none","fluffy tail","thin tail",],["none","fluffy tail","thin tail",],["fluffy tail","thin tail",],];
 const hat_back_list_d = [["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hood",],["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hood",],[],];
 const hat_back_dec_list_d = [["scarf",],["scarf",],[],];
-const hair_back_list_d = [["none","balding","buzzcut","straight short","curly short","wavy short","straight side","swept back","shaggy short","tight curls short","tight curls medium","shaggy medium","curly bob","wavy bob","straight bob","locs bob","half up medium wavy","straight high pony","straight low pony","curly pony","bun","curly bun","wavy bun","locs bun","twin braids","straight long","wavy long","curly long","long locs","curly flowing","straight flowing","straight up","curly up","locs up",],["none","balding","buzzcut","straight short","curly short","wavy short","straight side","swept back","shaggy short","tight curls short","tight curls medium","shaggy medium","curly bob","wavy bob","straight bob","locs bob","half up medium wavy","straight high pony","straight low pony","curly pony","bun","curly bun","wavy bun","locs bun","twin braids","straight long","wavy long","curly long","long locs","curly flowing","straight flowing","straight up","curly up","locs up",],[],];
+const hair_extra_list_d = [["none","topknot","straight high pony","straight low pony","curly pony","small curly pony","low curly pony","bun","fancy bun","locs bun","twin braids","twintails","locs pony",],["none","topknot",],[],];
+const hair_back_list_d = [["none","balding","buzzcut","straight short","curly short","wavy short","straight side","swept back","shaggy short","tight curls short","tight curls medium","shaggy medium","curly bob","wavy bob","straight bob","locs bob","half up medium wavy","straight long","wavy long","curly long","long locs","curly flowing","straight flowing","straight up","curly up","locs up",],["none","balding","buzzcut","straight short","curly short","wavy short","straight side","swept back","shaggy short","tight curls short","tight curls medium","shaggy medium","curly bob","wavy bob","straight bob","locs bob","half up medium wavy","straight long","wavy long","curly long","long locs","curly flowing","straight flowing","straight up","curly up","locs up",],[],];
 const coat_back_list_d = [["none","medium cloak","wrap","overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket","open robe","closed robe","open sweater","long open jacket","hoodie",],["none","medium cloak","wrap","overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket","open robe","closed robe","open sweater","long open jacket","hoodie",],[],];
 const body_list_d = [["regular",],["regular",],[],];
 const body_chest_list_d = [["none","small","medium","big",],["none",],[],];
@@ -100,6 +101,8 @@ add_image_object("back",back_list_d,"clothes",[0,0,314,1024])
 add_defining_object("back",back_list_d)
 add_image_object("hat_back",hat_back_list_d,"clothes/hat",[0,0,314,1024])
 add_image_object("hat_back_dec",hat_back_dec_list_d,"clothes/hat",[0,0,314,1024])
+add_image_object("hair_extra",hair_extra_list_d,"hair",[0,0,314,1024])
+add_defining_object("hair_extra",hair_extra_list_d)
 add_image_object("hair_back",hair_back_list_d,"hair",[0,0,314,1024])
 add_image_object("coat_back",coat_back_list_d,"clothes/coat",[0,0,314,1024])
 add_image_object("body",body_list_d,"anatomy",[0,0,314,1024])

@@ -128,7 +128,7 @@ function getHeightOffset(name){
     }  */ 
     return current_offset;    
 }
-const head_offset_list = expression_list.concat(["skull","head","nose","nose_front","hat_front","hat_middle","hat_front_dec","hat_back","hat_back_dec","ears","complexion", "hair_middle", "hair_front","hair_back","sidelocks","sidelocks_repeat", "fringe","facial_hair", "eyewear","earrings","earrings_dec"]);
+const head_offset_list = expression_list.concat(["skull","head","nose","nose_front","hat_front","hat_middle","hat_front_dec","hat_back","hat_back_dec","ears","complexion", "hair_middle", "hair_front","hair_back","hair_extra", "sidelocks","sidelocks_repeat", "fringe","facial_hair", "eyewear","earrings","earrings_dec"]);
 
 const clothing_names = [];
 const accessory_names = [];
@@ -150,7 +150,7 @@ add_colour_children("head", skin_list);
 add_value_children("body", ["legs"]);
 add_value_children("nose", ["nose_front"]);
 
-add_colour_children("fringe", ["hair_middle", "hair_front","hair_back","facial_hair","sidelocks","sidelocks_repeat"]);
+add_colour_children("fringe", ["hair_middle", "hair_front","hair_back","hair_extra", "facial_hair","sidelocks","sidelocks_repeat"]);
 add_value_children("sidelocks", ["sidelocks_repeat"]);
 //accessories
 
@@ -201,14 +201,19 @@ const hair_back_numbers = hairstyle_defining_list.map(value => findNameMatch(ima
 
 const fringe_list = findNameMatch(image_objects, "fringe").item_list
 const sidelocks_list = findNameMatch(image_objects, "sidelocks").item_list
+const hair_extra_list = findNameMatch(image_objects, "hair_extra").item_list
 const fringe_not_straight = stringIndices(fringe_list, ["curly", "locs"])
 const sidelocks_not_straight = stringIndices(sidelocks_list, ["curly", "locs"])
+const hair_extra_not_straight = stringIndices(hair_extra_list, ["curly", "locs"])
 const fringe_not_wavy = stringIndices(fringe_list, ["locs","hime"])
 const sidelocks_not_wavy = stringIndices(sidelocks_list, ["locs","hime"])
-const fringe_not_curly = stringIndices(fringe_list, ["straight","locs","hime"])
+const hair_extra_not_wavy = stringIndices(hair_extra_list, ["locs","hime"])
+const fringe_not_curly = stringIndices(fringe_list, ["straight","locs","hime",])
 const sidelocks_not_curly = stringIndices(sidelocks_list, ["straight","locs","hime"])
+const hair_extra_not_curly = stringIndices(hair_extra_list, ["straight","locs","twintails"])
 const fringe_not_locs = (fringe_list.filter(value => !value.includes("locs"))).map(value=>fringe_list.indexOf(value))
 const sidelocks_not_locs = (sidelocks_list.filter(value => !value.includes("locs"))).map(value=>sidelocks_list.indexOf(value))
+const hair_extra_not_locs = (hair_extra_list.filter(value => !value.includes("locs"))).map(value=>hair_extra_list.indexOf(value))
 
 const eyetype_list = remove_dups(eyetype_list_f.concat(eyetype_list_m))
 const eyetype_indices_m = eyetype_list_m.map(value => eyetype_list.indexOf(value))
@@ -265,18 +270,18 @@ function hairExcludeIndices(index){
     switch(type){
         case 0://straight
             console.log("straight")
-            return[fringe_not_straight, sidelocks_not_straight]
+            return[fringe_not_straight, sidelocks_not_straight, hair_extra_not_straight]
         case 1://wavy
             console.log("wavy")
-            return[fringe_not_wavy, sidelocks_not_wavy]  
+            return[fringe_not_wavy, sidelocks_not_wavy, hair_extra_not_wavy]  
         case 2://curly
             console.log("curly")
-            return[fringe_not_curly, sidelocks_not_curly] 
+            return[fringe_not_curly, sidelocks_not_curly,hair_extra_not_curly] 
         case 3://locs
             console.log("locs")
-            return[fringe_not_locs, sidelocks_not_locs]                 
+            return[fringe_not_locs, sidelocks_not_locs,hair_extra_not_locs]                 
     } 
     console.log("oops")
-    return [[],[]]
+    return [[],[],[]]
 }
 
