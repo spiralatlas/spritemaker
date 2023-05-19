@@ -306,7 +306,7 @@ fringe_list_w =[]
 fringe_list_d = [fringe_list_f, fringe_list_m, fringe_list_w]
 
 
-sidelocks_list_u = ["none","short straight", "short hime","short wavy", "short locs"]
+sidelocks_list_u = ["none","short straight", "short hime","short wavy", "short curls","short locs"]
 sidelocks_list_f = sidelocks_list_u+["short hime", "medium hime",  "medium locs","medium wavy", "medium straight","medium straight tendril","long straight", "long wavy","long curly","long locs",]
 sidelocks_list_m = sidelocks_list_u+["tiny curls", "tiny straight", "tiny locs", "medium shaggy", ]
 sidelocks_list_w =[]
