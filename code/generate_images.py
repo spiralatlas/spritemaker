@@ -299,9 +299,9 @@ hair_back_list_d = default_list(hair_back_list)
 hair_middle_list = ["none", "shaved", "balding","short","long","long shadowed"]
 hair_middle_list_d = default_list(hair_middle_list)
 
-fringe_list_u = ["none", "straight short", "curly short","spiky","straight centre","straight swept","emo","short locs","medium locs","long locs", ]
-fringe_list_m = fringe_list_u+["side flop", "princely","wavy side"]
-fringe_list_f = fringe_list_u+["wavy centre","curly wisps","curly long"]#"straight long","wavy long"
+fringe_list_u = ["none", "wisps","straight short", "curly short","short locs","straight blunt", "wavy blunt","curly blunt", "spiky","straight centre","straight swept","emo","medium locs", ]
+fringe_list_m = fringe_list_u+["side flop", "princely","wavy side","long locs",]
+fringe_list_f = fringe_list_u+["wavy centre","curly tendrils","curly long"]#"straight long","wavy long"
 fringe_list_w =[]
 fringe_list_d = [fringe_list_f, fringe_list_m, fringe_list_w]
 
