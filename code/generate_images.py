@@ -171,13 +171,13 @@ eyebrows_list_u = ["flat","flat sad","flat grumpy","flat angry","sad","sadder", 
 eyebrows_list_d = default_list(eyebrows_list_u)
 mouth_list_u = ["lah", "small lah", "tiny lah", "big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","wobbly smile", "flat smile","smile","small smile","tiny smile","slight smile","side eww","eww",  "oh","square oh","big oh", "small oh","shock","small flat","flat","small clenched", "wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",]
 mouth_list_d = default_list(mouth_list_u)
-nose_list_u = ["button", "round","medium","broad", "pointed","hooked",] 
-nose_list_d = default_list(nose_list_u)
+nose_list_u = ["none", "nostrils","button", "round","medium","flat", "broad", "pointed","hooked",] 
+nose_list_d = [nose_list_u,nose_list_u,["none"]]
 
 cheeks_list_u = ["none","blush"]
 cheeks_list_d = default_list(cheeks_list_u)
 
-complexion_list_u = ["none","slight lines", "freckles","wrinkles","eye mole","mouth moles","eye scar", "cheek scar", "burn"]
+complexion_list_u = ["none","slight lines", "freckles","wrinkles","sickly", "eye mole","mouth mole","eye scar", "cheek scar", "burn"]
 complexion_list_d = default_list(complexion_list_u)
 
 eyewear_list_u = ["none", "oblong glasses","square glasses","round glasses","spectacles","eye patch","sunglasses","coloured glasses"] 
@@ -270,7 +270,7 @@ hat_middle_list_w = ["beads","cat ears","curled horns","pointed horns","tiara"]
 hat_middle_list_d = [hat_middle_list_f, hat_middle_list_m, hat_middle_list_w]
 
 hat_front_list_u =["none","witch hat","broad hat","beanie","hood","crown"]
-hat_front_list_f = hat_front_list_u+["bonnet","hijab","flower","flower crown","bandanna",]
+hat_front_list_f = hat_front_list_u+["hijab","flower","flower crown","bandanna",]
 hat_front_list_m = hat_front_list_u+["top hat","cap","bowler","fedora","turban"]
 hat_front_list_w = ["top hat","witch hat","bowler","flower crown","crown"]
 hat_front_list_d = [hat_front_list_f, hat_front_list_m, hat_front_list_w]
@@ -338,7 +338,7 @@ no_chest_coat_list = [ "robe","robe hood",  "medium cloak", "medium cloak hood",
 no_chest_overshirt_list = overshirt_nosleeves_list
 no_fill_list = ["mouth"] #lined items with no coloured fill
 
-hat_back_list = ["none","bandanna","beanie","bonnet","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hood"]
+hat_back_list = ["none","bandanna","beanie","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hood"]
 hat_back_list_d = default_list(hat_back_list)
 coat_back_list = ["none","medium cloak","wrap","overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket", "open robe","closed robe", "open sweater", "long open jacket", "hoodie"] 
 coat_back_list_d = default_list(coat_back_list) 
@@ -873,8 +873,9 @@ def runStuff():
     #"overshirt","overshirt_sleeves","overshirt_dec"
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
+    #"nose","nose_front"
     for c in closet:
-        if c.name in ["fringe","hair_back","hair_front","sidelocks"]:
+        if c.name in ["nose","nose_front"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
