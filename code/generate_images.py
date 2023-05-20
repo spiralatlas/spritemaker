@@ -161,7 +161,7 @@ wheelchair_leg_list_d = default_list(["none"]+body_list)
 no_iris_list = ["sleepy","closed"] #eyeshapes with no iris
 eyeshape_list = ["neutral","side","crescents","flat", "narrowed","happy","wide","shock","angry","angry side","sleepy","wink"]
 #["wide","extrawide", "widecatty","sad", "gentle", "regular","vivid", "cool","catty","coolside", "narrowcool","narrowcoolside","narrowcatty","narrowcattyside", "halfclosed"]
-eyetype_list_u = ["medium eyelashes","droopy"]
+eyetype_list_u = ["medium eyelashes","down-turned","up-turned"]
 eyetype_list_m = eyetype_list_u+["short eyelashes"]
 eyetype_list_f = eyetype_list_u+["long eyelashes"]
 eyetype_list_w = []
@@ -172,7 +172,7 @@ eyebrows_list_d = default_list(eyebrows_list_u)
 mouth_list_u = ["lah", "small lah", "tiny lah", "big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","wobbly smile", "flat smile","smile","small smile","tiny smile","slight smile","side eww","eww",  "oh","square oh","big oh", "small oh","shock","small flat","flat","small clenched", "wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",]
 mouth_list_d = default_list(mouth_list_u)
 nose_list_u = ["none", "nostrils","button", "round","medium","flat", "broad", "pointed","hooked",] 
-nose_list_d = [nose_list_u,nose_list_u,["none"]]
+nose_list_d = [nose_list_u,nose_list_u,["none","nostrils"]]
 
 cheeks_list_u = ["none","blush"]
 cheeks_list_d = default_list(cheeks_list_u)
@@ -272,7 +272,7 @@ hat_middle_list_d = [hat_middle_list_f, hat_middle_list_m, hat_middle_list_w]
 hat_front_list_u =["none","witch hat","broad hat","beanie","hood","crown"]
 hat_front_list_f = hat_front_list_u+["hijab","flower","flower crown","bandanna",]
 hat_front_list_m = hat_front_list_u+["top hat","cap","bowler","fedora","turban"]
-hat_front_list_w = ["top hat","witch hat","bowler","flower crown","crown"]
+hat_front_list_w = ["hood", "top hat","witch hat","bowler","flower crown","crown"]
 hat_front_list_d = [hat_front_list_f, hat_front_list_m, hat_front_list_w]
 
 hat_list_d = [remove_dups(hat_middle_list_f+hat_front_list_f),remove_dups(hat_middle_list_m+hat_front_list_m),remove_dups(hat_middle_list_w+hat_front_list_w)]
@@ -875,7 +875,7 @@ def runStuff():
     #"top","top_sleeves","top_dec","top_collar"
     #"nose","nose_front"
     for c in closet:
-        if c.name in ["complexion"]:
+        if c.name in ["eyes"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
