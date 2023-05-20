@@ -295,23 +295,23 @@ hair_extra_list_m = hair_extra_list_u
 hair_extra_list_w = ["fancy bun","topknot"] 
 hair_extra_list_d = [hair_extra_list_f, hair_extra_list_m, hair_extra_list_w]
 
-hair_back_list = ["none","balding", "buzzcut","straight short","curly short","wavy short", "straight side", "swept back", "shaggy short", "tight curls short","tight curls medium", "shaggy medium", "curly bob","wavy bob", "straight bob","locs bob", "half up medium wavy","straight long","wavy long","curly long", "long locs",  "curly flowing", "straight flowing","straight up","curly up","locs up"]
+hair_back_list = ["none","balding", "buzzcut","straight short","curly short","wavy short", "straight side", "fade", "shaggy short", "tight curls short","tight curls medium", "shaggy medium", "curly bob","wavy bob", "straight bob","locs bob", "half up medium wavy","straight long","wavy long","curly long", "long locs",  "curly flowing", "straight flowing","straight up","curly up","locs up"]
 hair_back_list_d = default_list(hair_back_list)
 
 hair_middle_list = ["none", "shaved", "balding","cornrows","short","long","long shadowed"]
 hair_middle_list_d = default_list(hair_middle_list)
 
-hair_front_list = ["none", "balding", "neat side", "swept back", "long locs","curly flowing","curly long","straight flowing","locs bun", "locs bob","short locs","cornrows"]
+hair_front_list = ["none", "balding", "neat side", "fade", "long locs","curly flowing","curly long","straight flowing","locs bun", "locs bob","short locs","cornrows"]
 hair_front_list_d = default_list(hair_front_list)
 
 sidelocks_list_u = ["none","short straight", "short hime","short wavy", "short curls","short locs"]
-sidelocks_list_f = sidelocks_list_u+["short hime", "medium hime",  "medium locs","medium wavy", "medium straight","medium straight tendril","long straight", "long wavy","long curly","long locs",]
+sidelocks_list_f = sidelocks_list_u+["short hime", "medium hime",  "medium locs","medium wavy", "medium straight","medium straight tendril","medium wavy tendril","medium curly tendril","long straight", "long wavy","long curly","long locs",]
 sidelocks_list_m = sidelocks_list_u+["tiny curls", "tiny straight", "tiny locs", "medium shaggy", ]
 sidelocks_list_w =[]
 sidelocks_list_d = [sidelocks_list_f, sidelocks_list_m, sidelocks_list_w]
 
 fringe_list_u = ["none", "wisps","straight short", "curly short","short locs","straight blunt", "wavy blunt","curly blunt", "soft curls", "spiky","straight centre","straight swept","spiky side","medium locs", "straight curtains","wavy curtains","curly curtains"]
-fringe_list_m = fringe_list_u+["side flop", "princely","wavy side","straight smooth", "long locs",]
+fringe_list_m = fringe_list_u+["spiked up", "side flop", "princely","wavy side","straight smooth", "long locs",]
 fringe_list_f = fringe_list_u+["wavy centre","curly tendrils","curly long", "long side flop"]#"straight long","wavy long"
 fringe_list_w =[]
 fringe_list_d = [fringe_list_f, fringe_list_m, fringe_list_w]
@@ -874,7 +874,7 @@ def runStuff():
     # "coat","coat_sleeves","coat_dec","coat_back"
     #"top","top_sleeves","top_dec","top_collar"
     for c in closet:
-        if c.name in ["hair_middle",]:
+        if c.name in ["fringe","hair_back","hair_front","sidelocks"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 

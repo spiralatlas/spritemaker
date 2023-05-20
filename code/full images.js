@@ -208,7 +208,7 @@ const hair_extra_not_straight = stringIndices(hair_extra_list, ["curly", "locs"]
 const fringe_not_wavy = stringIndices(fringe_list, ["locs","hime"])
 const sidelocks_not_wavy = stringIndices(sidelocks_list, ["locs","hime"])
 const hair_extra_not_wavy = stringIndices(hair_extra_list, ["locs","hime"])
-const fringe_not_curly = stringIndices(fringe_list, ["straight","locs","hime",])
+const fringe_not_curly = stringIndices(fringe_list, ["straight","locs","hime","spik"])
 const sidelocks_not_curly = stringIndices(sidelocks_list, ["straight","locs","hime"])
 const hair_extra_not_curly = stringIndices(hair_extra_list, ["straight","locs","twintails"])
 const fringe_not_locs = (fringe_list.filter(value => !value.includes("locs"))).map(value=>fringe_list.indexOf(value))
@@ -250,7 +250,7 @@ function hairExcludeIndices(index){
     hair_string = hairstyle_list[index]
     type = -1; 
     
-    if (includesAny(hair_string, ["straight","side part","swept back"])) //straight
+    if (includesAny(hair_string, ["straight","side part"])) //straight
         type = 0;
     else{
         if (includesAny(hair_string, ["wavy", "shaggy"])) //wavy
