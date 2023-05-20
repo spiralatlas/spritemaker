@@ -259,7 +259,7 @@ function hairExcludeIndices(index){
         if (includesAny(hair_string, ["curl"])) //curly
             type = 2;
     else{
-        if (includesAny(hair_string, ["locs"])) //locs
+        if (includesAny(hair_string, ["locs","cornrows"])) //locs
             type = 3;
         else{
             type = randomElement([0,1,2,3],0);
@@ -269,19 +269,19 @@ function hairExcludeIndices(index){
     }     
     switch(type){
         case 0://straight
-            console.log("straight")
+            //console.log("straight")
             return[fringe_not_straight, sidelocks_not_straight, hair_extra_not_straight]
         case 1://wavy
-            console.log("wavy")
+            //console.log("wavy")
             return[fringe_not_wavy, sidelocks_not_wavy, hair_extra_not_wavy]  
         case 2://curly
-            console.log("curly")
+            //console.log("curly")
             return[fringe_not_curly, sidelocks_not_curly,hair_extra_not_curly] 
         case 3://locs
-            console.log("locs")
+            //console.log("locs")
             return[fringe_not_locs, sidelocks_not_locs,hair_extra_not_locs]                 
     } 
-    console.log("oops")
+    console.log("Warning: Unknown hair type")
     return [[],[],[]]
 }
 

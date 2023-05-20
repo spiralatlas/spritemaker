@@ -477,11 +477,19 @@ document.addEventListener('alpine:init', () => {
                         this.current_defining_objects[i].value_list = listOf(0);
                     }   
                 else{
-                    if (defining_objects[i].name=="fringe")
-                        remove_list = remove_list.concat(hair_remove_list[0]);
+                    if (defining_objects[i].name=="fringe"){
+                        if (this.current_hairstyle<4)// cornrows
+                            this.current_defining_objects[i].value_list = listOf(0);
+                        else    
+                            remove_list = remove_list.concat(hair_remove_list[0]);
+                    }
                     else{
-                        if (defining_objects[i].name=="sidelocks")
-                            remove_list = remove_list.concat(hair_remove_list[1]);
+                        if (defining_objects[i].name=="sidelocks"){
+                            if (this.current_hairstyle<4)// cornrows
+                                this.current_defining_objects[i].value_list = listOf(0);
+                            else    
+                                remove_list = remove_list.concat(hair_remove_list[1]);
+                        }
                         else{
                             if (defining_objects[i].name=="hair_extra")
                             remove_list = remove_list.concat(hair_remove_list[2]);
