@@ -161,7 +161,7 @@ wheelchair_leg_list_d = default_list(["none"]+body_list)
 no_iris_list = ["sleepy","closed"] #eyeshapes with no iris
 eyeshape_list = ["neutral","side","crescents","flat", "narrowed","happy","wide","shock","angry","angry side","sleepy","wink"]
 #["wide","extrawide", "widecatty","sad", "gentle", "regular","vivid", "cool","catty","coolside", "narrowcool","narrowcoolside","narrowcatty","narrowcattyside", "halfclosed"]
-eyetype_list_u = ["medium eyelashes"]
+eyetype_list_u = ["medium eyelashes","droopy"]
 eyetype_list_m = eyetype_list_u+["short eyelashes"]
 eyetype_list_f = eyetype_list_u+["long eyelashes"]
 eyetype_list_w = []
@@ -875,7 +875,7 @@ def runStuff():
     #"top","top_sleeves","top_dec","top_collar"
     #"nose","nose_front"
     for c in closet:
-        if c.name in ["nose","nose_front"]:
+        if c.name in ["complexion"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
