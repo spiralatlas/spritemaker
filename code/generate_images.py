@@ -380,7 +380,7 @@ highlight_list = ["fringe"]
 underlay_list = ["eyewear"]
 no_render_list = [["hat_middle",["scarf"]],["hat_front_dec",["scarf"]],]
 
-default_box = "[0,0,314,1024]"
+default_box = "[0,0,393,1024]"
 ###################### More technical stuff from here on
 
 closet = [] # list of lists of information about items of clothing etc

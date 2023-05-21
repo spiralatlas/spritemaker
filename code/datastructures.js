@@ -21,6 +21,8 @@ function setVariables(data_object){
     current_imageType = data_object.current_imageType;
 
     size = data_object.size;
+    head_size = data_object.head_size;
+    crop_height = data_object.crop_height;
     current_eyetype = data_object.current_eyetype;
     current_hairstyle = data_object.current_hairstyle;
     isWeirdOutfit = data_object.isWeirdOutfit;
@@ -112,17 +114,16 @@ function setVariables(data_object){
         image_objects[i].widthOffset = getWidthOffset(image_objects[i].name);
         if (!checkRender(image_objects[i]))
             image_objects[i].item = -1
-        image_objects[i].scale = 0.8;   
+        image_objects[i].scale = 0.8+size*0.05;   
     }
 
     //sprite height
     sprite_width = full_width;
     sprite_height = full_height ;
     if (findNameMatch(defining_objects,"wheelchair").value_list[0] !=0){ //there's a wheelchair
-        sprite_height = full_height -165;
+        sprite_height = full_height*(0.8+size*0.05) -165-crop_height;
     } 
-    if (!showFullSprite)
-            sprite_height = sprite_height - (5-size)*30;
+    sprite_height = sprite_height*(0.8+size*0.05) -crop_height;//-(5-size)*30
 
     //calculating crops
 
@@ -250,6 +251,9 @@ document.addEventListener('alpine:init', () => {
                         case 'size':
                             objList = 'size_list';
                             break;
+                        case 'head_size':
+                            objList = 'size_list';
+                            break;    
                         case 'current_eyetype': 
                             objList = 'eyetype_list';
                             break;  
@@ -297,6 +301,21 @@ document.addEventListener('alpine:init', () => {
             return output 
             },
         },
+        numberbtn: {
+            //Sets a number using a number input
+            ['x-html']() {
+    
+                switch(this.typeName){
+                    case 'crop':
+                        objName = '$store.alpineData.crop_height';
+                        break;           
+                }    
+                id = '"drop'+this.title+this.valueName+'"';
+                output = '<label for='+id+ 'class="form-label">'+this.title+'</label>: ';   
+                output += '<input id='+id+' type="number" :value ="'+objName+'"  @input="'+objName+'=$event.target.value;setVariables(Alpine.store(\'alpineData\'));"/>'
+                return output 
+                },
+            },
   }))
   //data used by the Alpine components on the webpage
   Alpine.store('alpineData', {
@@ -306,9 +325,11 @@ document.addEventListener('alpine:init', () => {
     current_expression : 0,
     current_clothing : 0,
     current_accessory : 0,
-    current_imageType : 2,
+    current_imageType : 0,
 
     size : 0,
+    head_size: 0,
+    crop_height : 300,
     current_eyetype: 0,
     current_hairstyle: 0,
     isWeirdOutfit: false,
@@ -350,6 +371,8 @@ document.addEventListener('alpine:init', () => {
     fixAlpine() { //make the alpine components match the variables used by the javascript
     
         this.size= size;
+        this.head_size= head_size;
+        this.crop_height= crop_height;
         this.current_eyetype = current_eyetype;
         this.current_hairstyle = current_hairstyle;
         this.isWeirdOutfit = isWeirdOutfit;
@@ -545,7 +568,7 @@ function niceString(input){
 }
 
 function drawCanvas() {
-    //draw the preview and export canvases
+    //draw the canvases
     
     //preview canvas
     if (testing)
@@ -558,33 +581,18 @@ function drawCanvas() {
 
     canvas_preview = document.getElementById("previewCanvas");
     canvas_sample = document.getElementById("sampleCanvas");
-    canvas = document.getElementById("exportCanvas");
 
     ctx_preview = canvas_preview.getContext("2d");
     ctx_sample = canvas_sample.getContext("2d");
-    ctx_export = canvas.getContext("2d");
 
     canvas_preview.height = sprite_height; //clears
     canvas_sample.height = canvas_sample.height;
-    canvas.height = sprite_height; //clears
 
     //document.getElementById("closet").innerHTML = print_image_objects();
     //portrait preview
 
     preview_width=full_width;
     preview_height=sprite_height;
-
-    //ctx_preview.fillStyle = "#FF0000";
-    //ctx_preview.fillRect(0, 0, preview_width, preview_height);
-    //ctx_preview.drawImage(portrait_back, 0, 0);
-    for (let i = 0; i < image_objects.length; i += 1){
-        let b = image_objects[i];
-        if (getImageItem(b) !="none"){ 
-            {
-                draw_object(b,current_expression,b.colour1,ctx_preview, 0,0,b.widthOffset, -b.heightOffset,parseInt(sprite_width/b.scale),parseInt(sprite_height/b.scale));
-            }
-        }
-    }
 
     ctx_sample.clearRect(0,0,canvas_sample.width,canvas_sample.height)
     if (currently_editing==0){
@@ -596,19 +604,17 @@ function drawCanvas() {
             ctx_sample.drawImage(schemes_image,125,0)
         }
     }
-    
-
-    
+        
     //main canvas
     let current_list = [];
     switch (current_imageType){
-        case 0: 
+        case 1: 
             current_list =  body_list;
             break;
-        case 1: 
+        case 2: 
             current_list =  expression_list;
             break; 
-        case 2: 
+        case 3: 
             current_list =  all_clothes_list;
             break;        
     }
@@ -616,12 +622,12 @@ function drawCanvas() {
     for (let i = 0; i < image_objects.length; i += 1){
         let b = image_objects[i];
         if (getImageItem(b) !="none"){ 
-            if (current_list.includes(b.name)) 
+            if (current_imageType==0 || current_list.includes(b.name)) 
                 if (current_imageType ==2 && body_list.includes(b.name)){
                 
-                    undraw_object(b,current_expression,b.colour1,ctx_export, 0,0,b.widthOffset, -b.heightOffset,sprite_width,sprite_height);}
+                    undraw_object(b,current_expression,b.colour1,ctx_preview, 0,0,b.widthOffset, -b.heightOffset,sprite_width,sprite_height);}
                 else{
-                    draw_object(b,current_expression,b.colour1,ctx_export, 0,0,b.widthOffset, -b.heightOffset,parseInt(sprite_width/b.scale),parseInt(sprite_height/b.scale));
+                    draw_object(b,current_expression,b.colour1,ctx_preview, 0,0,b.widthOffset, -b.heightOffset,parseInt(sprite_width/b.scale),parseInt(sprite_height/b.scale));
                 }
 
         }
@@ -630,8 +636,8 @@ function drawCanvas() {
 }
 
 function setup(){
-    canvas = document.getElementById("exportCanvas");
-    ctx_export = canvas.getContext("2d");
+    //canvas = document.getElementById("exportCanvas");
+    //ctx_export = canvas.getContext("2d");
     canvas_preview = document.getElementById("previewCanvas");
     ctx_preview = canvas_preview.getContext("2d");
 

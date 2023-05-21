@@ -46,12 +46,12 @@
     <div class="container text-center"> 
 
       <div class="row">
-        <div class = "col"><h3>Preview</h3></div> 
+        <div class = "col"><div x-data="dropdown('','current_imageType','simple')" x-bind="dropbtn" ></div></div>
+        <div class = "col"><button class="btn btn-primary" id="download">Export</button></div>
       </div>
-
       <!-- canvases -->
       <div class="row">
-          <canvas id="previewCanvas" width="314" height="712">
+          <canvas id="previewCanvas" width="393" height="712">
             Your browser does not support HTML5 Canvas. Try downloading latest Chrome, Firefox, Safari, Opera or Internet explorer.
           </canvas> 
       </div>
@@ -173,7 +173,10 @@
             <div x-show="$store.alpineData.currently_editing === 6" >
               <h4>Display</h4>
               <div class="row row-cols-2 gy-3">
-            <div class="col"><div x-data="dropdown('Height','size','simple')" x-bind="dropbtn" ></div></div>
+                  <div class="col"><div x-data="dropdown('Body Scale','size','simple')" x-bind="dropbtn" ></div></div>
+                  <div class="col"><div x-data="dropdown('Head Scale','head_size','simple')" x-bind="dropbtn" ></div></div>
+                  <div class="col"></div><div x-data="dropdown('Crop (default 300)','crop','crop')" x-bind="numberbtn" ></div></div>
+                </div>
           </div>
             </div>
         </div> 
@@ -198,22 +201,6 @@
 
         </div>
         <!-- end of column 2--> 
-
-    <div class="col-md-auto"><!-- column 3, export -->
-      <div class="container text-center"> 
-    
-        <div class="row">
-          <div class = "col"><div x-data="dropdown('','current_imageType','simple')" x-bind="dropbtn" ></div></div>
-          <div class = "col"><button class="btn btn-primary" id="download">Export</button></div>
-        </div>
-
-        <div class="row">
-            <canvas id="exportCanvas" width="314" height="712">
-              Your browser does not support HTML5 Canvas. Try downloading latest Chrome, Firefox, Safari, Opera or Internet explorer.
-            </canvas>
-        </div>
-      </div></div>
-      <!-- end of column 3--> 
 
     <hr>
     <div id="test"></div>

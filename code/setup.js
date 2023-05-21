@@ -8,11 +8,14 @@ let currently_editing = 0; //which element of editing list we are editing
 let current_expression = 0;
 let current_clothing = 0;
 let current_accessory = 0;
-let current_imageType = 2;
+let current_imageType = 0;
 
 let size = 0;
-const size_list = ['Very Short','Short', 'Medium','Tall','Very Tall',];
+let head_size = 0;
+const size_list = ['80%','85%', '90%','95%','100%',];
 let showFullSprite = true;
+
+let crop_height = 300 ;
 
 let skinColour;
 let eyeColour;
@@ -36,7 +39,7 @@ let isWeirdBody = false;
 const canvas_width = 512;
 const canvas_height = 800;
 
-const imageType_list =["Head","Expression","Outfit"];
+const imageType_list =["Preview", "Head","Expression","Outfit"];
 
 const editing_list =["Colouring","Body/Hair","Clothes", "Accessory", "Expression","Randomise","Display"];
 
