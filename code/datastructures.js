@@ -636,8 +636,6 @@ function drawCanvas() {
 }
 
 function setup(){
-    //canvas = document.getElementById("exportCanvas");
-    //ctx_export = canvas.getContext("2d");
     canvas_preview = document.getElementById("previewCanvas");
     ctx_preview = canvas_preview.getContext("2d");
 
@@ -658,7 +656,7 @@ function setup(){
         }   
         console.log("saving "+filename);              
         // Convert our canvas to a data URL
-        let canvasUrl = canvas.toDataURL();
+        let canvasUrl = canvas_preview.toDataURL();
         // Create an anchor, and set the href value to our data URL
         const createEl = document.createElement('a');
         createEl.href = canvasUrl;

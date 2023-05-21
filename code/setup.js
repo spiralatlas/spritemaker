@@ -45,10 +45,9 @@ const editing_list =["Colouring","Body/Hair","Clothes", "Accessory", "Expression
 
 const panel_list = ["Neutral", "Happy", "Sad", "Angry","Surprised","Embarassed","Scared",'Annoyed',"Wry"];
 
-let canvas;
 let canvas_preview;
 let ctx_preview;
-let ctx;
+//let ctx;
 
 // Basic functions
 
