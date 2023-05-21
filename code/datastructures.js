@@ -433,8 +433,14 @@ document.addEventListener('alpine:init', () => {
             if (outfit_list.includes(defining_objects[i].name)||accessory_list.includes(defining_objects[i].name)) {
                 this.current_defining_objects[i].colour1 = randomElement(temp_list,0);
                 this.current_defining_objects[i].colour2 = randomElement(temp_list,0);
-                this.current_defining_objects[i].patterncolour = randomElement(temp_list,0);
-                this.current_defining_objects[i].pattern = randomIndex(pattern_list,0.8);
+                if (this.current_defining_objects[i].name=="back"){
+                    this.current_defining_objects[i].patterncolour = randomElement(temp_list,0);
+                    this.current_defining_objects[i].pattern = 0;
+
+                } else{
+                    this.current_defining_objects[i].patterncolour = randomElement(temp_list,0);
+                    this.current_defining_objects[i].pattern = randomIndex(pattern_list,0.8);
+                }
             }
         }
     },
