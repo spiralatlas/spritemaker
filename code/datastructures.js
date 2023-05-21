@@ -114,7 +114,13 @@ function setVariables(data_object){
         image_objects[i].widthOffset = getWidthOffset(image_objects[i].name);
         if (!checkRender(image_objects[i]))
             image_objects[i].item = -1
-        image_objects[i].scale = 0.8+size*0.05;   
+        if (head_offset_list.includes(image_objects[i].name)) {   
+            image_objects[i].scale = 0.8+head_size*0.05; 
+            image_objects[i].heightOffset += -parseInt((size-head_size)*11)
+            image_objects[i].widthOffset += parseInt((size-head_size)*10.5)
+        }
+        else     
+            image_objects[i].scale = 0.8+size*0.05;   
     }
 
     //sprite height
