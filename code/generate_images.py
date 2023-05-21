@@ -13,7 +13,7 @@ def remove_dups(l):
         return list( dict.fromkeys(l) ) 
 
 def default_list(l):
-    return [l,l, []]   
+    return [l,l, [],True]   
 
 def combineList(list1,list2):
     #list of strings combining lists of strings list1 and list2
@@ -136,22 +136,22 @@ pattern_list = ["none",
 
 basic_chest_list = ["none", "small","medium","big"]   
 body_chest_list = basic_chest_list
-body_chest_list_d = [body_chest_list,["none"], []]
-top_chest_list_d = [basic_chest_list,["none"], []]  
-overshirt_chest_list_d = [basic_chest_list,["none"], []]  
-coat_chest_list_d = [basic_chest_list,["none"], []]  
+body_chest_list_d = [body_chest_list,["none"], [],True]
+top_chest_list_d = [basic_chest_list,["none"], [],True]  
+overshirt_chest_list_d = [basic_chest_list,["none"], [],True]  
+coat_chest_list_d = [basic_chest_list,["none"], [],True]  
 
 wheelchair_list = [ "none","manual","old fashioned"]
 wheelchair_list_w = ["old fashioned"]
-wheelchair_list_d = [wheelchair_list,wheelchair_list,wheelchair_list_w]
+wheelchair_list_d = [wheelchair_list,wheelchair_list,wheelchair_list_w,True]
 
-head_list_u = ["pointed","medium","rectangular","round"]
+head_list_u = ["round","medium", "pointed","rectangular",]
 head_list_d = default_list(head_list_u)
 skull_list = ["regular"]
 skull_list_d = default_list(skull_list)
 ear_list_u = ["none","regular","pointed","very pointed"]
 ear_list_w = ["none","pointed","very pointed"]
-ear_list_d = [ear_list_u,ear_list_u,ear_list_w]
+ear_list_d = [ear_list_u,ear_list_u,ear_list_w,True]
 body_list = ["regular"]
 body_list_d = default_list(body_list)
 leg_list_d = default_list(["none"]+body_list)
@@ -160,19 +160,18 @@ wheelchair_leg_list_d = default_list(["none"]+body_list)
 
 no_iris_list = ["sleepy","closed"] #eyeshapes with no iris
 eyeshape_list = ["neutral","side","crescents","flat", "narrowed","happy","wide","shock","angry","angry side","sleepy","wink"]
-#["wide","extrawide", "widecatty","sad", "gentle", "regular","vivid", "cool","catty","coolside", "narrowcool","narrowcoolside","narrowcatty","narrowcattyside", "halfclosed"]
 eyetype_list_u = ["medium eyelashes","down-turned","up-turned"]
-eyetype_list_m = eyetype_list_u+["short eyelashes"]
+eyetype_list_m = ["short eyelashes"]+ eyetype_list_u
 eyetype_list_f = eyetype_list_u+["long eyelashes"]
 eyetype_list_w = []
-eyetype_list_d = [eyetype_list_f,eyetype_list_m,eyetype_list_w]
+eyetype_list_d = [eyetype_list_f,eyetype_list_m,eyetype_list_w,True]
 eyes_list_d = default_list(eyeshape_list)
 eyebrows_list_u = ["flat","flat sad","flat grumpy","flat angry","sad","sadder", "semi sad", "regular","semi arch","arched","raised arch", "raised","raised flat", "raised semi flat","raised grumpy","raised semi","angry", "angry arch","half raised","half semi", "half sad","half sad raised","half flat","half arch raised"]
 eyebrows_list_d = default_list(eyebrows_list_u)
 mouth_list_u = ["lah", "small lah", "tiny lah", "big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","wobbly smile", "flat smile","smile","small smile","tiny smile","slight smile","side eww","eww",  "oh","square oh","big oh", "small oh","shock","small flat","flat","small clenched", "wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",]
 mouth_list_d = default_list(mouth_list_u)
 nose_list_u = ["none", "nostrils","button", "round","medium","flat", "broad", "pointed","hooked",] 
-nose_list_d = [nose_list_u,nose_list_u,["none","nostrils"]]
+nose_list_d = [nose_list_u,nose_list_u,["none","nostrils"],True]
 
 cheeks_list_u = ["none","blush"]
 cheeks_list_d = default_list(cheeks_list_u)
@@ -180,34 +179,35 @@ cheeks_list_d = default_list(cheeks_list_u)
 complexion_list_u = ["none","slight lines", "freckles","wrinkles","sickly", "eye mole","mouth mole","eye scar", "cheek scar", "burn"]
 complexion_list_d = default_list(complexion_list_u)
 
-eyewear_list_u = ["none", "oblong glasses","square glasses","round glasses","spectacles","eye patch","sunglasses","coloured glasses"] 
-eyewear_list_f = eyewear_list_u
-eyewear_list_m = eyewear_list_u+["monocle"]
+eyewear_list_u = [ "eye patch","oblong glasses","square glasses","round glasses","spectacles","sunglasses","coloured glasses"] 
+eyewear_list_f = ["none",]+eyewear_list_u
+eyewear_list_m = ["none","monocle"]+eyewear_list_u
 eyewear_list_w = ["monocle","spectacles","eye patch"]
-eyewear_list_d =  [eyewear_list_f,eyewear_list_m, eyewear_list_w]
+eyewear_list_d =  [eyewear_list_f,eyewear_list_m, eyewear_list_w,True]
 
-earrings_list_u = ["none","small hoops","punk","earpiece"]
-earrings_list_f = earrings_list_u+["stud","hoops", "drop earrings", "round earrings"]
+earrings_list_u = ["none","stud","small hoops","punk","earpiece"]
+earrings_list_f = earrings_list_u+["hoops", "drop earrings", "round earrings"]
 earrings_list_m = earrings_list_u+[]
 earrings_list_w = []
-earrings_list_d =  [earrings_list_f,earrings_list_m, earrings_list_w]
+earrings_list_d =  [earrings_list_f,earrings_list_m, earrings_list_w,True]
 
-gloves_list_f = ["none", "short gloves", "medium gloves", "bracelets"]
-gloves_list_m = ["none", "short gloves","fingerless"]
+gloves_list_u = ["short gloves"]
+gloves_list_f = ["none", "medium gloves", "bracelets"]
+gloves_list_m = ["none", "fingerless"]+["short gloves"]
 gloves_list_w = []
-gloves_list_d = [gloves_list_f,gloves_list_m,gloves_list_w]
+gloves_list_d = [gloves_list_f,gloves_list_m,gloves_list_w,True]
 
-back_list_u = ["none","fluffy tail","thin tail" ]
+back_list_u = ["none","thin tail","fluffy tail", ]
 back_list_f = back_list_u+[]
 back_list_m= back_list_u+[] 
 back_list_w = ["fluffy tail","thin tail"]
-back_list_d = [back_list_f,back_list_m,back_list_w]
+back_list_d = [back_list_f,back_list_m,back_list_w,True]
 
-top_list_u = ["none","vest","tee", "chinese collar","turtleneck","kimono" ]
-top_list_f = top_list_u+["bikini","crop top","square", "boatneck","gathered","low vee","sailor shirt"]
-top_list_m= top_list_u+["open shirt","button up", "high collar shirt"] 
+top_list_u = ["vest","tee", "chinese collar","turtleneck","kimono" ]
+top_list_f = ["none","bikini","crop top","square", "boatneck","gathered","low vee","sailor shirt"]+top_list_u
+top_list_m= ["none",]+top_list_u+["open shirt","button up", "high collar shirt"] 
 top_list_w = ["high collar shirt"]
-top_list_d = [top_list_f,top_list_m,top_list_w]
+top_list_d = [top_list_f,top_list_m,top_list_w,False]
 top_nosleeves_list = ["none", "bikini", "vest"]
 
 top_collar_list = ["open shirt","button up","high collar shirt","sailor shirt"] 
@@ -217,83 +217,83 @@ top_sleeve_list_u = ["sleeveless", "short","long", "broad"]
 top_sleeve_list_f = top_sleeve_list_u+["puffy","bell"]
 top_sleeve_list_m = top_sleeve_list_u+["puffy shirt", "long shirt","rolled"]
 top_sleeve_list_w = ["puffy", "puffy shirt","bell"]
-top_sleeve_list_d = [top_sleeve_list_f,top_sleeve_list_m,top_sleeve_list_w]
+top_sleeve_list_d = [top_sleeve_list_f,top_sleeve_list_m,top_sleeve_list_w,True]
 
-overshirt_list_u = ["none","button up vee", "open shirt", "vee","sweater", "band"]
-overshirt_list_f = overshirt_list_u + ["square","obi"]
+overshirt_list_u = ["band","button up vee", "open shirt", "vee","sweater"]
+overshirt_list_f = ["none","obi"] +overshirt_list_u +["square"]
 overshirt_list_m = overshirt_list_u + []
 overshirt_list_w = ["obi", "band"]
-overshirt_list_d = [overshirt_list_f, overshirt_list_m,overshirt_list_w]
+overshirt_list_d = [overshirt_list_f, overshirt_list_m,overshirt_list_w,False]
 overshirt_nosleeves_list = ["none","obi", "band"]
 
 overshirt_sleeve_list_u = ["sleeveless","short","long"]
 overshirt_sleeve_list_f = overshirt_sleeve_list_u+[]
 overshirt_sleeve_list_m = overshirt_sleeve_list_u+[]
 overshirt_sleeve_list_w = []
-overshirt_sleeve_list_d = [overshirt_sleeve_list_f, overshirt_sleeve_list_m, overshirt_sleeve_list_w]
+overshirt_sleeve_list_d = [overshirt_sleeve_list_f, overshirt_sleeve_list_m, overshirt_sleeve_list_w,True]
 
 bottom_list_u = ["none","briefs",]
-bottom_list_f = bottom_list_u+["short skirt","medium skirt","long skirt","kilt","short kilt","tube skirt","briefs"]
-bottom_list_m = bottom_list_u+["breeches","trousers","shorts"]
+bottom_list_f = bottom_list_u+["short skirt","medium skirt","long skirt","short kilt","kilt","tube skirt",]
+bottom_list_m = bottom_list_u+["shorts", "breeches","trousers",]
 bottom_list_w = ["breeches","tube skirt","briefs"]
-bottom_list_d = [bottom_list_f, bottom_list_m, bottom_list_w]
+bottom_list_d = [bottom_list_f, bottom_list_m, bottom_list_w,False]
 
 waistline_list_u=["none","gathered","button fly"]
 waistline_list_f = waistline_list_u+["low","high","empire","band","pointed"]
-waistline_list_m = waistline_list_u+["fall front","overalls","suspenders","belt"]
+waistline_list_m = waistline_list_u+["suspenders","fall front","overalls","belt"]
 waistline_list_w = ["fall front","empire","pointed"]
-waistline_list_d = [waistline_list_f,waistline_list_m,waistline_list_w]
+waistline_list_d = [waistline_list_f,waistline_list_m,waistline_list_w,True]
 
 neckwear_list_u = ["none", "cravat bow", "bandanna", "scarf","kerchief","long scarf"]  
-neckwear_list_f = neckwear_list_u+[ "beaded necklace","choker","pendant","jewelled necklace","beads","bow","fur collar"] 
+neckwear_list_f = [ "none", "beaded necklace","choker","pendant","jewelled necklace","beads","bow","fur collar"] + neckwear_list_u
 neckwear_list_m = neckwear_list_u+["cravat","tie","bow tie"]
 neckwear_list_w = ["cravat bow","bandanna"]
-neckwear_list_d = [neckwear_list_f, neckwear_list_m,neckwear_list_w]
+neckwear_list_d = [neckwear_list_f, neckwear_list_m,neckwear_list_w,True]
 
-coat_list_u = ["none","medium cloak", "short jacket", "open robe","closed robe", "open sweater", "long open jacket"]
-coat_list_f = coat_list_u+["dress jacket","wrap"]
-coat_list_m = coat_list_u+["business jacket","buttoned jacket","cool jacket", "overcoat","jama","hoodie"]  
+coat_list_u = ["open sweater", "medium cloak", "short jacket", "open robe","closed robe", "long open jacket"]
+coat_list_f = ["none","wrap"]+coat_list_u+["dress jacket",]
+coat_list_m = ["none","hoodie", "cool jacket","business jacket",]+coat_list_u+["buttoned jacket","overcoat","jama",]  
 coat_list_w = ["medium cloak","jama","open robe","closed robe",]
-coat_list_d = [coat_list_f, coat_list_m, coat_list_w]
+coat_list_d = [coat_list_f, coat_list_m, coat_list_w,True]
 coat_nosleeves_list = ["none", "wrap", "medium cloak"]
 
 coat_sleeve_list_u = ["sleeveless","short","scrunched", "long", "long blocky","broad","trailing"]
 coat_sleeve_list_f = coat_sleeve_list_u+[]
 coat_sleeve_list_m = coat_sleeve_list_u+[]
 coat_sleeve_list_w = ["broad","trailing"]
-coat_sleeve_list_d = [coat_sleeve_list_f, coat_sleeve_list_m, coat_sleeve_list_w]
+coat_sleeve_list_d = [coat_sleeve_list_f, coat_sleeve_list_m, coat_sleeve_list_w,True]
 
-hat_middle_list_u =["none","cat ears","curled horns","pointed horns",]
-hat_middle_list_f = hat_middle_list_u+["scarf","beads","head band","side bow","bow","tiara"]
-hat_middle_list_m = hat_middle_list_u+["sweat band"]
+hat_middle_list_u =["cat ears","curled horns","pointed horns",]
+hat_middle_list_f = ["none","beads","head band","side bow","bow","tiara","scarf"]+hat_middle_list_u
+hat_middle_list_m = ["none","sweat band"]+hat_middle_list_u
 hat_middle_list_w = ["beads","cat ears","curled horns","pointed horns","tiara"]
-hat_middle_list_d = [hat_middle_list_f, hat_middle_list_m, hat_middle_list_w]
+hat_middle_list_d = [hat_middle_list_f, hat_middle_list_m, hat_middle_list_w,False]
 
-hat_front_list_u =["none","witch hat","broad hat","beanie","hood","crown"]
-hat_front_list_f = hat_front_list_u+["hijab","flower","flower crown","bandanna",]
-hat_front_list_m = hat_front_list_u+["top hat","cap","bowler","fedora","turban"]
+hat_front_list_u =["crown","witch hat","broad hat","beanie","hood",]
+hat_front_list_f = ["none", "flower","flower crown","bandanna","hijab",]+hat_front_list_u
+hat_front_list_m = ["none","top hat","cap","bowler","fedora","turban"]+hat_front_list_u
 hat_front_list_w = ["hood", "top hat","witch hat","bowler","flower crown","crown"]
-hat_front_list_d = [hat_front_list_f, hat_front_list_m, hat_front_list_w]
+hat_front_list_d = [hat_front_list_f, hat_front_list_m, hat_front_list_w,False]
 
-hat_list_d = [remove_dups(hat_middle_list_f+hat_front_list_f),remove_dups(hat_middle_list_m+hat_front_list_m),remove_dups(hat_middle_list_w+hat_front_list_w)]
+hat_list_d = [remove_dups(hat_middle_list_f+hat_front_list_f),remove_dups(hat_middle_list_m+hat_front_list_m),remove_dups(hat_middle_list_w+hat_front_list_w),True]
 
 socks_list_u = ["none","ankle high","mid calf"]
 socks_list_m = socks_list_u  
 socks_list_f = socks_list_u +["knee high","thigh high","tights"] 
 socks_list_w = []
-socks_list_d = [socks_list_f, socks_list_m, socks_list_w]
+socks_list_d = [socks_list_f, socks_list_m, socks_list_w,True]
 
 shoes_list_u = ["none","sandals","slip ons","sneakers"]
 shoes_list_m = shoes_list_u +["boots"]
-shoes_list_f = shoes_list_u +["high boots","pumps","mary janes"] 
+shoes_list_f = shoes_list_u +["pumps","mary janes","high boots",] 
 shoes_list_w = []
-shoes_list_d = [shoes_list_f, shoes_list_m, shoes_list_w]
+shoes_list_d = [shoes_list_f, shoes_list_m, shoes_list_w,False]
 
 hair_extra_list_u = ["none","topknot"]
 hair_extra_list_f = hair_extra_list_u+ ["straight high pony","straight low pony", "curly pony", "small curly pony","low curly pony","bun","fancy bun","locs bun","twin braids","twintails","locs pony"]
 hair_extra_list_m = hair_extra_list_u
 hair_extra_list_w = ["fancy bun","topknot"] 
-hair_extra_list_d = [hair_extra_list_f, hair_extra_list_m, hair_extra_list_w]
+hair_extra_list_d = [hair_extra_list_f, hair_extra_list_m, hair_extra_list_w,True]
 
 hair_back_list = ["none","balding", "buzzcut","straight short","curly short","wavy short", "straight side", "fade", "shaggy short", "tight curls short","tight curls medium", "shaggy medium", "curly bob","wavy bob", "straight bob","locs bob", "half up medium wavy","straight long","wavy long","curly long", "long locs",  "curly flowing", "straight flowing","straight up","curly up","locs up"]
 hair_back_list_d = default_list(hair_back_list)
@@ -304,22 +304,22 @@ hair_middle_list_d = default_list(hair_middle_list)
 hair_front_list = ["none", "balding", "neat side", "fade", "long locs","curly flowing","curly long","straight flowing","locs bun", "locs bob","short locs","cornrows"]
 hair_front_list_d = default_list(hair_front_list)
 
-sidelocks_list_u = ["none","short straight", "short hime","short wavy", "short curls","short locs"]
-sidelocks_list_f = sidelocks_list_u+["short hime", "medium hime",  "medium locs","medium wavy", "medium straight","medium straight tendril","medium wavy tendril","medium curly tendril","long straight", "long wavy","long curly","long locs",]
-sidelocks_list_m = sidelocks_list_u+["tiny curls", "tiny straight", "tiny locs", "medium shaggy", ]
+sidelocks_list_u = ["short straight", "short hime","short wavy", "short curls","short locs"]
+sidelocks_list_f = ["none"]+sidelocks_list_u+["short hime", "medium hime",  "medium locs","medium wavy", "medium straight","medium straight tendril","medium wavy tendril","medium curly tendril","long straight", "long wavy","long curly","long locs",]
+sidelocks_list_m = ["none","tiny curls", "tiny straight", "tiny locs", "medium shaggy", ]+sidelocks_list_u
 sidelocks_list_w =[]
-sidelocks_list_d = [sidelocks_list_f, sidelocks_list_m, sidelocks_list_w]
+sidelocks_list_d = [sidelocks_list_f, sidelocks_list_m, sidelocks_list_w,True]
 
 fringe_list_u = ["none", "wisps","straight short", "curly short","short locs","straight blunt", "wavy blunt","curly blunt", "soft curls", "spiky","straight centre","straight swept","spiky side","medium locs", "straight curtains","wavy curtains","curly curtains"]
-fringe_list_m = fringe_list_u+["spiked up", "side flop", "princely","wavy side","straight smooth", "long locs",]
-fringe_list_f = fringe_list_u+["wavy centre","curly tendrils","curly long", "long side flop"]#"straight long","wavy long"
+fringe_list_m = fringe_list_u+["spiked up", "side flop", "princely","wavy side","straight smooth"]
+fringe_list_f = fringe_list_u+["wavy centre","curly tendrils","curly long", "long side flop","long locs",]#"straight long","wavy long"
 fringe_list_w =[]
-fringe_list_d = [fringe_list_f, fringe_list_m, fringe_list_w]
+fringe_list_d = [fringe_list_f, fringe_list_m, fringe_list_w,True]
 
 facial_hair_list_f = ["none"]
 facial_hair_list_m = ["none", "beard", "moustache", "goatee", "soul patch", "fluffy goatee", "stubble"]
 facial_hair_list_w = []
-facial_hair_list_d = [facial_hair_list_f,facial_hair_list_m,facial_hair_list_w]
+facial_hair_list_d = [facial_hair_list_f,facial_hair_list_m,facial_hair_list_w,True]
 facial_hair_list_render = [f for f in facial_hair_list_m if f!="stubble"]
 
 # collections of parts that have the same colours and patterns
@@ -718,9 +718,13 @@ def list_string(listname, list):
 def name_string(name, list_list):
     #create a line of javascript code defining this list of lists
     s = "const "+name + " = ["
-    for i in range(len(list_list)):
+    for i in range(len(list_list)-1):
         s+=simple_list_string(list_list[i])
         s+=","    
+    if list_list[len(list_list)-1]:
+        s+="true" 
+    else:
+        s+="false"     
     s+="];\n"
     return s 
 
@@ -875,7 +879,7 @@ def runStuff():
     #"top","top_sleeves","top_dec","top_collar"
     #"nose","nose_front"
     for c in closet:
-        if c.name in ["eyes"]:
+        if c.name in []:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
