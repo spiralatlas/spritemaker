@@ -184,7 +184,6 @@ function add_image_object(name, list_list, location,box){
         if (name=="sidelocks_repeat")//remove "_dec"
         loc = location+"/sidelocks";  
     }  
-    console.log("Name: "+name+" "+list_list[3])
     if (list_list[3]) //male items first
         item_list = remove_dups(list_list[1].concat(list_list[0]).concat(list_list[2]));
     else
@@ -197,7 +196,10 @@ const defining_objects =[];
 
 //colour_children: indices of elements of image_objects with the same colours
 function add_defining_object(name, list_list){
-    item_list = remove_dups(list_list[0].concat(list_list[1]).concat(list_list[2]));
+    if (list_list[3]) //male items first
+        item_list = remove_dups(list_list[1].concat(list_list[0]).concat(list_list[2]));
+    else
+        item_list = remove_dups(list_list[0].concat(list_list[1]).concat(list_list[2]));
     item_indices_f = [];
     item_indices_m = [];
     item_indices_w = [];

@@ -46,6 +46,8 @@ function setVariables(data_object){
         }
         for (let i = 0; i < json_obj.colour2_children.length; i += 1){
             image_objects[json_obj.colour2_children[i]].colour1 = json_obj.colour2;
+            image_objects[json_obj.colour2_children[i]].pattern = 0;
+            image_objects[json_obj.colour2_children[i]].patterncolour = json_obj.colour2;
         }
     }
 
