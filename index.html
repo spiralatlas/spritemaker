@@ -145,36 +145,32 @@
 
             </div>
             <div x-show="$store.alpineData.currently_editing === 5" >
+              <h4>Randomise</h4>
+              <button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseAll($store.alpineData.current_gender);setVariables(Alpine.store('alpineData'));">Randomise All</button>  
+              <h4>Body/Colouring</h4>
+              <div class="row row-cols-2 gy-3">
+                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseBodyColouring();setVariables(Alpine.store('alpineData'));">Colouring</button></div>
+                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseFeatures($store.alpineData.current_gender);setVariables(Alpine.store('alpineData'));">Features</button></div>
+              </div>  
+              <h4>Outfit</h4>
+              <div class="row row-cols-2 gy-3">
+                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseClothingColour();setVariables(Alpine.store('alpineData'));">Colours</button></div>
+                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseClothingValue($store.alpineData.current_gender);setVariables(Alpine.store('alpineData'));">Styles</button></div>
+              </div> 
               <h4>Customise</h4>
               <div class="row row-cols-2 gy-3">
                 <div class="col"><input type="checkbox" id="isWeirdBody" name="isWeirdBody" :value ="$store.alpineData.isWeirdBody" @input="$store.alpineData.isWeirdBody=!$store.alpineData.isWeirdBody;setVariables(Alpine.store('alpineData'));">
                   <label for="isWeirdBody">Fantasy Body/Colouring</label></div>
                 <div class="col"><input type="checkbox" id="isWeirdOutfit" name="isWeirdOutfit" :value ="$store.alpineData.isWeirdOutfit" @input="$store.alpineData.isWeirdOutfit=!$store.alpineData.isWeirdOutfit;setVariables(Alpine.store('alpineData'));">
                 <label for="isWeirdOutfit">Fantasy/Historic Outfit</label></div>
-              </div>  
-              <h4>Body/Colouring</h4>
-              <div class="row row-cols-2 gy-3">
-                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseBodyColouring();setVariables(Alpine.store('alpineData'));">Colouring</button></div>
-                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseFeatures(0);setVariables(Alpine.store('alpineData'));">Features</button></div>
-              </div>  
-              <h4>Outfit</h4>
-              <div class="row row-cols-2 gy-3">
-                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseClothingColour();setVariables(Alpine.store('alpineData'));">Colours</button></div>
-                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseClothingValue(0);setVariables(Alpine.store('alpineData'));">Styles</button></div>
-              </div> 
-              <h4>Gender Presentation</h4>
-              <div class="row row-cols-2 gy-3">
-                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseAll(2);setVariables(Alpine.store('alpineData'));">Feminine</button></div>
-                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseAll(1);setVariables(Alpine.store('alpineData'));">Masculine</button></div>
-                <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseAll(0);setVariables(Alpine.store('alpineData'));">Androgynous</button></div>
-            
-              </div> 
+                <div class="col"><div x-data="dropdown('Gender Presentation','current_gender','simple')" x-bind="dropbtn" ></div></div>
+              </div>
             </div>
             <div x-show="$store.alpineData.currently_editing === 6" >
               <h4>Display</h4>
               <div class="row row-cols-2 gy-3">
-                  <div class="col"><div x-data="dropdown('Body Scale','size','simple')" x-bind="dropbtn" ></div></div>
-                  <div class="col"><div x-data="dropdown('Head Scale','head_ratio','simple')" x-bind="dropbtn" ></div></div>
+                  <div class="col"><div x-data="dropdown('Scale','size','simple')" x-bind="dropbtn" ></div></div>
+                 <!-- <div class="col"><div x-data="dropdown('Head Scale','head_ratio_type','simple')" x-bind="dropbtn" ></div></div>-->
                   <div class="col"><div x-data="dropdown('Crop (default 300)','crop','crop')" x-bind="numberbtn" ></div></div>
                 </div>
             </div>

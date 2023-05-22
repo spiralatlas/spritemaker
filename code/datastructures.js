@@ -19,9 +19,10 @@ function setVariables(data_object){
     current_clothing = data_object.current_clothing;
     current_accessory = data_object.current_accessory;
     current_imageType = data_object.current_imageType;
+    current_gender = data_object.current_gender;
 
     size = data_object.size;
-    head_ratio = data_object.head_ratio;
+    head_ratio_type = data_object.head_ratio_type;
     crop_height = data_object.crop_height;
     current_eyetype = data_object.current_eyetype;
     current_hairstyle = data_object.current_hairstyle;
@@ -116,7 +117,7 @@ function setVariables(data_object){
             image_objects[i].item = -1
         standard_scale =  0.8+size*0.05;   
         if (head_offset_list.includes(image_objects[i].name)) {   
-            if (head_ratio==0){
+            if (head_ratio_type==0){
                 image_objects[i].scale = standard_scale; 
             } else{
                 head_scale = 0.02*size+0.85
@@ -264,7 +265,7 @@ document.addEventListener('alpine:init', () => {
                         case 'size':
                             objList = 'size_list';
                             break;
-                        case 'head_ratio':
+                        case 'head_ratio_type':
                             objList = 'ratio_list';
                             break;    
                         case 'current_eyetype': 
@@ -275,7 +276,10 @@ document.addEventListener('alpine:init', () => {
                             break;       
                         case 'current_imageType': 
                             objList = 'imageType_list';
-                            break;           
+                            break; 
+                        case 'current_gender': 
+                            objList = 'genderType_list';
+                            break;               
 
                     }
                     break;     
@@ -339,9 +343,10 @@ document.addEventListener('alpine:init', () => {
     current_clothing : 0,
     current_accessory : 0,
     current_imageType : 0,
+    current_gender : 0,
 
-    size : 0,
-    head_ratio: 0,
+    size : 2,
+    head_ratio_type: 0,
     crop_height : 300,
     current_eyetype: 0,
     current_hairstyle: 0,
@@ -384,7 +389,7 @@ document.addEventListener('alpine:init', () => {
     fixAlpine() { //make the alpine components match the variables used by the javascript
     
         this.size= size;
-        this.head_ratio= head_ratio;
+        this.head_ratio_type= head_ratio_type;
         this.crop_height= crop_height;
         this.current_eyetype = current_eyetype;
         this.current_hairstyle = current_hairstyle;
@@ -440,7 +445,7 @@ document.addEventListener('alpine:init', () => {
                 }
             }
         }
-        this.size = randomIndex(size_list,0);
+        //this.size = randomIndex(size_list,0);
         remove_list = [];
         if (!isWeirdBody)
             remove_list = eyetype_indices_w
@@ -503,7 +508,7 @@ document.addEventListener('alpine:init', () => {
             this_list = outfit_list.concat(accessory_list).concat(sleeve_list).concat(["fringe","sidelocks","hair_extra", "facial_hair","waistline"])
             if (this_list.includes(defining_objects[i].name)) {
                 var prob;
-                if (accessory_list.includes(defining_objects[i].name)|| defining_objects[i].name=="wheelchair"|| defining_objects[i].name=="facial_hair"){//accessories less common
+                if (accessory_list.includes(defining_objects[i].name)|| ["wheelchair","facial_hair","hair_extra"].includes(defining_objects[i].name)){//accessories less common
                     prob = 0.5;
                 }
                 else{

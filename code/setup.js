@@ -9,12 +9,13 @@ let current_expression = 0;
 let current_clothing = 0;
 let current_accessory = 0;
 let current_imageType = 0;
+let current_gender = 0;
 
-let size = 0;
-let head_ratio = 0;
+let size = 2;
+let head_ratio_type = 0;
+let head_ratio = 1;
 const size_list = ['80%','85%', '90%','95%','100%',];
-const ratio_list = ["Constant","Proportional"]
-let showFullSprite = true;
+const ratio_list = ["100%","Proportional to Height","Custom"]
 
 let crop_height = 300 ;
 
@@ -41,6 +42,8 @@ const canvas_width = 512;
 const canvas_height = 800;
 
 const imageType_list =["Preview", "Head","Expression","Outfit"];
+
+const genderType_list = ["Androgynous","Masculine","Feminine"]
 
 const editing_list =["Colouring","Body/Hair","Clothes", "Accessory", "Expression","Randomise","Display"];
 
