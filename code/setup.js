@@ -11,8 +11,9 @@ let current_accessory = 0;
 let current_imageType = 0;
 
 let size = 0;
-let head_size = 0;
+let head_ratio = 0;
 const size_list = ['80%','85%', '90%','95%','100%',];
+const ratio_list = ["Constant","Proportional"]
 let showFullSprite = true;
 
 let crop_height = 300 ;

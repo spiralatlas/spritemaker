@@ -21,7 +21,7 @@ function setVariables(data_object){
     current_imageType = data_object.current_imageType;
 
     size = data_object.size;
-    head_size = data_object.head_size;
+    head_ratio = data_object.head_ratio;
     crop_height = data_object.crop_height;
     current_eyetype = data_object.current_eyetype;
     current_hairstyle = data_object.current_hairstyle;
@@ -114,13 +114,20 @@ function setVariables(data_object){
         image_objects[i].widthOffset = getWidthOffset(image_objects[i].name);
         if (!checkRender(image_objects[i]))
             image_objects[i].item = -1
+        standard_scale =  0.8+size*0.05;   
         if (head_offset_list.includes(image_objects[i].name)) {   
-            image_objects[i].scale = 0.8+head_size*0.05; 
-            image_objects[i].heightOffset += -parseInt((size-head_size)*11)
-            image_objects[i].widthOffset += parseInt((size-head_size)*10.5)
+            if (head_ratio==0){
+                image_objects[i].scale = standard_scale; 
+            } else{
+                head_scale = 0.02*size+0.85
+                image_objects[i].scale = head_scale; 
+                image_objects[i].heightOffset += -parseInt((standard_scale-head_scale)*194)
+                image_objects[i].widthOffset += parseInt((standard_scale-head_scale)*180)
+            }
+            
         }
         else     
-            image_objects[i].scale = 0.8+size*0.05;   
+            image_objects[i].scale = standard_scale;   
     }
 
     //sprite height
@@ -257,8 +264,8 @@ document.addEventListener('alpine:init', () => {
                         case 'size':
                             objList = 'size_list';
                             break;
-                        case 'head_size':
-                            objList = 'size_list';
+                        case 'head_ratio':
+                            objList = 'ratio_list';
                             break;    
                         case 'current_eyetype': 
                             objList = 'eyetype_list';
@@ -334,7 +341,7 @@ document.addEventListener('alpine:init', () => {
     current_imageType : 0,
 
     size : 0,
-    head_size: 0,
+    head_ratio: 0,
     crop_height : 300,
     current_eyetype: 0,
     current_hairstyle: 0,
@@ -377,7 +384,7 @@ document.addEventListener('alpine:init', () => {
     fixAlpine() { //make the alpine components match the variables used by the javascript
     
         this.size= size;
-        this.head_size= head_size;
+        this.head_ratio= head_ratio;
         this.crop_height= crop_height;
         this.current_eyetype = current_eyetype;
         this.current_hairstyle = current_hairstyle;
