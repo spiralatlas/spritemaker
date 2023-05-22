@@ -145,7 +145,7 @@ wheelchair_list = [ "none","manual","old fashioned"]
 wheelchair_list_w = ["old fashioned"]
 wheelchair_list_d = [wheelchair_list,wheelchair_list,wheelchair_list_w,True]
 
-head_list_u = ["round","medium", "pointed","rectangular",]
+head_list_u = ["round","jowly", "medium", "pointed","rectangular",]
 head_list_d = default_list(head_list_u)
 skull_list = ["regular"]
 skull_list_d = default_list(skull_list)
@@ -880,7 +880,7 @@ def runStuff():
     #"nose","nose_front"
     # "body_chest","top_chest","overshirt_chest","coat_chest"
     for c in closet:
-        if c.name in ["body_chest","top_chest","overshirt_chest","coat_chest"]:
+        if c.name in ["head"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
