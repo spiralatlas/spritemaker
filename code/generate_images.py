@@ -179,22 +179,22 @@ cheeks_list_d = default_list(cheeks_list_u)
 complexion_list_u = ["none","slight lines", "freckles","wrinkles","sickly", "eye mole","mouth mole","eye scar", "cheek scar", "burn"]
 complexion_list_d = default_list(complexion_list_u)
 
-eyewear_list_u = [ "eye patch","oblong glasses","square glasses","round glasses","spectacles","sunglasses","coloured glasses"] 
+eyewear_list_u = [ "eye patch","oblong wireframes","coloured wireframes", "oblong glasses","square glasses","round glasses","coloured spectacles","spectacles","sunglasses","coloured glasses","domino mask","face mask"] 
 eyewear_list_f = ["none",]+eyewear_list_u
 eyewear_list_m = ["none","monocle"]+eyewear_list_u
-eyewear_list_w = ["monocle","spectacles","eye patch"]
+eyewear_list_w = ["monocle","spectacles","coloured spectacles", "eye patch","domino mask"]
 eyewear_list_d =  [eyewear_list_f,eyewear_list_m, eyewear_list_w,True]
 
 earrings_list_u = ["none","stud","small hoops","punk","earpiece"]
-earrings_list_f = earrings_list_u+["hoops", "drop earrings", "round earrings"]
+earrings_list_f = earrings_list_u+["hoops", "circle earrings", "drop earrings", "round earrings"]
 earrings_list_m = earrings_list_u+[]
 earrings_list_w = []
 earrings_list_d =  [earrings_list_f,earrings_list_m, earrings_list_w,True]
 
-gloves_list_u = ["short gloves"]
+gloves_list_u = ["short gloves","wrist guards"]
 gloves_list_f = ["none", "medium gloves", "bracelets"]
 gloves_list_m = ["none", "fingerless"]+["short gloves"]
-gloves_list_w = []
+gloves_list_w = ["wrist guards"]
 gloves_list_d = [gloves_list_f,gloves_list_m,gloves_list_w,True]
 
 back_list_u = ["none","thin tail","fluffy tail", ]
@@ -688,7 +688,8 @@ def process_image(name, location,type):
             if original_data[x, y][3] !=0:
                 pixel = original_data[x, y]
                 p = [pixel[0],pixel[1],pixel[2]]
-                base_data[x, y] = (100,100,100,pixel[3])    
+                if luminance(p)>50:
+                    base_data[x, y] = original_data[x, y] #(100,100,100,pixel[3])    
                 if type =="eyes":
                     overlay_data[x, y] =eye_shadow(pixel,line_colour) 
             
@@ -881,7 +882,7 @@ def runStuff():
     # "body_chest","top_chest","overshirt_chest","coat_chest"
     # "neckwear","neckwear_dec"
     for c in closet:
-        if c.name in ["neckwear","neckwear_dec"]:
+        if c.name in ["eyewear"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
