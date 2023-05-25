@@ -385,6 +385,11 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
         if (obj.shadow_image.src!=""){
             off_ctx.globalCompositeOperation = "multiply";
             off_ctx.drawImage(obj.shadow_image,0,0,width,height, 0, 0,new_width,new_height);
+            if (obj.base_image.src!=""){
+                off_ctx.globalCompositeOperation = "destination-in";
+                off_ctx.drawImage(obj.base_image,0,0,width,height, 0, 0,new_width,new_height);
+            }
+
         }
         if (obj.highlight_image.src!=""){
             off_ctx.globalCompositeOperation = "screen";

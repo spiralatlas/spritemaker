@@ -567,7 +567,7 @@ def red_shadow(pixel,shadow1,edge):
     elif l>0.1:
         r=0
     else: #pure black
-        return (0,0,0,pixel[3])
+        return (0,0,0,255)#(0,0,0,pixel[3])
 
     for i in range(3):
         p[i] = int(r*shadow1[i] + (1-r)*edge[i] )
@@ -688,8 +688,7 @@ def process_image(name, location,type):
             if original_data[x, y][3] !=0:
                 pixel = original_data[x, y]
                 p = [pixel[0],pixel[1],pixel[2]]
-                if luminance(p)>50:
-                    base_data[x, y] = original_data[x, y] #(100,100,100,pixel[3])    
+                base_data[x, y] = original_data[x, y] #(100,100,100,pixel[3])    
                 if type =="eyes":
                     overlay_data[x, y] =eye_shadow(pixel,line_colour) 
             
