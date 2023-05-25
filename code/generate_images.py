@@ -881,7 +881,7 @@ def runStuff():
     # "body_chest","top_chest","overshirt_chest","coat_chest"
     # "neckwear","neckwear_dec"
     for c in closet:
-        if c.name in ["coat","coat_dec","coat_back","coat_sleeves"]:
+        if c.name in ["overshirt","overshirt_sleeves","overshirt_dec"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
