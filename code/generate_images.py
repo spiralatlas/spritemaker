@@ -219,12 +219,12 @@ top_sleeve_list_m = top_sleeve_list_u+["puffy shirt", "long shirt","rolled"]
 top_sleeve_list_w = ["puffy", "puffy shirt","bell"]
 top_sleeve_list_d = [top_sleeve_list_f,top_sleeve_list_m,top_sleeve_list_w,True]
 
-overshirt_list_u = ["band","button up vee", "open shirt", "vee","sweater"]
+overshirt_list_u = ["band","band with flap","button up vee", "open shirt", "vee","sweater"]
 overshirt_list_f = ["none","obi"] +overshirt_list_u +["square"]
 overshirt_list_m = overshirt_list_u + []
-overshirt_list_w = ["obi", "band"]
+overshirt_list_w = ["obi", "band","band with flap"]
 overshirt_list_d = [overshirt_list_f, overshirt_list_m,overshirt_list_w,False]
-overshirt_nosleeves_list = ["none","obi", "band"]
+overshirt_nosleeves_list = ["none","obi", "band","band with flap"]
 
 overshirt_sleeve_list_u = ["sleeveless","short","long"]
 overshirt_sleeve_list_f = overshirt_sleeve_list_u+[]
@@ -361,7 +361,7 @@ top_collar_dec_list = ["sailor shirt"]
 top_collar_dec_list_d = default_list(top_collar_dec_list)
 earrings_dec_list = ["round earrings"]
 earrings_dec_list_d = default_list(earrings_dec_list)
-overshirt_dec_list = ["button up vee", "band"]
+overshirt_dec_list = ["button up vee", "band","band with flap"]
 overshirt_dec_list_d = default_list(overshirt_dec_list)
 neckwear_dec_list = ["jewelled necklace","beaded necklace"]
 neckwear_dec_list_d = default_list(neckwear_dec_list)
@@ -882,7 +882,7 @@ def runStuff():
     # "body_chest","top_chest","overshirt_chest","coat_chest"
     # "neckwear","neckwear_dec"
     for c in closet:
-        if c.name in ["hat_front","hat_back"]:
+        if c.name in ["overshirt","overshirt_dec"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
