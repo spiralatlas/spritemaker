@@ -347,7 +347,7 @@ const hairstyle_defining_list = [ //name, hair_front, hair_middle, hair_back
 ]
     
 const hairstyle_list = hairstyle_defining_list.map(value => value[0])  
-const hairstyle_list_u = ["buzzcut","cornrows", "straight short","curly short","wavy short","shaggy short","tight curls","shaggy medium","wavy bob","straight bob","straight high pony","straight low pony","curly pony","straight long","wavy long","curly long","locs long", "locs half up"]
+const hairstyle_list_u = ["cornrows","buzzcut", "straight short","curly short","wavy short","shaggy short","tight curls","shaggy medium","wavy bob","straight bob","straight high pony","straight low pony","curly pony","straight long","wavy long","curly long","locs long", "locs half up"]
 const hairstyle_indices_m = (hairstyle_list_u.concat(["none", "balding", "shaved","fade", "side part","small tight curls"])).map(value => hairstyle_list.indexOf(value))
 const hairstyle_indices_f = (hairstyle_list_u.concat(["curly bob","twin braids", "curly bun","wavy bun","straight bun","locs bun", "locs up", "straight up", "curly up", "curly flowing","straight flowing"])).map(value => hairstyle_list.indexOf(value))
 const hairstyle_indices_w = ["fancy bun"].map(value => hairstyle_list.indexOf(value))
