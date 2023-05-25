@@ -565,9 +565,9 @@ def red_shadow(pixel,shadow1,edge):
     elif l>0.2:
         r = 2*l -0.4 #creates smooth transition between darker edge and lighter shadow1
     elif l>0.1:
-        r=0
+        return (edge[0],edge[1],edge[2],255)#r=0
     else: #pure black
-        return (0,0,0,255)#(0,0,0,pixel[3])
+        return (edge[0],edge[1],edge[2],255)#(0,0,0,pixel[3])
 
     for i in range(3):
         p[i] = int(r*shadow1[i] + (1-r)*edge[i] )
@@ -664,7 +664,7 @@ def process_image(name, location,type):
         img_underlay = Image.open(load_string+"_underlay.png")      
 
     highlight = hex_to_rgba("#FFF7CA")
-    line_colour = hex_to_rgba("#5B3D47")
+    line_colour = hex_to_rgba("#211829")
 
     if type != "eyes":#multiply images
         for colour in ["blue"]:#shadow_types:
@@ -881,7 +881,7 @@ def runStuff():
     # "body_chest","top_chest","overshirt_chest","coat_chest"
     # "neckwear","neckwear_dec"
     for c in closet:
-        if c.name in ["coat_sleeves"]:
+        if c.name in ["coat","coat_dec","coat_back","coat_sleeves"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
