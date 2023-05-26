@@ -337,13 +337,13 @@ function print_defining_objects(){
 const hairstyle_defining_list = [ //name, hair_front, hair_middle, hair_back
     ["none","none","none","none"], ["balding","balding","none","balding"],["shaved","none","shaved","none"], ["cornrows", "cornrows", "cornrows", "none"],
     ["buzzcut","none","short","buzzcut"],
-    ["straight short","none","long","straight short"],["curly short","none","short","curly short"],["wavy short","none","long","wavy short"],["side part","neat side","long shadowed","straight side"],["locs short","short locs","long","none"],
-    ["fade","fade","long shadowed","fade"],["shaggy short","none","long","shaggy short"],["small tight curls","none","short","tight curls short"],
-    ["tight curls","none","short","tight curls medium"],["shaggy medium","none","long","shaggy medium"], ["wavy bob","none","long","wavy bob"],["curly bob","none","long","curly bob"],["straight bob","none","long","straight bob"],
-    ["locs half up", "locs bun", "long", "locs bob"],["locs bob", "locs bob", "long", "locs bob"],
-    ["curly flowing", "curly flowing", "long", "curly flowing"],["straight flowing", "straight flowing", "long", "straight flowing"],
-    ["straight long", "none", "long", "straight long"],["wavy long", "none", "long", "wavy long"],["curly long", "none", "long", "curly long"],["locs long", "long locs", "long", "long locs"],
-    ["curly up","none","long","curly up"],["locs up","locs bun","long","locs up"],["straight up","none","long","straight up"]
+    ["straight short","none","long","straight short"],["curly short","none","short","curly short"],["wavy short","none","long","wavy short"],["side part","neat side","long shadowed","straight side"],["locs short","short locs","long shadowed","none"],
+    ["fade","fade","long","fade"],["shaggy short","none","long","shaggy short"],["small tight curls","none","short","tight curls short"],
+    ["tight curls","none","short","tight curls medium"],["shaggy medium","none","long","shaggy medium"], ["wavy bob","none","long shadowed","wavy bob"],["curly bob","none","long","curly bob"],["straight bob","none","long","straight bob"],
+    ["locs half up", "locs bun", "long shadowed", "locs bob"],["locs bob", "locs bob", "long shadowed", "locs bob"],
+    ["curly flowing", "curly flowing", "long shadowed", "curly flowing"],["straight flowing", "straight flowing", "long", "straight flowing"],
+    ["straight long", "none", "long", "straight long"],["wavy long", "none", "long", "wavy long"],["curly long", "none", "long", "curly long"],["locs long", "long locs", "long shadowed", "long locs"],
+    ["curly up","none","long","curly up"],["locs up","locs bun","long shadowed","locs up"],["straight up","none","long","straight up"]
 ]
     
 const hairstyle_list = hairstyle_defining_list.map(value => value[0])  
