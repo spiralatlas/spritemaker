@@ -882,7 +882,7 @@ def runStuff():
     # "neckwear","neckwear_dec"
     #"earrings", "earrings_dec"
     for c in closet:
-        if c.name in [ "eyewear" ]:
+        if c.name in [ "back" ]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
