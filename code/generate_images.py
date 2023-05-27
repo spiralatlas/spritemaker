@@ -176,7 +176,7 @@ nose_list_d = [nose_list_u,nose_list_u,["none","nostrils"],True]
 cheeks_list_u = ["none","blush"]
 cheeks_list_d = default_list(cheeks_list_u)
 
-complexion_list_u = ["none","slight lines", "freckles","wrinkles","sickly", "eye mole","mouth mole","eye scar", "cheek scar", "burn"]
+complexion_list_u = ["none","slight lines", "freckles","wrinkles","gaunt", "eye mole","mouth mole","eye scar", "cheek scar", "burn"]
 complexion_list_d = default_list(complexion_list_u)
 
 eyewear_list_u = [ "eye patch","oblong wireframes","coloured wireframes", "oblong glasses","square glasses","round glasses","coloured spectacles","spectacles","sunglasses","coloured glasses","domino mask","face mask"] 
@@ -883,7 +883,7 @@ def runStuff():
     #"earrings", "earrings_dec"
     # "hat_back","hat_middle","hat_front"
     for c in closet:
-        if c.name in [ "top_sleeves" ]:
+        if c.name in [ "eyes" ]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
