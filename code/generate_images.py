@@ -168,7 +168,7 @@ eyetype_list_d = [eyetype_list_f,eyetype_list_m,eyetype_list_w,True]
 eyes_list_d = default_list(eyeshape_list)
 eyebrows_list_u = ["flat","flat sad","flat grumpy","flat angry","sad","sadder", "semi sad", "regular","semi arch","arched","raised arch", "raised","raised flat", "raised semi flat","raised grumpy","raised semi","angry", "angry arch","half raised","half semi", "half sad","half sad raised","half flat","half arch raised"]
 eyebrows_list_d = default_list(eyebrows_list_u)
-mouth_list_u = ["lah", "small lah", "tiny lah", "big grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","wobbly smile", "flat smile","smile","small smile","tiny smile","slight smile","side eww","eww",  "oh","square oh","big oh", "small oh","shock","small flat","flat","small clenched", "wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",]
+mouth_list_u = ["lah", "small lah", "tiny lah", "big grin","pointy grin", "grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","pointy smile", "wobbly smile", "flat smile","smile","small smile","tiny smile","slight smile","side eww","eww",  "oh","square oh","big oh", "small oh","shock","small flat","flat","small clenched", "wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",]
 mouth_list_d = default_list(mouth_list_u)
 nose_list_u = ["none", "nostrils","button", "round","medium","flat", "broad", "pointed","hooked",] 
 nose_list_d = [nose_list_u,nose_list_u,["none","nostrils"],True]
@@ -861,7 +861,9 @@ def runStuff():
     #"nose","nose_front", "cheeks", "ears"
     # "eyes","eyebrows", "mouth"
     # "body_chest","top_chest","overshirt_chest","coat_chest"
+    
     # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
+    
     # "sidelocks", "fringe", "hair_front","hair_middle", "hair_back","hair_extra", "facial_hair"
     
     #"overshirt","overshirt_sleeves","overshirt_dec"
@@ -876,7 +878,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in [ "eyewear",]:
+        if c.name in [ "mouth",]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
