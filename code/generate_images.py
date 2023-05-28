@@ -857,7 +857,7 @@ def process_all_portraits():
 def runStuff():
     write_variables()
 
-    # "skull", "head","body","legs", "ears","nose", "chest"
+    # "skull", "head","body","legs", "ears","nose",
     # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
     # "sidelocks", "fringe", "hair_front","hair_middle", "hair_back","hair_extra", "facial_hair"
     #"overshirt","overshirt_sleeves","overshirt_dec"
@@ -869,7 +869,7 @@ def runStuff():
     #"earrings", "earrings_dec"
     # "hat_back","hat_middle","hat_front"
     for c in closet:
-        if c.name in ["top","top_sleeves","top_dec","top_collar"]:
+        if c.name in ["body_chest","top_chest","overshirt_chest","coat_chest"]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
