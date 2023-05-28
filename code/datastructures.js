@@ -11,6 +11,16 @@ function checkRender(obj){
     return true  
 }
 
+function setDefiningObject(i, new_obj){
+    let json_obj = defining_objects[i];
+    current_item = new_obj.name; 
+    json_obj.value_list = new_obj.value_list
+    json_obj.colour1 = new_obj.colour1
+    json_obj.colour2 = new_obj.colour2
+    json_obj.patterncolour = new_obj.patterncolour
+    json_obj.pattern = new_obj.pattern
+
+}
 function setVariables(data_object){
     //transfer data from webpage/load file to internal javascript
 
@@ -31,14 +41,14 @@ function setVariables(data_object){
     
 
     for (let i = 0; i < defining_objects.length; i += 1){
+        setDefiningObject(i, data_object.current_defining_objects[i])
+    }
+    updateVariables();
+}
+
+function updateVariables(){
+    for (let i = 0; i < defining_objects.length; i += 1){
         let json_obj = defining_objects[i];
-        let alpine_obj = data_object.current_defining_objects[i];
-        current_item = alpine_obj.name; 
-        json_obj.value_list = alpine_obj.value_list
-        json_obj.colour1 = alpine_obj.colour1
-        json_obj.colour2 = alpine_obj.colour2
-        json_obj.patterncolour = alpine_obj.patterncolour
-        json_obj.pattern = alpine_obj.pattern
         for (let i = 0; i < json_obj.value_children.length; i += 1){
             image_objects[json_obj.value_children[i]].item = json_obj.value_list[current_expression];
         }

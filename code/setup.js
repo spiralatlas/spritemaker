@@ -352,3 +352,11 @@ const hairstyle_indices_m = (hairstyle_list_u.concat(["none", "balding", "shaved
 const hairstyle_indices_f = (hairstyle_list_u.concat(["curly bob","twin braids", "curly bun","wavy bun","straight bun","locs bun", "locs up", "straight up", "curly up", "curly flowing","straight flowing"])).map(value => hairstyle_list.indexOf(value))
 const hairstyle_indices_w = ["fancy bun"].map(value => hairstyle_list.indexOf(value))
 
+const expression_preset_defining_list = [
+["Default",
+{"name":"mouth","value_list":[15,12,28,30,18,14,22,28,6,8],},
+{"name":"eyebrows","value_list":[7,11,4,16,11,1,4,2,18,0]},
+{"name":"eyes","value_list":[0,2,5,7,5,4,6,8,3,0]}],
+]
+
+const expression_preset_list = expression_preset_defining_list.map(value => value[0])  
