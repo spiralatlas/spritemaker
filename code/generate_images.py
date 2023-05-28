@@ -555,7 +555,7 @@ def eye_shadow(pixel,edge):
         
         return (int(edge[0]/2),int(edge[1]/2),int(edge[2]/2), int(pixel[3]*r))
 
-def red_shadow(pixel,shadow1,edge):
+def red_shadow(pixel,shadow,edge):
     p = [pixel[0],pixel[1],pixel[2]]
     l = luminance(p)/255
     if l >0.9:
@@ -563,30 +563,16 @@ def red_shadow(pixel,shadow1,edge):
     elif l>0.7:
         r=1
     elif l>0.2:
-        r = 2*l -0.4 #creates smooth transition between darker edge and lighter shadow1
+        r = 2*l -0.4 #creates smooth transition between darker edge and lighter shadow
     elif l>0.1:
         return (edge[0],edge[1],edge[2],255)#r=0
     else: #pure black
         return (edge[0],edge[1],edge[2],255)#(0,0,0,pixel[3])
 
     for i in range(3):
-        p[i] = int(r*shadow1[i] + (1-r)*edge[i] )
+        p[i] = int(r*shadow[i] + (1-r)*edge[i] )
         
     return (p[0],p[1],p[2], int(pixel[3]*(1-l)))
-
-def shadow_colours(colour_name):
-    if colour_name=="red": 
-        return [hex_to_rgba("#830016"),hex_to_rgba("#560055")]
-    elif colour_name=="yellow": #yellow
-        return [hex_to_rgba("#008100"),hex_to_rgba("#00561F")]
-    elif colour_name=="green": #yellow-green
-        return [hex_to_rgba("#024B64"),hex_to_rgba("#0C2C7E")]
-    elif colour_name=="aqua": #aqua
-        return [hex_to_rgba("#024B64"),hex_to_rgba("#0C2C7E")]
-    elif colour_name=="blue": #blue
-        return [hex_to_rgba("#270096"),hex_to_rgba("#270096")]
-    else: #purple
-        return [hex_to_rgba("#1B0C7E"),hex_to_rgba("#1B0C7E")]
 
 def makeSwatch(list, name, width):
     save_string = "../images/render/swatches/"+name +".png"
@@ -664,11 +650,11 @@ def process_image(name, location,type):
         img_underlay = Image.open(load_string+"_underlay.png")      
 
     highlight = hex_to_rgba("#FFF7CA")
-    line_colour = hex_to_rgba("#211829")
+    shadow = hex_to_rgba("#1B0C7E")
+    line_colour = hex_to_rgba("#130A0B")
 
     if type != "eyes":#multiply images
         for colour in ["blue"]:#shadow_types:
-            [shadow1,edge] = shadow_colours(colour)
 
             save_string_multiply = save_string+"_multiply_"+colour+".png"
             img_multiply = Image.new("RGBA", (img_original.size[0], img_original.size[1]))
@@ -680,7 +666,7 @@ def process_image(name, location,type):
                     if original_data[x, y][3] !=0:            
                         pixel = original_data[x, y]
                         p = [pixel[0],pixel[1],pixel[2]]
-                        multiply_data[x, y] =red_shadow(pixel,shadow1,line_colour)
+                        multiply_data[x, y] =red_shadow(pixel,shadow,line_colour)
             img_multiply.save(save_string_multiply) 
 
     for y in range(img_base.size[1]):
@@ -883,7 +869,7 @@ def runStuff():
     #"earrings", "earrings_dec"
     # "hat_back","hat_middle","hat_front"
     for c in closet:
-        if c.name in [ "eyebrows" ]:
+        if c.name in [ "complexion" ]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
