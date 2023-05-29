@@ -133,6 +133,7 @@
         </div>
 
             <div class="row gy-3" x-show="$store.alpineData.currently_editing === 4" >
+              <div x-data="dropdown('Expression Preset','current_expression_preset','simple')" x-bind="dropbtn" ></div>
               <div x-data="dropdown('Expression','current_expression','simple')" x-bind="dropbtn" ></div>
               <div class="row row-cols-2 gy-3">
                 <div class="col"><div x-data="dropdown('Eyebrows','eyebrows','expression')" x-bind="dropbtn" ></div></div>

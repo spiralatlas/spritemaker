@@ -47,7 +47,7 @@ const genderType_list = ["Androgynous","Masculine","Feminine"]
 
 const editing_list =["Colouring","Body/Hair","Clothes", "Accessory", "Expression","Randomise","Display"];
 
-const panel_list = ["Neutral", "Happy", "Sad", "Angry","Surprised","Embarassed","Scared",'Annoyed',"Wry"];
+const panel_list = ["Neutral", "Happy", "Sad", "Angry","Surprised","Embarassed","Scared",'Annoyed',"Other"];
 
 let canvas_preview;
 let ctx_preview;
@@ -352,11 +352,27 @@ const hairstyle_indices_m = (hairstyle_list_u.concat(["none", "balding", "shaved
 const hairstyle_indices_f = (hairstyle_list_u.concat(["curly bob","twin braids", "curly bun","wavy bun","straight bun","locs bun", "locs up", "straight up", "curly up", "curly flowing","straight flowing"])).map(value => hairstyle_list.indexOf(value))
 const hairstyle_indices_w = ["fancy bun"].map(value => hairstyle_list.indexOf(value))
 
+let current_expression_preset = 0;
 const expression_preset_defining_list = [
 ["Default",
-{"name":"mouth","value_list":[15,12,28,30,18,14,22,28,6,8],},
+{"name":"cheeks","value_list":[0,0,0,0,0,1,0,0,0,0]},
+{"name":"mouth","value_list":[18,15,31,33,28,17,23,36,7,8],},
 {"name":"eyebrows","value_list":[7,11,4,16,11,1,4,2,18,0]},
-{"name":"eyes","value_list":[0,2,5,7,5,4,6,8,3,0]}],
-]
+{"name":"eyes","value_list":[0,2,5,8,6,4,6,3,0,0]}],
+["Understated",
+{"name":"cheeks","value_list":[0,0,0,0,0,0,0,0,0,0]},
+{"name":"mouth","value_list":[26,16,30,28,27,17,28,26,30,8],},
+{"name":"eyebrows","value_list":[0,7,1,3,12,1,1,0,0,0]},
+{"name":"eyes","value_list":[0,5,0,4,6,1,6,3,1,0]}],
+];
 
 const expression_preset_list = expression_preset_defining_list.map(value => value[0])  
+
+let current_outfit_preset = 0;
+const outfit_preset_defining_list = [
+    ["Default",
+    {"name":"mouth","value_list":[15,12,28,30,18,14,22,28,6,8],},
+    {"name":"eyebrows","value_list":[7,11,4,16,11,1,4,2,18,0]},
+    {"name":"eyes","value_list":[0,2,5,7,5,4,6,8,3,0]}],
+    ];
+const outfit_preset_list = expression_preset_defining_list.map(value => value[0])  

@@ -21,6 +21,11 @@ function setDefiningObject(i, new_obj){
     json_obj.pattern = new_obj.pattern
 
 }
+
+function setDefiningObjectValue(i, new_obj){
+    defining_objects[i].value_list = new_obj.value_list
+} 
+
 function setVariables(data_object){
     //transfer data from webpage/load file to internal javascript
 
@@ -36,6 +41,8 @@ function setVariables(data_object){
     crop_height = data_object.crop_height;
     current_eyetype = data_object.current_eyetype;
     current_hairstyle = data_object.current_hairstyle;
+    current_outfit_preset = data_object.current_outfit_preset;
+    current_expression_preset = data_object.current_expression_preset;
     isWeirdOutfit = data_object.isWeirdOutfit;
     isWeirdBody = data_object.isWeirdBody;
     
@@ -262,6 +269,7 @@ document.addEventListener('alpine:init', () => {
                     objName = '$store.alpineData.'+this.valueName;
                     value = "index";
                     buttonName = objName;
+                    extra_commands = "";
                     switch(this.valueName){
                         case 'current_clothing':
                             objList = 'clothing_names';
@@ -283,7 +291,17 @@ document.addEventListener('alpine:init', () => {
                             break;  
                         case 'current_hairstyle': 
                             objList = 'hairstyle_list';
+                            break;  
+                        case 'current_outfit_preset': 
+                            objList = 'outfit_preset_list';
                             break;       
+                        case 'current_expression_preset': 
+                            objList = 'expression_preset_list';
+                            /*for (i = 0; i < expression_indices.length; i += 1){ 
+                                extra_commands += "$store.alpineData.current_defining_objects["+expression_indices[i]+"].value_list = expression_preset_defining_list[$store.alpineData.current_expression_preset]["+(i+1)+"].value_list;"
+                            }*/
+                            extra_commands = '$store.alpineData.updateExpressionPreset($store.alpineData.current_expression_preset);'
+                            break;               
                         case 'current_imageType': 
                             objList = 'imageType_list';
                             break; 
@@ -298,7 +316,9 @@ document.addEventListener('alpine:init', () => {
             
             output +='<button id='+id+' class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" x-text="niceString('+objList+'['+buttonName+'])"></button>';
             output +='<ul class="dropdown-menu"> <template x-for=" (preset, index) in '+objList+'">'; 
-            output +='<li><button class="dropdown-item" x-on:click="'+objName+'='+value+';setVariables(Alpine.store(\'alpineData\'));" x-text="niceString(preset)"></a></li>'; 
+            output +='<li><button class="dropdown-item" x-on:click="'+objName+'='+value+';';
+            output+=extra_commands 
+            output +='setVariables(Alpine.store(\'alpineData\'));" x-text="niceString(preset)"></a></li>'; 
             output +='</template></ul>' 
             
             return output;
@@ -360,6 +380,8 @@ document.addEventListener('alpine:init', () => {
     crop_height : 300,
     current_eyetype: 0,
     current_hairstyle: 0,
+    current_outfit_preset: 0,
+    current_expression_preset: 0,
     isWeirdOutfit: false,
     isWeirdBody: false, 
 
@@ -403,6 +425,8 @@ document.addEventListener('alpine:init', () => {
         this.crop_height= crop_height;
         this.current_eyetype = current_eyetype;
         this.current_hairstyle = current_hairstyle;
+        this.current_expression_preset = current_expression_preset;
+        this.current_outfit_preset = current_outfit_preset;
         this.isWeirdOutfit = isWeirdOutfit;
         this.isWeirdBody = isWeirdBody;
         
@@ -416,6 +440,11 @@ document.addEventListener('alpine:init', () => {
             this.current_defining_objects[i].pattern = json_obj.pattern;
         }        
     },
+    updateExpressionPreset(preset){
+    for (i = 0; i < expression_indices.length; i += 1){ 
+        this.current_defining_objects[expression_indices[i]].value_list = expression_preset_defining_list[preset][(i+1)].value_list;
+    }
+},
 
     randomiseBodyColouring(){
         //randomise the skin/eye/hair colour

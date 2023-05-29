@@ -220,6 +220,16 @@ const eyetype_indices_m = eyetype_list_m.map(value => eyetype_list.indexOf(value
 const eyetype_indices_f = eyetype_list_f.map(value => eyetype_list.indexOf(value))
 const eyetype_indices_w = eyetype_list_w.map(value => eyetype_list.indexOf(value))
 
+function definingSubsetIndices(sublist){
+    // a list of the indices of those elements of defining_objects whose names are contained in sublist
+    output = [];
+    for (i = 0; i < sublist.length; i += 1){
+        output.push(defining_objects.indexOf(findNameMatch(defining_objects,sublist[i])))
+    }
+    return output;
+}
+const expression_indices = definingSubsetIndices(expression_list);
+
 function includesAny(test_string, string_list){
     //returns true if the string test_string includes any of the elements of string_list
     for (i = 0; i < string_list.length; i += 1){

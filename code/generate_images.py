@@ -325,7 +325,7 @@ facial_hair_list_render = [f for f in facial_hair_list_m if f!="stubble"]
 # collections of parts that have the same colours and patterns
 skin_list_defining = ["body","nose","mouth","eyebrows","complexion","ears","body_chest"]#same colour as head
 skin_list = skin_list_defining + ["skull","legs","wheelchair_legs","nose_front"]
-expression_list = ["mouth","eyebrows","cheeks","eyes"]
+expression_list = ["cheeks", "mouth","eyebrows","eyes"]
 accessory_list = ["eyewear","neckwear", "earrings", "gloves","back"]
 outfit_list = [ "bottom","top", "overshirt", "coat", "socks","shoes"]#"wheelchair",
 has_sleeves_list = ["top","overshirt","coat"]
@@ -878,7 +878,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in [ "mouth",]:
+        if c.name in [ ]:
             process_portrait_part(c)
     makeWinks()
     #makeStubble() 
