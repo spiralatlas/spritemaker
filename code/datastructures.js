@@ -484,6 +484,7 @@ document.addEventListener('alpine:init', () => {
                 }
             }
         }
+        this.updateExpressionPreset(randomIndex(expression_preset_defining_list,0));
         //this.size = randomIndex(size_list,0);
         remove_list = [];
         if (!isWeirdBody)
