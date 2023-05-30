@@ -352,31 +352,43 @@ const hairstyle_indices_m = (hairstyle_list_u.concat(["none", "balding", "shaved
 const hairstyle_indices_f = (hairstyle_list_u.concat(["curly bob","twin braids", "curly bun","wavy bun","straight bun","locs bun", "locs up", "straight up", "curly up", "curly flowing","straight flowing"])).map(value => hairstyle_list.indexOf(value))
 const hairstyle_indices_w = ["fancy bun"].map(value => hairstyle_list.indexOf(value))
 
+function makeDefiningList(preset_list, name_list){
+    output = [];
+    for (i = 0; i < preset_list.length; i += 1){
+        sublist = [preset_list[i]]
+        for (j = 0; j < name_list.length; j += 1){
+            sublist.push([])
+        }
+    }
+    return output;
+}
 let current_expression_preset = 0;
-const expression_preset_defining_list = [
-["Default",
+/*const expression_preset_defining_list = [];
+makeDefiningList(expression_preset_list, expression_list)
+for (i = 0; i < expression_preset_list.length; i += 1){
+    exp = [];
+    for (i = 0; i < expression_preset_list.length; i += 1){
+    }
+
+
+}*/
+const expression_preset_defining_list =[["Default",
 {"name":"cheeks","value_list":[0,0,0,0,0,1,0,0,0,0]},
 {"name":"mouth","value_list":[18,15,31,33,28,17,23,36,7,8],},
 {"name":"eyebrows","value_list":[7,11,4,16,11,1,4,2,18,0]},
-{"name":"eyes","value_list":[0,2,5,8,6,4,6,3,0,0]}],
-["Understated",
+{"name":"eyes","value_list":[0,2,5,8,6,4,6,3,0,0]}],["Understated",
 {"name":"cheeks","value_list":[0,0,0,0,0,0,0,0,0,0]},
 {"name":"mouth","value_list":[26,16,30,28,27,17,28,26,30,8],},
 {"name":"eyebrows","value_list":[0,7,1,3,12,1,1,0,0,0]},
-{"name":"eyes","value_list":[0,5,0,4,6,1,6,3,1,0]}],
-["Energetic",
+{"name":"eyes","value_list":[0,5,0,4,6,1,6,3,1,0]}],["Energetic",
 {"name":"cheeks","value_list":[0,0,0,0,0,1,0,0,0,0]},
 {"name":"mouth","value_list":[16,0,38,25,21,13,25,34,11,8],},
 {"name":"eyebrows","value_list":[7,11,5,17,11,1,14,2,18,0]},
-{"name":"eyes","value_list":[0,2,6,8,6,4,7,3,11,0]}],
-["Arch",
+{"name":"eyes","value_list":[0,2,6,8,6,4,7,3,11,0]}],["Arch",
 {"name":"cheeks","value_list":[0,0,0,0,0,1,0,0,0,0]},
 {"name":"mouth","value_list":[17,7,30,28,26,18,28,36,7,8],},
 {"name":"eyebrows","value_list":[9,8,2,17,11,1,14,10,18,0]},
-{"name":"eyes","value_list":[0,5,1,8,6,1,7,3,1,0]}],
-];
-
-const expression_preset_list = expression_preset_defining_list.map(value => value[0])  
+{"name":"eyes","value_list":[0,5,1,8,6,1,7,3,1,0]}]];
 
 let current_outfit_preset = 0;
 const outfit_preset_defining_list = [
@@ -385,4 +397,3 @@ const outfit_preset_defining_list = [
     {"name":"eyebrows","value_list":[7,11,4,16,11,1,4,2,18,0]},
     {"name":"eyes","value_list":[0,2,5,7,5,4,6,8,3,0]}],
     ];
-const outfit_preset_list = expression_preset_defining_list.map(value => value[0])  
