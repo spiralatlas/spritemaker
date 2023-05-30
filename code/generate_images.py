@@ -726,15 +726,15 @@ def colour_list_add(list_name, sublists):
         s+=l+","
     return s+ ");\n"  
 
-def presetString(location, name,useFull):
-    path = "../../spritemaker_bases/save files/"+location+"/"+name+".json"
-    with open(path) as f:
-        lines = f.readlines()
-    fixed_lines = lines[0].replace(",\"",",").replace("{\"","\n{").replace("\":",":")        
-    if useFull:        
-        output = "const "+location +"_"+name.replace(" ","_")+"="+fixed_lines+"\n"
-    else:
-        output = "const "+location +"_"+name.replace(" ","_")+"="+fixed_lines+"\n"    
+def presetString(location, namelist):
+    path = "../../spritemaker_bases/save files/"+location+"/"
+    output = "const "+location+"_preset_defining_list=["
+    for name in namelist:
+        with open(path+name+".json") as f:
+            lines = f.readlines()
+        fixed_lines = lines[0].replace(",\"",",").replace("{\"","\n{").replace("\":",":")        
+        output += "{preset_name:\""+name+"\","+fixed_lines[2:]+",\n\n"    
+    output +="];\n\n"
     return output
 
 
@@ -792,10 +792,10 @@ def write_variables():
     content.write("\n") 
     expression_preset_list =  ["Default", "Understated", "Energetic","Arch"] 
     content.write(list_string("expression_preset_list", expression_preset_list))  
-    content.write(presetString("expressions", expression_preset_list))
+    content.write(presetString("expression", expression_preset_list))
     character_preset_list =  ["Detective", "Movie Star"] 
     content.write(list_string("character_preset_list", character_preset_list))  
-    content.write(presetString("characters", character_preset_list))    
+    content.write(presetString("character", character_preset_list))    
     content.close()
 
 def checkRender(name, item):

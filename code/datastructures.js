@@ -297,9 +297,6 @@ document.addEventListener('alpine:init', () => {
                             break;       
                         case 'current_expression_preset': 
                             objList = 'expression_preset_list';
-                            /*for (i = 0; i < expression_indices.length; i += 1){ 
-                                extra_commands += "$store.alpineData.current_defining_objects["+expression_indices[i]+"].value_list = expression_preset_defining_list[$store.alpineData.current_expression_preset]["+(i+1)+"].value_list;"
-                            }*/
                             extra_commands = '$store.alpineData.updateExpressionPreset($store.alpineData.current_expression_preset);'
                             break;               
                         case 'current_imageType': 
@@ -442,7 +439,7 @@ document.addEventListener('alpine:init', () => {
     },
     updateExpressionPreset(preset){
     for (i = 0; i < expression_indices.length; i += 1){ 
-        this.current_defining_objects[expression_indices[i]].value_list = expression_preset_defining_list[preset][(i+1)].value_list;
+        this.current_defining_objects[expression_indices[i]].value_list = expression_preset_defining_list[preset].current_defining_objects[expression_indices[i]].value_list;
     }
 },
 
