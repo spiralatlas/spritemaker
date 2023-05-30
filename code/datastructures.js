@@ -297,7 +297,7 @@ document.addEventListener('alpine:init', () => {
                             break;       
                         case 'current_expression_preset': 
                             objList = 'expression_preset_list';
-                            extra_commands = '$store.alpineData.updateExpressionPreset($store.alpineData.current_expression_preset);'
+                            extra_commands = '$store.alpineData.usePreset($store.alpineData.current_expression_preset,expression_indices, expression_preset_defining_list);'
                             break;               
                         case 'current_imageType': 
                             objList = 'imageType_list';
@@ -438,8 +438,15 @@ document.addEventListener('alpine:init', () => {
         }        
     },
     updateExpressionPreset(preset){
+
     for (i = 0; i < expression_indices.length; i += 1){ 
         this.current_defining_objects[expression_indices[i]].value_list = expression_preset_defining_list[preset].current_defining_objects[expression_indices[i]].value_list;
+    }
+},
+usePreset(preset_index,relevant_defining_indices, preset_defining_list){
+    //use the values of relevant_defining_indices of the preset_indexth element of preset_defining_list
+    for (i = 0; i < relevant_defining_indices.length; i += 1){ 
+        this.current_defining_objects[relevant_defining_indices[i]].value_list = preset_defining_list[preset_index].current_defining_objects[relevant_defining_indices[i]].value_list;
     }
 },
 
@@ -481,7 +488,7 @@ document.addEventListener('alpine:init', () => {
                 }
             }
         }
-        this.updateExpressionPreset(randomIndex(expression_preset_defining_list,0));
+        this.usePreset(randomIndex(expression_preset_defining_list,0),expression_indices, expression_preset_defining_list)
         //this.size = randomIndex(size_list,0);
         remove_list = [];
         if (!isWeirdBody)
