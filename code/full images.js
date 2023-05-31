@@ -229,6 +229,7 @@ function definingSubsetIndices(sublist){
     return output;
 }
 const expression_indices = definingSubsetIndices(expression_list);
+const character_indices = definingSubsetIndices(defining_list.filter(value => !expression_list.includes(value)));
 
 function includesAny(test_string, string_list){
     //returns true if the string test_string includes any of the elements of string_list

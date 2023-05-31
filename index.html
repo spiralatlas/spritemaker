@@ -148,6 +148,7 @@
             <div x-show="$store.alpineData.currently_editing === 5" >
               <h4>Randomise</h4>
               <button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseAll($store.alpineData.current_gender);setVariables(Alpine.store('alpineData'));">Randomise All</button>  
+              <div x-data="dropdown('Appearance Preset','current_character_preset','simple')" x-bind="dropbtn" ></div>
               <h4>Body/Colouring</h4>
               <div class="row row-cols-2 gy-3">
                 <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseBodyColouring();setVariables(Alpine.store('alpineData'));">Colouring</button></div>

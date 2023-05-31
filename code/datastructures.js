@@ -41,7 +41,7 @@ function setVariables(data_object){
     crop_height = data_object.crop_height;
     current_eyetype = data_object.current_eyetype;
     current_hairstyle = data_object.current_hairstyle;
-    current_outfit_preset = data_object.current_outfit_preset;
+    current_character_preset = data_object.current_character_preset;
     current_expression_preset = data_object.current_expression_preset;
     isWeirdOutfit = data_object.isWeirdOutfit;
     isWeirdBody = data_object.isWeirdBody;
@@ -292,12 +292,13 @@ document.addEventListener('alpine:init', () => {
                         case 'current_hairstyle': 
                             objList = 'hairstyle_list';
                             break;  
-                        case 'current_outfit_preset': 
-                            objList = 'outfit_preset_list';
+                        case 'current_character_preset': 
+                            objList = 'character_preset_list';
+                            extra_commands = '$store.alpineData.usePreset($store.alpineData.current_character_preset,character_indices, character_preset_defining_list,expression_preset_list_values);'
                             break;       
                         case 'current_expression_preset': 
                             objList = 'expression_preset_list';
-                            extra_commands = '$store.alpineData.usePreset($store.alpineData.current_expression_preset,expression_indices, expression_preset_defining_list);'
+                            extra_commands = '$store.alpineData.usePreset($store.alpineData.current_expression_preset,expression_indices, expression_preset_defining_list,expression_preset_list_values);'
                             break;               
                         case 'current_imageType': 
                             objList = 'imageType_list';
@@ -377,7 +378,7 @@ document.addEventListener('alpine:init', () => {
     crop_height : 300,
     current_eyetype: 0,
     current_hairstyle: 0,
-    current_outfit_preset: 0,
+    current_character_preset: 0,
     current_expression_preset: 0,
     isWeirdOutfit: false,
     isWeirdBody: false, 
@@ -423,7 +424,7 @@ document.addEventListener('alpine:init', () => {
         this.current_eyetype = current_eyetype;
         this.current_hairstyle = current_hairstyle;
         this.current_expression_preset = current_expression_preset;
-        this.current_outfit_preset = current_outfit_preset;
+        this.current_character_preset = current_character_preset;
         this.isWeirdOutfit = isWeirdOutfit;
         this.isWeirdBody = isWeirdBody;
         
@@ -437,16 +438,12 @@ document.addEventListener('alpine:init', () => {
             this.current_defining_objects[i].pattern = json_obj.pattern;
         }        
     },
-    updateExpressionPreset(preset){
-
-    for (i = 0; i < expression_indices.length; i += 1){ 
-        this.current_defining_objects[expression_indices[i]].value_list = expression_preset_defining_list[preset].current_defining_objects[expression_indices[i]].value_list;
-    }
-},
-usePreset(preset_index,relevant_defining_indices, preset_defining_list){
-    //use the values of relevant_defining_indices of the preset_indexth element of preset_defining_list
+usePreset(preset_index,relevant_defining_indices, preset_defining_list, property_list){
+    //use the properties of property_list for the relevant_defining_indices of the preset_indexth element of preset_defining_list
     for (i = 0; i < relevant_defining_indices.length; i += 1){ 
-        this.current_defining_objects[relevant_defining_indices[i]].value_list = preset_defining_list[preset_index].current_defining_objects[relevant_defining_indices[i]].value_list;
+        for (j = 0; j < property_list.length; j += 1){ 
+        this.current_defining_objects[relevant_defining_indices[i]][property_list[j]] = preset_defining_list[preset_index].current_defining_objects[relevant_defining_indices[i]][property_list[j]];
+        }
     }
 },
 
@@ -488,7 +485,7 @@ usePreset(preset_index,relevant_defining_indices, preset_defining_list){
                 }
             }
         }
-        this.usePreset(randomIndex(expression_preset_defining_list,0),expression_indices, expression_preset_defining_list)
+        this.usePreset(randomIndex(expression_preset_defining_list,0),expression_indices, expression_preset_defining_list,["value_list"])
         //this.size = randomIndex(size_list,0);
         remove_list = [];
         if (!isWeirdBody)
