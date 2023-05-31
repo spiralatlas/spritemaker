@@ -294,11 +294,12 @@ document.addEventListener('alpine:init', () => {
                             break;  
                         case 'current_character_preset': 
                             objList = 'character_preset_list';
-                            extra_commands = '$store.alpineData.usePreset($store.alpineData.current_character_preset,character_indices, character_preset_defining_list,expression_preset_list_values);'
+                            extra_commands = '$store.alpineData.transferDefiningListValues($store.alpineData.current_character_preset,character_indices, character_preset_defining_list,character_preset_list_values);'
+                            extra_commands += '$store.alpineData.transferDefiningValues($store.alpineData.current_character_preset,character_preset_defining_list, character_preset_values);'
                             break;       
                         case 'current_expression_preset': 
                             objList = 'expression_preset_list';
-                            extra_commands = '$store.alpineData.usePreset($store.alpineData.current_expression_preset,expression_indices, expression_preset_defining_list,expression_preset_list_values);'
+                            extra_commands = '$store.alpineData.transferDefiningListValues($store.alpineData.current_expression_preset,expression_indices, expression_preset_defining_list,expression_preset_list_values);'
                             break;               
                         case 'current_imageType': 
                             objList = 'imageType_list';
@@ -438,13 +439,19 @@ document.addEventListener('alpine:init', () => {
             this.current_defining_objects[i].pattern = json_obj.pattern;
         }        
     },
-usePreset(preset_index,relevant_defining_indices, preset_defining_list, property_list){
+transferDefiningListValues(preset_index,relevant_defining_indices, preset_defining_list, property_list){
     //use the properties of property_list for the relevant_defining_indices of the preset_indexth element of preset_defining_list
     for (i = 0; i < relevant_defining_indices.length; i += 1){ 
         for (j = 0; j < property_list.length; j += 1){ 
         this.current_defining_objects[relevant_defining_indices[i]][property_list[j]] = preset_defining_list[preset_index].current_defining_objects[relevant_defining_indices[i]][property_list[j]];
         }
     }
+},
+transferDefiningValues(preset_index,preset_defining_list, property_list){
+    //use the properties of property_list for the relevant_defining_indices of the preset_indexth element of preset_defining_list
+        for (j = 0; j < property_list.length; j += 1){ 
+        this[property_list[j]] = preset_defining_list[preset_index][property_list[j]];
+        }
 },
 
     randomiseBodyColouring(){
@@ -485,7 +492,7 @@ usePreset(preset_index,relevant_defining_indices, preset_defining_list, property
                 }
             }
         }
-        this.usePreset(randomIndex(expression_preset_defining_list,0),expression_indices, expression_preset_defining_list,["value_list"])
+        this.transferDefiningListValues(randomIndex(expression_preset_defining_list,0),expression_indices, expression_preset_defining_list,["value_list"])
         //this.size = randomIndex(size_list,0);
         remove_list = [];
         if (!isWeirdBody)

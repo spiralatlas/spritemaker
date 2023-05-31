@@ -355,3 +355,5 @@ const hairstyle_indices_w = ["fancy bun"].map(value => hairstyle_list.indexOf(va
 let current_expression_preset = 0;
 const expression_preset_list_values = ["value_list"]
 let current_character_preset = 0;
+const character_preset_list_values = ["value_list","colour1","colour2","pattern","patterncolour"]
+const character_preset_values = ["current_hairstyle"]
