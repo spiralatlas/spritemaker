@@ -617,8 +617,20 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
             
     },
     randomiseAll(gender){
-        this.randomiseBodyColouring();
+        remove_list = [];
+        value_list = ["isWeirdBody"] 
+        for (let i = 0; i < value_list.length; i += 1){ 
+            if (!this[value_list[i]])
+                remove_list = remove_list.concat(presetExcludeIndices(value_list[i]))
+        }
+        current_preset = randomElement(range(character_preset_defining_list.length).filter(value => !(remove_list.includes(value))),0)        
+        console.log("current_preset "+current_preset)
+        if (false) //(Math.random()>0.1)
+            this.randomiseBodyColouring();
+        else
+            this.transferDefiningListValues(current_preset,definingSubsetIndices(["head","fringe","eyes"]), character_preset_defining_list,["colour1","colour2"])
         this.randomiseClothingColour();
+        this.transferDefiningListValues(current_preset,definingSubsetIndices(skin_list_defining), character_preset_defining_list,["colour1","colour2"])
         this.randomiseFeatures(gender);
         this.randomiseClothingValue(gender);
     },

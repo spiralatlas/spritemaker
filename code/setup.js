@@ -38,9 +38,6 @@ let isWeirdBody = false;
 
 //internal
 
-const canvas_width = 512;
-const canvas_height = 800;
-
 const imageType_list =["Preview", "Head","Expression","Outfit"];
 
 const genderType_list = ["Androgynous","Masculine","Feminine"]
@@ -356,4 +353,4 @@ let current_expression_preset = 0;
 const expression_preset_list_values = ["value_list"]
 let current_character_preset = 0;
 const character_preset_list_values = ["value_list","colour1","colour2","pattern","patterncolour"]
-const character_preset_values = ["current_hairstyle"]
+const character_preset_values = ["current_hairstyle", "current_eyetype"]

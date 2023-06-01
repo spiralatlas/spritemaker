@@ -764,6 +764,7 @@ def write_variables():
     content.write(list_string("no_fill_list", no_fill_list, ))  
     content.write(list_string("pattern_list",pattern_list))    
     content.write(list_string("skin_list", skin_list))  
+    content.write(list_string("skin_list_defining", skin_list_defining))  
     content.write(list_string("eyetype_list_f", eyetype_list_f))   
     content.write(list_string("eyetype_list_m", eyetype_list_m))  
     content.write(list_string("eyetype_list_w", eyetype_list_w))   

@@ -229,7 +229,7 @@ function definingSubsetIndices(sublist){
     return output;
 }
 const expression_indices = definingSubsetIndices(expression_list);
-const character_indices = definingSubsetIndices(defining_list.filter(value => !expression_list.includes(value)));
+const character_indices = definingSubsetIndices(defining_list.concat(["hat"]));
 
 function includesAny(test_string, string_list){
     //returns true if the string test_string includes any of the elements of string_list
@@ -251,6 +251,15 @@ function stringIndices(base_list, defining_list){
         }
     }
     return output
+}
+
+function presetExcludeIndices(value){
+    //return what indices of character_preset_defining_list have value be true
+    output = []
+    for (i = 0; i < character_preset_defining_list.length; i += 1){
+        if (character_preset_defining_list[i][value])
+            output.push(i)
+    }
 }
 
 function hairExcludeIndices(index){
