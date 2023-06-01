@@ -25,8 +25,6 @@ def combineList(list1,list2):
 
 # colour functions
 
-shadow_types = ["red", "yellow","green","aqua","blue","purple"]
-
 def hex_to_rgba(value):
     #### Return (red, green, blue, 255) for the color given as #rrggbb or #rgb.
     value = value.lstrip('#')
@@ -76,10 +74,6 @@ def hue(p):
     else:
         return 60*(6-(B-G)/float(R-G))  
     
-
-def shading(colour, shadow, r ):
-    return (1-r)*colour + r*colour*shadow/255
-
 def HSL_to_RGB(h,s,l):
 
     C = (255-abs(2*l-255)*s)

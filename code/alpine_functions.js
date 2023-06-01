@@ -29,15 +29,15 @@ function setDefiningObjectValue(i, new_obj){
 function setVariables(data_object){
     //transfer data from webpage/load file to internal javascript
 
-    currently_editing = data_object.currently_editing; //which element of editing list we are editing
-    current_expression = data_object.current_expression;
+    current_tab_type = data_object.current_tab_type; //which element of editing list we are editing
+    current_expression_type = data_object.current_expression_type;
     current_clothing = data_object.current_clothing;
     current_accessory = data_object.current_accessory;
-    current_imageType = data_object.current_imageType;
-    current_gender = data_object.current_gender;
+    current_export_image_type = data_object.current_export_image_type;
+    current_gender_type = data_object.current_gender_type;
 
-    size = data_object.size;
-    head_ratio_type = data_object.head_ratio_type;
+    current_size_type = data_object.current_size_type;
+    current_head_ratio_type = data_object.current_head_ratio_type;
     crop_height = data_object.crop_height;
     current_eyetype = data_object.current_eyetype;
     current_hairstyle = data_object.current_hairstyle;
@@ -57,7 +57,7 @@ function updateVariables(){
     for (let i = 0; i < defining_objects.length; i += 1){
         let json_obj = defining_objects[i];
         for (let i = 0; i < json_obj.value_children.length; i += 1){
-            image_objects[json_obj.value_children[i]].item = json_obj.value_list[current_expression];
+            image_objects[json_obj.value_children[i]].item = json_obj.value_list[current_expression_type];
         }
         for (let i = 0; i < json_obj.colour_children.length; i += 1){
             image_objects[json_obj.colour_children[i]].colour1 = json_obj.colour1;
@@ -132,12 +132,12 @@ function updateVariables(){
         image_objects[i].widthOffset = getWidthOffset(image_objects[i].name);
         if (!checkRender(image_objects[i]))
             image_objects[i].item = -1
-        standard_scale =  0.8+size*0.05;   
+        standard_scale =  0.8+current_size_type*0.05;   
         if (head_offset_list.includes(image_objects[i].name)) {   
-            if (head_ratio_type==0){
+            if (current_head_ratio_type==0){
                 image_objects[i].scale = standard_scale; 
             } else{
-                head_scale = 0.02*size+0.85
+                head_scale = 0.02*current_size_type+0.85
                 image_objects[i].scale = head_scale; 
                 image_objects[i].heightOffset += -parseInt((standard_scale-head_scale)*194)
                 image_objects[i].widthOffset += parseInt((standard_scale-head_scale)*180)
@@ -152,9 +152,9 @@ function updateVariables(){
     sprite_width = full_width;
     sprite_height = full_height ;
     if (findNameMatch(defining_objects,"wheelchair").value_list[0] !=0){ //there's a wheelchair
-        sprite_height = full_height*(0.8+size*0.05) -165-crop_height;
+        sprite_height = full_height*(0.8+current_size_type*0.05) -165-crop_height;
     } 
-    sprite_height = sprite_height*(0.8+size*0.05) -crop_height;//-(5-size)*30
+    sprite_height = sprite_height*(0.8+current_size_type*0.05) -crop_height;//-(5-current_size_type)*30
 
     //calculating crops
 
@@ -260,7 +260,7 @@ document.addEventListener('alpine:init', () => {
                     break;        
                 case 'expression':
                     obj_index = findDefiningIndex(this.valueName);
-                    objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list[current_expression]';
+                    objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list[current_expression_type]';
                     objList = 'defining_objects['+obj_index+'].item_list';
                     buttonName = objName;
                     value = "index";
@@ -277,14 +277,14 @@ document.addEventListener('alpine:init', () => {
                         case 'current_accessory':
                             objList = 'accessory_names';
                             break;    
-                        case 'current_expression':
-                            objList = 'panel_list';
+                        case 'current_expression_type':
+                            objList = 'expression_type_list';
                             break;
-                        case 'size':
-                            objList = 'size_list';
+                        case 'current_size_type':
+                            objList = 'size_type_list';
                             break;
-                        case 'head_ratio_type':
-                            objList = 'ratio_list';
+                        case 'current_head_ratio_type':
+                            objList = 'head_ratio_type_list';
                             break;    
                         case 'current_eyetype': 
                             objList = 'eyetype_list';
@@ -301,11 +301,11 @@ document.addEventListener('alpine:init', () => {
                             objList = 'expression_preset_list';
                             extra_commands = '$store.alpineData.transferDefiningListValues($store.alpineData.current_expression_preset,expression_indices, expression_preset_defining_list,expression_preset_list_values);'
                             break;               
-                        case 'current_imageType': 
-                            objList = 'imageType_list';
+                        case 'current_export_image_type': 
+                            objList = 'export_image_type_list';
                             break; 
-                        case 'current_gender': 
-                            objList = 'genderType_list';
+                        case 'current_gender_type': 
+                            objList = 'gender_type_list';
                             break;               
 
                     }
@@ -367,15 +367,15 @@ document.addEventListener('alpine:init', () => {
   Alpine.store('alpineData', {
 
     dark_theme: true,
-    currently_editing : 0,
-    current_expression : 0,
+    current_tab_type : 0,
+    current_expression_type : 0,
     current_clothing : 0,
     current_accessory : 0,
-    current_imageType : 0,
-    current_gender : 0,
+    current_export_image_type : 0,
+    current_gender_type : 0,
 
-    size : 2,
-    head_ratio_type: 0,
+    current_size_type : 2,
+    current_head_ratio_type: 0,
     crop_height : 300,
     current_eyetype: 0,
     current_hairstyle: 0,
@@ -419,8 +419,8 @@ document.addEventListener('alpine:init', () => {
 
     fixAlpine() { //make the alpine components match the variables used by the javascript
     
-        this.size= size;
-        this.head_ratio_type= head_ratio_type;
+        this.current_size_type= current_size_type;
+        this.current_head_ratio_type= current_head_ratio_type;
         this.crop_height= crop_height;
         this.current_eyetype = current_eyetype;
         this.current_hairstyle = current_hairstyle;
@@ -493,7 +493,7 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
             }
         }
         this.transferDefiningListValues(randomIndex(expression_preset_defining_list,0),expression_indices, expression_preset_defining_list,["value_list"])
-        //this.size = randomIndex(size_list,0);
+        //this.current_size_type = randomIndex(size_type_list,0);
         remove_list = [];
         if (!isWeirdBody)
             remove_list = eyetype_indices_w
@@ -624,8 +624,7 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
                 remove_list = remove_list.concat(presetExcludeIndices(value_list[i]))
         }
         current_preset = randomElement(range(character_preset_defining_list.length).filter(value => !(remove_list.includes(value))),0)        
-        console.log("current_preset "+current_preset)
-        if (false) //(Math.random()>0.1)
+        if (true) //(Math.random()>0.1)
             this.randomiseBodyColouring();
         else
             this.transferDefiningListValues(current_preset,definingSubsetIndices(["head","fringe","eyes"]), character_preset_defining_list,["colour1","colour2"])
@@ -645,88 +644,20 @@ function niceString(input){
 
 }
 
-function drawCanvas() {
-    //draw the canvases
-    
-    //preview canvas
-    if (testing)
-        document.getElementById("closet").innerHTML = print_defining_objects()+print_image_objects();
-
-    if (updated_frames>50) 
-        return; //it's been long enough since the last data update to stop refreshing the images
-    else
-        updated_frames+=1;    
-
-    canvas_preview = document.getElementById("previewCanvas");
-    canvas_sample = document.getElementById("sampleCanvas");
-
-    ctx_preview = canvas_preview.getContext("2d");
-    ctx_sample = canvas_sample.getContext("2d");
-
-    canvas_preview.height = sprite_height; //clears
-    canvas_sample.height = canvas_sample.height;
-
-    //document.getElementById("closet").innerHTML = print_image_objects();
-    //portrait preview
-
-    preview_width=full_width;
-    preview_height=sprite_height;
-
-    ctx_sample.clearRect(0,0,canvas_sample.width,canvas_sample.height)
-    if (currently_editing==0){
-        ctx_sample.drawImage(skin_image,0,0)
-        ctx_sample.drawImage(eyes_image,250,0)
-        ctx_sample.drawImage(hair_image,500,0)
-    } else{
-        if ([2,3].includes(currently_editing)){
-            ctx_sample.drawImage(schemes_image,125,0)
-        }
-    }
-        
-    //main canvas
-    let current_list = [];
-    switch (current_imageType){
-        case 1: 
-            current_list =  body_list;
-            break;
-        case 2: 
-            current_list =  expression_list;
-            break; 
-        case 3: 
-            current_list =  all_clothes_list;
-            break;        
-    }
-    
-    for (let i = 0; i < image_objects.length; i += 1){
-        let b = image_objects[i];
-        if (getImageItem(b) !="none"){ 
-            if (current_imageType==0 || current_list.includes(b.name)) 
-                if (current_imageType ==2 && body_list.includes(b.name)){
-                
-                    undraw_object(b,current_expression,b.colour1,ctx_preview, 0,0,b.widthOffset, -b.heightOffset,sprite_width,sprite_height);}
-                else{
-                    draw_object(b,current_expression,b.colour1,ctx_preview, 0,0,b.widthOffset, -b.heightOffset,parseInt(sprite_width/b.scale),parseInt(sprite_height/b.scale));
-                }
-
-        }
-    }
-    
-}
-
 function setup(){
-    canvas_preview = document.getElementById("previewCanvas");
-    ctx_preview = canvas_preview.getContext("2d");
+    canvas_main = document.getElementById("previewCanvas");
+    ctx_main = canvas_main.getContext("2d");
 
     document.getElementById('download').addEventListener('click', function(e) {
         // from https://fjolt.com/article/html-canvas-save-as-image
 
         let filename = "dollmaker_";
-        switch(current_imageType){
+        switch(current_export_image_type){
             case 0:
                 filename += "body";
                 break;
             case 01:
-                filename += "expression_"+panel_list[current_expression];
+                filename += "expression_"+expression_type_list[current_expression_type];
                 break;
             case 2:
                 filename += "outfit";
@@ -734,7 +665,7 @@ function setup(){
         }   
         console.log("saving "+filename);              
         // Convert our canvas to a data URL
-        let canvasUrl = canvas_preview.toDataURL();
+        let canvasUrl = canvas_main.toDataURL();
         // Create an anchor, and set the href value to our data URL
         const createEl = document.createElement('a');
         createEl.href = canvasUrl;

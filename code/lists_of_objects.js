@@ -1,39 +1,6 @@
-function firstElement(listname){
-    //first element of the array listname
-    return listname[0];
-}
 
-function setVariable(variablelist, number){
-    //for every string in 'variablelist', set the portrait element with that name to have value 'number'
-    for (let i = 0; i < variablelist.length; i += 1) {
-        let b = findNameMatch(image_objects, variablelist[i]); //the eleemnt of image_objects with the right vriablename
-        b.value_list=listOf(number);
-    }
-}
 
-function setValuelist(variable, list){
-    //for every string in 'variablelist', set the portrait element with that name to have value list 'list'
-    let b = findNameMatch(image_objects, variable); //the eleemnt of image_objects with the right vriablename
-    b.value_list=list;
-}
-
-function setColour(variablelist, colour){
-    //for every string in 'variablelist', set the portrait element with that name to have colour1 'colour'
-    for (let i = 0; i < variablelist.length; i += 1) {
-        let b = findNameMatch(image_objects, variablelist[i]); //the eleemnt of image_objects with the right vriablename
-        b.colour1=colour;
-    }
-}
-
-function findDefiningIndex(name){
-    for (let i = 0; i < defining_objects.length; i += 1) {
-        if (defining_objects[i].name ==name)
-            return i;
-    }
-    return -1;        
-}
-
-// Dumbass functions to get sleeves to stop breaking
+// Dumbass function to get sleeves to stop breaking
 
 function sleeveIndex(){
     return Math.max(0,findDefiningIndex(clothing_names[Alpine.store('alpineData').current_clothing]+'_sleeves')) 
@@ -193,7 +160,7 @@ add_colour_children("wheelchair", ["wheelchair_back"]);
 add_colour2_children("wheelchair", ["wheelchair_back_dec","wheelchair_dec"]);
 
 const body_list =["head","skull","ears","nose","nose_front","complexion"];
-const all_clothes_list = (image_objects.map(nameOf)).filter(value => !(expression_list.includes(value)));
+const all_clothes_list = image_objects.filter(value => !(expression_list.includes(value.name)));
 
 const hair_front_numbers = hairstyle_defining_list.map(value => findNameMatch(image_objects, "hair_front").item_list.indexOf(value[1]))
 const hair_middle_numbers = hairstyle_defining_list.map(value => findNameMatch(image_objects, "hair_middle").item_list.indexOf(value[2]))
@@ -230,28 +197,6 @@ function definingSubsetIndices(sublist){
 }
 const expression_indices = definingSubsetIndices(expression_list);
 const character_indices = definingSubsetIndices(defining_list.concat(["hat"]));
-
-function includesAny(test_string, string_list){
-    //returns true if the string test_string includes any of the elements of string_list
-    for (i = 0; i < string_list.length; i += 1){
-        if (test_string.includes(string_list[i]))
-            return true
-    }
-    return false
-}
-
-function stringIndices(base_list, defining_list){
-    // baselist, defining_list both lists of strings
-    //all indices of elements of base_list that do not contain any elements of defining_list
-    let output = [];
-    for (i = 0; i < base_list.length; i += 1){
-        for (j = 0; j < defining_list.length; j += 1){
-            if (base_list[i].includes(defining_list[j]))
-                output.push(i); 
-        }
-    }
-    return output
-}
 
 function presetExcludeIndices(value){
     //return what indices of character_preset_defining_list have value be true

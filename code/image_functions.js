@@ -430,3 +430,72 @@ function undraw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,wid
     ctx.drawImage(obj.base_image,sourceX,sourceY,width,height, xpos, ypos,parseInt(obj.scale*width),parseInt(obj.scale*height));
     ctx.globalCompositeOperation = "source-over";   
     }
+
+    function drawCanvas() {
+        //draw the canvases
+        
+        //preview canvas
+        if (testing)
+            document.getElementById("closet").innerHTML = print_defining_objects()+print_image_objects();
+    
+        if (updated_frames>50) 
+            return; //it's been long enough since the last data update to stop refreshing the images
+        else
+            updated_frames+=1;    
+    
+        canvas_main = document.getElementById("previewCanvas");
+        canvas_sample = document.getElementById("sampleCanvas");
+    
+        ctx_main = canvas_main.getContext("2d");
+        ctx_sample = canvas_sample.getContext("2d");
+    
+        canvas_main.height = sprite_height; //clears
+        canvas_sample.height = canvas_sample.height;
+    
+        //document.getElementById("closet").innerHTML = print_image_objects();
+        //portrait preview
+    
+        preview_width=full_width;
+        preview_height=sprite_height;
+    
+        ctx_sample.clearRect(0,0,canvas_sample.width,canvas_sample.height)
+        if (current_tab_type==0){
+            ctx_sample.drawImage(skin_image,0,0)
+            ctx_sample.drawImage(eyes_image,250,0)
+            ctx_sample.drawImage(hair_image,500,0)
+        } else{
+            if ([2,3].includes(current_tab_type)){
+                ctx_sample.drawImage(schemes_image,125,0)
+            }
+        }
+            
+        //main canvas
+        let current_list = [];
+        switch (current_export_image_type){
+            case 1: 
+                current_list =  body_list;
+                break;
+            case 2: 
+                current_list =  expression_list;
+                break; 
+            case 3: 
+                current_list =  all_clothes_list;
+                break;        
+        }
+        
+        for (let i = 0; i < image_objects.length; i += 1){
+            let b = image_objects[i];
+            if (getImageItem(b) !="none"){ 
+                if (current_export_image_type==0 || current_list.includes(b.name)) 
+                    if (current_export_image_type ==2 && body_list.includes(b.name)){
+                    
+                        undraw_object(b,current_expression_type,b.colour1,ctx_main, 0,0,b.widthOffset, -b.heightOffset,sprite_width,sprite_height);}
+                    else{
+                        draw_object(b,current_expression_type,b.colour1,ctx_main, 0,0,b.widthOffset, -b.heightOffset,parseInt(sprite_width/b.scale),parseInt(sprite_height/b.scale));
+                    }
+    
+            }
+        }
+        
+    }
+    

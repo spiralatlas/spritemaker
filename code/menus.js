@@ -13,8 +13,8 @@ function download() {
   }
 
   var load_variables = {
-    currently_editing: currently_editing,current_imageType: current_imageType,current_gender: current_gender, current_expression:current_expression,current_clothing:current_clothing,current_accessory: current_accessory,
-    size: size,head_ratio_type: head_ratio_type, crop_height: crop_height,current_hairstyle: current_hairstyle, current_eyetype: current_eyetype, current_expression_preset: current_expression_preset,current_character_preset: current_character_preset,isWeirdOutfit: isWeirdOutfit,isWeirdBody: isWeirdBody, 
+    current_tab_type: current_tab_type,current_export_image_type: current_export_image_type,current_gender_type: current_gender_type, current_expression_type:current_expression_type,current_clothing:current_clothing,current_accessory: current_accessory,
+    current_size_type: current_size_type,current_head_ratio_type: current_head_ratio_type, crop_height: crop_height,current_hairstyle: current_hairstyle, current_eyetype: current_eyetype, current_expression_preset: current_expression_preset,current_character_preset: current_character_preset,isWeirdOutfit: isWeirdOutfit,isWeirdBody: isWeirdBody, 
     current_defining_objects: current_defining_objects, 
   }    
   
@@ -65,10 +65,6 @@ var reader; //GLOBAL File Reader object
         reader.readAsText(filePath);
         return true;
     }  
-    
-    function setColour(input_string){
-
-    }
 
     /**
      * load user selected file
