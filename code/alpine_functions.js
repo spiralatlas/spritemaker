@@ -623,15 +623,30 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
             if (!this[value_list[i]])
                 remove_list = remove_list.concat(presetExcludeIndices(value_list[i]))
         }
-        current_preset = randomElement(range(character_preset_defining_list.length).filter(value => !(remove_list.includes(value))),0)        
-        if (true) //(Math.random()>0.1)
+        current_preset = randomElement(range(character_preset_defining_list.length).filter(value => !(remove_list.includes(value))),0)     
+        //body colouring  
+        if (Math.random()>0.1)
             this.randomiseBodyColouring();
         else
-            this.transferDefiningListValues(current_preset,definingSubsetIndices(["head","fringe","eyes"]), character_preset_defining_list,["colour1","colour2"])
-        this.randomiseClothingColour();
-        this.transferDefiningListValues(current_preset,definingSubsetIndices(skin_list_defining), character_preset_defining_list,["colour1","colour2"])
-        this.randomiseFeatures(gender);
-        this.randomiseClothingValue(gender);
+            this.transferDefiningListValues(current_preset,definingSubsetIndices(["head","fringe","eyes"]), character_preset_defining_list,["colour1","colour2"]);
+        //clothing colour
+        if (Math.random()>0.1)
+            this.randomiseClothingColour();
+        else
+            this.transferDefiningListValues(current_preset,definingSubsetIndices(outfit_list.concat(accessory_list)), character_preset_defining_list,["colour1","colour2","pattern","patterncolour"]);
+        //features
+        if (Math.random()>0.1)
+            this.randomiseFeatures(gender);
+        else{
+            this.transferDefiningListValues(current_preset,definingSubsetIndices(["nose","head","ears","body","complexion", "body_chest",]), character_preset_defining_list,["value_list"]);
+            this.transferDefiningValues(current_preset,character_preset_defining_list, character_preset_values);
+            this.transferDefiningListValues(randomIndex(expression_preset_defining_list,0),expression_indices, expression_preset_defining_list,["value_list"])
+        }
+        if (Math.random()>0.1)
+            this.randomiseClothingValue(gender);
+        else
+            this.transferDefiningListValues(current_preset,definingSubsetIndices(full_outfit_list), character_preset_defining_list,["value_list"]);
+
     },
 })
   })
