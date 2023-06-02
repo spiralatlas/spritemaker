@@ -893,7 +893,7 @@ def runStuff():
         if c.name in [ ]:
             process_portrait_part(c)
     makeWinks()
-    #makeStubble() 
+    makeStubble() 
 
     #makeSwatches()
         
