@@ -302,7 +302,7 @@ function fixSources(){
 
             }else{
                 if (b.name=="eyes"){ 
-                    loc_string = "images/render/"+b.location+"/"+eyetype_list[current_eyetype] +"/"+current_loc 
+                    loc_string = "images/render/"+b.location+"/"+eyetype_list[defining_variables_object.current_eyetype] +"/"+current_loc 
                     b.overlay_image.src  = loc_string+"_overlay.png";
                 }
                 else{

@@ -15,15 +15,8 @@ function setVariables(data_object){
     //transfer data from webpage/load file to internal javascript
 
     transferObjectValues(ui_variables_object, data_object,Object.keys(ui_variables_object) )
-    transferObjectValues(defining_variables_object, data_object,Object.keys(defining_variables_object) )
-    
-    /*for (let i = 0; i < Object.keys(ui_variables_object).length; i += 1){
-        ui_variables_object[Object.keys(ui_variables_object)[i]]= data_object[Object.keys(ui_variables_object)[i]]
-    }
-    for (let i = 0; i < Object.keys(defining_variables_object).length; i += 1){
-        ui_variables_object[Object.keys(defining_variables_object)[i]]= data_object[Object.keys(defining_variables_object)[i]]
-    }*/
-
+    transferObjectValues(defining_variables_object, data_object,Object.keys(defining_variables_object) )    
+/*
     current_tab_type = data_object.current_tab_type; //which element of editing list we are editing
     current_expression_type = data_object.current_expression_type;
     current_clothing = data_object.current_clothing;
@@ -40,7 +33,7 @@ function setVariables(data_object){
     isWeirdBody = data_object.isWeirdBody;
 
     current_eyetype = data_object.current_eyetype;
-    current_hairstyle = data_object.current_hairstyle;
+    current_hairstyle = data_object.current_hairstyle;*/
 
     
 
@@ -95,9 +88,9 @@ function updateVariables(){
 
     //hair
     
-    hair_front_obj.item = hair_front_numbers[current_hairstyle]
-    findNameMatch(image_objects,"hair_middle").item = hair_middle_numbers[current_hairstyle]
-    hair_back_obj.item = hair_back_numbers[current_hairstyle]
+    hair_front_obj.item = hair_front_numbers[defining_variables_object.current_hairstyle]
+    findNameMatch(image_objects,"hair_middle").item = hair_middle_numbers[defining_variables_object.current_hairstyle]
+    hair_back_obj.item = hair_back_numbers[defining_variables_object.current_hairstyle]
     
     //calculating chest
     if (chest_obj.item>0){
@@ -425,7 +418,7 @@ document.addEventListener('alpine:init', () => {
         transferObjectValues(this, defining_variables_object,Object.keys(defining_variables_object) )
    
     
-        this.current_size_type= current_size_type;
+        /*this.current_size_type= current_size_type;
         this.current_head_ratio_type= current_head_ratio_type;
         this.crop_height= crop_height;
         this.current_eyetype = current_eyetype;
@@ -433,7 +426,7 @@ document.addEventListener('alpine:init', () => {
         this.current_expression_preset = current_expression_preset;
         this.current_character_preset = current_character_preset;
         this.isWeirdOutfit = isWeirdOutfit;
-        this.isWeirdBody = isWeirdBody;
+        this.isWeirdBody = isWeirdBody;*/
         
         for (let i = 0; i < defining_objects.length; i += 1){
             for (let j = 0; j < defining_objects_defining_keys_list.length; j += 1)
