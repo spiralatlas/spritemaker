@@ -486,7 +486,7 @@ function undraw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,wid
             let b = image_objects[i];
             if (getImageItem(b) !="none"){ 
                 if (current_export_image_type==0 || current_list.includes(b.name)) 
-                    if (current_export_image_type ==2 && export_head_list.includes(b.name)){
+                    if (current_export_image_type ==3 && export_head_list.includes(b.name)){
                     
                         undraw_object(b,current_expression_type,b.colour1,ctx_main, 0,0,b.widthOffset, -b.heightOffset,sprite_width,sprite_height);}
                     else{

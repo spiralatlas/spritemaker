@@ -161,7 +161,7 @@ add_colour_children("wheelchair", ["wheelchair_back"]);
 add_colour2_children("wheelchair", ["wheelchair_back_dec","wheelchair_dec"]);
 
 const export_head_list =["head","skull","ears","nose","nose_front","complexion"];
-const export_outfit_list = image_objects.filter(value => !(expression_list.includes(value.name)));
+const export_outfit_list = (image_objects.map(value => value.name)).filter(value => !(expression_list.includes(value)));
 
 const hair_front_numbers = hairstyle_defining_list.map(value => findNameMatch(image_objects, "hair_front").item_list.indexOf(value[1]))
 const hair_middle_numbers = hairstyle_defining_list.map(value => findNameMatch(image_objects, "hair_middle").item_list.indexOf(value[2]))
