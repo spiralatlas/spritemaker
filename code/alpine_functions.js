@@ -421,6 +421,9 @@ document.addEventListener('alpine:init', () => {
         for (let i = 0; i < Object.keys(ui_variables_object).length; i += 1){
             this[Object.keys(ui_variables_object)[i]] = ui_variables_object[Object.keys(ui_variables_object)[i]]
         }
+        transferObjectValues(this, ui_variables_object,Object.keys(ui_variables_object) )
+        transferObjectValues(this, defining_variables_object,Object.keys(defining_variables_object) )
+   
     
         this.current_size_type= current_size_type;
         this.current_head_ratio_type= current_head_ratio_type;

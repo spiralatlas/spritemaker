@@ -8,19 +8,14 @@ function download() {
   var current_defining_objects = [];
   for(let i = 0; i < defining_objects.length; i++){
     m = defining_objects[i];
-
-    current_defining_objects.push({name: m.name, value_list:m.value_list,colour1: m.colour1,colour2: m.colour2,patterncolour: m.patterncolour,pattern: m.pattern})
+    temp_obj = {};
+    transferObjectValues(temp_obj, defining_objects[i],defining_objects_defining_keys_list )
+    current_defining_objects.push(temp_obj);//({name: m.name, value_list:m.value_list,colour1: m.colour1,colour2: m.colour2,patterncolour: m.patterncolour,pattern: m.pattern})
   }
 
   var load_variables = {current_defining_objects: current_defining_objects};
-  for (let i = 0; i < Object.keys(ui_variables_object).length; i += 1){
-    load_variables[Object.keys(ui_variables_object)[i]]= ui_variables_object[Object.keys(ui_variables_object)[i]]
-}
-
-    /*current_tab_type: current_tab_type,current_export_image_type: current_export_image_type,current_gender_type: current_gender_type, current_expression_type:current_expression_type,current_clothing:current_clothing,current_accessory: current_accessory,
-    current_size_type: current_size_type,current_head_ratio_type: current_head_ratio_type, crop_height: crop_height,current_hairstyle: current_hairstyle, current_eyetype: current_eyetype, current_expression_preset: current_expression_preset,current_character_preset: current_character_preset,isWeirdOutfit: isWeirdOutfit,isWeirdBody: isWeirdBody, 
-    current_defining_objects: current_defining_objects, 
-  }  */  
+  transferObjectValues(load_variables, ui_variables_object,Object.keys(ui_variables_object) )
+  transferObjectValues(load_variables, defining_variables_object,Object.keys(defining_variables_object) )
   
   data = JSON.stringify(load_variables);
   var file = new Blob([data], {type: type});
