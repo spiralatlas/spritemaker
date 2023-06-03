@@ -13,13 +13,9 @@ function checkRender(obj){
 
 function setDefiningObject(i, new_obj){
     let json_obj = defining_objects[i];
-    current_item = new_obj.name; 
-    json_obj.value_list = new_obj.value_list
-    json_obj.colour1 = new_obj.colour1
-    json_obj.colour2 = new_obj.colour2
-    json_obj.patterncolour = new_obj.patterncolour
-    json_obj.pattern = new_obj.pattern
-
+    for (let j = 0; j < defining_objects_defining_keys_list.length; j += 1){
+        json_obj[defining_objects_defining_keys_list[j]]= new_obj[defining_objects_defining_keys_list[j]]
+    }
 }
 
 function setDefiningObjectValue(i, new_obj){
@@ -39,16 +35,18 @@ function setVariables(data_object){
     current_size_type = data_object.current_size_type;
     current_head_ratio_type = data_object.current_head_ratio_type;
     crop_height = data_object.crop_height;
-    current_eyetype = data_object.current_eyetype;
-    current_hairstyle = data_object.current_hairstyle;
     current_character_preset = data_object.current_character_preset;
     current_expression_preset = data_object.current_expression_preset;
+    
+    current_eyetype = data_object.current_eyetype;
+    current_hairstyle = data_object.current_hairstyle;
     isWeirdOutfit = data_object.isWeirdOutfit;
     isWeirdBody = data_object.isWeirdBody;
     
 
     for (let i = 0; i < defining_objects.length; i += 1){
-        setDefiningObject(i, data_object.current_defining_objects[i])
+        for (let j = 0; j < defining_objects_defining_keys_list.length; j += 1)
+            defining_objects[i][defining_objects_defining_keys_list[j]]= data_object.current_defining_objects[i][defining_objects_defining_keys_list[j]]
     }
     updateVariables();
 }
@@ -430,13 +428,8 @@ document.addEventListener('alpine:init', () => {
         this.isWeirdBody = isWeirdBody;
         
         for (let i = 0; i < defining_objects.length; i += 1){
-            let json_obj = defining_objects[i];
-            current_item = json_obj.name; 
-            this.current_defining_objects[i].value_list = json_obj.value_list;
-            this.current_defining_objects[i].colour1 = json_obj.colour1;
-            this.current_defining_objects[i].colour2 = json_obj.colour2;
-            this.current_defining_objects[i].patterncolour = json_obj.patterncolour;
-            this.current_defining_objects[i].pattern = json_obj.pattern;
+            for (let j = 0; j < defining_objects_defining_keys_list.length; j += 1)
+                this.current_defining_objects[i][defining_objects_defining_keys_list[j]]=defining_objects[i][defining_objects_defining_keys_list[j]]
         }        
     },
 transferDefiningListValues(preset_index,relevant_defining_indices, preset_defining_list, property_list){
@@ -639,13 +632,14 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
             this.randomiseFeatures(gender);
         else{
             this.transferDefiningListValues(current_preset,definingSubsetIndices(["nose","head","ears","body","complexion", "body_chest",]), character_preset_defining_list,["value_list"]);
-            this.transferDefiningValues(current_preset,character_preset_defining_list, character_preset_values);
+            this.current_eyetype = character_preset_defining_list[current_preset].current_eyetype;
             this.transferDefiningListValues(randomIndex(expression_preset_defining_list,0),expression_indices, expression_preset_defining_list,["value_list"])
         }
         if (Math.random()>0.1)
             this.randomiseClothingValue(gender);
         else
             this.transferDefiningListValues(current_preset,definingSubsetIndices(full_outfit_list), character_preset_defining_list,["value_list"]);
+            this.current_hairstyle = character_preset_defining_list[current_preset].current_hairstyle;
 
     },
 })

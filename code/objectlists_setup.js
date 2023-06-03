@@ -71,6 +71,8 @@ function findDefiningIndex(name){
 //Setting up lists of objects
 const image_objects =[];
 
+const defining_objects_defining_keys_list = ["value_list","colour1","colour2","patterncolour","pattern",]
+
 function add_image_object(name, list_list, location,box){
     let loc;
     loc=location+"/"+name.toLowerCase();
