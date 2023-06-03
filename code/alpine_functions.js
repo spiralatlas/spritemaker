@@ -11,19 +11,18 @@ function checkRender(obj){
     return true  
 }
 
-function setDefiningObject(i, new_obj){
-    let json_obj = defining_objects[i];
-    for (let j = 0; j < defining_objects_defining_keys_list.length; j += 1){
-        json_obj[defining_objects_defining_keys_list[j]]= new_obj[defining_objects_defining_keys_list[j]]
-    }
-}
-
-function setDefiningObjectValue(i, new_obj){
-    defining_objects[i].value_list = new_obj.value_list
-} 
-
 function setVariables(data_object){
     //transfer data from webpage/load file to internal javascript
+
+    transferObjectValues(ui_variables_object, data_object,Object.keys(ui_variables_object) )
+    transferObjectValues(defining_variables_object, data_object,Object.keys(defining_variables_object) )
+    
+    /*for (let i = 0; i < Object.keys(ui_variables_object).length; i += 1){
+        ui_variables_object[Object.keys(ui_variables_object)[i]]= data_object[Object.keys(ui_variables_object)[i]]
+    }
+    for (let i = 0; i < Object.keys(defining_variables_object).length; i += 1){
+        ui_variables_object[Object.keys(defining_variables_object)[i]]= data_object[Object.keys(defining_variables_object)[i]]
+    }*/
 
     current_tab_type = data_object.current_tab_type; //which element of editing list we are editing
     current_expression_type = data_object.current_expression_type;
@@ -37,11 +36,12 @@ function setVariables(data_object){
     crop_height = data_object.crop_height;
     current_character_preset = data_object.current_character_preset;
     current_expression_preset = data_object.current_expression_preset;
-    
-    current_eyetype = data_object.current_eyetype;
-    current_hairstyle = data_object.current_hairstyle;
     isWeirdOutfit = data_object.isWeirdOutfit;
     isWeirdBody = data_object.isWeirdBody;
+
+    current_eyetype = data_object.current_eyetype;
+    current_hairstyle = data_object.current_hairstyle;
+
     
 
     for (let i = 0; i < defining_objects.length; i += 1){
@@ -363,8 +363,10 @@ document.addEventListener('alpine:init', () => {
   }))
   //data used by the Alpine components on the webpage
   Alpine.store('alpineData', {
-
     dark_theme: true,
+
+    current_character_preset: 0,
+    current_expression_preset: 0,
     current_tab_type : 0,
     current_expression_type : 0,
     current_clothing : 0,
@@ -377,8 +379,7 @@ document.addEventListener('alpine:init', () => {
     crop_height : 300,
     current_eyetype: 0,
     current_hairstyle: 0,
-    current_character_preset: 0,
-    current_expression_preset: 0,
+
     isWeirdOutfit: false,
     isWeirdBody: false, 
 
@@ -416,6 +417,10 @@ document.addEventListener('alpine:init', () => {
         {"name":"wheelchair","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#4C6BC2","colour2":"#7543BD"}],
 
     fixAlpine() { //make the alpine components match the variables used by the javascript
+    
+        for (let i = 0; i < Object.keys(ui_variables_object).length; i += 1){
+            this[Object.keys(ui_variables_object)[i]] = ui_variables_object[Object.keys(ui_variables_object)[i]]
+        }
     
         this.current_size_type= current_size_type;
         this.current_head_ratio_type= current_head_ratio_type;

@@ -68,10 +68,23 @@ function findDefiningIndex(name){
     return -1;        
 }
 
+function transferObjectValues(obj1, obj2, keys_list){
+    //set every 
+    for (let i = 0; i < keys_list.length; i += 1){
+        obj1[keys_list[i]]= obj2[keys_list[i]];
+    }
+}
+
 //Setting up lists of objects
+const defining_objects_defining_keys_list = ["value_list","colour1","colour2","patterncolour","pattern",]
+
+const defining_variables_object = {current_eyetype: 0,current_hairstyle: 0 };
+
+const ui_variables_object= {current_tab_type: 0, current_expression_type:0, current_clothing:0,current_accessory:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_character_preset:0,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false};
+
 const image_objects =[];
 
-const defining_objects_defining_keys_list = ["value_list","colour1","colour2","patterncolour","pattern",]
+
 
 function add_image_object(name, list_list, location,box){
     let loc;
