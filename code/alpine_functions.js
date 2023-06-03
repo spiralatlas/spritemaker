@@ -660,7 +660,7 @@ function niceString(input){
 }
 
 function setup(){
-    canvas_main = document.getElementById("previewCanvas");
+    canvas_main = document.getElementById("mainCanvas");
     ctx_main = canvas_main.getContext("2d");
 
     document.getElementById('download').addEventListener('click', function(e) {

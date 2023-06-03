@@ -433,17 +433,16 @@ function undraw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,wid
 
     function drawCanvas() {
         //draw the canvases
-        
-        //preview canvas
+
         if (testing)
-            document.getElementById("closet").innerHTML = print_defining_objects()+print_image_objects();
+            document.getElementById("closet").innerHTML = "Developer information, don't worry about it:\n"+ print_defining_objects()+print_image_objects();
     
         if (updated_frames>50) 
             return; //it's been long enough since the last data update to stop refreshing the images
         else
             updated_frames+=1;    
     
-        canvas_main = document.getElementById("previewCanvas");
+        canvas_main = document.getElementById("mainCanvas");
         canvas_sample = document.getElementById("sampleCanvas");
     
         ctx_main = canvas_main.getContext("2d");
@@ -452,11 +451,7 @@ function undraw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,wid
         canvas_main.height = sprite_height; //clears
         canvas_sample.height = canvas_sample.height;
     
-        //document.getElementById("closet").innerHTML = print_image_objects();
-        //portrait preview
-    
-        preview_width=full_width;
-        preview_height=sprite_height;
+        //sample canvas
     
         ctx_sample.clearRect(0,0,canvas_sample.width,canvas_sample.height)
         if (current_tab_type==0){
@@ -470,16 +465,20 @@ function undraw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,wid
         }
             
         //main canvas
+            
+        canvas_width=full_width;
+        canvas_height=sprite_height;
+
         let current_list = [];
         switch (current_export_image_type){
             case 1: 
-                current_list =  body_list;
+                current_list =  export_head_list;
                 break;
             case 2: 
                 current_list =  expression_list;
                 break; 
             case 3: 
-                current_list =  all_clothes_list;
+                current_list =  export_outfit_list;
                 break;        
         }
         
@@ -487,7 +486,7 @@ function undraw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,wid
             let b = image_objects[i];
             if (getImageItem(b) !="none"){ 
                 if (current_export_image_type==0 || current_list.includes(b.name)) 
-                    if (current_export_image_type ==2 && body_list.includes(b.name)){
+                    if (current_export_image_type ==2 && export_head_list.includes(b.name)){
                     
                         undraw_object(b,current_expression_type,b.colour1,ctx_main, 0,0,b.widthOffset, -b.heightOffset,sprite_width,sprite_height);}
                     else{
