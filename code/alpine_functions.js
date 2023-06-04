@@ -203,14 +203,14 @@ document.addEventListener('alpine:init', () => {
                     value = "listOf(index)";
                     break; 
                 case 'pattern':
-                    obj_index = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.current_'+this.valueName+'])].pattern';
+                    obj_index = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.ui_variables_object.current_'+this.valueName+'])].pattern';
                     objName = obj_index;
                     objList = 'pattern_list';
                     buttonName = objName;
                     value = "index";
                     break;     
                 case 'sleeves':
-                    if (!has_sleeves_list.includes(clothing_names[Alpine.store('alpineData').current_clothing])){
+                    if (!has_sleeves_list.includes(clothing_names[Alpine.store('alpineData').ui_variables_object.current_clothing])){
                         return "";
                     } else{
                         obj_index = sleeveIndex(); 
@@ -340,7 +340,7 @@ document.addEventListener('alpine:init', () => {
   Alpine.store('alpineData', {
     dark_theme: true,
 
-    current_character_preset: 0,
+    /*current_character_preset: 0,
     current_expression_preset: 0,
     current_tab_type : 0,
     current_expression_type : 0,
@@ -356,7 +356,7 @@ document.addEventListener('alpine:init', () => {
     current_hairstyle: 0,
 
     isWeirdOutfit: false,
-    isWeirdBody: false, 
+    isWeirdBody: false, */
     ui_variables_object: ui_variables_object,
     defining_variables_object: defining_variables_object,
 
