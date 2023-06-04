@@ -435,7 +435,7 @@ function undraw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,wid
         //draw the canvases
 
         if (testing)
-            document.getElementById("closet").innerHTML = "Developer information, don't worry about it:\n"+ print_defining_objects()+print_image_objects();
+            document.getElementById("closet").innerHTML = "Developer information, don't worry about it:<br>"+ object_toString(ui_variables_object)+object_toString(defining_variables_object)+print_defining_objects()+print_image_objects();
     
         if (updated_frames>50) 
             return; //it's been long enough since the last data update to stop refreshing the images

@@ -78,6 +78,18 @@ function transferObjectValues(obj1, obj2, keys_list){
     }
 }
 
+function createDefininglistSubset(d_list){
+    //create a new list of the objects within d_list but with only the keys in defining_objects_defining_keys_list
+    //d_list: either defining_list (javascript side) or current_defining_list (alpine side)
+    output = [];
+    for (let i = 0; i < d_list.length; i += 1){
+        temp_obj = {};
+        transferObjectValues(temp_obj, d_list[i],defining_objects_defining_keys_list );
+        output.push(temp_obj);
+    }  
+    return output;
+}
+
 //Setting up lists of objects
 const defining_objects_defining_keys_list = ["value_list","colour1","colour2","patterncolour","pattern",]
 
@@ -208,6 +220,15 @@ function add_value_children(name, children){
         }   
     }     
 
+}
+
+function object_toString(obj){
+    s = "";
+    for (i = 0; i < Object.keys(obj).length; i += 1){
+        b = Object.keys(obj)[i];
+        s+=b+" "+obj[b]+" ";
+    }
+    return s+"<br><br>";
 }
 
 function print_image_objects(){

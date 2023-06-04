@@ -18,7 +18,7 @@ function setVariables(data_object){
     transferObjectValues(defining_variables_object, data_object.defining_variables_object,Object.keys(defining_variables_object) )    
       
     for (let i = 0; i < defining_objects.length; i += 1){
-        transferObjectValues(defining_objects[i], data_object.current_defining_objects[i],defining_objects_defining_keys_list);      }
+        transferObjectValues(defining_objects[i], data_object.current_defining_objects[i],defining_objects_defining_keys_list);}
     updateVariables();
 }
 
@@ -340,27 +340,10 @@ document.addEventListener('alpine:init', () => {
   Alpine.store('alpineData', {
     dark_theme: true,
 
-    /*current_character_preset: 0,
-    current_expression_preset: 0,
-    current_tab_type : 0,
-    current_expression_type : 0,
-    current_clothing : 0,
-    current_accessory : 0,
-    current_export_image_type : 0,
-    current_gender_type : 0,
-
-    current_size_type : 2,
-    current_head_ratio_type: 0,
-    crop_height : 300,
-    current_eyetype: 0,
-    current_hairstyle: 0,
-
-    isWeirdOutfit: false,
-    isWeirdBody: false, */
     ui_variables_object: ui_variables_object,
     defining_variables_object: defining_variables_object,
 
-    current_defining_objects: defining_objects,
+    current_defining_objects: createDefininglistSubset(defining_objects),
 
     fixAlpine() { //make the alpine components match the variables used by the javascript
     
@@ -372,27 +355,26 @@ document.addEventListener('alpine:init', () => {
         
         for (let i = 0; i < defining_objects.length; i += 1){
             transferObjectValues(this.current_defining_objects[i], defining_objects[i],defining_objects_defining_keys_list )
-            //this.current_defining_objects[i][defining_objects_defining_keys_list[j]]=defining_objects[i][defining_objects_defining_keys_list[j]]
         }        
     },
 transferDefiningListValues(preset_index,relevant_defining_indices, preset_defining_list, property_list){
     //use the properties of property_list for the relevant_defining_indices of the preset_indexth element of preset_defining_list
     for (i = 0; i < relevant_defining_indices.length; i += 1){ 
         for (j = 0; j < property_list.length; j += 1){ 
-        this.current_defining_objects[relevant_defining_indices[i]][property_list[j]] = preset_defining_list[preset_index].current_defining_objects[relevant_defining_indices[i]][property_list[j]];
+            this.current_defining_objects[relevant_defining_indices[i]][property_list[j]] = preset_defining_list[preset_index].current_defining_objects[relevant_defining_indices[i]][property_list[j]];
         }
     }
 },
 transferDefiningValues(preset_index,preset_defining_list, property_list){
     //use the properties of property_list for the relevant_defining_indices of the preset_indexth element of preset_defining_list
         for (j = 0; j < property_list.length; j += 1){ 
-        this[property_list[j]] = preset_defining_list[preset_index][property_list[j]];
+            this.defining_variables_object[property_list[j]] = preset_defining_list[preset_index].defining_variables_object[property_list[j]];
         }
 },
 
     randomiseBodyColouring(){
         //randomise the skin/eye/hair colour
-        if (this.isWeirdBody){
+        if (this.ui_variables_object.isWeirdBody){
             this.current_defining_objects[findDefiningIndex("head")].colour1 = randomElement(skin_colours.concat(skin_colours_weird),0);
             this.current_defining_objects[findDefiningIndex("fringe")].colour1 = randomElement(hair_colours.concat(hair_colours_weird),0);
             this.current_defining_objects[findDefiningIndex("eyes")].colour1 = randomElement(eye_colours.concat(eye_colours_weird),0);
@@ -405,11 +387,11 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
         }
     },
     randomiseFeatures(gender){
-        //randomise the nose/head/hairstyle etc
+        //randomise the nose/head etc
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
         for (let i = 0; i < defining_objects.length; i += 1){
             remove_list = []
-            if (!this.isWeirdBody)
+            if (!this.ui_variables_object.isWeirdBody)
                 remove_list = defining_objects[i].item_indices_w
             if (["nose","head","ears","body","complexion", ].includes(defining_objects[i].name)){
                 this.current_defining_objects[i].value_list = filteredItems(range(defining_objects[i].item_list.length),remove_list,0);
@@ -431,17 +413,17 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
         this.transferDefiningListValues(randomIndex(expression_preset_defining_list,0),expression_indices, expression_preset_defining_list,["value_list"])
         //this.current_size_type = randomIndex(size_type_list,0);
         remove_list = [];
-        if (!this.isWeirdBody)
+        if (!this.ui_variables_object.isWeirdBody)
             remove_list = eyetype_indices_w
         switch(gender){
             case 0:
-                this.current_eyetype =filteredItems(range(eyetype_list.length),remove_list,0)[0];  
+                this.defining_variables_object.current_eyetype = 2//filteredItems(range(eyetype_list.length),remove_list,0)[0];  
                 break;
             case 1:
-                this.current_eyetype = filteredItems(eyetype_indices_m,remove_list,0)[0];
+                this.defining_variables_object.current_eyetype = 2//filteredItems(eyetype_indices_m,remove_list,0)[0];
                 break;
             case 2:
-                this.current_eyetype = filteredItems(eyetype_indices_f,remove_list,0)[0];
+                this.defining_variables_object.current_eyetype = 2//filteredItems(eyetype_indices_f,remove_list,0)[0];
                 break;          
         }  
     },
@@ -473,20 +455,20 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
         //set all clothing values including sleeve length
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
         let remove_list = []
-        if (!this.isWeirdOutfit)
+        if (!this.ui_variables_object.isWeirdOutfit)
             remove_list = hairstyle_indices_w
         switch(gender){
             case 0:
-                this.current_hairstyle =filteredItems(range(hairstyle_list.length),remove_list,0)[0];  
+                this.defining_variables_object.current_hairstyle =3//filteredItems(range(hairstyle_list.length),remove_list,0)[0];  
                 break;
             case 1:
-                this.current_hairstyle = filteredItems(hairstyle_indices_m,remove_list,0)[0];
+                this.defining_variables_object.current_hairstyle = 3//filteredItems(hairstyle_indices_m,remove_list,0)[0];
                 break;
             case 2:
-                this.current_hairstyle = filteredItems(hairstyle_indices_f,remove_list,0)[0];
+                this.defining_variables_object.current_hairstyle = 3//filteredItems(hairstyle_indices_f,remove_list,0)[0];
                 break;          
         }  
-        hair_remove_list= hairExcludeIndices(this.current_hairstyle);
+        hair_remove_list= hairExcludeIndices(this.defining_variables_object.current_hairstyle);
 
         for (let i = 0; i < defining_objects.length; i += 1){
             this_list = outfit_list.concat(accessory_list).concat(sleeve_list).concat(["fringe","sidelocks","hair_extra", "facial_hair","waistline"])
@@ -503,22 +485,22 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
                         prob = 0;    
                 }
                 remove_list = []
-                if (!this.isWeirdOutfit)
+                if (!this.ui_variables_object.isWeirdOutfit)
                     remove_list = defining_objects[i].item_indices_w
 
-                if (["fringe", "sidelocks","hair_extra"].includes(defining_objects[i].name)&& this.current_hairstyle<3){// bald/balding/shaved
+                if (["fringe", "sidelocks","hair_extra"].includes(defining_objects[i].name)&& this.defining_variables_object.current_hairstyle<3){// bald/balding/shaved
                         this.current_defining_objects[i].value_list = listOf(0);
                     }   
                 else{
                     if (defining_objects[i].name=="fringe"){
-                        if (this.current_hairstyle<4)// cornrows
+                        if (this.defining_variables_object.current_hairstyle<4)// cornrows
                             this.current_defining_objects[i].value_list = listOf(0);
                         else    
                             remove_list = remove_list.concat(hair_remove_list[0]);
                     }
                     else{
                         if (defining_objects[i].name=="sidelocks"){
-                            if (this.current_hairstyle<4)// cornrows
+                            if (this.defining_variables_object.current_hairstyle<4)// cornrows
                                 this.current_defining_objects[i].value_list = listOf(0);
                             else    
                                 remove_list = remove_list.concat(hair_remove_list[1]);
@@ -543,7 +525,7 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
                 }
                 
 
-                /*if (defining_objects[i].name=="neckwear"&& this.current_hairstyle<3){// bald/balding/shaved
+                /*if (defining_objects[i].name=="neckwear"&& this.defining_variables_object.current_hairstyle<3){// bald/balding/shaved
                     this.current_defining_objects[i].value_list = listOf(0);
                 } Want to remove ugly ties but it's troublesome */ 
                 if (["wheelchair"].includes(defining_objects[i].name))//just while fixing clothes 
@@ -561,28 +543,28 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
         }
         current_preset = randomElement(range(character_preset_defining_list.length).filter(value => !(remove_list.includes(value))),0)     
         //body colouring  
-        if (Math.random()>0.1)
+        if (false)//(Math.random()>0.1)
             this.randomiseBodyColouring();
         else
             this.transferDefiningListValues(current_preset,definingSubsetIndices(["head","fringe","eyes"]), character_preset_defining_list,["colour1","colour2"]);
         //clothing colour
-        if (Math.random()>0.1)
+        if (false)//(Math.random()>0.1)
             this.randomiseClothingColour();
         else
             this.transferDefiningListValues(current_preset,definingSubsetIndices(outfit_list.concat(accessory_list)), character_preset_defining_list,["colour1","colour2","pattern","patterncolour"]);
         //features
-        if (Math.random()>0.1)
+        if (false)//(Math.random()>0.1)
             this.randomiseFeatures(gender);
         else{
             this.transferDefiningListValues(current_preset,definingSubsetIndices(["nose","head","ears","body","complexion", "body_chest",]), character_preset_defining_list,["value_list"]);
-            this.current_eyetype = character_preset_defining_list[current_preset].current_eyetype;
+            this.defining_variables_object.current_eyetype = character_preset_defining_list[current_preset].defining_variables_object.current_eyetype;
             this.transferDefiningListValues(randomIndex(expression_preset_defining_list,0),expression_indices, expression_preset_defining_list,["value_list"])
         }
-        if (Math.random()>0.1)
+        if (false)//(Math.random()>0.1)
             this.randomiseClothingValue(gender);
         else
             this.transferDefiningListValues(current_preset,definingSubsetIndices(full_outfit_list), character_preset_defining_list,["value_list"]);
-            this.current_hairstyle = character_preset_defining_list[current_preset].current_hairstyle;
+            this.defining_variables_object.current_hairstyle = character_preset_defining_list[current_preset].defining_variables_object.current_hairstyle;
 
     },
 })

@@ -722,12 +722,17 @@ def colour_list_add(list_name, sublists):
 
 def presetString(location, namelist):
     path = "../../spritemaker_bases/save files/"+location+"/"
+    keys = ["dark_theme","current_tab_type","current_expression_type","current_clothing","current_accessory","current_export_image_type","current_gender_type","current_size_type","current_head_ratio_type","crop_height","current_character_preset","current_expression_preset","isWeirdOutfit","isWeirdBody"]
+    keys += ["current_hairstyle", "current_eyetype", "current_defining_objects", "name", "value_list","colour1","colour2","patterncolour","pattern","item_list","item_indices_f","item_indices_m","item_indices_w","image_index","colour_children","colour2_children","value_children"]
     output = "const "+location+"_preset_defining_list=["
     for name in namelist:
         with open(path+name+".json") as f:
             lines = f.readlines()
-        fixed_lines = lines[0].replace(",\"",",").replace("{\"","\n{").replace("\":",":")        
-        output += "{preset_name:\""+name+"\","+fixed_lines[2:]+",\n\n"    
+        fixed_lines = lines[0].replace("{","\n{")  
+        for k in keys:
+            fixed_lines = fixed_lines.replace("\""+k+"\"",k)
+  
+        output += fixed_lines+",\n\n"#"{preset_name:\""+name+"\","+fixed_lines[1:]+",\n\n"    
     output +="];\n\n"
     return output
 

@@ -5,7 +5,7 @@ function download() {
   var filename = "dollmaker_save.json";
   var type = "";
 
-  var load_variables = {current_defining_objects: defining_objects, ui_variables_object: ui_variables_object, defining_variables_object: defining_variables_object};
+  var load_variables = {current_defining_objects: createDefininglistSubset(defining_objects), ui_variables_object: ui_variables_object, defining_variables_object: defining_variables_object};
     
   data = JSON.stringify(load_variables);
   var file = new Blob([data], {type: type});
