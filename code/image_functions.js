@@ -454,12 +454,12 @@ function undraw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,wid
         //sample canvas
     
         ctx_sample.clearRect(0,0,canvas_sample.width,canvas_sample.height)
-        if (current_tab_type==0){
+        if (ui_variables_object.current_tab_type==0){
             ctx_sample.drawImage(skin_image,0,0)
             ctx_sample.drawImage(eyes_image,250,0)
             ctx_sample.drawImage(hair_image,500,0)
         } else{
-            if ([2,3].includes(current_tab_type)){
+            if ([2,3].includes(ui_variables_object.current_tab_type)){
                 ctx_sample.drawImage(schemes_image,125,0)
             }
         }
@@ -470,7 +470,7 @@ function undraw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,wid
         canvas_height=sprite_height;
 
         let current_list = [];
-        switch (current_export_image_type){
+        switch (ui_variables_object.current_export_image_type){
             case 1: 
                 current_list =  export_head_list;
                 break;
@@ -485,12 +485,12 @@ function undraw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,wid
         for (let i = 0; i < image_objects.length; i += 1){
             let b = image_objects[i];
             if (getImageItem(b) !="none"){ 
-                if (current_export_image_type==0 || current_list.includes(b.name)) 
-                    if (current_export_image_type ==3 && export_head_list.includes(b.name)){
+                if (ui_variables_object.current_export_image_type==0 || current_list.includes(b.name)) 
+                    if (ui_variables_object.current_export_image_type ==3 && export_head_list.includes(b.name)){
                     
-                        undraw_object(b,current_expression_type,b.colour1,ctx_main, 0,0,b.widthOffset, -b.heightOffset,sprite_width,sprite_height);}
+                        undraw_object(b,ui_variables_object.current_expression_type,b.colour1,ctx_main, 0,0,b.widthOffset, -b.heightOffset,sprite_width,sprite_height);}
                     else{
-                        draw_object(b,current_expression_type,b.colour1,ctx_main, 0,0,b.widthOffset, -b.heightOffset,parseInt(sprite_width/b.scale),parseInt(sprite_height/b.scale));
+                        draw_object(b,ui_variables_object.current_expression_type,b.colour1,ctx_main, 0,0,b.widthOffset, -b.heightOffset,parseInt(sprite_width/b.scale),parseInt(sprite_height/b.scale));
                     }
     
             }

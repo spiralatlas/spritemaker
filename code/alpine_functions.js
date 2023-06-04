@@ -16,31 +16,9 @@ function setVariables(data_object){
 
     transferObjectValues(ui_variables_object, data_object,Object.keys(ui_variables_object) )
     transferObjectValues(defining_variables_object, data_object,Object.keys(defining_variables_object) )    
-/*
-    current_tab_type = data_object.current_tab_type; //which element of editing list we are editing
-    current_expression_type = data_object.current_expression_type;
-    current_clothing = data_object.current_clothing;
-    current_accessory = data_object.current_accessory;
-    current_export_image_type = data_object.current_export_image_type;
-    current_gender_type = data_object.current_gender_type;
-
-    current_size_type = data_object.current_size_type;
-    current_head_ratio_type = data_object.current_head_ratio_type;
-    crop_height = data_object.crop_height;
-    current_character_preset = data_object.current_character_preset;
-    current_expression_preset = data_object.current_expression_preset;
-    isWeirdOutfit = data_object.isWeirdOutfit;
-    isWeirdBody = data_object.isWeirdBody;
-
-    current_eyetype = data_object.current_eyetype;
-    current_hairstyle = data_object.current_hairstyle;*/
-
-    
-
+      
     for (let i = 0; i < defining_objects.length; i += 1){
-        for (let j = 0; j < defining_objects_defining_keys_list.length; j += 1)
-            defining_objects[i][defining_objects_defining_keys_list[j]]= data_object.current_defining_objects[i][defining_objects_defining_keys_list[j]]
-    }
+        transferObjectValues(defining_objects[i], data_object.current_defining_objects[i],defining_objects_defining_keys_list);      }
     updateVariables();
 }
 
@@ -48,7 +26,7 @@ function updateVariables(){
     for (let i = 0; i < defining_objects.length; i += 1){
         let json_obj = defining_objects[i];
         for (let i = 0; i < json_obj.value_children.length; i += 1){
-            image_objects[json_obj.value_children[i]].item = json_obj.value_list[current_expression_type];
+            image_objects[json_obj.value_children[i]].item = json_obj.value_list[ui_variables_object.current_expression_type];
         }
         for (let i = 0; i < json_obj.colour_children.length; i += 1){
             image_objects[json_obj.colour_children[i]].colour1 = json_obj.colour1;
@@ -123,12 +101,12 @@ function updateVariables(){
         image_objects[i].widthOffset = getWidthOffset(image_objects[i].name);
         if (!checkRender(image_objects[i]))
             image_objects[i].item = -1
-        standard_scale =  0.8+current_size_type*0.05;   
+        standard_scale =  0.8+ui_variables_object.current_size_type*0.05;   
         if (head_offset_list.includes(image_objects[i].name)) {   
-            if (current_head_ratio_type==0){
+            if (ui_variables_object.current_head_ratio_type==0){
                 image_objects[i].scale = standard_scale; 
             } else{
-                head_scale = 0.02*current_size_type+0.85
+                head_scale = 0.02*ui_variables_object.current_size_type+0.85
                 image_objects[i].scale = head_scale; 
                 image_objects[i].heightOffset += -parseInt((standard_scale-head_scale)*194)
                 image_objects[i].widthOffset += parseInt((standard_scale-head_scale)*180)
@@ -143,9 +121,9 @@ function updateVariables(){
     sprite_width = full_width;
     sprite_height = full_height ;
     if (findNameMatch(defining_objects,"wheelchair").value_list[0] !=0){ //there's a wheelchair
-        sprite_height = full_height*(0.8+current_size_type*0.05) -165-crop_height;
+        sprite_height = full_height*(0.8+ui_variables_object.current_size_type*0.05) -165-ui_variables_object.crop_height;
     } 
-    sprite_height = sprite_height*(0.8+current_size_type*0.05) -crop_height;//-(5-current_size_type)*30
+    sprite_height = sprite_height*(0.8+ui_variables_object.current_size_type*0.05) -ui_variables_object.crop_height;//-(5-ui_variables_object.current_size_type)*30
 
     //calculating crops
 
@@ -251,7 +229,7 @@ document.addEventListener('alpine:init', () => {
                     break;        
                 case 'expression':
                     obj_index = findDefiningIndex(this.valueName);
-                    objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list[current_expression_type]';
+                    objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list[$store.alpineData.current_expression_type]';
                     objList = 'defining_objects['+obj_index+'].item_list';
                     buttonName = objName;
                     value = "index";
@@ -416,21 +394,10 @@ document.addEventListener('alpine:init', () => {
         }
         transferObjectValues(this, ui_variables_object,Object.keys(ui_variables_object) )
         transferObjectValues(this, defining_variables_object,Object.keys(defining_variables_object) )
-   
-    
-        /*this.current_size_type= current_size_type;
-        this.current_head_ratio_type= current_head_ratio_type;
-        this.crop_height= crop_height;
-        this.current_eyetype = current_eyetype;
-        this.current_hairstyle = current_hairstyle;
-        this.current_expression_preset = current_expression_preset;
-        this.current_character_preset = current_character_preset;
-        this.isWeirdOutfit = isWeirdOutfit;
-        this.isWeirdBody = isWeirdBody;*/
         
         for (let i = 0; i < defining_objects.length; i += 1){
-            for (let j = 0; j < defining_objects_defining_keys_list.length; j += 1)
-                this.current_defining_objects[i][defining_objects_defining_keys_list[j]]=defining_objects[i][defining_objects_defining_keys_list[j]]
+            transferObjectValues(this.current_defining_objects[i], defining_objects[i],defining_objects_defining_keys_list )
+            //this.current_defining_objects[i][defining_objects_defining_keys_list[j]]=defining_objects[i][defining_objects_defining_keys_list[j]]
         }        
     },
 transferDefiningListValues(preset_index,relevant_defining_indices, preset_defining_list, property_list){
@@ -467,7 +434,7 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
         for (let i = 0; i < defining_objects.length; i += 1){
             remove_list = []
-            if (!isWeirdBody)
+            if (!this.isWeirdBody)
                 remove_list = defining_objects[i].item_indices_w
             if (["nose","head","ears","body","complexion", ].includes(defining_objects[i].name)){
                 this.current_defining_objects[i].value_list = filteredItems(range(defining_objects[i].item_list.length),remove_list,0);
@@ -489,7 +456,7 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
         this.transferDefiningListValues(randomIndex(expression_preset_defining_list,0),expression_indices, expression_preset_defining_list,["value_list"])
         //this.current_size_type = randomIndex(size_type_list,0);
         remove_list = [];
-        if (!isWeirdBody)
+        if (!this.isWeirdBody)
             remove_list = eyetype_indices_w
         switch(gender){
             case 0:
@@ -531,7 +498,7 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
         //set all clothing values including sleeve length
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
         let remove_list = []
-        if (!isWeirdOutfit)
+        if (!this.isWeirdOutfit)
             remove_list = hairstyle_indices_w
         switch(gender){
             case 0:
@@ -561,7 +528,7 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
                         prob = 0;    
                 }
                 remove_list = []
-                if (!isWeirdOutfit)
+                if (!this.isWeirdOutfit)
                     remove_list = defining_objects[i].item_indices_w
 
                 if (["fringe", "sidelocks","hair_extra"].includes(defining_objects[i].name)&& this.current_hairstyle<3){// bald/balding/shaved
@@ -662,12 +629,12 @@ function setup(){
         // from https://fjolt.com/article/html-canvas-save-as-image
 
         let filename = "dollmaker_";
-        switch(current_export_image_type){
+        switch(ui_variables_object.current_export_image_type){
             case 0:
                 filename += "body";
                 break;
             case 01:
-                filename += "expression_"+expression_type_list[current_expression_type];
+                filename += "expression_"+expression_type_list[ui_variables_object.current_expression_type];
                 break;
             case 2:
                 filename += "outfit";

@@ -1,23 +1,6 @@
 let testing = true;
-
-//connected to lists in generated.js
-let current_clothing = 0;
-let current_accessory = 0;
-
-let skinColour;
-let eyeColour;
-let hairColour;
-
-let eye_type = 0;
-
-//other player choices
-
-let isWeirdOutfit =  false;
-let isWeirdBody = false;
  
 //canvas related
-
-let crop_height = 300 ;
 
 let full_width="393";
 let full_height="1280";
@@ -33,28 +16,20 @@ let ctx_main;
 
 //lists offered to the user for making choices from
 
-let current_tab_type = 0;
 const tab_type_list =["Colouring","Body/Hair","Clothes", "Accessory", "Expression","Randomise","Display"];
 
-let current_export_image_type = 0;
 const export_image_type_list =["Preview", "Head","Expression","Outfit"];
 
-let current_gender_type = 0;
 const gender_type_list = ["Androgynous","Masculine","Feminine"]
 
-let current_expression_type = 0;
 const expression_type_list = ["Neutral", "Happy", "Sad", "Angry","Surprised","Embarassed","Scared",'Annoyed',"Other"];
 
-let current_size_type = 2;
 const size_type_list = ['80%','85%', '90%','95%','100%',];
 
-let current_head_ratio_type = 0;
 let head_ratio = 1;
 const head_ratio_type_list = ["100%","Proportional to Height","Custom"]
 
-let current_expression_preset = 0;
 const expression_preset_list_values = ["value_list"]
-let current_character_preset = 0;
 const character_preset_list_values = ["value_list","colour1","colour2","pattern","patterncolour"]
 const character_preset_values = ["current_hairstyle", "current_eyetype"]
 

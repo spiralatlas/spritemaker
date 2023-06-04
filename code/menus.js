@@ -10,7 +10,7 @@ function download() {
     m = defining_objects[i];
     temp_obj = {};
     transferObjectValues(temp_obj, defining_objects[i],defining_objects_defining_keys_list )
-    current_defining_objects.push(temp_obj);//({name: m.name, value_list:m.value_list,colour1: m.colour1,colour2: m.colour2,patterncolour: m.patterncolour,pattern: m.pattern})
+    current_defining_objects.push(temp_obj);
   }
 
   var load_variables = {current_defining_objects: current_defining_objects};

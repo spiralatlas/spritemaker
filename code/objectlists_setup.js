@@ -69,9 +69,12 @@ function findDefiningIndex(name){
 }
 
 function transferObjectValues(obj1, obj2, keys_list){
-    //set every 
+    //transfer all values within keys_list from obj2 to obj1 
     for (let i = 0; i < keys_list.length; i += 1){
-        obj1[keys_list[i]]= obj2[keys_list[i]];
+        if (Object.keys(obj2).includes(keys_list[i]))
+            obj1[keys_list[i]]= obj2[keys_list[i]];
+        else
+            console.log("Missing key: "+keys_list[i].toString())
     }
 }
 
