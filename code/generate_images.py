@@ -700,11 +700,12 @@ def name_string(name, list_list):
     s = "const "+name + " = ["
     for i in range(len(list_list)-1):
         s+=simple_list_string(list_list[i])
-        s+=","    
-    if list_list[len(list_list)-1]:
-        s+="true" 
-    else:
-        s+="false"     
+        s+=","   
+    if name !="scheme_list":  #I forget what this Boolean is for >.>   
+        if list_list[len(list_list)-1]:
+            s+="true" 
+        else:
+            s+="false"     
     s+="];\n"
     return s 
 

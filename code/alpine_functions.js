@@ -434,7 +434,6 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
         if (Math.random()>0.5)
             temp_list = outfit_colours;
         else{
-            console.log("random colours")
             temp_list = randomElement(scheme_list,0);
         }
             
