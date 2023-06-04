@@ -14,8 +14,8 @@ function checkRender(obj){
 function setVariables(data_object){
     //transfer data from webpage/load file to internal javascript
 
-    transferObjectValues(ui_variables_object, data_object,Object.keys(ui_variables_object) )
-    transferObjectValues(defining_variables_object, data_object,Object.keys(defining_variables_object) )    
+    transferObjectValues(ui_variables_object, data_object.ui_variables_object,Object.keys(ui_variables_object) )
+    transferObjectValues(defining_variables_object, data_object.defining_variables_object,Object.keys(defining_variables_object) )    
       
     for (let i = 0; i < defining_objects.length; i += 1){
         transferObjectValues(defining_objects[i], data_object.current_defining_objects[i],defining_objects_defining_keys_list);      }
@@ -196,7 +196,7 @@ document.addEventListener('alpine:init', () => {
                     value = "listOf(index)";
                     break;
                 case 'clothing':
-                    obj_index = 'findDefiningIndex(clothing_names[$store.alpineData.current_clothing])';
+                    obj_index = 'findDefiningIndex(clothing_names[$store.alpineData.ui_variables_object.current_clothing])';
                     objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list';
                     objList = 'defining_objects['+obj_index+'].item_list';
                     buttonName = objName+"[0]";
@@ -221,7 +221,7 @@ document.addEventListener('alpine:init', () => {
                 }
                     break;          
                 case 'accessory':
-                    obj_index = 'findDefiningIndex(accessory_names[$store.alpineData.current_accessory])';
+                    obj_index = 'findDefiningIndex(accessory_names[$store.alpineData.ui_variables_object.current_accessory])';
                     objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list';
                     objList = 'defining_objects['+obj_index+'].item_list';
                     buttonName = objName+"[0]";
@@ -229,13 +229,13 @@ document.addEventListener('alpine:init', () => {
                     break;        
                 case 'expression':
                     obj_index = findDefiningIndex(this.valueName);
-                    objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list[$store.alpineData.current_expression_type]';
+                    objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list[$store.alpineData.ui_variables_object.current_expression_type]';
                     objList = 'defining_objects['+obj_index+'].item_list';
                     buttonName = objName;
                     value = "index";
                     break;    
                 case 'simple':
-                    objName = '$store.alpineData.'+this.valueName;
+                    objName = '$store.alpineData.ui_variables_object.'+this.valueName;
                     value = "index";
                     buttonName = objName;
                     extra_commands = "";
@@ -256,19 +256,23 @@ document.addEventListener('alpine:init', () => {
                             objList = 'head_ratio_type_list';
                             break;    
                         case 'current_eyetype': 
+                            objName = '$store.alpineData.defining_variables_object.'+this.valueName;
+                            buttonName = objName;
                             objList = 'eyetype_list';
                             break;  
                         case 'current_hairstyle': 
+                            objName = '$store.alpineData.defining_variables_object.'+this.valueName;
+                            buttonName = objName;
                             objList = 'hairstyle_list';
                             break;  
                         case 'current_character_preset': 
                             objList = 'character_preset_list';
-                            extra_commands = '$store.alpineData.transferDefiningListValues($store.alpineData.current_character_preset,character_indices, character_preset_defining_list,character_preset_list_values);'
-                            extra_commands += '$store.alpineData.transferDefiningValues($store.alpineData.current_character_preset,character_preset_defining_list, character_preset_values);'
+                            extra_commands = '$store.alpineData.transferDefiningListValues($store.alpineData.ui_variables_object.current_character_preset,character_indices, character_preset_defining_list,character_preset_list_values);'
+                            extra_commands += '$store.alpineData.transferDefiningValues($store.alpineData.ui_variables_object.current_character_preset,character_preset_defining_list, character_preset_values);'
                             break;       
                         case 'current_expression_preset': 
                             objList = 'expression_preset_list';
-                            extra_commands = '$store.alpineData.transferDefiningListValues($store.alpineData.current_expression_preset,expression_indices, expression_preset_defining_list,expression_preset_list_values);'
+                            extra_commands = '$store.alpineData.transferDefiningListValues($store.alpineData.ui_variables_object.current_expression_preset,expression_indices, expression_preset_defining_list,expression_preset_list_values);'
                             break;               
                         case 'current_export_image_type': 
                             objList = 'export_image_type_list';
@@ -301,13 +305,13 @@ document.addEventListener('alpine:init', () => {
                     objName = '$store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')].colour1';
                     break;
                 case 'clothing1':
-                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.current_'+this.valueName+'])].colour1';
+                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.ui_variables_object.current_'+this.valueName+'])].colour1';
                     break; 
                 case 'clothing2':
-                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.current_'+this.valueName+'])].colour2';
+                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.ui_variables_object.current_'+this.valueName+'])].colour2';
                     break;  
                 case 'pattern':
-                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.current_'+this.valueName+'])].patterncolour';
+                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.ui_variables_object.current_'+this.valueName+'])].patterncolour';
                     break;            
             }    
             id = '"drop'+this.title+this.valueName+'"';
@@ -322,7 +326,7 @@ document.addEventListener('alpine:init', () => {
     
                 switch(this.typeName){
                     case 'crop':
-                        objName = '$store.alpineData.crop_height';
+                        objName = '$store.alpineData.ui_variables_object.crop_height';
                         break;           
                 }    
                 id = '"drop'+this.title+this.valueName+'"';
@@ -353,47 +357,18 @@ document.addEventListener('alpine:init', () => {
 
     isWeirdOutfit: false,
     isWeirdBody: false, 
+    ui_variables_object: ui_variables_object,
+    defining_variables_object: defining_variables_object,
 
-    current_defining_objects: [
-        {"name":"hair_extra","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#712A0D","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
-        {"name":"back","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
-        {"name":"body","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
-        {"name":"body_chest","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
-        {"name":"socks","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#E3313C","colour2":"#901E3B",patterncolour: "#0000FF", pattern: 0},
-        {"name":"shoes","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#E3313C","colour2":"#901E3B",patterncolour: "#0000FF", pattern: 0},
-        {"name":"gloves","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#E3313C","colour2":"#901E3B",patterncolour: "#0000FF", pattern: 0},
-        {"name":"top_sleeves","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#901E3B","colour2":"#4C6BC2",patterncolour: "#0000FF", pattern: 0},
-        {"name":"top","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#901E3B","colour2":"#4C6BC2",patterncolour: "#0000FF", pattern: 0},
-        {"name":"bottom","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#FAE181","colour2":"#FAF1CF",patterncolour: "#0000FF", pattern: 0},
-        {"name":"waistline","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#FAE181","colour2":"#FAF1CF",patterncolour: "#0000FF", pattern: 0},
-        {"name":"overshirt_sleeves","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#901E3B","colour2":"#4C6BC2",patterncolour: "#0000FF", pattern: 0},
-        {"name":"overshirt","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#4C6BC2","colour2":"#FAE181",patterncolour: "#0000FF", pattern: 0},
-        {"name":"neckwear","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#43A92D","colour2":"#43A92D",patterncolour: "#0000FF", pattern: 0},
-        {"name":"coat_sleeves","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#901E3B","colour2":"#4C6BC2",patterncolour: "#0000FF", pattern: 0},
-        {"name":"coat","value_list":[4,4,4,4,4,4,4,4,4,4],"colour1":"#E3313C","colour2":"#7543BD",patterncolour: "#0000FF", pattern: 0},
-        {"name":"sidelocks","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#712A0D","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
-        {"name":"head","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#CA783C","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
-        {"name":"ears","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
-        {"name":"earrings","value_list":[3,3,3,3,3,3,3,3,3,3],"colour1":"#901E3B","colour2":"#91C639",patterncolour: "#0000FF", pattern: 0},
-        {"name":"nose","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#FF0000","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
-        {"name":"complexion","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
-        {"name":"cheeks","value_list":[0,0,0,0,0,1,0,0,0,0],"colour1":"#FF0000","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
-        {"name":"mouth","value_list":[15,12,28,30,18,14,22,28,6,8],"colour1":"#FF0000","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
-        {"name":"eyebrows","value_list":[7,11,4,16,11,1,4,2,18,0],"colour1":"#FF0000","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
-        {"name":"eyes","value_list":[0,2,5,7,5,4,6,8,3,0],"colour1":"#8334D8","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
-        {"name":"eyewear","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#FAF6E9","colour2":"#FAF1CF",patterncolour: "#0000FF", pattern: 0},
-        {"name":"facial_hair","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#712A0D","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
-        {"name":"fringe","value_list":[2,2,2,2,2,2,2,2,2,2],"colour1":"#712A0D","colour2":"#00FF00",patterncolour: "#0000FF", pattern: 0},
-        {"name":"hat","value_list":[0,0,0,0,0,0,0,0,0,0],"colour1":"#E1748A","colour2":"#FAF1CF",patterncolour: "#0000FF", pattern: 0},
-        {"name":"wheelchair","value_list":[1,1,1,1,1,1,1,1,1,1],"colour1":"#4C6BC2","colour2":"#7543BD"}],
+    current_defining_objects: defining_objects,
 
     fixAlpine() { //make the alpine components match the variables used by the javascript
     
         for (let i = 0; i < Object.keys(ui_variables_object).length; i += 1){
             this[Object.keys(ui_variables_object)[i]] = ui_variables_object[Object.keys(ui_variables_object)[i]]
         }
-        transferObjectValues(this, ui_variables_object,Object.keys(ui_variables_object) )
-        transferObjectValues(this, defining_variables_object,Object.keys(defining_variables_object) )
+        transferObjectValues(this.ui_variables_object, ui_variables_object,Object.keys(ui_variables_object) )
+        transferObjectValues(this.defining_variables_object, defining_variables_object,Object.keys(defining_variables_object) )
         
         for (let i = 0; i < defining_objects.length; i += 1){
             transferObjectValues(this.current_defining_objects[i], defining_objects[i],defining_objects_defining_keys_list )

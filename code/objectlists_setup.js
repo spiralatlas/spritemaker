@@ -83,7 +83,25 @@ const defining_objects_defining_keys_list = ["value_list","colour1","colour2","p
 
 const defining_variables_object = {current_eyetype: 0,current_hairstyle: 0 };
 
-const ui_variables_object= {current_tab_type: 0, current_expression_type:0, current_clothing:0,current_accessory:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_character_preset:0,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false};
+function setUIVariables(obj){
+    obj.dark_theme = false;
+    obj.current_tab_type= 0;
+    obj.current_expression_type=0;
+    obj.current_clothing=0;
+    obj.current_accessory=0;
+    obj.current_export_image_type=0;
+    obj.current_gender_type=0;
+    obj.current_size_type=0;
+    obj.current_head_ratio_type=0;
+    obj.crop_height=300;
+    obj.current_character_preset=0;
+    obj.current_expression_preset=0;
+    obj.isWeirdOutfit=false;
+    obj.isWeirdBody=false;
+}
+
+const ui_variables_object= {}
+setUIVariables(ui_variables_object);
 
 const image_objects =[];
 
