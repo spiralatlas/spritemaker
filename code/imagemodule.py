@@ -4,6 +4,8 @@ import math
 from PIL import Image, ImageDraw, ImageFilter
 from PIL import ImageEnhance
 
+### Image functions and data for generate_images.py
+
 ### base functions 
 
 def combineList(list1,list2):

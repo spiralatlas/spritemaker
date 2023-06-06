@@ -139,7 +139,7 @@ const defining_objects =[];
 
 //colour_children: indices of elements of image_objects with the same colours
 function add_defining_object(name, list_list){
-    if (list_list[3]) //male items first
+    if (list_list[5]) //male items first
         item_list = remove_dups(list_list[1].concat(list_list[0]).concat(list_list[2]));
     else
         item_list = remove_dups(list_list[0].concat(list_list[1]).concat(list_list[2]));
