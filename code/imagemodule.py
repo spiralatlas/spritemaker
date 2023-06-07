@@ -241,12 +241,12 @@ def process_image(name, location,type):
 
     if type =="no_fill":
         image_string = load_string+".png"
-    elif type =="twotone":
+    elif type =="dec":
         image_string = load_string+"_fill2.png"    
     else:    
         image_string = load_string+"_fill.png"
         
-    if type =="twotone":
+    if type =="dec":
         save_string = "../images/render/"+location+"/"+name+"2" 
     else:    
         save_string = "../images/render/"+location+"/"+name

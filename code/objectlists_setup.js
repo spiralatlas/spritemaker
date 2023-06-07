@@ -91,7 +91,7 @@ function createDefininglistSubset(d_list){
 }
 
 //Setting up lists of objects
-const defining_objects_defining_keys_list = ["value_list","colour1","colour2","patterncolour","pattern",]
+const defining_objects_defining_keys_list = ["name","value_list","colour1","colour2","patterncolour","pattern",]
 
 const defining_variables_object = {current_eyetype: 0,current_hairstyle: 0 };
 
@@ -194,6 +194,9 @@ function add_colour2_children(name, colour_children){
 }
 
 function add_value_children(name, children){
+    // those members of image_objects which have the same item as name
+    // eg add_value_children("hat", ["hat_back"]) means the image_object with the name "hat_back" has the same item as the defining_object with the name "hat")
+    //sets the item_list of each member of children to line up with  that of name, padding with "none"s 
     d_obj = findNameMatch(defining_objects,name);
     if (d_obj==-1)
         console.log("Unknown value: add_value_children "+name); 
@@ -209,9 +212,9 @@ function add_value_children(name, children){
                     temp_list = [];
                     for (l = 0; l < d_obj.item_list.length; l += 1){//pad child's item_list with "none"s to have the same length as parent's
                         if (image_objects[i].item_list.includes(d_obj.item_list[l]))
-                        temp_list.push(d_obj.item_list[l]);
+                            temp_list.push(d_obj.item_list[l]);
                         else
-                        temp_list.push("none");
+                            temp_list.push("none");
                     }
                     image_objects[i].item_list = temp_list;    
 
@@ -219,7 +222,6 @@ function add_value_children(name, children){
             }
         }   
     }     
-
 }
 
 function object_toString(obj){
@@ -261,15 +263,15 @@ function print_defining_objects(){
             s+=" colour1: "+b.colour1;
             s+=" colour2: "+b.colour2;
             s+=" item: "+b.item_list[b.value_list[0]]
-            s+=" value_children ";
+            s+=" value_children: ";
             for (j = 0; j < b.value_children.length; j += 1){
                 s+=image_objects[b.value_children[j]].name+" "
             }
-            s+=" colour_children ";
+            s+=" colour_children: ";
             for (j = 0; j < b.colour_children.length; j += 1){
                 s+=image_objects[b.colour_children[j]].name+" "
             }
-            s+=" colour2_children ";
+            s+=" colour2_children: ";
             for (j = 0; j < b.colour2_children.length; j += 1){
                 s+=image_objects[b.colour2_children[j]].name+" "
             }

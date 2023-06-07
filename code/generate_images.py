@@ -319,6 +319,7 @@ class ClothingItem:
         self.listname = listname
         self.list_list = list_list
         self.item_list = remove_dups(list_list[0]+list_list[1])
+        self.dec_list = list_list[3]
         self.location = location
 
 def add_item(name, listname, list_list,location):
@@ -330,10 +331,10 @@ def add_item(name, listname, list_list,location):
 ## Adding all the data to closet
 
 add_item("wheelchair_back", "wheelchair_list_d", wheelchair_list_d,"wheelchair")
-add_item("wheelchair_back_dec", "wheelchair_list_d", wheelchair_list_d,"wheelchair")
+#add_item("wheelchair_back_dec", "wheelchair_list_d", wheelchair_list_d,"wheelchair")
 add_item("back", "back_list_d",back_list_d, "clothes")
 add_item("hat_back", "hat_back_list_d",hat_back_list_d, "clothes/hat")
-add_item("hat_back_dec", "hat_back_dec_list_d",hat_back_dec_list_d, "clothes/hat")
+#add_item("hat_back_dec", "hat_back_dec_list_d",hat_back_dec_list_d, "clothes/hat")
 add_item("hair_extra", "hair_extra_list_d",hair_extra_list_d, "hair")
 add_item("hair_back", "hair_back_list_d",hair_back_list_d, "hair")
 add_item("coat_back", "coat_back_list_d",coat_back_list_d, "clothes/coat")
@@ -346,28 +347,28 @@ add_item("shoes", "shoes_list_d", shoes_list_d, "clothes")
 add_item("gloves", "gloves_list_d", gloves_list_d, "clothes")
 add_item("top_sleeves", "top_sleeve_list_d", top_sleeve_list_d, "clothes/top")
 add_item("top", "top_list_d", top_list_d, "clothes")
-add_item("top_dec", "top_dec_list_d", top_dec_list_d, "clothes")
+#add_item("top_dec", "top_dec_list_d", top_dec_list_d, "clothes")
 add_item("top_chest", "top_chest_list_d", top_chest_list_d, "anatomy/chest")
 
 add_item("overshirt_sleeves", "overshirt_sleeve_list_d", overshirt_sleeve_list_d, "clothes/overshirt")
 add_item("coat_sleeves", "coat_sleeve_list_d", coat_sleeve_list_d, "clothes/coat")
 
 add_item("bottom", "bottom_list_d", bottom_list_d, "clothes")
-add_item("bottom_dec", "bottom_dec_list_d", bottom_dec_list_d, "clothes")
+#add_item("bottom_dec", "bottom_dec_list_d", bottom_dec_list_d, "clothes")
 add_item("waistline", "waistline_list_d", waistline_list_d, "clothes")
-add_item("waistline_dec", "waistline_dec_list_d", waistline_dec_list_d, "clothes")
+#add_item("waistline_dec", "waistline_dec_list_d", waistline_dec_list_d, "clothes")
 add_item("neckwear", "neckwear_list_d", neckwear_list_d, "clothes")
-add_item("neckwear_dec", "neckwear_dec_list_d", neckwear_dec_list_d, "clothes")
+#add_item("neckwear_dec", "neckwear_dec_list_d", neckwear_dec_list_d, "clothes")
 
 add_item("overshirt", "overshirt_list_d", overshirt_list_d, "clothes")
-add_item("overshirt_dec", "overshirt_dec_list_d", overshirt_dec_list_d, "clothes")
+#add_item("overshirt_dec", "overshirt_dec_list_d", overshirt_dec_list_d, "clothes")
 add_item("overshirt_chest", "overshirt_chest_list_d", overshirt_chest_list_d, "anatomy/chest")
 add_item("top_collar", "top_collar_list_d", top_collar_list_d, "clothes/top")
-add_item("top_collar_dec", "top_collar_dec_list_d", top_collar_dec_list_d, "clothes/top")
+#add_item("top_collar_dec", "top_collar_dec_list_d", top_collar_dec_list_d, "clothes/top")
 add_item("neckwear_front", "neckwear_front_list_d", neckwear_front_list_d, "clothes/neckwear")
 
 add_item("coat", "coat_list_d", coat_list_d, "clothes")
-add_item("coat_dec", "coat_dec_list_d", coat_dec_list_d, "clothes")
+#add_item("coat_dec", "coat_dec_list_d", coat_dec_list_d, "clothes")
 add_item("coat_chest", "coat_chest_list_d", coat_chest_list_d, "anatomy/chest")
 add_item("neckwear_front2", "neckwear_front2_list_d", neckwear_front2_list_d, "clothes/neckwear")
 
@@ -379,7 +380,7 @@ add_item("head", "head_list_d", head_list_d, "anatomy")
 add_item("hair_middle", "hair_middle_list_d", hair_middle_list_d, "hair")
 add_item("ears", "ear_list_d", ear_list_d, "anatomy")
 add_item("earrings", "earrings_list_d", earrings_list_d, "clothes")
-add_item("earrings_dec", "earrings_dec_list_d", earrings_dec_list_d, "clothes")
+#add_item("earrings_dec", "earrings_dec_list_d", earrings_dec_list_d, "clothes")
 add_item("nose", "nose_list_d", nose_list_d, "face")
 add_item("complexion", "complexion_list_d", complexion_list_d, "face")
 add_item("cheeks", "cheeks_list_d", cheeks_list_d, "face")
@@ -396,13 +397,13 @@ add_item("hat_middle", "hat_middle_list_d", hat_middle_list_d, "clothes/hat")
 add_item("sidelocks_repeat", "sidelocks_repeat_list_d", sidelocks_list_d, "hair")
 add_item("fringe", "fringe_list_d", fringe_list_d, "hair")
 add_item("hat_front", "hat_front_list_d", hat_front_list_d, "clothes/hat")
-add_item("hat_front_dec", "hat_front_dec_list_d", hat_front_dec_list_d, "clothes/hat")
+#add_item("hat_front_dec", "hat_front_dec_list_d", hat_front_dec_list_d, "clothes/hat")
 
 add_item("wheelchair", "wheelchair_list_d", wheelchair_list_d, "wheelchair")
-add_item("wheelchair_dec", "wheelchair_list_d", wheelchair_list_d, "wheelchair")
+#add_item("wheelchair_dec", "wheelchair_list_d", wheelchair_list_d, "wheelchair")
 add_item("wheelchair_legs", "wheelchair_leg_list_d", wheelchair_leg_list_d, "wheelchair")
 add_item("wheelchair_bottom", "wheelchair_bottom_list_d", wheelchair_bottom_list_d, "wheelchair")
-add_item("wheelchair_bottom_dec", "wheelchair_bottom_dec_list_d", wheelchair_bottom_dec_list_d, "wheelchair")
+#add_item("wheelchair_bottom_dec", "wheelchair_bottom_dec_list_d", wheelchair_bottom_dec_list_d, "wheelchair")
 add_item("wheelchair_coat", "wheelchair_coat_list_d", wheelchair_coat_list_d, "wheelchair")
 
 def name_string(name, list_list):
@@ -482,11 +483,15 @@ def write_variables():
     for c in closet:
         if not (c.name in ["wheelchair_back","wheelchair_back_dec","wheelchair_dec",]):
             content.write(name_string(c.listname, c.list_list))
+        if c.dec_list !=[]:      
+            content.write(name_string(c.listname+"_dec", [c.list_list[3],c.list_list[3],[],[],[],True]))  
     content.write("\n")
     for c in closet:
         content.write("add_image_object(\""+c.name+"\","+ c.listname+",\""+c.location+"\")\n")
         if c.name in defining_list:
             content.write("add_defining_object(\""+c.name+"\","+ c.listname+")\n")
+        if c.dec_list !=[]:    
+            content.write("add_image_object(\""+c.name+"_dec\","+ c.listname+"_dec,\""+c.location+"\")\n")    
     content.write("add_defining_object(\"hat\",hat_list)\n")
     content.write("\n") 
     expression_preset_list =  ["Default", "Understated", "Energetic","Arch"] 
@@ -533,10 +538,8 @@ def makeStubble():
 def process_image(name, location,type):
     return imagemodule.process_image(name, location,type)
 
-def process_portrait_part(obj):
-    if obj.name.endswith("_dec"): 
-        loc = obj.location + "/"+obj.name[0:-4]   
-    elif obj.name.endswith("_repeat"): 
+def process_portrait_part(obj):   
+    if obj.name.endswith("_repeat"): 
         loc = obj.location + "/"+obj.name[0:-6]          
     else: 
         loc = obj.location + "/"+obj.name  
@@ -545,13 +548,14 @@ def process_portrait_part(obj):
         render_list = facial_hair_list_render    
     else:
         render_list = obj.item_list
+    for item in obj.dec_list:
+        print(obj.name+" "+item+" dec")
+        process_image(item, loc,"dec")    
     for item in render_list:
         if checkRender(obj.name, item):     
             if item!="none":
                 print(obj.name+" "+item)
-                if obj.name.endswith("_dec"):
-                    process_image(item, loc,"twotone")
-                elif obj.name in no_fill_list:
+                if obj.name in no_fill_list:
                     process_image(item, loc,"no_fill")  
                 elif (obj.name=="eyes"):
                         for type in remove_dups(eyetype_list_f+eyetype_list_m):
@@ -596,7 +600,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in [ ]:
+        if c.name in []:
             process_portrait_part(c)
     makeWinks()
     makeStubble() 

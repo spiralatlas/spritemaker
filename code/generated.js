@@ -35,7 +35,7 @@ const defining_list = ["eyewear","neckwear","earrings","gloves","back","bottom",
 
 const back_list_d = [["none","thin tail","fluffy tail",],["none","thin tail","fluffy tail",],["fluffy tail","thin tail",],[],[],true];
 const hat_back_list_d = [["none","bandanna","beanie","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hood",],["none","bandanna","beanie","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hood",],[],["scarf",],[],true];
-const hat_back_dec_list_d = [["scarf",],["scarf",],[],[],[],true];
+const hat_back_list_d_dec = [["scarf",],["scarf",],[],[],[],true];
 const hair_extra_list_d = [["none","topknot","straight high pony","straight low pony","curly pony","small curly pony","low curly pony","bun","fancy bun","locs bun","twin braids","twintails","locs pony",],["none","topknot",],["fancy bun","topknot",],[],[],true];
 const hair_back_list_d = [["none","balding","buzzcut","straight short","curly short","wavy short","straight side","fade","shaggy short","tight curls short","tight curls medium","shaggy medium","curly bob","wavy bob","straight bob","locs bob","half up medium wavy","straight long","wavy long","curly long","long locs","curly flowing","straight flowing","straight up","curly up","locs up",],["none","balding","buzzcut","straight short","curly short","wavy short","straight side","fade","shaggy short","tight curls short","tight curls medium","shaggy medium","curly bob","wavy bob","straight bob","locs bob","half up medium wavy","straight long","wavy long","curly long","long locs","curly flowing","straight flowing","straight up","curly up","locs up",],[],[],[],true];
 const coat_back_list_d = [["none","medium cloak","wrap","overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket","open robe","closed robe","open sweater","long open jacket","hoodie",],["none","medium cloak","wrap","overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket","open robe","closed robe","open sweater","long open jacket","hoodie",],[],[],[],true];
@@ -47,24 +47,23 @@ const shoes_list_d = [["none","sandals","slip ons","sneakers","pumps","mary jane
 const gloves_list_d = [["none","medium gloves","bracelets",],["none","fingerless","short gloves",],["wrist guards",],[],[],true];
 const top_sleeve_list_d = [["sleeveless","short","long","broad","puffy","bell",],["sleeveless","short","long","broad","puffy shirt","long shirt","rolled",],["puffy","puffy shirt","bell",],[],[],true];
 const top_list_d = [["none","bikini","crop top","square","boatneck","gathered","low vee","sailor shirt","vest","tee","chinese collar","turtleneck","kimono",],["none","vest","tee","chinese collar","turtleneck","kimono","open shirt","button up","high collar shirt",],["high collar shirt",],["square","gathered","low vee",],[],false];
-const top_dec_list_d = [["square","gathered","low vee",],["square","gathered","low vee",],[],[],[],true];
+const top_list_d_dec = [["square","gathered","low vee",],["square","gathered","low vee",],[],[],[],true];
 const top_chest_list_d = [["none","small","medium","big",],["none",],[],[],[],true];
 const overshirt_sleeve_list_d = [["sleeveless","short","long",],["sleeveless","short","long",],[],[],[],true];
 const coat_sleeve_list_d = [["sleeveless","short","scrunched","long","long blocky","broad","trailing",],["sleeveless","short","scrunched","long","long blocky","broad","trailing",],["broad","trailing",],[],[],true];
 const bottom_list_d = [["none","briefs","short skirt","medium skirt","long skirt","short kilt","kilt","long kilt","tube skirt",],["none","briefs","shorts","breeches","trousers",],["breeches","tube skirt","briefs","long kilt",],[],[],false];
-const bottom_dec_list_d = [["",],["",],[],[],[],true];
 const waistline_list_d = [["none","gathered","button fly","low","high","empire","band","pointed",],["none","gathered","button fly","suspenders","fall front","overalls","belt",],["fall front","empire","pointed",],["suspenders","belt",],[],true];
-const waistline_dec_list_d = [["suspenders","belt",],["suspenders","belt",],[],[],[],true];
+const waistline_list_d_dec = [["suspenders","belt",],["suspenders","belt",],[],[],[],true];
 const neckwear_list_d = [["none","beaded necklace","choker","pendant","jewelled necklace","beads","bow","fur collar","none","cravat bow","bandanna","scarf","kerchief","long scarf",],["none","cravat bow","bandanna","scarf","kerchief","long scarf","cravat","tie","bow tie",],["cravat bow","bandanna",],["jewelled necklace","beaded necklace",],[],true];
-const neckwear_dec_list_d = [["jewelled necklace","beaded necklace",],["jewelled necklace","beaded necklace",],[],[],[],true];
+const neckwear_list_d_dec = [["jewelled necklace","beaded necklace",],["jewelled necklace","beaded necklace",],[],[],[],true];
 const overshirt_list_d = [["none","obi","band","band with flap","button up vee","open shirt","vee","sweater","square",],["band","band with flap","button up vee","open shirt","vee","sweater",],["obi","band","band with flap",],["button up vee","band","band with flap",],[],false];
-const overshirt_dec_list_d = [["button up vee","band","band with flap",],["button up vee","band","band with flap",],[],[],[],true];
+const overshirt_list_d_dec = [["button up vee","band","band with flap",],["button up vee","band","band with flap",],[],[],[],true];
 const overshirt_chest_list_d = [["none","small","medium","big",],["none",],[],[],[],true];
 const top_collar_list_d = [["open shirt","button up","high collar shirt","sailor shirt",],["open shirt","button up","high collar shirt","sailor shirt",],[],["sailor shirt",],[],true];
-const top_collar_dec_list_d = [["sailor shirt",],["sailor shirt",],[],[],[],true];
+const top_collar_list_d_dec = [["sailor shirt",],["sailor shirt",],[],[],[],true];
 const neckwear_front_list_d = [["bow","cravat bow","bow tie","bandanna",],["bow","cravat bow","bow tie","bandanna",],[],[],[],true];
 const coat_list_d = [["none","wrap","open sweater","medium cloak","short jacket","open robe","closed robe","long open jacket","dress jacket",],["none","hoodie","cool jacket","business jacket","open sweater","medium cloak","short jacket","open robe","closed robe","long open jacket","buttoned jacket","overcoat","jama",],["medium cloak","jama","open robe","closed robe",],["dress jacket","jama",],[],true];
-const coat_dec_list_d = [["dress jacket","jama",],["dress jacket","jama",],[],[],[],true];
+const coat_list_d_dec = [["dress jacket","jama",],["dress jacket","jama",],[],[],[],true];
 const coat_chest_list_d = [["none","small","medium","big",],["none",],[],[],[],true];
 const neckwear_front2_list_d = [["scarf","long scarf","fur collar",],["scarf","long scarf","fur collar",],[],[],[],true];
 const sidelocks_list_d = [["none","short straight","short hime","short wavy","short curls","short locs","short hime","medium hime","medium locs","medium wavy","medium straight","medium straight tendril","medium wavy tendril","medium curly tendril","long straight","long wavy","long curly","long locs",],["none","tiny curls","tiny straight","tiny locs","medium shaggy","short straight","short hime","short wavy","short curls","short locs",],[],[],[],true];
@@ -74,7 +73,7 @@ const head_list_d = [["round","jowly","medium","pointed","rectangular",],["round
 const hair_middle_list_d = [["none","shaved","balding","cornrows","short","long","long shadowed",],["none","shaved","balding","cornrows","short","long","long shadowed",],[],[],[],true];
 const ear_list_d = [["none","regular","pointed","very pointed",],["none","regular","pointed","very pointed",],["none","pointed","very pointed",],[],[],true];
 const earrings_list_d = [["none","stud","small hoops","punk","earpiece","hoops","circle earrings","drop earrings","round earrings",],["none","stud","small hoops","punk","earpiece",],[],["round earrings",],[],true];
-const earrings_dec_list_d = [["round earrings",],["round earrings",],[],[],[],true];
+const earrings_list_d_dec = [["round earrings",],["round earrings",],[],[],[],true];
 const nose_list_d = [["none","nostrils","button","round","medium","flat","broad","pointed","hooked",],["none","nostrils","button","round","medium","flat","broad","pointed","hooked",],["none","nostrils",],[],[],true];
 const complexion_list_d = [["none","slight lines","freckles","wrinkles","gaunt","eye mole","mouth mole","eye scar","cheek scar","burn",],["none","slight lines","freckles","wrinkles","gaunt","eye mole","mouth mole","eye scar","cheek scar","burn",],[],[],[],true];
 const cheeks_list_d = [["none","blush",],["none","blush",],[],[],[],true];
@@ -89,19 +88,17 @@ const hat_middle_list_d = [["none","beads","head band","side bow","bow","tiara",
 const sidelocks_repeat_list_d = [["none","short straight","short hime","short wavy","short curls","short locs","short hime","medium hime","medium locs","medium wavy","medium straight","medium straight tendril","medium wavy tendril","medium curly tendril","long straight","long wavy","long curly","long locs",],["none","tiny curls","tiny straight","tiny locs","medium shaggy","short straight","short hime","short wavy","short curls","short locs",],[],[],[],true];
 const fringe_list_d = [["none","wisps","straight short","curly short","short locs","straight blunt","wavy blunt","curly blunt","soft curls","spiky","straight centre","straight swept","spiky side","medium locs","straight curtains","wavy curtains","curly curtains","wavy centre","curly tendrils","curly long","long side flop","long locs",],["none","wisps","straight short","curly short","short locs","straight blunt","wavy blunt","curly blunt","soft curls","spiky","straight centre","straight swept","spiky side","medium locs","straight curtains","wavy curtains","curly curtains","spiked up","side flop","princely","wavy side","straight smooth",],[],[],[],true];
 const hat_front_list_d = [["none","flower","flower crown","bandanna","hijab","crown","witch hat","broad hat","beanie","hood",],["none","top hat","cap","bowler","fedora","turban","crown","witch hat","broad hat","beanie","hood",],["hood","top hat","witch hat","bowler","flower crown","crown",],["bowler","broad hat","fedora","witch hat","top hat","crown",],[],false];
-const hat_front_dec_list_d = [["bowler","broad hat","fedora","witch hat","top hat","crown",],["bowler","broad hat","fedora","witch hat","top hat","crown",],[],[],[],true];
+const hat_front_list_d_dec = [["bowler","broad hat","fedora","witch hat","top hat","crown",],["bowler","broad hat","fedora","witch hat","top hat","crown",],[],[],[],true];
 const wheelchair_list_d = [["none","manual","old fashioned",],["none","manual","old fashioned",],["old fashioned",],[],[],true];
 const wheelchair_leg_list_d = [["none","regular",],["none","regular",],[],[],[],true];
 const wheelchair_bottom_list_d = [["none","briefs","short skirt","medium skirt","long skirt","short kilt","kilt","long kilt","tube skirt",],["none","briefs","shorts","breeches","trousers",],["breeches","tube skirt","briefs","long kilt",],[],[],false];
-const wheelchair_bottom_dec_list_d = [[],[],[],[],[],true];
 const wheelchair_coat_list_d = [["none","medium cloak","long jacket closed","dress jacket","jama",],["none","medium cloak","long jacket closed","dress jacket","jama",],[],[],[],true];
 
 add_image_object("wheelchair_back",wheelchair_list_d,"wheelchair")
-add_image_object("wheelchair_back_dec",wheelchair_list_d,"wheelchair")
 add_image_object("back",back_list_d,"clothes")
 add_defining_object("back",back_list_d)
 add_image_object("hat_back",hat_back_list_d,"clothes/hat")
-add_image_object("hat_back_dec",hat_back_dec_list_d,"clothes/hat")
+add_image_object("hat_back_dec",hat_back_list_d_dec,"clothes/hat")
 add_image_object("hair_extra",hair_extra_list_d,"hair")
 add_defining_object("hair_extra",hair_extra_list_d)
 add_image_object("hair_back",hair_back_list_d,"hair")
@@ -121,7 +118,7 @@ add_image_object("top_sleeves",top_sleeve_list_d,"clothes/top")
 add_defining_object("top_sleeves",top_sleeve_list_d)
 add_image_object("top",top_list_d,"clothes")
 add_defining_object("top",top_list_d)
-add_image_object("top_dec",top_dec_list_d,"clothes")
+add_image_object("top_dec",top_list_d_dec,"clothes")
 add_image_object("top_chest",top_chest_list_d,"anatomy/chest")
 add_image_object("overshirt_sleeves",overshirt_sleeve_list_d,"clothes/overshirt")
 add_defining_object("overshirt_sleeves",overshirt_sleeve_list_d)
@@ -129,23 +126,22 @@ add_image_object("coat_sleeves",coat_sleeve_list_d,"clothes/coat")
 add_defining_object("coat_sleeves",coat_sleeve_list_d)
 add_image_object("bottom",bottom_list_d,"clothes")
 add_defining_object("bottom",bottom_list_d)
-add_image_object("bottom_dec",bottom_dec_list_d,"clothes")
 add_image_object("waistline",waistline_list_d,"clothes")
 add_defining_object("waistline",waistline_list_d)
-add_image_object("waistline_dec",waistline_dec_list_d,"clothes")
+add_image_object("waistline_dec",waistline_list_d_dec,"clothes")
 add_image_object("neckwear",neckwear_list_d,"clothes")
 add_defining_object("neckwear",neckwear_list_d)
-add_image_object("neckwear_dec",neckwear_dec_list_d,"clothes")
+add_image_object("neckwear_dec",neckwear_list_d_dec,"clothes")
 add_image_object("overshirt",overshirt_list_d,"clothes")
 add_defining_object("overshirt",overshirt_list_d)
-add_image_object("overshirt_dec",overshirt_dec_list_d,"clothes")
+add_image_object("overshirt_dec",overshirt_list_d_dec,"clothes")
 add_image_object("overshirt_chest",overshirt_chest_list_d,"anatomy/chest")
 add_image_object("top_collar",top_collar_list_d,"clothes/top")
-add_image_object("top_collar_dec",top_collar_dec_list_d,"clothes/top")
+add_image_object("top_collar_dec",top_collar_list_d_dec,"clothes/top")
 add_image_object("neckwear_front",neckwear_front_list_d,"clothes/neckwear")
 add_image_object("coat",coat_list_d,"clothes")
 add_defining_object("coat",coat_list_d)
-add_image_object("coat_dec",coat_dec_list_d,"clothes")
+add_image_object("coat_dec",coat_list_d_dec,"clothes")
 add_image_object("coat_chest",coat_chest_list_d,"anatomy/chest")
 add_image_object("neckwear_front2",neckwear_front2_list_d,"clothes/neckwear")
 add_image_object("sidelocks",sidelocks_list_d,"hair")
@@ -159,7 +155,7 @@ add_image_object("ears",ear_list_d,"anatomy")
 add_defining_object("ears",ear_list_d)
 add_image_object("earrings",earrings_list_d,"clothes")
 add_defining_object("earrings",earrings_list_d)
-add_image_object("earrings_dec",earrings_dec_list_d,"clothes")
+add_image_object("earrings_dec",earrings_list_d_dec,"clothes")
 add_image_object("nose",nose_list_d,"face")
 add_defining_object("nose",nose_list_d)
 add_image_object("complexion",complexion_list_d,"face")
@@ -183,226 +179,232 @@ add_image_object("sidelocks_repeat",sidelocks_repeat_list_d,"hair")
 add_image_object("fringe",fringe_list_d,"hair")
 add_defining_object("fringe",fringe_list_d)
 add_image_object("hat_front",hat_front_list_d,"clothes/hat")
-add_image_object("hat_front_dec",hat_front_dec_list_d,"clothes/hat")
+add_image_object("hat_front_dec",hat_front_list_d_dec,"clothes/hat")
 add_image_object("wheelchair",wheelchair_list_d,"wheelchair")
 add_defining_object("wheelchair",wheelchair_list_d)
-add_image_object("wheelchair_dec",wheelchair_list_d,"wheelchair")
 add_image_object("wheelchair_legs",wheelchair_leg_list_d,"wheelchair")
 add_image_object("wheelchair_bottom",wheelchair_bottom_list_d,"wheelchair")
-add_image_object("wheelchair_bottom_dec",wheelchair_bottom_dec_list_d,"wheelchair")
 add_image_object("wheelchair_coat",wheelchair_coat_list_d,"wheelchair")
 add_defining_object("hat",hat_list)
 
 const expression_preset_list = ["Default","Understated","Energetic","Arch",];
 const expression_preset_defining_list=[
-{current_tab_type:4,current_export_image_type:0,current_gender_type:0,current_expression_type:0,current_clothing:0,current_accessory:0,current_size_type:2,current_head_ratio_type:0,crop_height:300,current_hairstyle:18,current_eyetype:0,current_expression_preset:0,current_character_preset:0,isWeirdOutfit:false,isWeirdBody:false,current_defining_objects:[
-{name:"back",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#F1D4AF",colour2:"#1693A5",patterncolour:"#480048",pattern:0},
-{name:"hair_extra",value_list:[9,9,9,9,9,9,9,9,9,9],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{current_defining_objects:[
+{name:"back",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#1693A5",colour2:"#1693A5",patterncolour:"#1693A5",pattern:16},
+{name:"hair_extra",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"body",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"body_chest",value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"socks",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#ECD078",colour2:"#9D2053",patterncolour:"#165C8E",pattern:0},
-{name:"shoes",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#C21A01",colour2:"#EFE2C0",patterncolour:"#355C7D",pattern:0},
-{name:"gloves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#2A044A",colour2:"#C06C84",patterncolour:"#A0C55F",pattern:0},
-{name:"top_sleeves",value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#901E3B",colour2:"#4C6BC2",patterncolour:"#0000FF",pattern:0},
-{name:"top",value_list:[11,11,11,11,11,11,11,11,11,11],colour1:"#0D6759",colour2:"#EAB05E",patterncolour:"#A26156",pattern:13},
+{name:"body_chest",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"socks",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#7ECECA",colour2:"#45B5C4",patterncolour:"#1693A5",pattern:0},
+{name:"shoes",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#3c3b79",colour2:"#45B5C4",patterncolour:"#45B5C4",pattern:0},
+{name:"gloves",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#e7d083",colour2:"#45B5C4",patterncolour:"#C7EDE8",pattern:0},
+{name:"top_sleeves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#901E3B",colour2:"#4C6BC2",patterncolour:"#0000FF",pattern:0},
+{name:"top",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#5e6fa4",colour2:"#1693A5",patterncolour:"#c3cb57",pattern:4},
 {name:"overshirt_sleeves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
 {name:"coat_sleeves",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"bottom",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#706482",colour2:"#403831",patterncolour:"#D24858",pattern:0},
-{name:"waistline",value_list:[7,7,7,7,7,7,7,7,7,7],colour1:"#4C6BC2",colour2:"#FAE181",patterncolour:"#0000FF",pattern:0},
-{name:"neckwear",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#355C7D",colour2:"#28506D",patterncolour:"#FFD3B5",pattern:0},
-{name:"overshirt",value_list:[5,5,5,5,5,5,5,5,5,5],colour1:"#F1D4AF",colour2:"#30261C",patterncolour:"#ABBB9F",pattern:0},
-{name:"coat",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#A30006",colour2:"#703D6F",patterncolour:"#0B8185",pattern:0},
-{name:"sidelocks",value_list:[20,20,20,20,20,20,20,20,20,20],colour1:"#712A0D",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"head",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#C26638",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"bottom",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#385a86",colour2:"#C7EDE8",patterncolour:"#e7d083",pattern:4},
+{name:"waistline",value_list:[10,10,10,10,10,10,10,10,10,10],colour1:"#4C6BC2",colour2:"#FAE181",patterncolour:"#0000FF",pattern:0},
+{name:"neckwear",value_list:[12,12,12,12,12,12,12,12,12,12],colour1:"#e7d083",colour2:"#3068c8",patterncolour:"#7ECECA",pattern:0},
+{name:"overshirt",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#45B5C4",colour2:"#7ECECA",patterncolour:"#1693A5",pattern:0},
+{name:"coat",value_list:[13,13,13,13,13,13,13,13,13,13],colour1:"#2c5b8a",colour2:"#1693A5",patterncolour:"#e7d083",pattern:11},
+{name:"sidelocks",value_list:[15,15,15,15,15,15,15,15,15,15],colour1:"#712A0D",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"head",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#c97d51",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"ears",value_list:[1,1,1,1,1,1,1,1,1,1],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"earrings",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#F7E4BE",colour2:"#F0B49E",patterncolour:"#403831",pattern:17},
-{name:"nose",value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"complexion",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"earrings",value_list:[8,8,8,8,8,8,8,8,8,8],colour1:"#e7d083",colour2:"#2b5cb1",patterncolour:"#7ECECA",pattern:0},
+{name:"nose",value_list:[7,7,7,7,7,7,7,7,7,7],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"complexion",value_list:[5,5,5,5,5,5,5,5,5,5],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"cheeks",value_list:[0,0,0,0,0,1,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"mouth",value_list:[18,15,31,33,28,17,23,36,7,8],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"eyebrows",value_list:[7,11,4,16,11,1,4,2,18,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"eyes",value_list:[0,2,5,8,6,4,6,3,0,0],colour1:"#459953",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"mouth",value_list:[16,0,38,25,21,13,25,34,11,8],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"eyebrows",value_list:[15,11,5,17,11,1,14,2,18,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"eyes",value_list:[0,2,6,8,6,4,7,3,11,0],colour1:"#461c18",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"facial_hair",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FAF6E9",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"eyewear",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FDEECD",colour2:"#A30006",patterncolour:"#FCECCA",pattern:0},
-{name:"fringe",value_list:[13,13,13,13,13,13,13,13,13,13],colour1:"#8A3C25",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"eyewear",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#C7EDE8",colour2:"#cfbd84",patterncolour:"#375a86",pattern:0},
+{name:"fringe",value_list:[22,22,22,22,22,22,22,22,22,22],colour1:"#402040",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"wheelchair",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#E1748A",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"hat",value_list:[8,8,8,8,8,8,8,8,8,8],colour1:"#69D2E7",colour2:"#F8B195",patterncolour:"#C02942",pattern:0}]},
+{name:"hat",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#e7d083",colour2:"#2c5b8a",patterncolour:"#C7EDE8",pattern:11}],"ui_variables_object":
+{dark_theme:false,current_tab_type:4,current_expression_type:0,current_clothing:0,current_accessory:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_character_preset:1,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},"defining_variables_object":
+{current_eyetype:3,current_hairstyle:28}},
 
 
-{current_tab_type:4,current_export_image_type:0,current_gender_type:0,current_expression_type:0,current_clothing:0,current_accessory:0,current_size_type:2,current_head_ratio_type:0,crop_height:300,current_hairstyle:18,current_eyetype:0,current_expression_preset:1,current_character_preset:0,isWeirdOutfit:false,isWeirdBody:false,current_defining_objects:[
-{name:"back",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#F1D4AF",colour2:"#1693A5",patterncolour:"#480048",pattern:0},
-{name:"hair_extra",value_list:[9,9,9,9,9,9,9,9,9,9],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{current_defining_objects:[
+{name:"back",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#1693A5",colour2:"#1693A5",patterncolour:"#1693A5",pattern:16},
+{name:"hair_extra",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"body",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"body_chest",value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"socks",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#ECD078",colour2:"#9D2053",patterncolour:"#165C8E",pattern:0},
-{name:"shoes",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#C21A01",colour2:"#EFE2C0",patterncolour:"#355C7D",pattern:0},
-{name:"gloves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#2A044A",colour2:"#C06C84",patterncolour:"#A0C55F",pattern:0},
-{name:"top_sleeves",value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#901E3B",colour2:"#4C6BC2",patterncolour:"#0000FF",pattern:0},
-{name:"top",value_list:[11,11,11,11,11,11,11,11,11,11],colour1:"#0D6759",colour2:"#EAB05E",patterncolour:"#A26156",pattern:13},
+{name:"body_chest",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"socks",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#7ECECA",colour2:"#45B5C4",patterncolour:"#1693A5",pattern:0},
+{name:"shoes",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#3c3b79",colour2:"#45B5C4",patterncolour:"#45B5C4",pattern:0},
+{name:"gloves",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#e7d083",colour2:"#45B5C4",patterncolour:"#C7EDE8",pattern:0},
+{name:"top_sleeves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#901E3B",colour2:"#4C6BC2",patterncolour:"#0000FF",pattern:0},
+{name:"top",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#5e6fa4",colour2:"#1693A5",patterncolour:"#c3cb57",pattern:4},
 {name:"overshirt_sleeves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
 {name:"coat_sleeves",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"bottom",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#706482",colour2:"#403831",patterncolour:"#D24858",pattern:0},
-{name:"waistline",value_list:[7,7,7,7,7,7,7,7,7,7],colour1:"#4C6BC2",colour2:"#FAE181",patterncolour:"#0000FF",pattern:0},
-{name:"neckwear",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#355C7D",colour2:"#28506D",patterncolour:"#FFD3B5",pattern:0},
-{name:"overshirt",value_list:[5,5,5,5,5,5,5,5,5,5],colour1:"#F1D4AF",colour2:"#30261C",patterncolour:"#ABBB9F",pattern:0},
-{name:"coat",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#A30006",colour2:"#703D6F",patterncolour:"#0B8185",pattern:0},
-{name:"sidelocks",value_list:[20,20,20,20,20,20,20,20,20,20],colour1:"#712A0D",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"head",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#C26638",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"bottom",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#385a86",colour2:"#C7EDE8",patterncolour:"#e7d083",pattern:4},
+{name:"waistline",value_list:[10,10,10,10,10,10,10,10,10,10],colour1:"#4C6BC2",colour2:"#FAE181",patterncolour:"#0000FF",pattern:0},
+{name:"neckwear",value_list:[12,12,12,12,12,12,12,12,12,12],colour1:"#e7d083",colour2:"#3068c8",patterncolour:"#7ECECA",pattern:0},
+{name:"overshirt",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#45B5C4",colour2:"#7ECECA",patterncolour:"#1693A5",pattern:0},
+{name:"coat",value_list:[13,13,13,13,13,13,13,13,13,13],colour1:"#2c5b8a",colour2:"#1693A5",patterncolour:"#e7d083",pattern:11},
+{name:"sidelocks",value_list:[15,15,15,15,15,15,15,15,15,15],colour1:"#712A0D",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"head",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#c97d51",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"ears",value_list:[1,1,1,1,1,1,1,1,1,1],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"earrings",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#F7E4BE",colour2:"#F0B49E",patterncolour:"#403831",pattern:17},
-{name:"nose",value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"complexion",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"earrings",value_list:[8,8,8,8,8,8,8,8,8,8],colour1:"#e7d083",colour2:"#2b5cb1",patterncolour:"#7ECECA",pattern:0},
+{name:"nose",value_list:[7,7,7,7,7,7,7,7,7,7],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"complexion",value_list:[5,5,5,5,5,5,5,5,5,5],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"cheeks",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"mouth",value_list:[26,16,30,28,27,17,28,26,30,8],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"eyebrows",value_list:[0,7,1,3,12,1,1,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"eyes",value_list:[0,5,0,4,6,1,6,3,1,0],colour1:"#459953",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"eyes",value_list:[0,5,0,4,6,1,6,3,1,0],colour1:"#461c18",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"facial_hair",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FAF6E9",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"eyewear",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FDEECD",colour2:"#A30006",patterncolour:"#FCECCA",pattern:0},
-{name:"fringe",value_list:[13,13,13,13,13,13,13,13,13,13],colour1:"#8A3C25",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"eyewear",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#C7EDE8",colour2:"#cfbd84",patterncolour:"#375a86",pattern:0},
+{name:"fringe",value_list:[22,22,22,22,22,22,22,22,22,22],colour1:"#402040",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"wheelchair",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#E1748A",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"hat",value_list:[8,8,8,8,8,8,8,8,8,8],colour1:"#69D2E7",colour2:"#F8B195",patterncolour:"#C02942",pattern:0}]},
+{name:"hat",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#e7d083",colour2:"#2c5b8a",patterncolour:"#C7EDE8",pattern:11}],"ui_variables_object":
+{dark_theme:false,current_tab_type:4,current_expression_type:0,current_clothing:0,current_accessory:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_character_preset:1,current_expression_preset:1,isWeirdOutfit:false,isWeirdBody:false},"defining_variables_object":
+{current_eyetype:3,current_hairstyle:28}},
 
 
-{current_tab_type:4,current_export_image_type:0,current_gender_type:0,current_expression_type:0,current_clothing:0,current_accessory:0,current_size_type:2,current_head_ratio_type:0,crop_height:300,current_hairstyle:18,current_eyetype:0,current_expression_preset:2,current_character_preset:0,isWeirdOutfit:false,isWeirdBody:false,current_defining_objects:[
-{name:"back",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#F1D4AF",colour2:"#1693A5",patterncolour:"#480048",pattern:0},
-{name:"hair_extra",value_list:[9,9,9,9,9,9,9,9,9,9],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{current_defining_objects:[
+{name:"back",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#1693A5",colour2:"#1693A5",patterncolour:"#1693A5",pattern:16},
+{name:"hair_extra",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"body",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"body_chest",value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"socks",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#ECD078",colour2:"#9D2053",patterncolour:"#165C8E",pattern:0},
-{name:"shoes",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#C21A01",colour2:"#EFE2C0",patterncolour:"#355C7D",pattern:0},
-{name:"gloves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#2A044A",colour2:"#C06C84",patterncolour:"#A0C55F",pattern:0},
-{name:"top_sleeves",value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#901E3B",colour2:"#4C6BC2",patterncolour:"#0000FF",pattern:0},
-{name:"top",value_list:[11,11,11,11,11,11,11,11,11,11],colour1:"#0D6759",colour2:"#EAB05E",patterncolour:"#A26156",pattern:13},
+{name:"body_chest",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"socks",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#7ECECA",colour2:"#45B5C4",patterncolour:"#1693A5",pattern:0},
+{name:"shoes",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#3c3b79",colour2:"#45B5C4",patterncolour:"#45B5C4",pattern:0},
+{name:"gloves",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#e7d083",colour2:"#45B5C4",patterncolour:"#C7EDE8",pattern:0},
+{name:"top_sleeves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#901E3B",colour2:"#4C6BC2",patterncolour:"#0000FF",pattern:0},
+{name:"top",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#5e6fa4",colour2:"#1693A5",patterncolour:"#c3cb57",pattern:4},
 {name:"overshirt_sleeves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
 {name:"coat_sleeves",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"bottom",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#706482",colour2:"#403831",patterncolour:"#D24858",pattern:0},
-{name:"waistline",value_list:[7,7,7,7,7,7,7,7,7,7],colour1:"#4C6BC2",colour2:"#FAE181",patterncolour:"#0000FF",pattern:0},
-{name:"neckwear",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#355C7D",colour2:"#28506D",patterncolour:"#FFD3B5",pattern:0},
-{name:"overshirt",value_list:[5,5,5,5,5,5,5,5,5,5],colour1:"#F1D4AF",colour2:"#30261C",patterncolour:"#ABBB9F",pattern:0},
-{name:"coat",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#A30006",colour2:"#703D6F",patterncolour:"#0B8185",pattern:0},
-{name:"sidelocks",value_list:[20,20,20,20,20,20,20,20,20,20],colour1:"#712A0D",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"head",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#C26638",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"bottom",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#385a86",colour2:"#C7EDE8",patterncolour:"#e7d083",pattern:4},
+{name:"waistline",value_list:[10,10,10,10,10,10,10,10,10,10],colour1:"#4C6BC2",colour2:"#FAE181",patterncolour:"#0000FF",pattern:0},
+{name:"neckwear",value_list:[12,12,12,12,12,12,12,12,12,12],colour1:"#e7d083",colour2:"#3068c8",patterncolour:"#7ECECA",pattern:0},
+{name:"overshirt",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#45B5C4",colour2:"#7ECECA",patterncolour:"#1693A5",pattern:0},
+{name:"coat",value_list:[13,13,13,13,13,13,13,13,13,13],colour1:"#2c5b8a",colour2:"#1693A5",patterncolour:"#e7d083",pattern:11},
+{name:"sidelocks",value_list:[15,15,15,15,15,15,15,15,15,15],colour1:"#712A0D",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"head",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#c97d51",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"ears",value_list:[1,1,1,1,1,1,1,1,1,1],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"earrings",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#F7E4BE",colour2:"#F0B49E",patterncolour:"#403831",pattern:17},
-{name:"nose",value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"complexion",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"earrings",value_list:[8,8,8,8,8,8,8,8,8,8],colour1:"#e7d083",colour2:"#2b5cb1",patterncolour:"#7ECECA",pattern:0},
+{name:"nose",value_list:[7,7,7,7,7,7,7,7,7,7],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"complexion",value_list:[5,5,5,5,5,5,5,5,5,5],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"cheeks",value_list:[0,0,0,0,0,1,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"mouth",value_list:[18,15,31,33,28,17,23,36,7,8],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"eyebrows",value_list:[7,11,4,16,11,1,4,2,18,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"eyes",value_list:[0,2,5,8,6,4,6,3,0,0],colour1:"#459953",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"eyes",value_list:[0,2,5,8,6,4,6,3,0,0],colour1:"#461c18",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"facial_hair",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FAF6E9",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"eyewear",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FDEECD",colour2:"#A30006",patterncolour:"#FCECCA",pattern:0},
-{name:"fringe",value_list:[13,13,13,13,13,13,13,13,13,13],colour1:"#8A3C25",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"eyewear",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#C7EDE8",colour2:"#cfbd84",patterncolour:"#375a86",pattern:0},
+{name:"fringe",value_list:[22,22,22,22,22,22,22,22,22,22],colour1:"#402040",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"wheelchair",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#E1748A",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"hat",value_list:[8,8,8,8,8,8,8,8,8,8],colour1:"#69D2E7",colour2:"#F8B195",patterncolour:"#C02942",pattern:0}]},
+{name:"hat",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#e7d083",colour2:"#2c5b8a",patterncolour:"#C7EDE8",pattern:11}],"ui_variables_object":
+{dark_theme:false,current_tab_type:4,current_expression_type:0,current_clothing:0,current_accessory:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_character_preset:1,current_expression_preset:2,isWeirdOutfit:false,isWeirdBody:false},"defining_variables_object":
+{current_eyetype:3,current_hairstyle:28}},
 
 
-{current_tab_type:4,current_export_image_type:0,current_gender_type:0,current_expression_type:0,current_clothing:0,current_accessory:0,current_size_type:2,current_head_ratio_type:0,crop_height:300,current_hairstyle:18,current_eyetype:0,current_expression_preset:3,current_character_preset:0,isWeirdOutfit:false,isWeirdBody:false,current_defining_objects:[
-{name:"back",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#F1D4AF",colour2:"#1693A5",patterncolour:"#480048",pattern:0},
-{name:"hair_extra",value_list:[9,9,9,9,9,9,9,9,9,9],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{current_defining_objects:[
+{name:"back",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#1693A5",colour2:"#1693A5",patterncolour:"#1693A5",pattern:16},
+{name:"hair_extra",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"body",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"body_chest",value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"socks",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#ECD078",colour2:"#9D2053",patterncolour:"#165C8E",pattern:0},
-{name:"shoes",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#C21A01",colour2:"#EFE2C0",patterncolour:"#355C7D",pattern:0},
-{name:"gloves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#2A044A",colour2:"#C06C84",patterncolour:"#A0C55F",pattern:0},
-{name:"top_sleeves",value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#901E3B",colour2:"#4C6BC2",patterncolour:"#0000FF",pattern:0},
-{name:"top",value_list:[11,11,11,11,11,11,11,11,11,11],colour1:"#0D6759",colour2:"#EAB05E",patterncolour:"#A26156",pattern:13},
+{name:"body_chest",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"socks",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#7ECECA",colour2:"#45B5C4",patterncolour:"#1693A5",pattern:0},
+{name:"shoes",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#3c3b79",colour2:"#45B5C4",patterncolour:"#45B5C4",pattern:0},
+{name:"gloves",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#e7d083",colour2:"#45B5C4",patterncolour:"#C7EDE8",pattern:0},
+{name:"top_sleeves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#901E3B",colour2:"#4C6BC2",patterncolour:"#0000FF",pattern:0},
+{name:"top",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#5e6fa4",colour2:"#1693A5",patterncolour:"#c3cb57",pattern:4},
 {name:"overshirt_sleeves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
 {name:"coat_sleeves",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"bottom",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#706482",colour2:"#403831",patterncolour:"#D24858",pattern:0},
-{name:"waistline",value_list:[7,7,7,7,7,7,7,7,7,7],colour1:"#4C6BC2",colour2:"#FAE181",patterncolour:"#0000FF",pattern:0},
-{name:"neckwear",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#355C7D",colour2:"#28506D",patterncolour:"#FFD3B5",pattern:0},
-{name:"overshirt",value_list:[5,5,5,5,5,5,5,5,5,5],colour1:"#F1D4AF",colour2:"#30261C",patterncolour:"#ABBB9F",pattern:0},
-{name:"coat",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#A30006",colour2:"#703D6F",patterncolour:"#0B8185",pattern:0},
-{name:"sidelocks",value_list:[20,20,20,20,20,20,20,20,20,20],colour1:"#712A0D",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"head",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#C26638",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"bottom",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#385a86",colour2:"#C7EDE8",patterncolour:"#e7d083",pattern:4},
+{name:"waistline",value_list:[10,10,10,10,10,10,10,10,10,10],colour1:"#4C6BC2",colour2:"#FAE181",patterncolour:"#0000FF",pattern:0},
+{name:"neckwear",value_list:[12,12,12,12,12,12,12,12,12,12],colour1:"#e7d083",colour2:"#3068c8",patterncolour:"#7ECECA",pattern:0},
+{name:"overshirt",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#45B5C4",colour2:"#7ECECA",patterncolour:"#1693A5",pattern:0},
+{name:"coat",value_list:[13,13,13,13,13,13,13,13,13,13],colour1:"#2c5b8a",colour2:"#1693A5",patterncolour:"#e7d083",pattern:11},
+{name:"sidelocks",value_list:[15,15,15,15,15,15,15,15,15,15],colour1:"#712A0D",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"head",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#c97d51",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"ears",value_list:[1,1,1,1,1,1,1,1,1,1],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"earrings",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#F7E4BE",colour2:"#F0B49E",patterncolour:"#403831",pattern:17},
-{name:"nose",value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"complexion",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"earrings",value_list:[8,8,8,8,8,8,8,8,8,8],colour1:"#e7d083",colour2:"#2b5cb1",patterncolour:"#7ECECA",pattern:0},
+{name:"nose",value_list:[7,7,7,7,7,7,7,7,7,7],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"complexion",value_list:[5,5,5,5,5,5,5,5,5,5],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"cheeks",value_list:[0,0,0,0,0,1,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"mouth",value_list:[17,7,30,28,26,18,28,36,7,8],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"eyebrows",value_list:[9,8,2,17,11,1,14,10,18,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"eyes",value_list:[0,5,1,8,6,1,7,3,1,0],colour1:"#459953",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"eyes",value_list:[0,5,1,8,6,1,7,3,1,0],colour1:"#461c18",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"facial_hair",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FAF6E9",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"eyewear",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FDEECD",colour2:"#A30006",patterncolour:"#FCECCA",pattern:0},
-{name:"fringe",value_list:[13,13,13,13,13,13,13,13,13,13],colour1:"#8A3C25",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"eyewear",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#C7EDE8",colour2:"#cfbd84",patterncolour:"#375a86",pattern:0},
+{name:"fringe",value_list:[22,22,22,22,22,22,22,22,22,22],colour1:"#402040",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"wheelchair",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#E1748A",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"hat",value_list:[8,8,8,8,8,8,8,8,8,8],colour1:"#69D2E7",colour2:"#F8B195",patterncolour:"#C02942",pattern:0}]},
+{name:"hat",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#e7d083",colour2:"#2c5b8a",patterncolour:"#C7EDE8",pattern:11}],"ui_variables_object":
+{dark_theme:false,current_tab_type:4,current_expression_type:0,current_clothing:0,current_accessory:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_character_preset:1,current_expression_preset:3,isWeirdOutfit:false,isWeirdBody:false},"defining_variables_object":
+{current_eyetype:3,current_hairstyle:28}},
 
 ];
 
 const character_preset_list = ["Detective","Movie Star",];
 const character_preset_defining_list=[
 {current_defining_objects:[
-{name:"back",item_list:["none","thin tail","fluffy tail"],item_indices_f:[0,1,2],item_indices_m:[0,1,2],item_indices_w:[1,2],image_index:2,colour_children:[2],colour2_children:[],value_children:[2],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#2d2b21",colour2:"#0D6759",patterncolour:"#96b064",pattern:0},
-{name:"hair_extra",item_list:["none","topknot","straight high pony","straight low pony","curly pony","small curly pony","low curly pony","bun","fancy bun","locs bun","twin braids","twintails","locs pony"],item_indices_f:[0,1,2,3,4,5,6,7,8,9,10,11,12],item_indices_m:[0,1],item_indices_w:[1,8],image_index:5,colour_children:[],colour2_children:[],value_children:[5],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"body",item_list:["regular"],item_indices_f:[0],item_indices_m:[0],item_indices_w:[],image_index:8,colour_children:[],colour2_children:[],value_children:[8,10],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"body_chest",item_list:["none","small","medium","big"],item_indices_f:[0,1,2,3],item_indices_m:[0],item_indices_w:[],image_index:9,colour_children:[],colour2_children:[],value_children:[9,17,28,34],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"socks",item_list:["none","ankle high","mid calf","knee high","thigh high","tights"],item_indices_f:[0,1,2,3,4,5],item_indices_m:[0,1,2],item_indices_w:[],image_index:11,colour_children:[11],colour2_children:[],value_children:[11],value_list:[1,1,1,1,1,1,1,1,1,1],colour1:"#ece2c3",colour2:"#40524f",patterncolour:"#94af65",pattern:0},
-{name:"shoes",item_list:["none","sandals","slip ons","sneakers","pumps","mary janes","high boots","boots"],item_indices_f:[0,1,2,3,4,5,6],item_indices_m:[0,1,2,3,7],item_indices_w:[],image_index:12,colour_children:[12],colour2_children:[],value_children:[12],value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#463931",colour2:"#53777A",patterncolour:"#d3ba98",pattern:0},
-{name:"gloves",item_list:["none","fingerless","short gloves","medium gloves","bracelets","wrist guards"],item_indices_f:[0,3,4],item_indices_m:[0,1,2],item_indices_w:[5],image_index:13,colour_children:[13],colour2_children:[],value_children:[13],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#e8e5d0",colour2:"#8ba461",patterncolour:"#2d2b22",pattern:14},
-{name:"top_sleeves",item_list:["sleeveless","short","long","broad","puffy shirt","long shirt","rolled","puffy","bell"],item_indices_f:[0,1,2,3,7,8],item_indices_m:[0,1,2,3,4,5,6],item_indices_w:[4,7,8],image_index:14,colour_children:[],colour2_children:[],value_children:[14],value_list:[5,5,5,5,5,5,5,5,5,5],colour1:"#901E3B",colour2:"#4C6BC2",patterncolour:"#0000FF",pattern:0},
-{name:"top",item_list:["none","bikini","crop top","square","boatneck","gathered","low vee","sailor shirt","vest","tee","chinese collar","turtleneck","kimono","open shirt","button up","high collar shirt"],item_indices_f:[0,1,2,3,4,5,6,7,8,9,10,11,12],item_indices_m:[0,8,9,10,11,12,13,14,15],item_indices_w:[15],image_index:15,colour_children:[15,14,17,29],colour2_children:[16,30],value_children:[15,16,29,30],value_list:[14,14,14,14,14,14,14,14,14,14],colour1:"#eae5cf",colour2:"#e8e5d0",patterncolour:"#3c534f",pattern:0},
-{name:"overshirt_sleeves",item_list:["sleeveless","short","long"],item_indices_f:[0,1,2],item_indices_m:[0,1,2],item_indices_w:[],image_index:18,colour_children:[],colour2_children:[],value_children:[18],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"coat_sleeves",item_list:["sleeveless","short","scrunched","long","long blocky","broad","trailing"],item_indices_f:[0,1,2,3,4,5,6],item_indices_m:[0,1,2,3,4,5,6],item_indices_w:[5,6],image_index:19,colour_children:[],colour2_children:[],value_children:[19],value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"bottom",item_list:["none","briefs","short skirt","medium skirt","long skirt","short kilt","kilt","long kilt","tube skirt","shorts","breeches","trousers"],item_indices_f:[0,1,2,3,4,5,6,7,8],item_indices_m:[0,1,9,10,11],item_indices_w:[1,7,8,10],image_index:20,colour_children:[20,22,62],colour2_children:[21,23,63],value_children:[20,21,62,63],value_list:[11,11,11,11,11,11,11,11,11,11],colour1:"#403831",colour2:"#644c3d",patterncolour:"#53777A",pattern:0},
-{name:"waistline",item_list:["none","gathered","button fly","suspenders","fall front","overalls","belt","low","high","empire","band","pointed"],item_indices_f:[0,1,2,7,8,9,10,11],item_indices_m:[0,1,2,3,4,5,6],item_indices_w:[4,9,11],image_index:22,colour_children:[],colour2_children:[],value_children:[22,23],value_list:[6,6,6,6,6,6,6,6,6,6],colour1:"#4C6BC2",colour2:"#FAE181",patterncolour:"#0000FF",pattern:0},
-{name:"neckwear",item_list:["none","cravat bow","bandanna","scarf","kerchief","long scarf","cravat","tie","bow tie","beaded necklace","choker","pendant","jewelled necklace","beads","bow","fur collar"],item_indices_f:[0,1,2,3,4,5,9,10,11,12,13,14,15],item_indices_m:[0,1,2,3,4,5,6,7,8],item_indices_w:[1,2],image_index:24,colour_children:[24,31,35],colour2_children:[25],value_children:[24,25,31,35],value_list:[7,7,7,7,7,7,7,7,7,7],colour1:"#36544F",colour2:"#e8e5d0",patterncolour:"#A0C55F",pattern:11},
-{name:"overshirt",item_list:["none","obi","band","band with flap","button up vee","open shirt","vee","sweater","square"],item_indices_f:[0,1,2,3,4,5,6,7,8],item_indices_m:[2,3,4,5,6,7],item_indices_w:[1,2,3],image_index:26,colour_children:[26,18,28],colour2_children:[27],value_children:[26,27],value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#2e261c",colour2:"#3e3831",patterncolour:"#5c534a",pattern:17},
-{name:"coat",item_list:["none","hoodie","cool jacket","business jacket","open sweater","medium cloak","short jacket","open robe","closed robe","long open jacket","buttoned jacket","overcoat","jama","wrap","dress jacket"],item_indices_f:[0,4,5,6,7,8,9,13,14],item_indices_m:[0,1,2,3,4,5,6,7,8,9,10,11,12],item_indices_w:[5,7,8,12],image_index:32,colour_children:[32,7,19,34,64],colour2_children:[33],value_children:[32,7,33,64],value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#2e261c",colour2:"#F7E4BE",patterncolour:"#3c534f",pattern:7},
-{name:"sidelocks",item_list:["none","tiny curls","tiny straight","tiny locs","medium shaggy","short straight","short hime","short wavy","short curls","short locs","medium hime","medium locs","medium wavy","medium straight","medium straight tendril","medium wavy tendril","medium curly tendril","long straight","long wavy","long curly","long locs"],item_indices_f:[0,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],item_indices_m:[0,1,2,3,4,5,6,7,8,9],item_indices_w:[],image_index:36,colour_children:[],colour2_children:[],value_children:[36,55],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#712A0D",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"head",item_list:["round","jowly","medium","pointed","rectangular"],item_indices_f:[0,1,2,3,4],item_indices_m:[0,1,2,3,4],item_indices_w:[],image_index:39,colour_children:[39,8,9,10,38,41,44,45,47,48,51,61],colour2_children:[],value_children:[39],value_list:[1,1,1,1,1,1,1,1,1,1],colour1:"#FDDAB0",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"ears",item_list:["none","regular","pointed","very pointed"],item_indices_f:[0,1,2,3],item_indices_m:[0,1,2,3],item_indices_w:[0,2,3],image_index:41,colour_children:[],colour2_children:[],value_children:[41],value_list:[1,1,1,1,1,1,1,1,1,1],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"earrings",item_list:["none","stud","small hoops","punk","earpiece","hoops","circle earrings","drop earrings","round earrings"],item_indices_f:[0,1,2,3,4,5,6,7,8],item_indices_m:[0,1,2,3,4],item_indices_w:[],image_index:42,colour_children:[42],colour2_children:[43],value_children:[42,43],value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#9ab466",colour2:"#3c534f",patterncolour:"#e8e5d0",pattern:13},
-{name:"nose",item_list:["none","nostrils","button","round","medium","flat","broad","pointed","hooked"],item_indices_f:[0,1,2,3,4,5,6,7,8],item_indices_m:[0,1,2,3,4,5,6,7,8],item_indices_w:[0,1],image_index:44,colour_children:[],colour2_children:[],value_children:[44,51],value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"complexion",item_list:["none","slight lines","freckles","wrinkles","gaunt","eye mole","mouth mole","eye scar","cheek scar","burn"],item_indices_f:[0,1,2,3,4,5,6,7,8,9],item_indices_m:[0,1,2,3,4,5,6,7,8,9],item_indices_w:[],image_index:45,colour_children:[],colour2_children:[],value_children:[45],value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"cheeks",item_list:["none","blush"],item_indices_f:[0,1],item_indices_m:[0,1],item_indices_w:[],image_index:46,colour_children:[46],colour2_children:[],value_children:[46],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"mouth",item_list:["lah","small lah","tiny lah","big grin","pointy grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","pointy smile","wobbly smile","flat smile","smile","small smile","tiny smile","slight smile","side eww","eww","oh","square oh","big oh","small oh","shock","small flat","flat","small clenched","wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown"],item_indices_f:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38],item_indices_m:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38],item_indices_w:[],image_index:47,colour_children:[],colour2_children:[],value_children:[47],value_list:[26,16,30,28,27,17,28,26,30,8],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"eyebrows",item_list:["flat","flat sad","flat grumpy","flat angry","sad","sadder","semi sad","regular","semi arch","arched","raised arch","raised","raised flat","raised semi flat","raised grumpy","raised semi","angry","angry arch","half raised","half semi","half sad","half sad raised","half flat","half arch raised"],item_indices_f:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],item_indices_m:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],item_indices_w:[],image_index:48,colour_children:[],colour2_children:[],value_children:[48],value_list:[0,7,1,3,12,1,1,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"eyes",item_list:["neutral","side","crescents","flat","narrowed","happy","wide","shock","angry","angry side","sleepy","wink"],item_indices_f:[0,1,2,3,4,5,6,7,8,9,10,11],item_indices_m:[0,1,2,3,4,5,6,7,8,9,10,11],item_indices_w:[],image_index:49,colour_children:[49],colour2_children:[],value_children:[49],value_list:[0,5,0,4,6,1,6,3,1,0],colour1:"#99925F",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"facial_hair",item_list:["none","beard","moustache","goatee","soul patch","fluffy goatee","stubble"],item_indices_f:[0],item_indices_m:[0,1,2,3,4,5,6],item_indices_w:[],image_index:50,colour_children:[],colour2_children:[],value_children:[50],value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FAF6E9",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"eyewear",item_list:["none","monocle","eye patch","oblong wireframes","coloured wireframes","oblong glasses","square glasses","round glasses","coloured spectacles","spectacles","sunglasses","coloured glasses","domino mask","face mask"],item_indices_f:[0,2,3,4,5,6,7,8,9,10,11,12,13],item_indices_m:[0,1,2,3,4,5,6,7,8,9,10,11,12,13],item_indices_w:[1,2,8,9,12],image_index:53,colour_children:[53],colour2_children:[],value_children:[53],value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#7AB317",colour2:"#40524f",patterncolour:"#e8e5d0",pattern:0},
-{name:"fringe",item_list:["none","wisps","straight short","curly short","short locs","straight blunt","wavy blunt","curly blunt","soft curls","spiky","straight centre","straight swept","spiky side","medium locs","straight curtains","wavy curtains","curly curtains","spiked up","side flop","princely","wavy side","straight smooth","wavy centre","curly tendrils","curly long","long side flop","long locs"],item_indices_f:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,22,23,24,25,26],item_indices_m:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],item_indices_w:[],image_index:56,colour_children:[56,5,6,36,40,50,52,55],colour2_children:[],value_children:[56],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#D8B994",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"wheelchair",item_list:["none","manual","old fashioned"],item_indices_f:[0,1,2],item_indices_m:[0,1,2],item_indices_w:[2],image_index:59,colour_children:[59,0],colour2_children:[1,60],value_children:[59,0,1,60],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#E1748A",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"hat",item_list:["none","sweat band","cat ears","curled horns","pointed horns","top hat","cap","bowler","fedora","turban","crown","witch hat","broad hat","beanie","hood","beads","head band","side bow","bow","tiara","scarf","flower","flower crown","bandanna","hijab"],item_indices_f:[0,2,3,4,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],item_indices_m:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],item_indices_w:[2,3,4,5,7,10,11,14,15,19,22],image_index:64,colour_children:[64,3,37,54,57],colour2_children:[4,58],value_children:[64,3,4,37,54,57,58],value_list:[8,8,8,8,8,8,8,8,8,8],colour1:"#3e3831",colour2:"#3c534f",patterncolour:"#36544F",pattern:0}],"ui_variables_object":
-{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothing:0,current_accessory:0,current_export_image_type:0,current_gender_type:1,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_character_preset:0,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},"defining_variables_object":
+{name:"back",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#2d2b21",colour2:"#0D6759",patterncolour:"#96b064",pattern:0},
+{name:"hair_extra",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"body",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"body_chest",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"socks",value_list:[1,1,1,1,1,1,1,1,1,1],colour1:"#ece2c3",colour2:"#40524f",patterncolour:"#94af65",pattern:0},
+{name:"shoes",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#463931",colour2:"#53777A",patterncolour:"#d3ba98",pattern:0},
+{name:"gloves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#e8e5d0",colour2:"#8ba461",patterncolour:"#2d2b22",pattern:14},
+{name:"top_sleeves",value_list:[5,5,5,5,5,5,5,5,5,5],colour1:"#901E3B",colour2:"#4C6BC2",patterncolour:"#0000FF",pattern:0},
+{name:"top",value_list:[14,14,14,14,14,14,14,14,14,14],colour1:"#eae5cf",colour2:"#e8e5d0",patterncolour:"#3c534f",pattern:0},
+{name:"overshirt_sleeves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
+{name:"coat_sleeves",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
+{name:"bottom",value_list:[11,11,11,11,11,11,11,11,11,11],colour1:"#403831",colour2:"#644c3d",patterncolour:"#53777A",pattern:0},
+{name:"waistline",value_list:[6,6,6,6,6,6,6,6,6,6],colour1:"#4C6BC2",colour2:"#FAE181",patterncolour:"#0000FF",pattern:0},
+{name:"neckwear",value_list:[7,7,7,7,7,7,7,7,7,7],colour1:"#36544F",colour2:"#e8e5d0",patterncolour:"#A0C55F",pattern:11},
+{name:"overshirt",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#2e261c",colour2:"#3e3831",patterncolour:"#5c534a",pattern:17},
+{name:"coat",value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#2e261c",colour2:"#F7E4BE",patterncolour:"#3c534f",pattern:7},
+{name:"sidelocks",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#712A0D",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"head",value_list:[1,1,1,1,1,1,1,1,1,1],colour1:"#FDDAB0",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"ears",value_list:[1,1,1,1,1,1,1,1,1,1],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"earrings",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#9ab466",colour2:"#3c534f",patterncolour:"#e8e5d0",pattern:13},
+{name:"nose",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"complexion",value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"cheeks",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"mouth",value_list:[26,16,30,28,27,17,28,26,30,8],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"eyebrows",value_list:[0,7,1,3,12,1,1,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"eyes",value_list:[0,5,0,4,6,1,6,3,1,0],colour1:"#99925F",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"facial_hair",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FAF6E9",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
+{name:"eyewear",value_list:[3,3,3,3,3,3,3,3,3,3],colour1:"#7AB317",colour2:"#40524f",patterncolour:"#e8e5d0",pattern:0},
+{name:"fringe",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#D8B994",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"wheelchair",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#E1748A",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
+{name:"hat",value_list:[8,8,8,8,8,8,8,8,8,8],colour1:"#3e3831",colour2:"#3c534f",patterncolour:"#36544F",pattern:0}],"ui_variables_object":
+{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothing:0,current_accessory:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_character_preset:0,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},"defining_variables_object":
 {current_eyetype:4,current_hairstyle:8}},
 
 
 {current_defining_objects:[
-{name:"back",item_list:["none","thin tail","fluffy tail"],item_indices_f:[0,1,2],item_indices_m:[0,1,2],item_indices_w:[1,2],image_index:2,colour_children:[2],colour2_children:[],value_children:[2],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#1693A5",colour2:"#1693A5",patterncolour:"#1693A5",pattern:16},
-{name:"hair_extra",item_list:["none","topknot","straight high pony","straight low pony","curly pony","small curly pony","low curly pony","bun","fancy bun","locs bun","twin braids","twintails","locs pony"],item_indices_f:[0,1,2,3,4,5,6,7,8,9,10,11,12],item_indices_m:[0,1],item_indices_w:[1,8],image_index:5,colour_children:[],colour2_children:[],value_children:[5],value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"body",item_list:["regular"],item_indices_f:[0],item_indices_m:[0],item_indices_w:[],image_index:8,colour_children:[],colour2_children:[],value_children:[8,10],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"body_chest",item_list:["none","small","medium","big"],item_indices_f:[0,1,2,3],item_indices_m:[0],item_indices_w:[],image_index:9,colour_children:[],colour2_children:[],value_children:[9,17,28,34],value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"socks",item_list:["none","ankle high","mid calf","knee high","thigh high","tights"],item_indices_f:[0,1,2,3,4,5],item_indices_m:[0,1,2],item_indices_w:[],image_index:11,colour_children:[11],colour2_children:[],value_children:[11],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#7ECECA",colour2:"#45B5C4",patterncolour:"#1693A5",pattern:0},
-{name:"shoes",item_list:["none","sandals","slip ons","sneakers","pumps","mary janes","high boots","boots"],item_indices_f:[0,1,2,3,4,5,6],item_indices_m:[0,1,2,3,7],item_indices_w:[],image_index:12,colour_children:[12],colour2_children:[],value_children:[12],value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#3c3b79",colour2:"#45B5C4",patterncolour:"#45B5C4",pattern:0},
-{name:"gloves",item_list:["none","fingerless","short gloves","medium gloves","bracelets","wrist guards"],item_indices_f:[0,3,4],item_indices_m:[0,1,2],item_indices_w:[5],image_index:13,colour_children:[13],colour2_children:[],value_children:[13],value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#e7d083",colour2:"#45B5C4",patterncolour:"#C7EDE8",pattern:0},
-{name:"top_sleeves",item_list:["sleeveless","short","long","broad","puffy shirt","long shirt","rolled","puffy","bell"],item_indices_f:[0,1,2,3,7,8],item_indices_m:[0,1,2,3,4,5,6],item_indices_w:[4,7,8],image_index:14,colour_children:[],colour2_children:[],value_children:[14],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#901E3B",colour2:"#4C6BC2",patterncolour:"#0000FF",pattern:0},
-{name:"top",item_list:["none","bikini","crop top","square","boatneck","gathered","low vee","sailor shirt","vest","tee","chinese collar","turtleneck","kimono","open shirt","button up","high collar shirt"],item_indices_f:[0,1,2,3,4,5,6,7,8,9,10,11,12],item_indices_m:[0,8,9,10,11,12,13,14,15],item_indices_w:[15],image_index:15,colour_children:[15,14,17,29],colour2_children:[16,30],value_children:[15,16,29,30],value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#5e6fa4",colour2:"#1693A5",patterncolour:"#c3cb57",pattern:4},
-{name:"overshirt_sleeves",item_list:["sleeveless","short","long"],item_indices_f:[0,1,2],item_indices_m:[0,1,2],item_indices_w:[],image_index:18,colour_children:[],colour2_children:[],value_children:[18],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"coat_sleeves",item_list:["sleeveless","short","scrunched","long","long blocky","broad","trailing"],item_indices_f:[0,1,2,3,4,5,6],item_indices_m:[0,1,2,3,4,5,6],item_indices_w:[5,6],image_index:19,colour_children:[],colour2_children:[],value_children:[19],value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"bottom",item_list:["none","briefs","short skirt","medium skirt","long skirt","short kilt","kilt","long kilt","tube skirt","shorts","breeches","trousers"],item_indices_f:[0,1,2,3,4,5,6,7,8],item_indices_m:[0,1,9,10,11],item_indices_w:[1,7,8,10],image_index:20,colour_children:[20,22,62],colour2_children:[21,23,63],value_children:[20,21,62,63],value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#385a86",colour2:"#C7EDE8",patterncolour:"#e7d083",pattern:4},
-{name:"waistline",item_list:["none","gathered","button fly","suspenders","fall front","overalls","belt","low","high","empire","band","pointed"],item_indices_f:[0,1,2,7,8,9,10,11],item_indices_m:[0,1,2,3,4,5,6],item_indices_w:[4,9,11],image_index:22,colour_children:[],colour2_children:[],value_children:[22,23],value_list:[10,10,10,10,10,10,10,10,10,10],colour1:"#4C6BC2",colour2:"#FAE181",patterncolour:"#0000FF",pattern:0},
-{name:"neckwear",item_list:["none","cravat bow","bandanna","scarf","kerchief","long scarf","cravat","tie","bow tie","beaded necklace","choker","pendant","jewelled necklace","beads","bow","fur collar"],item_indices_f:[0,1,2,3,4,5,9,10,11,12,13,14,15],item_indices_m:[0,1,2,3,4,5,6,7,8],item_indices_w:[1,2],image_index:24,colour_children:[24,31,35],colour2_children:[25],value_children:[24,25,31,35],value_list:[12,12,12,12,12,12,12,12,12,12],colour1:"#e7d083",colour2:"#3068c8",patterncolour:"#7ECECA",pattern:0},
-{name:"overshirt",item_list:["none","obi","band","band with flap","button up vee","open shirt","vee","sweater","square"],item_indices_f:[0,1,2,3,4,5,6,7,8],item_indices_m:[2,3,4,5,6,7],item_indices_w:[1,2,3],image_index:26,colour_children:[26,18,28],colour2_children:[27],value_children:[26,27],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#45B5C4",colour2:"#7ECECA",patterncolour:"#1693A5",pattern:0},
-{name:"coat",item_list:["none","hoodie","cool jacket","business jacket","open sweater","medium cloak","short jacket","open robe","closed robe","long open jacket","buttoned jacket","overcoat","jama","wrap","dress jacket"],item_indices_f:[0,4,5,6,7,8,9,13,14],item_indices_m:[0,1,2,3,4,5,6,7,8,9,10,11,12],item_indices_w:[5,7,8,12],image_index:32,colour_children:[32,7,19,34,64],colour2_children:[33],value_children:[32,7,33,64],value_list:[13,13,13,13,13,13,13,13,13,13],colour1:"#2c5b8a",colour2:"#1693A5",patterncolour:"#e7d083",pattern:11},
-{name:"sidelocks",item_list:["none","tiny curls","tiny straight","tiny locs","medium shaggy","short straight","short hime","short wavy","short curls","short locs","medium hime","medium locs","medium wavy","medium straight","medium straight tendril","medium wavy tendril","medium curly tendril","long straight","long wavy","long curly","long locs"],item_indices_f:[0,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],item_indices_m:[0,1,2,3,4,5,6,7,8,9],item_indices_w:[],image_index:36,colour_children:[],colour2_children:[],value_children:[36,55],value_list:[15,15,15,15,15,15,15,15,15,15],colour1:"#712A0D",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"head",item_list:["round","jowly","medium","pointed","rectangular"],item_indices_f:[0,1,2,3,4],item_indices_m:[0,1,2,3,4],item_indices_w:[],image_index:39,colour_children:[39,8,9,10,38,41,44,45,47,48,51,61],colour2_children:[],value_children:[39],value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#c97d51",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"ears",item_list:["none","regular","pointed","very pointed"],item_indices_f:[0,1,2,3],item_indices_m:[0,1,2,3],item_indices_w:[0,2,3],image_index:41,colour_children:[],colour2_children:[],value_children:[41],value_list:[1,1,1,1,1,1,1,1,1,1],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"earrings",item_list:["none","stud","small hoops","punk","earpiece","hoops","circle earrings","drop earrings","round earrings"],item_indices_f:[0,1,2,3,4,5,6,7,8],item_indices_m:[0,1,2,3,4],item_indices_w:[],image_index:42,colour_children:[42],colour2_children:[43],value_children:[42,43],value_list:[8,8,8,8,8,8,8,8,8,8],colour1:"#e7d083",colour2:"#2b5cb1",patterncolour:"#7ECECA",pattern:0},
-{name:"nose",item_list:["none","nostrils","button","round","medium","flat","broad","pointed","hooked"],item_indices_f:[0,1,2,3,4,5,6,7,8],item_indices_m:[0,1,2,3,4,5,6,7,8],item_indices_w:[0,1],image_index:44,colour_children:[],colour2_children:[],value_children:[44,51],value_list:[7,7,7,7,7,7,7,7,7,7],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"complexion",item_list:["none","slight lines","freckles","wrinkles","gaunt","eye mole","mouth mole","eye scar","cheek scar","burn"],item_indices_f:[0,1,2,3,4,5,6,7,8,9],item_indices_m:[0,1,2,3,4,5,6,7,8,9],item_indices_w:[],image_index:45,colour_children:[],colour2_children:[],value_children:[45],value_list:[5,5,5,5,5,5,5,5,5,5],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"cheeks",item_list:["none","blush"],item_indices_f:[0,1],item_indices_m:[0,1],item_indices_w:[],image_index:46,colour_children:[46],colour2_children:[],value_children:[46],value_list:[0,0,0,0,0,1,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"mouth",item_list:["lah","small lah","tiny lah","big grin","pointy grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","pointy smile","wobbly smile","flat smile","smile","small smile","tiny smile","slight smile","side eww","eww","oh","square oh","big oh","small oh","shock","small flat","flat","small clenched","wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown"],item_indices_f:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38],item_indices_m:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38],item_indices_w:[],image_index:47,colour_children:[],colour2_children:[],value_children:[47],value_list:[16,0,38,25,21,13,25,34,11,8],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"eyebrows",item_list:["flat","flat sad","flat grumpy","flat angry","sad","sadder","semi sad","regular","semi arch","arched","raised arch","raised","raised flat","raised semi flat","raised grumpy","raised semi","angry","angry arch","half raised","half semi","half sad","half sad raised","half flat","half arch raised"],item_indices_f:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],item_indices_m:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],item_indices_w:[],image_index:48,colour_children:[],colour2_children:[],value_children:[48],value_list:[15,11,5,17,11,1,14,2,18,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"eyes",item_list:["neutral","side","crescents","flat","narrowed","happy","wide","shock","angry","angry side","sleepy","wink"],item_indices_f:[0,1,2,3,4,5,6,7,8,9,10,11],item_indices_m:[0,1,2,3,4,5,6,7,8,9,10,11],item_indices_w:[],image_index:49,colour_children:[49],colour2_children:[],value_children:[49],value_list:[0,2,6,8,6,4,7,3,11,0],colour1:"#461c18",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"facial_hair",item_list:["none","beard","moustache","goatee","soul patch","fluffy goatee","stubble"],item_indices_f:[0],item_indices_m:[0,1,2,3,4,5,6],item_indices_w:[],image_index:50,colour_children:[],colour2_children:[],value_children:[50],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FAF6E9",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"eyewear",item_list:["none","monocle","eye patch","oblong wireframes","coloured wireframes","oblong glasses","square glasses","round glasses","coloured spectacles","spectacles","sunglasses","coloured glasses","domino mask","face mask"],item_indices_f:[0,2,3,4,5,6,7,8,9,10,11,12,13],item_indices_m:[0,1,2,3,4,5,6,7,8,9,10,11,12,13],item_indices_w:[1,2,8,9,12],image_index:53,colour_children:[53],colour2_children:[],value_children:[53],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#C7EDE8",colour2:"#cfbd84",patterncolour:"#375a86",pattern:0},
-{name:"fringe",item_list:["none","wisps","straight short","curly short","short locs","straight blunt","wavy blunt","curly blunt","soft curls","spiky","straight centre","straight swept","spiky side","medium locs","straight curtains","wavy curtains","curly curtains","spiked up","side flop","princely","wavy side","straight smooth","wavy centre","curly tendrils","curly long","long side flop","long locs"],item_indices_f:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,22,23,24,25,26],item_indices_m:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],item_indices_w:[],image_index:56,colour_children:[56,5,6,36,40,50,52,55],colour2_children:[],value_children:[56],value_list:[22,22,22,22,22,22,22,22,22,22],colour1:"#402040",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
-{name:"wheelchair",item_list:["none","manual","old fashioned"],item_indices_f:[0,1,2],item_indices_m:[0,1,2],item_indices_w:[2],image_index:59,colour_children:[59,0],colour2_children:[1,60],value_children:[59,0,1,60],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#E1748A",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
-{name:"hat",item_list:["none","sweat band","cat ears","curled horns","pointed horns","top hat","cap","bowler","fedora","turban","crown","witch hat","broad hat","beanie","hood","beads","head band","side bow","bow","tiara","scarf","flower","flower crown","bandanna","hijab"],item_indices_f:[0,2,3,4,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],item_indices_m:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],item_indices_w:[2,3,4,5,7,10,11,14,15,19,22],image_index:64,colour_children:[64,3,37,54,57],colour2_children:[4,58],value_children:[64,3,4,37,54,57,58],value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#e7d083",colour2:"#2c5b8a",patterncolour:"#C7EDE8",pattern:11}],"ui_variables_object":
-{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothing:0,current_accessory:0,current_export_image_type:0,current_gender_type:2,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_character_preset:1,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},"defining_variables_object":
+{name:"back",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#1693A5",colour2:"#1693A5",patterncolour:"#1693A5",pattern:16},
+{name:"hair_extra",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"body",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"body_chest",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"socks",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#7ECECA",colour2:"#45B5C4",patterncolour:"#1693A5",pattern:0},
+{name:"shoes",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#3c3b79",colour2:"#45B5C4",patterncolour:"#45B5C4",pattern:0},
+{name:"gloves",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#e7d083",colour2:"#45B5C4",patterncolour:"#C7EDE8",pattern:0},
+{name:"top_sleeves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#901E3B",colour2:"#4C6BC2",patterncolour:"#0000FF",pattern:0},
+{name:"top",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#5e6fa4",colour2:"#1693A5",patterncolour:"#c3cb57",pattern:4},
+{name:"overshirt_sleeves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
+{name:"coat_sleeves",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
+{name:"bottom",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#385a86",colour2:"#C7EDE8",patterncolour:"#e7d083",pattern:4},
+{name:"waistline",value_list:[10,10,10,10,10,10,10,10,10,10],colour1:"#4C6BC2",colour2:"#FAE181",patterncolour:"#0000FF",pattern:0},
+{name:"neckwear",value_list:[12,12,12,12,12,12,12,12,12,12],colour1:"#e7d083",colour2:"#3068c8",patterncolour:"#7ECECA",pattern:0},
+{name:"overshirt",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#45B5C4",colour2:"#7ECECA",patterncolour:"#1693A5",pattern:0},
+{name:"coat",value_list:[13,13,13,13,13,13,13,13,13,13],colour1:"#2c5b8a",colour2:"#1693A5",patterncolour:"#e7d083",pattern:11},
+{name:"sidelocks",value_list:[15,15,15,15,15,15,15,15,15,15],colour1:"#712A0D",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"head",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#c97d51",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"ears",value_list:[1,1,1,1,1,1,1,1,1,1],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"earrings",value_list:[8,8,8,8,8,8,8,8,8,8],colour1:"#e7d083",colour2:"#2b5cb1",patterncolour:"#7ECECA",pattern:0},
+{name:"nose",value_list:[7,7,7,7,7,7,7,7,7,7],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"complexion",value_list:[5,5,5,5,5,5,5,5,5,5],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"cheeks",value_list:[0,0,0,0,0,1,0,0,0,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"mouth",value_list:[16,0,38,25,21,13,25,34,11,8],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"eyebrows",value_list:[15,11,5,17,11,1,14,2,18,0],colour1:"#FF0000",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"eyes",value_list:[0,2,6,8,6,4,7,3,11,0],colour1:"#461c18",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"facial_hair",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FAF6E9",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
+{name:"eyewear",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#C7EDE8",colour2:"#cfbd84",patterncolour:"#375a86",pattern:0},
+{name:"fringe",value_list:[22,22,22,22,22,22,22,22,22,22],colour1:"#402040",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
+{name:"wheelchair",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#E1748A",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
+{name:"hat",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#e7d083",colour2:"#2c5b8a",patterncolour:"#C7EDE8",pattern:11}],"ui_variables_object":
+{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothing:0,current_accessory:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_character_preset:1,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},"defining_variables_object":
 {current_eyetype:3,current_hairstyle:28}},
 
 ];

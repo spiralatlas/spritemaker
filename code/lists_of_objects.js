@@ -108,9 +108,9 @@ for (i = 0; i < defining_objects.length; i += 1){
     if (accessory_list.includes(defining_objects[i].name))
         accessory_names.push(defining_objects[i].name);
 }
-for (i = 0; i < image_objects.length; i += 1)
+/*for (i = 0; i < image_objects.length; i += 1)
     if (image_objects[i].name.slice(-4)=="_dec")
-        two_tone_names.push(image_objects[i].name);    
+        two_tone_names.push(image_objects[i].name);    */
 
 //anatomy        
 add_colour_children("head", skin_list);
@@ -144,7 +144,7 @@ add_value_children("bottom", ["wheelchair_bottom","wheelchair_bottom_dec","botto
 add_colour_children("bottom", ["wheelchair_bottom","waistline"]);
 add_colour2_children("bottom", ["bottom_dec","wheelchair_bottom_dec","waistline_dec"]);
 
-add_value_children("top", ["top_collar","top_dec","top_collar_dec"]);
+add_value_children("top", ["top_dec","top_collar","top_collar_dec"]);
 add_colour_children("top", ["top_collar","top_sleeves","top_chest"]);
 add_colour2_children("top", ["top_dec","top_collar_dec"]);
 
