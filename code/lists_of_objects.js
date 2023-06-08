@@ -3,7 +3,7 @@
 // Dumbass function to get sleeves to stop breaking
 
 function sleeveIndex(){
-    return Math.max(0,findDefiningIndex(clothing_names[Alpine.store('alpineData').current_clothing]+'_sleeves')) 
+    return Math.max(0,findDefiningIndex(clothing_names[Alpine.store('alpineData').ui_variables_object.current_clothing]+'_sleeves')) 
 }
 
 function getWidthOffset(name){
