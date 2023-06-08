@@ -128,10 +128,10 @@ function add_image_object(name, list_list, location,box){
         if (name=="sidelocks_repeat")//remove "_dec"
         loc = location+"/sidelocks";  
     }  
-    if (list_list[3]) //male items first
-        item_list = remove_dups(list_list[1].concat(list_list[0]).concat(list_list[2]));
+    if (list_list[5]) //male items first
+        item_list = remove_dups(list_list[1].concat(list_list[0]));
     else
-        item_list = remove_dups(list_list[0].concat(list_list[1]).concat(list_list[2]));
+        item_list = remove_dups(list_list[0].concat(list_list[1]));
     image_objects.push({name: name,location: loc, box: box, item_list: item_list, item: 0, heightOffset: 0, widthOffset:0, scale: 1, crop : [],parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", patterncolour: "#0000FF", pattern: 0,hasShading: true, underlay_image: new Image(), base_image: new Image(),shadow_image: new Image(),highlight_image: new Image(),overlay_image: new Image(),pattern_image: new Image()});
 }
 
@@ -154,7 +154,13 @@ function add_defining_object(name, list_list){
         if (list_list[2].includes(item_list[i]))
             item_indices_w.push(i);        
     }
-    defining_objects.push({name: name,item_list: item_list,item_indices_f: item_indices_f ,item_indices_m: item_indices_m,item_indices_w: item_indices_w, image_index: image_objects.length-1, colour_children:[image_objects.length-1],colour2_children:[],value_children:[image_objects.length-1],  value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00", patterncolour: "#0000FF", pattern: 0});
+    if (list_list[3].length >0) //there is a dec layer
+        value_children =[image_objects.length-1]//,image_objects.length]
+    else
+        value_children =[image_objects.length-1,]
+    defining_objects.push({name: name,item_list: item_list,item_indices_f: item_indices_f ,item_indices_m: item_indices_m,item_indices_w: item_indices_w, image_index: image_objects.length-1, colour_children:[image_objects.length-1],colour2_children:[],value_children:value_children,  value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00", patterncolour: "#0000FF", pattern: 0});
+    
+
 }
 
 function add_colour_children(name, colour_children){

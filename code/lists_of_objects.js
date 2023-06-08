@@ -100,7 +100,6 @@ const full_outfit_list = outfit_list.concat(accessory_list).concat(sleeve_list).
 
 const clothing_names = [];
 const accessory_names = [];
-const two_tone_names = [];
 
 for (i = 0; i < defining_objects.length; i += 1){
     if (outfit_list.includes(defining_objects[i].name))
@@ -108,9 +107,6 @@ for (i = 0; i < defining_objects.length; i += 1){
     if (accessory_list.includes(defining_objects[i].name))
         accessory_names.push(defining_objects[i].name);
 }
-/*for (i = 0; i < image_objects.length; i += 1)
-    if (image_objects[i].name.slice(-4)=="_dec")
-        two_tone_names.push(image_objects[i].name);    */
 
 //anatomy        
 add_colour_children("head", skin_list);

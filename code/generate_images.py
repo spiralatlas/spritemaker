@@ -276,29 +276,6 @@ wheelchair_bottom_list_d = bottom_list_d
 wheelchair_coat_list = ["none", "medium cloak","long jacket closed","dress jacket","jama"] 
 wheelchair_coat_list_d = default_list(wheelchair_coat_list)
 
-wheelchair_bottom_dec_list = []#["split empire skirt"]
-wheelchair_bottom_dec_list_d = default_list(wheelchair_bottom_dec_list)
-top_dec_list = ["square","gathered","low vee"]
-top_dec_list_d = default_list(top_dec_list)
-top_collar_dec_list = ["sailor shirt"]
-top_collar_dec_list_d = default_list(top_collar_dec_list)
-earrings_dec_list = ["round earrings"]
-earrings_dec_list_d = default_list(earrings_dec_list)
-overshirt_dec_list = ["button up vee", "band","band with flap"]
-overshirt_dec_list_d = default_list(overshirt_dec_list)
-neckwear_dec_list = ["jewelled necklace","beaded necklace"]
-neckwear_dec_list_d = default_list(neckwear_dec_list)
-bottom_dec_list = [""]
-bottom_dec_list_d = default_list(bottom_dec_list)
-waistline_dec_list = ["suspenders","belt"]
-waistline_dec_list_d = default_list(waistline_dec_list)
-coat_dec_list = ["dress jacket","jama"]
-coat_dec_list_d = default_list(coat_dec_list)
-hat_front_dec_list = ["bowler","broad hat","fedora","witch hat","top hat","crown"]
-hat_front_dec_list_d = default_list(hat_front_dec_list)
-hat_back_dec_list = ["scarf"]
-hat_back_dec_list_d = default_list(hat_back_dec_list)
-
 highlight_list = ["fringe"]
 underlay_list = ["eyewear"]
 no_render_list = [["hat_middle",["scarf"]],["hat_front_dec",["scarf"]],]
@@ -331,10 +308,8 @@ def add_item(name, listname, list_list,location):
 ## Adding all the data to closet
 
 add_item("wheelchair_back", "wheelchair_list_d", wheelchair_list_d,"wheelchair")
-#add_item("wheelchair_back_dec", "wheelchair_list_d", wheelchair_list_d,"wheelchair")
 add_item("back", "back_list_d",back_list_d, "clothes")
 add_item("hat_back", "hat_back_list_d",hat_back_list_d, "clothes/hat")
-#add_item("hat_back_dec", "hat_back_dec_list_d",hat_back_dec_list_d, "clothes/hat")
 add_item("hair_extra", "hair_extra_list_d",hair_extra_list_d, "hair")
 add_item("hair_back", "hair_back_list_d",hair_back_list_d, "hair")
 add_item("coat_back", "coat_back_list_d",coat_back_list_d, "clothes/coat")
@@ -347,28 +322,21 @@ add_item("shoes", "shoes_list_d", shoes_list_d, "clothes")
 add_item("gloves", "gloves_list_d", gloves_list_d, "clothes")
 add_item("top_sleeves", "top_sleeve_list_d", top_sleeve_list_d, "clothes/top")
 add_item("top", "top_list_d", top_list_d, "clothes")
-#add_item("top_dec", "top_dec_list_d", top_dec_list_d, "clothes")
 add_item("top_chest", "top_chest_list_d", top_chest_list_d, "anatomy/chest")
 
 add_item("overshirt_sleeves", "overshirt_sleeve_list_d", overshirt_sleeve_list_d, "clothes/overshirt")
 add_item("coat_sleeves", "coat_sleeve_list_d", coat_sleeve_list_d, "clothes/coat")
 
 add_item("bottom", "bottom_list_d", bottom_list_d, "clothes")
-#add_item("bottom_dec", "bottom_dec_list_d", bottom_dec_list_d, "clothes")
 add_item("waistline", "waistline_list_d", waistline_list_d, "clothes")
-#add_item("waistline_dec", "waistline_dec_list_d", waistline_dec_list_d, "clothes")
 add_item("neckwear", "neckwear_list_d", neckwear_list_d, "clothes")
-#add_item("neckwear_dec", "neckwear_dec_list_d", neckwear_dec_list_d, "clothes")
 
 add_item("overshirt", "overshirt_list_d", overshirt_list_d, "clothes")
-#add_item("overshirt_dec", "overshirt_dec_list_d", overshirt_dec_list_d, "clothes")
 add_item("overshirt_chest", "overshirt_chest_list_d", overshirt_chest_list_d, "anatomy/chest")
 add_item("top_collar", "top_collar_list_d", top_collar_list_d, "clothes/top")
-#add_item("top_collar_dec", "top_collar_dec_list_d", top_collar_dec_list_d, "clothes/top")
 add_item("neckwear_front", "neckwear_front_list_d", neckwear_front_list_d, "clothes/neckwear")
 
 add_item("coat", "coat_list_d", coat_list_d, "clothes")
-#add_item("coat_dec", "coat_dec_list_d", coat_dec_list_d, "clothes")
 add_item("coat_chest", "coat_chest_list_d", coat_chest_list_d, "anatomy/chest")
 add_item("neckwear_front2", "neckwear_front2_list_d", neckwear_front2_list_d, "clothes/neckwear")
 
@@ -380,7 +348,6 @@ add_item("head", "head_list_d", head_list_d, "anatomy")
 add_item("hair_middle", "hair_middle_list_d", hair_middle_list_d, "hair")
 add_item("ears", "ear_list_d", ear_list_d, "anatomy")
 add_item("earrings", "earrings_list_d", earrings_list_d, "clothes")
-#add_item("earrings_dec", "earrings_dec_list_d", earrings_dec_list_d, "clothes")
 add_item("nose", "nose_list_d", nose_list_d, "face")
 add_item("complexion", "complexion_list_d", complexion_list_d, "face")
 add_item("cheeks", "cheeks_list_d", cheeks_list_d, "face")
@@ -397,13 +364,10 @@ add_item("hat_middle", "hat_middle_list_d", hat_middle_list_d, "clothes/hat")
 add_item("sidelocks_repeat", "sidelocks_repeat_list_d", sidelocks_list_d, "hair")
 add_item("fringe", "fringe_list_d", fringe_list_d, "hair")
 add_item("hat_front", "hat_front_list_d", hat_front_list_d, "clothes/hat")
-#add_item("hat_front_dec", "hat_front_dec_list_d", hat_front_dec_list_d, "clothes/hat")
 
 add_item("wheelchair", "wheelchair_list_d", wheelchair_list_d, "wheelchair")
-#add_item("wheelchair_dec", "wheelchair_list_d", wheelchair_list_d, "wheelchair")
 add_item("wheelchair_legs", "wheelchair_leg_list_d", wheelchair_leg_list_d, "wheelchair")
 add_item("wheelchair_bottom", "wheelchair_bottom_list_d", wheelchair_bottom_list_d, "wheelchair")
-#add_item("wheelchair_bottom_dec", "wheelchair_bottom_dec_list_d", wheelchair_bottom_dec_list_d, "wheelchair")
 add_item("wheelchair_coat", "wheelchair_coat_list_d", wheelchair_coat_list_d, "wheelchair")
 
 def name_string(name, list_list):
