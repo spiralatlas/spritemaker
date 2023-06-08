@@ -281,6 +281,7 @@ function fixSources(){
         b.shadow_image.src  ="";
         b.highlight_image.src  ="";
         b.pattern_image.src  ="";
+        b.mask_image.src  ="";
 
         let current_loc = getImageItem(b);
         //stubble
@@ -404,6 +405,11 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
         }
               
         //removing masks
+        if (obj.mask_image.src!=""){
+            off_ctx.globalCompositeOperation = "destination-out";
+            off_ctx.drawImage(obj.mask_image,0,0,width,height, 0, 0,new_width,new_height);
+            off_ctx.globalCompositeOperation = "source-over";  
+        }
         
         ctx.drawImage(off_canvas,sourceX,sourceY,new_width,new_height, new_xpos, new_ypos,new_width,new_height);
     }
