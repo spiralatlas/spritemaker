@@ -135,11 +135,19 @@ function add_image_object(name, list_list, location,box){
     else
         item_list = remove_dups(list_list[0].concat(list_list[1]));
     obj = {name: name,location: loc, box: box, item_list: item_list, item: 0, heightOffset: 0, widthOffset:0, scale: 1, crop : [],parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", patterncolour: "#0000FF", pattern: 0,hasShading: true, underlay_image: new Image(), base_image: new Image(),shadow_image: new Image(),highlight_image: new Image(),overlay_image: new Image(),pattern_image: new Image(), mask_image: new Image()}   
-    if (hasHourglass_list.includes(name)){
+    if (hourglass_list.includes(obj.name)){
+        let loc = "images/render/anatomy/hourglass/"+name
         obj.hourglass_mask_image = new Image();
-        obj.hourglass_mask_image.src = "images/masks/hourglass_mask.png"
+        obj.hourglass_mask_image.src = loc+ "_mask_base.png"
         obj.hourglass_line_image = new Image();
-        obj.hourglass_line_image.src = "images/masks/hourglass_lines.png"
+        obj.hourglass_line_image.src = loc+ "_multiply_blue.png"
+    } 
+    if ((hourglass_list.map(value=>value+"_dec")).includes(obj.name)){
+        let loc = "images/render/anatomy/hourglass/"+name.slice(0,-4)
+        obj.hourglass_mask_image = new Image();
+        obj.hourglass_mask_image.src = loc+ "_mask_base.png"
+        obj.hourglass_line_image = new Image();
+        obj.hourglass_line_image.src = loc+ "_multiply_blue.png"
     } 
     image_objects.push(obj);
 }

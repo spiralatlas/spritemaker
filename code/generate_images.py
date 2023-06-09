@@ -278,6 +278,7 @@ wheelchair_coat_list_d = default_list(wheelchair_coat_list)
 
 highlight_list = ["fringe"]
 underlay_list = ["eyewear"]
+hourglass_list = ["top","overshirt","waistline","body","legs"]
 no_render_list = [["hat_middle",["scarf"]],["hat_front_dec",["scarf"]],]
 
 ###################### More technical stuff from here on
@@ -440,6 +441,7 @@ def write_variables():
     content.write(list_string("expression_list", expression_list))   
     content.write(list_string("outfit_list", outfit_list)) 
     content.write(list_string("has_sleeves_list", has_sleeves_list)) 
+    content.write(list_string("hourglass_list", hourglass_list)) 
     content.write(list_string("sleeve_list", sleeve_list)) 
     content.write(list_string("accessory_list", accessory_list+["hat"])) 
     content.write(list_string("defining_list", defining_list)) 
@@ -499,6 +501,11 @@ def makeStubble():
         img_stubble =Image.composite(img_stubble, img_blank,img_mask) 
         img_stubble.save(save_string)
 
+def makeHourglass():
+    for h in hourglass_list:
+        process_image(h, "anatomy/hourglass","regular")
+        process_image(h+"_mask", "anatomy/hourglass","no_fill")
+
 def process_image(name, location,type):
     return imagemodule.process_image(name, location,type)
 
@@ -531,7 +538,7 @@ def process_portrait_part(obj):
                 elif obj.name in underlay_list:     
                     process_image(item, loc,"underlay")                     
                 else:    
-                    process_image(item, loc,"portrait")
+                    process_image(item, loc,"regular")
     
 
 def process_all_portraits():
@@ -566,8 +573,10 @@ def runStuff():
     for c in closet:
         if c.name in []:
             process_portrait_part(c)
-    makeWinks()
-    makeStubble() 
+
+    makeHourglass()        
+    #makeWinks()
+    #makeStubble() 
 
     #makeSwatches()
         

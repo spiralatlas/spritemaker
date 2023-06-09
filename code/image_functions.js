@@ -273,8 +273,8 @@ function colour_desc(colour){
 
 function hasHourglass(obj){
     // returns whether this object is masked and relined by the hourglass shape
-    if (hasHourglass_list.includes(obj.name))
-        return true
+    if (hourglass_list.concat(hourglass_list.map(value=>value+"_dec")).includes(obj.name))
+        return false//true
     else
         return false
 }
@@ -412,7 +412,7 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
         if (hasHourglass(obj)){
             off_ctx.globalCompositeOperation = "destination-out";
             off_ctx.drawImage(obj.hourglass_mask_image,0,0,width,height, 0, 0,new_width,new_height);
-            off_ctx.globalCompositeOperation = "source-over";
+            off_ctx.globalCompositeOperation = "multiply";
             off_ctx.drawImage(obj.hourglass_line_image,0,0,width,height, 0, 0,new_width,new_height);
             off_ctx.globalCompositeOperation = "destination-in";
             off_ctx.drawImage(obj.base_image,0,0,width,height, 0, 0,new_width,new_height);
