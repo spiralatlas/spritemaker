@@ -271,6 +271,13 @@ function colour_desc(colour){
         }}
 } 
 
+function hasHourglass(obj){
+    // returns whether this object is masked and relined by the hourglass shape
+    if (hasHourglass_list.includes(obj.name))
+        return true
+    else
+        return false
+}
 function fixSources(){
     // Fixes the "src" attribute for all images in sublist of image_objects
     for (let i = 0; i < image_objects.length; i += 1){
@@ -293,6 +300,9 @@ function fixSources(){
                 return
             } else
             b.hasShading = true;
+        }
+        if (false){
+            b.mask_image.src = ""
         }
 
         //setting images
@@ -354,6 +364,7 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
     if (obj.underlay_image.src!=""){//not coloured or anything just displayed straight
         ctx.drawImage(obj.underlay_image,sourceX,sourceY,width,height, xpos, ypos,new_width,new_height);
     }
+
     if (obj.hasShading){
         if (obj.name =="cheeks")
             off_ctx.fillStyle = blushcolour(colour);
@@ -397,6 +408,21 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
             off_ctx.drawImage(obj.highlight_image,0,0,width,height, 0, 0,new_width,new_height);
         }
         off_ctx.globalCompositeOperation = "source-over";
+        
+        if (hasHourglass(obj)){
+            off_ctx.globalCompositeOperation = "destination-out";
+            off_ctx.drawImage(obj.hourglass_mask_image,0,0,width,height, 0, 0,new_width,new_height);
+            off_ctx.globalCompositeOperation = "source-over";
+            off_ctx.drawImage(obj.hourglass_line_image,0,0,width,height, 0, 0,new_width,new_height);
+            off_ctx.globalCompositeOperation = "destination-in";
+            off_ctx.drawImage(obj.base_image,0,0,width,height, 0, 0,new_width,new_height);
+        }
+        //removing masks
+        if (obj.mask_image.src!=""){
+            off_ctx.globalCompositeOperation = "destination-out";
+            off_ctx.drawImage(obj.mask_image,0,0,width,height, 0, 0,new_width,new_height);
+            off_ctx.globalCompositeOperation = "source-over";  
+        }
 
         //cropping
         for (i = 0; i < obj.crop.length; i += 1){
@@ -404,13 +430,7 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
             off_ctx.clearRect(box[0], box[1], box[2], box[3]);
         }
               
-        //removing masks
-        if (obj.mask_image.src!=""){
-            off_ctx.globalCompositeOperation = "destination-out";
-            off_ctx.drawImage(obj.mask_image,0,0,width,height, 0, 0,new_width,new_height);
-            off_ctx.globalCompositeOperation = "source-over";  
-        }
-        
+        off_ctx.globalCompositeOperation = "source-over";
         ctx.drawImage(off_canvas,sourceX,sourceY,new_width,new_height, new_xpos, new_ypos,new_width,new_height);
     }
     if (obj.overlay_image.src!=""){//not coloured or anything just displayed straight
@@ -437,70 +457,69 @@ function undraw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,wid
     ctx.globalCompositeOperation = "source-over";   
     }
 
-    function drawCanvas() {
-        //draw the canvases
+function drawCanvas() {
+    //draw the canvases
 
-        if (testing)
-            document.getElementById("closet").innerHTML = "Developer information, don't worry about it:<br>"+ object_toString(ui_variables_object)+object_toString(defining_variables_object)+print_defining_objects()+print_image_objects();
-    
-        if (updated_frames>50) 
-            return; //it's been long enough since the last data update to stop refreshing the images
-        else
-            updated_frames+=1;    
-    
-        canvas_main = document.getElementById("mainCanvas");
-        canvas_sample = document.getElementById("sampleCanvas");
-    
-        ctx_main = canvas_main.getContext("2d");
-        ctx_sample = canvas_sample.getContext("2d");
-    
-        canvas_main.height = sprite_height; //clears
-        canvas_sample.height = canvas_sample.height;
-    
-        //sample canvas
-    
-        ctx_sample.clearRect(0,0,canvas_sample.width,canvas_sample.height)
-        if (ui_variables_object.current_tab_type==0){
-            ctx_sample.drawImage(skin_image,0,0)
-            ctx_sample.drawImage(eyes_image,250,0)
-            ctx_sample.drawImage(hair_image,500,0)
-        } else{
-            if ([2,3].includes(ui_variables_object.current_tab_type)){
-                ctx_sample.drawImage(schemes_image,125,0)
-            }
-        }
-            
-        //main canvas
-            
-        canvas_width=full_width;
-        canvas_height=sprite_height;
+    if (testing)
+        document.getElementById("closet").innerHTML = "Developer information, don't worry about it:<br>"+ object_toString(ui_variables_object)+object_toString(defining_variables_object)+print_defining_objects()+print_image_objects();
 
-        let current_list = [];
-        switch (ui_variables_object.current_export_image_type){
-            case 1: 
-                current_list =  export_head_list;
-                break;
-            case 2: 
-                current_list =  expression_list;
-                break; 
-            case 3: 
-                current_list =  export_outfit_list;
-                break;        
+    if (updated_frames>50) 
+        return; //it's been long enough since the last data update to stop refreshing the images
+    else
+        updated_frames+=1;    
+
+    canvas_main = document.getElementById("mainCanvas");
+    canvas_sample = document.getElementById("sampleCanvas");
+
+    ctx_main = canvas_main.getContext("2d");
+    ctx_sample = canvas_sample.getContext("2d");
+
+    canvas_main.height = sprite_height; //clears
+    canvas_sample.height = canvas_sample.height;
+
+    //sample canvas
+
+    ctx_sample.clearRect(0,0,canvas_sample.width,canvas_sample.height)
+    if (ui_variables_object.current_tab_type==0){
+        ctx_sample.drawImage(skin_image,0,0)
+        ctx_sample.drawImage(eyes_image,250,0)
+        ctx_sample.drawImage(hair_image,500,0)
+    } else{
+        if ([2,3].includes(ui_variables_object.current_tab_type)){
+            ctx_sample.drawImage(schemes_image,125,0)
         }
+    }
         
-        for (let i = 0; i < image_objects.length; i += 1){
-            let b = image_objects[i];
-            if (getImageItem(b) !="none"){ 
-                if (ui_variables_object.current_export_image_type==0 || current_list.includes(b.name)) 
-                    if (ui_variables_object.current_export_image_type ==3 && export_head_list.includes(b.name)){
-                    
-                        undraw_object(b,ui_variables_object.current_expression_type,b.colour1,ctx_main, 0,0,b.widthOffset, -b.heightOffset,sprite_width,sprite_height);}
-                    else{
-                        draw_object(b,ui_variables_object.current_expression_type,b.colour1,ctx_main, 0,0,b.widthOffset, -b.heightOffset,parseInt(sprite_width/b.scale),parseInt(sprite_height/b.scale));
-                    }
-    
-            }
-        }
+    //main canvas
         
+    canvas_width=full_width;
+    canvas_height=sprite_height;
+
+    let current_list = [];
+    switch (ui_variables_object.current_export_image_type){
+        case 1: 
+            current_list =  export_head_list;
+            break;
+        case 2: 
+            current_list =  expression_list;
+            break; 
+        case 3: 
+            current_list =  export_outfit_list;
+            break;        
     }
     
+    for (let i = 0; i < image_objects.length; i += 1){
+        let b = image_objects[i];
+        if (getImageItem(b) !="none"){ 
+            if (ui_variables_object.current_export_image_type==0 || current_list.includes(b.name)) 
+                if (ui_variables_object.current_export_image_type ==3 && export_head_list.includes(b.name)){
+                
+                    undraw_object(b,ui_variables_object.current_expression_type,b.colour1,ctx_main, 0,0,b.widthOffset, -b.heightOffset,sprite_width,sprite_height);}
+                else{
+                    draw_object(b,ui_variables_object.current_expression_type,b.colour1,ctx_main, 0,0,b.widthOffset, -b.heightOffset,parseInt(sprite_width/b.scale),parseInt(sprite_height/b.scale));
+                }
+
+        }
+    }
+    
+}

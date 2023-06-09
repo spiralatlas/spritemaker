@@ -16,7 +16,7 @@ function getWidthOffset(name){
 
 function getHeightOffset(name){
     //how much the portrait image with name 'name' is shifted up or down to match the head shape
-    current_offset = 0;
+    current_offset = 0;    
 
     switch(findImageItem("head")){
         case "round":

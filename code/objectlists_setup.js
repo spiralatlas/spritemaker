@@ -115,6 +115,8 @@ function setUIVariables(obj){
 const ui_variables_object= {}
 setUIVariables(ui_variables_object);
 
+const hasHourglass_list = ["top","overshirt","bottom","waistline"]
+
 const image_objects =[];
 
 
@@ -132,7 +134,14 @@ function add_image_object(name, list_list, location,box){
         item_list = remove_dups(list_list[1].concat(list_list[0]));
     else
         item_list = remove_dups(list_list[0].concat(list_list[1]));
-    image_objects.push({name: name,location: loc, box: box, item_list: item_list, item: 0, heightOffset: 0, widthOffset:0, scale: 1, crop : [],parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", patterncolour: "#0000FF", pattern: 0,hasShading: true, underlay_image: new Image(), base_image: new Image(),shadow_image: new Image(),highlight_image: new Image(),overlay_image: new Image(),pattern_image: new Image(), mask_image: new Image()});
+    obj = {name: name,location: loc, box: box, item_list: item_list, item: 0, heightOffset: 0, widthOffset:0, scale: 1, crop : [],parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", patterncolour: "#0000FF", pattern: 0,hasShading: true, underlay_image: new Image(), base_image: new Image(),shadow_image: new Image(),highlight_image: new Image(),overlay_image: new Image(),pattern_image: new Image(), mask_image: new Image()}   
+    if (hasHourglass_list.includes(name)){
+        obj.hourglass_mask_image = new Image();
+        obj.hourglass_mask_image.src = "images/masks/hourglass_mask.png"
+        obj.hourglass_line_image = new Image();
+        obj.hourglass_line_image.src = "images/masks/hourglass_lines.png"
+    } 
+    image_objects.push(obj);
 }
 
 const defining_objects =[];
