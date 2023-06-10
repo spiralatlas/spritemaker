@@ -388,7 +388,7 @@ def name_string(name, list_list):
 def presetString(location, namelist):
     path = "../../spritemaker_bases/save files/"+location+"/"
     keys = ["dark_theme","current_tab_type","current_expression_type","current_clothing","current_accessory","current_export_image_type","current_gender_type","current_size_type","current_head_ratio_type","crop_height","current_character_preset","current_expression_preset","isWeirdOutfit","isWeirdBody"]
-    keys += ["current_hairstyle", "current_eyetype", "current_defining_objects", "name", "value_list","colour1","colour2","patterncolour","pattern","item_list","item_indices_f","item_indices_m","item_indices_w","image_index","colour_children","colour2_children","value_children"]
+    keys += ["current_hairstyle", "current_waisttype", "current_eyetype", "current_defining_objects", "name", "value_list","colour1","colour2","patterncolour","pattern","item_list","item_indices_f","item_indices_m","item_indices_w","image_index","colour_children","colour2_children","value_children"]
     output = "const "+location+"_preset_defining_list=["
     for name in namelist:
         with open(path+name+".json") as f:

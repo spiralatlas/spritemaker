@@ -47,7 +47,7 @@
     <div class="container text-center"> 
 
       <div class="row">
-        <div class = "col"><div x-data="dropdown('','current_export_image_type','simple')" x-bind="dropbtn" ></div></div>
+        <div class = "col"><div x-data="dropdown('','current_export_image_type','ui')" x-bind="dropbtn" ></div></div>
         <div class = "col"><button class="btn btn-primary" id="download">Export</button></div>
       </div>
       <!-- canvases -->
@@ -95,11 +95,12 @@
                 <div class="col"><div x-data="dropdown('Eye Shape','current_eyetype','simple')" x-bind="dropbtn" ></div></div>
                 <div class="col"><div x-data="dropdown('Ears','ears','body')" x-bind="dropbtn" ></div></div>
                 <div class="col"><div x-data="dropdown('Complexion','complexion','body')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Waist Cinch','current_waisttype','simple')" x-bind="dropbtn" ></div></div>
               </div>
 
             </div>
             <div class="row gy-3" x-show="$store.alpineData.ui_variables_object.current_tab_type === 2" >
-              <div class="col"><div x-data="dropdown('Clothing','current_clothing','simple')" x-bind="dropbtn" ></div></div>
+              <div class="col"><div x-data="dropdown('Clothing','current_clothing','ui')" x-bind="dropbtn" ></div></div>
 
               <div class="row row-cols-2 gy-3">
                 <div class="col"><div x-data="dropdown('Style','current_clothing','clothing')" x-bind="dropbtn" ></div></div>
@@ -117,7 +118,7 @@
               </div>
           </div>
           <div class="row gy-3" x-show="$store.alpineData.ui_variables_object.current_tab_type === 3" >
-            <div class="col"><div x-data="dropdown('Accesory','current_accessory','simple')" x-bind="dropbtn" ></div></div>
+            <div class="col"><div x-data="dropdown('Accesory','current_accessory','ui')" x-bind="dropbtn" ></div></div>
 
             <div class="row row-cols-2 gy-3">
               <div class="col"><div x-data="dropdown('Style','current_accessory','accessory')" x-bind="dropbtn" ></div></div>
@@ -134,8 +135,8 @@
         </div>
 
             <div class="row gy-3" x-show="$store.alpineData.ui_variables_object.current_tab_type === 4" >
-              <div x-data="dropdown('Expression Preset','current_expression_preset','simple')" x-bind="dropbtn" ></div>
-              <div x-data="dropdown('Expression','current_expression_type','simple')" x-bind="dropbtn" ></div>
+              <div x-data="dropdown('Expression Preset','current_expression_preset','ui')" x-bind="dropbtn" ></div>
+              <div x-data="dropdown('Expression','current_expression_type','ui')" x-bind="dropbtn" ></div>
               <div class="row row-cols-2 gy-3">
                 <div class="col"><div x-data="dropdown('Eyebrows','eyebrows','expression')" x-bind="dropbtn" ></div></div>
                 <div class="col"><div x-data="dropdown('Eyes','eyes','expression')" x-bind="dropbtn" ></div></div>
@@ -149,7 +150,7 @@
             <div x-show="$store.alpineData.ui_variables_object.current_tab_type === 5" >
               <h4>Randomise</h4>
               <button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseAll($store.alpineData.ui_variables_object.current_gender_type);setVariables(Alpine.store('alpineData'));">Randomise All</button>  
-              <div x-data="dropdown('Appearance Preset','current_character_preset','simple')" x-bind="dropbtn" ></div>
+              <div x-data="dropdown('Appearance Preset','current_character_preset','ui')" x-bind="dropbtn" ></div>
               <h4>Body/Colouring</h4>
               <div class="row row-cols-2 gy-3">
                 <div class="col"><button type="button" class="btn btn-primary" x-on:click="$store.alpineData.randomiseBodyColouring();setVariables(Alpine.store('alpineData'));">Colouring</button></div>
@@ -166,14 +167,14 @@
                   <label for="isWeirdBody">Fantasy Body/Colouring</label></div>
                 <div class="col"><input type="checkbox" id="isWeirdOutfit" name="isWeirdOutfit" :value ="$store.alpineData.ui_variables_object.isWeirdOutfit" @input="$store.alpineData.ui_variables_object.isWeirdOutfit=!$store.alpineData.ui_variables_object.isWeirdOutfit;setVariables(Alpine.store('alpineData'));">
                 <label for="isWeirdOutfit">Fantasy/Historic Outfit</label></div>
-                <div class="col"><div x-data="dropdown('Gender Presentation','current_gender_type','simple')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Gender Presentation','current_gender_type','ui')" x-bind="dropbtn" ></div></div>
               </div>
             </div>
             <div x-show="$store.alpineData.ui_variables_object.current_tab_type === 6" >
               <h4>Display</h4>
               <div class="row row-cols-2 gy-3">
-                  <div class="col"><div x-data="dropdown('Scale','current_size_type','simple')" x-bind="dropbtn" ></div></div>
-                 <!-- <div class="col"><div x-data="dropdown('Head Scale','current_head_ratio_type','simple')" x-bind="dropbtn" ></div></div>-->
+                  <div class="col"><div x-data="dropdown('Scale','current_size_type','ui')" x-bind="dropbtn" ></div></div>
+                 <!-- <div class="col"><div x-data="dropdown('Head Scale','current_head_ratio_type','ui')" x-bind="dropbtn" ></div></div>-->
                   <div class="col"><div x-data="dropdown('Crop (default 300)','crop','crop')" x-bind="numberbtn" ></div></div>
                 </div>
             </div>

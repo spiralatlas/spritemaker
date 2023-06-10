@@ -186,7 +186,7 @@ document.addEventListener('alpine:init', () => {
             id = '"drop'+this.title+this.valueName+'"'
             if (this.title!="")
                 output += '<label for='+id+'>'+this.title+'</label>: ';  
-            
+            extra_commands = "";
             switch(this.typeName){
                 case 'body':
                     obj_index = findDefiningIndex(this.valueName);
@@ -233,8 +233,25 @@ document.addEventListener('alpine:init', () => {
                     objList = 'defining_objects['+obj_index+'].item_list';
                     buttonName = objName;
                     value = "index";
-                    break;    
+                    break;  
                 case 'simple':
+                    objName = '$store.alpineData.defining_variables_object.'+this.valueName;
+                    buttonName = objName;
+                    value = "index";
+                    switch(this.valueName){
+                    case 'current_eyetype': 
+                            objList = 'eyetype_list';
+                            break; 
+                        case 'current_waisttype': 
+                            objList = 'waisttype_list';
+                            break;      
+                        case 'current_hairstyle': 
+                            objList = 'hairstyle_list';
+                            break;  
+                    }
+                    break;
+
+                case 'ui':
                     objName = '$store.alpineData.ui_variables_object.'+this.valueName;
                     value = "index";
                     buttonName = objName;
@@ -255,16 +272,6 @@ document.addEventListener('alpine:init', () => {
                         case 'current_head_ratio_type':
                             objList = 'head_ratio_type_list';
                             break;    
-                        case 'current_eyetype': 
-                            objName = '$store.alpineData.defining_variables_object.'+this.valueName;
-                            buttonName = objName;
-                            objList = 'eyetype_list';
-                            break;  
-                        case 'current_hairstyle': 
-                            objName = '$store.alpineData.defining_variables_object.'+this.valueName;
-                            buttonName = objName;
-                            objList = 'hairstyle_list';
-                            break;  
                         case 'current_character_preset': 
                             objList = 'character_preset_list';
                             extra_commands = '$store.alpineData.transferDefiningListValues($store.alpineData.ui_variables_object.current_character_preset,character_indices, character_preset_defining_list,character_preset_list_values);'
@@ -416,7 +423,7 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
         
         if (!this.ui_variables_object.isWeirdBody)
             remove_list = eyetype_indices_w
-        switch(gender){
+        switch(gender){ // gender: 0 =androgynous, 1 =masculine, 2=feminine
             case 0:
                 this.defining_variables_object.current_eyetype = filteredItems(range(eyetype_list.length),remove_list,0)[0];  
                 break;
@@ -461,12 +468,15 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
         switch(gender){
             case 0:
                 this.defining_variables_object.current_hairstyle =filteredItems(range(hairstyle_list.length),remove_list,0)[0];  
+                this.defining_variables_object.current_waisttype =randomElement(range(waisttype_list), 0.5)
                 break;
             case 1:
                 this.defining_variables_object.current_hairstyle =filteredItems(hairstyle_indices_m,remove_list,0)[0];
+                this.defining_variables_object.current_waisttype =0;
                 break;
             case 2:
                 this.defining_variables_object.current_hairstyle =filteredItems(hairstyle_indices_f,remove_list,0)[0];
+                this.defining_variables_object.current_waisttype =randomElement(range(waisttype_list), 0)
                 break;          
         }  
         hair_remove_list= hairExcludeIndices(this.defining_variables_object.current_hairstyle);
@@ -591,7 +601,7 @@ function setup(){
             case 0:
                 filename += "body";
                 break;
-            case 01:
+            case 1:
                 filename += "expression_"+expression_type_list[ui_variables_object.current_expression_type];
                 break;
             case 2:

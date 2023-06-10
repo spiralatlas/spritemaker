@@ -31,7 +31,7 @@ const head_ratio_type_list = ["100%","Proportional to Height","Custom"]
 
 const expression_preset_list_values = ["value_list"]
 const character_preset_list_values = ["value_list","colour1","colour2","pattern","patterncolour"]
-const character_preset_values = ["current_hairstyle", "current_eyetype"]
+const character_preset_values = ["current_hairstyle", "current_eyetype", "current_waisttype"]
 
 // Basic functions
 

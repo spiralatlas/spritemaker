@@ -273,8 +273,10 @@ function colour_desc(colour){
 
 function hasHourglass(obj){
     // returns whether this object is masked and relined by the hourglass shape
+    if (defining_variables_object.current_waisttype==0)
+        return false
     if (hourglass_list.concat(hourglass_list.map(value=>value+"_dec")).includes(obj.name))
-        return false//true
+        return true
     else
         return false
 }
