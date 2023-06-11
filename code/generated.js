@@ -369,8 +369,8 @@ const character_preset_defining_list=[
 {name:"fringe",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#D8B994",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"wheelchair",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#E1748A",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
 {name:"hat",value_list:[8,8,8,8,8,8,8,8,8,8],colour1:"#3e3831",colour2:"#3c534f",patterncolour:"#36544F",pattern:0}],"ui_variables_object":
-{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothing:0,current_accessory:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_character_preset:0,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},"defining_variables_object":
-{current_eyetype:4,current_hairstyle:8}},
+{dark_theme:false,current_tab_type:1,current_expression_type:0,current_clothing:2,current_accessory:0,current_export_image_type:0,current_gender_type:1,current_size_type:0,current_head_ratio_type:0,crop_height:"0","current_effect_type":0,"effect_colour":"#000000",current_character_preset:0,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},"defining_variables_object":
+{current_eyetype:4,current_hairstyle:8,current_waist_type:0}},
 
 
 {current_defining_objects:[
@@ -382,7 +382,7 @@ const character_preset_defining_list=[
 {name:"shoes",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#3c3b79",colour2:"#45B5C4",patterncolour:"#45B5C4",pattern:0},
 {name:"gloves",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#e7d083",colour2:"#45B5C4",patterncolour:"#C7EDE8",pattern:0},
 {name:"top_sleeves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#901E3B",colour2:"#4C6BC2",patterncolour:"#0000FF",pattern:0},
-{name:"top",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#5e6fa4",colour2:"#1693A5",patterncolour:"#c3cb57",pattern:4},
+{name:"top",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#5e6fa4",colour2:"#1693A5",patterncolour:"#e7d083",pattern:4},
 {name:"overshirt_sleeves",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
 {name:"coat_sleeves",value_list:[2,2,2,2,2,2,2,2,2,2],colour1:"#FAE181",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
 {name:"bottom",value_list:[4,4,4,4,4,4,4,4,4,4],colour1:"#385a86",colour2:"#C7EDE8",patterncolour:"#e7d083",pattern:4},
@@ -405,8 +405,8 @@ const character_preset_defining_list=[
 {name:"fringe",value_list:[22,22,22,22,22,22,22,22,22,22],colour1:"#402040",colour2:"#00FF00",patterncolour:"#0000FF",pattern:0},
 {name:"wheelchair",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#E1748A",colour2:"#FAF1CF",patterncolour:"#0000FF",pattern:0},
 {name:"hat",value_list:[0,0,0,0,0,0,0,0,0,0],colour1:"#e7d083",colour2:"#2c5b8a",patterncolour:"#C7EDE8",pattern:11}],"ui_variables_object":
-{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothing:0,current_accessory:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_character_preset:1,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},"defining_variables_object":
-{current_eyetype:3,current_hairstyle:28}},
+{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothing:2,current_accessory:0,current_export_image_type:0,current_gender_type:2,current_size_type:0,current_head_ratio_type:0,crop_height:"0","current_effect_type":0,"effect_colour":"#000000",current_character_preset:1,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},"defining_variables_object":
+{current_eyetype:3,current_hairstyle:28,current_waist_type:1}},
 
 ];
 

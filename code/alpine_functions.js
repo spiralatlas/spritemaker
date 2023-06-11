@@ -656,6 +656,7 @@ const pattern_canvas = new OffscreenCanvas(full_width, full_height);
 const pattern_ctx = pattern_canvas.getContext("2d");
 const off_canvas = new OffscreenCanvas(full_width, full_height);
 const off_ctx = off_canvas.getContext("2d");
+const effect_image = new Image();
 window.onload = setup;
 var game = setInterval(drawCanvas, 100);//Update canvas every 100 miliseconds
 

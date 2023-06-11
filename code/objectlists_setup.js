@@ -121,7 +121,7 @@ const hasHourglass_list = ["top","overshirt","bottom","waistline"];
 
 const waist_type_list = ["none", "hourglass"];
 
-const effect_type_list = ["none", "antique","solid colour","colour gradient"]
+const effect_type_list = ["none", "antique","solid colour"]
 
 const image_objects =[];
 

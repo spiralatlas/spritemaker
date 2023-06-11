@@ -523,16 +523,30 @@ function drawCanvas() {
 
         }
     }
+    const off_ctx = off_canvas.getContext("2d");
     if (ui_variables_object.current_effect_type>0){ //an effect is being applied
-        console.log("effect!")
-        off_ctx.drawImage(ctx_main,0,0);
+        off_ctx.globalCompositeOperation = "copy";
+        off_ctx.drawImage(canvas_main,0,0);
         switch(ui_variables_object.current_effect_type){
             case 1:
+                off_ctx.globalCompositeOperation = "hard-light";
+                effect_image.src = "images/effects/mist.png"
+                off_ctx.drawImage(effect_image,0,0);
+                off_ctx.globalCompositeOperation = "soft-light";
+                effect_image.src = "images/effects/sunrise.png"
+                off_ctx.drawImage(effect_image,0,0);
+                effect_image.src = "images/effects/purple.png"
+                off_ctx.drawImage(effect_image,0,0);
                 
-                
-                break;        
+                break;  
+            case 2:
+                off_ctx.fillStyle = ui_variables_object.effect_colour;
+                off_ctx.fillRect(0, 0, canvas_width, canvas_height);          
         }
-        //ctx_main.drawImage(off_ctx,10,10);
+        off_ctx.globalCompositeOperation = "destination-in";
+        off_ctx.drawImage(canvas_main,0,0);
+        ctx_main.globalCompositeOperation = "copy";
+        ctx_main.drawImage(off_canvas,0,0);
 }
     
 }
