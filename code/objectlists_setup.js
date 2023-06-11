@@ -93,7 +93,7 @@ function createDefininglistSubset(d_list){
 //Setting up lists of objects
 const defining_objects_defining_keys_list = ["name","value_list","colour1","colour2","patterncolour","pattern",]
 
-const defining_variables_object = {current_eyetype: 0,current_hairstyle: 0, current_waisttype: 0 };
+const defining_variables_object = {current_eyetype: 0,current_hairstyle: 0, current_waist_type: 0 };
 
 function setUIVariables(obj){
     obj.dark_theme = false;
@@ -106,6 +106,8 @@ function setUIVariables(obj){
     obj.current_size_type=0;
     obj.current_head_ratio_type=0;
     obj.crop_height=300;
+    obj.current_effect_type = 0;
+    obj.effect_colour = "#000000"
     obj.current_character_preset=0;
     obj.current_expression_preset=0;
     obj.isWeirdOutfit=false;
@@ -115,9 +117,11 @@ function setUIVariables(obj){
 const ui_variables_object= {}
 setUIVariables(ui_variables_object);
 
-const hasHourglass_list = ["top","overshirt","bottom","waistline"]
+const hasHourglass_list = ["top","overshirt","bottom","waistline"];
 
-const waisttype_list = ["none", "hourglass"]
+const waist_type_list = ["none", "hourglass"];
+
+const effect_type_list = ["none", "antique","solid colour","colour gradient"]
 
 const image_objects =[];
 

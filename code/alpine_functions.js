@@ -239,11 +239,11 @@ document.addEventListener('alpine:init', () => {
                     buttonName = objName;
                     value = "index";
                     switch(this.valueName){
-                    case 'current_eyetype': 
+                        case 'current_eyetype': 
                             objList = 'eyetype_list';
                             break; 
-                        case 'current_waisttype': 
-                            objList = 'waisttype_list';
+                        case 'current_waist_type': 
+                            objList = 'waist_type_list';
                             break;      
                         case 'current_hairstyle': 
                             objList = 'hairstyle_list';
@@ -286,7 +286,10 @@ document.addEventListener('alpine:init', () => {
                             break; 
                         case 'current_gender_type': 
                             objList = 'gender_type_list';
-                            break;               
+                            break; 
+                        case 'current_effect_type': 
+                            objList = 'effect_type_list';
+                            break;                   
 
                     }
                     break;     
@@ -307,7 +310,7 @@ document.addEventListener('alpine:init', () => {
         //Sets a colour using the colour picker
         ['x-html']() {
 
-            switch(this.typeName){
+            switch(this.typeName){ //objName is the variable being edited by this type of button
                 case 'body':
                     objName = '$store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')].colour1';
                     break;
@@ -319,7 +322,10 @@ document.addEventListener('alpine:init', () => {
                     break;  
                 case 'pattern':
                     objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.ui_variables_object.current_'+this.valueName+'])].patterncolour';
-                    break;            
+                    break;   
+                case 'ui':  
+                    objName = '$store.alpineData.ui_variables_object.'+this.valueName;
+                    break;           
             }    
             id = '"drop'+this.title+this.valueName+'"';
             output = '<label for='+id+'>'+this.title+'</label>: ';   
@@ -468,15 +474,15 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
         switch(gender){
             case 0:
                 this.defining_variables_object.current_hairstyle =filteredItems(range(hairstyle_list.length),remove_list,0)[0];  
-                this.defining_variables_object.current_waisttype =randomElement(range(waisttype_list), 0.5)
+                this.defining_variables_object.current_waist_type =randomElement(range(waist_type_list.length), 0.5)
                 break;
             case 1:
                 this.defining_variables_object.current_hairstyle =filteredItems(hairstyle_indices_m,remove_list,0)[0];
-                this.defining_variables_object.current_waisttype =0;
+                this.defining_variables_object.current_waist_type =0;
                 break;
             case 2:
                 this.defining_variables_object.current_hairstyle =filteredItems(hairstyle_indices_f,remove_list,0)[0];
-                this.defining_variables_object.current_waisttype =randomElement(range(waisttype_list), 0)
+                this.defining_variables_object.current_waist_type =randomElement(range(waist_type_list.length), 0)
                 break;          
         }  
         hair_remove_list= hairExcludeIndices(this.defining_variables_object.current_hairstyle);

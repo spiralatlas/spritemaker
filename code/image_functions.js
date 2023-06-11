@@ -273,7 +273,7 @@ function colour_desc(colour){
 
 function hasHourglass(obj){
     // returns whether this object is masked and relined by the hourglass shape
-    if (defining_variables_object.current_waisttype==0)
+    if (defining_variables_object.current_waist_type==0)
         return false
     if (hourglass_list.concat(hourglass_list.map(value=>value+"_dec")).includes(obj.name))
         return true
@@ -523,5 +523,16 @@ function drawCanvas() {
 
         }
     }
+    if (ui_variables_object.current_effect_type>0){ //an effect is being applied
+        console.log("effect!")
+        off_ctx.drawImage(ctx_main,0,0);
+        switch(ui_variables_object.current_effect_type){
+            case 1:
+                
+                
+                break;        
+        }
+        //ctx_main.drawImage(off_ctx,10,10);
+}
     
 }
