@@ -155,7 +155,7 @@ bottom_list_w = ["breeches","tube skirt","briefs","long kilt",]
 bottom_list_decs = []
 bottom_list_d = [bottom_list_f, bottom_list_m, bottom_list_w,[],[],False]
 
-waistline_list_u=["none","gathered","button fly"]
+waistline_list_u=["invisible","gathered","button fly","double pointed"]
 waistline_list_f = waistline_list_u+["low","high","empire","band","pointed"]
 waistline_list_m = waistline_list_u+["suspenders","fall front","overalls","belt"]
 waistline_list_w = ["fall front","empire","pointed"]
@@ -571,7 +571,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in []:
+        if c.name in ["waistline"]:
             process_portrait_part(c)
 
     makeHourglass()        
