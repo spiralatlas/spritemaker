@@ -393,9 +393,12 @@ def presetString(location, namelist):
     for name in namelist:
         with open(path+name+".json") as f:
             lines = f.readlines()
-        fixed_lines = lines[0].replace("{","\n{")  
-        for k in keys:
-            fixed_lines = fixed_lines.replace("\""+k+"\"",k)
+        fixed_lines =""
+        for l in lines:    
+            if l[0]!="/" and l[0]!="\n":
+                fixed_lines += l.replace("{","\n{")  
+        #for k in keys:
+        #    fixed_lines = fixed_lines.replace("\""+k+"\"",k)
   
         output += fixed_lines+",\n\n"#"{preset_name:\""+name+"\","+fixed_lines[1:]+",\n\n"    
     output +="];\n\n"
@@ -571,7 +574,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["waistline"]:
+        if c.name in []:
             process_portrait_part(c)
 
     makeHourglass()        
