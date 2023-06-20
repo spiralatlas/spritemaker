@@ -196,21 +196,21 @@ document.addEventListener('alpine:init', () => {
                     value = "listOf(index)";
                     break;
                 case 'clothing':
-                    obj_index = 'findDefiningIndex(clothing_names[$store.alpineData.ui_variables_object.current_clothing])';
+                    obj_index = 'findDefiningIndex(clothingname_list[$store.alpineData.ui_variables_object.current_clothingname])';
                     objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list';
                     objList = 'defining_objects['+obj_index+'].item_list';
                     buttonName = objName+"[0]";
                     value = "listOf(index)";
                     break; 
                 case 'pattern':
-                    obj_index = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.ui_variables_object.current_'+this.valueName+'])].pattern';
+                    obj_index = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'name_list[$store.alpineData.ui_variables_object.current_'+this.valueName+'name])].pattern';
                     objName = obj_index;
                     objList = 'pattern_list';
                     buttonName = objName;
                     value = "index";
                     break;     
                 case 'sleeves':
-                    if (!has_sleeves_list.includes(clothing_names[Alpine.store('alpineData').ui_variables_object.current_clothing])){
+                    if (!has_sleeves_list.includes(clothingname_list[Alpine.store('alpineData').ui_variables_object.current_clothingname])){
                         return "";
                     } else{
                         obj_index = sleeveIndex(); 
@@ -221,7 +221,7 @@ document.addEventListener('alpine:init', () => {
                 }
                     break;          
                 case 'accessory':
-                    obj_index = 'findDefiningIndex(accessory_names[$store.alpineData.ui_variables_object.current_accessory])';
+                    obj_index = 'findDefiningIndex(accessoryname_list[$store.alpineData.ui_variables_object.current_accessoryname])';
                     objName = '$store.alpineData.current_defining_objects['+obj_index+'].value_list';
                     objList = 'defining_objects['+obj_index+'].item_list';
                     buttonName = objName+"[0]";
@@ -257,11 +257,11 @@ document.addEventListener('alpine:init', () => {
                     buttonName = objName;
                     extra_commands = "";
                     switch(this.valueName){
-                        case 'current_clothing':
-                            objList = 'clothing_names';
+                        case 'current_clothingname':
+                            objList = 'clothingname_list';
                             break;
-                        case 'current_accessory':
-                            objList = 'accessory_names';
+                        case 'current_accessoryname':
+                            objList = 'accessoryname_list';
                             break;    
                         case 'current_expression_type':
                             objList = 'expression_type_list';
@@ -315,13 +315,13 @@ document.addEventListener('alpine:init', () => {
                     objName = '$store.alpineData.current_defining_objects[findDefiningIndex(\''+this.valueName+'\')].colour1';
                     break;
                 case 'clothing1':
-                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.ui_variables_object.current_'+this.valueName+'])].colour1';
+                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'name_list[$store.alpineData.ui_variables_object.current_'+this.valueName+'name])].colour1';
                     break; 
                 case 'clothing2':
-                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.ui_variables_object.current_'+this.valueName+'])].colour2';
+                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'name_list[$store.alpineData.ui_variables_object.current_'+this.valueName+'name])].colour2';
                     break;  
                 case 'pattern':
-                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'_names[$store.alpineData.ui_variables_object.current_'+this.valueName+'])].patterncolour';
+                    objName = '$store.alpineData.current_defining_objects[findDefiningIndex('+this.valueName+'name_list[$store.alpineData.ui_variables_object.current_'+this.valueName+'name])].patterncolour';
                     break;   
                 case 'ui':  
                     objName = '$store.alpineData.ui_variables_object.'+this.valueName;

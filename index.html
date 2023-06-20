@@ -101,12 +101,12 @@
 
             </div>
             <div class="row gy-3" x-show="$store.alpineData.ui_variables_object.current_tab_type === 2" >
-              <div class="col"><div x-data="dropdown('Clothing','current_clothing','ui')" x-bind="dropbtn" ></div></div>
+              <div class="col"><div x-data="dropdown('Clothing','current_clothingname','ui')" x-bind="dropbtn" ></div></div>
 
               <div class="row row-cols-2 gy-3">
-                <div class="col"><div x-data="dropdown('Style','current_clothing','clothing')" x-bind="dropbtn" ></div></div>
-                <div class="col" x-show="has_sleeves_list.includes(clothing_names[$store.alpineData.ui_variables_object.current_clothing])"><div x-data="dropdown('Sleeves','current_clothing','sleeves')" x-bind="dropbtn" ></div></div>
-                <div class="col" x-show="['bottom'].includes(clothing_names[$store.alpineData.ui_variables_object.current_clothing])"><div x-data="dropdown('Waistline','waistline','body')" x-bind="dropbtn" ></div></div>
+                <div class="col"><div x-data="dropdown('Style','current_clothingname','clothing')" x-bind="dropbtn" ></div></div>
+                <div class="col" x-show="has_sleeves_list.includes(clothingname_list[$store.alpineData.ui_variables_object.current_clothingname])"><div x-data="dropdown('Sleeves','current_clothingname','sleeves')" x-bind="dropbtn" ></div></div>
+                <div class="col" x-show="['bottom'].includes(clothingname_list[$store.alpineData.ui_variables_object.current_clothingname])"><div x-data="dropdown('Waistline','waistline','body')" x-bind="dropbtn" ></div></div>
               </div>
               <div class="row row-cols-2 gy-3">
 
@@ -119,10 +119,10 @@
               </div>
           </div>
           <div class="row gy-3" x-show="$store.alpineData.ui_variables_object.current_tab_type === 3" >
-            <div class="col"><div x-data="dropdown('Accesory','current_accessory','ui')" x-bind="dropbtn" ></div></div>
+            <div class="col"><div x-data="dropdown('Accesory','current_accessoryname','ui')" x-bind="dropbtn" ></div></div>
 
             <div class="row row-cols-2 gy-3">
-              <div class="col"><div x-data="dropdown('Style','current_accessory','accessory')" x-bind="dropbtn" ></div></div>
+              <div class="col"><div x-data="dropdown('Style','current_accessoryname','accessory')" x-bind="dropbtn" ></div></div>
             </div>
             <div class="row row-cols-2 gy-3">
 

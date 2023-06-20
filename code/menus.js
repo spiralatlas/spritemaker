@@ -1,3 +1,45 @@
+function human_readable_object(obj){
+    let output = ""
+    for (let i = 0; i < Object.keys(obj).length; i += 1){
+        output+="//"+Object.keys(obj)[i]+": "+obj[Object.keys(obj)[i]]+"\n";
+    }
+    return output
+}
+
+function human_readable_list(obj_list){
+    let output = ""
+    for (let i = 0; i < obj_list.length; i += 1){
+        output+=human_readable_object(obj_list[i]);
+    }
+    return output
+}
+
+function human_readable(vars){
+    //vars is an object containing lists of objects
+    //output is a comment string describing the content of vars
+    output = "// *** HUMAN READABLE SUMMARY ***\n"
+    for (i = 0; i < Object.keys(vars).length; i += 1){
+        obj_name = Object.keys(vars)[i];
+        switch(obj_name){
+            case "current_defining_objects":
+                output+="//Body and Outfit:\n";
+                output+=human_readable_list(vars["current_defining_objects"])
+                break;
+            case "ui_variables_object":
+                output+="//User interface:\n";
+                output+=human_readable_object(vars["ui_variables_object"])
+                break; 
+            case "defining_variables_object":
+                output+="//Other:\n";
+                output+=human_readable_object(vars["defining_variables_object"])
+                break;           
+        }
+        output+="\n"
+    }
+    output+="// *** END SUMMARY ***\n"
+    return output
+}
+
 function download() {
   //download values of all variables that define current character into a json file
   //from https://stackoverflow.com/questions/13405129/create-and-save-a-file-with-javascript
@@ -8,7 +50,8 @@ function download() {
   var load_variables = {current_defining_objects: createDefininglistSubset(defining_objects), ui_variables_object: ui_variables_object, defining_variables_object: defining_variables_object};
     
   data = JSON5.stringify(load_variables);
-  var file = new Blob([data], {type: type});
+  comment_data = human_readable(load_variables);
+  var file = new Blob([comment_data+data], {type: type});
   if (window.navigator.msSaveOrOpenBlob) // IE10+
       window.navigator.msSaveOrOpenBlob(file, filename);
   else { // Others

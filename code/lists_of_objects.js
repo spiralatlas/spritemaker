@@ -3,7 +3,7 @@
 // Dumbass function to get sleeves to stop breaking
 
 function sleeveIndex(){
-    return Math.max(0,findDefiningIndex(clothing_names[Alpine.store('alpineData').ui_variables_object.current_clothing]+'_sleeves')) 
+    return Math.max(0,findDefiningIndex(clothingname_list[Alpine.store('alpineData').ui_variables_object.current_clothingname]+'_sleeves')) 
 }
 
 function getWidthOffset(name){
@@ -98,14 +98,14 @@ function getHeightOffset(name){
 const head_offset_list = expression_list.concat(["skull","head","nose","nose_front","hat_front","hat_middle","hat_front_dec","hat_back","hat_back_dec","ears","complexion", "hair_middle", "hair_front","hair_back","hair_extra", "sidelocks","sidelocks_repeat", "fringe","facial_hair", "eyewear","earrings","earrings_dec"]);
 const full_outfit_list = outfit_list.concat(accessory_list).concat(sleeve_list).concat(["fringe","sidelocks","hair_extra", "facial_hair","waistline"])
 
-const clothing_names = [];
-const accessory_names = [];
+const clothingname_list = [];
+const accessoryname_list = [];
 
 for (i = 0; i < defining_objects.length; i += 1){
     if (outfit_list.includes(defining_objects[i].name))
-        clothing_names.push(defining_objects[i].name);
+        clothingname_list.push(defining_objects[i].name);
     if (accessory_list.includes(defining_objects[i].name))
-        accessory_names.push(defining_objects[i].name);
+        accessoryname_list.push(defining_objects[i].name);
 }
 
 //anatomy        
