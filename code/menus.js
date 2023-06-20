@@ -7,7 +7,7 @@ function download() {
 
   var load_variables = {current_defining_objects: createDefininglistSubset(defining_objects), ui_variables_object: ui_variables_object, defining_variables_object: defining_variables_object};
     
-  data = JSON.stringify(load_variables);
+  data = JSON5.stringify(load_variables);
   var file = new Blob([data], {type: type});
   if (window.navigator.msSaveOrOpenBlob) // IE10+
       window.navigator.msSaveOrOpenBlob(file, filename);
@@ -59,7 +59,7 @@ var reader; //GLOBAL File Reader object
      * load user selected file
      */
     function loadContents(txt,data_object) {
-      var load_object = JSON.parse(txt);
+      var load_object = JSON5.parse(txt);
       data_object = load_object;
       setVariables(load_object);
       Alpine.store('alpineData').fixAlpine();
