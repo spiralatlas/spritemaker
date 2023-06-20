@@ -334,33 +334,5 @@ const hairstyle_indices_w = ["fancy bun"].map(value => hairstyle_list.indexOf(va
 
 function varList(variable_name){
     //return the name of the list associated with the variable named variable_name
-    switch(variable_name){
-        case 'current_eyetype': 
-            return 'eyetype_list';
-        case 'current_waist_type': 
-            return 'waist_type_list';    
-        case 'current_hairstyle': 
-            return 'hairstyle_list';
-        case 'current_clothingname':
-            return 'clothingname_list';
-        case 'current_accessoryname':
-            return 'accessoryname_list';    
-        case 'current_expression_type':
-            return 'expression_type_list';
-        case 'current_size_type':
-            return 'size_type_list';
-        case 'current_head_ratio_type':
-            return 'head_ratio_type_list';    
-        case 'current_character_preset': 
-            return 'character_preset_list';      
-        case 'current_expression_preset': 
-            return 'expression_preset_list';           
-        case 'current_export_image_type': 
-            return 'export_image_type_list'; 
-        case 'current_gender_type': 
-            return 'gender_type_list'; 
-        case 'current_effect_type': 
-            return 'effect_type_list';                   
-    }    
-    console.log("Error: Unknown input to varList: "+variable_name)
+    return variable_name.slice(8)+"_list" //eg current_eyetype -> eyetype_list
 }

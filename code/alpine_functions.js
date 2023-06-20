@@ -238,17 +238,7 @@ document.addEventListener('alpine:init', () => {
                     objName = '$store.alpineData.defining_variables_object.'+this.valueName;
                     buttonName = objName;
                     value = "index";
-                    switch(this.valueName){
-                        case 'current_eyetype': 
-                            objList = 'eyetype_list';
-                            break; 
-                        case 'current_waist_type': 
-                            objList = 'waist_type_list';
-                            break;      
-                        case 'current_hairstyle': 
-                            objList = 'hairstyle_list';
-                            break;  
-                    }
+                    objList = varList(this.valueName);
                     break;
 
                 case 'ui':
@@ -256,41 +246,15 @@ document.addEventListener('alpine:init', () => {
                     value = "index";
                     buttonName = objName;
                     extra_commands = "";
+                    objList = varList(this.valueName);
                     switch(this.valueName){
-                        case 'current_clothingname':
-                            objList = 'clothingname_list';
-                            break;
-                        case 'current_accessoryname':
-                            objList = 'accessoryname_list';
-                            break;    
-                        case 'current_expression_type':
-                            objList = 'expression_type_list';
-                            break;
-                        case 'current_size_type':
-                            objList = 'size_type_list';
-                            break;
-                        case 'current_head_ratio_type':
-                            objList = 'head_ratio_type_list';
-                            break;    
                         case 'current_character_preset': 
-                            objList = 'character_preset_list';
                             extra_commands = '$store.alpineData.transferDefiningListValues($store.alpineData.ui_variables_object.current_character_preset,character_indices, character_preset_defining_list,character_preset_list_values);'
                             extra_commands += '$store.alpineData.transferDefiningValues($store.alpineData.ui_variables_object.current_character_preset,character_preset_defining_list, character_preset_values);'
                             break;       
                         case 'current_expression_preset': 
-                            objList = 'expression_preset_list';
                             extra_commands = '$store.alpineData.transferDefiningListValues($store.alpineData.ui_variables_object.current_expression_preset,expression_indices, expression_preset_defining_list,expression_preset_list_values);'
-                            break;               
-                        case 'current_export_image_type': 
-                            objList = 'export_image_type_list';
-                            break; 
-                        case 'current_gender_type': 
-                            objList = 'gender_type_list';
-                            break; 
-                        case 'current_effect_type': 
-                            objList = 'effect_type_list';
-                            break;                   
-
+                            break;                               
                     }
                     break;     
             }    
