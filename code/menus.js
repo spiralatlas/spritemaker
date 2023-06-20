@@ -1,8 +1,35 @@
+function human_readable_variable(list_name, index){
+    return eval(list_name)[index]
+}
+
 function human_readable_object(obj){
     let output = ""
     for (let i = 0; i < Object.keys(obj).length; i += 1){
-        output+="//"+Object.keys(obj)[i]+": "+obj[Object.keys(obj)[i]]+"\n";
-    }
+        current_varname = Object.keys(obj)[i];
+        output+="//"+current_varname+": ";
+        if (current_varname.length >8 && current_varname.slice(0,8)=="current_"){//&& Number.isInteger(obj[current_varname])){
+            output+=human_readable_variable(varList(current_varname),obj[current_varname])+"\n";
+        }
+        else{
+            current_value = obj[current_varname];
+            switch (current_varname){
+                case "pattern":
+                    output+=pattern_list[current_value]+"\n";
+                    break;
+                case "value_list":
+                    objList = defining_objects[findDefiningIndex(obj.name)].item_list;
+                    if (expression_list.includes(obj.name))
+                        output+=current_value+"\n";
+                    else    
+                        output+=objList[current_value[0]]+"\n";
+                    break;    
+                default:    
+                    output+=current_value+"\n";
+                    break;
+            }
+                
+    }}
+    output+="\n";
     return output
 }
 
@@ -11,13 +38,14 @@ function human_readable_list(obj_list){
     for (let i = 0; i < obj_list.length; i += 1){
         output+=human_readable_object(obj_list[i]);
     }
+    output+="\n"
     return output
 }
 
 function human_readable(vars){
     //vars is an object containing lists of objects
     //output is a comment string describing the content of vars
-    output = "// *** HUMAN READABLE SUMMARY ***\n"
+    output = "// *** HUMAN READABLE SUMMARY ***\n\n"
     for (i = 0; i < Object.keys(vars).length; i += 1){
         obj_name = Object.keys(vars)[i];
         switch(obj_name){
@@ -36,7 +64,7 @@ function human_readable(vars){
         }
         output+="\n"
     }
-    output+="// *** END SUMMARY ***\n"
+    output+="// *** END SUMMARY ***\n\n"
     return output
 }
 
