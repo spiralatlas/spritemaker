@@ -337,7 +337,7 @@ function fixSources(){
                     b.shadow_image.src  = loc_string+"_multiply_blue.png";//+colour_string(b.colour1)+".png";
                 if (highlight_list.includes(b.name))
                     b.highlight_image.src  = loc_string+"_highlight.png"; 
-                if (underlay_list.includes(b.name))
+                if (underlay_list.includes(b.name)|| (b.name=="cheeks" && cheeks_list_underlay.includes(current_loc)))
                     if (current_loc!="eye patch")
                         b.underlay_image.src  = loc_string+"_underlay.png";   
                 if (b.pattern>0){
@@ -376,8 +376,9 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
     }
 
     if (obj.hasShading){
-        if (obj.name =="cheeks")
-            off_ctx.fillStyle = blushcolour(colour);
+        if (obj.name =="cheeks" && !cheeks_list_underlay.includes(getImageItem(obj))){
+            off_ctx.fillStyle = blushcolour(colour);//note: for some reason ALL cheeks get set to this colour
+        }
         else{
             if (obj.name =="complexion"){
              if (getImageItem(obj)=="freckles")

@@ -82,7 +82,8 @@ mouth_list_d = default_list(mouth_list_u)
 nose_list_u = ["none", "nostrils","button", "round","medium","flat", "broad", "pointed","hooked",] 
 nose_list_d = [nose_list_u,nose_list_u,["none","nostrils"],[],[],True]
 
-cheeks_list_u = ["none","blush"]
+cheeks_list_underlay = ["sweat drop"]
+cheeks_list_u = ["none","blush", "big blush"]+ cheeks_list_underlay
 cheeks_list_d = default_list(cheeks_list_u)
 
 complexion_list_u = ["none","slight lines", "freckles","wrinkles","gaunt", "eye mole","mouth mole","eye scar", "cheek scar", "burn"]
@@ -436,7 +437,8 @@ def write_variables():
     content.write(list_string("eyetype_list_f", eyetype_list_f))   
     content.write(list_string("eyetype_list_m", eyetype_list_m))  
     content.write(list_string("eyetype_list_w", eyetype_list_w))  
-    content.write(list_string("eyetype_irisless_list", eyetype_irisless_list )) 
+    content.write(list_string("eyetype_irisless_list", eyetype_irisless_list ))
+    content.write(list_string("cheeks_list_underlay", cheeks_list_underlay ))  
     content.write(list_string("top_nosleeves_list", top_nosleeves_list))
     content.write(list_string("overshirt_nosleeves_list", overshirt_nosleeves_list)) 
     content.write(list_string("coat_nosleeves_list", coat_nosleeves_list)) 
@@ -549,7 +551,10 @@ def process_portrait_part(obj):
                 elif obj.name in underlay_list:     
                     process_image(item, loc,"underlay")                     
                 else:    
-                    process_image(item, loc,"regular")
+                    if obj.name=="cheeks" and item in cheeks_list_underlay:
+                        process_image(item, loc,"underlay")      
+                    else:    
+                        process_image(item, loc,"regular")
     
 
 def process_all_portraits():
@@ -582,11 +587,11 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["eyes"]:
+        if c.name in ["cheeks"]:
             process_portrait_part(c)
 
     makeHourglass()        
-    makeWinks()
+    #makeWinks()
     #makeStubble() 
 
     #makeSwatches()

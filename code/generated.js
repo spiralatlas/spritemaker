@@ -21,6 +21,7 @@ const eyetype_list_f = ["medium eyelashes","down-turned","up-turned","pointed","
 const eyetype_list_m = ["short eyelashes","medium eyelashes","down-turned","up-turned","pointed","animal",];
 const eyetype_list_w = ["animal",];
 const eyetype_irisless_list = ["animal",];
+const cheeks_list_underlay = ["sweat drop",];
 const top_nosleeves_list = ["none","bikini","vest",];
 const overshirt_nosleeves_list = ["none","obi","band","band with flap",];
 const coat_nosleeves_list = ["none","wrap","medium cloak",];
@@ -78,7 +79,7 @@ const earrings_list_d = [["none","stud","small hoops","punk","earpiece","hoops",
 const earrings_list_d_dec = [["round earrings",],["round earrings",],[],[],[],true];
 const nose_list_d = [["none","nostrils","button","round","medium","flat","broad","pointed","hooked",],["none","nostrils","button","round","medium","flat","broad","pointed","hooked",],["none","nostrils",],[],[],true];
 const complexion_list_d = [["none","slight lines","freckles","wrinkles","gaunt","eye mole","mouth mole","eye scar","cheek scar","burn",],["none","slight lines","freckles","wrinkles","gaunt","eye mole","mouth mole","eye scar","cheek scar","burn",],[],[],[],true];
-const cheeks_list_d = [["none","blush",],["none","blush",],[],[],[],true];
+const cheeks_list_d = [["none","blush","big blush","sweat drop",],["none","blush","big blush","sweat drop",],[],[],[],true];
 const mouth_list_d = [["lah","small lah","tiny lah","big grin","pointy grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","pointy smile","wobbly smile","flat smile","smile","small smile","tiny smile","slight smile","side eww","eww","oh","square oh","big oh","small oh","shock","small flat","flat","small clenched","wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",],["lah","small lah","tiny lah","big grin","pointy grin","grin","side grin","side smile","big smile","big side smile","wide flat smile","tongue out","pointy smile","wobbly smile","flat smile","smile","small smile","tiny smile","slight smile","side eww","eww","oh","square oh","big oh","small oh","shock","small flat","flat","small clenched","wobbly frown","tiny frown","small frown","narrow frown","frown","low moue","moue","pout","side frown","big frown",],[],[],[],true];
 const eyebrows_list_d = [["flat","flat sad","flat grumpy","flat angry","sad","sadder","semi sad","regular","semi arch","arched","raised arch","raised","raised flat","raised semi flat","raised grumpy","raised semi","angry","angry arch","half raised","half semi","half sad","half sad raised","half flat","half arch raised",],["flat","flat sad","flat grumpy","flat angry","sad","sadder","semi sad","regular","semi arch","arched","raised arch","raised","raised flat","raised semi flat","raised grumpy","raised semi","angry","angry arch","half raised","half semi","half sad","half sad raised","half flat","half arch raised",],[],[],[],true];
 const eyes_list_d = [["neutral","side","crescents","flat","narrowed","happy","wide","shock","angry","angry side","sleepy","wink","rolled",],["neutral","side","crescents","flat","narrowed","happy","wide","shock","angry","angry side","sleepy","wink","rolled",],[],[],[],true];
@@ -370,8 +371,8 @@ const character_preset_defining_list=[
 {name:'fringe',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#D8B994',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'wheelchair',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#E1748A',colour2:'#FAF1CF',patterncolour:'#0000FF',pattern:0},
 {name:'hat',value_list:[8,8,8,8,8,8,8,8,8,8],colour1:'#3e3831',colour2:'#3c534f',patterncolour:'#36544F',pattern:0}],ui_variables_object:
-{dark_theme:false,current_tab_type:5,current_expression_type:8,current_clothingname:0,current_accessoryname:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:0,current_expression_preset:1,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
-{current_eyetype:4,current_hairstyle:8,current_waist_type:0}},
+{dark_theme:false,current_tab_type:1,current_expression_type:0,current_clothingname:0,current_accessoryname:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:0,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
+{current_eyetype:6,current_hairstyle:8,current_waist_type:0}},
 
 
 {current_defining_objects:[
@@ -406,8 +407,8 @@ const character_preset_defining_list=[
 {name:'fringe',value_list:[22,22,22,22,22,22,22,22,22,22],colour1:'#402040',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'wheelchair',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#E1748A',colour2:'#FAF1CF',patterncolour:'#0000FF',pattern:0},
 {name:'hat',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#e7d083',colour2:'#2c5b8a',patterncolour:'#C7EDE8',pattern:11}],ui_variables_object:
-{dark_theme:false,current_tab_type:4,current_expression_type:8,current_clothingname:0,current_accessoryname:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:1,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
-{current_eyetype:3,current_hairstyle:28,current_waist_type:1}},
+{dark_theme:false,current_tab_type:4,current_expression_type:0,current_clothingname:0,current_accessoryname:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:1,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
+{current_eyetype:5,current_hairstyle:28,current_waist_type:1}},
 
 ];
 
