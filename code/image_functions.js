@@ -289,6 +289,7 @@ function fixSources(){
         b.base_image.src  ="";
         b.shadow_image.src  ="";
         b.highlight_image.src  ="";
+        b.overlay_image.src  ="";
         b.pattern_image.src  ="";
         b.mask_image.src  ="";
 
@@ -314,9 +315,16 @@ function fixSources(){
                 b.underlay_image.src  = "images/render/"+b.location+"/"+current_loc +"_base.png";
 
             }else{
+                let regular_eyes = false;
                 if (b.name=="eyes"){ 
-                    loc_string = "images/render/"+b.location+"/"+eyetype_list[defining_variables_object.current_eyetype] +"/"+current_loc 
-                    b.overlay_image.src  = loc_string+"_overlay.png";
+                    eye_type = eyetype_list[defining_variables_object.current_eyetype]
+                    loc_string = "images/render/"+b.location+"/"+ eye_type+"/"+current_loc 
+                    if (eyetype_irisless_list.includes(eye_type)){
+                    }
+                    else{
+                        regular_eyes = true;
+                        b.overlay_image.src  = loc_string+"_overlay.png";
+                    }
                 }
                 else{
                     loc_string = "images/render/"+b.location+"/"+current_loc 
@@ -325,7 +333,7 @@ function fixSources(){
                     loc_string +="2";
 
                 b.base_image.src  = loc_string+"_base.png";
-                if (b.name!="eyes")
+                if (!regular_eyes)
                     b.shadow_image.src  = loc_string+"_multiply_blue.png";//+colour_string(b.colour1)+".png";
                 if (highlight_list.includes(b.name))
                     b.highlight_image.src  = loc_string+"_highlight.png"; 

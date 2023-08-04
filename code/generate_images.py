@@ -63,11 +63,12 @@ leg_list_d = default_list(["none"]+body_list)
 
 wheelchair_leg_list_d = default_list(["none"]+body_list)
 
-eyetype_list_u = ["medium eyelashes","down-turned","up-turned"]
+eyetype_list_u = ["medium eyelashes","down-turned","up-turned", "pointed", "animal"]
 eyetype_list_m = ["short eyelashes"]+ eyetype_list_u
 eyetype_list_f = eyetype_list_u+["long eyelashes"]
-eyetype_list_w = []
+eyetype_list_w = ["animal"]
 eyetype_list_d = [eyetype_list_f,eyetype_list_m,eyetype_list_w,[],[],True]
+eyetype_irisless_list = eyetype_list_w #has no iris
 
 eyeshape_list = ["neutral","side","crescents","flat", "narrowed","happy","wide","shock","angry","angry side","sleepy","wink"]
 eyes_list_d = default_list(eyeshape_list)
@@ -434,7 +435,8 @@ def write_variables():
     content.write(list_string("skin_list_defining", skin_list_defining))  
     content.write(list_string("eyetype_list_f", eyetype_list_f))   
     content.write(list_string("eyetype_list_m", eyetype_list_m))  
-    content.write(list_string("eyetype_list_w", eyetype_list_w))   
+    content.write(list_string("eyetype_list_w", eyetype_list_w))  
+    content.write(list_string("eyetype_irisless_list", eyetype_irisless_list )) 
     content.write(list_string("top_nosleeves_list", top_nosleeves_list))
     content.write(list_string("overshirt_nosleeves_list", overshirt_nosleeves_list)) 
     content.write(list_string("coat_nosleeves_list", coat_nosleeves_list)) 
@@ -479,9 +481,12 @@ def checkRender(name, item):
     return True                        
 
 def makeWinks():
-    layer_list = ["base","overlay"]
     print("Making winks")
     for eye_type in remove_dups(eyetype_list_f+eyetype_list_m):
+        if eye_type in eyetype_irisless_list:
+            layer_list = ["base","multiply_blue"]
+        else:
+            layer_list = ["base","overlay"]
         for layer in layer_list:
             loc = "../images/render/face/eyes/"+eye_type+"/"
             save_string = loc+"wink_"+layer+".png"
@@ -535,7 +540,10 @@ def process_portrait_part(obj):
                         for type in remove_dups(eyetype_list_f+eyetype_list_m):
                             if item!="wink":
                                 print(type)
-                                process_image(item, loc+"/"+type,"eyes") 
+                                if type in eyetype_irisless_list:
+                                    process_image(item, loc+"/"+type,"regular") 
+                                else:  
+                                    process_image(item, loc+"/"+type,"eyes") 
                 elif obj.name in highlight_list:     
                     process_image(item, loc,"highlight")     
                 elif obj.name in underlay_list:     
@@ -574,11 +582,11 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in []:
+        if c.name in ["eyes"]:
             process_portrait_part(c)
 
     makeHourglass()        
-    #makeWinks()
+    makeWinks()
     #makeStubble() 
 
     #makeSwatches()
