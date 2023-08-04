@@ -70,7 +70,7 @@ eyetype_list_w = ["animal"]
 eyetype_list_d = [eyetype_list_f,eyetype_list_m,eyetype_list_w,[],[],True]
 eyetype_irisless_list = eyetype_list_w #has no iris
 
-eyeshape_list = ["neutral","side","crescents","flat", "narrowed","happy","wide","shock","angry","angry side","sleepy","wink"]
+eyeshape_list = ["neutral","side","crescents","flat", "narrowed","happy","wide","shock","angry","angry side","sleepy","wink","rolled"]
 eyes_list_d = default_list(eyeshape_list)
 
 eyebrows_list_u = ["flat","flat sad","flat grumpy","flat angry","sad","sadder", "semi sad", "regular","semi arch","arched","raised arch", "raised","raised flat", "raised semi flat","raised grumpy","raised semi","angry", "angry arch","half raised","half semi", "half sad","half sad raised","half flat","half arch raised"]
