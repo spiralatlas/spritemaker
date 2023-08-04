@@ -103,10 +103,10 @@ earrings_list_w = []
 earrings_list_decs = ["round earrings"]
 earrings_list_d =  [earrings_list_f,earrings_list_m, earrings_list_w,earrings_list_decs,[],True]
 
-gloves_list_u = ["short gloves","wrist guards"]
-gloves_list_f = ["none", "medium gloves", "bracelets"]
-gloves_list_m = ["none", "fingerless"]+["short gloves"]
-gloves_list_w = ["wrist guards"]
+gloves_list_u = ["short gloves","wrist guards","wrist wraps"]
+gloves_list_f = ["none", "medium gloves", "bracelets"]+gloves_list_u
+gloves_list_m = ["none", "fingerless"]+gloves_list_u
+gloves_list_w = ["wrist guards","wrist wraps"]
 gloves_list_d = [gloves_list_f,gloves_list_m,gloves_list_w,[],[],True]
 
 back_list_u = ["none","thin tail","fluffy tail", ]
@@ -587,7 +587,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["cheeks"]:
+        if c.name in ["gloves"]:
             process_portrait_part(c)
 
     makeHourglass()        
