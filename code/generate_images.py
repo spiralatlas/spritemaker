@@ -93,7 +93,7 @@ eyewear_list_u = [ "eye patch","oblong wireframes","coloured wireframes", "oblon
 eyewear_list_f = ["none",]+eyewear_list_u
 eyewear_list_m = ["none","monocle"]+eyewear_list_u
 eyewear_list_w = ["monocle","spectacles","coloured spectacles", "eye patch","domino mask"]
-eyewear_list_decs = []
+eyewear_list_decs = ["coloured spectacles","coloured glasses"]
 eyewear_list_d =  [eyewear_list_f,eyewear_list_m, eyewear_list_w,eyewear_list_decs,[],True]
 
 earrings_list_u = ["none","stud","small hoops","punk","earpiece"]
@@ -587,7 +587,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["gloves"]:
+        if c.name in ["eyewear"]:
             process_portrait_part(c)
 
     makeHourglass()        

@@ -95,7 +95,7 @@ function getHeightOffset(name){
     }  */ 
     return current_offset;    
 }
-const head_offset_list = expression_list.concat(["skull","head","nose","nose_front","hat_front","hat_middle","hat_front_dec","hat_back","hat_back_dec","ears","complexion", "hair_middle", "hair_front","hair_back","hair_extra", "sidelocks","sidelocks_repeat", "fringe","facial_hair", "eyewear","earrings","earrings_dec"]);
+const head_offset_list = expression_list.concat(["skull","head","nose","nose_front","hat_front","hat_middle","hat_front_dec","hat_back","hat_back_dec","ears","complexion", "hair_middle", "hair_front","hair_back","hair_extra", "sidelocks","sidelocks_repeat", "fringe","facial_hair", "eyewear","eyewear_dec","earrings","earrings_dec"]);
 const full_outfit_list = outfit_list.concat(accessory_list).concat(sleeve_list).concat(["fringe","sidelocks","hair_extra", "facial_hair","waistline"])
 
 const clothingname_list = [];
@@ -124,6 +124,9 @@ add_colour2_children("hat", ["hat_back_dec","hat_front_dec"]);
 
 add_value_children("earrings", ["earrings_dec"]);
 add_colour2_children("earrings", ["earrings_dec"]);
+
+add_value_children("eyewear", ["eyewear_dec"]);
+add_colour2_children("eyewear", ["eyewear_dec"]);
 
 add_value_children("neckwear", ["neckwear_dec"]);
 add_colour2_children("neckwear", ["neckwear_dec"]);
