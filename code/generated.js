@@ -46,7 +46,8 @@ const body_list_d = [["regular",],["regular",],[],[],[],true];
 const body_chest_list_d = [["none","small","medium","big",],["none",],[],[],[],true];
 const leg_list_d = [["none","regular",],["none","regular",],[],[],[],true];
 const socks_list_d = [["none","ankle high","mid calf","knee high","thigh high","tights",],["none","ankle high","mid calf",],[],[],[],true];
-const shoes_list_d = [["none","sandals","slip ons","sneakers","pumps","mary janes","high boots",],["none","sandals","slip ons","sneakers","boots",],[],[],[],false];
+const shoes_list_d = [["none","sandals","slip ons","sneakers","pumps","mary janes","high boots",],["none","sandals","slip ons","sneakers","boots",],[],["boots","sneakers",],[],false];
+const shoes_list_d_dec = [["boots","sneakers",],["boots","sneakers",],[],[],[],true];
 const gloves_list_d = [["none","medium gloves","bracelets","short gloves","wrist guards","wrist wraps",],["none","fingerless","short gloves","wrist guards","wrist wraps",],["wrist guards","wrist wraps",],[],[],true];
 const top_sleeve_list_d = [["sleeveless","short","long","broad","puffy","bell",],["sleeveless","short","long","broad","puffy shirt","long shirt","rolled",],["puffy","puffy shirt","bell",],[],[],true];
 const top_list_d = [["none","bikini","crop top","square","boatneck","gathered","low vee","sailor shirt","vest","tee","chinese collar","turtleneck","kimono",],["none","vest","tee","chinese collar","turtleneck","kimono","open shirt","button up","high collar shirt",],["high collar shirt",],["square","gathered","low vee",],[],false];
@@ -116,6 +117,7 @@ add_image_object("socks",socks_list_d,"clothes")
 add_defining_object("socks",socks_list_d)
 add_image_object("shoes",shoes_list_d,"clothes")
 add_defining_object("shoes",shoes_list_d)
+add_image_object("shoes_dec",shoes_list_d_dec,"clothes")
 add_image_object("gloves",gloves_list_d,"clothes")
 add_defining_object("gloves",gloves_list_d)
 add_image_object("top_sleeves",top_sleeve_list_d,"clothes/top")

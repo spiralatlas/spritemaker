@@ -210,7 +210,7 @@ shoes_list_u = ["none","sandals","slip ons","sneakers"]
 shoes_list_m = shoes_list_u +["boots"]
 shoes_list_f = shoes_list_u +["pumps","mary janes","high boots",] 
 shoes_list_w = []
-shoes_list_decs = []
+shoes_list_decs = ["boots","sneakers" ]
 shoes_list_d = [shoes_list_f, shoes_list_m, shoes_list_w,shoes_list_decs,[],False]
 
 hair_extra_list_u = ["none","topknot"]
@@ -587,7 +587,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["eyewear"]:
+        if c.name in ["shoes"]:
             process_portrait_part(c)
 
     makeHourglass()        

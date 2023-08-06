@@ -131,6 +131,9 @@ add_colour2_children("eyewear", ["eyewear_dec"]);
 add_value_children("neckwear", ["neckwear_dec"]);
 add_colour2_children("neckwear", ["neckwear_dec"]);
 
+add_value_children("shoes", ["shoes_dec"]);
+add_colour2_children("shoes", ["shoes_dec"]);
+
 //outfit
 add_value_children("body_chest", ["coat_chest","overshirt_chest","top_chest"]);
 
