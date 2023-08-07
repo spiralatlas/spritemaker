@@ -151,11 +151,11 @@ overshirt_sleeve_list_w = []
 overshirt_sleeve_list_d = [overshirt_sleeve_list_f, overshirt_sleeve_list_m, overshirt_sleeve_list_w,[],[],True]
 
 bottom_list_u = ["none","briefs",]
-bottom_list_f = bottom_list_u+["short skirt","medium skirt","long skirt","short kilt","kilt","long kilt", "tube skirt",]
+bottom_list_f = bottom_list_u+["short skirt","medium skirt","long skirt","puffy short kilt","short kilt","kilt","long kilt", "tube skirt",]
 bottom_list_m = bottom_list_u+["shorts", "breeches","trousers",]
 bottom_list_w = ["breeches","tube skirt","briefs","long kilt",]
-bottom_list_decs = []
-bottom_list_d = [bottom_list_f, bottom_list_m, bottom_list_w,[],[],False]
+bottom_list_decs = ["puffy short kilt"]
+bottom_list_d = [bottom_list_f, bottom_list_m, bottom_list_w,bottom_list_decs,[],False]
 
 waistline_list_u=["invisible","gathered","button fly","double pointed"]
 waistline_list_f = waistline_list_u+["low","high","empire","band","pointed"]
@@ -470,7 +470,7 @@ def write_variables():
     expression_preset_list =  ["Default", "Understated", "Energetic","Arch"] 
     content.write(list_string("expression_preset_list", expression_preset_list))  
     content.write(presetString("expression", expression_preset_list))
-    character_preset_list =  ["Detective", "Movie Star"] 
+    character_preset_list =  ["Detective", "Movie Star","Middle School Girl"] 
     content.write(list_string("character_preset_list", character_preset_list))  
     content.write(presetString("character", character_preset_list))    
     content.close()
@@ -587,7 +587,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["top"]:
+        if c.name in ["bottom"]:
             process_portrait_part(c)
 
     makeHourglass()        
