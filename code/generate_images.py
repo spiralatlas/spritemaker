@@ -164,11 +164,11 @@ waistline_list_w = ["fall front","empire","pointed"]
 waistline_list_decs = ["suspenders","belt"]
 waistline_list_d = [waistline_list_f,waistline_list_m,waistline_list_w,waistline_list_decs,[],True]
 
-neckwear_list_u = ["none", "cravat bow", "bandanna", "scarf","kerchief","long scarf"]  
+neckwear_list_u = ["none", "cravat bow", "bandanna", "scarf","kerchief","long scarf","chains","amulet"]  
 neckwear_list_f = [ "none", "beaded necklace","choker","pendant","jewelled necklace","beads","bow","fur collar"] + neckwear_list_u
 neckwear_list_m = neckwear_list_u+["cravat","tie","bow tie"]
-neckwear_list_w = ["cravat bow","bandanna"]
-neckwear_list_decs = ["jewelled necklace","beaded necklace"]
+neckwear_list_w = ["cravat bow","bandanna","chains","amulet"]
+neckwear_list_decs = ["jewelled necklace","beaded necklace","amulet"]
 neckwear_list_d = [neckwear_list_f, neckwear_list_m,neckwear_list_w,neckwear_list_decs,[],True]
 
 coat_list_u = ["open sweater", "medium cloak", "short jacket", "open robe","closed robe", "long open jacket"]
@@ -587,7 +587,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["shoes"]:
+        if c.name in ["top"]:
             process_portrait_part(c)
 
     makeHourglass()        
