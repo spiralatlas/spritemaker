@@ -315,7 +315,7 @@ function print_defining_objects(){
 const hairstyle_defining_list = [ //name, hair_front, hair_middle, hair_back
     ["none","none","none","none"], ["balding","balding","none","balding"],["shaved","none","shaved","none"], ["cornrows", "cornrows", "cornrows", "none"],
     ["buzzcut","none","short","buzzcut"],
-    ["straight short","none","long","straight short"],["curly short","none","short","curly short"],["wavy short","none","long","wavy short"],["side part","neat side","long shadowed","straight side"],["locs short","short locs","long shadowed","none"],
+    ["straight short","none","long","straight short"],["curly short","none","short","curly short"],["wavy short","none","long","wavy short"],["side part","none","long","straight side"],["locs short","short locs","long shadowed","none"],
     ["fade","fade","long","fade"],["shaggy short","none","long","shaggy short"],["small tight curls","none","short","tight curls short"],
     ["tight curls","none","short","tight curls medium"],["shaggy medium","none","long","shaggy medium"], ["wavy bob","none","long shadowed","wavy bob"],["curly bob","none","long","curly bob"],["straight bob","none","long","straight bob"],
     ["locs half up", "locs bun", "long shadowed", "locs bob"],["locs bob", "locs bob", "long shadowed", "locs bob"],

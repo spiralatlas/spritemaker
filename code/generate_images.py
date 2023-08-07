@@ -30,7 +30,7 @@ def default_list(l):
     return [l,l, [],[],[],True]   
 
 pattern_list = ["none",
-        "crocodile","rose", "snake","damask", "camoflage", #repeated fractal
+        "crocodile","rose", "flowers", "snake","damask", "camoflage", "clouds", #repeated fractal
         "crosshatch","fabric","dirty","spots",  #repeated naturalistic
         "diamonds","small diamonds","tartan",  "polkadot","kimono", #repeated pattern
         "horizontal stripe","vertical stripe","pinstripe","horizontal pinstripe","net","diagonal",] #lines "verticalstripe", "horizontalstripe", "diagonal","net",
@@ -46,7 +46,7 @@ wheelchair_list = [ "none","manual","old fashioned"]
 wheelchair_list_w = ["old fashioned"]
 wheelchair_list_d = [wheelchair_list,wheelchair_list,wheelchair_list_w,[],[],True]
 
-head_list_u = ["round","jowly", "medium", "pointed","rectangular",]
+head_list_u = ["small", "round","jowly", "medium", "pointed","gaunt", "rectangular",]
 head_list_d = default_list(head_list_u)
 
 skull_list = ["regular"]
@@ -109,10 +109,10 @@ gloves_list_m = ["none", "fingerless"]+gloves_list_u
 gloves_list_w = ["wrist guards","wrist wraps"]
 gloves_list_d = [gloves_list_f,gloves_list_m,gloves_list_w,[],[],True]
 
-back_list_u = ["none","thin tail","fluffy tail", ]
+back_list_u = ["none","thin tail","fluffy tail", "sword","katanas"]
 back_list_f = back_list_u+[]
 back_list_m= back_list_u+[] 
-back_list_w = ["fluffy tail","thin tail"]
+back_list_w = ["fluffy tail","thin tail","sword","katanas"]
 back_list_d = [back_list_f,back_list_m,back_list_w,[],[],True]
 
 top_list_u = ["vest","tee", "chinese collar","turtleneck","kimono" ]
@@ -234,7 +234,7 @@ sidelocks_list_m = ["none","tiny curls", "tiny straight", "tiny locs", "medium s
 sidelocks_list_w =[]
 sidelocks_list_d = [sidelocks_list_f, sidelocks_list_m, sidelocks_list_w,[],[],True]
 
-fringe_list_u = ["none", "wisps","straight short", "curly short","short locs","straight blunt", "wavy blunt","curly blunt", "soft curls", "spiky","straight centre","straight swept","spiky side","medium locs", "straight curtains","wavy curtains","curly curtains"]
+fringe_list_u = ["none", "wisps","straight short", "curly short","short locs","straight blunt", "wavy blunt","curly blunt", "soft curls", "straight side short", "spiky","straight centre","straight swept","spiky side","medium locs", "straight curtains","wavy curtains","curly curtains","medium wavy tendrils","medium straight tendrils"]
 fringe_list_m = fringe_list_u+["spiked up", "side flop", "princely","wavy side","straight smooth"]
 fringe_list_f = fringe_list_u+["wavy centre","curly tendrils","curly long", "long side flop","long locs",]#"straight long","wavy long"
 fringe_list_w =[]
@@ -470,7 +470,7 @@ def write_variables():
     expression_preset_list =  ["Default", "Understated", "Energetic","Arch"] 
     content.write(list_string("expression_preset_list", expression_preset_list))  
     content.write(presetString("expression", expression_preset_list))
-    character_preset_list =  ["Detective", "Movie Star","Middle School Girl"] 
+    character_preset_list =  ["Beach Babe", "Ninja", "Jock", "Detective", "Wizard", "Righteous Cultivator", "Movie Star","Middle School Girl","Festival Girl","Demon"] 
     content.write(list_string("character_preset_list", character_preset_list))  
     content.write(presetString("character", character_preset_list))    
     content.close()
@@ -587,7 +587,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["bottom"]:
+        if c.name in ["head"]:
             process_portrait_part(c)
 
     makeHourglass()        

@@ -19,7 +19,7 @@ function getHeightOffset(name){
     current_offset = 0;    
 
     switch(findImageItem("head")){
-        case "round":
+        case "round","small":
             if (head_offset_list.includes(name))   
                 current_offset -=5;
             if (["nose","nose_front", "facial_hair"].includes(name))  
@@ -67,7 +67,7 @@ function getHeightOffset(name){
             if (["mouth"].includes(name))  
                 current_offset +=-2;    
             break;     
-        case "pointed":  
+        case "pointed","gaunt":  
             if (head_offset_list.includes(name))   
                 current_offset +=5;
             if (["facial_hair"].includes(name))  
