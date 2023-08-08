@@ -237,16 +237,16 @@ function hairExcludeIndices(index){
     }     
     switch(type){
         case 0://straight
-            //console.log("straight")
+            //console.log("hair_string: "+hair_string+ "straight")
             return[fringe_not_straight, sidelocks_not_straight, hair_extra_not_straight]
         case 1://wavy
-            //console.log("wavy")
+            //console.log("hair_string: "+hair_string+ "wavy")
             return[fringe_not_wavy, sidelocks_not_wavy, hair_extra_not_wavy]  
         case 2://curly
-            //console.log("curly")
+            //console.log("hair_string: "+hair_string+ "curly")
             return[fringe_not_curly, sidelocks_not_curly,hair_extra_not_curly] 
         case 3://locs
-            //console.log("locs")
+            //console.log("hair_string: "+hair_string+ "locs")
             return[fringe_not_locs, sidelocks_not_locs,hair_extra_not_locs]                 
     } 
     console.log("Warning: Unknown hair type")

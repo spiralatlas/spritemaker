@@ -1,4 +1,4 @@
-let testing = false;
+let testing = true;
  
 //canvas related
 

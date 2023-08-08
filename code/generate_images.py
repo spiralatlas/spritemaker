@@ -470,7 +470,7 @@ def write_variables():
     expression_preset_list =  ["Default", "Understated", "Energetic","Arch"] 
     content.write(list_string("expression_preset_list", expression_preset_list))  
     content.write(presetString("expression", expression_preset_list))
-    character_preset_list =  ["Beach Babe", "Ninja", "Jock", "Detective", "Wizard", "Righteous Cultivator", "Movie Star","Middle School Girl","Festival Girl","Demon"] 
+    character_preset_list =  ["Beach Babe", "Scientist", "student", "Jock","Ninja", "Demon", "Detective","Dad", "Wizard", "Righteous Cultivator", "Lord", "Starlet","Middle School Girl","Festival Girl","Grandma", "Mum", "Lady"] 
     content.write(list_string("character_preset_list", character_preset_list))  
     content.write(presetString("character", character_preset_list))    
     content.close()
