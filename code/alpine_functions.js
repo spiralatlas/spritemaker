@@ -15,10 +15,8 @@ function setVariables(data_object){
     //transfer data from webpage/load file to internal javascript
 
     transferObjectValues(ui_variables_object, data_object.ui_variables_object,Object.keys(ui_variables_object) )
-    console.log("A: current_hairstyle:"+hairstyle_list[defining_variables_object.current_hairstyle]);
     transferObjectValues(defining_variables_object, data_object.defining_variables_object,Object.keys(defining_variables_object) )    
       
-    console.log("C: current_hairstyle:"+hairstyle_list[defining_variables_object.current_hairstyle]);
     for (let i = 0; i < defining_objects.length; i += 1){
         transferObjectValues(defining_objects[i], data_object.current_defining_objects[i],defining_objects_defining_keys_list);}
     updateVariables();
@@ -451,7 +449,6 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
                 this.defining_variables_object.current_waist_type =randomElement(range(waist_type_list.length), 0)
                 break;          
         }  
-        console.log("0: current_hairstyle: "+hairstyle_list[this.defining_variables_object.current_hairstyle]);
         hair_remove_list= hairExcludeIndices(this.defining_variables_object.current_hairstyle);
 
         for (let i = 0; i < defining_objects.length; i += 1){
