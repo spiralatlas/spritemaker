@@ -318,6 +318,7 @@ const hairstyle_defining_list = [ //name, hair_front, hair_middle, hair_back
     ["straight short","none","long","straight short"],["curly short","none","short","curly short"],["wavy short","none","long","wavy short"],["side part","none","long","straight side"],["locs short","short locs","long shadowed","none"],
     ["fade","fade","long","fade"],["shaggy short","none","long","shaggy short"],["small tight curls","none","short","tight curls short"],
     ["tight curls","none","short","tight curls medium"],["shaggy medium","none","long","shaggy medium"], ["wavy bob","none","long shadowed","wavy bob"],["curly bob","none","long","curly bob"],["straight bob","none","long","straight bob"],
+    ["straight half up", "straight half up", "long", "straight long"],["wavy bob half up","bob half up","long shadowed","wavy bob"],["curly bob half up","bob half up","long","curly bob"],["straight bob half up","bob half up","long","straight bob"],
     ["locs half up", "locs bun", "long shadowed", "locs bob"],["locs bob", "locs bob", "long shadowed", "locs bob"],
     ["curly flowing", "curly flowing", "long shadowed", "curly flowing"],["straight flowing", "straight flowing", "long", "straight flowing"],
     ["straight long", "none", "long", "straight long"],["wavy long", "none", "long", "wavy long"],["curly long", "none", "long", "curly long"],["locs long", "long locs", "long shadowed", "long locs"],
@@ -325,7 +326,7 @@ const hairstyle_defining_list = [ //name, hair_front, hair_middle, hair_back
 ]
     
 const hairstyle_list = hairstyle_defining_list.map(value => value[0])  
-const hairstyle_list_u = ["cornrows","buzzcut", "straight short","curly short","wavy short","shaggy short","tight curls","shaggy medium","wavy bob","straight bob","straight high pony","straight low pony","curly pony","straight long","wavy long","curly long","locs long", "locs half up"]
+const hairstyle_list_u = ["cornrows","buzzcut", "straight short","curly short","wavy short","shaggy short","tight curls","shaggy medium","wavy bob","straight bob","straight high pony","straight low pony","curly pony","straight long","wavy long","curly long","locs long", "locs half up","straight half up","wavy bob half up","curly bob half up","straight bob half up"]
 const hairstyle_indices_m = (hairstyle_list_u.concat(["none", "balding", "shaved","fade", "side part","small tight curls"])).map(value => hairstyle_list.indexOf(value))
 const hairstyle_indices_f = (hairstyle_list_u.concat(["curly bob","twin braids", "curly bun","wavy bun","straight bun","locs bun", "locs up", "straight up", "curly up", "curly flowing","straight flowing"])).map(value => hairstyle_list.indexOf(value))
 const hairstyle_indices_w = ["fancy bun"].map(value => hairstyle_list.indexOf(value))

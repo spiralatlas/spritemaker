@@ -214,18 +214,18 @@ shoes_list_decs = ["boots","sneakers" ]
 shoes_list_d = [shoes_list_f, shoes_list_m, shoes_list_w,shoes_list_decs,[],False]
 
 hair_extra_list_u = ["none","topknot"]
-hair_extra_list_f = hair_extra_list_u+ ["straight high pony","straight low pony", "curly pony", "small curly pony","low curly pony","bun","fancy bun","locs bun","twin braids","twintails","locs pony"]
+hair_extra_list_f = hair_extra_list_u+ ["straight high pony","straight low pony", "curly pony", "small curly pony","low curly pony","bun","fancy bun","locs bun","little bun","little buns", "twin braids","twintails","long twintails","twin puffs", "side straight pony","long side straight pony", "locs pony"]
 hair_extra_list_m = hair_extra_list_u
 hair_extra_list_w = ["fancy bun","topknot"] 
 hair_extra_list_d = [hair_extra_list_f, hair_extra_list_m, hair_extra_list_w,[],[],True]
 
-hair_back_list = ["none","balding", "buzzcut","straight short","curly short","wavy short", "straight side", "fade", "shaggy short", "tight curls short","tight curls medium", "shaggy medium", "curly bob","wavy bob", "straight bob","locs bob", "half up medium wavy","straight long","wavy long","curly long", "long locs",  "curly flowing", "straight flowing","straight up","curly up","locs up"]
+hair_back_list = ["none","balding", "buzzcut","straight short","curly short","wavy short", "straight side", "fade", "shaggy short", "tight curls short","tight curls medium", "shaggy medium", "curly bob","wavy bob", "straight bob","locs bob", "half up medium wavy", "straight long","wavy long","curly long", "long locs",  "curly flowing", "straight flowing","straight up","curly up","locs up"]
 hair_back_list_d = default_list(hair_back_list)
 
 hair_middle_list = ["none", "shaved", "balding","cornrows","short","long","long shadowed"]
 hair_middle_list_d = default_list(hair_middle_list)
 
-hair_front_list = ["none", "balding", "neat side", "fade", "long locs","curly flowing","curly long","straight flowing","locs bun", "locs bob","short locs","cornrows"]
+hair_front_list = ["none", "balding", "neat side", "fade", "long locs","curly flowing","curly long","straight half up","bob half up", "straight flowing","locs bun", "locs bob","short locs","cornrows"]
 hair_front_list_d = default_list(hair_front_list)
 
 sidelocks_list_u = ["short straight", "short hime","short wavy", "short curls","short locs"]
@@ -587,7 +587,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["fringe","sidelocks"]:
+        if c.name in ["hair_front","hair_back"]:
             process_portrait_part(c)
 
     makeHourglass()        
