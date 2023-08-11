@@ -229,12 +229,12 @@ hair_front_list = ["none", "balding", "neat side", "fade", "long locs","curly fl
 hair_front_list_d = default_list(hair_front_list)
 
 sidelocks_list_u = ["short straight", "short hime","short wavy", "short curls","short locs"]
-sidelocks_list_f = ["none"]+sidelocks_list_u+["short hime", "medium hime",  "medium locs","medium wavy", "medium straight","medium straight tendril","medium wavy tendril","medium curly tendril","long straight", "long wavy","long curly","long locs",]
+sidelocks_list_f = ["none"]+sidelocks_list_u+["short hime", "medium hime",  "medium locs","medium wavy", "medium straight","medium straight tendril","medium wavy tendril","medium curly tendril","long straight", "long wavy","long shaggy", "long curly","long locs",]
 sidelocks_list_m = ["none","tiny curls", "tiny straight", "tiny locs", "medium shaggy", ]+sidelocks_list_u
 sidelocks_list_w =[]
 sidelocks_list_d = [sidelocks_list_f, sidelocks_list_m, sidelocks_list_w,[],[],True]
 
-fringe_list_u = ["none", "wisps","straight short", "curly short","short locs","straight blunt", "wavy blunt","curly blunt", "soft curls", "straight side short", "spiky","straight centre","straight swept","spiky side","medium locs", "straight curtains","wavy curtains","curly curtains","medium wavy tendrils","medium straight tendrils"]
+fringe_list_u = ["none", "wisps","straight short", "shaggy short", "curly short","short locs","straight blunt", "wavy blunt","curly blunt", "soft curls", "straight side short", "spiky","straight centre","straight swept","straight clump", "spiky side","medium locs", "straight curtains","wavy curtains","curly curtains","medium wavy tendrils","medium straight tendrils"]
 fringe_list_m = fringe_list_u+["spiked up", "side flop", "princely","wavy side","straight smooth"]
 fringe_list_f = fringe_list_u+["wavy centre","curly tendrils","curly long", "long side flop","long locs",]#"straight long","wavy long"
 fringe_list_w =[]
@@ -587,7 +587,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["head"]:
+        if c.name in ["fringe","sidelocks"]:
             process_portrait_part(c)
 
     makeHourglass()        
