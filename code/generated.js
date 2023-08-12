@@ -55,7 +55,7 @@ const top_list_d_dec = [["square","gathered","low vee",],["square","gathered","l
 const top_chest_list_d = [["none","small","medium","big",],["none",],[],[],[],true];
 const overshirt_sleeve_list_d = [["sleeveless","short","long",],["sleeveless","short","long",],[],[],[],true];
 const coat_sleeve_list_d = [["sleeveless","short","scrunched","long","long blocky","broad","trailing",],["sleeveless","short","scrunched","long","long blocky","broad","trailing",],["broad","trailing",],[],[],true];
-const bottom_list_d = [["none","briefs","short skirt","medium skirt","long skirt","puffy short kilt","short kilt","kilt","long kilt","tube skirt",],["none","briefs","shorts","breeches","trousers",],["breeches","tube skirt","briefs","long kilt",],["puffy short kilt",],[],false];
+const bottom_list_d = [["none","briefs","short skirt","medium skirt","long skirt","empire full long skirt","puffy short kilt","short kilt","kilt","long kilt","tube skirt",],["none","briefs","shorts","breeches","trousers",],["breeches","tube skirt","briefs","long kilt",],["puffy short kilt",],[],false];
 const bottom_list_d_dec = [["puffy short kilt",],["puffy short kilt",],[],[],[],true];
 const waistline_list_d = [["invisible","gathered","button fly","double pointed","low","high","empire","band","pointed",],["invisible","gathered","button fly","double pointed","suspenders","fall front","overalls","belt",],["fall front","empire","pointed",],["suspenders","belt",],[],true];
 const waistline_list_d_dec = [["suspenders","belt",],["suspenders","belt",],[],[],[],true];
@@ -97,7 +97,7 @@ const hat_front_list_d = [["none","flower","flower crown","bandanna","hijab","cr
 const hat_front_list_d_dec = [["bowler","broad hat","fedora","witch hat","top hat","crown",],["bowler","broad hat","fedora","witch hat","top hat","crown",],[],[],[],true];
 const wheelchair_list_d = [["none","manual","old fashioned",],["none","manual","old fashioned",],["old fashioned",],[],[],true];
 const wheelchair_leg_list_d = [["none","regular",],["none","regular",],[],[],[],true];
-const wheelchair_bottom_list_d = [["none","briefs","short skirt","medium skirt","long skirt","puffy short kilt","short kilt","kilt","long kilt","tube skirt",],["none","briefs","shorts","breeches","trousers",],["breeches","tube skirt","briefs","long kilt",],["puffy short kilt",],[],false];
+const wheelchair_bottom_list_d = [["none","briefs","short skirt","medium skirt","long skirt","empire full long skirt","puffy short kilt","short kilt","kilt","long kilt","tube skirt",],["none","briefs","shorts","breeches","trousers",],["breeches","tube skirt","briefs","long kilt",],["puffy short kilt",],[],false];
 const wheelchair_bottom_list_d_dec = [["puffy short kilt",],["puffy short kilt",],[],[],[],true];
 const wheelchair_coat_list_d = [["none","medium cloak","long jacket closed","dress jacket","jama",],["none","medium cloak","long jacket closed","dress jacket","jama",],[],[],[],true];
 

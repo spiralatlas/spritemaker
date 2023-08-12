@@ -53,8 +53,10 @@ function updateVariables(){
     let hair_back_obj = findNameMatch(image_objects,"hair_back");
 
     //waist
-    if (bottom_obj.item ==0)
+    if (bottom_obj.item ==0|| getImageItem(bottom_obj).includes("full")){//"full" skirts are weird waistwise
         findNameMatch(image_objects,"waistline").item = -1;
+        findNameMatch(image_objects,"waistline_dec").item = -1;
+    }
     //sleeves
 
     if (top_nosleeves_list.includes(getImageItem(top_obj)))
@@ -515,10 +517,14 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
                 //remove coat if wearing a puffy skirt    
                 }
         }
-        //remove coat if wearing a puffy skirt
+        
         b_index = findDefiningIndex("bottom")
+        //remove coat if wearing a puffy skirt
         if (defining_objects[b_index].item_list[this.current_defining_objects[b_index].value_list[0]].includes("puffy"))
             this.current_defining_objects[findDefiningIndex("coat")].value_list = listOf(0);
+        //remove overshirt if wearing a full skirt
+        if (defining_objects[b_index].item_list[this.current_defining_objects[b_index].value_list[0]].includes("full"))
+            this.current_defining_objects[findDefiningIndex("overshirt")].value_list = listOf(0);
     },
     randomiseAll(gender){
         remove_list = [];

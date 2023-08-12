@@ -151,7 +151,7 @@ overshirt_sleeve_list_w = []
 overshirt_sleeve_list_d = [overshirt_sleeve_list_f, overshirt_sleeve_list_m, overshirt_sleeve_list_w,[],[],True]
 
 bottom_list_u = ["none","briefs",]
-bottom_list_f = bottom_list_u+["short skirt","medium skirt","long skirt","puffy short kilt","short kilt","kilt","long kilt", "tube skirt",]
+bottom_list_f = bottom_list_u+["short skirt","medium skirt","long skirt","empire full long skirt", "puffy short kilt","short kilt","kilt","long kilt", "tube skirt",]
 bottom_list_m = bottom_list_u+["shorts", "breeches","trousers",]
 bottom_list_w = ["breeches","tube skirt","briefs","long kilt",]
 bottom_list_decs = ["puffy short kilt"]
@@ -587,7 +587,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["hair_front","hair_back"]:
+        if c.name in ["bottom"]:
             process_portrait_part(c)
 
     makeHourglass()        
