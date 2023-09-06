@@ -555,6 +555,8 @@ def process_portrait_part(obj):
                         process_image(item, loc,"underlay")      
                     else:    
                         process_image(item, loc,"regular")
+                    if obj.name=="waistline":
+                        process_image(item, loc+"/skirt","regular")    
     
 
 def process_all_portraits():
@@ -587,7 +589,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["bottom"]:
+        if c.name in ["waistline"]:
             process_portrait_part(c)
 
     makeHourglass()        
