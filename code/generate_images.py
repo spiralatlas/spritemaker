@@ -161,7 +161,7 @@ waistline_list_u=["invisible","gathered","button fly","double pointed"]
 waistline_list_f = waistline_list_u+["low","high","empire","band","pointed"]
 waistline_list_m = waistline_list_u+["suspenders","fall front","overalls","belt"]
 waistline_list_w = ["fall front","empire","pointed"]
-waistline_list_decs = ["suspenders","belt"]
+waistline_list_decs = ["suspenders","belt","pointed"]
 waistline_list_d = [waistline_list_f,waistline_list_m,waistline_list_w,waistline_list_decs,[],True]
 
 neckwear_list_u = ["none", "cravat bow", "bandanna", "scarf","kerchief","long scarf","chains","amulet"]  
