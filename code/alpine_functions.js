@@ -53,7 +53,7 @@ function updateVariables(){
     let hair_back_obj = findNameMatch(image_objects,"hair_back");
 
     //waist
-    if (bottom_obj.item ==0|| getImageItem(bottom_obj).includes("full")){//"full" skirts are weird waistwise
+    if (bottom_obj.item ==0|| getImageItem(bottom_obj).includes("empire")){// hide waistline when it's not needed
         findNameMatch(image_objects,"waistline").item = -1;
         findNameMatch(image_objects,"waistline_dec").item = -1;
     }

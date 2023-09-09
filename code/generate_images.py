@@ -90,9 +90,9 @@ complexion_list_u = ["none","slight lines", "freckles","wrinkles","gaunt", "eye 
 complexion_list_d = default_list(complexion_list_u)
 
 eyewear_list_u = [ "eye patch","oblong wireframes","coloured wireframes", "oblong glasses","square glasses","round glasses","coloured spectacles","spectacles","sunglasses","coloured glasses","domino mask","face mask"] 
-eyewear_list_f = ["none",]+eyewear_list_u
+eyewear_list_f = ["none",]+eyewear_list_u+["bindi","huadian"]
 eyewear_list_m = ["none","monocle"]+eyewear_list_u
-eyewear_list_w = ["monocle","spectacles","coloured spectacles", "eye patch","domino mask"]
+eyewear_list_w = ["monocle","spectacles","coloured spectacles", "eye patch","domino mask","huadian"]
 eyewear_list_decs = ["coloured spectacles","coloured glasses"]
 eyewear_list_d =  [eyewear_list_f,eyewear_list_m, eyewear_list_w,eyewear_list_decs,[],True]
 
@@ -151,9 +151,9 @@ overshirt_sleeve_list_w = []
 overshirt_sleeve_list_d = [overshirt_sleeve_list_f, overshirt_sleeve_list_m, overshirt_sleeve_list_w,[],[],True]
 
 bottom_list_u = ["none","briefs",]
-bottom_list_f = bottom_list_u+["short skirt","medium skirt","long skirt","empire full long skirt", "puffy short kilt","short kilt","kilt","long kilt", "tube skirt",]
-bottom_list_m = bottom_list_u+["shorts", "breeches","trousers",]
-bottom_list_w = ["breeches","tube skirt","briefs","long kilt",]
+bottom_list_f = bottom_list_u+["short skirt","puffy full short skirt","medium skirt","puffy full medium skirt","long skirt","puffy full long skirt","empire skirt", "puffy short kilt","short kilt","kilt","long kilt", "tube skirt","ragged skirt"]
+bottom_list_m = bottom_list_u+["shorts", "breeches","trousers","ragged trousers"]
+bottom_list_w = ["breeches","tube skirt","briefs","long kilt","empire skirt","ragged trousers","ragged skirt"]
 bottom_list_decs = ["puffy short kilt"]
 bottom_list_d = [bottom_list_f, bottom_list_m, bottom_list_w,bottom_list_decs,[],False]
 
@@ -515,6 +515,8 @@ def makeHourglass():
     for h in hourglass_list:
         process_image(h, "anatomy/hourglass","regular")
         process_image(h+"_mask", "anatomy/hourglass","no_fill")
+    process_image("waistline", "anatomy/hourglass/full","regular")
+    process_image("waistline_mask", "anatomy/hourglass/full","no_fill")    
 
 def process_image(name, location,type):
     return imagemodule.process_image(name, location,type)
@@ -531,7 +533,9 @@ def process_portrait_part(obj):
         render_list = obj.item_list
     for item in obj.dec_list:
         print(obj.name+" "+item+" dec")
-        process_image(item, loc,"dec")    
+        process_image(item, loc,"dec")
+        if obj.name =="waistline":
+            process_image(item, loc+"/full","dec")      
     for item in render_list:
         if checkRender(obj.name, item):     
             if item!="none":
@@ -555,8 +559,8 @@ def process_portrait_part(obj):
                         process_image(item, loc,"underlay")      
                     else:    
                         process_image(item, loc,"regular")
-                    if obj.name=="waistline":
-                        process_image(item, loc+"/skirt","regular")    
+                    if obj.name =="waistline":
+                        process_image(item, loc+"/full","regular")    
     
 
 def process_all_portraits():
@@ -589,7 +593,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["eyewear"]:
+        if c.name in ["waistline","bottom"]:
             process_portrait_part(c)
 
     makeHourglass()        

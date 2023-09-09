@@ -147,6 +147,13 @@ function add_image_object(name, list_list, location,box){
         obj.hourglass_mask_image.src = loc+ "_mask_base.png"
         obj.hourglass_line_image = new Image();
         obj.hourglass_line_image.src = loc+ "_multiply_blue.png"
+        if (obj.name=="waistline"){
+            let loc = "images/render/anatomy/hourglass/full/"+name
+            obj.puffy_hourglass_mask_image = new Image();
+            obj.puffy_hourglass_mask_image.src = loc+ "_mask_base.png"
+            obj.puffy_hourglass_line_image = new Image();
+            obj.puffy_hourglass_line_image.src = loc+ "_multiply_blue.png"
+        }
     } 
     if ((hourglass_list.map(value=>value+"_dec")).includes(obj.name)){
         let loc = "images/render/anatomy/hourglass/"+name.slice(0,-4)
@@ -154,7 +161,15 @@ function add_image_object(name, list_list, location,box){
         obj.hourglass_mask_image.src = loc+ "_mask_base.png"
         obj.hourglass_line_image = new Image();
         obj.hourglass_line_image.src = loc+ "_multiply_blue.png"
+        if (obj.name=="waistline_dec"){
+            let loc = "images/render/anatomy/hourglass/full/"+name.slice(0,-4)
+            obj.puffy_hourglass_mask_image = new Image();
+            obj.puffy_hourglass_mask_image.src = loc+ "_mask_base.png"
+            obj.puffy_hourglass_line_image = new Image();
+            obj.puffy_hourglass_line_image.src = loc+ "_multiply_blue.png"
+        }
     } 
+    
     image_objects.push(obj);
 }
 

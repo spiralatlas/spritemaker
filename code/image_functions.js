@@ -315,6 +315,9 @@ function fixSources(){
                 b.underlay_image.src  = "images/render/"+b.location+"/"+current_loc +"_base.png";
 
             }else{
+                if (b.name.includes("waistline") && getImageItem(findNameMatch(image_objects,"bottom")).includes("full")){
+                    current_loc = "full/"+current_loc
+                }
                 let regular_eyes = false;
                 if (b.name=="eyes"){ 
                     eye_type = eyetype_list[defining_variables_object.current_eyetype]
@@ -422,9 +425,15 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
         
         if (hasHourglass(obj)){
             off_ctx.globalCompositeOperation = "destination-out";
-            off_ctx.drawImage(obj.hourglass_mask_image,0,0,width,height, 0, 0,new_width,new_height);
+            if (obj.name.includes("waistline")&& getImageItem(findNameMatch(image_objects,"bottom")).includes("full"))
+                off_ctx.drawImage(obj.puffy_hourglass_mask_image,0,0,width,height, 0, 0,new_width,new_height);
+            else
+                off_ctx.drawImage(obj.hourglass_mask_image,0,0,width,height, 0, 0,new_width,new_height);
             off_ctx.globalCompositeOperation = "multiply";
-            off_ctx.drawImage(obj.hourglass_line_image,0,0,width,height, 0, 0,new_width,new_height);
+            if (obj.name.includes("waistline")&& getImageItem(findNameMatch(image_objects,"bottom")).includes("full"))
+                off_ctx.drawImage(obj.puffy_hourglass_line_image,0,0,width,height, 0, 0,new_width,new_height);
+            else
+                off_ctx.drawImage(obj.hourglass_line_image,0,0,width,height, 0, 0,new_width,new_height);
             off_ctx.globalCompositeOperation = "destination-in";
             off_ctx.drawImage(obj.base_image,0,0,width,height, 0, 0,new_width,new_height);
         }
