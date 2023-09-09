@@ -589,7 +589,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["waistline"]:
+        if c.name in ["eyewear"]:
             process_portrait_part(c)
 
     makeHourglass()        
