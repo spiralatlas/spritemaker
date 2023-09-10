@@ -116,13 +116,13 @@ back_list_w = ["fluffy tail","thin tail","sword","katanas"]
 back_list_d = [back_list_f,back_list_m,back_list_w,[],[],True]
 
 top_list_u = ["vest","tee", "chinese collar","turtleneck","kimono" ]
-top_list_f = ["none","bikini","crop top","square", "boatneck","gathered","low vee","sailor shirt"]+top_list_u
+top_list_f = ["none","bikini","strapless", "crop top","square", "corset","sweetheart", "boatneck","gathered","low vee","sailor shirt"]+top_list_u
 top_list_m= ["none",]+top_list_u+["open shirt","button up", "high collar shirt"] 
-top_list_w = ["high collar shirt"]
-top_list_decs = ["square","gathered","low vee"]
+top_list_w = ["high collar shirt","corset",]
+top_list_decs = ["square","gathered","low vee","corset",]
 top_list_mask = []
 top_list_d = [top_list_f,top_list_m,top_list_w,top_list_decs,top_list_mask,False]
-top_nosleeves_list = ["none", "bikini", "vest"]
+top_nosleeves_list = ["none", "bikini", "vest","strapless",]
 
 top_collar_list = ["open shirt","button up","high collar shirt","sailor shirt"] 
 top_collar_list_decs = ["sailor shirt"]
@@ -593,7 +593,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["top_sleeves","overshirt_sleeves", "coat_sleeves"]:
+        if c.name in ["top"]:
             process_portrait_part(c)
 
     makeHourglass()        
