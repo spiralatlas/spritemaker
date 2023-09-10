@@ -57,7 +57,7 @@ function updateVariables(){
         findNameMatch(image_objects,"waistline").item = -1;
         findNameMatch(image_objects,"waistline_dec").item = -1;
     }
-    //sleeves
+    //remove sleeves ifclothing is sleeveless
 
     if (top_nosleeves_list.includes(getImageItem(top_obj)))
         top_sleeves_obj.item = -1;
@@ -132,9 +132,9 @@ function updateVariables(){
     findNameMatch(image_objects,"sidelocks_repeat").crop = [[195,125, 185,367]];
 
 
-    if (coat_sleeves_obj.item>0||overshirt_sleeves_obj.item>0){//coat or overshirt have sleeves
+    if (coat_sleeves_obj.item>1||overshirt_sleeves_obj.item>1){//coat or overshirt have sleeves
         top_sleeves_obj.crop = [[0,0,full_width,462]]; //crop top off puffy sleeves
-        if (coat_sleeves_obj.item>1||overshirt_sleeves_obj.item>1) //long sleeves
+        if (coat_sleeves_obj.item>2||overshirt_sleeves_obj.item>2) //long sleeves
             top_sleeves_obj.crop = [[0,0,full_width,654]];
         if (coat_sleeves_obj.item>=0){ //crop top collar under sleeved coats
             crop_box = [[0,0,124,467],[264,312,50,200]];

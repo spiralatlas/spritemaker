@@ -128,10 +128,10 @@ top_collar_list = ["open shirt","button up","high collar shirt","sailor shirt"]
 top_collar_list_decs = ["sailor shirt"]
 top_collar_list_d = [top_collar_list,top_collar_list,[], top_collar_list_decs, [],True]
 
-top_sleeve_list_u = ["sleeveless", "short","long", "broad"]
-top_sleeve_list_f = top_sleeve_list_u+["puffy","bell"]
+top_sleeve_list_u = ["sleeveless", "cap","short","three quarter", "long", "broad","ragged"]
+top_sleeve_list_f = top_sleeve_list_u+["puffy","bell","leg of mutton","flounce"]
 top_sleeve_list_m = top_sleeve_list_u+["puffy shirt", "long shirt","rolled"]
-top_sleeve_list_w = ["puffy", "puffy shirt","bell"]
+top_sleeve_list_w = ["puffy", "puffy shirt","bell","leg of mutton","ragged","flounce"]
 top_sleeve_list_decs = []
 top_sleeve_list_d = [top_sleeve_list_f,top_sleeve_list_m,top_sleeve_list_w,top_sleeve_list_decs,[],True]
 
@@ -144,7 +144,7 @@ overshirt_list_mask = []
 overshirt_list_d = [overshirt_list_f, overshirt_list_m,overshirt_list_w,overshirt_list_decs,overshirt_list_mask,False]
 overshirt_nosleeves_list = ["none","obi", "band","band with flap"]
 
-overshirt_sleeve_list_u = ["sleeveless","short","long"]
+overshirt_sleeve_list_u = ["sleeveless","cap","short","long"]
 overshirt_sleeve_list_f = overshirt_sleeve_list_u+[]
 overshirt_sleeve_list_m = overshirt_sleeve_list_u+[]
 overshirt_sleeve_list_w = []
@@ -179,7 +179,7 @@ coat_list_decs = ["dress jacket","jama"]
 coat_list_d = [coat_list_f, coat_list_m, coat_list_w,coat_list_decs,[],True]
 coat_nosleeves_list = ["none", "wrap", "medium cloak"]
 
-coat_sleeve_list_u = ["sleeveless","short","scrunched", "long", "long blocky","broad","trailing"]
+coat_sleeve_list_u = ["sleeveless","cap", "short","scrunched", "long", "long blocky","broad","trailing"]
 coat_sleeve_list_f = coat_sleeve_list_u+[]
 coat_sleeve_list_m = coat_sleeve_list_u+[]
 coat_sleeve_list_w = ["broad","trailing"]
@@ -593,7 +593,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["waistline","bottom"]:
+        if c.name in ["top_sleeves","overshirt_sleeves", "coat_sleeves"]:
             process_portrait_part(c)
 
     makeHourglass()        
