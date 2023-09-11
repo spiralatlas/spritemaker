@@ -537,7 +537,9 @@ def process_portrait_part(obj):
         print(obj.name+" "+item+" dec")
         process_image(item, loc,"dec")
         if obj.name =="waistline":
-            process_image(item, loc+"/full","dec")      
+            process_image(item, loc+"/full","dec")
+    if obj.name =="waistline":         
+        process_image("split", loc+"/full","dec")              
     for item in render_list:
         if checkRender(obj.name, item):     
             if item!="none":
@@ -595,7 +597,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["bottom"]:
+        if c.name in ["waistline"]:
             process_portrait_part(c)
 
     makeHourglass()        
