@@ -315,8 +315,9 @@ function fixSources(){
                 b.underlay_image.src  = "images/render/"+b.location+"/"+current_loc +"_base.png";
 
             }else{
-                if (b.name.includes("waistline") && getImageItem(findNameMatch(image_objects,"bottom")).includes("full")){
-                    current_loc = "full/"+current_loc
+                if (b.name.includes("waistline")){
+                    if  (getImageItem(findNameMatch(image_objects,"bottom")).includes("full"))
+                        current_loc = "full/"+current_loc
                 }
                 let regular_eyes = false;
                 if (b.name=="eyes"){ 

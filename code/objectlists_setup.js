@@ -35,9 +35,14 @@ function getImageItem(obj){
         obj.item=-1;
     if (obj.item==-1){
         return "none";
-    } else{
-            return obj.item_list[obj.item];
-        }
+    } 
+    else{
+        if (obj.name.includes("waistline")&& getImageItem(findNameMatch(image_objects,"bottom")).includes("split"))
+                return "split"
+        else{
+                return obj.item_list[obj.item];
+            }
+    }
 }
 
 function filteredItems(base_list,removed_list, prob){

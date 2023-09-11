@@ -151,10 +151,10 @@ overshirt_sleeve_list_w = []
 overshirt_sleeve_list_d = [overshirt_sleeve_list_f, overshirt_sleeve_list_m, overshirt_sleeve_list_w,[],[],True]
 
 bottom_list_u = ["none","briefs",]
-bottom_list_f = bottom_list_u+["short skirt","puffy full short skirt","medium skirt","puffy full medium skirt","long skirt","puffy full long skirt","empire skirt", "puffy short kilt","short kilt","kilt","long kilt", "tube skirt","ragged skirt"]
+bottom_list_f = bottom_list_u+["short skirt","puffy full short skirt","medium skirt","puffy full medium skirt","long skirt","puffy full long skirt","puffy full long split skirt","empire skirt", "puffy short kilt","short kilt","kilt","long kilt", "tube skirt","ragged skirt"]
 bottom_list_m = bottom_list_u+["shorts", "breeches","trousers","ragged trousers"]
 bottom_list_w = ["breeches","tube skirt","briefs","long kilt","empire skirt","ragged trousers","ragged skirt"]
-bottom_list_decs = ["puffy short kilt"]
+bottom_list_decs = ["puffy short kilt","puffy full long split skirt"]
 bottom_list_d = [bottom_list_f, bottom_list_m, bottom_list_w,bottom_list_decs,[],False]
 
 waistline_list_u=["invisible","gathered","button fly","double pointed"]
@@ -171,13 +171,13 @@ neckwear_list_w = ["cravat bow","bandanna","chains","amulet"]
 neckwear_list_decs = ["jewelled necklace","beaded necklace","amulet"]
 neckwear_list_d = [neckwear_list_f, neckwear_list_m,neckwear_list_w,neckwear_list_decs,[],True]
 
-coat_list_u = ["open sweater", "medium cloak", "short jacket", "open robe","closed robe", "long open jacket"]
-coat_list_f = ["none","wrap"]+coat_list_u+["dress jacket",]
+coat_list_u = ["open sweater", "cape", "medium cloak", "short jacket", "open robe","closed robe", "long open jacket"]
+coat_list_f = ["none","wrap"]+coat_list_u+["dress jacket","bolero"]
 coat_list_m = ["none","hoodie", "cool jacket","business jacket",]+coat_list_u+["buttoned jacket","overcoat","jama",]  
-coat_list_w = ["medium cloak","jama","open robe","closed robe",]
-coat_list_decs = ["dress jacket","jama"] 
+coat_list_w = ["medium cloak","jama","open robe","closed robe","cape",]
+coat_list_decs = ["dress jacket","jama",] 
 coat_list_d = [coat_list_f, coat_list_m, coat_list_w,coat_list_decs,[],True]
-coat_nosleeves_list = ["none", "wrap", "medium cloak"]
+coat_nosleeves_list = ["none", "wrap", "medium cloak","cape",]
 
 coat_sleeve_list_u = ["sleeveless","cap", "short","scrunched", "long", "long blocky","broad","trailing"]
 coat_sleeve_list_f = coat_sleeve_list_u+[]
@@ -258,14 +258,14 @@ defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_de
 
 #extra info
 
-no_chest_coat_list = [ "robe","robe hood",  "medium cloak", "medium cloak hood", "long cloak", "long cloak hood","wrap"] #clothes where the chest doesn't show
+no_chest_coat_list = [ "robe","robe hood",  "medium cloak", "medium cloak hood", "long cloak", "long cloak hood","wrap","cape",] #clothes where the chest doesn't show
 no_chest_overshirt_list = overshirt_nosleeves_list
 no_fill_list = ["mouth"] #lined items with no coloured fill
 
 hat_back_list = ["none","bandanna","beanie","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hood"]
 hat_back_list_decs = ["scarf"]
 hat_back_list_d = [hat_back_list,hat_back_list,[],hat_back_list_decs,[],True]
-coat_back_list = ["none","medium cloak","wrap","overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket", "open robe","closed robe", "open sweater", "long open jacket", "hoodie"] 
+coat_back_list = ["none","medium cloak","wrap","cape", "bolero", "overcoat","short jacket","dress jacket","business jacket","buttoned jacket","cool jacket", "open robe","closed robe", "open sweater", "long open jacket", "hoodie"] 
 coat_back_list_d = default_list(coat_back_list) 
 
 neckwear_front_list = ["bow", "cravat bow","bow tie", "bandanna"]
@@ -528,7 +528,9 @@ def process_portrait_part(obj):
         loc = obj.location + "/"+obj.name  
 
     if obj.name == "facial_hair":
-        render_list = facial_hair_list_render    
+        render_list = facial_hair_list_render 
+    elif obj.name in ["waistline"]:
+        render_list = obj.item_list+["split"]       
     else:
         render_list = obj.item_list
     for item in obj.dec_list:
@@ -593,7 +595,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["top_chest"]:
+        if c.name in ["bottom"]:
             process_portrait_part(c)
 
     makeHourglass()        
