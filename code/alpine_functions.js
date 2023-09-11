@@ -512,9 +512,7 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
                     this.current_defining_objects[i].value_list = listOf(0);
                 } Want to remove ugly ties but it's troublesome */ 
                 if (["wheelchair"].includes(defining_objects[i].name))//just while fixing clothes 
-                    this.current_defining_objects[i].value_list = listOf(0); 
-
-                //remove coat if wearing a puffy skirt    
+                    this.current_defining_objects[i].value_list = listOf(0);     
                 }
         }
         
@@ -523,8 +521,10 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
         if (defining_objects[b_index].item_list[this.current_defining_objects[b_index].value_list[0]].includes("puffy"))
             this.current_defining_objects[findDefiningIndex("coat")].value_list = listOf(0);
         //remove overshirt if wearing a full skirt
-        if (defining_objects[b_index].item_list[this.current_defining_objects[b_index].value_list[0]].includes("full"))
+        if (defining_objects[b_index].item_list[this.current_defining_objects[b_index].value_list[0]].includes("full")){
             this.current_defining_objects[findDefiningIndex("overshirt")].value_list = listOf(0);
+            this.current_defining_objects[findDefiningIndex("coat")].value_list = listOf(0);
+        }
     },
     randomiseAll(gender){
         remove_list = [];
