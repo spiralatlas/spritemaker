@@ -359,7 +359,7 @@ const character_preset_defining_list=[
 {name:'top',value_list:[12,12,12,12,12,12,12,12,12,12],colour1:'#ece2c3',colour2:'#30261C',patterncolour:'#bbd7d4',pattern:11},
 {name:'overshirt_sleeves',value_list:[1,1,1,1,1,1,1,1,1,1],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'coat_sleeves',value_list:[2,2,2,2,2,2,2,2,2,2],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
-{name:'bottom',value_list:[15,15,15,15,15,15,15,15,15,15],colour1:'#3f3d29',colour2:'#706482',patterncolour:'#F38630',pattern:0},
+{name:'bottom',value_list:[16,16,16,16,16,16,16,16,16,16],colour1:'#3f3d29',colour2:'#706482',patterncolour:'#F38630',pattern:0},
 {name:'waistline',value_list:[2,2,2,2,2,2,2,2,2,2],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'neckwear',value_list:[6,6,6,6,6,6,6,6,6,6],colour1:'#eeb7ae',colour2:'#FA6900',patterncolour:'#fff2d8',pattern:4},
 {name:'overshirt',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#D95B43',colour2:'#E08E79',patterncolour:'#480048',pattern:15},
@@ -379,7 +379,7 @@ const character_preset_defining_list=[
 {name:'fringe',value_list:[18,18,18,18,18,18,18,18,18,18],colour1:'#efd17b',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'wheelchair',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'hat',value_list:[6,6,6,6,6,6,6,6,6,6],colour1:'#85d9da',colour2:'#C04848',patterncolour:'#1F5F61',pattern:0}],ui_variables_object:
-{dark_theme:false,current_tab_type:6,current_expression_type:0,current_clothingname:3,current_accessoryname:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:'0',current_effect_type:0,effect_colour:'#000000',current_character_preset:0,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
+{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:3,current_accessoryname:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:0,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
 {current_eyetype:1,current_hairstyle:19,current_waist_type:0}},
 
 
@@ -395,11 +395,11 @@ const character_preset_defining_list=[
 {name:'top',value_list:[17,17,17,17,17,17,17,17,17,17],colour1:'#b5d8d5',colour2:'#355C7D',patterncolour:'#A0DED6',pattern:0},
 {name:'overshirt_sleeves',value_list:[1,1,1,1,1,1,1,1,1,1],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'coat_sleeves',value_list:[4,4,4,4,4,4,4,4,4,4],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
-{name:'bottom',value_list:[17,17,17,17,17,17,17,17,17,17],colour1:'#5a6283',colour2:'#6e4b3b',patterncolour:'#ABBB9F',pattern:0},
+{name:'bottom',value_list:[18,18,18,18,18,18,18,18,18,18],colour1:'#5a6283',colour2:'#6e4b3b',patterncolour:'#ABBB9F',pattern:0},
 {name:'waistline',value_list:[7,7,7,7,7,7,7,7,7,7],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'neckwear',value_list:[9,9,9,9,9,9,9,9,9,9],colour1:'#4e5f90',colour2:'#480048',patterncolour:'#7abbda',pattern:13},
 {name:'overshirt',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FDEECD',colour2:'#1C0113',patterncolour:'#C06C84',pattern:0},
-{name:'coat',value_list:[9,9,9,9,9,9,9,9,9,9],colour1:'#fef4e7',colour2:'#ADD9D5',patterncolour:'#F0B49E',pattern:0},
+{name:'coat',value_list:[10,10,10,10,10,10,10,10,10,10],colour1:'#fef4e7',colour2:'#ADD9D5',patterncolour:'#F0B49E',pattern:0},
 {name:'sidelocks',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'head',value_list:[4,4,4,4,4,4,4,4,4,4],colour1:'#5b241d',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'ears',value_list:[1,1,1,1,1,1,1,1,1,1],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
@@ -415,7 +415,7 @@ const character_preset_defining_list=[
 {name:'fringe',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#140809',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'wheelchair',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'hat',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#C02942',colour2:'#1F5F61',patterncolour:'#F1D4AF',pattern:0}],ui_variables_object:
-{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:2,current_accessoryname:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:'0',current_effect_type:0,effect_colour:'#000000',current_character_preset:1,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
+{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:3,current_accessoryname:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:1,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
 {current_eyetype:0,current_hairstyle:3,current_waist_type:0}},
 
 
@@ -431,7 +431,7 @@ const character_preset_defining_list=[
 {name:'top',value_list:[12,12,12,12,12,12,12,12,12,12],colour1:'#e5e4d7',colour2:'#F8B195',patterncolour:'#edc55f',pattern:7},
 {name:'overshirt_sleeves',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'coat_sleeves',value_list:[4,4,4,4,4,4,4,4,4,4],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
-{name:'bottom',value_list:[15,15,15,15,15,15,15,15,15,15],colour1:'#9bb47b',colour2:'#7e6b50',patterncolour:'#547950',pattern:6},
+{name:'bottom',value_list:[16,16,16,16,16,16,16,16,16,16],colour1:'#9bb47b',colour2:'#7e6b50',patterncolour:'#547950',pattern:6},
 {name:'waistline',value_list:[1,1,1,1,1,1,1,1,1,1],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'neckwear',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#9c8fba',colour2:'#F67280',patterncolour:'#6C5B7B',pattern:0},
 {name:'overshirt',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#F67280',colour2:'#355C7D',patterncolour:'#6C5B7B',pattern:0},
@@ -451,7 +451,7 @@ const character_preset_defining_list=[
 {name:'fringe',value_list:[5,5,5,5,5,5,5,5,5,5],colour1:'#986034',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'wheelchair',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'hat',value_list:[6,6,6,6,6,6,6,6,6,6],colour1:'#e5c673',colour2:'#F8B195',patterncolour:'#C06C84',pattern:0}],ui_variables_object:
-{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:5,current_accessoryname:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:'0',current_effect_type:0,effect_colour:'#000000',current_character_preset:2,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
+{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:3,current_accessoryname:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:2,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
 {current_eyetype:2,current_hairstyle:9,current_waist_type:0}},
 
 
@@ -467,7 +467,7 @@ const character_preset_defining_list=[
 {name:'top',value_list:[11,11,11,11,11,11,11,11,11,11],colour1:'#eae5cf',colour2:'#da5047',patterncolour:'#0D6759',pattern:0},
 {name:'overshirt_sleeves',value_list:[1,1,1,1,1,1,1,1,1,1],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'coat_sleeves',value_list:[3,3,3,3,3,3,3,3,3,3],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
-{name:'bottom',value_list:[17,17,17,17,17,17,17,17,17,17],colour1:'#859eb1',colour2:'#7AB317',patterncolour:'#0B2E59',pattern:0},
+{name:'bottom',value_list:[18,18,18,18,18,18,18,18,18,18],colour1:'#859eb1',colour2:'#7AB317',patterncolour:'#0B2E59',pattern:0},
 {name:'waistline',value_list:[1,1,1,1,1,1,1,1,1,1],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'neckwear',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#2A044A',colour2:'#A0C55F',patterncolour:'#A0C55F',pattern:0},
 {name:'overshirt',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#A0C55F',colour2:'#0D6759',patterncolour:'#7AB317',pattern:0},
@@ -487,7 +487,7 @@ const character_preset_defining_list=[
 {name:'fringe',value_list:[22,22,22,22,22,22,22,22,22,22],colour1:'#c04532',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'wheelchair',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'hat',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#e8e3cd',colour2:'#2A044A',patterncolour:'#0D6759',pattern:0}],ui_variables_object:
-{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:3,current_accessoryname:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:'0',current_effect_type:0,effect_colour:'#000000',current_character_preset:3,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
+{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:3,current_accessoryname:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:3,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
 {current_eyetype:6,current_hairstyle:4,current_waist_type:0}},
 
 
@@ -503,7 +503,7 @@ const character_preset_defining_list=[
 {name:'top',value_list:[15,15,15,15,15,15,15,15,15,15],colour1:'#35302a',colour2:'#ECD078',patterncolour:'#1693A5',pattern:0},
 {name:'overshirt_sleeves',value_list:[1,1,1,1,1,1,1,1,1,1],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'coat_sleeves',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
-{name:'bottom',value_list:[16,16,16,16,16,16,16,16,16,16],colour1:'#33302a',colour2:'#EA8676',patterncolour:'#F03C02',pattern:0},
+{name:'bottom',value_list:[17,17,17,17,17,17,17,17,17,17],colour1:'#33302a',colour2:'#EA8676',patterncolour:'#F03C02',pattern:0},
 {name:'waistline',value_list:[9,9,9,9,9,9,9,9,9,9],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'neckwear',value_list:[13,13,13,13,13,13,13,13,13,13],colour1:'#b56f83',colour2:'#DCEDC2',patterncolour:'#E08E79',pattern:0},
 {name:'overshirt',value_list:[2,2,2,2,2,2,2,2,2,2],colour1:'#180212',colour2:'#2e261c',patterncolour:'#E0E4CC',pattern:0},
@@ -523,7 +523,7 @@ const character_preset_defining_list=[
 {name:'fringe',value_list:[6,6,6,6,6,6,6,6,6,6],colour1:'#fef9f0',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'wheelchair',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'hat',value_list:[14,14,14,14,14,14,14,14,14,14],colour1:'#33302a',colour2:'#D24858',patterncolour:'#1C0113',pattern:0}],ui_variables_object:
-{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothingname:2,current_accessoryname:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:'0',current_effect_type:0,effect_colour:'#000000',current_character_preset:4,current_expression_preset:0,isWeirdOutfit:true,isWeirdBody:true},defining_variables_object:
+{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:3,current_accessoryname:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:4,current_expression_preset:0,isWeirdOutfit:true,isWeirdBody:true},defining_variables_object:
 {current_eyetype:3,current_hairstyle:5,current_waist_type:0}},
 
 
@@ -559,7 +559,7 @@ const character_preset_defining_list=[
 {name:'fringe',value_list:[21,21,21,21,21,21,21,21,21,21],colour1:'#8ecf6b',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'wheelchair',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'hat',value_list:[3,3,3,3,3,3,3,3,3,3],colour1:'#ede3cd',colour2:'#571B3C',patterncolour:'#A26156',pattern:8}],ui_variables_object:
-{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothingname:3,current_accessoryname:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:'0',current_effect_type:0,effect_colour:'#000000',current_character_preset:5,current_expression_preset:0,isWeirdOutfit:true,isWeirdBody:true},defining_variables_object:
+{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:3,current_accessoryname:0,current_export_image_type:0,current_gender_type:0,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:5,current_expression_preset:0,isWeirdOutfit:true,isWeirdBody:true},defining_variables_object:
 {current_eyetype:3,current_hairstyle:26,current_waist_type:0}},
 
 
@@ -575,7 +575,7 @@ const character_preset_defining_list=[
 {name:'top',value_list:[17,17,17,17,17,17,17,17,17,17],colour1:'#eae5cf',colour2:'#e8e5d0',patterncolour:'#3c534f',pattern:0},
 {name:'overshirt_sleeves',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FAE181',colour2:'#FAF1CF',patterncolour:'#0000FF',pattern:0},
 {name:'coat_sleeves',value_list:[4,4,4,4,4,4,4,4,4,4],colour1:'#FAE181',colour2:'#FAF1CF',patterncolour:'#0000FF',pattern:0},
-{name:'bottom',value_list:[17,17,17,17,17,17,17,17,17,17],colour1:'#403831',colour2:'#644c3d',patterncolour:'#53777A',pattern:0},
+{name:'bottom',value_list:[18,18,18,18,18,18,18,18,18,18],colour1:'#403831',colour2:'#644c3d',patterncolour:'#53777A',pattern:0},
 {name:'waistline',value_list:[6,6,6,6,6,6,6,6,6,6],colour1:'#4C6BC2',colour2:'#FAE181',patterncolour:'#0000FF',pattern:0},
 {name:'neckwear',value_list:[10,10,10,10,10,10,10,10,10,10],colour1:'#36544F',colour2:'#e8e5d0',patterncolour:'#A0C55F',pattern:0},
 {name:'overshirt',value_list:[4,4,4,4,4,4,4,4,4,4],colour1:'#2e261c',colour2:'#3e3831',patterncolour:'#5c534a',pattern:19},
@@ -595,7 +595,7 @@ const character_preset_defining_list=[
 {name:'fringe',value_list:[10,10,10,10,10,10,10,10,10,10],colour1:'#D8B994',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'wheelchair',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#E1748A',colour2:'#FAF1CF',patterncolour:'#0000FF',pattern:0},
 {name:'hat',value_list:[8,8,8,8,8,8,8,8,8,8],colour1:'#3e3831',colour2:'#3c534f',patterncolour:'#36544F',pattern:0}],ui_variables_object:
-{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:4,current_accessoryname:0,current_export_image_type:0,current_gender_type:1,current_size_type:0,current_head_ratio_type:0,crop_height:'0',current_effect_type:0,effect_colour:'#000000',current_character_preset:6,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
+{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothingname:3,current_accessoryname:0,current_export_image_type:0,current_gender_type:1,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:6,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
 {current_eyetype:6,current_hairstyle:8,current_waist_type:0}},
 
 
@@ -611,7 +611,7 @@ const character_preset_defining_list=[
 {name:'top',value_list:[16,16,16,16,16,16,16,16,16,16],colour1:'#fffcdb',colour2:'#2c5b8a',patterncolour:'#FFD3B5',pattern:0},
 {name:'overshirt_sleeves',value_list:[2,2,2,2,2,2,2,2,2,2],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'coat_sleeves',value_list:[4,4,4,4,4,4,4,4,4,4],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
-{name:'bottom',value_list:[17,17,17,17,17,17,17,17,17,17],colour1:'#1d212e',colour2:'#E0E4CC',patterncolour:'#355C7D',pattern:0},
+{name:'bottom',value_list:[18,18,18,18,18,18,18,18,18,18],colour1:'#1d212e',colour2:'#E0E4CC',patterncolour:'#355C7D',pattern:0},
 {name:'waistline',value_list:[4,4,4,4,4,4,4,4,4,4],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'neckwear',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#69D2E7',colour2:'#ABBB9F',patterncolour:'#1C0113',pattern:0},
 {name:'overshirt',value_list:[7,7,7,7,7,7,7,7,7,7],colour1:'#455667',colour2:'#FDEECD',patterncolour:'#EA8676',pattern:0},
@@ -631,7 +631,7 @@ const character_preset_defining_list=[
 {name:'fringe',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#39211e',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'wheelchair',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'hat',value_list:[9,9,9,9,9,9,9,9,9,9],colour1:'#36587d',colour2:'#f7e4be',patterncolour:'#685b79',pattern:0}],ui_variables_object:
-{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:3,current_accessoryname:0,current_export_image_type:0,current_gender_type:1,current_size_type:0,current_head_ratio_type:0,crop_height:'0',current_effect_type:0,effect_colour:'#000000',current_character_preset:7,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
+{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:3,current_accessoryname:0,current_export_image_type:0,current_gender_type:1,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:7,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
 {current_eyetype:0,current_hairstyle:32,current_waist_type:0}},
 
 
@@ -651,7 +651,7 @@ const character_preset_defining_list=[
 {name:'waistline',value_list:[9,9,9,9,9,9,9,9,9,9],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'neckwear',value_list:[7,7,7,7,7,7,7,7,7,7],colour1:'#efaf32',colour2:'#37b2c4',patterncolour:'#480048',pattern:0},
 {name:'overshirt',value_list:[2,2,2,2,2,2,2,2,2,2],colour1:'#895b7e',colour2:'#4a3061',patterncolour:'#C04848',pattern:10},
-{name:'coat',value_list:[7,7,7,7,7,7,7,7,7,7],colour1:'#df794d',colour2:'#601848',patterncolour:'#b1504b',pattern:5},
+{name:'coat',value_list:[10,10,10,10,10,10,10,10,10,10],colour1:'#df794d',colour2:'#601848',patterncolour:'#b1504b',pattern:5},
 {name:'sidelocks',value_list:[11,11,11,11,11,11,11,11,11,11],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'head',value_list:[5,5,5,5,5,5,5,5,5,5],colour1:'#632418',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'ears',value_list:[2,2,2,2,2,2,2,2,2,2],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
@@ -667,7 +667,7 @@ const character_preset_defining_list=[
 {name:'fringe',value_list:[16,16,16,16,16,16,16,16,16,16],colour1:'#4a499b',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'wheelchair',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'hat',value_list:[11,11,11,11,11,11,11,11,11,11],colour1:'#220048',colour2:'#c05f48',patterncolour:'#F07241',pattern:0}],ui_variables_object:
-{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothingname:2,current_accessoryname:0,current_export_image_type:0,current_gender_type:1,current_size_type:0,current_head_ratio_type:0,crop_height:'0',current_effect_type:0,effect_colour:'#000000',current_character_preset:8,current_expression_preset:0,isWeirdOutfit:true,isWeirdBody:true},defining_variables_object:
+{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:5,current_accessoryname:0,current_export_image_type:0,current_gender_type:1,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:8,current_expression_preset:0,isWeirdOutfit:true,isWeirdBody:true},defining_variables_object:
 {current_eyetype:1,current_hairstyle:22,current_waist_type:0}},
 
 
@@ -683,11 +683,11 @@ const character_preset_defining_list=[
 {name:'top',value_list:[15,15,15,15,15,15,15,15,15,15],colour1:'#eae5cf',colour2:'#A8E6CE',patterncolour:'#53777A',pattern:0},
 {name:'overshirt_sleeves',value_list:[1,1,1,1,1,1,1,1,1,1],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'coat_sleeves',value_list:[6,6,6,6,6,6,6,6,6,6],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
-{name:'bottom',value_list:[13,13,13,13,13,13,13,13,13,13],colour1:'#eae5cf',colour2:'#168e36',patterncolour:'#E6EBA9',pattern:0},
+{name:'bottom',value_list:[6,6,6,6,6,6,6,6,6,6],colour1:'#eae5cf',colour2:'#168e36',patterncolour:'#E6EBA9',pattern:0},
 {name:'waistline',value_list:[9,9,9,9,9,9,9,9,9,9],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'neckwear',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#28506D',colour2:'#ECD078',patterncolour:'#0B2E59',pattern:0},
 {name:'overshirt',value_list:[3,3,3,3,3,3,3,3,3,3],colour1:'#a2daa4',colour2:'#eae5cf',patterncolour:'#A0C55F',pattern:0},
-{name:'coat',value_list:[7,7,7,7,7,7,7,7,7,7],colour1:'#edffe4',colour2:'#7AB317',patterncolour:'#afe4cb',pattern:7},
+{name:'coat',value_list:[8,8,8,8,8,8,8,8,8,8],colour1:'#edffe4',colour2:'#7AB317',patterncolour:'#afe4cb',pattern:7},
 {name:'sidelocks',value_list:[17,17,17,17,17,17,17,17,17,17],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'head',value_list:[6,6,6,6,6,6,6,6,6,6],colour1:'#fbc998',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'ears',value_list:[1,1,1,1,1,1,1,1,1,1],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
@@ -703,7 +703,7 @@ const character_preset_defining_list=[
 {name:'fringe',value_list:[17,17,17,17,17,17,17,17,17,17],colour1:'#3f2a42',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'wheelchair',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'hat',value_list:[1,1,1,1,1,1,1,1,1,1],colour1:'#eae5cf',colour2:'#571B3C',patterncolour:'#C7EDE8',pattern:0}],ui_variables_object:
-{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:3,current_accessoryname:0,current_export_image_type:0,current_gender_type:1,current_size_type:0,current_head_ratio_type:0,crop_height:'0',current_effect_type:0,effect_colour:'#000000',current_character_preset:9,current_expression_preset:0,isWeirdOutfit:true,isWeirdBody:true},defining_variables_object:
+{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:5,current_accessoryname:0,current_export_image_type:0,current_gender_type:1,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:9,current_expression_preset:0,isWeirdOutfit:true,isWeirdBody:true},defining_variables_object:
 {current_eyetype:3,current_hairstyle:18,current_waist_type:0}},
 
 
@@ -719,7 +719,7 @@ const character_preset_defining_list=[
 {name:'top',value_list:[18,18,18,18,18,18,18,18,18,18],colour1:'#fff5e2',colour2:'#ADD9D5',patterncolour:'#ADD9D5',pattern:0},
 {name:'overshirt_sleeves',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'coat_sleeves',value_list:[1,1,1,1,1,1,1,1,1,1],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
-{name:'bottom',value_list:[16,16,16,16,16,16,16,16,16,16],colour1:'#EFE2C0',colour2:'#A26156',patterncolour:'#ADD9D5',pattern:0},
+{name:'bottom',value_list:[17,17,17,17,17,17,17,17,17,17],colour1:'#EFE2C0',colour2:'#A26156',patterncolour:'#ADD9D5',pattern:0},
 {name:'waistline',value_list:[5,5,5,5,5,5,5,5,5,5],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'neckwear',value_list:[1,1,1,1,1,1,1,1,1,1],colour1:'#FCECCA',colour2:'#ADD9D5',patterncolour:'#FCECCA',pattern:14},
 {name:'overshirt',value_list:[4,4,4,4,4,4,4,4,4,4],colour1:'#a2d4da',colour2:'#93d7db',patterncolour:'#996458',pattern:5},
@@ -739,7 +739,7 @@ const character_preset_defining_list=[
 {name:'fringe',value_list:[25,25,25,25,25,25,25,25,25,25],colour1:'#6f3a48',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'wheelchair',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'hat',value_list:[5,5,5,5,5,5,5,5,5,5],colour1:'#ADD9D5',colour2:'#996458',patterncolour:'#ADD9D5',pattern:0}],ui_variables_object:
-{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothingname:2,current_accessoryname:0,current_export_image_type:0,current_gender_type:1,current_size_type:0,current_head_ratio_type:0,crop_height:'0',current_effect_type:0,effect_colour:'#000000',current_character_preset:10,current_expression_preset:0,isWeirdOutfit:true,isWeirdBody:false},defining_variables_object:
+{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothingname:3,current_accessoryname:0,current_export_image_type:0,current_gender_type:1,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:10,current_expression_preset:0,isWeirdOutfit:true,isWeirdBody:false},defining_variables_object:
 {current_eyetype:2,current_hairstyle:7,current_waist_type:0}},
 
 
@@ -759,7 +759,7 @@ const character_preset_defining_list=[
 {name:'waistline',value_list:[10,10,10,10,10,10,10,10,10,10],colour1:'#4C6BC2',colour2:'#FAE181',patterncolour:'#0000FF',pattern:0},
 {name:'neckwear',value_list:[14,14,14,14,14,14,14,14,14,14],colour1:'#e7d083',colour2:'#3068c8',patterncolour:'#7ECECA',pattern:0},
 {name:'overshirt',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#45B5C4',colour2:'#7ECECA',patterncolour:'#1693A5',pattern:0},
-{name:'coat',value_list:[13,13,13,13,13,13,13,13,13,13],colour1:'#2c5b8a',colour2:'#1693A5',patterncolour:'#e7d083',pattern:13},
+{name:'coat',value_list:[14,14,14,14,14,14,14,14,14,14],colour1:'#2c5b8a',colour2:'#1693A5',patterncolour:'#e7d083',pattern:13},
 {name:'sidelocks',value_list:[15,15,15,15,15,15,15,15,15,15],colour1:'#712A0D',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'head',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#c97d51',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'ears',value_list:[1,1,1,1,1,1,1,1,1,1],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
@@ -775,7 +775,7 @@ const character_preset_defining_list=[
 {name:'fringe',value_list:[19,19,19,19,19,19,19,19,19,19],colour1:'#402040',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'wheelchair',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#E1748A',colour2:'#FAF1CF',patterncolour:'#0000FF',pattern:0},
 {name:'hat',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#e7d083',colour2:'#2c5b8a',patterncolour:'#C7EDE8',pattern:11}],ui_variables_object:
-{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothingname:0,current_accessoryname:0,current_export_image_type:0,current_gender_type:2,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:11,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
+{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:5,current_accessoryname:0,current_export_image_type:0,current_gender_type:2,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:11,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
 {current_eyetype:5,current_hairstyle:32,current_waist_type:1}},
 
 
@@ -791,7 +791,7 @@ const character_preset_defining_list=[
 {name:'top',value_list:[10,10,10,10,10,10,10,10,10,10],colour1:'#fffaf8',colour2:'#2c5b8a',patterncolour:'#E08E79',pattern:0},
 {name:'overshirt_sleeves',value_list:[2,2,2,2,2,2,2,2,2,2],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'coat_sleeves',value_list:[2,2,2,2,2,2,2,2,2,2],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
-{name:'bottom',value_list:[11,11,11,11,11,11,11,11,11,11],colour1:'#2c5b8a',colour2:'#E08E79',patterncolour:'#d71222',pattern:14},
+{name:'bottom',value_list:[12,12,12,12,12,12,12,12,12,12],colour1:'#2c5b8a',colour2:'#E08E79',patterncolour:'#d71222',pattern:14},
 {name:'waistline',value_list:[8,8,8,8,8,8,8,8,8,8],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'neckwear',value_list:[4,4,4,4,4,4,4,4,4,4],colour1:'#c2515a',colour2:'#774F38',patterncolour:'#E08E79',pattern:0},
 {name:'overshirt',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#C5E0DC',colour2:'#774F38',patterncolour:'#F1D4AF',pattern:0},
@@ -811,7 +811,7 @@ const character_preset_defining_list=[
 {name:'fringe',value_list:[6,6,6,6,6,6,6,6,6,6],colour1:'#3d1f48',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'wheelchair',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'hat',value_list:[16,16,16,16,16,16,16,16,16,16],colour1:'#c15059',colour2:'#ECE5CE',patterncolour:'#E08E79',pattern:0}],ui_variables_object:
-{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothingname:0,current_accessoryname:0,current_export_image_type:0,current_gender_type:2,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:12,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
+{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:3,current_accessoryname:0,current_export_image_type:0,current_gender_type:2,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:12,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
 {current_eyetype:0,current_hairstyle:17,current_waist_type:0}},
 
 
@@ -827,7 +827,7 @@ const character_preset_defining_list=[
 {name:'top',value_list:[15,15,15,15,15,15,15,15,15,15],colour1:'#faeed0',colour2:'#F1D4AF',patterncolour:'#c2515a',pattern:3},
 {name:'overshirt_sleeves',value_list:[1,1,1,1,1,1,1,1,1,1],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'coat_sleeves',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
-{name:'bottom',value_list:[13,13,13,13,13,13,13,13,13,13],colour1:'#faeed0',colour2:'#ECE5CE',patterncolour:'#c2515a',pattern:3},
+{name:'bottom',value_list:[14,14,14,14,14,14,14,14,14,14],colour1:'#faeed0',colour2:'#ECE5CE',patterncolour:'#c2515a',pattern:3},
 {name:'waistline',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'neckwear',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#E08E79',colour2:'#ECE5CE',patterncolour:'#774F38',pattern:12},
 {name:'overshirt',value_list:[1,1,1,1,1,1,1,1,1,1],colour1:'#db8a78',colour2:'#774F38',patterncolour:'#F1D4AF',pattern:0},
@@ -847,7 +847,7 @@ const character_preset_defining_list=[
 {name:'fringe',value_list:[6,6,6,6,6,6,6,6,6,6],colour1:'#463762',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'wheelchair',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'hat',value_list:[21,21,21,21,21,21,21,21,21,21],colour1:'#dc8b79',colour2:'#F1D4AF',patterncolour:'#ECE5CE',pattern:0}],ui_variables_object:
-{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothingname:0,current_accessoryname:0,current_export_image_type:0,current_gender_type:2,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:13,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
+{dark_theme:false,current_tab_type:2,current_expression_type:0,current_clothingname:3,current_accessoryname:0,current_export_image_type:0,current_gender_type:2,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:13,current_expression_preset:0,isWeirdOutfit:false,isWeirdBody:false},defining_variables_object:
 {current_eyetype:5,current_hairstyle:32,current_waist_type:0}},
 
 
@@ -935,7 +935,7 @@ const character_preset_defining_list=[
 {name:'top',value_list:[4,4,4,4,4,4,4,4,4,4],colour1:'#faeecf',colour2:'#A8E6CE',patterncolour:'#e1b26a',pattern:0},
 {name:'overshirt_sleeves',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'coat_sleeves',value_list:[6,6,6,6,6,6,6,6,6,6],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
-{name:'bottom',value_list:[8,8,8,8,8,8,8,8,8,8],colour1:'#faeecf',colour2:'#FFAAA6',patterncolour:'#e1b26a',pattern:0},
+{name:'bottom',value_list:[9,9,9,9,9,9,9,9,9,9],colour1:'#faeecf',colour2:'#FFAAA6',patterncolour:'#e1b26a',pattern:0},
 {name:'waistline',value_list:[10,10,10,10,10,10,10,10,10,10],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'neckwear',value_list:[14,14,14,14,14,14,14,14,14,14],colour1:'#e9b344',colour2:'#438dd5',patterncolour:'#DCEDC2',pattern:0},
 {name:'overshirt',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FFAAA6',colour2:'#A8E6CE',patterncolour:'#DCEDC2',pattern:11},
@@ -955,7 +955,7 @@ const character_preset_defining_list=[
 {name:'fringe',value_list:[27,27,27,27,27,27,27,27,27,27],colour1:'#781d1d',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'wheelchair',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
 {name:'hat',value_list:[20,20,20,20,20,20,20,20,20,20],colour1:'#FFAAA6',colour2:'#DCEDC2',patterncolour:'#FFD3B5',pattern:0}],ui_variables_object:
-{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothingname:2,current_accessoryname:4,current_export_image_type:0,current_gender_type:2,current_size_type:0,current_head_ratio_type:0,crop_height:'0',current_effect_type:0,effect_colour:'#000000',current_character_preset:16,current_expression_preset:0,isWeirdOutfit:true,isWeirdBody:false},defining_variables_object:
+{dark_theme:false,current_tab_type:5,current_expression_type:0,current_clothingname:3,current_accessoryname:0,current_export_image_type:0,current_gender_type:2,current_size_type:0,current_head_ratio_type:0,crop_height:300,current_effect_type:0,effect_colour:'#000000',current_character_preset:16,current_expression_preset:0,isWeirdOutfit:true,isWeirdBody:false},defining_variables_object:
 {current_eyetype:5,current_hairstyle:30,current_waist_type:0}},
 
 ];

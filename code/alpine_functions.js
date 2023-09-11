@@ -57,10 +57,6 @@ function updateVariables(){
         findNameMatch(image_objects,"waistline").item = -1;
         findNameMatch(image_objects,"waistline_dec").item = -1;
     }
-    if (getImageItem(bottom_obj).includes("split")){
-        findNameMatch(image_objects,"waistline").item = 1;
-        findNameMatch(image_objects,"waistline_dec").item = 1;
-    }
     //remove sleeves ifclothing is sleeveless
 
     if (top_nosleeves_list.includes(getImageItem(top_obj)))
