@@ -527,15 +527,22 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
         }
     },
     randomiseAll(gender){
+        // gender: 0 =androgynous, 1 =masculine, 2=feminine
         remove_list = [];
-        value_list = ["isWeirdBody"] 
-        for (let i = 0; i < value_list.length; i += 1){ 
-            if (!this[value_list[i]])
-                remove_list = remove_list.concat(presetExcludeIndices(value_list[i]))
-        }
+        
+        for (i = 0; i < character_preset_defining_list.length; i += 1){
+            //if isWeirdOutfit is false, add all the presets with weird outfits to the remove list
+            if (character_preset_defining_list[i].ui_variables_object.isWeirdOutfit&&!this.ui_variables_object.isWeirdOutfit)
+                remove_list.push(i);
+            else{    
+            //if this preset is gendered and gender is not androgynous, remove if the genders dont match
+                if (character_preset_defining_list[i].ui_variables_object.current_gender_type+gender==3)
+                    remove_list.push(i);
+            }
+        }     
         current_preset = randomElement(range(character_preset_defining_list.length).filter(value => !(remove_list.includes(value))),0)     
-        //body colouring  
-        if (Math.random()>0.1)
+        //body colouring. If isWeirdBody is false and this preset has a weird body, randomise the colours  
+        if ((!this.ui_variables_object.isWeirdBody&&character_preset_defining_list[current_preset]["isWeirdBody"])||Math.random()>0.1)
             this.randomiseBodyColouring();
         else
             this.transferDefiningListValues(current_preset,definingSubsetIndices(["head","fringe","eyes"]), character_preset_defining_list,["colour1","colour2"]);
