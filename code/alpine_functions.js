@@ -517,11 +517,12 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
         }
         
         b_index = findDefiningIndex("bottom")
+        current_first_value = defining_objects[b_index].item_list[this.current_defining_objects[b_index].value_list[0]]
         //remove coat if wearing a puffy skirt
-        if (defining_objects[b_index].item_list[this.current_defining_objects[b_index].value_list[0]].includes("puffy"))
+        if (current_first_value.includes("puffy"))
             this.current_defining_objects[findDefiningIndex("coat")].value_list = listOf(0);
         //remove overshirt if wearing a full skirt
-        if (defining_objects[b_index].item_list[this.current_defining_objects[b_index].value_list[0]].includes("full")){
+        if (current_first_value.includes("full")||current_first_value.includes("empire")){
             this.current_defining_objects[findDefiningIndex("overshirt")].value_list = listOf(0);
             this.current_defining_objects[findDefiningIndex("coat")].value_list = listOf(0);
         }
