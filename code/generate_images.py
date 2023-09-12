@@ -597,12 +597,12 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["facial_hair"]:
+        if c.name in ["top"]:
             process_portrait_part(c)
 
-    makeHourglass()        
+    #makeHourglass()        
     #makeWinks()
-    makeStubble() 
+    #makeStubble() 
 
     #makeSwatches()
         
