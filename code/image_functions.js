@@ -300,7 +300,7 @@ function fixSources(){
             if (getImageItem(b)=="stubble") {
                 b.hasShading = false;
                 b.underlay_image.src  ="images/render/hair/facial_hair/stubble/" +findImageItem("head")+".png";
-                return
+                current_loc="none"
             } else
             b.hasShading = true;
         }

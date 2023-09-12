@@ -527,9 +527,9 @@ def process_portrait_part(obj):
     else: 
         loc = obj.location + "/"+obj.name  
 
-    if obj.name == "facial_hair":
-        render_list = facial_hair_list_render 
-    elif obj.name in ["waistline"]:
+    #if obj.name == "facial_hair":
+    #    render_list = facial_hair_list_render 
+    if obj.name in ["waistline"]:
         render_list = obj.item_list+["split"]       
     else:
         render_list = obj.item_list
@@ -597,12 +597,12 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["waistline"]:
+        if c.name in ["facial_hair"]:
             process_portrait_part(c)
 
     makeHourglass()        
     #makeWinks()
-    #makeStubble() 
+    makeStubble() 
 
     #makeSwatches()
         
