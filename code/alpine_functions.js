@@ -295,7 +295,7 @@ document.addEventListener('alpine:init', () => {
             }    
             id = '"drop'+this.title+this.valueName+'"';
             output = '<label for='+id+'>'+this.title+'</label>: ';   
-            output += '<input id='+id+' type="color" :value ="'+objName+'"  @input="'+objName+'=$event.target.value;setVariables(Alpine.store(\'alpineData\'));" :aria-label="colour_desc('+objName+')"/>'
+            output += '<input id='+id+' type="color" :value ="'+objName+'"  @input="'+objName+'=$event.target.value;console.log($event.target.value);setVariables(Alpine.store(\'alpineData\'));" :aria-label="colour_desc('+objName+')"/>'
             return output 
             },
         },

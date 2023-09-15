@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Testing stuff</title>
+        <link href="style.css" rel="stylesheet" type = "text/css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+            </head>
+<body>
+    <h1>Testing</h1>
+    <p>Test whether your browser's colour picker is accurate. Use the colour picker on the "original" colour.</p>
+    <label for="color-picker">Color picker:</label>
+<input type="color" id="color-picker" value="#ff0000">
+<br>
+<br>
+<p id ="original p">Original:</p>
+<p id ="picked p">Picked:</p>
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML canvas tag.</canvas>
+    
+    <script>
+        let picked = "#ffffff"
+        let colorPicker;
+        const defaultColor = "#0000ff";
+
+        window.addEventListener("load", startup, false);
+        function startup() {
+            colorPicker = document.querySelector("#color-picker");
+            colorPicker.value = defaultColor;
+            picked = defaultColor;
+            colorPicker.addEventListener("input", updateFirst, false);
+            colorPicker.addEventListener("change", updateAll, false);
+            colorPicker.select();
+            document.getElementById("original p").innerHTML = "Original: "+defaultColor;
+        }
+        function drawPicked(){
+            picked = event.target.value;
+            ctx.fillStyle = picked;
+            ctx.fillRect(100, 20, 100, 100);
+            console.log(picked);
+            document.getElementById("picked p").innerHTML = "Picked: "+picked;
+        }
+        function updateFirst(event) {
+            drawPicked();
+        }
+        function updateAll(event) {
+            drawPicked();
+        }
+
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.fillStyle = "#000000";
+        ctx.font = "18px Arial";
+        ctx.fillText('Original', 0, 15);
+        ctx.fillText('Picked', 100, 15);
+        ctx.fillStyle = defaultColor;
+        ctx.fillRect(0, 20, 100, 100);
+        ctx.fillStyle = picked;
+        ctx.fillRect(100, 20, 100, 100);
+    </script>
+</body>
+</html>
