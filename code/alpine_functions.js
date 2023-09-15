@@ -590,14 +590,17 @@ function setup(){
         let filename = "dollmaker_";
         switch(ui_variables_object.current_export_image_type){
             case 0:
-                filename += "body";
+                filename += "preview";
                 break;
             case 1:
+                filename += "body";
+                break;    
+            case 2:
                 filename += "expression_"+expression_type_list[ui_variables_object.current_expression_type];
                 break;
-            case 2:
+            case 3:
                 filename += "outfit";
-                break;   
+                break;       
         }   
         console.log("saving "+filename);              
         // Convert our canvas to a data URL
