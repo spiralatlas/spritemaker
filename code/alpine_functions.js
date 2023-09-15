@@ -593,7 +593,7 @@ function setup(){
                 filename += "preview";
                 break;
             case 1:
-                filename += "body";
+                filename += "head";
                 break;    
             case 2:
                 filename += "expression_"+expression_type_list[ui_variables_object.current_expression_type];
