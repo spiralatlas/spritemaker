@@ -215,11 +215,11 @@ shoes_list_d = [shoes_list_f, shoes_list_m, shoes_list_w,shoes_list_decs,[],Fals
 
 hair_extra_list_u = ["none","topknot"]
 hair_extra_list_f = hair_extra_list_u+ ["straight high pony","straight low pony", "curly pony", "small curly pony","low curly pony","bun","fancy bun","locs bun","little bun","little buns", "twin braids","twintails","long twintails","twin puffs", "side straight pony","long side straight pony", "locs pony"]
-hair_extra_list_m = hair_extra_list_u
+hair_extra_list_m = hair_extra_list_u+["little braid"]
 hair_extra_list_w = ["fancy bun","topknot"] 
 hair_extra_list_d = [hair_extra_list_f, hair_extra_list_m, hair_extra_list_w,[],[],True]
 
-hair_back_list = ["none","balding", "buzzcut","straight short","curly short","wavy short", "straight side", "fade", "shaggy short", "tight curls short","tight curls medium", "shaggy medium", "curly bob","wavy bob", "straight bob","locs bob", "half up medium wavy", "straight long","wavy long","curly long", "long locs",  "curly flowing", "straight flowing","straight up","curly up","locs up"]
+hair_back_list = ["none","balding", "buzzcut","straight short","curly short","wavy short", "straight side", "fade", "shaggy short", "tight curls short","tight curls medium", "shaggy medium", "curly bob","wavy bob", "straight bob","locs bob", "half up medium wavy", "straight long","wavy long","shaggy long", "curly long", "tight curls long", "long locs",  "curly flowing", "straight flowing","straight up","curly up","locs up"]
 hair_back_list_d = default_list(hair_back_list)
 
 hair_middle_list = ["none", "shaved", "balding","cornrows","short","long","long shadowed"]
@@ -234,9 +234,9 @@ sidelocks_list_m = ["none","tiny curls", "tiny straight", "tiny locs", "medium s
 sidelocks_list_w =[]
 sidelocks_list_d = [sidelocks_list_f, sidelocks_list_m, sidelocks_list_w,[],[],True]
 
-fringe_list_u = ["none", "wisps","straight short", "shaggy short", "curly short","short locs","straight blunt", "wavy blunt","curly blunt", "soft curls", "straight side short", "spiky","straight centre","straight swept","straight clump", "spiky side","medium locs", "straight curtains","wavy curtains","curly curtains","medium wavy tendrils","medium straight tendrils"]
-fringe_list_m = fringe_list_u+["spiked up", "side flop", "princely","wavy side","straight smooth"]
-fringe_list_f = fringe_list_u+["wavy centre","curly tendrils","curly long", "long side flop","long locs",]#"straight long","wavy long"
+fringe_list_u = ["none", "scattered wisps","wisps","straight short", "shaggy short", "curly short","straight blunt", "wavy blunt","curly blunt", "locs blunt", "soft curls", "straight side short", "wavy side short","straight tendrils", "wavy tendrils", "tight curls tendrils", "straight centre","straight clump", "curly clump", "straight curtains","wavy curtains","curly curtains","locs curtains", "straight uneven","wavy uneven","locs uneven"]
+fringe_list_m = fringe_list_u+["spiked up", "straight flop", "princely","straight side short","wavy side short"]
+fringe_list_f = fringe_list_u+["straight choppy", "straight medium", "wavy centre","curly tendrils","curly long", "long wavy side","long locs",]#"straight long","wavy long"
 fringe_list_w =[]
 fringe_list_d = [fringe_list_f, fringe_list_m, fringe_list_w,[],[],True]
 
@@ -597,7 +597,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["top"]:
+        if c.name in []:
             process_portrait_part(c)
 
     #makeHourglass()        

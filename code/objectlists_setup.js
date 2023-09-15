@@ -341,7 +341,7 @@ const hairstyle_defining_list = [ //name, hair_front, hair_middle, hair_back
     ["straight half up", "straight half up", "long", "straight long"],["wavy bob half up","bob half up","long shadowed","wavy bob"],["curly bob half up","bob half up","long","curly bob"],["straight bob half up","bob half up","long","straight bob"],
     ["locs half up", "locs bun", "long shadowed", "locs bob"],["locs bob", "locs bob", "long shadowed", "locs bob"],
     ["curly flowing", "curly flowing", "long shadowed", "curly flowing"],["straight flowing", "straight flowing", "long", "straight flowing"],
-    ["straight long", "none", "long", "straight long"],["wavy long", "none", "long", "wavy long"],["curly long", "none", "long", "curly long"],["locs long", "long locs", "long shadowed", "long locs"],
+    ["straight long", "none", "long", "straight long"],["wavy long", "none", "long", "wavy long"],["shaggy long", "none", "long", "shaggy long"],["curly long", "none", "long", "curly long"],["tight curls long", "none", "long", "tight curls long"],["locs long", "long locs", "long shadowed", "long locs"],
     ["curly up","none","long","curly up"],["locs up","locs bun","long shadowed","locs up"],["straight up","none","long","straight up"]
 ]
     
