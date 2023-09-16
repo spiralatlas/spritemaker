@@ -108,7 +108,7 @@ function setUIVariables(obj){
     obj.current_accessoryname=0;
     obj.current_export_image_type=0;
     obj.current_gender_type=0;
-    obj.current_size_type=0;
+    obj.current_size_type=2;
     obj.current_head_ratio_type=0;
     obj.crop_height=300;
     obj.current_effect_type = 0;

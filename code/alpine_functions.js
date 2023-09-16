@@ -103,12 +103,12 @@ function updateVariables(){
         image_objects[i].widthOffset = getWidthOffset(image_objects[i].name);
         if (!checkRender(image_objects[i]))
             image_objects[i].item = -1
-        standard_scale =  0.8+ui_variables_object.current_size_type*0.05;   
+        standard_scale =  size_list[ui_variables_object.current_size_type];   
         if (head_offset_list.includes(image_objects[i].name)) {   
             if (ui_variables_object.current_head_ratio_type==0){
                 image_objects[i].scale = standard_scale; 
             } else{
-                head_scale = 0.02*ui_variables_object.current_size_type+0.85
+                head_scale = size_list[ui_variables_object.current_size_type];//0.02*ui_variables_object.current_size_type+0.85
                 image_objects[i].scale = head_scale; 
                 image_objects[i].heightOffset += -parseInt((standard_scale-head_scale)*194)
                 image_objects[i].widthOffset += parseInt((standard_scale-head_scale)*180)
@@ -123,9 +123,9 @@ function updateVariables(){
     sprite_width = full_width;
     sprite_height = full_height ;
     if (findNameMatch(defining_objects,"wheelchair").value_list[0] !=0){ //there's a wheelchair
-        sprite_height = full_height*(0.8+ui_variables_object.current_size_type*0.05) -165-ui_variables_object.crop_height;
+        sprite_height = full_height*size_list[ui_variables_object.current_size_type] -165-ui_variables_object.crop_height;
     } 
-    sprite_height = sprite_height*(0.8+ui_variables_object.current_size_type*0.05) -ui_variables_object.crop_height;//-(5-ui_variables_object.current_size_type)*30
+    sprite_height = sprite_height*size_list[ui_variables_object.current_size_type] -ui_variables_object.crop_height;//-(5-ui_variables_object.current_size_type)*30
 
     //calculating crops
 

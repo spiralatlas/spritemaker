@@ -24,7 +24,8 @@ const gender_type_list = ["Androgynous","Masculine","Feminine"]
 
 const expression_type_list = ["Neutral", "Happy", "Sad", "Angry","Surprised","Embarassed","Scared",'Annoyed',"Other"];
 
-const size_type_list = ['80%','85%', '90%','95%','100%',];
+const size_list = [0.4,0.6,0.8,0.85,0.9,0.95,1];
+const size_type_list = size_list.map(value => 100*value+"%"); 
 
 let head_ratio = 1;
 const head_ratio_type_list = ["100%","Proportional to Height","Custom"]
