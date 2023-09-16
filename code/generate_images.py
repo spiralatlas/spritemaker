@@ -214,7 +214,7 @@ shoes_list_decs = ["boots","sneakers" ]
 shoes_list_d = [shoes_list_f, shoes_list_m, shoes_list_w,shoes_list_decs,[],False]
 
 hair_extra_list_u = ["none","topknot"]
-hair_extra_list_f = hair_extra_list_u+ ["straight high pony","straight low pony", "curly pony", "small curly pony","low curly pony","bun","fancy bun","locs bun","little bun","little buns", "twin braids","twintails","long twintails","twin puffs", "side straight pony","long side straight pony", "locs pony"]
+hair_extra_list_f = hair_extra_list_u+ ["straight high pony","straight low pony", "curly pony", "small curly pony","low curly pony","bun","fancy bun","locs bun","little bun","little buns", "twin braids","twintails","long twintails","low twintails","twin puffs", "side straight pony","long side straight pony", "locs pony"]
 hair_extra_list_m = hair_extra_list_u+["little braid"]
 hair_extra_list_w = ["fancy bun","topknot"] 
 hair_extra_list_d = [hair_extra_list_f, hair_extra_list_m, hair_extra_list_w,[],[],True]
@@ -597,7 +597,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in []:
+        if c.name in ["hair_extra"]:
             process_portrait_part(c)
 
     #makeHourglass()        
