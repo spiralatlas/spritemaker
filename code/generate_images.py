@@ -391,18 +391,19 @@ def presetString(location, namelist):
     path = "../../spritemaker_bases/save files/"+location+"/"
     keys = ["dark_theme","current_tab_type","current_expression_type","current_clothingname","current_accessoryname","current_export_image_type","current_gender_type","current_size_type","current_head_ratio_type","crop_height","current_character_preset","current_expression_preset","isWeirdOutfit","isWeirdBody"]
     keys += ["current_hairstyle", "current_waist_type", "current_eyetype", "current_defining_objects", "name", "value_list","colour1","colour2","patterncolour","pattern","item_list","item_indices_f","item_indices_m","item_indices_w","image_index","colour_children","colour2_children","value_children"]
-    output = "const "+location+"_preset_defining_list=["
+    output = "const "+location+"_preset_defining_list=[ [],"
     for name in namelist:
-        with open(path+name+".json") as f:
-            lines = f.readlines()
-        fixed_lines =""
-        for l in lines:    
-            if l[0]!="/" and l[0]!="\n":
-                fixed_lines += l.replace("{","\n{")  
-        #for k in keys:
-        #    fixed_lines = fixed_lines.replace("\""+k+"\"",k)
-  
-        output += fixed_lines+",\n\n"#"{preset_name:\""+name+"\","+fixed_lines[1:]+",\n\n"    
+        if name!="None":
+            with open(path+name+".json") as f:
+                lines = f.readlines()
+            fixed_lines =""
+            for l in lines:    
+                if l[0]!="/" and l[0]!="\n":
+                    fixed_lines += l.replace("{","\n{")  
+            #for k in keys:
+            #    fixed_lines = fixed_lines.replace("\""+k+"\"",k)
+    
+            output += fixed_lines+",\n\n"#"{preset_name:\""+name+"\","+fixed_lines[1:]+",\n\n"   
     output +="];\n\n"
     return output
 
@@ -467,10 +468,10 @@ def write_variables():
             content.write("add_image_object(\""+c.name+"_dec\","+ c.listname+"_dec,\""+c.location+"\")\n")    
     content.write("add_defining_object(\"hat\",hat_list)\n")
     content.write("\n") 
-    expression_preset_list =  ["Default", "Understated", "Energetic","Arch"] 
+    expression_preset_list =  ["None", "Default", "Understated", "Energetic","Arch"] 
     content.write(list_string("expression_preset_list", expression_preset_list))  
     content.write(presetString("expression", expression_preset_list))
-    character_preset_list =  ["Beach Babe", "Scientist", "student", "Jock","Ninja", "Demon", "Detective","Dad", "Wizard", "Righteous Cultivator", "Lord", "Starlet","Middle School Girl","Festival Girl","Grandma", "Mum", "Lady"] 
+    character_preset_list =  ["None", "Beach Babe", "Scientist", "student", "Jock","Ninja", "Demon", "Detective","Dad", "Wizard", "Righteous Cultivator", "Lord", "Starlet","Middle School Girl","Festival Girl","Grandma", "Mum", "Lady"] 
     content.write(list_string("character_preset_list", character_preset_list))  
     content.write(presetString("character", character_preset_list))    
     content.close()
@@ -597,7 +598,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["hair_extra"]:
+        if c.name in []:
             process_portrait_part(c)
 
     #makeHourglass()        

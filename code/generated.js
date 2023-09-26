@@ -198,8 +198,8 @@ add_image_object("wheelchair_bottom_dec",wheelchair_bottom_list_d_dec,"wheelchai
 add_image_object("wheelchair_coat",wheelchair_coat_list_d,"wheelchair")
 add_defining_object("hat",hat_list)
 
-const expression_preset_list = ["Default","Understated","Energetic","Arch",];
-const expression_preset_defining_list=[
+const expression_preset_list = ["None","Default","Understated","Energetic","Arch",];
+const expression_preset_defining_list=[ [],
 {current_defining_objects:[
 {name:'back',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FFAAA6',colour2:'#6C5B7B',patterncolour:'#493831',pattern:0},
 {name:'hair_extra',value_list:[9,9,9,9,9,9,9,9,9,9],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},
@@ -345,8 +345,8 @@ const expression_preset_defining_list=[
 
 ];
 
-const character_preset_list = ["Beach Babe","Scientist","student","Jock","Ninja","Demon","Detective","Dad","Wizard","Righteous Cultivator","Lord","Starlet","Middle School Girl","Festival Girl","Grandma","Mum","Lady",];
-const character_preset_defining_list=[
+const character_preset_list = ["None","Beach Babe","Scientist","student","Jock","Ninja","Demon","Detective","Dad","Wizard","Righteous Cultivator","Lord","Starlet","Middle School Girl","Festival Girl","Grandma","Mum","Lady",];
+const character_preset_defining_list=[ [],
 {current_defining_objects:[
 {name:'back',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#ECD078',colour2:'#2A044A',patterncolour:'#C02942',pattern:0},
 {name:'hair_extra',value_list:[0,0,0,0,0,0,0,0,0,0],colour1:'#FF0000',colour2:'#00FF00',patterncolour:'#0000FF',pattern:0},

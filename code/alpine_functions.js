@@ -254,7 +254,7 @@ document.addEventListener('alpine:init', () => {
                             extra_commands = '$store.alpineData.transferDefiningListValues($store.alpineData.ui_variables_object.current_character_preset,character_indices, character_preset_defining_list,character_preset_list_values);'
                             extra_commands += '$store.alpineData.transferDefiningValues($store.alpineData.ui_variables_object.current_character_preset,character_preset_defining_list, character_preset_values);'
                             break;       
-                        case 'current_expression_preset': 
+                        case 'current_expression_preset':
                             extra_commands = '$store.alpineData.transferDefiningListValues($store.alpineData.ui_variables_object.current_expression_preset,expression_indices, expression_preset_defining_list,expression_preset_list_values);'
                             break;                               
                     }
@@ -338,17 +338,21 @@ document.addEventListener('alpine:init', () => {
     },
 transferDefiningListValues(preset_index,relevant_defining_indices, preset_defining_list, property_list){
     //use the properties of property_list for the relevant_defining_indices of the preset_indexth element of preset_defining_list
-    for (i = 0; i < relevant_defining_indices.length; i += 1){ 
-        for (j = 0; j < property_list.length; j += 1){ 
-            this.current_defining_objects[relevant_defining_indices[i]][property_list[j]] = preset_defining_list[preset_index].current_defining_objects[relevant_defining_indices[i]][property_list[j]];
+    if (preset_index>0){
+        for (i = 0; i < relevant_defining_indices.length; i += 1){ 
+            for (j = 0; j < property_list.length; j += 1){ 
+                this.current_defining_objects[relevant_defining_indices[i]][property_list[j]] = preset_defining_list[preset_index].current_defining_objects[relevant_defining_indices[i]][property_list[j]];
+            }
         }
     }
 },
 transferDefiningValues(preset_index,preset_defining_list, property_list){
     //use the properties of property_list for the relevant_defining_indices of the preset_indexth element of preset_defining_list
+    if (preset_index>0){    
         for (j = 0; j < property_list.length; j += 1){ 
             this.defining_variables_object[property_list[j]] = preset_defining_list[preset_index].defining_variables_object[property_list[j]];
         }
+    }
 },
 
     randomiseBodyColouring(){
@@ -389,7 +393,7 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
                 }
             }
         }
-        this.transferDefiningListValues(randomIndex(expression_preset_defining_list,0),expression_indices, expression_preset_defining_list,["value_list"])
+        this.transferDefiningListValues(randomIndex(expression_preset_defining_list,-1),expression_indices, expression_preset_defining_list,["value_list"])
         //this.current_size_type = randomIndex(size_type_list,0);
         remove_list = [];
         
@@ -529,9 +533,9 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
     },
     randomiseAll(gender){
         // gender: 0 =androgynous, 1 =masculine, 2=feminine
-        remove_list = [];
+        remove_list = [0];// the zeroth preset is "no preset"
         
-        for (i = 0; i < character_preset_defining_list.length; i += 1){
+        for (i = 1; i < character_preset_defining_list.length; i += 1){
             //if isWeirdOutfit is false, add all the presets with weird outfits to the remove list
             if (character_preset_defining_list[i].ui_variables_object.isWeirdOutfit&&!this.ui_variables_object.isWeirdOutfit)
                 remove_list.push(i);
@@ -541,7 +545,7 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
                     remove_list.push(i);
             }
         }     
-        current_preset = randomElement(range(character_preset_defining_list.length).filter(value => !(remove_list.includes(value))),0)     
+        current_preset = randomElement(range(character_preset_defining_list.length).filter(value => !(remove_list.includes(value))),0);     
         //body colouring. If isWeirdBody is false and this preset has a weird body, randomise the colours  
         if ((!this.ui_variables_object.isWeirdBody&&character_preset_defining_list[current_preset]["isWeirdBody"])||Math.random()>0.1)
             this.randomiseBodyColouring();
@@ -558,7 +562,7 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
         else{
             this.transferDefiningListValues(current_preset,definingSubsetIndices(["nose","head","ears","body","complexion", "body_chest",]), character_preset_defining_list,["value_list"]);
             this.defining_variables_object.current_eyetype = character_preset_defining_list[current_preset].defining_variables_object.current_eyetype;
-            this.transferDefiningListValues(randomIndex(expression_preset_defining_list,0),expression_indices, expression_preset_defining_list,["value_list"])
+            this.transferDefiningListValues(randomIndex(expression_preset_defining_list,-1),expression_indices, expression_preset_defining_list,["value_list"])
         }
         if (Math.random()>0.1){
             this.randomiseClothingValue(gender);

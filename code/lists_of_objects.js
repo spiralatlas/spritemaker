@@ -204,7 +204,7 @@ const character_indices = definingSubsetIndices(defining_list.concat(["hat"]));
 function presetExcludeIndices(value){
     //return what indices of character_preset_defining_list have value be true
     output = []
-    for (i = 0; i < character_preset_defining_list.length; i += 1){
+    for (i = 1; i < character_preset_defining_list.length; i += 1){
         if (character_preset_defining_list[i][value])
             output.push(i)
     }
