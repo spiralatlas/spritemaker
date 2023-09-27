@@ -2,9 +2,17 @@ function human_readable_string(s){
     //produces a nicer version of the string s
     switch(s){
         case "hair_extra":
-            return "hair back"
+            return "hair back";
+        case "colour1":
+            return "main colour";  
+        case "colour2":
+            return "highlight colour";  
+        case "patterncolour":
+                return "pattern colour";
+        case "body_chest":
+                return "chest";              
         default:   
-            return s
+            return String(s).replace("_"," ");
     }
 }
 
@@ -30,7 +38,8 @@ function human_readable_object(obj){
                 current_value = obj[current_varname];
                 switch (current_varname){
                     case "pattern":
-                        output+="//"+current_varname+": "+pattern_list[current_value]+"\n";
+                        if (obj.name!="eyes")
+                            output+="//"+current_varname+": "+pattern_list[current_value]+"\n";
                         break;
                     case "value_list":
                         objList = defining_objects[findDefiningIndex(obj.name)].item_list;
@@ -48,7 +57,8 @@ function human_readable_object(obj){
                         }
                         break;    
                     default:    
-                        output+="//"+current_varname+": "+current_value+"\n";
+                        if (obj.name!="eyes"||!["pattern","colour2","patterncolour"].includes(current_varname))
+                            output+="//"+human_readable_string(current_varname)+": "+human_readable_string(current_value)+"\n";
                         break;
                 }
                 
