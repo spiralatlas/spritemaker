@@ -28,10 +28,10 @@
         <button class="btn btn-primary" @click="dark_theme=!dark_theme" x-text="dark_theme ? 'Dark Theme' : 'Light Theme'"></button>
     </div>
       <div class="col">
-        <a href="credits.html">Credits</a>
+        <a href="credits.html" target="_blank" rel="noopener noreferrer">Credits</a>
       </div>
       <div class="col">
-        <a href="about.html">About</a>
+        <a href="about.html" target="_blank" rel="noopener noreferrer">About</a>
       </div>
       <div class="col">
         <button class="btn btn-primary" onclick="download()">Export Choices</button>
@@ -186,7 +186,7 @@
         <hr><!-- sample colours-->
           <div class="container text-center"> 
             <div class="row" x-show="$store.alpineData.ui_variables_object.current_tab_type === 0">
-              <a href="test.html">Test your browser's colour accuracy</a>
+              <a href="test.html" target="_blank" rel="noopener noreferrer">Test your browser's colour accuracy</a>
               <br margin-top="3em"> 
               <h3 margin-top="3em">Example Colours</h3>
               <div class = "col"><h4>Skin</h4></div>
@@ -194,7 +194,7 @@
               <div class = "col"><h4>Hair</h4></div>
             </div>  
             <div class="row" x-show="$store.alpineData.ui_variables_object.current_tab_type === 2 || $store.alpineData.ui_variables_object.current_tab_type === 3">
-              <a href="test.html">Test your browser's colour accuracy</a>
+              <a href="test.html" target="_blank" rel="noopener noreferrer">Test your browser's colour accuracy</a>
               <h3 >Example Colour Schemes</h3>
             </div>
 

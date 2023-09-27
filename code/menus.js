@@ -1,20 +1,31 @@
+function human_readable_string(s){
+    //produces a nicer version of the string s
+    switch(s){
+        case "hair_extra":
+            return "hair back"
+        default:   
+            return s
+    }
+}
+
 function human_readable_variable(list_name, index){
-    return eval(list_name)[index]
+    return human_readable_string(eval(list_name)[index]);
 }
 
 function human_readable_object(obj){
     let output = ""
+    has_colours = true;
+    colours_children_list = skin_list_defining.concat(['cheeks', 'hair_extra','fringe', 'facial_hair', 'waistline','sidelocks'])
+    colours_children_list= colours_children_list.concat(has_sleeves_list.map(value => value+"_sleeves"))
+    if (colours_children_list.includes(obj.name))
+        has_colours = false;  
     for (let i = 0; i < Object.keys(obj).length; i += 1){
         current_varname = Object.keys(obj)[i];
+
         if (current_varname.length >8 && current_varname.slice(0,8)=="current_"){//&& Number.isInteger(obj[current_varname])){
             output+="//"+current_varname+": "+human_readable_variable(varList(current_varname),obj[current_varname])+"\n";
         }
         else{
-            has_colours = true;
-            colours_children_list = skin_list_defining.concat(['cheeks', 'hair_extra','fringe', 'facial_hair', 'waistline','sidelocks'])
-            colours_children_list= colours_children_list.concat(has_sleeves_list.map(value => value+"_sleeves"))
-            if (colours_children_list.includes(obj.name))
-                has_colours = false;
             if (has_colours || !["pattern","colour1","colour2","patterncolour"].includes(current_varname)){    
                 current_value = obj[current_varname];
                 switch (current_varname){
@@ -29,8 +40,12 @@ function human_readable_object(obj){
                                 output+=objList[current_value[j]]+", "
                             output+="\n";
                         }
-                        else    
+                        else{    
                             output+="//value: "+objList[current_value[0]]+"\n";
+                            if (objList[current_value[0]]=="none")
+                                has_colours = false;
+
+                        }
                         break;    
                     default:    
                         output+="//"+current_varname+": "+current_value+"\n";

@@ -601,7 +601,7 @@ function setup(){
                 filename += "head";
                 break;    
             case 2:
-                filename += "expression_"+expression_type_list[ui_variables_object.current_expression_type];
+                filename += "mood_"+expression_type_list[ui_variables_object.current_expression_type].toLowerCase();
                 break;
             case 3:
                 filename += "outfit";
