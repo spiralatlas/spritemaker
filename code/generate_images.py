@@ -546,11 +546,15 @@ def makeCalves():
                         else:
                             thighs = "none"  
                         mask = "anatomy/legs/regular" 
-                        lines = "anatomy/legs/regular"   
+                        lines = "anatomy/legs/regular"  
+                    elif obj.name == "coat":
+                        thighs = "none" 
+                        mask = "clothes/coat/regular" 
+                        lines = "clothes/coat/regular"       
                     else:
                         makeLegs = False
                     if makeLegs:      
-                        print("Making legs for: "+obj.name)  
+                        print(obj.name+": "+item)  
                         imagemodule.makeWheelchairPart(save, thighs, base, mask, lines)
             
     

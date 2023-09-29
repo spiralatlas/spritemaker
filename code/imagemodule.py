@@ -351,7 +351,7 @@ def makeWheelchairPart(save, thighs, base, mask, lines):
     else:    
         img_masked = maskImage(img_base, img_mask)
         img_thighs.alpha_composite(img_masked, (22, 0),(0, 397))
-        img_masked = maskImage(img_lines, img_mask)
+        img_masked = maskImage(img_lines, img_base)
         img_thighs.alpha_composite(img_masked, (22, 0),(0, 397))
 
     img_thighs.save(save_string)
