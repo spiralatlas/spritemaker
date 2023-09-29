@@ -202,6 +202,21 @@ for s in scheme_list:
 
 ## Image creators
 
+def maskImage(img_base, img_mask):
+
+    img_masked = Image.new("RGBA", (img_mask.width, img_mask.height))
+
+    base_data = img_base.load()
+    mask_data = img_mask.load()
+    masked_data = img_masked.load()
+
+    for y in range(img_base.size[1]):
+        for x in range(img_base.size[0]):
+            if base_data[x, y][3] !=0:
+                pixel = base_data[x, y]
+                masked_data[x,y]= (pixel[0],pixel[1],pixel[2],min(mask_data[x,y][3],base_data[x, y][3]))
+    return img_masked
+
 def makeSwatch(list, name, width):
     save_string = "../images/render/swatches/"+name +".png"
     sq_width = 50
@@ -317,3 +332,26 @@ def process_image(name, location,type):
                 highlight_data[x, y] = (highlight[0],highlight[1],highlight[2],int(0.3*highlight_data[x, y][len(highlight_data[x, y])-1]))                
         img_highlight.save(save_string_highlight)    
 
+def makeWheelchairPart(save, thighs, base, mask, lines):
+    loc = "../../spritemaker_bases/"
+    save_string = loc+"wheelchair/"+save+"_fill.png"
+    img_thighs = Image.open(loc+"wheelchair/parts/thighs/"+thighs+"_fill.png")
+    img_base = Image.open(loc+base+"_fill.png")
+    img_mask = Image.open(loc+"wheelchair/parts/"+mask+"_mask.png")
+    img_lines = Image.open(loc+"wheelchair/parts/"+lines+"_lines.png")
+    # img_masked = Image.new("RGBA", (img_mask.width, img_mask.height))
+
+    # base_data = img_base.load()
+    # mask_data = img_mask.load()
+    # masked_data = img_masked.load()
+
+    # for y in range(img_base.size[1]):
+    #     for x in range(img_base.size[0]):
+    #         if base_data[x, y][3] !=0:
+    #             pixel = base_data[x, y]
+    #             masked_data[x,y]= (pixel[0],pixel[1],pixel[2],min(mask_data[x,y][3],base_data[x, y][3]))
+
+    img_masked = maskImage(img_base, img_mask)
+    img_thighs.alpha_composite(img_masked, (22, 0),(0, 397))
+
+    img_thighs.save(save_string)

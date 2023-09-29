@@ -519,6 +519,9 @@ def makeHourglass():
     process_image("waistline", "anatomy/hourglass/full","regular")
     process_image("waistline_mask", "anatomy/hourglass/full","no_fill")    
 
+def makeCalves():
+    imagemodule.makeWheelchairPart("wheelchair_legs/regular", "body","anatomy/legs/regular", "anatomy/legs/regular", "anatomy/legs/regular")
+    
 def process_image(name, location,type):
     return imagemodule.process_image(name, location,type)
 
@@ -600,7 +603,7 @@ def runStuff():
     for c in closet:
         if c.name in []:
             process_portrait_part(c)
-
+    makeCalves()
     #makeHourglass()        
     #makeWinks()
     #makeStubble() 
