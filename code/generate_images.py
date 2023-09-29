@@ -520,7 +520,39 @@ def makeHourglass():
     process_image("waistline_mask", "anatomy/hourglass/full","no_fill")    
 
 def makeCalves():
-    imagemodule.makeWheelchairPart("wheelchair_legs/regular", "body","anatomy/legs/regular", "anatomy/legs/regular", "anatomy/legs/regular")
+    # (save, thighs, base, mask, lines)
+    for obj in closet:
+        if obj.name == "legs":
+            print("Making legs!")  
+            imagemodule.makeWheelchairPart("wheelchair_legs/regular", "full","anatomy/legs/regular", "anatomy/legs/regular", "anatomy/legs/regular")
+        else:
+            makeLegs = True
+            for item in obj.item_list:
+                if item!="none":
+                    save = "wheelchair_"+obj.name+"/"+item
+                    thighs = "full"
+                    base = obj.location + "/"+obj.name +"/"+item
+                    mask = "none"
+                    lines = "none"
+                    if obj.name == "shoes":
+                        thighs = "none"
+                        mask = "none"
+                        lines = "none"
+                    elif obj.name == "socks":
+                        if item =="tights":
+                            thighs = "full"
+                        elif item =="thigh high":
+                            thighs = "socks"    
+                        else:
+                            thighs = "none"  
+                        mask = "anatomy/legs/regular" 
+                        lines = "anatomy/legs/regular"   
+                    else:
+                        makeLegs = False
+                    if makeLegs:      
+                        print("Making legs for: "+obj.name)  
+                        imagemodule.makeWheelchairPart(save, thighs, base, mask, lines)
+            
     
 def process_image(name, location,type):
     return imagemodule.process_image(name, location,type)
