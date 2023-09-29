@@ -5,7 +5,7 @@ function checkRender(obj){
             if (no_render_list[i][1].includes(getImageItem(obj)))
                 return false
         }
-        if (obj.name.includes("wheelchair") && findNameMatch(defining_objects,"wheelchair").value_list[0] ==0)
+        if (obj.name.includes("chair") && findNameMatch(defining_objects,"chair").value_list[0] ==0)
             return false;
     }        
     return true  
@@ -122,7 +122,7 @@ function updateVariables(){
     //sprite height
     sprite_width = full_width;
     sprite_height = full_height ;
-    if (findNameMatch(defining_objects,"wheelchair").value_list[0] !=0){ //there's a wheelchair
+    if (findNameMatch(defining_objects,"chair").value_list[0] !=0){ //there's a chair
         sprite_height = full_height*size_list[ui_variables_object.current_size_type] -165-ui_variables_object.crop_height;
     } 
     sprite_height = sprite_height*size_list[ui_variables_object.current_size_type] -ui_variables_object.crop_height;//-(5-ui_variables_object.current_size_type)*30
@@ -461,7 +461,7 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
             this_list = outfit_list.concat(accessory_list).concat(sleeve_list).concat(["fringe","sidelocks","hair_extra", "facial_hair","waistline"])
             if (this_list.includes(defining_objects[i].name)) {
                 var prob;
-                if (accessory_list.includes(defining_objects[i].name)|| ["wheelchair","facial_hair","hair_extra"].includes(defining_objects[i].name)){//accessories less common
+                if (accessory_list.includes(defining_objects[i].name)|| ["chair","facial_hair","hair_extra"].includes(defining_objects[i].name)){//accessories less common
                     prob = 0.5;
                 }
                 else{
@@ -515,7 +515,7 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
                 /*if (defining_objects[i].name=="neckwear"&& this.defining_variables_object.current_hairstyle<3){// bald/balding/shaved
                     this.current_defining_objects[i].value_list = listOf(0);
                 } Want to remove ugly ties but it's troublesome */ 
-                if (["wheelchair"].includes(defining_objects[i].name))//just while fixing clothes 
+                if (["chair"].includes(defining_objects[i].name))//just while fixing clothes 
                     this.current_defining_objects[i].value_list = listOf(0);     
                 }
         }

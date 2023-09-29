@@ -42,9 +42,9 @@ top_chest_list_d = [basic_chest_list,["none"], [],[],[],True]
 overshirt_chest_list_d = [basic_chest_list,["none"], [],[],[],True]  
 coat_chest_list_d = [basic_chest_list,["none"], [],[],[],True]  
 
-wheelchair_list = [ "none","manual","old fashioned"]
-wheelchair_list_w = ["old fashioned"]
-wheelchair_list_d = [wheelchair_list,wheelchair_list,wheelchair_list_w,[],[],True]
+chair_list = [ "none","manual","old fashioned"]
+chair_list_w = ["old fashioned"]
+chair_list_d = [chair_list,chair_list,chair_list_w,[],[],True]
 
 head_list_u = ["small", "round","jowly", "medium", "pointed","gaunt", "rectangular",]
 head_list_d = default_list(head_list_u)
@@ -61,7 +61,7 @@ body_list_d = default_list(body_list)
 
 leg_list_d = default_list(["none"]+body_list)
 
-wheelchair_leg_list_d = default_list(["none"]+body_list)
+chair_leg_list_d = default_list(["none"]+body_list)
 
 eyetype_list_u = ["medium eyelashes","down-turned","up-turned", "pointed", "animal"]
 eyetype_list_m = ["short eyelashes"]+ eyetype_list_u
@@ -248,13 +248,13 @@ facial_hair_list_render = [f for f in facial_hair_list_m if f!="stubble"]
 
 # collections of parts that have the same colours and patterns
 skin_list_defining = ["body","nose","mouth","eyebrows","complexion","ears","body_chest"]#same colour as head
-skin_list = skin_list_defining + ["skull","legs","wheelchair_legs","nose_front"]
+skin_list = skin_list_defining + ["skull","legs","chair_legs","nose_front"]
 expression_list = ["cheeks", "mouth","eyebrows","eyes"]
 accessory_list = ["eyewear","neckwear", "earrings", "gloves","back"]
-outfit_list = [ "bottom","top", "overshirt", "coat", "socks","shoes"]#"wheelchair",
+outfit_list = [ "bottom","top", "overshirt", "coat", "socks","shoes"]#"chair",
 has_sleeves_list = ["top","overshirt","coat"]
 sleeve_list = [x +"_sleeves" for x in has_sleeves_list]
-defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","hair_extra", "sidelocks", "facial_hair", "head","waistline","wheelchair"])
+defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","hair_extra", "sidelocks", "facial_hair", "head","waistline","chair"])
 
 #extra info
 
@@ -274,9 +274,9 @@ neckwear_front_list_d = default_list(neckwear_front_list)
 neckwear_front2_list = [ "scarf","long scarf","fur collar"]
 neckwear_front2_list_d = default_list(neckwear_front2_list)
 
-wheelchair_bottom_list_d = bottom_list_d
-wheelchair_coat_list = ["none", "medium cloak","long jacket closed","dress jacket","jama"] 
-wheelchair_coat_list_d = default_list(wheelchair_coat_list)
+chair_bottom_list_d = bottom_list_d
+chair_coat_list = ["none", "medium cloak","long jacket closed","dress jacket","jama"] 
+chair_coat_list_d = default_list(chair_coat_list)
 
 highlight_list = ["fringe"]
 underlay_list = ["eyewear"]
@@ -310,7 +310,7 @@ def add_item(name, listname, list_list,location):
 
 ## Adding all the data to closet
 
-add_item("wheelchair_back", "wheelchair_list_d", wheelchair_list_d,"wheelchair")
+add_item("chair_back", "chair_list_d", chair_list_d,"chair")
 add_item("back", "back_list_d",back_list_d, "clothes")
 add_item("hat_back", "hat_back_list_d",hat_back_list_d, "clothes/hat")
 add_item("hair_extra", "hair_extra_list_d",hair_extra_list_d, "hair")
@@ -368,10 +368,10 @@ add_item("sidelocks_repeat", "sidelocks_repeat_list_d", sidelocks_list_d, "hair"
 add_item("fringe", "fringe_list_d", fringe_list_d, "hair")
 add_item("hat_front", "hat_front_list_d", hat_front_list_d, "clothes/hat")
 
-add_item("wheelchair", "wheelchair_list_d", wheelchair_list_d, "wheelchair")
-add_item("wheelchair_legs", "wheelchair_leg_list_d", wheelchair_leg_list_d, "wheelchair")
-add_item("wheelchair_bottom", "wheelchair_bottom_list_d", wheelchair_bottom_list_d, "wheelchair")
-add_item("wheelchair_coat", "wheelchair_coat_list_d", wheelchair_coat_list_d, "wheelchair")
+add_item("chair", "chair_list_d", chair_list_d, "chair")
+add_item("chair_legs", "chair_leg_list_d", chair_leg_list_d, "chair")
+add_item("chair_bottom", "chair_bottom_list_d", chair_bottom_list_d, "chair")
+add_item("chair_coat", "chair_coat_list_d", chair_coat_list_d, "chair")
 
 def name_string(name, list_list):
     #create a line of javascript code defining this list of lists
@@ -455,7 +455,7 @@ def write_variables():
     content.write(list_string("defining_list", defining_list)) 
     content.write("\n")   
     for c in closet:
-        if not (c.name in ["wheelchair_back","wheelchair_back_dec","wheelchair_dec",]):
+        if not (c.name in ["chair_back","chair_back_dec","chair_dec",]):
             content.write(name_string(c.listname, c.list_list))
         if c.dec_list !=[]:      
             content.write(name_string(c.listname+"_dec", [c.list_list[3],c.list_list[3],[],[],[],True]))  
@@ -519,17 +519,17 @@ def makeHourglass():
     process_image("waistline", "anatomy/hourglass/full","regular")
     process_image("waistline_mask", "anatomy/hourglass/full","no_fill")    
 
-def makeCalves():
+def makeChairParts():
     # (save, thighs, base, mask, lines)
     for obj in closet:
         if obj.name == "legs":
             print("Making legs!")  
-            imagemodule.makeWheelchairPart("wheelchair_legs/regular", "full","anatomy/legs/regular", "anatomy/legs/regular", "anatomy/legs/regular")
+            imagemodule.makechairPart("chair_legs/regular", "full","anatomy/legs/regular", "anatomy/legs/regular", "anatomy/legs/regular")
         else:
             makeLegs = True
             for item in obj.item_list:
                 if item!="none":
-                    save = "wheelchair_"+obj.name+"/"+item
+                    save = "chair_"+obj.name+"/"+item
                     thighs = "full"
                     base = obj.location + "/"+obj.name +"/"+item
                     mask = "none"
@@ -555,7 +555,7 @@ def makeCalves():
                         makeLegs = False
                     if makeLegs:      
                         print(obj.name+": "+item)  
-                        imagemodule.makeWheelchairPart(save, thighs, base, mask, lines)
+                        imagemodule.makechairPart(save, thighs, base, mask, lines)
             
     
 def process_image(name, location,type):
@@ -621,7 +621,7 @@ def runStuff():
     # "eyes","eyebrows", "mouth"
     # "body_chest","top_chest","overshirt_chest","coat_chest"
     
-    # "wheelchair_back","wheelchair_back_dec", "wheelchair", "wheelchair_dec"
+    # "chair_back","chair_back_dec", "chair", "chair_dec"
     
     # "sidelocks", "fringe", "hair_front","hair_middle", "hair_back","hair_extra", "facial_hair"
     
@@ -639,7 +639,7 @@ def runStuff():
     for c in closet:
         if c.name in []:
             process_portrait_part(c)
-    makeCalves()
+    makeChairParts()
     #makeHourglass()        
     #makeWinks()
     #makeStubble() 

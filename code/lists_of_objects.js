@@ -137,14 +137,14 @@ add_colour2_children("shoes", ["shoes_dec"]);
 //outfit
 add_value_children("body_chest", ["coat_chest","overshirt_chest","top_chest"]);
 
-add_value_children("coat", ["coat_dec","coat_back","wheelchair_coat"]);
-add_colour_children("coat", ["coat_back","wheelchair_coat","coat_sleeves", "coat_chest"]);
+add_value_children("coat", ["coat_dec","coat_back","chair_coat"]);
+add_colour_children("coat", ["coat_back","chair_coat","coat_sleeves", "coat_chest"]);
 add_colour2_children("coat", ["coat_dec"]);
 
 add_value_children("waistline",["waistline_dec"])
-add_value_children("bottom", ["wheelchair_bottom","wheelchair_bottom_dec","bottom_dec",]);
-add_colour_children("bottom", ["wheelchair_bottom","waistline"]);
-add_colour2_children("bottom", ["bottom_dec","wheelchair_bottom_dec","waistline_dec"]);
+add_value_children("bottom", ["chair_bottom","chair_bottom_dec","bottom_dec",]);
+add_colour_children("bottom", ["chair_bottom","waistline"]);
+add_colour2_children("bottom", ["bottom_dec","chair_bottom_dec","waistline_dec"]);
 
 add_value_children("top", ["top_dec","top_collar","top_collar_dec"]);
 add_colour_children("top", ["top_collar","top_sleeves","top_chest"]);
@@ -157,10 +157,10 @@ add_colour2_children("overshirt", ["overshirt_dec", ]);
 
 add_value_children("neckwear",["neckwear_front","neckwear_front2"])
 add_colour_children("neckwear",["neckwear_front","neckwear_front2"])
-//wheelchair
-add_value_children("wheelchair", ["wheelchair_back","wheelchair_back_dec","wheelchair_dec"]);
-add_colour_children("wheelchair", ["wheelchair_back"]);
-add_colour2_children("wheelchair", ["wheelchair_back_dec","wheelchair_dec"]);
+//chair
+add_value_children("chair", ["chair_back","chair_back_dec","chair_dec"]);
+add_colour_children("chair", ["chair_back"]);
+add_colour2_children("chair", ["chair_back_dec","chair_dec"]);
 
 const export_head_list =["head","skull","ears","nose","nose_front","complexion"];
 const export_outfit_list = (image_objects.map(value => value.name)).filter(value => !(expression_list.includes(value)));

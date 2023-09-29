@@ -334,17 +334,17 @@ def process_image(name, location,type):
                 highlight_data[x, y] = (highlight[0],highlight[1],highlight[2],int(0.3*highlight_data[x, y][len(highlight_data[x, y])-1]))                
         img_highlight.save(save_string_highlight)    
 
-def makeWheelchairPart(save, thighs, base, mask, lines):
+def makechairPart(save, thighs, base, mask, lines):
     loc = "../../spritemaker_bases/"
-    save_string = loc+"wheelchair/"+save+"_fill.png"
+    save_string = loc+"chair/"+save+"_fill.png"
     if thighs=="none":
-        img_thighs = Image.open(loc+"wheelchair/parts/none.png")    
+        img_thighs = Image.open(loc+"chair/parts/none.png")    
     else:
-        img_thighs = Image.open(loc+"wheelchair/parts/thighs/"+thighs+"_fill.png")
-    img_thighs = Image.open(loc+"wheelchair/parts/thighs/"+thighs+"_fill.png")
+        img_thighs = Image.open(loc+"chair/parts/thighs/"+thighs+"_fill.png")
+    img_thighs = Image.open(loc+"chair/parts/thighs/"+thighs+"_fill.png")
     img_base = Image.open(loc+base+"_fill.png")
-    img_mask = Image.open(loc+"wheelchair/parts/"+mask+"_mask.png")
-    img_lines = Image.open(loc+"wheelchair/parts/"+lines+"_lines.png")
+    img_mask = Image.open(loc+"chair/parts/"+mask+"_mask.png")
+    img_lines = Image.open(loc+"chair/parts/"+lines+"_lines.png")
 
     if mask =="none":
         img_thighs.alpha_composite(img_base, (22, 0),(0, 397))
