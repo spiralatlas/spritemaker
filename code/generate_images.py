@@ -524,7 +524,7 @@ def makeChairParts():
     for obj in closet:
         if obj.name == "legs":
             print("Making legs!")  
-            imagemodule.makeChairPart("chair_legs/regular", "full","anatomy/legs/regular", "anatomy/legs/regular", "anatomy/legs/regular")
+            imagemodule.makeChairPart("chair_legs/regular", "full","anatomy/legs/regular", "anatomy/legs/regular", "anatomy/legs/regular","base")
         else:
             makeLegs = True
             for item in obj.item_list:
@@ -534,7 +534,7 @@ def makeChairParts():
                     base = obj.location + "/"+obj.name +"/"+item
                     mask = "none"
                     lines = "none"
-                    if obj.name.find("shoes")>-1: #includes decs
+                    if obj.name=="shoes": 
                         thighs = "none"
                         mask = "none"
                         lines = "none"
@@ -572,11 +572,40 @@ def makeChairParts():
                             if item in ["long kilt","tube skirt"]:
                                 mask ="clothes/bottom/narrow"
                                 lines ="clothes/bottom/narrow"
+                            elif item.find("split")>-1:
+                                mask ="clothes/bottom/dec" 
+                                lines ="clothes/bottom/dec" 
+
                     else:
                         makeLegs = False
                     if makeLegs:      
                         print(obj.name+": "+item)  
-                        imagemodule.makeChairPart(save, thighs, base, mask, lines)
+                        imagemodule.makeChairPart(save, thighs, base, mask, lines,"base")
+            makeLegs = True
+            for item in obj.dec_list:
+                if item!="none":   
+                    save = "chair_"+obj.name+"/"+item
+                    thighs = "full"
+                    base = obj.location + "/"+obj.name +"/"+item
+                    mask = "none"
+                    lines = "none" 
+                    if obj.name=="shoes": 
+                        thighs = "none"
+                        mask = "none"
+                        lines = "none"        
+                    elif obj.name == "bottom":
+                        thighs = "none"
+                        if item.find("short")>-1 or item.find("medium")>-1:
+                            mask = "all"   
+                        else:    
+                            mask = "clothes/bottom/dec" 
+                            lines ="clothes/bottom/dec" 
+                    else:
+                        makeLegs = False
+                    if makeLegs:      
+                        print(obj.name+"_dec: "+item)  
+                        imagemodule.makeChairPart(save, thighs, base, mask, lines, "dec")
+        
             
     
 def process_image(name, location,type):
