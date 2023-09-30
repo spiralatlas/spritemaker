@@ -524,7 +524,7 @@ def makeChairParts():
     for obj in closet:
         if obj.name == "legs":
             print("Making legs!")  
-            imagemodule.makechairPart("chair_legs/regular", "full","anatomy/legs/regular", "anatomy/legs/regular", "anatomy/legs/regular")
+            imagemodule.makeChairPart("chair_legs/regular", "full","anatomy/legs/regular", "anatomy/legs/regular", "anatomy/legs/regular")
         else:
             makeLegs = True
             for item in obj.item_list:
@@ -534,7 +534,7 @@ def makeChairParts():
                     base = obj.location + "/"+obj.name +"/"+item
                     mask = "none"
                     lines = "none"
-                    if obj.name == "shoes":
+                    if obj.name.find("shoes")>-1: #includes decs
                         thighs = "none"
                         mask = "none"
                         lines = "none"
@@ -550,12 +550,33 @@ def makeChairParts():
                     elif obj.name == "coat":
                         thighs = "none" 
                         mask = "clothes/coat/regular" 
-                        lines = "clothes/coat/regular"       
+                        lines = "clothes/coat/regular" 
+                    elif obj.name == "bottom":
+                        mask = "clothes/bottom/regular" 
+                        lines = "clothes/bottom/regular"     
+                        if item in ["trousers","breeches"]:
+                            mask = "clothes/bottom/"+item 
+                            lines = "clothes/bottom/pants" 
+                            thighs = "pants" 
+                        elif item in ["shorts","ragged trousers","ragged skirt","briefs"]:
+                            thighs = item   
+                            mask = "all" 
+                        elif (item.find("short kilt")>-1) or item =="kilt":
+                            thighs ="short kilt" 
+                            mask = "all"      
+                        elif item.find("short")>-1 or item.find("medium")>-1:
+                            thighs ="short skirt" 
+                            mask = "all"       
+                        else:
+                            thighs ="skirt" 
+                            if item in ["long kilt","tube skirt"]:
+                                mask ="clothes/bottom/narrow"
+                                lines ="clothes/bottom/narrow"
                     else:
                         makeLegs = False
                     if makeLegs:      
                         print(obj.name+": "+item)  
-                        imagemodule.makechairPart(save, thighs, base, mask, lines)
+                        imagemodule.makeChairPart(save, thighs, base, mask, lines)
             
     
 def process_image(name, location,type):

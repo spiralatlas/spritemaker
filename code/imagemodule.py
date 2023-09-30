@@ -334,7 +334,7 @@ def process_image(name, location,type):
                 highlight_data[x, y] = (highlight[0],highlight[1],highlight[2],int(0.3*highlight_data[x, y][len(highlight_data[x, y])-1]))                
         img_highlight.save(save_string_highlight)    
 
-def makechairPart(save, thighs, base, mask, lines):
+def makeChairPart(save, thighs, base, mask, lines):
     loc = "../../spritemaker_bases/"
     save_string = loc+"chair/"+save+"_fill.png"
     if thighs=="none":
@@ -346,12 +346,14 @@ def makechairPart(save, thighs, base, mask, lines):
     img_mask = Image.open(loc+"chair/parts/"+mask+"_mask.png")
     img_lines = Image.open(loc+"chair/parts/"+lines+"_lines.png")
 
+    new_pos = (22, 0)
+    old_pos = (0,308)
     if mask =="none":
-        img_thighs.alpha_composite(img_base, (22, 0),(0, 397))
+        img_thighs.alpha_composite(img_base, new_pos,old_pos)
     else:    
         img_masked = maskImage(img_base, img_mask)
-        img_thighs.alpha_composite(img_masked, (22, 0),(0, 397))
+        img_thighs.alpha_composite(img_masked, new_pos,old_pos)
         img_masked = maskImage(img_lines, img_base)
-        img_thighs.alpha_composite(img_masked, (22, 0),(0, 397))
+        img_thighs.alpha_composite(img_masked, new_pos,old_pos)
 
     img_thighs.save(save_string)
