@@ -275,7 +275,8 @@ neckwear_front2_list = [ "scarf","long scarf","fur collar"]
 neckwear_front2_list_d = default_list(neckwear_front2_list)
 
 chair_bottom_list_d = bottom_list_d
-chair_coat_list = ["none", "medium cloak","long jacket closed","dress jacket","jama"] 
+long_coat_list = ["overcoat", "closed robe", "open robe", "dress jacket","jama","long open coat"] 
+chair_coat_list = long_coat_list+["none", "medium cloak", "open sweater","hoodie","cool jacket", "buttoned jacket","business jacket"] 
 chair_coat_list_d = default_list(chair_coat_list)
 
 highlight_list = ["fringe"]
@@ -548,9 +549,20 @@ def makeChairParts():
                         mask = "anatomy/legs/regular" 
                         lines = "anatomy/legs/regular"  
                     elif obj.name == "coat":
-                        thighs = "none" 
-                        mask = "clothes/coat/regular" 
-                        lines = "clothes/coat/regular" 
+                        if item in chair_coat_list:
+                            if item in long_coat_list: 
+                                thighs = "coat" 
+                                mask = "clothes/coat/regular" 
+                                lines = "clothes/coat/regular"    
+                            else:
+                                thighs = "open_coat" 
+                                mask = "all" 
+                                lines = "none"    
+                        else:
+                            thighs = "none"
+                            mask = "all" 
+                            lines = "none" 
+                        
                     elif obj.name == "bottom":
                         mask = "clothes/bottom/regular" 
                         lines = "clothes/bottom/regular"     

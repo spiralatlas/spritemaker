@@ -99,7 +99,7 @@ const chair_list_d = [["none","manual","old fashioned",],["none","manual","old f
 const chair_leg_list_d = [["none","regular",],["none","regular",],[],[],[],true];
 const chair_bottom_list_d = [["none","briefs","short skirt","puffy full short skirt","medium skirt","puffy full medium skirt","long skirt","puffy full long skirt","puffy full long split skirt","empire skirt","puffy short kilt","short kilt","kilt","long kilt","tube skirt","ragged skirt",],["none","briefs","shorts","breeches","trousers","ragged trousers",],["breeches","tube skirt","briefs","long kilt","empire skirt","ragged trousers","ragged skirt",],["puffy short kilt","puffy full long split skirt",],[],false];
 const chair_bottom_list_d_dec = [["puffy short kilt","puffy full long split skirt",],["puffy short kilt","puffy full long split skirt",],[],[],[],true];
-const chair_coat_list_d = [["none","medium cloak","long jacket closed","dress jacket","jama",],["none","medium cloak","long jacket closed","dress jacket","jama",],[],[],[],true];
+const chair_coat_list_d = [["overcoat","closed robe","open robe","dress jacket","jama","long open coat","none","medium cloak","open sweater","hoodie","cool jacket","buttoned jacket","business jacket",],["overcoat","closed robe","open robe","dress jacket","jama","long open coat","none","medium cloak","open sweater","hoodie","cool jacket","buttoned jacket","business jacket",],[],[],[],true];
 
 add_image_object("chair_back",chair_list_d,"chair")
 add_image_object("back",back_list_d,"clothes")
