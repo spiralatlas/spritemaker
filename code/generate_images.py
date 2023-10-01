@@ -638,8 +638,6 @@ def makeChairParts():
                         print(obj.name+"_dec: "+item)  
                         imagemodule.makeChairPart(save, thighs, base, mask, lines, "dec")
         
-            
-    
 def process_image(name, location,type):
     return imagemodule.process_image(name, location,type)
 
@@ -688,7 +686,6 @@ def process_portrait_part(obj):
                     if obj.name =="waistline":
                         process_image(item, loc+"/full","regular")    
     
-
 def process_all_portraits():
     for c in closet:
         process_portrait_part(c)
@@ -719,9 +716,9 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in []:
+        if c.name in ["chair_back"]:
             process_portrait_part(c)
-    makeChairParts()
+    #makeChairParts()
     #makeHourglass()        
     #makeWinks()
     #makeStubble() 
