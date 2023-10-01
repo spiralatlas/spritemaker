@@ -122,9 +122,9 @@ function updateVariables(){
     //sprite height
     sprite_width = full_width;
     sprite_height = full_height ;
-    if (findNameMatch(defining_objects,"chair").value_list[0] !=0){ //there's a chair
+    /*if (findNameMatch(defining_objects,"chair").value_list[0] !=0){ //there's a chair
         sprite_height = full_height*size_list[ui_variables_object.current_size_type] -165-ui_variables_object.crop_height;
-    } 
+    }*/ 
     sprite_height = sprite_height*size_list[ui_variables_object.current_size_type] -ui_variables_object.crop_height;//-(5-ui_variables_object.current_size_type)*30
 
     //calculating crops
@@ -515,7 +515,7 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
                 /*if (defining_objects[i].name=="neckwear"&& this.defining_variables_object.current_hairstyle<3){// bald/balding/shaved
                     this.current_defining_objects[i].value_list = listOf(0);
                 } Want to remove ugly ties but it's troublesome */ 
-                if (["chair"].includes(defining_objects[i].name))//just while fixing clothes 
+                if (["chair"].includes(defining_objects[i].name)&& chairOn == false)//just while fixing clothes 
                     this.current_defining_objects[i].value_list = listOf(0);     
                 }
         }

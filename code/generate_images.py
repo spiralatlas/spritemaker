@@ -42,7 +42,7 @@ top_chest_list_d = [basic_chest_list,["none"], [],[],[],True]
 overshirt_chest_list_d = [basic_chest_list,["none"], [],[],[],True]  
 coat_chest_list_d = [basic_chest_list,["none"], [],[],[],True]  
 
-chair_list = [ "none","manual","old fashioned"]
+chair_list = [ "none","invisible", "manual","old fashioned"]
 chair_list_w = ["old fashioned"]
 chair_list_d = [chair_list,chair_list,chair_list_w,[],[],True]
 
@@ -251,7 +251,7 @@ skin_list_defining = ["body","nose","mouth","eyebrows","complexion","ears","body
 skin_list = skin_list_defining + ["skull","legs","chair_legs","nose_front"]
 expression_list = ["cheeks", "mouth","eyebrows","eyes"]
 accessory_list = ["eyewear","neckwear", "earrings", "gloves","back"]
-outfit_list = [ "bottom","top", "overshirt", "coat", "socks","shoes"]#"chair",
+outfit_list = [ "bottom","top", "overshirt", "coat", "socks","shoes","chair"]
 has_sleeves_list = ["top","overshirt","coat"]
 sleeve_list = [x +"_sleeves" for x in has_sleeves_list]
 defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","hair_extra", "sidelocks", "facial_hair", "head","waistline","chair"])
@@ -287,7 +287,7 @@ chair_coat_list_d = default_list(chair_coat_list)
 highlight_list = ["fringe"]
 underlay_list = ["eyewear"]
 hourglass_list = ["top","overshirt","waistline","body","legs"]
-no_render_list = [["hat_middle",["scarf"]],["hat_front_dec",["scarf"]],]
+no_render_list = [["hat_middle",["scarf"]],["hat_front_dec",["scarf"]],["chair",["invisible"]],["chair_back",["invisible"]],["chair_dec",["invisible"]],["chair_back_dec",["invisible"]]]
 
 ###################### More technical stuff from here on
 
@@ -716,7 +716,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["chair_overshirt"]:
+        if c.name in ["chair"]:
             process_portrait_part(c)
     #makeChairParts()
     #makeHourglass()        
