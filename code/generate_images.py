@@ -279,7 +279,7 @@ chair_shoes_list_d = shoes_list_d
 chair_bottom_list_d = bottom_list_d
 chair_overshirt_list = ["band with flap"]
 chair_overshirt_list_d = default_list(chair_overshirt_list)
-long_coat_list = ["overcoat", "closed robe", "open robe", "dress jacket","jama","long open coat"] 
+long_coat_list = ["overcoat", "closed robe", "open robe", "dress jacket","jama","long open jacket"] 
 chair_coat_list = long_coat_list+["none", "medium cloak", "open sweater","hoodie","cool jacket", "buttoned jacket","business jacket"] 
 chair_coat_list_d = default_list(chair_coat_list)
 
@@ -716,7 +716,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["chair_shoes"]:
+        if c.name in ["chair_coat"]:
             process_portrait_part(c)
     #makeChairParts()
     #makeHourglass()        
