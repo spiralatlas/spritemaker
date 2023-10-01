@@ -716,7 +716,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["chair_back"]:
+        if c.name in ["chair"]:
             process_portrait_part(c)
     #makeChairParts()
     #makeHourglass()        
