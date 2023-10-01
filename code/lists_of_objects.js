@@ -111,13 +111,44 @@ for (i = 0; i < defining_objects.length; i += 1){
 //anatomy        
 add_colour_children("head", skin_list);
 
-add_value_children("body", ["legs"]);
+add_value_children("body", ["legs", "chair_legs"]);
 add_value_children("nose", ["nose_front"]);
 
 add_colour_children("fringe", ["hair_middle", "hair_front","hair_back","hair_extra", "facial_hair","sidelocks","sidelocks_repeat"]);
 add_value_children("sidelocks", ["sidelocks_repeat"]);
-//accessories
 
+add_value_children("body_chest", ["coat_chest","overshirt_chest","top_chest"]);
+//accessories
+let children_list =[];
+
+const suffix_list = ["_back","_sleeves","_front"] 
+
+function addIfExists(list, n){
+    // if there exists an object in image_objects with the name name, add it to list
+    for (let i = 0; i < image_objects.length; i += 1) {
+        if (image_objects[i].name==n){
+            if (true)//(!list.includes(n))
+                list.push(n)
+        }
+    }
+}
+for (i = 0; i < defining_objects.length; i += 1){
+    this_name = defining_objects[i].name;
+    if (clothingname_list.includes(this_name)||accessoryname_list.includes(this_name)){
+        value_list =[];
+        for (j = 0; j < suffix_list.length; j += 1){
+            addIfExists(value_list, this_name+suffix_list[j])
+            addIfExists(value_list, this_name+"_dec")
+            addIfExists(value_list, "chair_"+this_name)
+            addIfExists(value_list, "chair_"+this_name+suffix_list[j])
+            addIfExists(value_list, "chair_"+this_name+suffix_list[j]+"_dec")
+        }
+        console.log(this_name +" "+value_list);
+        children_list.push([this_name, value_list]);
+        //add_value_children(this_name, value_list);
+    }
+}
+/*
 add_value_children("hat", ["hat_back","hat_back_dec","hat_front_dec", "hat_front","hat_middle","hijab_front"]);
 add_colour_children("hat", ["hat_back","hat_middle","hat_front","hijab_front"]);
 add_colour2_children("hat", ["hat_back_dec","hat_front_dec"]);
@@ -131,11 +162,11 @@ add_colour2_children("eyewear", ["eyewear_dec"]);
 add_value_children("neckwear", ["neckwear_dec"]);
 add_colour2_children("neckwear", ["neckwear_dec"]);
 
-add_value_children("shoes", ["shoes_dec"]);
-add_colour2_children("shoes", ["shoes_dec"]);
+add_value_children("shoes", ["shoes_dec","chair_shoes", "chair_shoes_dec"]);
+add_colour2_children("shoes", ["shoes_dec","chair_shoes_dec"]);
 
 //outfit
-add_value_children("body_chest", ["coat_chest","overshirt_chest","top_chest"]);
+
 
 add_value_children("coat", ["coat_dec","coat_back","chair_coat"]);
 add_colour_children("coat", ["coat_back","chair_coat","coat_sleeves", "coat_chest"]);
@@ -161,6 +192,7 @@ add_colour_children("neckwear",["neckwear_front","neckwear_front2"])
 add_value_children("chair", ["chair_back","chair_back_dec","chair_dec"]);
 add_colour_children("chair", ["chair_back"]);
 add_colour2_children("chair", ["chair_back_dec","chair_dec"]);
+*/
 
 const export_head_list =["head","skull","ears","nose","nose_front","complexion"];
 const export_outfit_list = (image_objects.map(value => value.name)).filter(value => !(expression_list.includes(value)));
