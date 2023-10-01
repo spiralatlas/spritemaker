@@ -97,8 +97,12 @@ const hat_front_list_d = [["none","flower","flower crown","bandanna","hijab","cr
 const hat_front_list_d_dec = [["bowler","broad hat","fedora","witch hat","top hat","crown",],["bowler","broad hat","fedora","witch hat","top hat","crown",],[],[],[],true];
 const chair_list_d = [["none","manual","old fashioned",],["none","manual","old fashioned",],["old fashioned",],[],[],true];
 const chair_leg_list_d = [["none","regular",],["none","regular",],[],[],[],true];
+const chair_socks_list_d = [["none","ankle high","mid calf","knee high","thigh high","tights",],["none","ankle high","mid calf",],[],[],[],true];
+const chair_shoes_list_d = [["none","sandals","slip ons","sneakers","pumps","mary janes","high boots",],["none","sandals","slip ons","sneakers","boots",],[],["boots","sneakers",],[],false];
+const chair_shoes_list_d_dec = [["boots","sneakers",],["boots","sneakers",],[],[],[],true];
 const chair_bottom_list_d = [["none","briefs","short skirt","puffy full short skirt","medium skirt","puffy full medium skirt","long skirt","puffy full long skirt","puffy full long split skirt","empire skirt","puffy short kilt","short kilt","kilt","long kilt","tube skirt","ragged skirt",],["none","briefs","shorts","breeches","trousers","ragged trousers",],["breeches","tube skirt","briefs","long kilt","empire skirt","ragged trousers","ragged skirt",],["puffy short kilt","puffy full long split skirt",],[],false];
 const chair_bottom_list_d_dec = [["puffy short kilt","puffy full long split skirt",],["puffy short kilt","puffy full long split skirt",],[],[],[],true];
+const chair_overshirt_list_d = [["band with flap",],["band with flap",],[],[],[],true];
 const chair_coat_list_d = [["overcoat","closed robe","open robe","dress jacket","jama","long open coat","none","medium cloak","open sweater","hoodie","cool jacket","buttoned jacket","business jacket",],["overcoat","closed robe","open robe","dress jacket","jama","long open coat","none","medium cloak","open sweater","hoodie","cool jacket","buttoned jacket","business jacket",],[],[],[],true];
 
 add_image_object("chair_back",chair_list_d,"chair")
@@ -193,8 +197,12 @@ add_image_object("hat_front_dec",hat_front_list_d_dec,"clothes/hat")
 add_image_object("chair",chair_list_d,"chair")
 add_defining_object("chair",chair_list_d)
 add_image_object("chair_legs",chair_leg_list_d,"chair")
+add_image_object("chair_socks",chair_socks_list_d,"chair")
+add_image_object("chair_shoes",chair_shoes_list_d,"chair")
+add_image_object("chair_shoes_dec",chair_shoes_list_d_dec,"chair")
 add_image_object("chair_bottom",chair_bottom_list_d,"chair")
 add_image_object("chair_bottom_dec",chair_bottom_list_d_dec,"chair")
+add_image_object("chair_overshirt",chair_overshirt_list_d,"chair")
 add_image_object("chair_coat",chair_coat_list_d,"chair")
 add_defining_object("hat",hat_list)
 

@@ -274,10 +274,15 @@ neckwear_front_list_d = default_list(neckwear_front_list)
 neckwear_front2_list = [ "scarf","long scarf","fur collar"]
 neckwear_front2_list_d = default_list(neckwear_front2_list)
 
+chair_socks_list_d = socks_list_d
+chair_shoes_list_d = shoes_list_d
 chair_bottom_list_d = bottom_list_d
+chair_overshirt_list = ["band with flap"]
+chair_overshirt_list_d = default_list(chair_overshirt_list)
 long_coat_list = ["overcoat", "closed robe", "open robe", "dress jacket","jama","long open coat"] 
 chair_coat_list = long_coat_list+["none", "medium cloak", "open sweater","hoodie","cool jacket", "buttoned jacket","business jacket"] 
 chair_coat_list_d = default_list(chair_coat_list)
+
 
 highlight_list = ["fringe"]
 underlay_list = ["eyewear"]
@@ -371,7 +376,10 @@ add_item("hat_front", "hat_front_list_d", hat_front_list_d, "clothes/hat")
 
 add_item("chair", "chair_list_d", chair_list_d, "chair")
 add_item("chair_legs", "chair_leg_list_d", chair_leg_list_d, "chair")
+add_item("chair_socks", "chair_socks_list_d", chair_socks_list_d, "chair")
+add_item("chair_shoes", "chair_shoes_list_d", chair_shoes_list_d, "chair")
 add_item("chair_bottom", "chair_bottom_list_d", chair_bottom_list_d, "chair")
+add_item("chair_overshirt", "chair_overshirt_list_d", chair_overshirt_list_d, "chair")
 add_item("chair_coat", "chair_coat_list_d", chair_coat_list_d, "chair")
 
 def name_string(name, list_list):
@@ -548,21 +556,7 @@ def makeChairParts():
                             thighs = "none"  
                         mask = "anatomy/legs/regular" 
                         lines = "anatomy/legs/regular"  
-                    elif obj.name == "coat":
-                        if item in chair_coat_list:
-                            if item in long_coat_list: 
-                                thighs = "coat" 
-                                mask = "clothes/coat/regular" 
-                                lines = "clothes/coat/regular"    
-                            else:
-                                thighs = "open_coat" 
-                                mask = "all" 
-                                lines = "none"    
-                        else:
-                            thighs = "none"
-                            mask = "all" 
-                            lines = "none" 
-                        
+                    
                     elif obj.name == "bottom":
                         mask = "clothes/bottom/regular" 
                         lines = "clothes/bottom/regular"     
@@ -587,7 +581,29 @@ def makeChairParts():
                             elif item.find("split")>-1:
                                 mask ="clothes/bottom/dec" 
                                 lines ="clothes/bottom/dec" 
-
+                    elif obj.name == "overshirt":
+                        if item in chair_overshirt_list:
+                            thighs = "none" 
+                            mask = "clothes/overshirt/regular" 
+                            lines = "clothes/overshirt/regular"       
+                        else:
+                            thighs = "none"
+                            mask = "all" 
+                            lines = "none" 
+                    elif obj.name == "coat":
+                        if item in chair_coat_list:
+                            if item in long_coat_list: 
+                                thighs = "coat" 
+                                mask = "clothes/coat/regular" 
+                                lines = "clothes/coat/regular"    
+                            else:
+                                thighs = "open_coat" 
+                                mask = "all" 
+                                lines = "none"    
+                        else:
+                            thighs = "none"
+                            mask = "all" 
+                            lines = "none"    
                     else:
                         makeLegs = False
                     if makeLegs:      
@@ -597,21 +613,25 @@ def makeChairParts():
             for item in obj.dec_list:
                 if item!="none":   
                     save = "chair_"+obj.name+"/"+item
-                    thighs = "full"
+                    thighs = "none"
                     base = obj.location + "/"+obj.name +"/"+item
                     mask = "none"
                     lines = "none" 
                     if obj.name=="shoes": 
-                        thighs = "none"
                         mask = "none"
                         lines = "none"        
                     elif obj.name == "bottom":
-                        thighs = "none"
                         if item.find("short")>-1 or item.find("medium")>-1:
                             mask = "all"   
                         else:    
                             mask = "clothes/bottom/dec" 
                             lines ="clothes/bottom/dec" 
+                    elif obj.name == "overshirt" and item in chair_overshirt_list:
+                        mask = "clothes/overshirt/regular" 
+                        lines ="clothes/overshirt/regular"    
+                    elif obj.name == "coat" and item in chair_coat_list:
+                        mask = "clothes/coat/regular" 
+                        lines ="clothes/coat/regular"             
                     else:
                         makeLegs = False
                     if makeLegs:      
