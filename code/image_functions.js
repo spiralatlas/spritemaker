@@ -280,6 +280,17 @@ function hasHourglass(obj){
     else
         return false
 }
+
+function hasButt(obj){
+    // returns whether this object is masked and relined because character is in a chair
+    if (findNameMatch(defining_objects,"chair").value_list[0] ==0)
+        return false
+    if (butt_list.concat(butt_list.map(value=>value+"_dec")).includes(obj.name))
+        return true
+    else
+        return false
+}
+
 function fixSources(){
     // Fixes the "src" attribute for all images in sublist of image_objects
     for (let i = 0; i < image_objects.length; i += 1){
@@ -435,6 +446,14 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
                 off_ctx.drawImage(obj.puffy_hourglass_line_image,0,0,width,height, 0, 0,new_width,new_height);
             else
                 off_ctx.drawImage(obj.hourglass_line_image,0,0,width,height, 0, 0,new_width,new_height);
+            off_ctx.globalCompositeOperation = "destination-in";
+            off_ctx.drawImage(obj.base_image,0,0,width,height, 0, 0,new_width,new_height);
+        }
+        if (hasButt(obj)){
+            off_ctx.globalCompositeOperation = "destination-out";
+            off_ctx.drawImage(obj.butt_mask_image,0,0,width,height, 0, 0,new_width,new_height);
+            off_ctx.globalCompositeOperation = "multiply";
+            off_ctx.drawImage(obj.butt_line_image,0,0,width,height, 0, 0,new_width,new_height);
             off_ctx.globalCompositeOperation = "destination-in";
             off_ctx.drawImage(obj.base_image,0,0,width,height, 0, 0,new_width,new_height);
         }

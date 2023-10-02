@@ -287,6 +287,7 @@ chair_coat_list_d = default_list(chair_coat_list)
 highlight_list = ["fringe"]
 underlay_list = ["eyewear"]
 hourglass_list = ["top","overshirt","waistline","body","legs"]
+butt_list = ["shoes", "legs","coat","bottom","socks","overshirt"]
 no_render_list = [["hat_middle",["scarf"]],["hat_front_dec",["scarf"]],["chair",["invisible"]],["chair_back",["invisible"]],["chair_dec",["invisible"]],["chair_back_dec",["invisible"]]]
 
 ###################### More technical stuff from here on
@@ -459,6 +460,7 @@ def write_variables():
     content.write(list_string("outfit_list", outfit_list)) 
     content.write(list_string("has_sleeves_list", has_sleeves_list)) 
     content.write(list_string("hourglass_list", hourglass_list)) 
+    content.write(list_string("butt_list", butt_list)) 
     content.write(list_string("sleeve_list", sleeve_list)) 
     content.write(list_string("accessory_list", accessory_list+["hat"])) 
     content.write(list_string("defining_list", defining_list)) 
@@ -527,6 +529,11 @@ def makeHourglass():
         process_image(h+"_mask", "anatomy/hourglass","no_fill")
     process_image("waistline", "anatomy/hourglass/full","regular")
     process_image("waistline_mask", "anatomy/hourglass/full","no_fill")    
+
+def makeButts():
+    for b in butt_list:
+        process_image(b, "anatomy/butt","regular")
+        process_image(b+"_mask", "anatomy/butt","no_fill")
 
 def makeChairParts():
     # (save, thighs, base, mask, lines)
@@ -716,9 +723,10 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["chair"]:
+        if c.name in []:
             process_portrait_part(c)
     #makeChairParts()
+    makeButts() 
     #makeHourglass()        
     #makeWinks()
     #makeStubble() 

@@ -110,7 +110,7 @@ function setUIVariables(obj){
     obj.current_gender_type=0;
     obj.current_size_type=2;
     obj.current_head_ratio_type=0;
-    obj.crop_height=300;
+    obj.crop_height=0;
     obj.current_effect_type = 0;
     obj.effect_colour = "#000000"
     obj.current_character_preset=0;
@@ -121,8 +121,6 @@ function setUIVariables(obj){
 
 const ui_variables_object= {}
 setUIVariables(ui_variables_object);
-
-const hasHourglass_list = ["top","overshirt","bottom","waistline"];
 
 const waist_type_list = ["none", "hourglass"];
 
@@ -160,19 +158,19 @@ function add_image_object(name, list_list, location,box){
             obj.puffy_hourglass_line_image.src = loc+ "_multiply_blue.png"
         }
     } 
-    if ((hourglass_list.map(value=>value+"_dec")).includes(obj.name)){
-        let loc = "images/render/anatomy/hourglass/"+name.slice(0,-4)
-        obj.hourglass_mask_image = new Image();
-        obj.hourglass_mask_image.src = loc+ "_mask_base.png"
-        obj.hourglass_line_image = new Image();
-        obj.hourglass_line_image.src = loc+ "_multiply_blue.png"
-        if (obj.name=="waistline_dec"){
-            let loc = "images/render/anatomy/hourglass/full/"+name.slice(0,-4)
-            obj.puffy_hourglass_mask_image = new Image();
-            obj.puffy_hourglass_mask_image.src = loc+ "_mask_base.png"
-            obj.puffy_hourglass_line_image = new Image();
-            obj.puffy_hourglass_line_image.src = loc+ "_multiply_blue.png"
-        }
+    if (butt_list.includes(obj.name)){
+        let loc = "images/render/anatomy/butt/"+name
+        obj.butt_mask_image = new Image();
+        obj.butt_mask_image.src = loc+ "_mask_base.png"
+        obj.butt_line_image = new Image();
+        obj.butt_line_image.src = loc+ "_multiply_blue.png"
+    } 
+    if ((butt_list.map(value=>value+"_dec")).includes(obj.name)){
+        let loc = "images/render/anatomy/butt/"+name.slice(0,-4)
+        obj.butt_mask_image = new Image();
+        obj.butt_mask_image.src = loc+ "_mask_base.png"
+        obj.butt_line_image = new Image();
+        obj.butt_line_image.src = loc+ "_multiply_blue.png"
     } 
     
     image_objects.push(obj);

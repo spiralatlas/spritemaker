@@ -32,6 +32,7 @@ const expression_list = ["cheeks","mouth","eyebrows","eyes",];
 const outfit_list = ["bottom","top","overshirt","coat","socks","shoes","chair",];
 const has_sleeves_list = ["top","overshirt","coat",];
 const hourglass_list = ["top","overshirt","waistline","body","legs",];
+const butt_list = ["shoes","legs","coat","bottom","socks","overshirt",];
 const sleeve_list = ["top_sleeves","overshirt_sleeves","coat_sleeves",];
 const accessory_list = ["eyewear","neckwear","earrings","gloves","back","hat",];
 const defining_list = ["eyewear","neckwear","earrings","gloves","back","bottom","top","overshirt","coat","socks","shoes","chair","top_sleeves","overshirt_sleeves","coat_sleeves","body","nose","mouth","eyebrows","complexion","ears","body_chest","cheeks","eyes","fringe","hair_extra","sidelocks","facial_hair","head","waistline",];
