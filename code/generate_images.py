@@ -248,7 +248,7 @@ facial_hair_list_render = [f for f in facial_hair_list_m if f!="stubble"]
 
 # collections of parts that have the same colours and patterns
 skin_list_defining = ["body","nose","mouth","eyebrows","complexion","ears","body_chest"]#same colour as head
-skin_list = skin_list_defining + ["skull","legs","chair_legs","nose_front"]
+skin_list = skin_list_defining + ["skull","chair_body","nose_front"]
 expression_list = ["cheeks", "mouth","eyebrows","eyes"]
 accessory_list = ["eyewear","neckwear", "earrings", "gloves","back"]
 outfit_list = [ "bottom","top", "overshirt", "coat", "socks","shoes","chair"]
@@ -286,8 +286,8 @@ chair_coat_list_d = default_list(chair_coat_list)
 
 highlight_list = ["fringe"]
 underlay_list = ["eyewear"]
-hourglass_list = ["top","overshirt","waistline","body","legs"]
-butt_list = ["shoes", "legs","coat","bottom","socks","overshirt"]
+hourglass_list = ["top","overshirt","waistline","body"]
+butt_list = ["shoes", "body","coat","bottom","socks","overshirt"]
 no_render_list = [["hat_middle",["scarf"]],["hat_front_dec",["scarf"]],["chair",["invisible"]],["chair_back",["invisible"]],["chair_dec",["invisible"]],["chair_back_dec",["invisible"]]]
 
 ###################### More technical stuff from here on
@@ -325,7 +325,6 @@ add_item("hair_back", "hair_back_list_d",hair_back_list_d, "hair")
 add_item("coat_back", "coat_back_list_d",coat_back_list_d, "clothes/coat")
 add_item("body", "body_list_d", body_list_d, "anatomy")
 add_item("body_chest", "body_chest_list_d", body_chest_list_d, "anatomy/chest")
-add_item("legs", "leg_list_d", leg_list_d, "anatomy")
 
 add_item("socks", "socks_list_d", socks_list_d, "clothes")
 add_item("shoes", "shoes_list_d", shoes_list_d, "clothes")
@@ -376,7 +375,7 @@ add_item("fringe", "fringe_list_d", fringe_list_d, "hair")
 add_item("hat_front", "hat_front_list_d", hat_front_list_d, "clothes/hat")
 
 add_item("chair", "chair_list_d", chair_list_d, "chair")
-add_item("chair_legs", "chair_leg_list_d", chair_leg_list_d, "chair")
+add_item("chair_body", "chair_leg_list_d", chair_leg_list_d, "chair")
 add_item("chair_socks", "chair_socks_list_d", chair_socks_list_d, "chair")
 add_item("chair_shoes", "chair_shoes_list_d", chair_shoes_list_d, "chair")
 add_item("chair_bottom", "chair_bottom_list_d", chair_bottom_list_d, "chair")
@@ -538,9 +537,9 @@ def makeButts():
 def makeChairParts():
     # (save, thighs, base, mask, lines)
     for obj in closet:
-        if obj.name == "legs":
+        if obj.name == "body":
             print("Making legs!")  
-            imagemodule.makeChairPart("chair_legs/regular", "full","anatomy/legs/regular", "anatomy/legs/regular", "anatomy/legs/regular","base")
+            imagemodule.makeChairPart("chair_body/regular", "full","anatomy/body/regular", "anatomy/body/regular", "anatomy/body/regular","base")
         else:
             makeLegs = True
             for item in obj.item_list:
@@ -561,8 +560,8 @@ def makeChairParts():
                             thighs = "socks"    
                         else:
                             thighs = "none"  
-                        mask = "anatomy/legs/regular" 
-                        lines = "anatomy/legs/regular"  
+                        mask = "anatomy/body/regular" 
+                        lines = "anatomy/body/regular"  
                     
                     elif obj.name == "bottom":
                         mask = "clothes/bottom/regular" 
@@ -702,7 +701,7 @@ def process_all_portraits():
 def runStuff():
     write_variables()
 
-    # "skull", "head","body","legs",
+    # "skull", "head","body"
     #"nose","nose_front", "cheeks", "ears"
     # "eyes","eyebrows", "mouth"
     # "body_chest","top_chest","overshirt_chest","coat_chest"
@@ -723,11 +722,11 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in []:
+        if c.name in ["body"]:
             process_portrait_part(c)
-    #makeChairParts()
+    makeChairParts()
     makeButts() 
-    #makeHourglass()        
+    makeHourglass()        
     #makeWinks()
     #makeStubble() 
 

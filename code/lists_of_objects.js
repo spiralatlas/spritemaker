@@ -111,7 +111,7 @@ for (i = 0; i < defining_objects.length; i += 1){
 //anatomy        
 add_colour_children("head", skin_list);
 
-add_value_children("body", ["legs", "chair_legs"]);
+add_value_children("body", ["chair_body"]);
 add_value_children("nose", ["nose_front"]);
 
 add_colour_children("fringe", ["hair_middle", "hair_front","hair_back","hair_extra", "facial_hair","sidelocks","sidelocks_repeat"]);
