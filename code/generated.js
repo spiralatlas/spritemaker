@@ -29,13 +29,13 @@ const no_chest_coat_list = ["robe","robe hood","medium cloak","medium cloak hood
 const no_chest_overshirt_list = ["none","obi","band","band with flap",];
 const hat_list = [["none","beads","head band","side bow","bow","tiara","scarf","cat ears","curled horns","pointed horns","flower","flower crown","bandanna","hijab","crown","witch hat","broad hat","beanie","hood",],["none","sweat band","cat ears","curled horns","pointed horns","top hat","cap","bowler","fedora","turban","crown","witch hat","broad hat","beanie","hood",],["beads","cat ears","curled horns","pointed horns","tiara","hood","top hat","witch hat","bowler","flower crown","crown",],[],[],true];
 const expression_list = ["cheeks","mouth","eyebrows","eyes",];
-const outfit_list = ["bottom","top","overshirt","coat","socks","shoes","chair",];
+const outfit_list = ["bottom","top","overshirt","coat","socks","shoes",];
 const has_sleeves_list = ["top","overshirt","coat",];
 const hourglass_list = ["top","overshirt","waistline","body",];
 const butt_list = ["shoes","body","coat","bottom","socks","overshirt",];
 const sleeve_list = ["top_sleeves","overshirt_sleeves","coat_sleeves",];
 const accessory_list = ["eyewear","neckwear","earrings","gloves","back","hat",];
-const defining_list = ["eyewear","neckwear","earrings","gloves","back","bottom","top","overshirt","coat","socks","shoes","chair","top_sleeves","overshirt_sleeves","coat_sleeves","body","nose","mouth","eyebrows","complexion","ears","body_chest","cheeks","eyes","fringe","hair_extra","sidelocks","facial_hair","head","waistline",];
+const defining_list = ["eyewear","neckwear","earrings","gloves","back","bottom","top","overshirt","coat","socks","shoes","top_sleeves","overshirt_sleeves","coat_sleeves","body","nose","mouth","eyebrows","complexion","ears","body_chest","cheeks","eyes","fringe","hair_extra","sidelocks","facial_hair","head","waistline","chair",];
 
 const back_list_d = [["none","thin tail","fluffy tail","sword","katanas",],["none","thin tail","fluffy tail","sword","katanas",],["fluffy tail","thin tail","sword","katanas",],[],[],true];
 const hat_back_list_d = [["none","bandanna","beanie","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hood",],["none","bandanna","beanie","bowler","broad hat","cap","fedora","top hat","witch hat","top hat","scarf","turban","hood",],[],["scarf",],[],true];

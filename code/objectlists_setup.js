@@ -285,12 +285,12 @@ function print_image_objects(){
     s = "";
     for (i = 0; i < image_objects.length; i += 1){
         b = image_objects[i];
-        s+=i+" "+b.name;
+        s+=i+" <b>"+b.name+"</b>";
         s+=" location: "+b.location;
         s+=" item_list: "+b.item_list.toString();
-        s+="  item: "+b.item;
+        s+="  <b>item: "+b.item+"</b>";
         s+=" colour: "+b.colour1;
-        s+=" item: "+getImageItem(b)
+        s+=" <b>item: "+getImageItem(b)+"</b>";
         //s+=" render? "+checkRender(b)
         s+=" pattern: "+b.pattern_image.src;
         s+=" src: "+b.base_image.src;
@@ -304,12 +304,12 @@ function print_defining_objects(){
     s = "";
     for (i = 0; i < defining_objects.length; i += 1){
         b = defining_objects[i];
-            s+=i+" "+b.name;
+            s+=i+" <b>"+b.name+"</b>";
             s+=" item_list: "+b.item_list.toString();
             s+="  value_list: "+b.value_list.toString();
             s+=" colour1: "+b.colour1;
             s+=" colour2: "+b.colour2;
-            s+=" item: "+b.item_list[b.value_list[0]]
+            s+=" <b>item: "+b.item_list[b.value_list[0]]+"</b>";
             s+=" value_children: ";
             for (j = 0; j < b.value_children.length; j += 1){
                 s+=image_objects[b.value_children[j]].name+" "

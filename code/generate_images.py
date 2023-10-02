@@ -251,7 +251,10 @@ skin_list_defining = ["body","nose","mouth","eyebrows","complexion","ears","body
 skin_list = skin_list_defining + ["skull","chair_body","nose_front"]
 expression_list = ["cheeks", "mouth","eyebrows","eyes"]
 accessory_list = ["eyewear","neckwear", "earrings", "gloves","back"]
-outfit_list = [ "bottom","top", "overshirt", "coat", "socks","shoes","chair"]
+outfit_list = [ "bottom","top", "overshirt", "coat", "socks","shoes"]
+chairOn = False
+if chairOn:
+    outfit_list = outfit_list +["chair"]
 has_sleeves_list = ["top","overshirt","coat"]
 sleeve_list = [x +"_sleeves" for x in has_sleeves_list]
 defining_list = remove_dups(accessory_list+ outfit_list+sleeve_list+skin_list_defining+expression_list+["fringe","hair_extra", "sidelocks", "facial_hair", "head","waistline","chair"])
@@ -535,17 +538,17 @@ def makeButts():
         process_image(b+"_mask", "anatomy/butt","no_fill")
 
 def makeChairParts():
-    # (save, thighs, base, mask, lines)
+    # (save, thighs, base, mask, lines, type)
     for obj in closet:
         if obj.name == "body":
             print("Making legs!")  
-            imagemodule.makeChairPart("chair_body/regular", "full","anatomy/body/regular", "anatomy/body/regular", "anatomy/body/regular","base")
+            imagemodule.makeChairPart("chair_body/regular", "body","anatomy/body/regular", "anatomy/body/regular", "anatomy/body/regular","base")
         else:
             makeLegs = True
             for item in obj.item_list:
                 if item!="none":
                     save = "chair_"+obj.name+"/"+item
-                    thighs = "full"
+                    thighs = "body"
                     base = obj.location + "/"+obj.name +"/"+item
                     mask = "none"
                     lines = "none"
@@ -554,14 +557,17 @@ def makeChairParts():
                         mask = "none"
                         lines = "none"
                     elif obj.name == "socks":
+                        mask = "anatomy/body/regular" 
+                        lines = "anatomy/body/regular"  
                         if item =="tights":
-                            thighs = "full"
+                            thighs = "body"
                         elif item =="thigh high":
                             thighs = "socks"    
                         else:
                             thighs = "none"  
-                        mask = "anatomy/body/regular" 
-                        lines = "anatomy/body/regular"  
+                        if item =="knee high":
+                            mask ="none"
+                            lines = "none"
                     
                     elif obj.name == "bottom":
                         mask = "clothes/bottom/regular" 
@@ -722,7 +728,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["body"]:
+        if c.name in ["chair_socks"]:
             process_portrait_part(c)
     makeChairParts()
     makeButts() 

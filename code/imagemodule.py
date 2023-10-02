@@ -352,7 +352,7 @@ def makeChairPart(save, thighs, base, mask, lines, kind):
     img_lines = Image.open(loc+"chair/parts/"+lines+"_lines.png")
 
     new_pos = (22, 0)
-    old_pos = (0,308)
+    old_pos = (0,306)
     if mask =="none":
         img_thighs.alpha_composite(img_base, new_pos,old_pos)
     else:    

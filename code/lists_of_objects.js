@@ -121,7 +121,7 @@ add_value_children("body_chest", ["coat_chest","overshirt_chest","top_chest"]);
 //accessories
 let children_list =[];
 
-const suffix_list = ["_middle", "_back","_front","_front2", "_chest","_collar"] 
+const suffix_list = ["_middle", "_back","_front","_front2", "_collar"] 
 
 function addIfExists(list, n){
     // if there exists an object in image_objects with the name name, add it to list
@@ -152,25 +152,26 @@ for (let i = 0; i < defining_objects.length; i += 1){
         }
 
         for (j = 0; j < suffix_list.length; j += 1){
-            addIfExists(value_list, this_name+suffix_list[j])
-            addIfExists(value_list, this_name+"_dec")
-            addIfExists(value_list, this_name+suffix_list[j]+"_dec")
-            addIfExists(value_list, "chair_"+this_name)
-            addIfExists(value_list, "chair_"+this_name+suffix_list[j])
-            addIfExists(value_list, "chair_"+this_name+suffix_list[j]+"_dec")
+            addIfExists(value_list, this_name+suffix_list[j]);
+            addIfExists(value_list, this_name+suffix_list[j]+"_dec");
+            addIfExists(value_list, "chair_"+this_name+suffix_list[j]);
+            addIfExists(value_list, "chair_"+this_name+suffix_list[j]+"_dec");
         }
+        addIfExists(value_list, "chair_"+this_name);
+        addIfExists(value_list, this_name+"_dec");
         for (j = 0; j < suffix_list.length; j += 1){
             addIfExists(colour_list, this_name+suffix_list[j])
-            addIfExists(colour_list, "chair_"+this_name)
             addIfExists(colour_list, "chair_"+this_name+suffix_list[j])
         }
+        addIfExists(colour_list, "chair_"+this_name)
         addIfExists(colour_list, this_name+"_sleeves");
         addIfExists(colour_list, this_name+"_sleeves_dec");
+        addIfExists(colour_list, this_name+"_chest");
         for (j = 0; j < suffix_list.length; j += 1){
-            addIfExists(colour2_list, this_name+"_dec")
             addIfExists(colour2_list, this_name+suffix_list[j]+"_dec")
             addIfExists(colour2_list, "chair_"+this_name+suffix_list[j]+"_dec")
         }
+        addIfExists(colour2_list, this_name+"_dec")
         children_list.push([this_name, value_list, colour_list, colour2_list]);
     }
 }
