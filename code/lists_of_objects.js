@@ -159,6 +159,7 @@ for (let i = 0; i < defining_objects.length; i += 1){
         }
         addIfExists(value_list, "chair_"+this_name);
         addIfExists(value_list, this_name+"_dec");
+        addIfExists(value_list, "chair_"+this_name+"_dec");
         for (j = 0; j < suffix_list.length; j += 1){
             addIfExists(colour_list, this_name+suffix_list[j])
             addIfExists(colour_list, "chair_"+this_name+suffix_list[j])
@@ -172,6 +173,8 @@ for (let i = 0; i < defining_objects.length; i += 1){
             addIfExists(colour2_list, "chair_"+this_name+suffix_list[j]+"_dec")
         }
         addIfExists(colour2_list, this_name+"_dec")
+        addIfExists(colour2_list, "chair_"+this_name+"_dec");
+
         children_list.push([this_name, value_list, colour_list, colour2_list]);
     }
 }

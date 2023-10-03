@@ -35,6 +35,8 @@ pattern_list = ["none",
         "diamonds","small diamonds","tartan",  "polkadot","kimono", #repeated pattern
         "horizontal stripe","vertical stripe","pinstripe","horizontal pinstripe","net","diagonal",] #lines "verticalstripe", "horizontalstripe", "diagonal","net",
 
+## format is [male list, female list, weird list, decs, masks, whether male items should be first]
+
 basic_chest_list = ["none", "small","medium","big"]   
 body_chest_list = basic_chest_list
 body_chest_list_d = [body_chest_list,["none"], [],[],[],True]
@@ -252,7 +254,7 @@ skin_list = skin_list_defining + ["skull","chair_body","nose_front"]
 expression_list = ["cheeks", "mouth","eyebrows","eyes"]
 accessory_list = ["eyewear","neckwear", "earrings", "gloves","back"]
 outfit_list = [ "bottom","top", "overshirt", "coat", "socks","shoes"]
-chairOn = False
+chairOn = True
 if chairOn:
     outfit_list = outfit_list +["chair"]
 has_sleeves_list = ["top","overshirt","coat"]
@@ -281,7 +283,7 @@ chair_socks_list_d = socks_list_d
 chair_shoes_list_d = shoes_list_d
 chair_bottom_list_d = bottom_list_d
 chair_overshirt_list = ["band with flap"]
-chair_overshirt_list_d = default_list(chair_overshirt_list)
+chair_overshirt_list_d = [chair_overshirt_list,chair_overshirt_list,[], chair_overshirt_list,[],True]
 long_coat_list = ["overcoat", "closed robe", "open robe", "dress jacket","jama","long open jacket"] 
 chair_coat_list = long_coat_list+["none", "medium cloak", "open sweater","hoodie","cool jacket", "buttoned jacket","business jacket"] 
 chair_coat_list_d = default_list(chair_coat_list)
@@ -653,7 +655,7 @@ def makeChairParts():
                         else:    
                             mask = "clothes/bottom/dec" 
                             lines ="clothes/bottom/dec" 
-                    elif obj.name == "overshirt" and item in chair_overshirt_list:
+                    elif obj.name == "overshirt":# and item in chair_overshirt_list:
                         mask = "clothes/overshirt/regular" 
                         lines ="clothes/overshirt/regular"    
                     elif obj.name == "coat" and item in chair_coat_list:
@@ -743,7 +745,7 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["chair_bottom"]:
+        if c.name in ["chair_overshirt"]:
             process_portrait_part(c)
     makeChairParts()
     makeButts() 
