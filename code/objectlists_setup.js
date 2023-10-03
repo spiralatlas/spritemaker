@@ -164,6 +164,27 @@ function add_image_object(name, list_list, location,box){
         obj.butt_mask_image.src = loc+ "_mask_base.png"
         obj.butt_line_image = new Image();
         obj.butt_line_image.src = loc+ "_multiply_blue.png"
+        if (obj.name=="bottom"){
+            let loc = "images/render/anatomy/butt/full/"+name
+            obj.puffy_butt_mask_image = new Image();
+            obj.puffy_butt_mask_image.src = loc+ "_mask_base.png"
+            obj.puffy_butt_line_image = new Image();
+            obj.puffy_butt_line_image.src = loc+ "_multiply_blue.png"
+        }
+    } 
+    if ((hourglass_list.map(value=>value+"_dec")).includes(obj.name)){
+        let loc = "images/render/anatomy/hourglass/"+name.slice(0,-4)
+        obj.hourglass_mask_image = new Image();
+        obj.hourglass_mask_image.src = loc+ "_mask_base.png"
+        obj.hourglass_line_image = new Image();
+        obj.hourglass_line_image.src = loc+ "_multiply_blue.png"
+        if (obj.name=="waistline_dec"){
+            let loc = "images/render/anatomy/hourglass/full/waistline"
+            obj.puffy_hourglass_mask_image = new Image();
+            obj.puffy_hourglass_mask_image.src = loc+ "_mask_base.png"
+            obj.puffy_hourglass_line_image = new Image();
+            obj.puffy_hourglass_line_image.src = loc+ "_multiply_blue.png"
+        }
     } 
     if ((butt_list.map(value=>value+"_dec")).includes(obj.name)){
         let loc = "images/render/anatomy/butt/"+name.slice(0,-4)
@@ -171,6 +192,13 @@ function add_image_object(name, list_list, location,box){
         obj.butt_mask_image.src = loc+ "_mask_base.png"
         obj.butt_line_image = new Image();
         obj.butt_line_image.src = loc+ "_multiply_blue.png"
+        if (obj.name=="bottom_dec"){
+            let loc = "images/render/anatomy/butt/full/bottom"
+            obj.puffy_butt_mask_image = new Image();
+            obj.puffy_butt_mask_image.src = loc+ "_mask_base.png"
+            obj.puffy_butt_line_image = new Image();
+            obj.puffy_butt_line_image.src = loc+ "_multiply_blue.png"
+        }
     } 
     
     image_objects.push(obj);

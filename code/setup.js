@@ -1,5 +1,4 @@
 let testing = true;
-let chairOn = false; //are chairs an option
  
 //canvas related
 

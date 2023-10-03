@@ -436,26 +436,16 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
         off_ctx.globalCompositeOperation = "source-over";
         
         if (hasHourglass(obj)){
-            off_ctx.globalCompositeOperation = "destination-out";
             if (obj.name.includes("waistline")&& getImageItem(findNameMatch(image_objects,"bottom")).includes("full"))
-                off_ctx.drawImage(obj.puffy_hourglass_mask_image,0,0,width,height, 0, 0,new_width,new_height);
+                drawMasked(obj.base_image, obj.puffy_hourglass_mask_image, obj.puffy_hourglass_line_image, width,height,new_width,new_height);
             else
-                off_ctx.drawImage(obj.hourglass_mask_image,0,0,width,height, 0, 0,new_width,new_height);
-            off_ctx.globalCompositeOperation = "multiply";
-            if (obj.name.includes("waistline")&& getImageItem(findNameMatch(image_objects,"bottom")).includes("full"))
-                off_ctx.drawImage(obj.puffy_hourglass_line_image,0,0,width,height, 0, 0,new_width,new_height);
-            else
-                off_ctx.drawImage(obj.hourglass_line_image,0,0,width,height, 0, 0,new_width,new_height);
-            off_ctx.globalCompositeOperation = "destination-in";
-            off_ctx.drawImage(obj.base_image,0,0,width,height, 0, 0,new_width,new_height);
+                drawMasked(obj.base_image, obj.hourglass_mask_image, obj.hourglass_line_image, width,height,new_width,new_height);
         }
         if (hasButt(obj)){
-            off_ctx.globalCompositeOperation = "destination-out";
-            off_ctx.drawImage(obj.butt_mask_image,0,0,width,height, 0, 0,new_width,new_height);
-            off_ctx.globalCompositeOperation = "multiply";
-            off_ctx.drawImage(obj.butt_line_image,0,0,width,height, 0, 0,new_width,new_height);
-            off_ctx.globalCompositeOperation = "destination-in";
-            off_ctx.drawImage(obj.base_image,0,0,width,height, 0, 0,new_width,new_height);
+            if (obj.name.includes("bottom")&& (getImageItem(obj).includes("full")||getImageItem(obj).includes("empire")))
+                drawMasked(obj.base_image, obj.puffy_butt_mask_image, obj.puffy_butt_line_image, width,height,new_width,new_height);
+            else
+                drawMasked(obj.base_image, obj.butt_mask_image, obj.butt_line_image, width,height,new_width,new_height);
         }
         //removing masks
         if (obj.mask_image.src!=""){
@@ -496,6 +486,17 @@ function undraw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,wid
     ctx.drawImage(obj.base_image,sourceX,sourceY,width,height, xpos, ypos,parseInt(obj.scale*width),parseInt(obj.scale*height));
     ctx.globalCompositeOperation = "source-over";   
     }
+
+function drawMasked(base, mask, line, width,height,new_width,new_height){
+    
+    off_ctx.globalCompositeOperation = "destination-out";
+    off_ctx.drawImage(mask,0,0,width,height, 0, 0,new_width,new_height);
+    off_ctx.globalCompositeOperation = "multiply";
+    off_ctx.drawImage(line,0,0,width,height, 0, 0,new_width,new_height);
+    off_ctx.globalCompositeOperation = "destination-in";
+    off_ctx.drawImage(base,0,0,width,height, 0, 0,new_width,new_height);
+
+}    
 
 function drawCanvas() {
     //draw the canvases
