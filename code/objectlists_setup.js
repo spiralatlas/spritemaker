@@ -132,9 +132,13 @@ const image_objects =[];
 
 function add_image_object(name, list_list, location,box){
     let loc;
+    let temp_name;
     loc=location+"/"+name.toLowerCase();
-    if (name.slice(-4)=="_dec")//remove "_dec"
-        loc = location+"/"+name.slice(0,-4);
+    let name_base = name;
+    if (name.slice(-4)=="_dec"){//remove "_dec"
+        name_base = name.slice(0,-4); // eg if name = "hat_dec", name_base = "hat"
+        loc = location+"/"+name_base;
+    }
     else{
         if (name=="sidelocks_repeat")//remove "_dec"
         loc = location+"/sidelocks";  
@@ -143,21 +147,37 @@ function add_image_object(name, list_list, location,box){
         item_list = remove_dups(list_list[1].concat(list_list[0]));
     else
         item_list = remove_dups(list_list[0].concat(list_list[1]));
+
     obj = {name: name,location: loc, box: box, item_list: item_list, item: 0, heightOffset: 0, widthOffset:0, scale: 1, crop : [],parent: defining_objects.length, colour1: "#FF0000",colour2: "#00FF00", patterncolour: "#0000FF", pattern: 0,hasShading: true, underlay_image: new Image(), base_image: new Image(),shadow_image: new Image(),highlight_image: new Image(),overlay_image: new Image(),pattern_image: new Image(), mask_image: new Image()}   
-    if (hourglass_list.includes(obj.name)){
-        let loc = "images/render/anatomy/hourglass/"+name
+    
+    if (hourglass_list.includes(name_base)){
+        loc = "images/render/anatomy/hourglass/"+name_base
         obj.hourglass_mask_image = new Image();
         obj.hourglass_mask_image.src = loc+ "_mask_base.png"
         obj.hourglass_line_image = new Image();
         obj.hourglass_line_image.src = loc+ "_multiply_blue.png"
-        if (obj.name=="waistline"){
-            let loc = "images/render/anatomy/hourglass/full/"+name
+        if (obj.name.includes("waistline")){
+            let loc = "images/render/anatomy/hourglass/full/waistline"
             obj.puffy_hourglass_mask_image = new Image();
             obj.puffy_hourglass_mask_image.src = loc+ "_mask_base.png"
             obj.puffy_hourglass_line_image = new Image();
             obj.puffy_hourglass_line_image.src = loc+ "_multiply_blue.png"
         }
     } 
+    if (butt_list.includes(name_base)){
+        loc = "images/render/anatomy/butt/"+name_base
+        obj.butt_mask_image = new Image();
+        obj.butt_mask_image.src = loc+ "_mask_base.png"
+        obj.butt_line_image = new Image();
+        obj.butt_line_image.src = loc+ "_multiply_blue.png"
+        if (obj.name.includes("bottom")){
+            let loc = "images/render/anatomy/butt/full/bottom"
+            obj.puffy_butt_mask_image = new Image();
+            obj.puffy_butt_mask_image.src = loc+ "_mask_base.png"
+            obj.puffy_butt_line_image = new Image();
+            obj.puffy_butt_line_image.src = loc+ "_multiply_blue.png"
+        }
+    } /*
     if (butt_list.includes(obj.name)){
         let loc = "images/render/anatomy/butt/"+name
         obj.butt_mask_image = new Image();
@@ -172,6 +192,7 @@ function add_image_object(name, list_list, location,box){
             obj.puffy_butt_line_image.src = loc+ "_multiply_blue.png"
         }
     } 
+    
     if ((hourglass_list.map(value=>value+"_dec")).includes(obj.name)){
         let loc = "images/render/anatomy/hourglass/"+name.slice(0,-4)
         obj.hourglass_mask_image = new Image();
@@ -199,7 +220,7 @@ function add_image_object(name, list_list, location,box){
             obj.puffy_butt_line_image = new Image();
             obj.puffy_butt_line_image.src = loc+ "_multiply_blue.png"
         }
-    } 
+    } */
     
     image_objects.push(obj);
 }

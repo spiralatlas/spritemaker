@@ -252,7 +252,7 @@ skin_list = skin_list_defining + ["skull","chair_body","nose_front"]
 expression_list = ["cheeks", "mouth","eyebrows","eyes"]
 accessory_list = ["eyewear","neckwear", "earrings", "gloves","back"]
 outfit_list = [ "bottom","top", "overshirt", "coat", "socks","shoes"]
-chairOn = True
+chairOn = False
 if chairOn:
     outfit_list = outfit_list +["chair"]
 has_sleeves_list = ["top","overshirt","coat"]
@@ -599,9 +599,12 @@ def makeChairParts():
                                 thighs ="full skirt"
                             else:
                                 thighs ="skirt" 
-                            if item in ["long kilt","tube skirt"]:
+                            if item =="long kilt":
+                                mask ="clothes/bottom/long kilt"
+                                lines ="clothes/bottom/long kilt"
+                            if item in ["tube skirt"]:
                                 mask ="clothes/bottom/narrow"
-                                lines ="clothes/bottom/narrow"
+                                lines ="clothes/bottom/narrow"    
                             elif item.find("split")>-1:
                                 mask ="clothes/bottom/dec" 
                                 lines ="clothes/bottom/dec" 
