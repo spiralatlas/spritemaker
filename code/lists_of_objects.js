@@ -194,13 +194,13 @@ add_value_children("waistline",["waistline_dec"])
 const export_head_list =["head","skull","ears","nose","nose_front","complexion"];
 const export_outfit_list = (image_objects.map(value => value.name)).filter(value => !(expression_list.includes(value)));
 
-const hair_front_numbers = hairstyle_defining_list.map(value => findNameMatch(image_objects, "hair_front").item_list.indexOf(value[1]))
-const hair_middle_numbers = hairstyle_defining_list.map(value => findNameMatch(image_objects, "hair_middle").item_list.indexOf(value[2]))
-const hair_back_numbers = hairstyle_defining_list.map(value => findNameMatch(image_objects, "hair_back").item_list.indexOf(value[3]))
+const hair_front_numbers = hairstyle_defining_list.map(value => hair_front_im.item_list.indexOf(value[1]))
+const hair_middle_numbers = hairstyle_defining_list.map(value => hair_middle_im.item_list.indexOf(value[2]))
+const hair_back_numbers = hairstyle_defining_list.map(value => hair_back_im.item_list.indexOf(value[3]))
 
-const fringe_list = findNameMatch(image_objects, "fringe").item_list
-const sidelocks_list = findNameMatch(image_objects, "sidelocks").item_list
-const hair_extra_list = findNameMatch(image_objects, "hair_extra").item_list
+const fringe_list = fringe_im.item_list
+const sidelocks_list = sidelocks_im.item_list
+const hair_extra_list = hair_extra_im.item_list
 const fringe_not_straight = stringIndices(fringe_list, ["curly", "locs"])
 const sidelocks_not_straight = stringIndices(sidelocks_list, ["curly", "locs"])
 const hair_extra_not_straight = stringIndices(hair_extra_list, ["curly", "locs","puff"])
@@ -281,4 +281,5 @@ function hairExcludeIndices(index){
     console.log("Warning: Unknown hair type")
     return [[],[],[]]
 }
+
 

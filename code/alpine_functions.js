@@ -5,7 +5,7 @@ function checkRender(obj){
             if (no_render_list[i][1].includes(getImageItem(obj)))
                 return false
         }
-        if (obj.name.includes("chair") && findNameMatch(defining_objects,"chair").value_list[0] ==0)
+        if (obj.name.includes("chair") && chair_def.value_list[0] ==0)
             return false;
     }        
     return true  
@@ -39,23 +39,11 @@ function updateVariables(){
             image_objects[json_obj.colour2_children[i]].patterncolour = json_obj.colour2;
         }
     }
-/*
-    let coat_obj = findNameMatch(image_objects,"coat");
-    let body_chest_im = findNameMatch(image_objects,"body_chest");
-    let overshirt_im = findNameMatch(image_objects,"overshirt");
-    let top_im = findNameMatch(image_objects,"top");
-    let coat_sleeves_im = findNameMatch(image_objects,"coat_sleeves");
-    let overshirt_sleeves_im = findNameMatch(image_objects,"overshirt_sleeves");
-    let top_sleeves_im = findNameMatch(image_objects,"top_sleeves");
-    let top_collar_im = findNameMatch(image_objects,"top_collar");
-    let bottom_im = findNameMatch(image_objects,"bottom");
-    let hair_front_im = findNameMatch(image_objects,"hair_front");
-    let hair_back_im = findNameMatch(image_objects,"hair_back");*/
 
     //waist
     if (bottom_im.item ==0|| getImageItem(bottom_im).includes("empire")){// hide waistline when it's not needed
-        findNameMatch(image_objects,"waistline").item = -1;
-        findNameMatch(image_objects,"waistline_dec").item = -1;
+        waistline_im.item = -1;
+        waistline_dec_im.item = -1;
     }
     //remove sleeves ifclothing is sleeveless
 
@@ -69,29 +57,29 @@ function updateVariables(){
     //hair
     
     hair_front_im.item = hair_front_numbers[defining_variables_object.current_hairstyle]
-    findNameMatch(image_objects,"hair_middle").item = hair_middle_numbers[defining_variables_object.current_hairstyle]
+    hair_middle_im.item = hair_middle_numbers[defining_variables_object.current_hairstyle]
     hair_back_im.item = hair_back_numbers[defining_variables_object.current_hairstyle]
     
     //calculating chest
     if (body_chest_im.item>0){
         if (coat_im.item >0){
             if (no_chest_coat_list.includes(getImageItem(coat_im)))
-                findNameMatch(image_objects,"coat_chest").item = -1;
+                coat_chest_im.item = -1;
             if (overshirt_im.item >0){
                     if (no_chest_overshirt_list.includes(getImageItem(overshirt_im)))
-                        findNameMatch(image_objects,"overshirt_chest").item = -1;
+                        overshirt_chest_im.item = -1;
             }
         }
         else{
-            findNameMatch(image_objects,"coat_chest").item = -1;
+            coat_chest_im.item = -1;
             if (overshirt_im.item >0){
                 if (no_chest_overshirt_list.includes(getImageItem(overshirt_im)))
-                    findNameMatch(image_objects,"overshirt_chest").item = -1;
+                    overshirt_chest_im.item = -1;
             }
         else{
-            findNameMatch(image_objects,"overshirt_chest").item = -1;
+            overshirt_chest_im.item = -1;
             if (top_im.item <=0){
-                findNameMatch(image_objects,"top_chest").item = -1;
+                top_chest_im.item = -1;
             }           
         }}    
     }
@@ -126,14 +114,14 @@ function updateVariables(){
     //sprite height
     sprite_width = full_width;
     sprite_height = full_height ;
-    /*if (findNameMatch(defining_objects,"chair").value_list[0] !=0){ //there's a chair
+    /*if (chair_def.value_list[0] !=0){ //there's a chair
         sprite_height = full_height*size_list[ui_variables_object.current_size_type] -165-ui_variables_object.crop_height;
     }*/ 
     sprite_height = sprite_height*size_list[ui_variables_object.current_size_type] -ui_variables_object.crop_height;//-(5-ui_variables_object.current_size_type)*30
 
     //calculating crops
 
-    findNameMatch(image_objects,"sidelocks_repeat").crop = [[195,125, 185,367]];
+    sidelocks_repeat_im.crop = [[195,125, 185,367]];
 
 
     if (coat_sleeves_im.item>1||overshirt_sleeves_im.item>1){//coat or overshirt have sleeves
@@ -143,7 +131,7 @@ function updateVariables(){
         if (coat_sleeves_im.item>=0){ //crop top collar under sleeved coats
             crop_box = [[0,0,124,467],[264,312,50,200]];
             top_collar_im.crop = crop_box
-            findNameMatch(image_objects,"top_collar_dec").crop = crop_box;
+            top_collar_dec_im.crop = crop_box;
         }   
     }
 

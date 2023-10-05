@@ -283,7 +283,7 @@ function hasHourglass(obj){
 
 function hasButt(obj){
     // returns whether this object is masked and relined because character is in a chair
-    if (findNameMatch(defining_objects,"chair").value_list[0] ==0)
+    if (chair_def.value_list[0] ==0)
         return false
     if (butt_list.concat(butt_list.map(value=>value+"_dec")).includes(obj.name))
         return true
@@ -329,7 +329,7 @@ function fixSources(){
 
             }else{
                 if (b.name.includes("waistline")){
-                    if  (getImageItem(findNameMatch(image_objects,"bottom")).includes("full"))
+                    if  (getImageItem(bottom_im).includes("full"))
                         current_loc = "full/"+current_loc
                 }
                 let regular_eyes = false;
@@ -438,7 +438,7 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
         off_ctx.globalCompositeOperation = "source-over";
         
         if (hasHourglass(obj)){
-            if (obj.name.includes("waistline")&& getImageItem(findNameMatch(image_objects,"bottom")).includes("full"))
+            if (obj.name.includes("waistline")&& getImageItem(bottom_im).includes("full"))
                 drawMasked(obj.base_image, obj.puffy_hourglass_mask_image, obj.puffy_hourglass_line_image, width,height,new_width,new_height);
             else
                 drawMasked(obj.base_image, obj.hourglass_mask_image, obj.hourglass_line_image, width,height,new_width,new_height);

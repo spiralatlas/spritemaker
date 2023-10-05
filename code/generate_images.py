@@ -489,7 +489,11 @@ def write_variables():
     content.write("\n") 
     for c in closet:
         content.write("const "+c.name+"_im = findNameMatch(image_objects,\""+c.name+"\");")
-            
+        if c.name in defining_list:
+            content.write("const "+c.name+"_def = findNameMatch(defining_objects,\""+c.name+"\");")
+        if c.dec_list !=[]:   
+            content.write("const "+c.name+"_dec_im = findNameMatch(image_objects,\""+c.name+"_dec\");")   
+    
     expression_preset_list =  ["None", "Default", "Understated", "Energetic","Arch"] 
     content.write(list_string("expression_preset_list", expression_preset_list))  
     content.write(presetString("expression", expression_preset_list))

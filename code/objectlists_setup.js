@@ -37,7 +37,7 @@ function getImageItem(obj){
         return "none";
     } 
     else{
-        if (obj.name.includes("waistline")&& getImageItem(findNameMatch(image_objects,"bottom")).includes("split"))
+        if (obj.name.includes("waistline")&& getImageItem(bottom_im).includes("split"))
                 return "split"
         else{
                 return obj.item_list[obj.item];
