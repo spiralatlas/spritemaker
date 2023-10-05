@@ -487,6 +487,9 @@ def write_variables():
             content.write("add_image_object(\""+c.name+"_dec\","+ c.listname+"_dec,\""+c.location+"\")\n")    
     content.write("add_defining_object(\"hat\",hat_list)\n")
     content.write("\n") 
+    for c in closet:
+        content.write("const "+c.name+"_im = findNameMatch(image_objects,\""+c.name+"\");")
+            
     expression_preset_list =  ["None", "Default", "Understated", "Energetic","Arch"] 
     content.write(list_string("expression_preset_list", expression_preset_list))  
     content.write(presetString("expression", expression_preset_list))
@@ -744,9 +747,9 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["chair_coat"]:
+        if c.name in [""]:
             process_portrait_part(c)
-    makeChairParts()
+    #makeChairParts()
     makeButts() 
     #makeHourglass()        
     #makeWinks()

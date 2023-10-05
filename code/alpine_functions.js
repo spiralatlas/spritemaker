@@ -39,62 +39,66 @@ function updateVariables(){
             image_objects[json_obj.colour2_children[i]].patterncolour = json_obj.colour2;
         }
     }
-
+/*
     let coat_obj = findNameMatch(image_objects,"coat");
-    let chest_obj = findNameMatch(image_objects,"body_chest");
-    let overshirt_obj = findNameMatch(image_objects,"overshirt");
-    let top_obj = findNameMatch(image_objects,"top");
-    let coat_sleeves_obj = findNameMatch(image_objects,"coat_sleeves");
-    let overshirt_sleeves_obj = findNameMatch(image_objects,"overshirt_sleeves");
-    let top_sleeves_obj = findNameMatch(image_objects,"top_sleeves");
-    let top_collar_obj = findNameMatch(image_objects,"top_collar");
-    let bottom_obj = findNameMatch(image_objects,"bottom");
-    let hair_front_obj = findNameMatch(image_objects,"hair_front");
-    let hair_back_obj = findNameMatch(image_objects,"hair_back");
+    let body_chest_im = findNameMatch(image_objects,"body_chest");
+    let overshirt_im = findNameMatch(image_objects,"overshirt");
+    let top_im = findNameMatch(image_objects,"top");
+    let coat_sleeves_im = findNameMatch(image_objects,"coat_sleeves");
+    let overshirt_sleeves_im = findNameMatch(image_objects,"overshirt_sleeves");
+    let top_sleeves_im = findNameMatch(image_objects,"top_sleeves");
+    let top_collar_im = findNameMatch(image_objects,"top_collar");
+    let bottom_im = findNameMatch(image_objects,"bottom");
+    let hair_front_im = findNameMatch(image_objects,"hair_front");
+    let hair_back_im = findNameMatch(image_objects,"hair_back");*/
 
     //waist
-    if (bottom_obj.item ==0|| getImageItem(bottom_obj).includes("empire")){// hide waistline when it's not needed
+    if (bottom_im.item ==0|| getImageItem(bottom_im).includes("empire")){// hide waistline when it's not needed
         findNameMatch(image_objects,"waistline").item = -1;
         findNameMatch(image_objects,"waistline_dec").item = -1;
     }
     //remove sleeves ifclothing is sleeveless
 
-    if (top_nosleeves_list.includes(getImageItem(top_obj)))
-        top_sleeves_obj.item = -1;
-    if (overshirt_nosleeves_list.includes(getImageItem(overshirt_obj)))
-        overshirt_sleeves_obj.item = -1;
-    if (coat_nosleeves_list.includes(getImageItem(coat_obj)))
-        coat_sleeves_obj.item = -1;    
+    if (top_nosleeves_list.includes(getImageItem(top_im)))
+        top_sleeves_im.item = -1;
+    if (overshirt_nosleeves_list.includes(getImageItem(overshirt_im)))
+        overshirt_sleeves_im.item = -1;
+    if (coat_nosleeves_list.includes(getImageItem(coat_im)))
+        coat_sleeves_im.item = -1;    
 
     //hair
     
-    hair_front_obj.item = hair_front_numbers[defining_variables_object.current_hairstyle]
+    hair_front_im.item = hair_front_numbers[defining_variables_object.current_hairstyle]
     findNameMatch(image_objects,"hair_middle").item = hair_middle_numbers[defining_variables_object.current_hairstyle]
-    hair_back_obj.item = hair_back_numbers[defining_variables_object.current_hairstyle]
+    hair_back_im.item = hair_back_numbers[defining_variables_object.current_hairstyle]
     
     //calculating chest
-    if (chest_obj.item>0){
-        if (coat_obj.item >0){
-            if (no_chest_coat_list.includes(getImageItem(coat_obj)))
+    if (body_chest_im.item>0){
+        if (coat_im.item >0){
+            if (no_chest_coat_list.includes(getImageItem(coat_im)))
                 findNameMatch(image_objects,"coat_chest").item = -1;
+            if (overshirt_im.item >0){
+                    if (no_chest_overshirt_list.includes(getImageItem(overshirt_im)))
+                        findNameMatch(image_objects,"overshirt_chest").item = -1;
+            }
         }
         else{
             findNameMatch(image_objects,"coat_chest").item = -1;
-            if (overshirt_obj.item >0){
-                if (no_chest_overshirt_list.includes(getImageItem(overshirt_obj)))
+            if (overshirt_im.item >0){
+                if (no_chest_overshirt_list.includes(getImageItem(overshirt_im)))
                     findNameMatch(image_objects,"overshirt_chest").item = -1;
             }
         else{
             findNameMatch(image_objects,"overshirt_chest").item = -1;
-            if (top_obj.item <=0){
+            if (top_im.item <=0){
                 findNameMatch(image_objects,"top_chest").item = -1;
             }           
         }}    
     }
 
     //hide collars when wearing a jama coat
-    if (getImageItem(coat_obj)=="jama")
-        top_collar_obj.item=-1;   
+    if (getImageItem(coat_im)=="jama")
+        top_collar_im.item=-1;   
 
     //update images and offsets
     for (let i = 0; i < image_objects.length; i += 1){
@@ -132,13 +136,13 @@ function updateVariables(){
     findNameMatch(image_objects,"sidelocks_repeat").crop = [[195,125, 185,367]];
 
 
-    if (coat_sleeves_obj.item>1||overshirt_sleeves_obj.item>1){//coat or overshirt have sleeves
-        top_sleeves_obj.crop = [[0,0,full_width,462]]; //crop top off puffy sleeves
-        if (coat_sleeves_obj.item>2||overshirt_sleeves_obj.item>2) //long sleeves
-            top_sleeves_obj.crop = [[0,0,full_width,654]];
-        if (coat_sleeves_obj.item>=0){ //crop top collar under sleeved coats
+    if (coat_sleeves_im.item>1||overshirt_sleeves_im.item>1){//coat or overshirt have sleeves
+        top_sleeves_im.crop = [[0,0,full_width,462]]; //crop top off puffy sleeves
+        if (coat_sleeves_im.item>2||overshirt_sleeves_im.item>2) //long sleeves
+            top_sleeves_im.crop = [[0,0,full_width,654]];
+        if (coat_sleeves_im.item>=0){ //crop top collar under sleeved coats
             crop_box = [[0,0,124,467],[264,312,50,200]];
-            top_collar_obj.crop = crop_box
+            top_collar_im.crop = crop_box
             findNameMatch(image_objects,"top_collar_dec").crop = crop_box;
         }   
     }
@@ -148,24 +152,24 @@ function updateVariables(){
     crop_box = [];
     if (hat_string=="hood")
         crop_box =[
-            [0,0, full_width, 169+getHeightOffset(hair_front_obj.name)],
-            [0,0, 140+getWidthOffset(hair_front_obj.name),full_height],
-            [263+getWidthOffset(hair_front_obj.name),0,full_width,full_height],
+            [0,0, full_width, 169+getHeightOffset(hair_front_im.name)],
+            [0,0, 140+getWidthOffset(hair_front_im.name),full_height],
+            [263+getWidthOffset(hair_front_im.name),0,full_width,full_height],
     ]; 
     if (hat_string=="hijab")
         crop_box =[
-            [0,0, full_width, 192+getHeightOffset(hair_front_obj.name)],
-            [0,0, 149+getWidthOffset(hair_front_obj.name),full_height],
-            [253+getWidthOffset(hair_front_obj.name),0,full_width,full_height],
+            [0,0, full_width, 192+getHeightOffset(hair_front_im.name)],
+            [0,0, 149+getWidthOffset(hair_front_im.name),full_height],
+            [253+getWidthOffset(hair_front_im.name),0,full_width,full_height],
     ]; 
     if (["top hat","bowler","fedora"].includes(hat_string))
-        crop_box = [[0,0, full_width, 186+getHeightOffset(hair_front_obj.name)]];
+        crop_box = [[0,0, full_width, 186+getHeightOffset(hair_front_im.name)]];
     if (["broad hat","witch hat",].includes(hat_string))
-        crop_box = [[0,0, full_width, 200+getHeightOffset(hair_front_obj.name)]];    
+        crop_box = [[0,0, full_width, 200+getHeightOffset(hair_front_im.name)]];    
     if (hat_string=="turban")
-        crop_box =[[0,0, full_width, 137+getHeightOffset(hair_front_obj.name)]]; 
-    hair_front_obj.crop = crop_box;
-    hair_back_obj.crop = crop_box;
+        crop_box =[[0,0, full_width, 137+getHeightOffset(hair_front_im.name)]]; 
+    hair_front_im.crop = crop_box;
+    hair_back_im.crop = crop_box;
     
 
     fixSources();
