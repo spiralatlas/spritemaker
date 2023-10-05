@@ -180,10 +180,10 @@ for (let i = 0; i < defining_objects.length; i += 1){
 }
 for (let i = 0; i < children_list.length; i += 1){
     if (children_list[i][1]!=[]){
-        console.log(children_list[i][0] + " value "+children_list[i][1])
         add_value_children(children_list[i][0], children_list[i][1]);
     }
     if (children_list[i][2]!=[])
+        //console.log(children_list[i][0] + " colour "+children_list[i][2])
         add_colour_children(children_list[i][0], children_list[i][2]);
     if (children_list[i][3]!=[])
         add_colour2_children(children_list[i][0], children_list[i][3]);

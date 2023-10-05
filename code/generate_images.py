@@ -532,6 +532,7 @@ def makeStubble():
         img_stubble.save(save_string)
 
 def makeHourglass():
+    print("Making hourglasses")
     for h in hourglass_list:
         process_image(h, "anatomy/hourglass","regular")
         process_image(h+"_mask", "anatomy/hourglass","no_fill")
@@ -539,11 +540,14 @@ def makeHourglass():
     process_image("waistline_mask", "anatomy/hourglass/full","no_fill")    
 
 def makeButts():
+    print("Making butts")
     for b in butt_list:
         process_image(b, "anatomy/butt","regular")
         process_image(b+"_mask", "anatomy/butt","no_fill")
     process_image("bottom", "anatomy/butt/full","regular")
-    process_image("bottom_mask", "anatomy/butt/full","no_fill")        
+    process_image("bottom_mask", "anatomy/butt/full","no_fill")     
+    process_image("coat_wide", "anatomy/butt","regular")
+    process_image("coat_wide_mask", "anatomy/butt","no_fill")        
 
 def makeChairParts():
     # (save, thighs, base, mask, lines, type)
@@ -620,15 +624,10 @@ def makeChairParts():
                             mask = "all" 
                             lines = "none" 
                     elif obj.name == "coat":
-                        if item in chair_coat_list:
-                            if item in long_coat_list: 
-                                thighs = "coat" 
-                                mask = "clothes/coat/regular" 
-                                lines = "clothes/coat/regular"    
-                            else:
-                                thighs = "open_coat" 
-                                mask = "all" 
-                                lines = "none"    
+                        if item in long_coat_list:
+                            thighs = "coat" 
+                            mask = "clothes/coat/regular" 
+                            lines = "clothes/coat/regular"       
                         else:
                             thighs = "none"
                             mask = "all" 
@@ -745,11 +744,11 @@ def runStuff():
     #"back","socks","shoes","gloves"
     
     for c in closet:
-        if c.name in ["chair_overshirt"]:
+        if c.name in ["chair_coat"]:
             process_portrait_part(c)
     makeChairParts()
     makeButts() 
-    makeHourglass()        
+    #makeHourglass()        
     #makeWinks()
     #makeStubble() 
 

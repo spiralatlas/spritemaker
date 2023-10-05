@@ -163,6 +163,8 @@ function add_image_object(name, list_list, location,box){
             obj.puffy_hourglass_line_image.src = loc+ "_multiply_blue.png"
         }
     } 
+    if (name =="coat_back")
+        name_base = "coat";
     if (butt_list.includes(name_base)){
         loc = "images/render/anatomy/butt/"+name_base
         obj.butt_mask_image = new Image();
@@ -171,10 +173,17 @@ function add_image_object(name, list_list, location,box){
         obj.butt_line_image.src = loc+ "_multiply_blue.png"
         if (obj.name.includes("bottom")){
             let loc = "images/render/anatomy/butt/full/bottom"
-            obj.puffy_butt_mask_image = new Image();
-            obj.puffy_butt_mask_image.src = loc+ "_mask_base.png"
-            obj.puffy_butt_line_image = new Image();
-            obj.puffy_butt_line_image.src = loc+ "_multiply_blue.png"
+            obj.wide_butt_mask_image = new Image();
+            obj.wide_butt_mask_image.src = loc+ "_mask_base.png"
+            obj.wide_butt_line_image = new Image();
+            obj.wide_butt_line_image.src = loc+ "_multiply_blue.png"
+        }
+        if (obj.name.includes("coat")){
+            let loc = "images/render/anatomy/butt/coat_wide"
+            obj.wide_butt_mask_image = new Image();
+            obj.wide_butt_mask_image.src = loc+ "_mask_base.png"
+            obj.wide_butt_line_image = new Image();
+            obj.wide_butt_line_image.src = loc+ "_multiply_blue.png"
         }
     } 
     
@@ -200,13 +209,12 @@ function add_defining_object(name, list_list){
         if (list_list[2].includes(item_list[i]))
             item_indices_w.push(i);        
     }
-    if (list_list[3].length >0) //there is a dec layer
-        value_children =[image_objects.length-1]//,image_objects.length]
+    if (name =="hat") 
+        value_children =[]
     else
-        value_children =[image_objects.length-1,]
-    defining_objects.push({name: name,item_list: item_list,item_indices_f: item_indices_f ,item_indices_m: item_indices_m,item_indices_w: item_indices_w, image_index: image_objects.length-1, colour_children:[image_objects.length-1],colour2_children:[],value_children:value_children,  value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00", patterncolour: "#0000FF", pattern: 0});
+        value_children =[image_objects.length-1,] //should have the same name because of how generated.js is set up
     
-
+    defining_objects.push({name: name,item_list: item_list,item_indices_f: item_indices_f ,item_indices_m: item_indices_m,item_indices_w: item_indices_w, image_index: image_objects.length-1, colour_children:[image_objects.length-1],colour2_children:[],value_children:value_children,  value_list: listOf(0), colour1: "#FF0000",colour2: "#00FF00", patterncolour: "#0000FF", pattern: 0});
 }
 
 function add_colour_children(name, colour_children){

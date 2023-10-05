@@ -287,6 +287,8 @@ function hasButt(obj){
         return false
     if (butt_list.concat(butt_list.map(value=>value+"_dec")).includes(obj.name))
         return true
+    if (obj.name=="coat_back")
+        return true
     else
         return false
 }
@@ -442,8 +444,9 @@ function draw_object(obj, index, colour, ctx, sourceX, sourceY, xpos, ypos,width
                 drawMasked(obj.base_image, obj.hourglass_mask_image, obj.hourglass_line_image, width,height,new_width,new_height);
         }
         if (hasButt(obj)){
-            if (obj.name.includes("bottom")&& (getImageItem(obj).includes("full")||getImageItem(obj).includes("empire")))
-                drawMasked(obj.base_image, obj.puffy_butt_mask_image, obj.puffy_butt_line_image, width,height,new_width,new_height);
+            if (obj.name.includes("bottom")&& (getImageItem(obj).includes("full")||getImageItem(obj).includes("empire"))||(obj.name.includes("coat")&&coat_nosleeves_list.includes(getImageItem(obj)))){
+                drawMasked(obj.base_image, obj.wide_butt_mask_image, obj.wide_butt_line_image, width,height,new_width,new_height);
+            }
             else
                 drawMasked(obj.base_image, obj.butt_mask_image, obj.butt_line_image, width,height,new_width,new_height);
         }
