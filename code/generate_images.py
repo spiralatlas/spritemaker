@@ -44,9 +44,9 @@ top_chest_list_d = [basic_chest_list,["none"], [],[],[],True]
 overshirt_chest_list_d = [basic_chest_list,["none"], [],[],[],True]  
 coat_chest_list_d = [basic_chest_list,["none"], [],[],[],True]  
 
-chair_list = [ "none","invisible", "manual","old fashioned"]
-chair_list_w = ["old fashioned"]
-chair_list_d = [chair_list,chair_list,chair_list_w,[],[],True]
+chair_list = [ "none","invisible", "manual"]
+chair_list_w = []
+chair_list_d = [chair_list,chair_list,chair_list_w,["manual"],[],True]
 
 head_list_u = ["small", "round","jowly", "medium", "pointed","gaunt", "rectangular",]
 head_list_d = default_list(head_list_u)
@@ -254,7 +254,7 @@ skin_list = skin_list_defining + ["skull","chair_body","nose_front"]
 expression_list = ["cheeks", "mouth","eyebrows","eyes"]
 accessory_list = ["eyewear","neckwear", "earrings", "gloves","back"]
 outfit_list = [ "bottom","top", "overshirt", "coat", "socks","shoes"]
-chairOn = True
+chairOn = False
 if chairOn:
     outfit_list = outfit_list +["chair"]
 has_sleeves_list = ["top","overshirt","coat"]
@@ -284,10 +284,11 @@ chair_shoes_list_d = shoes_list_d
 chair_bottom_list_d = bottom_list_d
 chair_overshirt_list = ["band with flap"]
 chair_overshirt_list_d = [chair_overshirt_list,chair_overshirt_list,[], chair_overshirt_list,[],True]
-long_coat_list = ["overcoat", "closed robe", "open robe", "dress jacket","jama","long open jacket"] 
-chair_coat_list = long_coat_list+["none", "medium cloak", "open sweater","hoodie","cool jacket", "buttoned jacket","business jacket"] 
+long_coat_list = ["overcoat", "closed robe", "open robe", "dress jacket","jama"] 
+chair_coat_list = long_coat_list
 chair_coat_list_d = default_list(chair_coat_list)
-
+chair_coat_back_list =[c for c in long_coat_list if c in coat_back_list]
+chair_coat_back_list_d = default_list(chair_coat_back_list)
 
 highlight_list = ["fringe"]
 underlay_list = ["eyewear"]
@@ -322,7 +323,7 @@ def add_item(name, listname, list_list,location):
 
 ## Adding all the data to closet
 
-add_item("chair_back", "chair_list_d", chair_list_d,"chair")
+add_item("chair_back", "chair_back_list_d", chair_list_d,"chair")
 add_item("back", "back_list_d",back_list_d, "clothes")
 add_item("hat_back", "hat_back_list_d",hat_back_list_d, "clothes/hat")
 add_item("hair_extra", "hair_extra_list_d",hair_extra_list_d, "hair")
@@ -380,6 +381,7 @@ add_item("fringe", "fringe_list_d", fringe_list_d, "hair")
 add_item("hat_front", "hat_front_list_d", hat_front_list_d, "clothes/hat")
 
 add_item("chair", "chair_list_d", chair_list_d, "chair")
+add_item("chair_coat_back", "chair_coat_back_list_d", chair_coat_back_list_d, "chair")
 add_item("chair_body", "chair_leg_list_d", chair_leg_list_d, "chair")
 add_item("chair_socks", "chair_socks_list_d", chair_socks_list_d, "chair")
 add_item("chair_shoes", "chair_shoes_list_d", chair_shoes_list_d, "chair")
@@ -430,7 +432,7 @@ def write_variables():
     if chairOn:
         content.write("const chairOn = true;\n")
     else:    
-        content.write("const chairOn = false;\n")
+        content.write("const chairOn = false;\ntesting = false;")
     content.write(list_string("eye_colours", imagemodule.eye_colours))
     content.write(list_string("eye_colours_weird", imagemodule.eye_colours_weird))
     content.write(list_string("outfit_colours", imagemodule.outfit_colours))
@@ -474,8 +476,7 @@ def write_variables():
     content.write(list_string("defining_list", defining_list)) 
     content.write("\n")   
     for c in closet:
-        if not (c.name in ["chair_back","chair_back_dec","chair_dec",]):
-            content.write(name_string(c.listname, c.list_list))
+        content.write(name_string(c.listname, c.list_list))
         if c.dec_list !=[]:      
             content.write(name_string(c.listname+"_dec", [c.list_list[3],c.list_list[3],[],[],[],True]))  
     content.write("\n")
@@ -638,7 +639,16 @@ def makeChairParts():
                         else:
                             thighs = "none"
                             mask = "all" 
-                            lines = "none"    
+                            lines = "none" 
+                    elif obj.name == "coat_back":
+                        if item in long_coat_list:
+                            thighs = "coat" 
+                            mask = "clothes/coat/regular" 
+                            lines = "clothes/coat/regular"       
+                        else:
+                            thighs = "none"
+                            mask = "all" 
+                            lines = "none"            
                     else:
                         makeLegs = False
                     if makeLegs:      
@@ -754,7 +764,7 @@ def runStuff():
         if c.name in [""]:
             process_portrait_part(c)
     #makeChairParts()
-    makeButts() 
+    #makeButts() 
     #makeHourglass()        
     #makeWinks()
     #makeStubble() 

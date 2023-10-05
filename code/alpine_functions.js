@@ -114,10 +114,11 @@ function updateVariables(){
     //sprite height
     sprite_width = full_width;
     sprite_height = full_height ;
-    /*if (chair_def.value_list[0] !=0){ //there's a chair
-        sprite_height = full_height*size_list[ui_variables_object.current_size_type] -165-ui_variables_object.crop_height;
-    }*/ 
-    sprite_height = sprite_height*size_list[ui_variables_object.current_size_type] -ui_variables_object.crop_height;//-(5-ui_variables_object.current_size_type)*30
+    if (chair_def.value_list[0] !=0){ //there's a chair
+        sprite_height = (sprite_height-310)*size_list[ui_variables_object.current_size_type] -ui_variables_object.crop_height;
+    }
+    else
+        sprite_height = sprite_height*size_list[ui_variables_object.current_size_type] -ui_variables_object.crop_height;//-(5-ui_variables_object.current_size_type)*30
 
     //calculating crops
 
@@ -128,12 +129,12 @@ function updateVariables(){
         top_sleeves_im.crop = [[0,0,full_width,462]]; //crop top off puffy sleeves
         if (coat_sleeves_im.item>2||overshirt_sleeves_im.item>2) //long sleeves
             top_sleeves_im.crop = [[0,0,full_width,654]];
-        if (coat_sleeves_im.item>=0){ //crop top collar under sleeved coats
-            crop_box = [[0,0,124,467],[264,312,50,200]];
-            top_collar_im.crop = crop_box
-            top_collar_dec_im.crop = crop_box;
-        }   
     }
+    if (coat_sleeves_im.item>=0){ //crop top collar under sleeved coats
+        crop_box = [[0,0,124,467],[264,312,50,200]];
+        top_collar_im.crop = crop_box
+        top_collar_dec_im.crop = crop_box;
+    }   
 
     //cropping hair to fit under hat
     let hat_string = findImageItem("hat_front");
@@ -159,6 +160,10 @@ function updateVariables(){
     hair_front_im.crop = crop_box;
     hair_back_im.crop = crop_box;
     
+    // fixing chair_coat colour bug
+    chair_coat_im.colour1 = coat_im.colour1;
+    chair_coat_im.pattern = coat_im.pattern;
+    chair_coat_im.patterncolour = coat_im.patterncolour;
 
     fixSources();
 
@@ -287,7 +292,7 @@ document.addEventListener('alpine:init', () => {
             }    
             id = '"drop'+this.title+this.valueName+'"';
             output = '<label for='+id+'>'+this.title+'</label>: ';   
-            output += '<input id='+id+' type="color" :value ="'+objName+'"  @input="'+objName+'=$event.target.value;console.log($event.target.value);setVariables(Alpine.store(\'alpineData\'));" :aria-label="colour_desc('+objName+')"/>'
+            output += '<input id='+id+' type="color" :value ="'+objName+'"  @input="'+objName+'=$event.target.value;setVariables(Alpine.store(\'alpineData\'));" :aria-label="colour_desc('+objName+')"/>'
             return output 
             },
         },
@@ -507,9 +512,11 @@ transferDefiningValues(preset_index,preset_defining_list, property_list){
                 /*if (defining_objects[i].name=="neckwear"&& this.defining_variables_object.current_hairstyle<3){// bald/balding/shaved
                     this.current_defining_objects[i].value_list = listOf(0);
                 } Want to remove ugly ties but it's troublesome */ 
-                if (["chair"].includes(defining_objects[i].name)&& chairOn == false)//just while fixing clothes 
-                    this.current_defining_objects[i].value_list = listOf(0);     
-                }
+                if (["chair"].includes(defining_objects[i].name)){//turn off chairs if chairOn is false
+                    if (chairOn == false|| this.current_defining_objects[i].value_list[0]==1)
+                        this.current_defining_objects[i].value_list = listOf(0); 
+                }    
+            }
         }
         
         b_index = findDefiningIndex("bottom")
